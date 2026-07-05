@@ -614,7 +614,7 @@ function initializeMatch() {
     document.getElementById('introStage').textContent = '— ' + activeStage.name + ' —';
 
     lastT = 0; acc = 0;
-    requestAnimationFrame(loop);
+    if (!loopRunning) { loopRunning = true; requestAnimationFrame(loop); }
 }
 function spawnWeapons() {
     const types = Object.keys(WEAPON_TYPES);
@@ -626,6 +626,8 @@ function spawnWeapons() {
     M.weaponsOnGround = spots.map((s, i) => ({ type: pool[i % pool.length], x: s.x, y: s.y }));
 }
 function endMatch(winner, method) {
+    if (M.phase === 'slowmo' || M.phase === 'over') return;   // already ending
+    M.grapple = null;
     M.winner = winner; M.winMethod = method; M.winFrame = M.frame;
     NET.hostReportEnd();
     M.phase = 'slowmo'; M.slowmoTimer = 90;
@@ -789,9 +791,11 @@ function performTap(p1, p2, x, y) {
 
 // ---------------- COMBAT CORE ----------------
 function dealDamage(attacker, victim, base, opts = {}) {
-    // combo scaling
-    attacker.combo = (attacker.comboTimer > 0) ? attacker.combo + 1 : 1;
-    attacker.comboTimer = 60;
+    // combo scaling (passive ticks don't build combos)
+    if (!opts.noCombo) {
+        attacker.combo = (attacker.comboTimer > 0) ? attacker.combo + 1 : 1;
+        attacker.comboTimer = 60;
+    }
     const scale = Math.max(0.6, 1 - (attacker.combo - 1) * 0.05);
     const dmg = base * attacker.wrestler.power * scale;
     victim.health = Math.max(0, victim.health - dmg);
@@ -899,7 +903,9 @@ function performGrappleBtn(p, o, dir) {
     const adx = Math.abs(o.x - p.x), ady = Math.abs(o.y - p.y);
     // pin a downed opponent
     if (o.downTimer > 0 && adx < 100 && ady < 70) {
-        p.x = o.x - (Math.sign(o.x - p.x) || p.direction) * 26; p.y = o.y;
+        p.x = o.x - (Math.sign(o.x - p.x) || p.direction) * 34;
+        p.y = o.y + 8;
+        p.direction = Math.sign(o.x - p.x) || p.direction;
         M.grapple = { holder: p, victim: o, frames: 0, isPin: true };
         addFx(o.x, o.y, 'PIN ATTEMPT!', { color: '#ff4455', size: 20 });
         Snd.crowdPop();
@@ -909,8 +915,10 @@ function performGrappleBtn(p, o, dir) {
     if (o.downTimer <= 0 && o.invuln <= 0 && adx < 80 && ady < 55) {
         if (p.weapon) dropWeapon(p);
         p.direction = Math.sign(o.x - p.x) || p.direction;
+        o.direction = -p.direction;                     // face each other
         M.grapple = { holder: p, victim: o, frames: 0, isPin: false };
         addFx(o.x, o.y, 'GRAPPLE!', { color: '#ffcc33' });
+        Snd.whoosh();
         return;
     }
     // pick up the nearest weapon
@@ -937,7 +945,7 @@ function tryStomp(att, def) {
         Math.abs(def.x - att.x) < 75 && Math.abs(def.y - att.y) < 55) {
         att.swingTimer = 14;
         att.attackCooldown = 30;
-        dealDamage(att, def, 3, { text: 'STOMP!', size: 13, meterGain: 3 });
+        dealDamage(att, def, 3, { text: 'STOMP!', size: 13, meterGain: 3, noCombo: true });
         Snd.kick();
         return true;
     }
@@ -1038,7 +1046,14 @@ function simTick() {
                 return;
             }
         } else {
-            if (g.frames % 30 === 0) dealDamage(g.holder, g.victim, 3, { text: 'SQUEEZE!', size: 13, meterGain: 4 });
+            // B while holding = grapple strike
+            if (g.holder === p1 && input.attackTap) {
+                input.attackTap = false;
+                p1.swingTimer = 14;
+                dealDamage(p1, g.victim, 4, { text: 'CLUBBED!', size: 13, meterGain: 5 });
+                Snd.punch();
+            }
+            if (g.frames % 42 === 0 && g.frames > 0) dealDamage(g.holder, g.victim, 2, { text: 'SQUEEZE!', size: 12, meterGain: 3, noCombo: true });
             // victim escape: mash if player
             if (g.victim === p1 && input.attackTap) {
                 g.escape = (g.escape || 0) + 1;
@@ -1129,8 +1144,12 @@ function simTick() {
     });
 
     if (M.grapple && !M.grapple.isPin) {
-        M.grapple.victim.x = M.grapple.holder.x + M.grapple.holder.direction * 55;
-        M.grapple.victim.y = M.grapple.holder.y;
+        const g = M.grapple;
+        g.victim.x = g.holder.x + g.holder.direction * 44;
+        g.victim.y = g.holder.y;
+        g.victim.direction = -g.holder.direction;       // stay locked facing each other
+        // struggle shimmy
+        g.holder.x += Math.sin(g.frames * 0.4) * 0.4;
     }
 
     // meters
@@ -1186,6 +1205,9 @@ function aiUpdate(ai, target) {
     // pin downed player - always priority
     if (target.downTimer > 0 && !M.grapple) {
         if (dist < 85) {
+            ai.x = target.x - (Math.sign(target.x - ai.x) || ai.direction) * 34;
+            ai.y = target.y + 8;
+            ai.direction = Math.sign(target.x - ai.x) || ai.direction;
             M.grapple = { holder: ai, victim: target, frames: 0, isPin: true };
             addFx(target.x, target.y, 'PIN ATTEMPT!', { color: '#ff4455', size: 20 });
             Snd.crowdPop();
@@ -1242,8 +1264,11 @@ function aiUpdate(ai, target) {
                 if (Math.random() < 0.08 * aggression && dist < 110 && !M.grapple) {
                     // grapple gambit
                     if (ai.weapon) dropWeapon(ai);
+                    ai.direction = Math.sign(target.x - ai.x) || ai.direction;
+                    target.direction = -ai.direction;
                     M.grapple = { holder: ai, victim: target, frames: 0, isPin: false };
                     addFx(target.x, target.y, 'GRAPPLED!', { color: '#ff8c1a' });
+                    Snd.whoosh();
                 } else if (ai.specialCharge >= 100 && Math.random() < 0.4) {
                     trySpecialAI(ai, target);
                 } else {
@@ -1912,7 +1937,7 @@ function drawWeaponSprite(key, x, y, targetH, rot, flip, grip) {
 }
 
 // ---------------- FIXED-TIMESTEP LOOP ----------------
-let lastT = 0, acc = 0;
+let lastT = 0, acc = 0, loopRunning = false;
 const DT = 1000 / 60;
 function loop(t) {
     if (M.phase === 'idle') return;
