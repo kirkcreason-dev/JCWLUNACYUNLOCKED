@@ -601,8 +601,6 @@ function initializeMatch() {
     M.freeze = 0; M.shake = 0; M.lastPinCount = 0;
     M.winner = null;
 
-    document.getElementById('p1HudName').textContent = M.p1.wrestler.name;
-    document.getElementById('p2HudName').textContent = M.p2.wrestler.name;
     document.getElementById('matchOverScreen').classList.add('hidden');
 
     // intro
@@ -811,8 +809,6 @@ function dealDamage(attacker, victim, base, opts = {}) {
               { color: attacker.isP1 ? '#8dff1e' : '#ff8c1a', size: 15 + Math.min(10, attacker.combo * 1.5) });
         if (attacker.combo === 5) Snd.crowdPop();
     }
-    document.getElementById(attacker.isP1 ? 'p1Combo' : 'p2Combo').textContent =
-        attacker.combo >= 2 ? attacker.combo + 'x' : '';
 
     // dramatic finish windows: hurt opponents get knocked down by solid hits
     if (victim.health > 0 && victim.health < victim.maxHealth * 0.22 && dmg >= 4 &&
@@ -937,8 +933,7 @@ function simTick() {
         if (p.swingTimer > 0) p.swingTimer--;
         if (p.stunTimer > 0) p.stunTimer--;
         if (p.jumpTimer > 0) p.jumpTimer--;
-        if (p.comboTimer > 0) { p.comboTimer--; if (p.comboTimer === 0) { p.combo = 0;
-            document.getElementById(p.isP1 ? 'p1Combo' : 'p2Combo').textContent = ''; } }
+        if (p.comboTimer > 0) { p.comboTimer--; if (p.comboTimer === 0) p.combo = 0; }
     });
     if (p1.downTimer > 0) { p1.downTimer--; p1.vx *= 0.9; p1.vy *= 0.9; }
 
