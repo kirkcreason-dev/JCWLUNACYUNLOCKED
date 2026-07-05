@@ -667,8 +667,8 @@ function computeRects() {
     const mobile = canvas.width < 640;
     const safeT = 96, safeB = canvas.height - 210;
     const usableH = safeB - safeT;
-    const scaleW = (canvas.width * (mobile ? 0.94 : 0.88)) / ((mt.x1 - mt.x0) * iw);
-    const scaleH = usableH / ((mt.y1 - mt.y0) * ih);
+    const scaleW = (canvas.width * (mobile ? 0.88 : 0.80)) / ((mt.x1 - mt.x0) * iw);
+    const scaleH = (usableH * 0.80) / ((mt.y1 - mt.y0) * ih);
     const scale = Math.min(scaleW, scaleH);
     const dw = iw * scale, dh = ih * scale;
     const dx = canvas.width / 2 - (mt.x0 + mt.x1) / 2 * dw;
@@ -1850,8 +1850,8 @@ function drawFighter(f) {
     if (img && img.complete && img.naturalWidth) {
         const isDown = f.downTimer > 0 || (M.grapple && M.grapple.isPin && M.grapple.victim === f);
         const baseH = isDown
-            ? Math.max(50, Math.min(matH * 0.20, canvas.height * 0.10))
-            : Math.max(88, Math.min(matH * 0.42, canvas.height * 0.21));
+            ? Math.max(50, Math.min(matH * 0.24, canvas.height * 0.11))
+            : Math.max(88, Math.min(matH * 0.52, canvas.height * 0.23));
         const targetH = baseH * depthScale;
         const scale = targetH / img.naturalHeight;
         const w = img.naturalWidth * scale, h = targetH;
