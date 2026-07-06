@@ -92,6 +92,170 @@
     "w": 103,
     "h": 160
    }
+  ],
+  "aIdle": {
+   "file": "sprites/bruce/a_idle_0.png"
+  },
+  "aIdleB": {
+   "file": "sprites/bruce/a_idleB_0.png"
+  },
+  "aStagger": {
+   "file": "sprites/bruce/a_stagger_0.png"
+  },
+  "aFallB": {
+   "file": "sprites/bruce/a_fallB_0.png"
+  },
+  "aFallF": {
+   "file": "sprites/bruce/a_fallF_0.png"
+  },
+  "aGetup": [
+   {
+    "file": "sprites/bruce/a_getup_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_getup_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_getup_2.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/bruce/a_walkL_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_walkL_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_walkL_2.png"
+   },
+   {
+    "file": "sprites/bruce/a_walkL_3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bruce/a_walkR_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_walkR_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_walkR_2.png"
+   },
+   {
+    "file": "sprites/bruce/a_walkR_3.png"
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/bruce/a_runL_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_runL_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_runL_2.png"
+   },
+   {
+    "file": "sprites/bruce/a_runL_3.png"
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/bruce/a_runR_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_runR_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_runR_2.png"
+   },
+   {
+    "file": "sprites/bruce/a_runR_3.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/bruce/a_elbowL_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_elbowL_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_elbowL_2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bruce/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_elbowR_2.png"
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/bruce/a_taunt_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_taunt_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_taunt_2.png"
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/bruce/a_diveL_0.png"
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/bruce/a_chairR_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_chairR_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_chairR_2.png"
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/bruce/a_kendoL_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_kendoL_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_kendoL_2.png"
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/bruce/a_kendoR_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_kendoR_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_kendoR_2.png"
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/bruce/a_beltR_0.png"
+   },
+   {
+    "file": "sprites/bruce/a_beltR_1.png"
+   },
+   {
+    "file": "sprites/bruce/a_beltR_2.png"
+   }
   ]
  },
  "atiba": {
@@ -186,6 +350,170 @@
     "file": "sprites/atiba/elbowR_2.png",
     "w": 142,
     "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/atiba/a_idle_0.png"
+  },
+  "aIdleB": {
+   "file": "sprites/atiba/a_idleB_0.png"
+  },
+  "aStagger": {
+   "file": "sprites/atiba/a_stagger_0.png"
+  },
+  "aFallB": {
+   "file": "sprites/atiba/a_fallB_0.png"
+  },
+  "aFallF": {
+   "file": "sprites/atiba/a_fallF_0.png"
+  },
+  "aGetup": [
+   {
+    "file": "sprites/atiba/a_getup_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_getup_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_getup_2.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/atiba/a_walkL_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_walkL_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_walkL_2.png"
+   },
+   {
+    "file": "sprites/atiba/a_walkL_3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/atiba/a_walkR_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_walkR_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_walkR_2.png"
+   },
+   {
+    "file": "sprites/atiba/a_walkR_3.png"
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/atiba/a_runL_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_runL_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_runL_2.png"
+   },
+   {
+    "file": "sprites/atiba/a_runL_3.png"
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/atiba/a_runR_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_runR_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_runR_2.png"
+   },
+   {
+    "file": "sprites/atiba/a_runR_3.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/atiba/a_elbowL_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_elbowL_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_elbowL_2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/atiba/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_elbowR_2.png"
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/atiba/a_taunt_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_taunt_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_taunt_2.png"
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/atiba/a_diveL_0.png"
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/atiba/a_chairR_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_chairR_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_chairR_2.png"
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/atiba/a_kendoL_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_kendoL_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_kendoL_2.png"
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/atiba/a_kendoR_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_kendoR_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_kendoR_2.png"
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/atiba/a_beltR_0.png"
+   },
+   {
+    "file": "sprites/atiba/a_beltR_1.png"
+   },
+   {
+    "file": "sprites/atiba/a_beltR_2.png"
    }
   ]
  },
@@ -282,6 +610,170 @@
     "w": 124,
     "h": 160
    }
+  ],
+  "aIdle": {
+   "file": "sprites/bishop/a_idle_0.png"
+  },
+  "aIdleB": {
+   "file": "sprites/bishop/a_idleB_0.png"
+  },
+  "aStagger": {
+   "file": "sprites/bishop/a_stagger_0.png"
+  },
+  "aFallB": {
+   "file": "sprites/bishop/a_fallB_0.png"
+  },
+  "aFallF": {
+   "file": "sprites/bishop/a_fallF_0.png"
+  },
+  "aGetup": [
+   {
+    "file": "sprites/bishop/a_getup_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_getup_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_getup_2.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/bishop/a_walkL_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_walkL_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_walkL_2.png"
+   },
+   {
+    "file": "sprites/bishop/a_walkL_3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bishop/a_walkR_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_walkR_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_walkR_2.png"
+   },
+   {
+    "file": "sprites/bishop/a_walkR_3.png"
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/bishop/a_runL_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_runL_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_runL_2.png"
+   },
+   {
+    "file": "sprites/bishop/a_runL_3.png"
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/bishop/a_runR_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_runR_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_runR_2.png"
+   },
+   {
+    "file": "sprites/bishop/a_runR_3.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/bishop/a_elbowL_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_elbowL_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_elbowL_2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bishop/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_elbowR_2.png"
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/bishop/a_taunt_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_taunt_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_taunt_2.png"
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/bishop/a_diveL_0.png"
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/bishop/a_chairR_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_chairR_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_chairR_2.png"
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/bishop/a_kendoL_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_kendoL_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_kendoL_2.png"
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/bishop/a_kendoR_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_kendoR_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_kendoR_2.png"
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/bishop/a_beltR_0.png"
+   },
+   {
+    "file": "sprites/bishop/a_beltR_1.png"
+   },
+   {
+    "file": "sprites/bishop/a_beltR_2.png"
+   }
   ]
  },
  "bronson": {
@@ -376,6 +868,170 @@
     "file": "sprites/bronson/elbowR_2.png",
     "w": 145,
     "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/bronson/a_idle_0.png"
+  },
+  "aIdleB": {
+   "file": "sprites/bronson/a_idleB_0.png"
+  },
+  "aStagger": {
+   "file": "sprites/bronson/a_stagger_0.png"
+  },
+  "aFallB": {
+   "file": "sprites/bronson/a_fallB_0.png"
+  },
+  "aFallF": {
+   "file": "sprites/bronson/a_fallF_0.png"
+  },
+  "aGetup": [
+   {
+    "file": "sprites/bronson/a_getup_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_getup_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_getup_2.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/bronson/a_walkL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bronson/a_walkR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_3.png"
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/bronson/a_runL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_3.png"
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/bronson/a_runR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_3.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/bronson/a_elbowL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowL_2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bronson/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_2.png"
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/bronson/a_taunt_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_taunt_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_taunt_2.png"
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/bronson/a_diveL_0.png"
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/bronson/a_chairR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairR_2.png"
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/bronson/a_kendoL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_kendoL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_kendoL_2.png"
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/bronson/a_kendoR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_kendoR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_kendoR_2.png"
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/bronson/a_beltR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_beltR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_beltR_2.png"
    }
   ]
  },
@@ -472,6 +1128,170 @@
     "w": 130,
     "h": 160
    }
+  ],
+  "aIdle": {
+   "file": "sprites/dani/a_idle_0.png"
+  },
+  "aIdleB": {
+   "file": "sprites/dani/a_idleB_0.png"
+  },
+  "aStagger": {
+   "file": "sprites/dani/a_stagger_0.png"
+  },
+  "aFallB": {
+   "file": "sprites/dani/a_fallB_0.png"
+  },
+  "aFallF": {
+   "file": "sprites/dani/a_fallF_0.png"
+  },
+  "aGetup": [
+   {
+    "file": "sprites/dani/a_getup_0.png"
+   },
+   {
+    "file": "sprites/dani/a_getup_1.png"
+   },
+   {
+    "file": "sprites/dani/a_getup_2.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/dani/a_walkL_0.png"
+   },
+   {
+    "file": "sprites/dani/a_walkL_1.png"
+   },
+   {
+    "file": "sprites/dani/a_walkL_2.png"
+   },
+   {
+    "file": "sprites/dani/a_walkL_3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/dani/a_walkR_0.png"
+   },
+   {
+    "file": "sprites/dani/a_walkR_1.png"
+   },
+   {
+    "file": "sprites/dani/a_walkR_2.png"
+   },
+   {
+    "file": "sprites/dani/a_walkR_3.png"
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/dani/a_runL_0.png"
+   },
+   {
+    "file": "sprites/dani/a_runL_1.png"
+   },
+   {
+    "file": "sprites/dani/a_runL_2.png"
+   },
+   {
+    "file": "sprites/dani/a_runL_3.png"
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/dani/a_runR_0.png"
+   },
+   {
+    "file": "sprites/dani/a_runR_1.png"
+   },
+   {
+    "file": "sprites/dani/a_runR_2.png"
+   },
+   {
+    "file": "sprites/dani/a_runR_3.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/dani/a_elbowL_0.png"
+   },
+   {
+    "file": "sprites/dani/a_elbowL_1.png"
+   },
+   {
+    "file": "sprites/dani/a_elbowL_2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/dani/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/dani/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/dani/a_elbowR_2.png"
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/dani/a_taunt_0.png"
+   },
+   {
+    "file": "sprites/dani/a_taunt_1.png"
+   },
+   {
+    "file": "sprites/dani/a_taunt_2.png"
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/dani/a_diveL_0.png"
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/dani/a_chairR_0.png"
+   },
+   {
+    "file": "sprites/dani/a_chairR_1.png"
+   },
+   {
+    "file": "sprites/dani/a_chairR_2.png"
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/dani/a_kendoL_0.png"
+   },
+   {
+    "file": "sprites/dani/a_kendoL_1.png"
+   },
+   {
+    "file": "sprites/dani/a_kendoL_2.png"
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/dani/a_kendoR_0.png"
+   },
+   {
+    "file": "sprites/dani/a_kendoR_1.png"
+   },
+   {
+    "file": "sprites/dani/a_kendoR_2.png"
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/dani/a_beltR_0.png"
+   },
+   {
+    "file": "sprites/dani/a_beltR_1.png"
+   },
+   {
+    "file": "sprites/dani/a_beltR_2.png"
+   }
   ]
  },
  "caleb": {
@@ -566,6 +1386,170 @@
     "file": "sprites/caleb/elbowR_2.png",
     "w": 132,
     "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/caleb/a_idle_0.png"
+  },
+  "aIdleB": {
+   "file": "sprites/caleb/a_idleB_0.png"
+  },
+  "aStagger": {
+   "file": "sprites/caleb/a_stagger_0.png"
+  },
+  "aFallB": {
+   "file": "sprites/caleb/a_fallB_0.png"
+  },
+  "aFallF": {
+   "file": "sprites/caleb/a_fallF_0.png"
+  },
+  "aGetup": [
+   {
+    "file": "sprites/caleb/a_getup_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_getup_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_getup_2.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/caleb/a_walkL_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_walkL_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_walkL_2.png"
+   },
+   {
+    "file": "sprites/caleb/a_walkL_3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/caleb/a_walkR_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_walkR_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_walkR_2.png"
+   },
+   {
+    "file": "sprites/caleb/a_walkR_3.png"
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/caleb/a_runL_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_runL_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_runL_2.png"
+   },
+   {
+    "file": "sprites/caleb/a_runL_3.png"
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/caleb/a_runR_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_runR_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_runR_2.png"
+   },
+   {
+    "file": "sprites/caleb/a_runR_3.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/caleb/a_elbowL_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_elbowL_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_elbowL_2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/caleb/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_elbowR_2.png"
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/caleb/a_taunt_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_taunt_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_taunt_2.png"
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/caleb/a_diveL_0.png"
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/caleb/a_chairR_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_chairR_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_chairR_2.png"
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/caleb/a_kendoL_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_kendoL_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_kendoL_2.png"
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/caleb/a_kendoR_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_kendoR_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_kendoR_2.png"
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/caleb/a_beltR_0.png"
+   },
+   {
+    "file": "sprites/caleb/a_beltR_1.png"
+   },
+   {
+    "file": "sprites/caleb/a_beltR_2.png"
    }
   ]
  }
