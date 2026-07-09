@@ -168,47 +168,6 @@ canvas { display:block; width:100%; height:100%; touch-action:none; }
         <canvas id="gameCanvas"></canvas>
         <div class="hud">
             
-            
-            <div id="p2Name" style="color:#4488ff;">P2: SELECT</div>
-        </div>
-        <div class="roster-grid" id="rosterGrid"></div>
-        <div class="stage-row" style="max-width:540px;">
-            <div class="stage-thumb diff sel" onclick="setDiff(0)"><div class="stage-rand" style="font-size:15px;color:#8dff1e;">EASY</div><span>CHILL</span></div>
-            <div class="stage-thumb diff" onclick="setDiff(1)"><div class="stage-rand" style="font-size:15px;color:#ffcc33;">NORMAL</div><span>FIGHT</span></div>
-            <div class="stage-thumb diff" onclick="setDiff(2)"><div class="stage-rand" style="font-size:15px;color:#ff2255;">HARD</div><span>LUNACY</span></div>
-        </div>
-        <div class="stage-row">
-            <div class="stage-thumb sel" onclick="setStage(-1)"><div class="stage-rand">?</div><span>RANDOM</span></div>
-            <div class="stage-thumb" onclick="setStage(0)"><img src="ui/arena_funhouse_thumb.jpg" alt=""><span>FUNHOUSE</span></div>
-            <div class="stage-thumb" onclick="setStage(1)"><img src="ui/arena_lunacy_thumb.jpg" alt=""><span>LUNACY</span></div>
-            <div class="stage-thumb" onclick="setStage(2)"><img src="ui/arena_warehouse_thumb.jpg" alt=""><span>WAREHOUSE</span></div>
-        </div>
-        <div class="stats-panel" id="statsPanel">
-            <img class="big-portrait" id="bigPortrait" src="ui/big_caleb.png" alt="">
-            <div class="stats-info">
-                <div class="stats-name" id="statsName">SELECT YOUR FIGHTER</div>
-                <div class="stats-special" id="statsSpecial">&nbsp;</div>
-                <div class="stat-row"><div class="stat-label">POWER</div><div class="stat-bar" id="barPower"></div></div>
-                <div class="stat-row"><div class="stat-label">SPEED</div><div class="stat-bar" id="barSpeed"></div></div>
-                <div class="stat-row"><div class="stat-label">TECHNIQUE</div><div class="stat-bar" id="barTech"></div></div>
-                <div class="stat-row"><div class="stat-label">TOUGHNESS</div><div class="stat-bar" id="barTough"></div></div>
-            </div>
-        </div>
-        <button class="start-button" id="startButton" disabled>START MATCH (VS CPU)</button>
-        <div class="online-row">
-            <button class="online-btn" id="btnQuick">⚡ QUICK MATCH</button>
-            <button class="online-btn" id="btnCreate">CREATE ROOM</button>
-            <button class="online-btn" id="btnJoin">JOIN ROOM</button>
-        </div>
-        <div id="onlineStatus" class="online-status"></div>
-        <div id="loadingMsg">Loading...</div>
-    </div>
-
-    <!-- GAME -->
-    <div id="gameContainer">
-        <canvas id="gameCanvas"></canvas>
-        <div class="hud">
-            
             <div class="special-charge">
                 <div>SPECIAL</div>
                 <div class="special-bar"><div class="special-bar-fill" id="specialBarFill"></div></div>
@@ -254,7 +213,7 @@ canvas { display:block; width:100%; height:100%; touch-action:none; }
 </div>
 
 <script>
-console.log('%cJCW LUNACY — BUILD 2026-07-07-CAM-FULLVIEW', 'color:#8dff1e;font-weight:bold');
+console.log('%cJCW LUNACY — BUILD 2026-07-08-MATCHMAKER', 'color:#8dff1e;font-weight:bold');
 'use strict';
 /* ================================================================
    JCW LUNACY — engine v2 (excellence build)
@@ -1521,9 +1480,9 @@ const NET = {
         const A = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
         return Array.from({length: 4}, () => A[Math.floor(Math.random() * A.length)]).join('');
     },
-    async createRoom(wrestlerId) {
+    async createRoom(wrestlerId, presetCode) {
         if (!(await this.init())) return null;
-        this.roomCode = this.code();
+        this.roomCode = presetCode || this.code();
         gameState.p1Selected = wrestlers.find(w => w.id === wrestlerId) || gameState.p1Selected;
         this.roomRef = this.db.ref('rooms/' + this.roomCode);
         await this.roomRef.set({
@@ -1550,26 +1509,60 @@ const NET = {
         this.watchRoom();
         return true;
     },
+    // Robust matchmaker: create our room up front, then ONE atomic transaction
+    // either claims an existing waiter or registers us. Serialized transactions
+    // guarantee that of two simultaneous searchers, one hosts and one joins.
     async quickMatch(wrestlerId) {
         if (!(await this.init())) return;
+        this.mmCancelled = false;
         const q = this.db.ref('quickQueue');
-        const res = await q.transaction(cur => {
-            if (cur && cur.code && Date.now() - cur.t < 60000) return null; // claim existing
-            return { code: 'PENDING', t: Date.now() };
-        });
-        const claimed = !res.committed;
-        if (claimed) {
-            const cur = (await q.once('value')).val();
-            await q.remove();
-            if (cur && cur.code && cur.code !== 'PENDING') {
-                const ok = await this.joinRoom(cur.code, wrestlerId);
-                if (ok) { setOnlineStatus('MATCH FOUND — JOINING...'); return; }
+        const myCode = this.code();
+        // Our room exists before anyone can be told to join it.
+        await this.createRoom(wrestlerId, myCode);
+        if (this.mmCancelled) { this.cleanupRoom(); return; }
+        let oppCode = null;
+        await q.transaction(cur => {
+            if (cur && cur.code && cur.code !== myCode && Date.now() - cur.t < 45000) {
+                oppCode = cur.code;          // a fresh waiter exists → claim it
+                return null;                 // clear the queue slot
             }
-            // fall through to hosting
+            oppCode = null;
+            return { code: myCode, t: Date.now() };   // no waiter → register as one
+        });
+        if (this.mmCancelled) {
+            await q.transaction(cur => (cur && cur.code === myCode) ? null : cur).catch(()=>{});
+            this.cleanupRoom();
+            return;
         }
-        const code = await this.createRoom(wrestlerId);
-        await q.set({ code, t: Date.now() });
-        setOnlineStatus('WAITING FOR OPPONENT... ROOM ' + code);
+        if (oppCode) {
+            // We claimed a host → drop our own room and join theirs.
+            this.cleanupRoom();
+            const ok = await this.joinRoom(oppCode, wrestlerId);
+            if (ok) { setOnlineStatus('MATCH FOUND — JOINING…'); return; }
+            // Their room was stale → become the waiter instead.
+            await this.createRoom(wrestlerId, myCode);
+            await q.set({ code: myCode, t: Date.now() });
+            setOnlineStatus('SEARCHING FOR OPPONENT…');
+        } else {
+            setOnlineStatus('SEARCHING FOR OPPONENT…');
+        }
+    },
+    cleanupRoom() {
+        try {
+            if (this.roomRef) { this.roomRef.off(); this.roomRef.remove().catch(()=>{}); }
+        } catch (e) {}
+        this.roomRef = null; this.roomCode = null; this.mode = 'none';
+    },
+    async cancelMatchmaking() {
+        this.mmCancelled = true;
+        const myCode = this.roomCode;
+        try {
+            if (this.db) {
+                await this.db.ref('quickQueue')
+                    .transaction(cur => (cur && cur.code === myCode) ? null : cur);
+            }
+        } catch (e) {}
+        this.cleanupRoom();
     },
     watchRoom() {
         this.roomRef.on('value', s => {
@@ -1714,6 +1707,7 @@ const NET = {
 };
 
 function startOnlineMatch() {
+    if (typeof stopMMUI === 'function') stopMMUI(null);
     const cs = document.getElementById('characterSelect');
     cs.classList.add('hidden');
     cs.style.display = 'none';
@@ -2112,10 +2106,44 @@ function loop(t) {
 
 // ---------------- WIRE UP ----------------
 document.getElementById('startButton').addEventListener('click', startMatch);
+// ---- Matchmaker UI (searching animation, cancel, timeout) ----
+let mmSearching = false, mmDotTimer = null, mmTimeout = null;
+function stopMMUI(finalMsg) {
+    mmSearching = false;
+    if (mmDotTimer) { clearInterval(mmDotTimer); mmDotTimer = null; }
+    if (mmTimeout) { clearTimeout(mmTimeout); mmTimeout = null; }
+    const b = document.getElementById('btnQuick');
+    if (b) b.textContent = '⚡ QUICK MATCH';
+    if (finalMsg != null) setOnlineStatus(finalMsg);
+}
+function startMMUI() {
+    mmSearching = true;
+    const b = document.getElementById('btnQuick');
+    if (b) b.textContent = '✖ CANCEL SEARCH';
+    let dots = 0;
+    setOnlineStatus('SEARCHING FOR OPPONENT');
+    mmDotTimer = setInterval(() => {
+        dots = (dots + 1) % 4;
+        setOnlineStatus('SEARCHING FOR OPPONENT' + '.'.repeat(dots));
+    }, 400);
+    mmTimeout = setTimeout(async () => {
+        await NET.cancelMatchmaking();
+        stopMMUI('NO OPPONENT FOUND — TAP QUICK MATCH TO RETRY');
+    }, 45000);
+}
 document.getElementById('btnQuick').addEventListener('click', async () => {
+    if (mmSearching) {                       // second tap = cancel
+        await NET.cancelMatchmaking();
+        stopMMUI('SEARCH CANCELLED');
+        return;
+    }
     if (!gameState.p1Selected) { setOnlineStatus('PICK YOUR FIGHTER FIRST'); return; }
-    setOnlineStatus('SEARCHING...');
-    await NET.quickMatch(gameState.p1Selected.id);
+    startMMUI();
+    try {
+        await NET.quickMatch(gameState.p1Selected.id);
+    } catch (e) {
+        stopMMUI('MATCHMAKING ERROR: ' + (e && e.message ? e.message : e));
+    }
 });
 document.getElementById('btnCreate').addEventListener('click', async () => {
     if (!gameState.p1Selected) { setOnlineStatus('PICK YOUR FIGHTER FIRST'); return; }
