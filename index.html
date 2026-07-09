@@ -263,12 +263,12 @@ console.log('%cJCW LUNACY — BUILD 2026-07-07-CAM-FULLVIEW', 'color:#8dff1e;fon
 
 // ---------------- DATA ----------------
 const wrestlers = [
-    { name:"Caleb Konley", id:"caleb", health:100, speed:1.0, power:0.95, special:"BURNING HAMMER", stats:{power:7,speed:8,tech:9,tough:8} },
-    { name:"Josh Bishop", id:"bishop", health:108, speed:0.9, power:1.1, special:"EXIT 187", stats:{power:10,speed:6,tech:7,tough:9} },
-    { name:"Dani Mo", id:"dani", health:100, speed:1.0, power:0.9, special:"MOON MIST TWIST", stats:{power:6,speed:8,tech:8,tough:8} },
-    { name:"Father Bronson", id:"bronson", health:100, speed:0.9, power:1.0, special:"TEXAS CLOVERLEAF", stats:{power:8,speed:6,tech:7,tough:8} },
-    { name:"Atiba", id:"atiba", health:92, speed:1.0, power:0.9, special:"CHOPPA CITY SLAM", stats:{power:6,speed:8,tech:8,tough:7} },
-    { name:"Bruce Wayans", id:"bruce", health:100, speed:0.85, power:1.05, special:"CHOPPA CITY CRUSH", stats:{power:9,speed:5,tech:7,tough:8} }
+    { name:"Caleb Konley",   id:"caleb",   health:100, speed:1.0,  power:1.0,  special:"KONLEY CUTTER",     stats:{power:8,speed:8,tech:8,tough:7} },
+    { name:"Josh Bishop",    id:"bishop",  health:105, speed:0.95, power:1.05, special:"BISHOP BOMB",       stats:{power:8,speed:7,tech:8,tough:9} },
+    { name:"Dani Mo",        id:"dani",    health:85,  speed:1.15, power:0.85, special:"MO MONEY DDT",      stats:{power:7,speed:9,tech:9,tough:7} },
+    { name:"Father Bronson", id:"bronson", health:110, speed:0.9,  power:1.1,  special:"SERMON SLAM",       stats:{power:9,speed:5,tech:8,tough:9} },
+    { name:"Atiba",          id:"atiba",   health:95,  speed:1.1,  power:0.9,  special:"CHOPPA CITY SLAM",  stats:{power:9,speed:8,tech:8,tough:8} },
+    { name:"Bruce Wayans",   id:"bruce",   health:100, speed:1.0,  power:0.95, special:"CHOPPA CITY CRUSH", stats:{power:8,speed:8,tech:8,tough:9} }
 ];
 
 const WEAPON_TYPES = {
@@ -591,6 +591,8 @@ function initializeMatch() {
     activeStage = STAGES[si];
     ARENA.src = activeStage.src;
 
+    if (!gameState.p1Selected) gameState.p1Selected = wrestlers[0];
+    if (!gameState.p2Selected) gameState.p2Selected = wrestlers[1] || wrestlers[0];
     M.p1 = makeFighter(true);  M.p1.wrestler = gameState.p1Selected;
     M.p2 = makeFighter(false); M.p2.wrestler = gameState.p2Selected;
     [M.p1, M.p2].forEach(p => {
@@ -1442,10 +1444,30 @@ function applyRemote(p, opp) {
    Host runs the sim and broadcasts normalized snapshots (12Hz).
    Guest sends inputs (dpad/buttons/taps) and renders interpolation.
 ================================================================ */
+/* ====================================================================
+   ONLINE SETUP — paste your Firebase config between the braces below.
+   Firebase console → Project settings → Your apps → Web app → Config.
+   REQUIRED: databaseURL must be present (enable Build → Realtime Database).
+   Example of a filled-in config:
+     const FIREBASE_CONFIG = {
+         apiKey: "AIzaSyABC123...",
+         authDomain: "my-project.firebaseapp.com",
+         databaseURL: "https://my-project-default-rtdb.firebaseio.com",
+         projectId: "my-project",
+         storageBucket: "my-project.appspot.com",
+         messagingSenderId: "123456789012",
+         appId: "1:1234...:web:abcd..."
+     };
+   ==================================================================== */
 const FIREBASE_CONFIG = {
-    /* PASTE YOUR FIREBASE CONFIG HERE (see README.md → Online Setup)
-       apiKey: "...", authDomain: "...", databaseURL: "...",
-       projectId: "...", storageBucket: "...", messagingSenderId: "...", appId: "..." */
+    apiKey: "AIzaSyCDCfMShCyyFZSC3qp1t75Rx_0fOfH3L_U",
+    authDomain: "jcw-lunacy.firebaseapp.com",
+    databaseURL: "https://jcw-lunacy-default-rtdb.firebaseio.com",
+    projectId: "jcw-lunacy",
+    storageBucket: "jcw-lunacy.firebasestorage.app",
+    messagingSenderId: "743418158514",
+    appId: "1:743418158514:web:4320500a21b18045f5d8ab",
+    measurementId: "G-JDRSWKB65D"
 };
 
 const NET = {
@@ -1477,10 +1499,22 @@ const NET = {
     },
     async init() {
         if (this.db) return true;
-        if (!FIREBASE_CONFIG.apiKey) { alert('Online is not configured yet.\nAdd your Firebase config in index.html (see README).'); return false; }
-        if (!(await this.loadSDK())) { alert('Could not load Firebase SDK. Check connection.'); return false; }
-        firebase.initializeApp(FIREBASE_CONFIG);
-        this.db = firebase.database();
+        if (!FIREBASE_CONFIG.apiKey) {
+            alert('ONLINE NOT SET UP YET\n\nOpen index.html, find FIREBASE_CONFIG near the ONLINE section, and paste your Firebase web config between the braces. See the comment right above it.');
+            return false;
+        }
+        if (!FIREBASE_CONFIG.databaseURL) {
+            alert('MISSING databaseURL\n\nYour config has no databaseURL. In the Firebase console go to Build → Realtime Database → Create Database, then copy the config again (the databaseURL only appears once the database exists).');
+            return false;
+        }
+        if (!(await this.loadSDK())) { alert('Could not load Firebase SDK. Check your internet connection.'); return false; }
+        try {
+            firebase.initializeApp(FIREBASE_CONFIG);
+            this.db = firebase.database();
+        } catch (e) {
+            alert('Firebase failed to initialize:\n' + e.message);
+            return false;
+        }
         return true;
     },
     code() {
@@ -1490,6 +1524,7 @@ const NET = {
     async createRoom(wrestlerId) {
         if (!(await this.init())) return null;
         this.roomCode = this.code();
+        gameState.p1Selected = wrestlers.find(w => w.id === wrestlerId) || gameState.p1Selected;
         this.roomRef = this.db.ref('rooms/' + this.roomCode);
         await this.roomRef.set({
             state: 'lobby', created: Date.now(),
@@ -1508,6 +1543,7 @@ const NET = {
         const snap = await ref.once('value');
         if (!snap.exists() || snap.val().guest) return false;
         this.roomCode = code; this.roomRef = ref; this.mode = 'guest';
+        gameState.p2Selected = wrestlers.find(w => w.id === wrestlerId) || gameState.p2Selected;
         await ref.child('guest').set({ wrestler: wrestlerId });
         ref.child('guest/online').onDisconnect().remove();
         ref.child('guest/online').set(true);
@@ -1543,6 +1579,7 @@ const NET = {
                 if (r.guest && M.phase === 'idle' && r.state === 'lobby') {
                     // both present: host starts
                     this.roomRef.update({ state: 'playing' });
+                    gameState.p1Selected = wrestlers.find(w => w.id === r.host.wrestler) || gameState.p1Selected || wrestlers[0];
                     gameState.p2Selected = wrestlers.find(w => w.id === r.guest.wrestler) || wrestlers[0];
                     startOnlineMatch();
                 }
@@ -1550,6 +1587,7 @@ const NET = {
             } else {
                 if (r.state === 'playing' && M.phase === 'idle') {
                     gameState.p1Selected = wrestlers.find(w => w.id === r.host.wrestler) || wrestlers[0];
+                    gameState.p2Selected = wrestlers.find(w => w.id === (r.guest && r.guest.wrestler)) || gameState.p2Selected || wrestlers[0];
                     selectedStage = (typeof r.stage === 'number') ? r.stage : -1;
                     startOnlineMatch();
                 }
