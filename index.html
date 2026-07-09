@@ -555,7 +555,7 @@ function initializeMatch() {
     M.p1 = makeFighter(true);  M.p1.wrestler = gameState.p1Selected;
     M.p2 = makeFighter(false); M.p2.wrestler = gameState.p2Selected;
     [M.p1, M.p2].forEach(p => {
-        p.maxHealth = p.wrestler.health * 12;
+        p.maxHealth = p.wrestler.health * 8;   // was *12 — lower = HP drains faster
         p.health = p.ghostHP = p.maxHealth;
     });
 
@@ -1890,8 +1890,9 @@ function spriteFor(f) {
     if (f.moving) {
         const fast = Math.hypot(f.vx, f.vy) > 3.3;
         const L = fast ? (S.aRunL || S.aWalkL) : S.aWalkL, R = fast ? (S.aRunR || S.aWalkR) : S.aWalkR;
-        if (L && R) return { img: (f.direction < 0 ? L : R)[Math.floor(f.walkAnim) % 4], flip: false };
-        return { img: S.walkR[Math.floor(f.walkAnim) % S.walkR.length], flip: f.direction < 0 };
+        // Walk/run art is drawn facing LEFT — mirror it when the fighter moves right.
+        if (L && R) return { img: (f.direction < 0 ? L : R)[Math.floor(f.walkAnim) % 4], flip: f.direction > 0 };
+        return { img: S.walkR[Math.floor(f.walkAnim) % S.walkR.length], flip: f.direction > 0 };
     }
     return { img: S.aIdle || S.idle, flip: false };
 }
