@@ -222,12 +222,12 @@ console.log('%cJCW LUNACY — BUILD 2026-07-08-MATCHMAKER', 'color:#8dff1e;font-
 
 // ---------------- DATA ----------------
 const wrestlers = [
-    { name:"Caleb Konley",   id:"caleb",   health:100, speed:1.0,  power:1.0,  special:"KONLEY CUTTER",     stats:{power:8,speed:8,tech:8,tough:7} },
-    { name:"Josh Bishop",    id:"bishop",  health:105, speed:0.95, power:1.05, special:"BISHOP BOMB",       stats:{power:8,speed:7,tech:8,tough:9} },
-    { name:"Dani Mo",        id:"dani",    health:85,  speed:1.15, power:0.85, special:"MO MONEY DDT",      stats:{power:7,speed:9,tech:9,tough:7} },
-    { name:"Father Bronson", id:"bronson", health:110, speed:0.9,  power:1.1,  special:"SERMON SLAM",       stats:{power:9,speed:5,tech:8,tough:9} },
-    { name:"Atiba",          id:"atiba",   health:95,  speed:1.1,  power:0.9,  special:"CHOPPA CITY SLAM",  stats:{power:9,speed:8,tech:8,tough:8} },
-    { name:"Bruce Wayans",   id:"bruce",   health:100, speed:1.0,  power:0.95, special:"CHOPPA CITY CRUSH", stats:{power:8,speed:8,tech:8,tough:9} }
+    { name:"Caleb Konley",   id:"caleb",   health:97,  speed:1.05, power:1.0,  special:"BURNING HAMMER",    stats:{power:7, speed:8,tech:9,tough:8} },
+    { name:"Josh Bishop",    id:"bishop",  health:104, speed:0.95, power:1.15, special:"EXIT 187",          stats:{power:10,speed:6,tech:7,tough:9} },
+    { name:"Dani Mo",        id:"dani",    health:97,  speed:1.05, power:0.95, special:"MOON MIST TWIST",    stats:{power:6, speed:8,tech:8,tough:8} },
+    { name:"Father Bronson", id:"bronson", health:97,  speed:0.95, power:1.05, special:"TEXAS CLOVERLEAF",   stats:{power:8, speed:6,tech:7,tough:8} },
+    { name:"Atiba",          id:"atiba",   health:90,  speed:1.05, power:0.95, special:"CHOPPA CITY SLAM",   stats:{power:6, speed:8,tech:8,tough:7} },
+    { name:"Bruce Wayans",   id:"bruce",   health:97,  speed:0.9,  power:1.1,  special:"CHOPPA CITY CRUSH",  stats:{power:9, speed:5,tech:7,tough:8} }
 ];
 
 const WEAPON_TYPES = {
@@ -555,7 +555,7 @@ function initializeMatch() {
     M.p1 = makeFighter(true);  M.p1.wrestler = gameState.p1Selected;
     M.p2 = makeFighter(false); M.p2.wrestler = gameState.p2Selected;
     [M.p1, M.p2].forEach(p => {
-        p.maxHealth = p.wrestler.health * 8;   // was *12 — lower = HP drains faster
+        p.maxHealth = p.wrestler.health * 4;   // lower = HP drains faster (was *12, then *8)
         p.health = p.ghostHP = p.maxHealth;
     });
 
@@ -1872,17 +1872,17 @@ function spriteFor(f) {
             const t = f.weapon.type;
             if (t === 'chair' && S.aChairR) return { img: pick(S.aChairR), flip: f.direction < 0, noHeld: true };
             if (t === 'kendo' && S.aKendoR && S.aKendoL)
-                return { img: pick(f.direction < 0 ? S.aKendoL : S.aKendoR), flip: false, noHeld: true };
+                return { img: pick(f.direction < 0 ? S.aKendoL : S.aKendoR), flip: f.direction < 0, noHeld: true };
             if (t === 'belt' && (S.aBeltR || S.aBeltL)) {
                 const arr = f.direction < 0 ? (S.aBeltL || S.aBeltR) : (S.aBeltR || S.aBeltL);
-                return { img: pick(arr), flip: f.direction < 0 && !S.aBeltL, noHeld: true };
+                return { img: pick(arr), flip: f.direction < 0, noHeld: true };
             }
         }
         // bare-handed strike variety: elbow / punch / kick, chosen per swing
         const kind = f.strikeKind || 0;
         const sets = [ [S.aElbowL, S.aElbowR], [S.aPunchL, S.aPunchR], [S.aKickL, S.aKickR] ];
         const [L, R] = sets[kind % sets.length];
-        if (L && R) return { img: pick(f.direction < 0 ? L : R), flip: false };
+        if (L && R) return { img: pick(f.direction < 0 ? L : R), flip: f.direction < 0 };
         const fr = S.elbowR;
         return { img: pick(fr), flip: f.direction < 0 };
     }
