@@ -182,7 +182,7 @@ body.no-touch .hint-text { bottom:12px; }
         <div class="hud">
             <div class="pause-btn" id="pauseBtn">❚❚</div>
             <div class="pause-btn fs-btn" id="fsBtn">⛶</div>
-            <div class="hint-text">A: GRAPPLE / PIN / PICK UP<br>IN GRAPPLE: DIR + A = THROW, B = STRIKE<br>B NEAR DOWNED: STOMP<br>MASH B TO ESCAPE &amp; KICK OUT</div>
+            <div class="hint-text">A: GRAPPLE / PIN / PICK UP<br>IN GRAPPLE: DIR + A = THROW, UP + A = OVERHEAD, B = STRIKE<br>B NEAR DOWNED: STOMP<br>MASH B TO ESCAPE &amp; KICK OUT</div>
 
             <div class="intro-overlay hidden" id="introOverlay">
                 <div class="intro-name intro-p1" id="introP1"></div>
@@ -223,7 +223,7 @@ body.no-touch .hint-text { bottom:12px; }
 </div>
 
 <script>
-console.log('%cLUNACY UNLOCKED — BUILD 2026-07-13-FEEL', 'color:#8dff1e;font-weight:bold');
+console.log('%cLUNACY UNLOCKED — BUILD 2026-07-14-THROWS', 'color:#8dff1e;font-weight:bold');
 'use strict';
 /* ================================================================
    JCW LUNACY — engine v2 (excellence build)
@@ -300,6 +300,23 @@ wrestlers.forEach(w => {
 function uiSrc(kind, w) {
     if (GEN[kind][w.id]) return GEN[kind][w.id].src;
     return `ui/${kind}_${w.base && w.real !== true ? w.base : w.id}.png`;
+}
+function spriteCard(w, cw, ch) {
+    const S = SPRITES[w.id];
+    const img = S && (S.aIdle || S.idle);
+    const c = document.createElement('canvas'); c.width = cw; c.height = ch;
+    const cx = c.getContext('2d');
+    const grad = cx.createLinearGradient(0, 0, 0, ch);
+    grad.addColorStop(0, '#2c2c31'); grad.addColorStop(1, '#0f0f13');
+    cx.fillStyle = grad; cx.fillRect(0, 0, cw, ch);
+    cx.strokeStyle = '#6a6a6a'; cx.lineWidth = 6; cx.strokeRect(3, 3, cw - 6, ch - 6);
+    if (img && img.complete && img.naturalWidth) {
+        const s = (ch * 0.86) / img.naturalHeight;
+        const iw = img.naturalWidth * s, ih = img.naturalHeight * s;
+        cx.imageSmoothingEnabled = false;
+        cx.drawImage(img, cw / 2 - iw / 2, ch - ih - ch * 0.05, iw, ih);
+    }
+    try { const out = new Image(); out.src = c.toDataURL(); return out; } catch (e) { return img; }
 }
 function tintedCopy(img, hue) {
     try {
@@ -476,13 +493,29 @@ async function loadAssets() {
     // real art exists when the wrestler has a manifest entry; otherwise alias the base body + tint
     wrestlers.forEach(w => {
         w.real = !!SPRITES[w.id];
+        const rosterImg = () => document.querySelector(`.wrestler-card img[data-wid="${w.id}"]`);
         if (!w.real && w.base && SPRITES[w.base]) {
             SPRITES[w.id] = SPRITES[w.base];
             GEN.card[w.id] = tintedCopy(CARD_IMGS[w.id], w.hue);
             GEN.big[w.id]  = tintedCopy(BIG_IMGS[w.id],  w.hue);
             CARD_IMGS[w.id] = GEN.card[w.id];
-            const el = document.querySelector(`.wrestler-card img[data-wid="${w.id}"]`);
+            const el = rosterImg();
             if (el) el.src = GEN.card[w.id].src;
+        } else if (w.real && w.base) {
+            // sprites landed but this wrestler started as a placeholder: probe for card art,
+            // and build a card from their idle sprite if none exists yet
+            const probe = new Image();
+            probe.onload = () => {
+                CARD_IMGS[w.id] = probe;
+                const el = rosterImg(); if (el) el.src = probe.src;
+            };
+            probe.onerror = () => {
+                GEN.card[w.id] = spriteCard(w, 325, 250);
+                GEN.big[w.id]  = spriteCard(w, 285, 300);
+                CARD_IMGS[w.id] = GEN.card[w.id];
+                const el = rosterImg(); if (el) el.src = GEN.card[w.id].src;
+            };
+            probe.src = `ui/card_${w.id}.png`;
         }
     });
     spritesReady = true;
@@ -833,7 +866,7 @@ if (!TOUCH) {
     document.body.classList.add('no-touch');
     document.querySelector('.hint-text').innerHTML =
         'MOVE: WASD / ARROWS &nbsp;·&nbsp; Z: ATTACK &nbsp;·&nbsp; X: GRAPPLE / PICK UP / CLIMB &nbsp;·&nbsp; C: SPECIAL &nbsp;·&nbsp; P: PAUSE<br>' +
-        'IN GRAPPLE: DIRECTION + X = THROW, Z = STRIKE &nbsp;·&nbsp; MASH Z TO ESCAPE &amp; KICK OUT';
+        'IN GRAPPLE: DIRECTION + X = THROW, UP + X = OVERHEAD THROW, Z = STRIKE &nbsp;·&nbsp; MASH Z TO ESCAPE &amp; KICK OUT';
 }
 
 canvas.addEventListener('touchstart', ringTap);
@@ -853,15 +886,13 @@ function ringTap(e) {
 }
 function performTap(p1, p2, x, y) {
 
-    // throw while holding a grapple
+    // throw while holding a grapple (tap direction; tap high above = overhead)
     if (M.grapple && M.grapple.holder === p1 && !M.grapple.isPin) {
         const v = M.grapple.victim;
         const a = Math.atan2(y - v.y, x - v.x);
-        v.vx = Math.cos(a) * 13; v.vy = Math.sin(a) * 8.5;
-        v.downTimer = 75; v.fallFace = 'B';
-        dealDamage(p1, v, 8, { text: 'THROWN!', slam: true });
-        if (v.weapon) dropWeapon(v);
-        M.grapple = null;
+        const dx = Math.cos(a), dy = Math.sin(a);
+        if (dy < -0.75) startThrow(M.grapple, 'over', 0, 0);
+        else startThrow(M.grapple, dx < 0 ? 'L' : 'R', dx, dy * 0.65);
         return;
     }
     // weapon pickup (tap against on-screen position: ringside items draw dropped)
@@ -1009,6 +1040,38 @@ function trySpecial(att, def) {
     }
 }
 
+// ---- THROWS ----
+// timer-based so wrestlers with pair art (gGrappleL/R, gThrowL/R, gOverhead) animate the move;
+// wrestlers without art resolve instantly, same as before
+function startThrow(g, kind, dx, dy) {
+    if (g.throwing) return;
+    const S = SPRITES[g.holder.wrestler.id] || {};
+    const hasArt = kind === 'over' ? !!S.gOverhead : !!(S.gThrowR || S.gThrowL);
+    if (kind === 'L') g.holder.direction = -1;
+    if (kind === 'R') g.holder.direction = 1;
+    g.throwing = { kind, dx, dy, timer: 22, total: 22 };
+    if (!hasArt) { resolveThrow(g); return; }
+    Snd.whoosh();
+}
+function resolveThrow(g) {
+    const p = g.holder, o = g.victim, t = g.throwing || { kind: 'R', dx: p.direction, dy: 0 };
+    if (t.kind === 'over') {
+        o.x = p.x - p.direction * 20;
+        o.vx = -p.direction * 3.5; o.vy = 2.5;
+        o.downTimer = 95; o.fallFace = 'B';
+        dealDamage(p, o, 12, { text: 'OVERHEAD THROW!!', slam: true, meterGain: 10 });
+        shake(8);
+    } else {
+        const dx = t.dx || p.direction, dy = t.dy || 0;
+        const d = Math.hypot(dx, dy) || 1;
+        o.vx = dx / d * 13; o.vy = dy / d * 8;
+        o.downTimer = 75; o.fallFace = 'B';
+        dealDamage(p, o, 9, { text: (t.dx || t.dy) ? 'THROWN!' : 'SLAMMED!', slam: true });
+    }
+    if (o.weapon) dropWeapon(o);
+    M.grapple = null;
+}
+
 // A button — Wrestling Revolution style context action
 function tryClimb(p) {
     if (M.grapple || p.weapon || p.downTimer > 0 || p.stunTimer > 0 || isRingside(p)) return false;
@@ -1060,15 +1123,10 @@ function performGrappleBtn(p, o, dir) {
         addFx(p.x, p.y - 40, 'DOWN', { color: '#8899aa', size: 12 });
         return;
     }
-    // holding a grapple: A throws in held direction (or slams in place)
+    // holding a grapple: A throws in held direction (or slams in place); UP = overhead throw
     if (M.grapple && M.grapple.holder === p && !M.grapple.isPin) {
-        const dx = dir.x || p.direction, dy = dir.y || 0;
-        const d = Math.hypot(dx, dy) || 1;
-        o.vx = dx / d * 13; o.vy = dy / d * 8;
-        o.downTimer = 75; o.fallFace = 'B';
-        dealDamage(p, o, 9, { text: dir.x || dir.y ? 'THROWN!' : 'SLAMMED!', slam: true });
-        if (o.weapon) dropWeapon(o);
-        M.grapple = null;
+        if (dir.y < 0) startThrow(M.grapple, 'over', 0, 0);
+        else startThrow(M.grapple, dir.x < 0 ? 'L' : 'R', dir.x || p.direction, dir.y || 0);
         return;
     }
     if (M.grapple) return;
@@ -1219,6 +1277,10 @@ function simTick() {
                 endMatch(g.holder, 'PINFALL');
                 return;
             }
+        } else if (g.throwing) {
+            // mid-throw: victim is committed, animation plays out
+            g.throwing.timer--;
+            if (g.throwing.timer <= 0) resolveThrow(g);
         } else {
             // B while holding = grapple strike
             if (g.holder === p1 && input.attackTap) {
@@ -1234,15 +1296,15 @@ function simTick() {
                 input.attackTap = false;
                 if (g.escape >= escNeed(p1)) { M.grapple = null; addFx(p1.x, p1.y, 'ESCAPE!', { color: '#66aaff' }); }
             }
-            // AI holder auto-throws
+            // AI holder auto-throws (sometimes goes overhead)
             if (g.holder === p2 && g.frames > 45) {
-                const a = Math.random() * Math.PI * 2;
-                g.victim.vx = Math.cos(a) * 11; g.victim.vy = Math.sin(a) * 6;
-                g.victim.downTimer = 65; g.victim.fallFace = 'B';
-                dealDamage(p2, g.victim, 8, { text: 'THROWN!', slam: true });
-                M.grapple = null;
+                if (Math.random() < 0.3) startThrow(g, 'over', 0, 0);
+                else {
+                    const a = Math.random() * Math.PI * 2;
+                    startThrow(g, Math.cos(a) < 0 ? 'L' : 'R', Math.cos(a), Math.sin(a) * 0.55);
+                }
             }
-            if (M.grapple && g.frames > 180) { M.grapple = null; addFx(g.victim.x, g.victim.y, 'BREAK!'); }
+            if (M.grapple && !M.grapple.throwing && g.frames > 180) { M.grapple = null; addFx(g.victim.x, g.victim.y, 'BREAK!'); }
         }
     } else M.lastPinCount = 0;
 
@@ -2103,7 +2165,31 @@ function render() {
     });
 
     // 3. split entities: in-ring vs ringside (for rope occlusion)
-    const fighters = [M.p1, M.p2].sort((a, b) => (a.downTimer > 0 ? -1 : b.downTimer > 0 ? 1 : a.y - b.y));
+    // grapple pair art: when the holder's sprite set has pair frames, draw ONE combined
+    // sprite for both wrestlers instead of two separate bodies
+    const gg = M.grapple;
+    let pairImg = null, pairFlip = false;
+    if (gg && !gg.isPin && M.phase !== 'over') {
+        const S = SPRITES[gg.holder.wrestler.id] || {};
+        const t = gg.throwing;
+        const dirR = gg.holder.direction >= 0;
+        const pick2 = (arr, fi) => arr[Math.max(0, Math.min(arr.length - 1, fi))];
+        if (t && t.kind === 'over' && S.gOverhead) {
+            pairImg = pick2(S.gOverhead, Math.floor((t.total - t.timer) / t.total * S.gOverhead.length));
+            pairFlip = !dirR;
+        } else if (t && (S.gThrowR || S.gThrowL)) {
+            const arr = dirR ? (S.gThrowR || S.gThrowL) : (S.gThrowL || S.gThrowR);
+            pairImg = pick2(arr, Math.floor((t.total - t.timer) / t.total * arr.length));
+            pairFlip = dirR ? !S.gThrowR : !!(S.gThrowR && !S.gThrowL);
+        } else if (!t && (S.gGrappleR || S.gGrappleL)) {
+            const arr = dirR ? (S.gGrappleR || S.gGrappleL) : (S.gGrappleL || S.gGrappleR);
+            pairImg = pick2(arr, Math.floor(gg.frames / 16) % arr.length);
+            pairFlip = dirR ? !S.gGrappleR : !!(S.gGrappleR && !S.gGrappleL);
+        }
+    }
+    const hidden = pairImg ? [gg.holder, gg.victim] : [];
+    const fighters = [M.p1, M.p2].filter(f => !hidden.includes(f))
+        .sort((a, b) => (a.downTimer > 0 ? -1 : b.downTimer > 0 ? 1 : a.y - b.y));
     const inRingF = fighters.filter(f => !isRingside(f));
     const outF    = fighters.filter(f => isRingside(f));
     const inRingW = M.weaponsOnGround.filter(w => w.y <= matRect.B + 8);
@@ -2112,6 +2198,7 @@ function render() {
     // 4. in-ring layer
     inRingW.forEach(w => drawWeaponSprite(WEAPON_TYPES[w.type].ground, w.x, w.y, 50, 0, false));
     inRingF.forEach(drawFighter);
+    if (pairImg && !isRingside(gg.holder)) drawPairSprite(gg, pairImg, pairFlip);
 
     // 5. ringside layer (in front of the ring)
     outW.forEach(w => {
@@ -2125,6 +2212,7 @@ function render() {
         drawWeaponSprite(WEAPON_TYPES[w.type].ground, w.x, gy, 52, 0, false);
     });
     outF.forEach(drawFighter);
+    if (pairImg && isRingside(gg.holder)) drawPairSprite(gg, pairImg, pairFlip);
 
     // 7. particles
     M.particles.forEach(p => {
@@ -2261,6 +2349,29 @@ function drawFighter(f) {
             drawWeaponSprite(WEAPON_TYPES[f.weapon.type].held, hx, hy, targetH * 0.42, rot, f.direction < 0, true);
         }
     }
+}
+
+function drawPairSprite(g, img, flip) {
+    if (!img || !img.complete || !img.naturalWidth) return;
+    const f = g.holder;
+    const x = (g.holder.x + g.victim.x) / 2;
+    const dropY = f.elev * ringDrop();
+    const feetY = f.y + 52 + dropY;
+    const matH = matRect.B - matRect.T;
+    const depth = (f.y - matRect.T) / Math.max(1, matH);
+    const depthScale = 0.86 + Math.max(0, Math.min(1.2, depth)) * 0.22;
+    const h = Math.max(88, Math.min(matH * 0.52, canvas.height * 0.23)) * 1.04 * depthScale;
+    const w = img.naturalWidth * (h / img.naturalHeight);
+    // shared contact shadow
+    const sg = ctx.createRadialGradient(x, feetY, 2, x, feetY, 48 * depthScale);
+    sg.addColorStop(0, 'rgba(0,0,0,0.55)'); sg.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = sg;
+    ctx.beginPath(); ctx.ellipse(x, feetY, 48 * depthScale, 14 * depthScale, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.save();
+    ctx.imageSmoothingEnabled = false;
+    if (flip) { ctx.translate(x, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w / 2, feetY - h, w, h); }
+    else ctx.drawImage(img, x - w / 2, feetY - h, w, h);
+    ctx.restore();
 }
 
 function drawWeaponSprite(key, x, y, targetH, rot, flip, grip) {
