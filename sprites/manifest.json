@@ -322,10 +322,7 @@
    {
     "file": "sprites/bruce/a_kickR_1.png"
    }
-  ],
-  "aReady": {
-   "file": "sprites/bruce/a_ready_0.png"
-  }
+  ]
  },
  "atiba": {
   "idle": {
@@ -650,10 +647,7 @@
    {
     "file": "sprites/atiba/a_kickR_1.png"
    }
-  ],
-  "aReady": {
-   "file": "sprites/atiba/a_ready_0.png"
-  }
+  ]
  },
  "bishop": {
   "idle": {
@@ -978,10 +972,7 @@
    {
     "file": "sprites/bishop/a_kickR_1.png"
    }
-  ],
-  "aReady": {
-   "file": "sprites/bishop/a_ready_0.png"
-  }
+  ]
  },
  "bronson": {
   "idle": {
@@ -1306,10 +1297,7 @@
    {
     "file": "sprites/bronson/a_kickR_1.png"
    }
-  ],
-  "aReady": {
-   "file": "sprites/bronson/a_ready_0.png"
-  }
+  ]
  },
  "dani": {
   "idle": {
@@ -1634,10 +1622,7 @@
    {
     "file": "sprites/dani/a_kickR_1.png"
    }
-  ],
-  "aReady": {
-   "file": "sprites/dani/a_ready_0.png"
-  }
+  ]
  },
  "caleb": {
   "idle": {
@@ -1965,9 +1950,186 @@
    {
     "file": "sprites/caleb/a_kickR_2.png"
    }
+  ]
+ },
+ "ringrat": {
+  "idle": {
+   "file": "sprites/ringrat/idle.png"
+  },
+  "aIdle": {
+   "file": "sprites/ringrat/idle.png"
+  },
+  "aIdleB": {
+   "file": "sprites/ringrat/idle_back.png"
+  },
+  "fallen": {
+   "file": "sprites/ringrat/fall_b.png"
+  },
+  "aFallB": {
+   "file": "sprites/ringrat/fall_b.png"
+  },
+  "aFallF": {
+   "file": "sprites/ringrat/fall_f.png"
+  },
+  "aCrouch": {
+   "file": "sprites/ringrat/crouch.png"
+  },
+  "jump": {
+   "file": "sprites/ringrat/jump_air.png"
+  },
+  "aJump": [
+   {
+    "file": "sprites/ringrat/jump_crouch.png"
+   },
+   {
+    "file": "sprites/ringrat/jump_air.png"
+   },
+   {
+    "file": "sprites/ringrat/jump_land.png"
+   }
   ],
-  "aReady": {
-   "file": "sprites/caleb/a_ready_0.png"
-  }
+  "walkL": [
+   {
+    "file": "sprites/ringrat/walk_l0.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_l1.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_l2.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_l3.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/ringrat/walk_l0.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_l1.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_l2.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_l3.png"
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/ringrat/walk_r0.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_r1.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_r2.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_r3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/ringrat/walk_r0.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_r1.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_r2.png"
+   },
+   {
+    "file": "sprites/ringrat/walk_r3.png"
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/ringrat/elbow_r0.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_r1.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_r2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/ringrat/elbow_r0.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_r1.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_r2.png"
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/ringrat/elbow_l0.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_l1.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_l2.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/ringrat/elbow_l0.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_l1.png"
+   },
+   {
+    "file": "sprites/ringrat/elbow_l2.png"
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/ringrat/grap_r0.png"
+   },
+   {
+    "file": "sprites/ringrat/grap_r1.png"
+   },
+   {
+    "file": "sprites/ringrat/grap_r2.png"
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/ringrat/grap_l0.png"
+   },
+   {
+    "file": "sprites/ringrat/grap_l1.png"
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/ringrat/throw_r0.png"
+   },
+   {
+    "file": "sprites/ringrat/throw_r1.png"
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/ringrat/throw_l0.png"
+   },
+   {
+    "file": "sprites/ringrat/throw_l1.png"
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/ringrat/over0.png"
+   },
+   {
+    "file": "sprites/ringrat/over1.png"
+   }
+  ]
  }
 }
