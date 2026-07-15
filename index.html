@@ -108,21 +108,32 @@ canvas { display:block; width:100%; height:100%; touch-action:none; }
 .return-button.alt { background:linear-gradient(135deg,#555,#333); color:#ddd; }
 
 /* controller */
-.controller { position:absolute; bottom:0; left:0; right:0; height:185px; background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,0.82) 45%,rgba(10,10,10,0.96) 100%); display:grid; grid-template-columns:1fr 1fr; padding:12px; gap:12px; pointer-events:none; z-index:10; }
+.controller { position:absolute; bottom:0; left:0; right:0; height:210px; background:linear-gradient(180deg,rgba(10,10,10,0) 0%,rgba(10,10,10,0.6) 30%,rgba(10,10,10,0.94) 100%); display:grid; grid-template-columns:1fr 1fr; padding:14px; padding-bottom:max(14px,env(safe-area-inset-bottom)); gap:12px; pointer-events:none; z-index:10; }
 .dpad, .btn-cluster { pointer-events:auto; }
 .dpad-section { display:flex; justify-content:flex-start; align-items:flex-end; }
-.dpad { width:132px; height:132px; position:relative; }
-.dpad-btn { position:absolute; width:44px; height:44px; background:linear-gradient(135deg,#4a4a4a 0%,#2c2c2c 100%); border:2px solid #777; display:flex; justify-content:center; align-items:center; font-size:17px; color:#ccc; border-radius:4px; touch-action:none; user-select:none; -webkit-user-select:none; }
-.dpad-up{left:44px;top:0;} .dpad-down{left:44px;bottom:0;} .dpad-left{left:0;top:44px;} .dpad-right{right:0;top:44px;}
-.dpad-btn.active { background:linear-gradient(135deg,#999 0%,#666 100%); }
+.dpad { width:156px; height:156px; position:relative; }
+.dpad-btn { position:absolute; width:52px; height:52px; background:linear-gradient(135deg,#5c5c5c 0%,#343434 100%); border:3px solid #b8b8b8; display:flex; justify-content:center; align-items:center; font-size:22px; color:#fff; border-radius:8px; touch-action:none; user-select:none; -webkit-user-select:none; box-shadow:0 2px 6px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.25); }
+.dpad-up{left:52px;top:0;} .dpad-down{left:52px;bottom:0;} .dpad-left{left:0;top:52px;} .dpad-right{right:0;top:52px;}
+.dpad-btn.active { background:linear-gradient(135deg,#ffcc33 0%,#c99700 100%); border-color:#fff; color:#000; box-shadow:0 0 14px rgba(255,204,51,0.85); }
 .buttons-section { display:flex; justify-content:flex-end; align-items:flex-end; }
-.btn-cluster { position:relative; width:172px; height:148px; }
-.circle-btn { position:absolute; width:64px; height:64px; border-radius:50%; border:3px solid rgba(0,0,0,0.45); font-weight:900; font-size:20px; display:flex; justify-content:center; align-items:center; touch-action:none; user-select:none; -webkit-user-select:none; box-shadow:0 3px 6px rgba(0,0,0,0.5); }
-.circle-btn .btn-label { position:absolute; bottom:-16px; left:50%; transform:translateX(-50%); font-size:9px; color:#999; text-transform:uppercase; white-space:nowrap; }
-.btn-a { background:radial-gradient(circle at 30% 30%,#9be32a,#5fa100); color:#fff; left:0; bottom:38px; }
-.btn-b { background:radial-gradient(circle at 30% 30%,#ff5555,#cc0000); color:#fff; right:0; bottom:38px; }
-.btn-y { background:radial-gradient(circle at 30% 30%,#ffe44d,#ffaa00); color:#333; left:54px; top:0; }
-.circle-btn.pressed { transform:scale(0.92); box-shadow:inset 0 2px 4px rgba(0,0,0,0.5); }
+.btn-cluster { position:relative; width:200px; height:170px; }
+.circle-btn { position:absolute; width:78px; height:78px; border-radius:50%; border:3px solid rgba(255,255,255,0.9); font-weight:900; font-size:25px; color:#fff; display:flex; justify-content:center; align-items:center; touch-action:none; user-select:none; -webkit-user-select:none; box-shadow:0 4px 10px rgba(0,0,0,0.7), inset 0 2px 4px rgba(255,255,255,0.35); text-shadow:0 2px 3px rgba(0,0,0,0.6); }
+.circle-btn .btn-label { position:absolute; bottom:-18px; left:50%; transform:translateX(-50%); font-size:10px; font-weight:900; color:#eee; text-transform:uppercase; white-space:nowrap; text-shadow:1px 1px 2px #000; letter-spacing:0.5px; }
+.btn-a { background:radial-gradient(circle at 30% 30%,#b6ff3a,#4e9000); left:0; bottom:46px; }
+.btn-b { background:radial-gradient(circle at 30% 30%,#ff6b6b,#c00000); right:0; bottom:46px; }
+.btn-y { background:radial-gradient(circle at 30% 30%,#ffe84d,#f09a00); color:#3a2a00; left:61px; top:0; }
+.circle-btn.pressed { transform:scale(0.9); filter:brightness(1.4); box-shadow:inset 0 2px 6px rgba(0,0,0,0.6), 0 0 16px rgba(255,255,255,0.55); }
+
+/* portrait-only: block landscape on touch devices */
+#rotateNotice { display:none; }
+@media (orientation:landscape) and (pointer:coarse) {
+    #rotateNotice { display:flex; position:fixed; inset:0; z-index:99999; background:#0a0a0a; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:28px; }
+    #container { visibility:hidden; }
+}
+.rotate-icon { font-size:64px; margin-bottom:18px; animation:rotatePhone 2s ease-in-out infinite; }
+@keyframes rotatePhone { 0%,45%{transform:rotate(-90deg);} 65%,100%{transform:rotate(0deg);} }
+.rotate-title { color:#d4af37; font-size:22px; font-weight:900; text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; }
+.rotate-sub { color:#aaa; font-size:14px; text-transform:uppercase; letter-spacing:1px; }
 
 /* pause + desktop layout */
 .pause-btn { position:absolute; top:50px; left:50%; transform:translateX(-50%); width:40px; height:28px; display:flex; align-items:center; justify-content:center; background:rgba(8,8,8,0.82); border:2px solid #d4af37; border-radius:6px; color:#d4af37; font-size:12px; font-weight:900; z-index:12; pointer-events:auto; cursor:pointer; user-select:none; -webkit-user-select:none; }
@@ -134,6 +145,11 @@ body.no-touch .hint-text { bottom:12px; }
 </style>
 </head>
 <body>
+<div id="rotateNotice">
+    <div class="rotate-icon">📱</div>
+    <div class="rotate-title">Rotate Your Device</div>
+    <div class="rotate-sub">JCW Lunacy is played in portrait</div>
+</div>
 <div id="container">
     <!-- CHARACTER SELECT -->
     <div id="characterSelect" class="screen">
@@ -223,7 +239,7 @@ body.no-touch .hint-text { bottom:12px; }
 </div>
 
 <script>
-console.log('%cLUNACY UNLOCKED — BUILD 2026-07-14-ROSTER31', 'color:#8dff1e;font-weight:bold');
+console.log('%cLUNACY UNLOCKED — BUILD 2026-07-15-MOBILE38', 'color:#8dff1e;font-weight:bold');
 'use strict';
 /* ================================================================
    JCW LUNACY — engine v2 (excellence build)
@@ -276,10 +292,17 @@ const wrestlers = [
     W('Jacksyn',                       'jacksyn',  [6,7,7,8],  'AS ABOVE SO BELOW',     { base:'atiba',   hue:250 }),
     W('Krule',                         'krule',    [10,5,6,9], null,                    { base:'bishop',  hue:110 }),
     W('Ruffo the Clown',               'ruffo',    [8,7,7,8],  null,                    { base:'bruce',   hue:300 }),
-    W('Willie Mack',                   'williemack',[7,7,9,8], 'STUNNER',               { base:'bruce',   hue:170 })
+    W('Willie Mack',                   'williemack',[7,7,9,8], 'STUNNER',               { base:'bruce',   hue:170 }),
+    // added to match the CHARACTER SELECT mockup
+    W('Big Vito',                      'bigvito',  [9,5,6,10], 'IMPLANT DDT',           { base:'bishop',  hue:20 }),
+    W('Hollywood Haley J',             'haleyj',   [6,7,8,9],  null,                    { base:'dani',    hue:200 }),
+    W('Kongo Kong',                    'kongokong',[10,5,7,9], null,                    { base:'bruce',   hue:60 }),
+    W('Mecha Wolf',                    'mechawolf',[7,7,7,7],  null,                    { base:'atiba',   hue:210 }),
+    W('Mickie Knuckles',              'mickie',   [8,5,6,9],  null,                    { base:'dani',    hue:330 }),
+    W('Mr. Happy',                     'mrhappy',  [10,4,6,8], null,                    { base:'bishop',  hue:280 }),
+    W('Sophia Rose',                   'sophia',   [6,8,8,6],  'SPLIT-LEGGED STUNNER',  { base:'dani',    hue:0 })
 ];
-// not built: Luigi Primo, Sophia Rose (approval: NO) — plus all blank-approval names
-// (Big Vito, HollyHood Haley J, Kongo Kong, Mecha Wolf, Mickie Knuckles, Mr. Happy) pending sign-off
+// not built: Luigi Primo (approval: NO)
 function shortName(w) { return w.name.replace(/[“"][^"”]*[”"]\s*/g, '').trim(); }
 
 const WEAPON_TYPES = {
@@ -876,6 +899,21 @@ if (!TOUCH) {
         'MOVE: WASD / ARROWS &nbsp;·&nbsp; Z: ATTACK &nbsp;·&nbsp; X: GRAPPLE / PICK UP / CLIMB &nbsp;·&nbsp; C: SPECIAL &nbsp;·&nbsp; P: PAUSE<br>' +
         'IN GRAPPLE: DIRECTION + X = THROW, UP + X = OVERHEAD THROW, Z = STRIKE &nbsp;·&nbsp; MASH Z TO ESCAPE &amp; KICK OUT';
 }
+
+// portrait-only: auto-pause a live match if the phone is turned landscape, resume on return
+let autoPaused = false;
+function checkOrientation() {
+    const landscape = window.matchMedia('(orientation:landscape)').matches;
+    const pb = document.getElementById('pauseBtn');
+    if (TOUCH && landscape && M.phase === 'fight' && !paused) {
+        paused = true; autoPaused = true; if (pb) pb.textContent = '▶';
+    } else if (!landscape && autoPaused && paused) {
+        paused = false; autoPaused = false; if (pb) pb.textContent = '❚❚';
+    }
+    if (typeof resizeCanvas === 'function' && document.getElementById('gameContainer').classList.contains('active')) resizeCanvas();
+}
+window.addEventListener('orientationchange', () => setTimeout(checkOrientation, 250));
+window.addEventListener('resize', checkOrientation);
 
 canvas.addEventListener('touchstart', ringTap);
 canvas.addEventListener('mousedown', ringTap);
