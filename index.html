@@ -239,7 +239,7 @@ body.no-touch .hint-text { bottom:12px; }
 </div>
 
 <script>
-console.log('%cLUNACY UNLOCKED — BUILD 2026-07-16-PINFIX', 'color:#8dff1e;font-weight:bold');
+console.log('%cLUNACY UNLOCKED — BUILD 2026-07-16-GLITCHFIX (3-count timing, resize anchoring, corner stunlock, body overlap)', 'color:#8dff1e;font-weight:bold');
 'use strict';
 /* ================================================================
    JCW LUNACY — engine v2 (excellence build)
@@ -785,6 +785,7 @@ function showVictory() {
 let coverTf = { dx:0, dy:0, dw:1, dh:1 };
 let CAM = { fx: 0, fy: 0, scale: 1.12, tx: 0, ty: 0, init: false };   // follow camera (tracks the player)
 function computeRects() {
+    const om = { L: matRect.L, R: matRect.R, T: matRect.T, B: matRect.B };   // previous mapping
     const iw = ARENA.naturalWidth || 1672, ih = ARENA.naturalHeight || 941;
     const mt = activeStage.mat;
     // Portrait phones are much taller than the 16:9 arena, so a plain contain-fit leaves
@@ -818,6 +819,21 @@ function computeRects() {
         B: Math.min(matRect.B + Math.min(130, (matRect.B - matRect.T) * 0.42),
                     canvas.height - drop - 14)
     };
+    // Re-anchor world objects when the arena mapping changes (window resize, fullscreen,
+    // rotate, arena image finishing its load). Positions are absolute pixels, so without
+    // this the wrestlers, weapons and paint splats drift off the ring when the layout moves.
+    if (om.R > om.L && (Math.abs(om.L - matRect.L) > 0.5 || Math.abs(om.R - matRect.R) > 0.5 ||
+                        Math.abs(om.T - matRect.T) > 0.5 || Math.abs(om.B - matRect.B) > 0.5)) {
+        const mx = x => matRect.L + (x - om.L) * (matRect.R - matRect.L) / (om.R - om.L);
+        const my = y => matRect.T + (y - om.T) * (matRect.B - matRect.T) / (om.B - om.T);
+        [M.p1, M.p2].forEach(p => {
+            if (!p) return;
+            p.x = mx(p.x); p.y = my(p.y);
+            if (p.climb) { p.climb.x = mx(p.climb.x); p.climb.y = my(p.climb.y); }
+        });
+        M.weaponsOnGround.forEach(w => { w.x = mx(w.x); w.y = my(w.y); });
+        M.splats.forEach(s => { s.x = mx(s.x); s.y = my(s.y); });
+    }
 }
 function ringDrop() { return Math.max(34, Math.min(84, (matRect.B - matRect.T) * 0.22)); }
 function onMat(p) { return p.y <= matRect.B + 8 && p.x > matRect.L - 12 && p.x < matRect.R + 12 && p.y > matRect.T - 12; }
@@ -1061,6 +1077,7 @@ function tryStrike(att, def) {
         if (inBand && Math.abs(adx) < wd.range && def.downTimer <= 0 && def.invuln <= 0) {
             def.vx = Math.sign(def.x - att.x) * 8;
             def.stunTimer = 20;
+            def.invuln = Math.max(def.invuln, 16);   // brief i-frames: no corner stunlock
             dealDamage(att, def, wd.damage, { text: wd.name + ' SHOT!', color: '#ff8c1a', meterGain: 12 });
             (Snd[wd.sfx === 'guitar' ? 'guitarSmash' : wd.sfx] || Snd.whack)();
             att.weapon.durability--;
@@ -1076,6 +1093,7 @@ function tryStrike(att, def) {
         if (inBand && Math.abs(adx) < 105 && def.downTimer <= 0 && def.invuln <= 0) {
             def.vx = Math.sign(def.x - att.x) * 6.5;
             def.vy = (Math.random() - 0.5) * 2;
+            def.invuln = Math.max(def.invuln, 12);   // brief i-frames: no corner stunlock
             dealDamage(att, def, 4, {});
             Math.random() < 0.5 ? Snd.punch() : Snd.kick();
         } else Snd.whoosh();
@@ -1318,8 +1336,10 @@ function simTick() {
                 breakPin(g, 'POWERED OUT!');
                 return;
             }
-            const count = Math.min(3, Math.floor(g.frames / 60) + 1);
-            if (count !== M.lastPinCount) {
+            // ref counts a full second AFTER the shoulders go down: "1" at 60f, "2" at 120f,
+            // and "3" only at the actual 180f pinfall — no more phantom 3-counts before a kickout
+            const count = Math.min(2, Math.floor(g.frames / 60));
+            if (count > 0 && count !== M.lastPinCount) {
                 M.lastPinCount = count;
                 Snd.beep(500 + count * 150);
                 addFx(canvas.width / 2, canvas.height * 0.36 + 60, String(count) + '!', { color: '#ff4455', size: 84, life: 58, rise: false });
@@ -1336,6 +1356,8 @@ function simTick() {
             }
             if (M.grapple && g.frames >= 180) {
                 M.lastPinCount = 0;
+                Snd.beep(950);
+                addFx(canvas.width / 2, canvas.height * 0.36 + 60, '3!', { color: '#ff4455', size: 84, life: 58, rise: false });
                 endMatch(g.holder, 'PINFALL');
                 return;
             }
@@ -1419,18 +1441,6 @@ function simTick() {
     [p1, p2].forEach(p => { p.x += p.vx; p.y += p.vy; });
     p2.vx *= 0.9; p2.vy *= 0.9;
 
-    // body collision: no standing inside each other
-    if (!M.grapple && p1.downTimer <= 0 && p2.downTimer <= 0) {
-        const cdx = p2.x - p1.x, cdy = p2.y - p1.y;
-        const cd = Math.hypot(cdx, cdy);
-        if (cd < 52 && cd > 0.01) {
-            const push = (52 - cd) / 2;
-            const ux = cdx / cd, uy = cdy / cd;
-            p1.x -= ux * push; p1.y -= uy * push * 0.5;
-            p2.x += ux * push; p2.y += uy * push * 0.5;
-        }
-    }
-
     // rope bounce: fast bodies bounce off mat edges (from inside)
     [p1, p2].forEach(p => {
         const speed = Math.hypot(p.vx, p.vy);
@@ -1453,6 +1463,34 @@ function simTick() {
         const t = isRingside(p) ? 1 : 0;
         p.elev += (t - p.elev) * 0.2;
     });
+
+    // body collision AFTER the wall clamp — clamping first used to squash both bodies
+    // back into one overlapping blob whenever they were pressed against the ropes
+    if (!M.grapple && p1.downTimer <= 0 && p2.downTimer <= 0) {
+        const cdx = p2.x - p1.x, cdy = p2.y - p1.y;
+        const cd = Math.hypot(cdx, cdy);
+        if (cd < 52) {
+            let ux, uy;
+            if (cd > 0.01) { ux = cdx / cd; uy = cdy / cd; } else { ux = 0; uy = 1; }
+            // pinned against a side rope: push apart vertically so the wall can't re-stack them
+            const atWallX = p1.x <= matRect.L + 1 || p1.x >= matRect.R - 1 ||
+                            p2.x <= matRect.L + 1 || p2.x >= matRect.R - 1;
+            if (atWallX && Math.abs(uy) < 0.4) { ux = 0; uy = cdy >= 0 ? 1 : -1; }
+            const push = (52 - cd) / 2;
+            const yf = atWallX ? 1 : 0.5;
+            p1.x -= ux * push; p1.y -= uy * push * yf;
+            p2.x += ux * push; p2.y += uy * push * yf;
+            [p1, p2].forEach(p => {           // keep the separated pair in bounds
+                if (p.y <= matRect.B + 8) {
+                    p.x = Math.max(matRect.L, Math.min(matRect.R, p.x));
+                    p.y = Math.max(matRect.T, p.y);
+                } else {
+                    p.x = Math.max(floorRect.L, Math.min(floorRect.R, p.x));
+                }
+                p.y = Math.min(floorRect.B, p.y);
+            });
+        }
+    }
 
     if (M.grapple && !M.grapple.isPin) {
         const g = M.grapple;
@@ -1628,6 +1666,7 @@ function aiStrike(ai, target, wd) {
     const dmg = (wd ? wd.damage : 4) * DIFF[difficulty].aiDmg;
     target.vx = Math.sign(target.x - ai.x) * 6.5;
     target.vy = (Math.random() - 0.5) * 2;
+    target.invuln = Math.max(target.invuln, 16);   // brief i-frames: no corner stunlock
     dealDamage(ai, target, dmg / ai.wrestler.power, { text: wd ? wd.name + '!' : null, meterGain: 6 });
     if (wd) {
         (Snd[wd.sfx === 'guitar' ? 'guitarSmash' : wd.sfx] || Snd.whack)();
@@ -1986,7 +2025,7 @@ const NET = {
         this.unpackF(M.p2, sn.b, sp.b, t);
         M.frame = sn.f;
         M.grapple = sn.g ? { holder: sn.g[0] === 1 ? M.p1 : M.p2, victim: sn.g[0] === 1 ? M.p2 : M.p1, isPin: !!sn.g[1], frames: sn.g[2] } : null;
-        const pinC = M.grapple && M.grapple.isPin ? Math.min(3, Math.floor(M.grapple.frames / 60) + 1) : 0;
+        const pinC = M.grapple && M.grapple.isPin ? Math.min(2, Math.floor(M.grapple.frames / 60)) : 0;
         if (pinC && pinC !== this.prevPin) {
             Snd.beep(500 + pinC * 150);
             addFx(canvas.width / 2, canvas.height * 0.36 + 60, pinC + '!', { color: '#ff4455', size: 84, life: 58, rise: false });
