@@ -255,7 +255,7 @@ body.no-touch .hint-text { bottom:12px; }
 </div>
 
 <script>
-console.log('%cLUNACY UNLOCKED — BUILD 2026-07-20-FEEL2 (weapon carry/swing cleanup, no NOT-CHARGED spam, hit stagger, heavier hitstop, committed AI, funhouse ring measured, fallen sprite scale fixed, ~35% less ground time, kickout at 1 not instant, all 3 stages recalibrated, calib tool: reset/cancel/move-handle, strike facing fixed, Mickie Knuckles & Kongo Kong back, K = ring calibration, snappier combat, AI pin cooldown, weapon grip, softer bob/trails, Big Vito & Mr. Happy back, 10% less health, warehouse ring recalibrated, original camera, select-screen restyle, roster trim, step animation, loading-screen credits, walk facing, 3-count timing, resize anchoring, corner stunlock, body overlap)', 'color:#8dff1e;font-weight:bold');
+console.log('%cLUNACY UNLOCKED — BUILD 2026-07-20-MUSIC (intro theme, walk follows travel direction, rooted while swinging, dive facing, weapon carry/swing cleanup, no NOT-CHARGED spam, hit stagger, heavier hitstop, committed AI, funhouse ring measured, fallen sprite scale fixed, ~35% less ground time, kickout at 1 not instant, all 3 stages recalibrated, calib tool: reset/cancel/move-handle, strike facing fixed, Mickie Knuckles & Kongo Kong back, K = ring calibration, snappier combat, AI pin cooldown, weapon grip, softer bob/trails, Big Vito & Mr. Happy back, 10% less health, warehouse ring recalibrated, original camera, select-screen restyle, roster trim, step animation, loading-screen credits, walk facing, 3-count timing, resize anchoring, corner stunlock, body overlap)', 'color:#8dff1e;font-weight:bold');
 'use strict';
 /* ================================================================
    JCW LUNACY — engine v2 (excellence build)
@@ -501,6 +501,32 @@ const Snd = (() => {
 document.addEventListener('touchstart', Snd.unlock, { once: false });
 document.addEventListener('mousedown', Snd.unlock, { once: false });
 
+// ---------------- MUSIC (intro theme on the select screen) ----------------
+// mp3 (not ogg): Safari has no Ogg Vorbis support. File sits next to index.html.
+const MUSIC = (() => {
+    const a = new Audio('jcw_intro_theme.mp3');
+    a.loop = true; a.preload = 'auto'; a.volume = 0.55;
+    let started = false, fading = null;
+    function start() {
+        if (started || M.phase !== 'idle') return;         // theme belongs to the select screen
+        const p = a.play();
+        if (p && p.then) p.then(() => { started = true; }).catch(() => {});
+        else started = true;
+    }
+    function fadeOut() {
+        if (!started || fading) return;
+        fading = setInterval(() => {
+            a.volume = Math.max(0, a.volume - 0.05);
+            if (a.volume <= 0.01) { a.pause(); clearInterval(fading); fading = null; }
+        }, 60);
+        started = false;
+    }
+    return { start, fadeOut };
+})();
+// browsers only allow audio after a user gesture: first tap/click on the roster starts the theme
+document.addEventListener('touchstart', () => MUSIC.start(), { once: false });
+document.addEventListener('mousedown', () => MUSIC.start(), { once: false });
+
 // ---------------- ASSETS ----------------
 const SPRITES = {};
 const WEAPON_IMGS = {};
@@ -720,6 +746,7 @@ function startMatch() {
     initializeMatch();
 }
 function initializeMatch() {
+    MUSIC.fadeOut();                                       // intro theme ends when the bell's coming
     const si = selectedStage >= 0 ? selectedStage : Math.floor(Math.random() * STAGES.length);
     activeStage = STAGES[si];
     ARENA.src = activeStage.src;
@@ -1527,9 +1554,10 @@ function simTick() {
     p1.moving = false;
     if (p1.climb && input.dpad.y > 0) { p1.climb = null; }                 // step down off the ropes
     if (!p1Locked && p1.downTimer <= 0 && p1.stunTimer <= 0 && !p1.climb && p1.diveTimer <= 0) {
-        if (input.dpad.x !== 0) { p1.vx = input.dpad.x * 4.4 * p1.wrestler.speed; p1.direction = input.dpad.x; p1.moving = true; }
+        // rooted while swinging: no more full-speed gliding in a frozen punch pose
+        if (input.dpad.x !== 0 && p1.swingTimer <= 0) { p1.vx = input.dpad.x * 4.4 * p1.wrestler.speed; p1.direction = input.dpad.x; p1.moving = true; }
         else p1.vx *= 0.8;
-        if (input.dpad.y !== 0) { p1.vy = input.dpad.y * 3.3 * p1.wrestler.speed; p1.moving = true; }
+        if (input.dpad.y !== 0 && p1.swingTimer <= 0) { p1.vy = input.dpad.y * 3.3 * p1.wrestler.speed; p1.moving = true; }
         else p1.vy *= 0.8;
     }
     if (p1.moving) {
@@ -1682,6 +1710,7 @@ function aiUpdate(ai, target) {
     }
     if (ai.downTimer > 0) { ai.downTimer--; ai.moving = false; return; }
     if (ai.stunTimer > 0) return;
+    if (ai.swingTimer > 0) { ai.moving = false; return; }   // rooted while swinging, same as the player
     const locked = M.grapple && (M.grapple.victim === ai || M.grapple.holder === ai);
     if (locked) { ai.moving = false; return; }
 
@@ -1822,9 +1851,9 @@ function applyRemote(p, opp) {
     p.moving = false;
     if (p.climb && inp.dy > 0) p.climb = null;
     if (!locked && p.downTimer <= 0 && p.stunTimer <= 0 && !p.climb && p.diveTimer <= 0) {
-        if (inp.dx !== 0) { p.vx = inp.dx * 4.4 * p.wrestler.speed; p.direction = inp.dx; p.moving = true; }
+        if (inp.dx !== 0 && p.swingTimer <= 0) { p.vx = inp.dx * 4.4 * p.wrestler.speed; p.direction = inp.dx; p.moving = true; }
         else p.vx *= 0.8;
-        if (inp.dy !== 0) { p.vy = inp.dy * 3.3 * p.wrestler.speed; p.moving = true; }
+        if (inp.dy !== 0 && p.swingTimer <= 0) { p.vy = inp.dy * 3.3 * p.wrestler.speed; p.moving = true; }
         else p.vy *= 0.8;
     }
     if (p.moving) p.walkAnim += 0.05 + 0.05 * Math.hypot(p.vx, p.vy);
@@ -2324,7 +2353,7 @@ function spriteFor(f) {
     if (f.climb) return { img: S.aIdleB || S.idle, flip: false };                     // back to camera on the ropes
     if (f.diveTimer > 0) {
         if (f.diveTimer > 20 && S.aJump) return { img: S.aJump[0], flip: f.direction < 0, noHeld: true };   // leap off the post
-        return { img: (S.aDive && S.aDive[0]) || S.jump, flip: f.direction > 0, noHeld: true };
+        return { img: (S.aDive && S.aDive[0]) || S.jump, flip: f.direction < 0, noHeld: true };   // dive faces the direction of flight
     }
     if (pinned || f.downTimer > 0) {
         if (!pinned && f.downTimer > 0 && f.downTimer <= 26 && S.aGetup)              // rising animation
@@ -2363,15 +2392,16 @@ function spriteFor(f) {
         // Moving UP (away from camera) with little horizontal motion: show the back.
         if (f.vy < -0.6 && Math.abs(f.vy) >= Math.abs(f.vx) && (S.aIdleB || S.idle))
             return { img: S.aIdleB || S.idle, flip: false };
+        // Walk art follows the direction of TRAVEL, not the combat facing — the AI faces
+        // its opponent at all times, so retreats/strafes/weapon runs used to moonwalk.
+        const mdir = Math.abs(f.vx) > 0.4 ? (f.vx < 0 ? -1 : 1) : f.direction;
         const fast = Math.hypot(f.vx, f.vy) > 3.3;
         const L = fast ? (S.aRunL || S.aWalkL) : (S.aWalkL || S.walkL), R = fast ? (S.aRunR || S.aWalkR) : (S.aWalkR || S.walkR);
         // walkL art faces LEFT and walkR art faces RIGHT — use the matching set AS-IS.
-        // (The old code mirrored the chosen set, so wrestlers moonwalked: right-facing
-        //  art got flipped to face left while moving right.)
-        if (L && R) { const arr = f.direction < 0 ? L : R; return { img: arr[Math.floor(f.walkAnim) % arr.length], flip: false }; }
+        if (L && R) { const arr = mdir < 0 ? L : R; return { img: arr[Math.floor(f.walkAnim) % arr.length], flip: false }; }
         const solo = R || L;               // only one side has art: mirror it for the other direction
-        if (solo) return { img: solo[Math.floor(f.walkAnim) % solo.length], flip: solo === R ? f.direction < 0 : f.direction > 0 };
-        return { img: S.aIdle || S.idle, flip: f.direction < 0 };
+        if (solo) return { img: solo[Math.floor(f.walkAnim) % solo.length], flip: solo === R ? mdir < 0 : mdir > 0 };
+        return { img: S.aIdle || S.idle, flip: mdir < 0 };
     }
     return { img: S.aIdle || S.idle, flip: false };
 }
