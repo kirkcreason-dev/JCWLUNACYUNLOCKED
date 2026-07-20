@@ -255,7 +255,7 @@ body.no-touch .hint-text { bottom:12px; }
 </div>
 
 <script>
-console.log('%cLUNACY UNLOCKED — BUILD 2026-07-20-CALIB2 (Mickie Knuckles & Kongo Kong back, K = ring calibration, snappier combat, AI pin cooldown, weapon grip, softer bob/trails, Big Vito & Mr. Happy back, 10% less health, warehouse ring recalibrated, original camera, select-screen restyle, roster trim, step animation, loading-screen credits, walk facing, 3-count timing, resize anchoring, corner stunlock, body overlap)', 'color:#8dff1e;font-weight:bold');
+console.log('%cLUNACY UNLOCKED — BUILD 2026-07-20-STAGES3 (all 3 stages recalibrated, calib tool: reset/cancel/move-handle, strike facing fixed, Mickie Knuckles & Kongo Kong back, K = ring calibration, snappier combat, AI pin cooldown, weapon grip, softer bob/trails, Big Vito & Mr. Happy back, 10% less health, warehouse ring recalibrated, original camera, select-screen restyle, roster trim, step animation, loading-screen credits, walk facing, 3-count timing, resize anchoring, corner stunlock, body overlap)', 'color:#8dff1e;font-weight:bold');
 'use strict';
 /* ================================================================
    JCW LUNACY — engine v2 (excellence build)
@@ -328,8 +328,10 @@ const WEAPON_TYPES = {
 };
 
 const STAGES = [
-    { id:'funhouse',  name:'FUNHOUSE',  src:'ui/arena_funhouse.jpg',  mat:{x0:0.345,x1:0.71,y0:0.47,y1:0.615}, rope:{x0:0.27,x1:0.77,y0:0.545,y1:0.66} },
-    { id:'lunacy',    name:'LUNACY',    src:'ui/arena_lunacy.jpg',    mat:{x0:0.315,x1:0.71,y0:0.385,y1:0.60},  rope:{x0:0.25,x1:0.78,y0:0.50,y1:0.645} },
+    // all three stages start from the measured new-art ring position (same generation
+    // batch as the warehouse shot) — fine-tune any stage in-game with K and paste back
+    { id:'funhouse',  name:'FUNHOUSE',  src:'ui/arena_funhouse.jpg',  mat:{x0:0.288,x1:0.72,y0:0.431,y1:0.567}, rope:{x0:0.281,x1:0.736,y0:0.395,y1:0.539} },
+    { id:'lunacy',    name:'LUNACY',    src:'ui/arena_lunacy.jpg',    mat:{x0:0.288,x1:0.72,y0:0.431,y1:0.567}, rope:{x0:0.281,x1:0.736,y0:0.395,y1:0.539} },
     // warehouse ring re-measured against the new wide-shot arena art
     { id:'warehouse', name:'WAREHOUSE', src:'ui/arena_warehouse.jpg', mat:{x0:0.288,x1:0.72,y0:0.431,y1:0.567},  rope:{x0:0.281,x1:0.736,y0:0.395,y1:0.539} }
 ];
@@ -896,6 +898,8 @@ document.addEventListener('keydown', e => {
     if (k === 'f') toggleFullscreen();
     if (k === 'k') toggleCalib();
     if (k === 'c' && calib.on) { try { navigator.clipboard.writeText(calibString()); addFx(canvas.width / 2, canvas.height * 0.3, 'COPIED!', { color: '#8dff1e', size: 18 }); } catch (e) {} }
+    if (k === 'r' && calib.on) { activeStage.mat = { ...activeStage.matDefault }; addFx(canvas.width / 2, canvas.height * 0.3, 'RESET TO DEFAULTS', { color: '#ffe000', size: 18 }); }
+    if (k === 'escape' && calib.on) cancelCalib();
     if (k === 'enter' && M.phase === 'idle' && !document.getElementById('startButton').disabled) startMatch();
 });
 document.addEventListener('keyup', e => {
@@ -946,6 +950,7 @@ function toggleFullscreen() {
 const calib = { on: false, drag: null, ox: 0, oy: 0 };
 const CALIB_KEY = 'jcwRingCalib1';
 (function calibLoad() {
+    STAGES.forEach(s => { s.matDefault = { x0: s.mat.x0, x1: s.mat.x1, y0: s.mat.y0, y1: s.mat.y1 }; });
     try {
         const c = JSON.parse(localStorage.getItem(CALIB_KEY) || '{}');
         STAGES.forEach(s => { if (c[s.id]) s.mat = c[s.id]; });
@@ -968,6 +973,9 @@ function toggleCalib() {
     calib.on = !calib.on;
     paused = calib.on;
     calib.drag = null;
+    if (calib.on) {
+        calib.entry = { ...activeStage.mat };              // snapshot for ESC cancel
+    }
     if (!calib.on) {
         calibSave();
         console.log('%cJCW RING CALIBRATION → ' + calibString(), 'color:#8dff1e;font-weight:bold');
@@ -975,6 +983,14 @@ function toggleCalib() {
         const pb = document.getElementById('pauseBtn');
         if (pb) pb.textContent = '❚❚';
     }
+}
+function cancelCalib() {
+    if (!calib.on) return;
+    if (calib.entry) activeStage.mat = { ...calib.entry };
+    calib.on = false; paused = false; calib.drag = null;
+    addFx(canvas.width / 2, canvas.height * 0.3, 'CALIBRATION CANCELLED', { color: '#ff8c1a', size: 18 });
+    const pb = document.getElementById('pauseBtn');
+    if (pb) pb.textContent = '❚❚';
 }
 function calibPos(e) {
     const r = canvas.getBoundingClientRect();
@@ -986,10 +1002,12 @@ canvas.addEventListener('mousedown', e => {
     if (!calib.on) return;
     e.preventDefault(); e.stopPropagation();
     const p = calibPos(e);
+    const mcx = (matRect.L + matRect.R) / 2, mcy = (matRect.T + matRect.B) / 2;
     if (Math.hypot(p.x - matRect.L, p.y - matRect.T) < 32) calib.drag = 'tl';
     else if (Math.hypot(p.x - matRect.R, p.y - matRect.B) < 32) calib.drag = 'br';
-    else if (p.x > matRect.L && p.x < matRect.R && p.y > matRect.T && p.y < matRect.B) {
-        calib.drag = 'move'; calib.ox = p.x - matRect.L; calib.oy = p.y - matRect.T;
+    else if (Math.hypot(p.x - mcx, p.y - mcy) < 36) {      // move only via the center handle —
+        calib.drag = 'move';                               // stray clicks can't shove the box
+        calib.ox = p.x - matRect.L; calib.oy = p.y - matRect.T;
     }
 }, true);
 document.addEventListener('mousemove', e => {
@@ -2312,17 +2330,21 @@ function spriteFor(f) {
             const t = f.weapon.type;
             if (t === 'chair' && S.aChairR) return { img: pick(S.aChairR), flip: f.direction < 0, noHeld: true };
             if (t === 'kendo' && S.aKendoR && S.aKendoL)
-                return { img: pick(f.direction < 0 ? S.aKendoL : S.aKendoR), flip: f.direction < 0, noHeld: true };
+                return { img: pick(f.direction < 0 ? S.aKendoL : S.aKendoR), flip: false, noHeld: true };
             if (t === 'belt' && (S.aBeltR || S.aBeltL)) {
                 const arr = f.direction < 0 ? (S.aBeltL || S.aBeltR) : (S.aBeltR || S.aBeltL);
-                return { img: pick(arr), flip: f.direction < 0, noHeld: true };
+                return { img: pick(arr), flip: (f.direction < 0) !== (arr === S.aBeltL), noHeld: true };
             }
         }
-        // bare-handed strike variety: elbow / punch / kick, chosen per swing
+        // bare-handed strike variety: elbow / punch / kick, chosen per swing.
+        // L art faces LEFT and R art faces RIGHT — use the matching side AS-IS and only
+        // mirror when a wrestler has just one side drawn (same convention as the walk fix;
+        // the old code picked the right art and then flipped it, so punches went backwards)
         const kind = f.strikeKind || 0;
         const sets = [ [S.aElbowL, S.aElbowR], [S.aPunchL, S.aPunchR], [S.aKickL, S.aKickR] ];
         const [L, R] = sets[kind % sets.length];
-        if (L && R) return { img: pick(f.direction < 0 ? L : R), flip: f.direction < 0 };
+        const arr = f.direction < 0 ? (L || R) : (R || L);
+        if (arr) return { img: pick(arr), flip: (f.direction < 0) !== (arr === L) };
         const fr = S.elbowR;
         return { img: pick(fr), flip: f.direction < 0 };
     }
@@ -2486,16 +2508,17 @@ function render() {
         ctx.strokeStyle = '#8dff1e'; ctx.lineWidth = 2; ctx.setLineDash([8, 6]);
         ctx.strokeRect(matRect.L, matRect.T, matRect.R - matRect.L, matRect.B - matRect.T);
         ctx.setLineDash([]);
-        [[matRect.L, matRect.T], [matRect.R, matRect.B]].forEach(([hx2, hy2]) => {
-            ctx.fillStyle = '#8dff1e';
+        [[matRect.L, matRect.T, '#8dff1e'], [matRect.R, matRect.B, '#8dff1e'],
+         [(matRect.L + matRect.R) / 2, (matRect.T + matRect.B) / 2, '#ff8c1a']].forEach(([hx2, hy2, col]) => {
+            ctx.fillStyle = col;
             ctx.beginPath(); ctx.arc(hx2, hy2, 11, 0, Math.PI * 2); ctx.fill();
             ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.stroke();
         });
         ctx.font = '900 14px Arial'; ctx.textAlign = 'center';
         const lines = [
-            'RING CALIBRATION — drag the corner dots onto the mat (back-left + front-right), drag inside to move',
+            'RING CALIBRATION — green dots: back-left + front-right mat corners · orange dot: move box',
             calibString(),
-            'C: COPY VALUES   ·   K: SAVE & EXIT'
+            'C: COPY   ·   R: RESET DEFAULTS   ·   ESC: CANCEL   ·   K: SAVE & EXIT'
         ];
         lines.forEach((t, i) => {
             const yy = 84 + i * 24;
