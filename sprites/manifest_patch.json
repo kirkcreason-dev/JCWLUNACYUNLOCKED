@@ -1,0 +1,335 @@
+{
+ "bronson": {
+  "aWalkL": [
+   {
+    "file": "sprites/bronson/a_walkL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_4.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkL_5.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bronson/a_walkR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_4.png"
+   },
+   {
+    "file": "sprites/bronson/a_walkR_5.png"
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/bronson/a_runL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_4.png"
+   },
+   {
+    "file": "sprites/bronson/a_runL_5.png"
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/bronson/a_runR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_4.png"
+   },
+   {
+    "file": "sprites/bronson/a_runR_5.png"
+   }
+  ],
+  "aKickR": [
+   {
+    "file": "sprites/bronson/a_kickR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_kickR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_kickR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_kickR_3.png"
+   }
+  ],
+  "aKickL": [
+   {
+    "file": "sprites/bronson/a_kickL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_kickL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_kickL_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_kickL_3.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bronson/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_3.png"
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/bronson/a_chairR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairR_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairR_4.png"
+   }
+  ],
+  "aGetup": [
+   {
+    "file": "sprites/bronson/a_getup_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_getup_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_getup_2.png"
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/bronson/a_jump_0.png"
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/bronson/a_dive_0.png"
+   }
+  ],
+  "idle": {
+   "file": "sprites/bronson/idle.png"
+  },
+  "aStagger": {
+   "file": "sprites/bronson/a_stagger.png"
+  },
+  "aLose": {
+   "file": "sprites/bronson/a_lose.png"
+  },
+  "aWin": {
+   "file": "sprites/bronson/a_win.png"
+  },
+  "aCrouch": {
+   "file": "sprites/bronson/a_crouch.png"
+  },
+  "jump": {
+   "file": "sprites/bronson/jump.png"
+  },
+  "aFallF": {
+   "file": "sprites/bronson/a_fallF.png"
+  },
+  "aFallB": {
+   "file": "sprites/bronson/a_fallB.png"
+  },
+  "aIdle": {
+   "file": "sprites/bronson/idle.png"
+  },
+  "fallen": {
+   "file": "sprites/bronson/a_fallB.png"
+  },
+  "elbowR": [
+   {
+    "file": "sprites/bronson/a_elbowR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_3.png"
+   }
+  ],
+  "aClimb": [
+   {
+    "file": "sprites/bronson/a_climb_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_climb_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_climb_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_climb_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_climb_4.png"
+   },
+   {
+    "file": "sprites/bronson/a_climb_5.png"
+   }
+  ],
+  "aRopes": [
+   {
+    "file": "sprites/bronson/a_ropes_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_ropes_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_ropes_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_ropes_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_ropes_4.png"
+   }
+  ],
+  "aTrashR": [
+   {
+    "file": "sprites/bronson/a_trashR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_trashR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_trashR_2.png"
+   }
+  ],
+  "aGuitarR": [
+   {
+    "file": "sprites/bronson/a_guitarR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_guitarR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_guitarR_2.png"
+   }
+  ],
+  "aChairWalkR": [
+   {
+    "file": "sprites/bronson/a_chairWalkR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkR_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkR_4.png"
+   }
+  ],
+  "aChairWalkL": [
+   {
+    "file": "sprites/bronson/a_chairWalkL_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkL_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkL_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkL_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_chairWalkL_4.png"
+   }
+  ],
+  "aGuitarWalkR": [
+   {
+    "file": "sprites/bronson/a_guitarWalkR_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_guitarWalkR_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_guitarWalkR_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_guitarWalkR_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_guitarWalkR_4.png"
+   }
+  ],
+  "aLift": [
+   {
+    "file": "sprites/bronson/a_lift_0.png"
+   },
+   {
+    "file": "sprites/bronson/a_lift_1.png"
+   },
+   {
+    "file": "sprites/bronson/a_lift_2.png"
+   },
+   {
+    "file": "sprites/bronson/a_lift_3.png"
+   },
+   {
+    "file": "sprites/bronson/a_lift_4.png"
+   }
+  ]
+ }
+}
