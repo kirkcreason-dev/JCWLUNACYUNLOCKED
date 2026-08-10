@@ -23,17 +23,13 @@ body { background:#0a0a0a; font-family:Arial,sans-serif; overflow:hidden; height
 #characterSelect > * { position:relative; z-index:1; }
 .title-img { width:min(90vw,520px); margin-bottom:10px; image-rendering:pixelated; }
 .vs-row { display:flex; align-items:center; gap:16px; margin-bottom:12px; font-size:13px; color:#d4af37; font-weight:bold; text-shadow:1px 1px 2px #000; }
-.roster-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(88px,1fr)); gap:9px; width:100%; max-width:780px; margin-bottom:12px; }
-.wrestler-card { border:3px solid #71757c; border-radius:9px; cursor:pointer; transition:all 0.12s; overflow:hidden; position:relative; background:linear-gradient(180deg,#232327,#101014); box-shadow:inset 0 0 0 2px #2e3136, inset 0 2px 5px rgba(255,255,255,0.08), 0 4px 10px rgba(0,0,0,0.6); }
-.wrestler-card::before { content:''; position:absolute; inset:0; pointer-events:none; z-index:2; background:
-    radial-gradient(circle at 8px 8px, #a6acb5 0 2.2px, rgba(0,0,0,0.35) 2.8px, transparent 3.6px),
-    radial-gradient(circle at calc(100% - 8px) 8px, #a6acb5 0 2.2px, rgba(0,0,0,0.35) 2.8px, transparent 3.6px),
-    radial-gradient(circle at 8px calc(100% - 8px), #a6acb5 0 2.2px, rgba(0,0,0,0.35) 2.8px, transparent 3.6px),
-    radial-gradient(circle at calc(100% - 8px) calc(100% - 8px), #a6acb5 0 2.2px, rgba(0,0,0,0.35) 2.8px, transparent 3.6px); }
+.roster-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); gap:8px; width:100%; max-width:640px; margin-bottom:12px; }
+.wrestler-card { border:3px solid #6a6a6a; border-radius:6px; cursor:pointer; transition:all 0.12s; overflow:hidden; position:relative; background:#111; }
+.wrestler-card.secret-card { border-color:#8dff1e; box-shadow:0 0 12px rgba(141,255,30,0.65); }
 .wrestler-card img { width:100%; display:block; image-rendering:pixelated; }
-.wrestler-card .card-name { display:flex; align-items:center; justify-content:center; min-height:26px; text-align:center; font-size:8px; font-weight:900; text-transform:uppercase; color:#ececec; letter-spacing:1px; background:linear-gradient(180deg,#43474d,#1d1f22); padding:3px 2px; border-top:2px solid #5d6167; line-height:1.2; text-shadow:1px 1px 1px #000; }
-.wrestler-card:hover { border-color:#ff2ea6; box-shadow:0 0 16px rgba(255,46,166,0.55), inset 0 0 0 2px #2e3136; }
-.wrestler-card.sel1 { border-color:#ffcc33; box-shadow:0 0 10px rgba(255,204,51,0.9), 0 0 24px rgba(255,46,166,0.5); }
+.wrestler-card .card-name { display:flex; align-items:center; justify-content:center; min-height:24px; text-align:center; font-size:8px; font-weight:900; text-transform:uppercase; color:#ddd; letter-spacing:0.5px; background:linear-gradient(180deg,#3a3a3a,#1c1c1c); padding:3px 2px; border-top:2px solid #555; line-height:1.2; }
+.wrestler-card:hover { border-color:#ffcc33; box-shadow:0 0 14px rgba(255,204,51,0.5); }
+.wrestler-card.sel1 { border-color:#ffcc33; box-shadow:0 0 18px rgba(255,204,51,0.8); }
 .wrestler-card.sel1::after { content:'1P'; position:absolute; top:4px; left:6px; color:#ffcc33; font-weight:900; font-size:13px; text-shadow:1px 1px 2px #000; }
 .wrestler-card.sel2 { border-color:#4488ff; box-shadow:0 0 18px rgba(68,136,255,0.8); }
 .wrestler-card.sel2::after { content:'2P'; position:absolute; top:4px; left:6px; color:#4488ff; font-weight:900; font-size:13px; text-shadow:1px 1px 2px #000; }
@@ -44,24 +40,19 @@ body { background:#0a0a0a; font-family:Arial,sans-serif; overflow:hidden; height
 .stage-thumb span { display:block; font-size:8px; font-weight:900; color:#bbb; text-transform:uppercase; padding:3px 0; background:#1c1c1c; letter-spacing:1px; }
 .stage-thumb:hover { border-color:#ffcc33; }
 .stage-thumb.sel { border-color:#ffcc33; box-shadow:0 0 10px rgba(255,204,51,0.6); }
-.stats-panel { display:flex; align-items:center; gap:14px; width:100%; max-width:640px; background:linear-gradient(180deg,#232327,#0f0f12); border:3px solid #6a6e74; border-radius:10px; padding:8px 12px; margin-bottom:12px; min-height:118px; box-shadow:inset 0 2px 8px rgba(255,255,255,0.06), 0 6px 14px rgba(0,0,0,0.55); }
+.stats-panel { display:flex; align-items:center; gap:14px; width:100%; max-width:540px; background:linear-gradient(180deg,rgba(28,28,28,0.95),rgba(12,12,12,0.95)); border:3px solid #555; border-radius:8px; padding:8px 12px; margin-bottom:12px; min-height:118px; }
 .stats-panel img.big-portrait { height:108px; image-rendering:pixelated; border-radius:4px; }
 .stats-info { flex:1; }
-.stats-name { font-size:20px; font-weight:900; color:#f2f2f2; text-transform:uppercase; letter-spacing:2px; margin-bottom:2px; text-shadow:2px 2px 0 #000, 0 0 14px rgba(255,255,255,0.15); }
+.stats-name { font-size:20px; font-weight:900; color:#ddd; text-transform:uppercase; letter-spacing:2px; margin-bottom:2px; text-shadow:2px 2px 2px #000; }
 .stats-special { font-size:10px; font-weight:900; color:#ff44aa; text-transform:uppercase; margin-bottom:6px; letter-spacing:1px; }
 .stat-row { display:flex; align-items:center; gap:6px; margin-bottom:3px; }
 .stat-label { width:78px; font-size:10px; font-weight:900; color:#ffcc33; text-transform:uppercase; }
-.stat-bar { flex:1; height:11px; background:#101013; border:1px solid #3c4046; display:flex; gap:3px; padding:1px; }
+.stat-bar { flex:1; height:10px; background:#1a1a1a; border:1px solid #555; display:flex; gap:2px; padding:1px; }
 .stat-seg { flex:1; background:#2a2a2a; }
-.stat-seg.on { background:linear-gradient(180deg,#ff3b30,#a80000); box-shadow:0 0 5px rgba(255,60,40,0.45); }
-.start-button { width:100%; max-width:640px; padding:14px 24px; font-size:17px; background:linear-gradient(180deg,#232327,#0e0e10); border:3px solid #6a6e74; border-radius:8px; color:#8dff1e; font-weight:900; text-transform:uppercase; cursor:pointer; letter-spacing:3px; text-shadow:0 0 12px rgba(141,255,30,0.5), 2px 2px 0 #000; box-shadow:inset 0 2px 6px rgba(255,255,255,0.07), 0 4px 12px rgba(0,0,0,0.6); }
-.start-button::before { content:'\2605 \2605 \2605'; color:#8dff1e; margin-right:16px; font-size:12px; vertical-align:2px; text-shadow:0 0 8px rgba(141,255,30,0.7); }
-.start-button::after { content:'\2605 \2605 \2605'; color:#ff2ea6; margin-left:16px; font-size:12px; vertical-align:2px; text-shadow:0 0 8px rgba(255,46,166,0.7); }
+.stat-seg.on { background:linear-gradient(180deg,#e33,#900); }
+.start-button { padding:14px 44px; font-size:18px; background:linear-gradient(135deg,#d4af37 0%,#aa8c2c 100%); border:none; color:#000; font-weight:900; text-transform:uppercase; cursor:pointer; border-radius:4px; letter-spacing:1px; }
 .start-button:disabled { opacity:0.4; cursor:not-allowed; }
 #loadingMsg { color:#d4af37; font-size:12px; font-weight:900; letter-spacing:1px; margin-top:12px; text-align:center; }
-#credits { margin-top:16px; text-align:center; font-size:9px; color:#9a9a9a; letter-spacing:1px; text-transform:uppercase; line-height:2; transition:opacity 0.6s; }
-#credits .credits-title { color:#d4af37; font-weight:900; font-size:10px; letter-spacing:4px; margin-bottom:2px; }
-#credits span { color:#d4af37; font-weight:900; margin-right:6px; }
 .load-track { width:220px; height:10px; background:#151515; border:2px solid #d4af37; margin:6px auto 0; }
 .load-fill { height:100%; width:0%; background:linear-gradient(90deg,#d4af37,#ffe27a); transition:width 0.15s; }
 .online-row { display:flex; gap:10px; margin-top:12px; }
@@ -152,11 +143,6 @@ canvas { display:block; width:100%; height:100%; touch-action:none; }
 .fs-btn:active { transform:translateX(calc(-50% + 50px)) scale(0.94); }
 body.no-touch .controller { display:none; }
 body.no-touch .hint-text { bottom:12px; }
-
-/* debug log (press L) */
-#debugLog { position:absolute; top:58px; left:10px; width:360px; max-height:46%; overflow:hidden; background:rgba(0,0,0,0.74); border:1px solid #454545; border-radius:6px; font:10px/1.5 Menlo,Consolas,monospace; color:#9fe870; padding:6px 8px; z-index:55; pointer-events:none; display:none; white-space:pre-wrap; word-break:break-all; }
-#debugLog .dbg-head { color:#ffe000; border-bottom:1px solid #333; margin-bottom:3px; padding-bottom:2px; }
-#debugLog .dbg-err { color:#ff5555; font-weight:bold; }
 </style>
 </head>
 <body>
@@ -191,10 +177,10 @@ body.no-touch .hint-text { bottom:12px; }
             <div class="stats-info">
                 <div class="stats-name" id="statsName">SELECT YOUR FIGHTER</div>
                 <div class="stats-special" id="statsSpecial">&nbsp;</div>
-                <div class="stat-row"><div class="stat-label" style="color:#ffe000;">POWER</div><div class="stat-bar" id="barPower"></div></div>
-                <div class="stat-row"><div class="stat-label" style="color:#ff2ea6;">SPEED</div><div class="stat-bar" id="barSpeed"></div></div>
-                <div class="stat-row"><div class="stat-label" style="color:#8dff1e;">TECHNIQUE</div><div class="stat-bar" id="barTech"></div></div>
-                <div class="stat-row"><div class="stat-label" style="color:#66aaff;">TOUGHNESS</div><div class="stat-bar" id="barTough"></div></div>
+                <div class="stat-row"><div class="stat-label">POWER</div><div class="stat-bar" id="barPower"></div></div>
+                <div class="stat-row"><div class="stat-label">SPEED</div><div class="stat-bar" id="barSpeed"></div></div>
+                <div class="stat-row"><div class="stat-label">TECHNIQUE</div><div class="stat-bar" id="barTech"></div></div>
+                <div class="stat-row"><div class="stat-label">TOUGHNESS</div><div class="stat-bar" id="barTough"></div></div>
             </div>
         </div>
         <button class="start-button" id="startButton" disabled>START MATCH (VS CPU)</button>
@@ -205,19 +191,12 @@ body.no-touch .hint-text { bottom:12px; }
         </div>
         <div id="onlineStatus" class="online-status"></div>
         <div id="loadingMsg">Loading...</div>
-        <div id="credits">
-            <div class="credits-title">CREDITS</div>
-            <div><span>LEAD DEVELOPER</span> KIRK CREASON</div>
-            <div><span>DEVELOPERS</span> BRANDON PEIN &nbsp;&middot;&nbsp; ANDY MONTGOMERY &nbsp;&middot;&nbsp; CAMEO MATHISON</div>
-            <div><span>SPECIAL THANKS</span> JEFF LANE &nbsp;&middot;&nbsp; ERIC GOLDSTEIN</div>
-        </div>
     </div>
 
     <!-- GAME -->
     <div id="gameContainer">
         <canvas id="gameCanvas"></canvas>
         <div class="hud">
-            <div id="debugLog"></div>
             <div class="pause-btn" id="pauseBtn">❚❚</div>
             <div class="pause-btn fs-btn" id="fsBtn">⛶</div>
             <div class="hint-text">A: GRAPPLE / PIN / PICK UP<br>IN GRAPPLE: DIR + A = THROW, UP + A = OVERHEAD, B = STRIKE<br>B NEAR DOWNED: STOMP<br>MASH B TO ESCAPE &amp; KICK OUT</div>
@@ -261,8 +240,7 @@ body.no-touch .hint-text { bottom:12px; }
 </div>
 
 <script>
-const BUILD = '2026-07-27-BRONSON3';
-console.log('%cLUNACY UNLOCKED — BUILD ' + BUILD + ' (press L in a match for the on-screen debug log)', 'color:#8dff1e;font-weight:bold');
+console.log('%cLUNACY UNLOCKED — BUILD 2026-08-10-VJ-SECRET', 'color:#8dff1e;font-weight:bold');
 'use strict';
 /* ================================================================
    JCW LUNACY — engine v2 (excellence build)
@@ -278,7 +256,7 @@ function W(name, id, s, special, opts = {}) {
         name, id, special: special || null,
         health: 41 + 7 * s[3], speed: (0.65 + 0.05 * s[1]) * 0.75, power: 0.65 + 0.05 * s[0],
         stats: { power: s[0], speed: s[1], tech: s[2], tough: s[3] },
-        base: opts.base || null, hue: opts.hue || 0
+        base: opts.base || null, hue: opts.hue || 0, secret: !!opts.secret
     };
 }
 const wrestlers = [
@@ -316,11 +294,18 @@ const wrestlers = [
     W('Krule',                         'krule',    [10,5,6,9], null,                    { base:'bishop',  hue:110 }),
     W('Ruffo the Clown',               'ruffo',    [8,7,7,8],  null,                    { base:'bruce',   hue:300 }),
     W('Willie Mack',                   'williemack',[7,7,9,8], 'STUNNER',               { base:'bruce',   hue:170 }),
-    // re-approved
+    // added to match the CHARACTER SELECT mockup
     W('Big Vito',                      'bigvito',  [9,5,6,10], 'IMPLANT DDT',           { base:'bishop',  hue:20 }),
+    W('Hollywood Haley J',             'haleyj',   [6,7,8,9],  null,                    { base:'dani',    hue:200 }),
+    W('Kongo Kong',                    'kongokong',[10,5,7,9], null,                    { base:'bruce',   hue:60 }),
+    W('Mecha Wolf',                    'mechawolf',[7,7,7,7],  null,                    { base:'atiba',   hue:210 }),
+    W('Mickie Knuckles',              'mickie',   [8,5,6,9],  null,                    { base:'dani',    hue:330 }),
     W('Mr. Happy',                     'mrhappy',  [10,4,6,8], null,                    { base:'bishop',  hue:280 }),
-    W('Mickie Knuckles',               'mickie',   [8,5,6,9],  null,                    { base:'dani',    hue:330 }),
-    W('Kongo Kong',                    'kongokong',[10,5,7,9], null,                    { base:'bruce',   hue:60 })
+    W('Sophia Rose',                   'sophia',   [6,8,8,6],  'SPLIT-LEGGED STUNNER',  { base:'dani',    hue:0 }),
+    // SECRET CHARACTER — the Duke of the Wicked himself, own art, maxed out.
+    // Hidden from the roster until unlocked: type WHOOPWHOOP on the select screen,
+    // or tap the title logo 7 times (touch). Unlock persists via localStorage.
+    W('Violent J',                     'violentj', [10,10,10,10], 'HATCHET BOMB',       { secret: true })
 ];
 // not built: Luigi Primo (approval: NO)
 function shortName(w) { return w.name.replace(/[“"][^"”]*[”"]\s*/g, '').trim(); }
@@ -335,13 +320,9 @@ const WEAPON_TYPES = {
 };
 
 const STAGES = [
-    // all three stages start from the measured new-art ring position (same generation
-    // batch as the warehouse shot) — fine-tune any stage in-game with K and paste back
-    // funhouse ring sits lower + narrower in its art than the warehouse shot (measured from video)
-    { id:'funhouse',  name:'FUNHOUSE',  src:'ui/arena_funhouse.jpg',  mat:{x0:0.27,x1:0.695,y0:0.579,y1:0.669}, rope:{x0:0.26,x1:0.71,y0:0.53,y1:0.645} },
-    { id:'lunacy',    name:'LUNACY',    src:'ui/arena_lunacy.jpg',    mat:{x0:0.288,x1:0.72,y0:0.431,y1:0.567}, rope:{x0:0.281,x1:0.736,y0:0.395,y1:0.539} },
-    // warehouse ring re-measured against the new wide-shot arena art
-    { id:'warehouse', name:'WAREHOUSE', src:'ui/arena_warehouse.jpg', mat:{x0:0.288,x1:0.72,y0:0.431,y1:0.567},  rope:{x0:0.281,x1:0.736,y0:0.395,y1:0.539} }
+    { id:'funhouse',  name:'FUNHOUSE',  src:'ui/arena_funhouse.jpg',  mat:{x0:0.345,x1:0.71,y0:0.47,y1:0.615}, rope:{x0:0.27,x1:0.77,y0:0.545,y1:0.66} },
+    { id:'lunacy',    name:'LUNACY',    src:'ui/arena_lunacy.jpg',    mat:{x0:0.315,x1:0.71,y0:0.385,y1:0.60},  rope:{x0:0.25,x1:0.78,y0:0.50,y1:0.645} },
+    { id:'warehouse', name:'WAREHOUSE', src:'ui/arena_warehouse.jpg', mat:{x0:0.315,x1:0.71,y0:0.46,y1:0.595},  rope:{x0:0.28,x1:0.76,y0:0.545,y1:0.655} }
 ];
 // portraits for canvas HUD (placeholders start on their base body's art; tinted copies swap in after load)
 const CARD_IMGS = {};
@@ -508,32 +489,6 @@ const Snd = (() => {
 document.addEventListener('touchstart', Snd.unlock, { once: false });
 document.addEventListener('mousedown', Snd.unlock, { once: false });
 
-// ---------------- MUSIC (intro theme on the select screen) ----------------
-// mp3 (not ogg): Safari has no Ogg Vorbis support. File sits next to index.html.
-const MUSIC = (() => {
-    const a = new Audio('jcw_intro_theme.mp3');
-    a.loop = true; a.preload = 'auto'; a.volume = 0.55;
-    let started = false, fading = null;
-    function start() {
-        if (started || M.phase !== 'idle') return;         // theme belongs to the select screen
-        const p = a.play();
-        if (p && p.then) p.then(() => { started = true; }).catch(() => {});
-        else started = true;
-    }
-    function fadeOut() {
-        if (!started || fading) return;
-        fading = setInterval(() => {
-            a.volume = Math.max(0, a.volume - 0.05);
-            if (a.volume <= 0.01) { a.pause(); clearInterval(fading); fading = null; }
-        }, 60);
-        started = false;
-    }
-    return { start, fadeOut };
-})();
-// browsers only allow audio after a user gesture: first tap/click on the roster starts the theme
-document.addEventListener('touchstart', () => MUSIC.start(), { once: false });
-document.addEventListener('mousedown', () => MUSIC.start(), { once: false });
-
 // ---------------- ASSETS ----------------
 const SPRITES = {};
 const WEAPON_IMGS = {};
@@ -549,13 +504,6 @@ function loadImg(src, jobs) {
 async function loadAssets() {
     const jobs = [];
     const manifest = await (await fetch('sprites/manifest.json')).json();
-    // optional overrides: drop a sprites/manifest_patch.json next to the main manifest to
-    // replace whole wrestler entries (new art) without ever editing the big file
-    try {
-        const patch = await (await fetch('sprites/manifest_patch.json')).json();
-        Object.assign(manifest, patch);
-        console.log('manifest_patch applied:', Object.keys(patch).join(', '));
-    } catch (e) {}
     for (const [wid, states] of Object.entries(manifest)) {
         SPRITES[wid] = {};
         for (const [state, val] of Object.entries(states)) {
@@ -608,9 +556,6 @@ async function loadAssets() {
     });
     spritesReady = true;
     document.getElementById('loadingMsg').textContent = '';
-    // credits live on the loading screen only: fade out once loading is done
-    const cr = document.getElementById('credits');
-    if (cr) { cr.style.opacity = '0'; setTimeout(() => { cr.style.display = 'none'; }, 700); }
     refreshStartButton();
 }
 
@@ -618,7 +563,7 @@ async function loadAssets() {
 let gameState = { p1Selected: null, p2Selected: null };
 let selectedStage = -1;
 let selectedCards = { p1: null, p2: null };
-let difficulty = 0; // 0 easy, 1 normal, 2 hard — matches the EASY button highlighted by default
+let difficulty = 1; // 0 easy, 1 normal, 2 hard
 const DIFF = [
     { aiDmg: 0.5,  aiSpd: 0.85, aiAggro: 0.65 },
     { aiDmg: 0.72, aiSpd: 1.0,  aiAggro: 1.0  },
@@ -638,14 +583,56 @@ function populateRoster() {
         const bar = document.getElementById(id);
         for (let i = 0; i < 10; i++) { const s = document.createElement('div'); s.className = 'stat-seg'; bar.appendChild(s); }
     });
-    wrestlers.forEach(w => {
-        const card = document.createElement('div');
-        card.className = 'wrestler-card';
-        card.innerHTML = `<img src="ui/card_${w.base || w.id}.png" data-wid="${w.id}" alt="${w.name}"><span class="card-name">${shortName(w)}</span>`;
-        card.addEventListener('click', () => { showStats(w); selectWrestler(w, card); Snd.unlock(); });
-        grid.appendChild(card);
-    });
+    wrestlers.forEach(w => { if (!w.secret || vjUnlocked()) addRosterCard(w); });
 }
+function addRosterCard(w) {
+    const grid = document.getElementById('rosterGrid');
+    const card = document.createElement('div');
+    card.className = 'wrestler-card' + (w.secret ? ' secret-card' : '');
+    card.innerHTML = `<img src="ui/card_${w.base || w.id}.png" data-wid="${w.id}" alt="${w.name}"><span class="card-name">${shortName(w)}</span>`;
+    card.addEventListener('click', () => { showStats(w); selectWrestler(w, card); Snd.unlock(); playIntroTheme(); });
+    grid.appendChild(card);
+    return card;
+}
+
+// ---------------- SECRET CHARACTER ----------------
+function vjUnlocked() {
+    try { return localStorage.getItem('lunacy_vj') === '1'; } catch (e) { return false; }
+}
+function unlockVJ() {
+    const already = vjUnlocked();
+    try { localStorage.setItem('lunacy_vj', '1'); } catch (e) {}
+    const w = wrestlers.find(x => x.id === 'violentj');
+    if (!w) return;
+    let img = document.querySelector('.wrestler-card img[data-wid="violentj"]');
+    if (!img) { addRosterCard(w); img = document.querySelector('.wrestler-card img[data-wid="violentj"]'); }
+    if (already) return;                       // repeat trigger: card exists, stay quiet
+    if (img) img.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    Snd.unlock(); Snd.crowdPop();
+    const b = document.createElement('div');
+    b.textContent = 'WHOOP WHOOP! VIOLENT J HAS ENTERED THE BUILDING';
+    b.style.cssText = 'position:fixed;top:18%;left:50%;transform:translateX(-50%);z-index:999;' +
+        'background:#000;color:#8dff1e;border:3px solid #8dff1e;padding:14px 22px;font-weight:900;' +
+        'font-size:17px;letter-spacing:1px;box-shadow:0 0 40px #8dff1e;text-align:center;max-width:86vw;';
+    document.body.appendChild(b);
+    setTimeout(() => b.remove(), 3200);
+}
+(function secretInputs() {
+    let buf = '';
+    document.addEventListener('keydown', e => {
+        if (!e.key || e.key.length !== 1) return;
+        buf = (buf + e.key.toLowerCase()).slice(-10);
+        if (buf === 'whoopwhoop') unlockVJ();
+    });
+    let taps = 0, last = 0;
+    const logo = document.querySelector('#characterSelect .title-img');
+    if (logo) logo.addEventListener('pointerdown', () => {
+        const now = Date.now();
+        taps = (now - last < 1600) ? taps + 1 : 1;
+        last = now;
+        if (taps >= 7) { taps = 0; unlockVJ(); }
+    });
+})();
 function showStats(w) {
     document.getElementById('bigPortrait').src = uiSrc('big', w);
     document.getElementById('statsName').textContent = w.name;
@@ -690,7 +677,7 @@ let floorRect = { L:0, R:0, T:0, B:0 };
 
 function makeFighter(isP1) {
     return {
-        climb: null, climbTimer: 0, diveTimer: 0, fallFace: 'B', exitTimer: 0,
+        climb: null, diveTimer: 0, fallFace: 'B',
         isP1, wrestler:null,
         x:0, y:0, vx:0, vy:0, direction: isP1 ? 1 : -1,
         health:100, maxHealth:100, ghostHP:100,
@@ -699,7 +686,7 @@ function makeFighter(isP1) {
         specialCharge:0, walkAnim:0, moving:false, elev:0,
         combo:0, comboTimer:0,
         // AI
-        aiState:'approach', aiTimer:0, aiThink:0, aiPinCd:0
+        aiState:'approach', aiTimer:0, aiThink:0
     };
 }
 
@@ -717,48 +704,8 @@ const M = {
 
 const input = { dpad:{x:0,y:0}, attackTap:false, grapTap:false, specialTap:false };
 
-// ---------------- DEBUG LOG (press L in a match) ----------------
-const DBG = (() => {
-    const buf = [];
-    let on = false, el = null, frames = 0, lastFpsT = 0, fps = 0;
-    function log(msg, cls) {
-        const t = (M.frame / 60).toFixed(1).padStart(6, ' ');
-        buf.push({ t, msg: String(msg), cls: cls || '' });
-        if (buf.length > 150) buf.shift();
-        if (on) draw();
-        try { console.debug('[JCW ' + t + 's]', String(msg)); } catch (e) {}
-    }
-    function head() {
-        const pf = p => p ? Math.round(p.x) + ',' + Math.round(p.y) + ' hp' + Math.round(p.health) +
-                           (p.downTimer > 0 ? ' DOWN' : p.stunTimer > 0 ? ' STUN' : '') : '-';
-        return BUILD + ' · ' + (activeStage ? activeStage.id : '-') + ' · ' + canvas.width + 'x' + canvas.height +
-               ' · ' + fps + 'fps · ph:' + M.phase + (M.grapple ? (M.grapple.isPin ? ' PIN' : ' GRAPPLE') + '@' + M.grapple.frames : '') +
-               '\nP1 ' + pf(M.p1) + '  |  P2 ' + pf(M.p2);
-    }
-    function draw() {
-        if (!el) el = document.getElementById('debugLog');
-        if (!el) return;
-        el.innerHTML = '<div class="dbg-head">' + head() + '</div>' +
-            buf.slice(-15).map(b => '<div class="' + b.cls + '">' + b.t + 's ' + b.msg + '</div>').join('');
-    }
-    function toggle() {
-        on = !on;
-        if (!el) el = document.getElementById('debugLog');
-        if (el) el.style.display = on ? 'block' : 'none';
-        if (on) { log('debug log ON — L to hide'); draw(); }
-    }
-    function tick(now) {
-        frames++;
-        if (now - lastFpsT >= 1000) { fps = frames; frames = 0; lastFpsT = now; }
-        if (on && M.frame % 12 === 0) draw();
-    }
-    return { log, toggle, tick, get on() { return on; } };
-})();
-window.addEventListener('error', e => DBG.log('JS ERROR: ' + e.message + ' @' + (e.lineno || '?'), 'dbg-err'));
-
 // ---------------- JUICE HELPERS ----------------
 function addFx(x, y, text, opts = {}) {
-    if (!/^\d+!?$/.test(text)) DBG.log('· ' + text);   // every labeled event flows into the debug log
     M.fx.push({ x, y: y - 60, timer: opts.life || 45, life: opts.life || 45, text,
                 size: opts.size || 17, color: opts.color || '#ffdd00', rise: opts.rise !== false });
 }
@@ -789,9 +736,18 @@ function hitStop(frames) { M.freeze = Math.max(M.freeze, frames); }
 function shake(mag) { M.shake = Math.max(M.shake, mag); }
 
 // ---------------- MATCH FLOW ----------------
+// intro theme (starts on character select, loops through the whole match)
+const introTheme = new Audio('jcw_intro_theme.mp3');
+introTheme.preload = 'auto';
+introTheme.loop = true;
+introTheme.volume = 0.7;
+function playIntroTheme() {
+    try { if (introTheme.paused) introTheme.play().catch(() => {}); } catch (e) {}
+}
 function startMatch() {
     if (!gameState.p1Selected || !gameState.p2Selected || !spritesReady) return;
     Snd.unlock();
+    playIntroTheme();
     const cs = document.getElementById('characterSelect');
     cs.classList.add('hidden');
     cs.style.display = 'none';
@@ -800,7 +756,6 @@ function startMatch() {
     initializeMatch();
 }
 function initializeMatch() {
-    MUSIC.fadeOut();                                       // intro theme ends when the bell's coming
     const si = selectedStage >= 0 ? selectedStage : Math.floor(Math.random() * STAGES.length);
     activeStage = STAGES[si];
     ARENA.src = activeStage.src;
@@ -810,7 +765,7 @@ function initializeMatch() {
     M.p1 = makeFighter(true);  M.p1.wrestler = gameState.p1Selected;
     M.p2 = makeFighter(false); M.p2.wrestler = gameState.p2Selected;
     [M.p1, M.p2].forEach(p => {
-        p.maxHealth = p.wrestler.health * 3.24;  // 10% less health again (was *3.6, originally *4)
+        p.maxHealth = p.wrestler.health * 3.6;   // 10% less health (was *4)
         p.health = p.ghostHP = p.maxHealth;
     });
 
@@ -820,8 +775,6 @@ function initializeMatch() {
     M.p1.y = M.p2.y = matRect.T + (matRect.B - matRect.T) * 0.68;
 
     spawnWeapons();
-    DBG.log('MATCH: ' + M.p1.wrestler.id + ' vs ' + M.p2.wrestler.id + ' @ ' + activeStage.id +
-            ' diff:' + difficulty + ' canvas:' + canvas.width + 'x' + canvas.height);
     M.frame = 0; M.grapple = null; M.fx = []; M.particles = []; M.splats = [];
     M.freeze = 0; M.shake = 0; M.lastPinCount = 0;
     M.winner = null;
@@ -854,7 +807,6 @@ function endMatch(winner, method) {
     if (M.p1) { M.p1.climb = null; M.p1.diveTimer = 0; }
     if (M.p2) { M.p2.climb = null; M.p2.diveTimer = 0; }
     M.winner = winner; M.winMethod = method; M.winFrame = M.frame;
-    DBG.log('END: ' + winner.wrestler.id + ' wins by ' + method + ' @ ' + (M.frame / 60).toFixed(1) + 's');
     NET.hostReportEnd();
     M.phase = 'slowmo'; M.slowmoTimer = 90;
     Snd.slam(); shake(14); hitStop(10);
@@ -862,46 +814,8 @@ function endMatch(winner, method) {
     addFx(canvas.width / 2, canvas.height * 0.4 + 60, method + '!',
           { color: '#ff2255', size: 66, life: 90, rise: false });
 }
-// every finished match posts a report to Firebase (viewable on admin.html) — plain REST,
-// no SDK needed, fire-and-forget so it can never stall or break the game
-function reportMatch() {
-    try {
-        if (NET.mode === 'guest') return;                  // online: the host reports
-        if (!FIREBASE_CONFIG.databaseURL) return;
-        let pid = '';
-        try {
-            pid = localStorage.getItem('jcwPid') || '';
-            if (!pid) { pid = Math.random().toString(36).slice(2, 10); localStorage.setItem('jcwPid', pid); }
-        } catch (e) {}
-        const body = {
-            t: Date.now(),
-            p1: M.p1.wrestler.id, p2: M.p2.wrestler.id,
-            winner: M.winner.wrestler.id, method: M.winMethod || '?',
-            secs: Math.round((M.winFrame || M.frame) / 60),
-            stage: activeStage.id,
-            mode: NET.mode === 'none' ? 'cpu' : 'online',
-            diff: difficulty, pid, build: BUILD
-        };
-        DBG.log('report posting: ' + body.winner + ' by ' + body.method + '…');
-        fetch(FIREBASE_CONFIG.databaseURL + '/reports.json', {
-            method: 'POST', keepalive: true,
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        }).then(r => DBG.log(r.ok ? 'report saved ✓ (HTTP ' + r.status + ')' :
-                             'report REJECTED (HTTP ' + r.status + ') — check Firebase rules', r.ok ? '' : 'dbg-err'))
-          .catch(e => DBG.log('report failed: ' + e.message, 'dbg-err'));
-    } catch (e) {}
-}
-
 function showVictory() {
     M.phase = 'over';
-    reportMatch();
-    // report the win to the JCW Lunacy site (Juggalo Locker) when embedded
-    try {
-        const localP = NET.mode === 'guest' ? M.p2 : M.p1;
-        if (M.winner === localP && window.parent !== window)
-            window.parent.postMessage({ type: 'jcw-win' }, '*');
-    } catch (e) {}
     Snd.bell(3); Snd.crowdPop();
     // confetti burst
     for (let i = 0; i < 90; i++) {
@@ -927,7 +841,6 @@ function showVictory() {
 let coverTf = { dx:0, dy:0, dw:1, dh:1 };
 let CAM = { fx: 0, fy: 0, scale: 1.12, tx: 0, ty: 0, init: false };   // follow camera (tracks the player)
 function computeRects() {
-    const om = { L: matRect.L, R: matRect.R, T: matRect.T, B: matRect.B };   // previous mapping
     const iw = ARENA.naturalWidth || 1672, ih = ARENA.naturalHeight || 941;
     const mt = activeStage.mat;
     // Portrait phones are much taller than the 16:9 arena, so a plain contain-fit leaves
@@ -961,23 +874,6 @@ function computeRects() {
         B: Math.min(matRect.B + Math.min(130, (matRect.B - matRect.T) * 0.42),
                     canvas.height - drop - 14)
     };
-    // Re-anchor world objects when the arena mapping changes (window resize, fullscreen,
-    // rotate, arena image finishing its load). Positions are absolute pixels, so without
-    // this the wrestlers, weapons and paint splats drift off the ring when the layout moves.
-    if (om.R > om.L && (Math.abs(om.L - matRect.L) > 0.5 || Math.abs(om.R - matRect.R) > 0.5 ||
-                        Math.abs(om.T - matRect.T) > 0.5 || Math.abs(om.B - matRect.B) > 0.5)) {
-        const mx = x => matRect.L + (x - om.L) * (matRect.R - matRect.L) / (om.R - om.L);
-        const my = y => matRect.T + (y - om.T) * (matRect.B - matRect.T) / (om.B - om.T);
-        DBG.log('re-anchor: mat ' + Math.round(om.L) + ',' + Math.round(om.T) + '/' + Math.round(om.R) + ',' + Math.round(om.B) +
-                ' → ' + Math.round(matRect.L) + ',' + Math.round(matRect.T) + '/' + Math.round(matRect.R) + ',' + Math.round(matRect.B));
-        [M.p1, M.p2].forEach(p => {
-            if (!p) return;
-            p.x = mx(p.x); p.y = my(p.y);
-            if (p.climb) { p.climb.x = mx(p.climb.x); p.climb.y = my(p.climb.y); }
-        });
-        M.weaponsOnGround.forEach(w => { w.x = mx(w.x); w.y = my(w.y); });
-        M.splats.forEach(s => { s.x = mx(s.x); s.y = my(s.y); });
-    }
 }
 function ringDrop() { return Math.max(34, Math.min(84, (matRect.B - matRect.T) * 0.22)); }
 function onMat(p) { return p.y <= matRect.B + 8 && p.x > matRect.L - 12 && p.x < matRect.R + 12 && p.y > matRect.T - 12; }
@@ -1021,11 +917,6 @@ document.addEventListener('keydown', e => {
     if (k === 'c') input.specialTap = true;
     if (k === 'p' || k === 'escape') togglePause();
     if (k === 'f') toggleFullscreen();
-    if (k === 'k') toggleCalib();
-    if (k === 'l') DBG.toggle();
-    if (k === 'c' && calib.on) { try { navigator.clipboard.writeText(calibString()); addFx(canvas.width / 2, canvas.height * 0.3, 'COPIED!', { color: '#8dff1e', size: 18 }); } catch (e) {} }
-    if (k === 'r' && calib.on) { activeStage.mat = { ...activeStage.matDefault }; addFx(canvas.width / 2, canvas.height * 0.3, 'RESET TO DEFAULTS', { color: '#ffe000', size: 18 }); }
-    if (k === 'escape' && calib.on) cancelCalib();
     if (k === 'enter' && M.phase === 'idle' && !document.getElementById('startButton').disabled) startMatch();
 });
 document.addEventListener('keyup', e => {
@@ -1036,7 +927,6 @@ document.addEventListener('keyup', e => {
 // ---------------- PAUSE ----------------
 let paused = false;
 function togglePause() {
-    if (calib.on) return;                               // K owns pause while calibrating
     if (NET.mode !== 'none') return;                    // no pausing online matches
     if (M.phase !== 'fight' && !paused) return;
     paused = !paused;
@@ -1066,92 +956,6 @@ function toggleFullscreen() {
     fb.addEventListener('touchstart', e => { e.preventDefault(); e.stopPropagation(); toggleFullscreen(); });
     fb.addEventListener('mousedown',  e => { e.preventDefault(); e.stopPropagation(); toggleFullscreen(); });
 })();
-
-/* ---------------- RING CALIBRATION (dev tool: press K in a match) ----------------
-   The arena art changes; the ring coordinates shouldn't have to be re-measured by hand.
-   K pauses the match and shows the mat rectangle over the arena. Drag the two corner
-   handles onto the mat surface (back-left corner, front-right corner), or drag inside
-   the box to move it. C copies the values; K again saves (this browser remembers via
-   localStorage) and prints the STAGES line to paste into index.html for everyone else. */
-const calib = { on: false, drag: null, ox: 0, oy: 0 };
-const CALIB_KEY = 'jcwRingCalib1';
-(function calibLoad() {
-    STAGES.forEach(s => { s.matDefault = { x0: s.mat.x0, x1: s.mat.x1, y0: s.mat.y0, y1: s.mat.y1 }; });
-    try {
-        const c = JSON.parse(localStorage.getItem(CALIB_KEY) || '{}');
-        STAGES.forEach(s => { if (c[s.id]) s.mat = c[s.id]; });
-    } catch (e) {}
-})();
-function calibSave() {
-    try {
-        const c = JSON.parse(localStorage.getItem(CALIB_KEY) || '{}');
-        c[activeStage.id] = activeStage.mat;
-        localStorage.setItem(CALIB_KEY, JSON.stringify(c));
-    } catch (e) {}
-}
-function calibString() {
-    const m = activeStage.mat, f = v => +v.toFixed(3);
-    return activeStage.id + ' mat:{x0:' + f(m.x0) + ',x1:' + f(m.x1) + ',y0:' + f(m.y0) + ',y1:' + f(m.y1) + '}';
-}
-function toggleCalib() {
-    if (NET.mode !== 'none') return;                       // never mid-online-match
-    if (!calib.on && M.phase !== 'fight') return;
-    calib.on = !calib.on;
-    paused = calib.on;
-    calib.drag = null;
-    if (calib.on) {
-        calib.entry = { ...activeStage.mat };              // snapshot for ESC cancel
-    }
-    if (!calib.on) {
-        calibSave();
-        DBG.log('CALIB SAVED: ' + calibString());
-        console.log('%cJCW RING CALIBRATION → ' + calibString(), 'color:#8dff1e;font-weight:bold');
-        addFx(canvas.width / 2, canvas.height * 0.3, 'CALIBRATION SAVED', { color: '#8dff1e', size: 20 });
-        const pb = document.getElementById('pauseBtn');
-        if (pb) pb.textContent = '❚❚';
-    }
-}
-function cancelCalib() {
-    if (!calib.on) return;
-    if (calib.entry) activeStage.mat = { ...calib.entry };
-    calib.on = false; paused = false; calib.drag = null;
-    addFx(canvas.width / 2, canvas.height * 0.3, 'CALIBRATION CANCELLED', { color: '#ff8c1a', size: 18 });
-    const pb = document.getElementById('pauseBtn');
-    if (pb) pb.textContent = '❚❚';
-}
-function calibPos(e) {
-    const r = canvas.getBoundingClientRect();
-    const cX = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
-    const cY = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
-    return { x: cX / r.width * canvas.width, y: cY / r.height * canvas.height };
-}
-canvas.addEventListener('mousedown', e => {
-    if (!calib.on) return;
-    e.preventDefault(); e.stopPropagation();
-    const p = calibPos(e);
-    const mcx = (matRect.L + matRect.R) / 2, mcy = (matRect.T + matRect.B) / 2;
-    if (Math.hypot(p.x - matRect.L, p.y - matRect.T) < 32) calib.drag = 'tl';
-    else if (Math.hypot(p.x - matRect.R, p.y - matRect.B) < 32) calib.drag = 'br';
-    else if (Math.hypot(p.x - mcx, p.y - mcy) < 36) {      // move only via the center handle —
-        calib.drag = 'move';                               // stray clicks can't shove the box
-        calib.ox = p.x - matRect.L; calib.oy = p.y - matRect.T;
-    }
-}, true);
-document.addEventListener('mousemove', e => {
-    if (!calib.on || !calib.drag) return;
-    const p = calibPos(e);
-    const fx = x => (x - coverTf.dx) / coverTf.dw;
-    const fy = y => (y - coverTf.dy) / coverTf.dh;
-    const m = activeStage.mat;
-    if (calib.drag === 'tl') { m.x0 = Math.min(fx(p.x), m.x1 - 0.05); m.y0 = Math.min(fy(p.y), m.y1 - 0.02); }
-    else if (calib.drag === 'br') { m.x1 = Math.max(fx(p.x), m.x0 + 0.05); m.y1 = Math.max(fy(p.y), m.y0 + 0.02); }
-    else {
-        const w2 = m.x1 - m.x0, h2 = m.y1 - m.y0;
-        m.x0 = fx(p.x - calib.ox); m.y0 = fy(p.y - calib.oy);
-        m.x1 = m.x0 + w2; m.y1 = m.y0 + h2;
-    }
-});
-document.addEventListener('mouseup', () => { if (calib.on) calib.drag = null; });
 
 // ---------------- HAPTICS ----------------
 function buzz(dmg) {
@@ -1186,7 +990,6 @@ window.addEventListener('resize', checkOrientation);
 canvas.addEventListener('touchstart', ringTap);
 canvas.addEventListener('mousedown', ringTap);
 function ringTap(e) {
-    if (calib.on) return;                               // calibration owns the mouse
     if (M.phase !== 'fight') return;
     e.preventDefault();
     const rect = canvas.getBoundingClientRect();
@@ -1225,9 +1028,8 @@ function performTap(p1, p2, x, y) {
     const p2vy = p2.y + p2.elev * ringDrop();   // enemy's on-screen position
     const dEnemy = Math.hypot(x - p2.x, y - p2vy);
     const pEnemy = Math.hypot(p1.x - p2.x, p1.y - p2.y);
-    // pin (only counts in the ring)
+    // pin
     if (dEnemy < 95 && p2.downTimer > 0 && !M.grapple) {
-        if (isRingside(p2)) { addFxOnce('ringpin', p2.x, p2.y - 40, 'PIN IN THE RING!'); return; }
         if (pEnemy < 190) {
             p1.x = p2.x - p1.direction * 30; p1.y = p2.y;
             M.grapple = { holder: p1, victim: p2, frames: 0, isPin: true };
@@ -1255,7 +1057,7 @@ const powerOutHP = f => 0.70 - 0.014 * techOf(f);                               
 function dealDamage(attacker, victim, base, opts = {}) {
     if (victim.climb) {                                     // struck on the ropes: crash down
         victim.climb = null;
-        victim.downTimer = 55; victim.fallFace = 'B';
+        victim.downTimer = 80; victim.fallFace = 'B';
         addFx(victim.x, victim.y - 30, 'CROTCHED!', { color: '#ff8c1a', size: 16 });
         shake(5);
     }
@@ -1267,8 +1069,6 @@ function dealDamage(attacker, victim, base, opts = {}) {
     const scale = Math.max(0.6, 1 - (attacker.combo - 1) * 0.05);
     const dmg = base * attacker.wrestler.power * scale;
     victim.health = Math.max(0, victim.health - dmg);
-    DBG.log((attacker.isP1 ? 'P1' : 'P2') + ' hit ' + (victim.isP1 ? 'P1' : 'P2') + ' -' + dmg.toFixed(1) +
-            (attacker.combo > 1 ? ' (x' + attacker.combo + ')' : '') + ' → hp ' + Math.round(victim.health));
 
     // juice
     addFx(victim.x + (Math.random()-0.5)*54, victim.y - Math.random()*20, Math.round(dmg).toString(),
@@ -1276,8 +1076,8 @@ function dealDamage(attacker, victim, base, opts = {}) {
     if (opts.text) addFx(victim.x, victim.y - 26, opts.text, { color: opts.color || '#fff', size: opts.size || 15 });
     addParticles(victim.x, victim.y, dmg >= 12 ? 14 : 7, 3, dmg >= 15);
     if (dmg >= 8) addSplat(victim.x, victim.y);
-    hitStop(dmg >= 15 ? 9 : dmg >= 10 ? 6 : 4);      // heavier contact freeze — hits feel weighty
-    shake(dmg >= 15 ? 10 : dmg >= 10 ? 6 : 3.5);
+    hitStop(dmg >= 15 ? 7 : dmg >= 10 ? 4 : 2);
+    shake(dmg >= 15 ? 9 : dmg >= 10 ? 5 : 2.5);
     if (victim === M.p1 && NET.mode !== 'guest') buzz(dmg);   // local player took the hit
     if (opts.slam) { Snd.slam(); shake(10); } 
 
@@ -1293,7 +1093,7 @@ function dealDamage(attacker, victim, base, opts = {}) {
     if (victim.health > 0 && victim.health < victim.maxHealth * 0.22 && dmg >= 4 &&
         victim.downTimer <= 0 && Math.random() < 0.25) {
         attacker.combo = 0; attacker.comboTimer = 0;   // knockdown ends the combo
-        victim.downTimer = 55; victim.fallFace = opts.slam ? 'B' : 'F';
+        victim.downTimer = 85; victim.fallFace = opts.slam ? 'B' : 'F';
         addFx(victim.x, victim.y + 18, 'DOWN!', { color: '#ff4455', size: 18 });
         Snd.slam(); shake(6);
     }
@@ -1307,17 +1107,16 @@ function tryStrike(att, def) {
     att.strikeKind = (att.strikeKind === undefined ? 0 : att.strikeKind + 1) % 3;   // elbow → punch → kick
     const adx = def.x - att.x, ady = def.y - att.y;
     att.direction = Math.sign(adx) || att.direction;
-    att.vx += att.direction * 2.6;    // commit into the strike
+    att.vx += att.direction * 1.8;
     att.swingTimer = 18;
     const inBand = Math.abs(ady) < 55;
 
     if (att.weapon) {
         const wd = WEAPON_TYPES[att.weapon.type];
-        att.attackCooldown = 34;
+        att.attackCooldown = 42;
         if (inBand && Math.abs(adx) < wd.range && def.downTimer <= 0 && def.invuln <= 0) {
             def.vx = Math.sign(def.x - att.x) * 8;
             def.stunTimer = 20;
-            def.invuln = Math.max(def.invuln, 16);   // brief i-frames: no corner stunlock
             dealDamage(att, def, wd.damage, { text: wd.name + ' SHOT!', color: '#ff8c1a', meterGain: 12 });
             (Snd[wd.sfx === 'guitar' ? 'guitarSmash' : wd.sfx] || Snd.whack)();
             att.weapon.durability--;
@@ -1326,28 +1125,26 @@ function tryStrike(att, def) {
                 addParticles(def.x, def.y, 10, 3, false);
                 att.weapon = null;
             }
-            if (wd.damage >= 15) { def.downTimer = 60; def.fallFace = 'F'; addFx(def.x, def.y + 18, 'DOWN!', { color: '#ff4455' }); Snd.slam(); }
+            if (wd.damage >= 15) { def.downTimer = 90; def.fallFace = 'F'; addFx(def.x, def.y + 18, 'DOWN!', { color: '#ff4455' }); Snd.slam(); }
         } else Snd.whoosh();
     } else {
-        att.attackCooldown = 16;
+        att.attackCooldown = 22;
         if (inBand && Math.abs(adx) < 105 && def.downTimer <= 0 && def.invuln <= 0) {
-            def.vx = Math.sign(def.x - att.x) * 7.5;
+            def.vx = Math.sign(def.x - att.x) * 6.5;
             def.vy = (Math.random() - 0.5) * 2;
-            def.invuln = Math.max(def.invuln, 12);   // brief i-frames: no corner stunlock
-            def.stunTimer = Math.max(def.stunTimer, 12);   // stagger: hits visibly LAND now
-            dealDamage(att, def, 5, {});
+            dealDamage(att, def, 4, {});
             Math.random() < 0.5 ? Snd.punch() : Snd.kick();
         } else Snd.whoosh();
     }
 }
 
 function trySpecial(att, def) {
-    if (att.specialCharge < 100) { addFxOnce('notchg', att.x, att.y + 30, 'NOT CHARGED'); return; }   // no stacking spam when Y is mashed
+    if (att.specialCharge < 100) { addFx(att.x, att.y - 30, 'NOT CHARGED', { color: '#888', size: 12 }); return; }
     att.direction = Math.sign(def.x - att.x) || att.direction;
     att.swingTimer = 18;
     if (Math.abs(def.y - att.y) < 70 && Math.abs(def.x - att.x) < 150 && def.invuln <= 0) {
         att.specialCharge = 0;
-        def.downTimer = 80; def.fallFace = 'B';
+        def.downTimer = 120; def.fallFace = 'B';
         def.vx = Math.sign(def.x - att.x) * 9;
         Snd.riser();
         dealDamage(att, def, 25, { text: (att.wrestler.special || 'FINISHER') + '!!!', color: '#ff2ea6', size: 22, slam: true, meterGain: 0 });
@@ -1367,7 +1164,7 @@ function trySpecial(att, def) {
 function startThrow(g, kind, dx, dy) {
     if (g.throwing) return;
     const S = SPRITES[g.holder.wrestler.id] || {};
-    const hasArt = kind === 'over' ? !!(S.gOverhead || S.aLift) : !!(S.gThrowR || S.gThrowL);
+    const hasArt = kind === 'over' ? !!S.gOverhead : !!(S.gThrowR || S.gThrowL);
     if (kind === 'L') g.holder.direction = -1;
     if (kind === 'R') g.holder.direction = 1;
     g.throwing = { kind, dx, dy, timer: 22, total: 22 };
@@ -1379,14 +1176,14 @@ function resolveThrow(g) {
     if (t.kind === 'over') {
         o.x = p.x - p.direction * 20;
         o.vx = -p.direction * 3.5; o.vy = 2.5;
-        o.downTimer = 62; o.fallFace = 'B';
+        o.downTimer = 95; o.fallFace = 'B';
         dealDamage(p, o, 12, { text: 'OVERHEAD THROW!!', slam: true, meterGain: 10 });
         shake(8);
     } else {
         const dx = t.dx || p.direction, dy = t.dy || 0;
         const d = Math.hypot(dx, dy) || 1;
         o.vx = dx / d * 13; o.vy = dy / d * 8;
-        o.downTimer = 50; o.fallFace = 'B';
+        o.downTimer = 75; o.fallFace = 'B';
         dealDamage(p, o, 9, { text: (t.dx || t.dy) ? 'THROWN!' : 'SLAMMED!', slam: true });
     }
     if (o.weapon) dropWeapon(o);
@@ -1400,7 +1197,6 @@ function tryClimb(p) {
     for (const [cx2, cy2] of corners) {
         if (Math.hypot(p.x - cx2, p.y - cy2) < 62) {
             p.climb = { x: cx2, y: cy2 };
-            p.climbTimer = 36;                                          // climbing animation
             p.x = cx2; p.y = cy2; p.vx = p.vy = 0; p.moving = false;
             p.direction = cx2 < (matRect.L + matRect.R) / 2 ? 1 : -1;   // face into the ring
             addFx(p.x, p.y - 60, 'CLIMB!', { color: '#66e0ff', size: 15 });
@@ -1427,7 +1223,7 @@ function resolveDive(p, o) {
     const hit = o.downTimer <= 0 && o.invuln <= 0 && !o.climb &&
                 Math.abs(o.x - p.x) < 78 && Math.abs(o.y - p.y) < 60;
     if (hit) {
-        o.downTimer = 62; o.fallFace = 'B';
+        o.downTimer = 95; o.fallFace = 'B';
         o.vx = Math.sign(o.x - p.x || p.direction) * 5;
         dealDamage(p, o, 16, { text: 'TOP ROPE DIVE!!', color: '#ffdd00', size: 21, slam: true, meterGain: 14 });
         Snd.crowdPop(); shake(9);
@@ -1453,11 +1249,7 @@ function performGrappleBtn(p, o, dir) {
     }
     if (M.grapple) return;
     const adx = Math.abs(o.x - p.x), ady = Math.abs(o.y - p.y);
-    // pin a downed opponent — pins only count IN the ring
-    if (o.downTimer > 0 && adx < 100 && ady < 70 && isRingside(o)) {
-        addFxOnce('ringpin', o.x, o.y - 40, 'PIN IN THE RING!');
-        return;
-    }
+    // pin a downed opponent
     if (o.downTimer > 0 && adx < 100 && ady < 70) {
         p.x = o.x - (Math.sign(o.x - p.x) || p.direction) * 34;
         p.y = o.y + 8;
@@ -1564,11 +1356,10 @@ function simTick() {
     [p1, p2].forEach(p => {
         if (p.attackCooldown > 0) p.attackCooldown--;
         if (p.swingTimer > 0) p.swingTimer--;
-        if (p.climbTimer > 0) p.climbTimer--;
         if (p.stunTimer > 0) p.stunTimer--;
         if (p.jumpTimer > 0) p.jumpTimer--;
         if (p.invuln > 0) p.invuln--;
-        if (p.downTimer === 1) p.invuln = 20;   // brief safety on get-up
+        if (p.downTimer === 1) p.invuln = 32;   // brief safety on get-up
         if (p.comboTimer > 0) { p.comboTimer--; if (p.comboTimer === 0) p.combo = 0; }
     });
     if (p1.downTimer > 0) { p1.downTimer--; p1.vx *= 0.9; p1.vy *= 0.9; }
@@ -1579,14 +1370,12 @@ function simTick() {
         if (g.isPin) {
             g.victim.downTimer = Math.max(g.victim.downTimer, 2);   // stay down while pinned
             // fresh wrestlers power out of pins almost immediately (easier with high technique)
-            if (g.victim.health > g.victim.maxHealth * powerOutHP(g.victim) && g.frames > 62) {
-                breakPin(g, 'POWERED OUT!');   // healthy wrestlers escape just after the 1-count
+            if (g.victim.health > g.victim.maxHealth * powerOutHP(g.victim) && g.frames > 28) {
+                breakPin(g, 'POWERED OUT!');
                 return;
             }
-            // ref counts a full second AFTER the shoulders go down: "1" at 60f, "2" at 120f,
-            // and "3" only at the actual 180f pinfall — no more phantom 3-counts before a kickout
-            const count = Math.min(2, Math.floor(g.frames / 60));
-            if (count > 0 && count !== M.lastPinCount) {
+            const count = Math.min(3, Math.floor(g.frames / 60) + 1);
+            if (count !== M.lastPinCount) {
                 M.lastPinCount = count;
                 Snd.beep(500 + count * 150);
                 addFx(canvas.width / 2, canvas.height * 0.36 + 60, String(count) + '!', { color: '#ff4455', size: 84, life: 58, rise: false });
@@ -1603,8 +1392,6 @@ function simTick() {
             }
             if (M.grapple && g.frames >= 180) {
                 M.lastPinCount = 0;
-                Snd.beep(950);
-                addFx(canvas.width / 2, canvas.height * 0.36 + 60, '3!', { color: '#ff4455', size: 84, life: 58, rise: false });
                 endMatch(g.holder, 'PINFALL');
                 return;
             }
@@ -1656,15 +1443,13 @@ function simTick() {
     p1.moving = false;
     if (p1.climb && input.dpad.y > 0) { p1.climb = null; }                 // step down off the ropes
     if (!p1Locked && p1.downTimer <= 0 && p1.stunTimer <= 0 && !p1.climb && p1.diveTimer <= 0) {
-        // rooted while swinging: no more full-speed gliding in a frozen punch pose
-        if (input.dpad.x !== 0 && p1.swingTimer <= 0) { p1.vx = input.dpad.x * 4.4 * p1.wrestler.speed; p1.direction = input.dpad.x; p1.moving = true; }
+        if (input.dpad.x !== 0) { p1.vx = input.dpad.x * 3.6 * p1.wrestler.speed; p1.direction = input.dpad.x; p1.moving = true; }
         else p1.vx *= 0.8;
-        if (input.dpad.y !== 0 && p1.swingTimer <= 0) { p1.vy = input.dpad.y * 3.3 * p1.wrestler.speed; p1.moving = true; }
+        if (input.dpad.y !== 0) { p1.vy = input.dpad.y * 2.7 * p1.wrestler.speed; p1.moving = true; }
         else p1.vy *= 0.8;
     }
     if (p1.moving) {
-        // stride cadence follows actual ground covered — no more foot-skating
-        p1.walkAnim += 0.05 + 0.05 * Math.hypot(p1.vx, p1.vy);
+        p1.walkAnim += 0.15;
         if (M.frame % 9 === 0) {
             M.particles.push({ x: p1.x + (Math.random()-0.5)*16, y: p1.y + 46 + p1.elev * ringDrop(),
                 vx: -p1.vx * 0.15, vy: -0.4 - Math.random()*0.4, life: 16, maxLife: 16,
@@ -1690,6 +1475,19 @@ function simTick() {
     [p1, p2].forEach(p => { p.x += p.vx; p.y += p.vy; });
     p2.vx *= 0.9; p2.vy *= 0.9;
 
+    // body collision: keep fighters from standing inside each other (sprites are ~90px wide)
+    if (!M.grapple && p1.downTimer <= 0 && p2.downTimer <= 0) {
+        const cdx = p2.x - p1.x, cdy = p2.y - p1.y;
+        const cd = Math.hypot(cdx, cdy);
+        const MIN = 74;
+        if (cd < MIN && cd > 0.01) {
+            const push = (MIN - cd) / 2;
+            const ux = cdx / cd, uy = cdy / cd;
+            p1.x -= ux * push; p1.y -= uy * push * 0.5;
+            p2.x += ux * push; p2.y += uy * push * 0.5;
+        }
+    }
+
     // rope bounce: fast bodies bounce off mat edges (from inside)
     [p1, p2].forEach(p => {
         const speed = Math.hypot(p.vx, p.vy);
@@ -1705,20 +1503,6 @@ function simTick() {
         if (p.y <= matRect.B + 8) {
             p.x = Math.max(matRect.L, Math.min(matRect.R, p.x));
             p.y = Math.max(matRect.T, p.y);
-            // the bottom rope CONTAINS the match: ordinary movement and knockback can't
-            // drift out the front any more (fights used to slide ringside in the first
-            // exchange and stay there). Ways out: a hard throw, a tumbling body, or
-            // deliberately holding DOWN against the rope for ~half a second.
-            if (p.y > matRect.B && p.downTimer <= 0 && Math.hypot(p.vx, p.vy) < 9) {
-                if (p.vy > 0.5) {                          // pushing down against the rope
-                    p.exitTimer = (p.exitTimer || 0) + 1;
-                    if (p.exitTimer > 30) { p.exitTimer = 0; p.y = matRect.B + 9; }   // duck out
-                    else {
-                        if (p.exitTimer === 12) addFxOnce('ropes' + (p.isP1 ? '1' : '2'), p.x, p.y - 40, 'DUCKING OUT…');
-                        p.y = matRect.B; p.vy *= 0.5;
-                    }
-                } else { p.exitTimer = 0; p.y = matRect.B; if (p.vy > 0) p.vy *= -0.4; }
-            } else if (p.y <= matRect.B - 4) p.exitTimer = 0;
         } else {
             p.x = Math.max(floorRect.L, Math.min(floorRect.R, p.x));
         }
@@ -1727,37 +1511,9 @@ function simTick() {
         p.elev += (t - p.elev) * 0.2;
     });
 
-    // body collision AFTER the wall clamp — clamping first used to squash both bodies
-    // back into one overlapping blob whenever they were pressed against the ropes
-    if (!M.grapple && p1.downTimer <= 0 && p2.downTimer <= 0) {
-        const cdx = p2.x - p1.x, cdy = p2.y - p1.y;
-        const cd = Math.hypot(cdx, cdy);
-        if (cd < 52) {
-            let ux, uy;
-            if (cd > 0.01) { ux = cdx / cd; uy = cdy / cd; } else { ux = 0; uy = 1; }
-            // pinned against a side rope: push apart vertically so the wall can't re-stack them
-            const atWallX = p1.x <= matRect.L + 1 || p1.x >= matRect.R - 1 ||
-                            p2.x <= matRect.L + 1 || p2.x >= matRect.R - 1;
-            if (atWallX && Math.abs(uy) < 0.4) { ux = 0; uy = cdy >= 0 ? 1 : -1; }
-            const push = (52 - cd) / 2;
-            const yf = atWallX ? 1 : 0.5;
-            p1.x -= ux * push; p1.y -= uy * push * yf;
-            p2.x += ux * push; p2.y += uy * push * yf;
-            [p1, p2].forEach(p => {           // keep the separated pair in bounds
-                if (p.y <= matRect.B + 8) {
-                    p.x = Math.max(matRect.L, Math.min(matRect.R, p.x));
-                    p.y = Math.max(matRect.T, p.y);
-                } else {
-                    p.x = Math.max(floorRect.L, Math.min(floorRect.R, p.x));
-                }
-                p.y = Math.min(floorRect.B, p.y);
-            });
-        }
-    }
-
     if (M.grapple && !M.grapple.isPin) {
         const g = M.grapple;
-        g.victim.x = g.holder.x + g.holder.direction * 44;
+        g.victim.x = g.holder.x + g.holder.direction * 62;   // stand apart, not merged
         g.victim.y = g.holder.y;
         g.victim.direction = -g.holder.direction;       // stay locked facing each other
         // struggle shimmy
@@ -1767,7 +1523,7 @@ function simTick() {
         const g = M.grapple;
         g.holder.vx = g.holder.vy = 0;
         g.victim.vx = g.victim.vy = 0;
-        g.victim.x = g.holder.x + g.holder.direction * 26;
+        g.victim.x = g.holder.x + g.holder.direction * 40;
         g.victim.y = g.holder.y;
     }
 
@@ -1811,7 +1567,6 @@ function addFxOnce(key, x, y, text) {
 function breakPin(g, text) {
     M.grapple = null;
     g.victim.downTimer = 0;
-    g.holder.aiPinCd = 170;   // AI waits ~3s before trying another pin
     M.lastPinCount = 0;
     addFx(g.victim.x, g.victim.y, text, { color: '#66aaff', size: 22 });
     Snd.crowdPop();
@@ -1826,7 +1581,6 @@ function aiUpdate(ai, target) {
     }
     if (ai.downTimer > 0) { ai.downTimer--; ai.moving = false; return; }
     if (ai.stunTimer > 0) return;
-    if (ai.swingTimer > 0) { ai.moving = false; return; }   // rooted while swinging, same as the player
     const locked = M.grapple && (M.grapple.victim === ai || M.grapple.holder === ai);
     if (locked) { ai.moving = false; return; }
 
@@ -1837,22 +1591,15 @@ function aiUpdate(ai, target) {
     ai.moving = false;
     ai.aiThink--;
 
-    // downed player: only go for the pin when it can actually stick (hurt enough +
-    // cooldown after a kickout) — otherwise put the boots to them. No more pin spam.
-    if (ai.aiPinCd > 0) ai.aiPinCd--;
+    // pin downed player - always priority
     if (target.downTimer > 0 && !M.grapple) {
-        const worthPin = ai.aiPinCd <= 0 && target.health < target.maxHealth * 0.6 && !isRingside(target);
         if (dist < 85) {
-            if (worthPin) {
-                ai.x = target.x - (Math.sign(target.x - ai.x) || ai.direction) * 34;
-                ai.y = target.y + 8;
-                ai.direction = Math.sign(target.x - ai.x) || ai.direction;
-                M.grapple = { holder: ai, victim: target, frames: 0, isPin: true };
-                addFx(target.x, target.y, 'PIN ATTEMPT!', { color: '#ff4455', size: 20 });
-                Snd.crowdPop();
-                return;
-            }
-            if (ai.attackCooldown <= 0 && tryStomp(ai, target)) ai.attackCooldown = 46;
+            ai.x = target.x - (Math.sign(target.x - ai.x) || ai.direction) * 34;
+            ai.y = target.y + 8;
+            ai.direction = Math.sign(target.x - ai.x) || ai.direction;
+            M.grapple = { holder: ai, victim: target, frames: 0, isPin: true };
+            addFx(target.x, target.y, 'PIN ATTEMPT!', { color: '#ff4455', size: 20 });
+            Snd.crowdPop();
             return;
         }
         moveToward(ai, target.x, target.y, 2.8); return;
@@ -1861,11 +1608,10 @@ function aiUpdate(ai, target) {
     if (ai.aiThink <= 0) {
         ai.aiThink = 26 + Math.random() * 30;
         const r = Math.random();
-        // committed fighter: mostly comes AT you — dithering states are the exception
-        if (ai.health < ai.maxHealth * 0.3 && r < 0.22) ai.aiState = 'retreat';
-        else if (!ai.weapon && r < 0.2 && M.weaponsOnGround.length) ai.aiState = 'weapon';
-        else if (r < 0.08) ai.aiState = 'reset';       // walk back toward mid-ring
-        else if (r < 0.2) ai.aiState = 'strafe';
+        if (ai.health < ai.maxHealth * 0.3 && r < 0.3) ai.aiState = 'retreat';
+        else if (!ai.weapon && r < 0.26 && M.weaponsOnGround.length) ai.aiState = 'weapon';
+        else if (r < 0.14) ai.aiState = 'reset';       // walk back toward mid-ring
+        else if (r < 0.36) ai.aiState = 'strafe';
         else ai.aiState = 'approach';
         ai.circleDir = Math.random() < 0.5 ? 1 : -1;
     }
@@ -1899,7 +1645,7 @@ function aiUpdate(ai, target) {
             const wd = ai.weapon ? WEAPON_TYPES[ai.weapon.type] : null;
             const range = wd ? wd.range : 100;
             if (Math.abs(dy) > 40 || Math.abs(dx) > range - 10) {
-                moveToward(ai, target.x - Math.sign(dx) * (range * 0.6), target.y, 3.0 + aggression);
+                moveToward(ai, target.x - Math.sign(dx) * (range * 0.6), target.y, 2.3 + aggression);
             } else if (ai.attackCooldown > 8 && target.downTimer <= 0) {
                 // circle the opponent while the arm reloads
                 moveToward(ai, target.x - Math.sign(dx) * range * 0.7, target.y + (ai.circleDir || 1) * 55, 1.7);
@@ -1917,7 +1663,7 @@ function aiUpdate(ai, target) {
                 } else {
                     aiStrike(ai, target, wd);
                 }
-                ai.attackCooldown = Math.max(26, 54 - aggression * 22);
+                ai.attackCooldown = Math.max(38, 68 - aggression * 24);
             }
         }
     }
@@ -1930,7 +1676,7 @@ function moveToward(ai, tx, ty, spd) {
     ai.vx = dx / d * spd * ai.wrestler.speed * sm;
     ai.vy = dy / d * spd * ai.wrestler.speed * sm;
     ai.moving = true;
-    ai.walkAnim += 0.05 + 0.05 * Math.hypot(ai.vx, ai.vy);
+    ai.walkAnim += 0.15;
 }
 function aiStrike(ai, target, wd) {
     ai.swingTimer = 18;
@@ -1939,20 +1685,18 @@ function aiStrike(ai, target, wd) {
     const dmg = (wd ? wd.damage : 4) * DIFF[difficulty].aiDmg;
     target.vx = Math.sign(target.x - ai.x) * 6.5;
     target.vy = (Math.random() - 0.5) * 2;
-    target.invuln = Math.max(target.invuln, 16);   // brief i-frames: no corner stunlock
-    target.stunTimer = Math.max(target.stunTimer, 12);   // stagger: hits visibly LAND now
     dealDamage(ai, target, dmg / ai.wrestler.power, { text: wd ? wd.name + '!' : null, meterGain: 6 });
     if (wd) {
         (Snd[wd.sfx === 'guitar' ? 'guitarSmash' : wd.sfx] || Snd.whack)();
         ai.weapon.durability--;
         if (ai.weapon.durability <= 0) ai.weapon = null;
-        if (wd.damage >= 15) { target.downTimer = 55; target.fallFace = 'F'; Snd.slam(); }
+        if (wd.damage >= 15) { target.downTimer = 80; target.fallFace = 'F'; Snd.slam(); }
     } else Snd.punch();
 }
 function trySpecialAI(ai, target) {
     ai.specialCharge = 0;
     ai.swingTimer = 18;
-    target.downTimer = 72; target.fallFace = 'B';
+    target.downTimer = 110; target.fallFace = 'B';
     target.vx = Math.sign(target.x - ai.x) * 8;
     Snd.riser();
     dealDamage(ai, target, 20, { text: (ai.wrestler.special || 'FINISHER') + '!!!', color: '#ff2ea6', size: 20, slam: true, meterGain: 0 });
@@ -1967,12 +1711,12 @@ function applyRemote(p, opp) {
     p.moving = false;
     if (p.climb && inp.dy > 0) p.climb = null;
     if (!locked && p.downTimer <= 0 && p.stunTimer <= 0 && !p.climb && p.diveTimer <= 0) {
-        if (inp.dx !== 0 && p.swingTimer <= 0) { p.vx = inp.dx * 4.4 * p.wrestler.speed; p.direction = inp.dx; p.moving = true; }
+        if (inp.dx !== 0) { p.vx = inp.dx * 3.6 * p.wrestler.speed; p.direction = inp.dx; p.moving = true; }
         else p.vx *= 0.8;
-        if (inp.dy !== 0 && p.swingTimer <= 0) { p.vy = inp.dy * 3.3 * p.wrestler.speed; p.moving = true; }
+        if (inp.dy !== 0) { p.vy = inp.dy * 2.7 * p.wrestler.speed; p.moving = true; }
         else p.vy *= 0.8;
     }
-    if (p.moving) p.walkAnim += 0.05 + 0.05 * Math.hypot(p.vx, p.vy);
+    if (p.moving) p.walkAnim += 0.15;
     if (p.downTimer > 0) { p.downTimer--; p.vx *= 0.9; p.vy *= 0.9; }
 
     // pinned guest mashing attack = kick out (mirrors P1 pin logic handled in grapple block via flags)
@@ -2269,7 +2013,7 @@ const NET = {
         p.downTimer = arr[4]; p.swingTimer = arr[5]; p.elev = arr[6];
         p.weapon = arr[7] ? { type: arr[7], durability: arr[8] } : null;
         p.moving = !!arr[9];
-        if (p.moving) p.walkAnim += 0.22;
+        if (p.moving) p.walkAnim += 0.15;
         p.jumpTimer = arr[10]; p.specialCharge = arr[11]; p.combo = arr[12];
         p.climb = arr[13] ? { x: p.x, y: p.y } : null;
         p.diveTimer = arr[14] || 0;
@@ -2299,7 +2043,7 @@ const NET = {
         this.unpackF(M.p2, sn.b, sp.b, t);
         M.frame = sn.f;
         M.grapple = sn.g ? { holder: sn.g[0] === 1 ? M.p1 : M.p2, victim: sn.g[0] === 1 ? M.p2 : M.p1, isPin: !!sn.g[1], frames: sn.g[2] } : null;
-        const pinC = M.grapple && M.grapple.isPin ? Math.min(2, Math.floor(M.grapple.frames / 60)) : 0;
+        const pinC = M.grapple && M.grapple.isPin ? Math.min(3, Math.floor(M.grapple.frames / 60) + 1) : 0;
         if (pinC && pinC !== this.prevPin) {
             Snd.beep(500 + pinC * 150);
             addFx(canvas.width / 2, canvas.height * 0.36 + 60, pinC + '!', { color: '#ff4455', size: 84, life: 58, rise: false });
@@ -2466,31 +2210,10 @@ function spriteFor(f) {
     const pinned = M.grapple && M.grapple.isPin && M.grapple.victim === f;
     if (M.grapple && M.grapple.isPin && M.grapple.holder === f && S.aCrouch)
         return { img: S.aCrouch, flip: f.direction < 0 };                            // covering the pin
-    if (f.climb) {                                                                    // turnbuckle: animated climb, then perched
-        if (S.aClimb) {
-            const idx = f.climbTimer > 0
-                ? Math.min(S.aClimb.length - 1, Math.floor((36 - f.climbTimer) / 36 * S.aClimb.length))
-                : S.aClimb.length - 1;
-            return { img: S.aClimb[idx], flip: f.direction < 0, noHeld: true };
-        }
-        return { img: S.aIdleB || S.idle, flip: false };                              // back to camera on the ropes
-    }
-    // ducking out through the bottom rope
-    if (f.exitTimer > 8 && S.aRopes)
-        return { img: S.aRopes[Math.min(S.aRopes.length - 1, Math.floor((f.exitTimer - 8) / 6))], flip: f.direction < 0, noHeld: true };
-    // overhead lift: holder hoists the (separately drawn) victim
-    const gLift = M.grapple;
-    if (gLift && gLift.throwing && gLift.throwing.kind === 'over' && S.aLift) {
-        if (gLift.holder === f) {
-            const t2 = gLift.throwing;
-            const idx = Math.min(S.aLift.length - 1, Math.floor((t2.total - t2.timer) / t2.total * S.aLift.length));
-            return { img: S.aLift[idx], flip: f.direction < 0, noHeld: true };
-        }
-        if (gLift.victim === f) return { img: S.aFallB || S.fallen || S.aIdle || S.idle, flip: f.direction < 0, noHeld: true };
-    }
+    if (f.climb) return { img: S.aIdleB || S.idle, flip: false };                     // back to camera on the ropes
     if (f.diveTimer > 0) {
         if (f.diveTimer > 20 && S.aJump) return { img: S.aJump[0], flip: f.direction < 0, noHeld: true };   // leap off the post
-        return { img: (S.aDive && S.aDive[0]) || S.jump, flip: f.direction < 0, noHeld: true };   // dive faces the direction of flight
+        return { img: (S.aDive && S.aDive[0]) || S.jump, flip: f.direction > 0, noHeld: true };
     }
     if (pinned || f.downTimer > 0) {
         if (!pinned && f.downTimer > 0 && f.downTimer <= 26 && S.aGetup)              // rising animation
@@ -2505,51 +2228,53 @@ function spriteFor(f) {
         if (f.weapon) {                                                               // weapon-specific swing frames
             const t = f.weapon.type;
             if (t === 'chair' && S.aChairR) return { img: pick(S.aChairR), flip: f.direction < 0, noHeld: true };
-            if (t === 'trashcan' && S.aTrashR) return { img: pick(S.aTrashR), flip: f.direction < 0, noHeld: true };
-            if (t === 'guitar' && S.aGuitarR) return { img: pick(S.aGuitarR), flip: f.direction < 0, noHeld: true };
-            if (t === 'kendo' && S.aKendoR && S.aKendoL)
-                return { img: pick(f.direction < 0 ? S.aKendoL : S.aKendoR), flip: false, noHeld: true };
+            if (t === 'guitar' && (S.aGuitarR || S.aGuitarL)) {
+                const arr = f.direction < 0 ? (S.aGuitarL || S.aGuitarR) : (S.aGuitarR || S.aGuitarL);
+                return { img: pick(arr), flip: f.direction < 0 && !S.aGuitarL, noHeld: true };
+            }
+            if ((t === 'trashcan' || t === 'lid') && (S.aCanR || S.aCanL)) {
+                const arr = f.direction < 0 ? (S.aCanL || S.aCanR) : (S.aCanR || S.aCanL);
+                return { img: pick(arr), flip: f.direction < 0 && !S.aCanL, noHeld: true };
+            }
+            if (t === 'kendo' && (S.aKendoR || S.aKendoL)) {
+                const arr = f.direction < 0 ? (S.aKendoL || S.aKendoR) : (S.aKendoR || S.aKendoL);
+                return { img: pick(arr), flip: f.direction < 0 && !S.aKendoL, noHeld: true };
+            }
             if (t === 'belt' && (S.aBeltR || S.aBeltL)) {
                 const arr = f.direction < 0 ? (S.aBeltL || S.aBeltR) : (S.aBeltR || S.aBeltL);
-                return { img: pick(arr), flip: (f.direction < 0) !== (arr === S.aBeltL), noHeld: true };
+                return { img: pick(arr), flip: f.direction < 0, noHeld: true };
             }
         }
-        // bare-handed strike variety: elbow / punch / kick, chosen per swing.
-        // L art faces LEFT and R art faces RIGHT — use the matching side AS-IS and only
-        // mirror when a wrestler has just one side drawn (same convention as the walk fix;
-        // the old code picked the right art and then flipped it, so punches went backwards)
+        // bare-handed strike variety: elbow / punch / kick, chosen per swing
         const kind = f.strikeKind || 0;
         const sets = [ [S.aElbowL, S.aElbowR], [S.aPunchL, S.aPunchR], [S.aKickL, S.aKickR] ];
         const [L, R] = sets[kind % sets.length];
-        const arr = f.direction < 0 ? (L || R) : (R || L);
-        if (arr) return { img: pick(arr), flip: (f.direction < 0) !== (arr === L) };
-        const fr = S.elbowR || S.aElbowR || S.aElbowL;
-        if (fr) return { img: pick(fr), flip: f.direction < 0 };
-        return { img: S.aIdle || S.idle, flip: f.direction < 0 };   // never crash on missing strike art
+        if (L && R) return { img: pick(f.direction < 0 ? L : R), flip: f.direction < 0 };
+        const fr = S.elbowR;
+        return { img: pick(fr), flip: f.direction < 0 };
     }
     if (f.jumpTimer > 0) return { img: S.jump, flip: f.direction < 0 };
     if (f.moving) {
         // Moving UP (away from camera) with little horizontal motion: show the back.
         if (f.vy < -0.6 && Math.abs(f.vy) >= Math.abs(f.vx) && (S.aIdleB || S.idle))
             return { img: S.aIdleB || S.idle, flip: false };
-        // Walk art follows the direction of TRAVEL, not the combat facing — the AI faces
-        // its opponent at all times, so retreats/strafes/weapon runs used to moonwalk.
-        const mdir = Math.abs(f.vx) > 0.4 ? (f.vx < 0 ? -1 : 1) : f.direction;
-        // weapon-specific walk cycles (chair carry, guitar carry) when the art exists
+        // carrying a weapon with dedicated walk art: use it (weapon is IN the art)
         if (f.weapon) {
-            const wt = f.weapon.type;
-            const WL = wt === 'chair' ? S.aChairWalkL : null;
-            const WR = wt === 'chair' ? S.aChairWalkR : (wt === 'guitar' ? S.aGuitarWalkR : null);
-            const arr2 = mdir < 0 ? (WL || WR) : (WR || WL);
-            if (arr2) return { img: arr2[Math.floor(f.walkAnim) % arr2.length], flip: (mdir < 0) !== (arr2 === WL), noHeld: true };
+            const WKEY = { chair: 'Chair', kendo: 'Kendo', trashcan: 'Can', lid: 'Can', guitar: 'Guitar' }[f.weapon.type];
+            const wL = WKEY && S['wWalk' + WKEY + 'L'], wR = WKEY && S['wWalk' + WKEY + 'R'];
+            if (wL || wR) {
+                // weapon-walk art is direction-true (unlike body walks): flip only when
+                // the needed side is missing
+                const arr = f.direction < 0 ? (wL || wR) : (wR || wL);
+                const flipW = f.direction < 0 ? !wL : !wR;
+                return { img: arr[Math.floor(f.walkAnim) % arr.length], flip: flipW, noHeld: true };
+            }
         }
         const fast = Math.hypot(f.vx, f.vy) > 3.3;
-        const L = fast ? (S.aRunL || S.aWalkL) : (S.aWalkL || S.walkL), R = fast ? (S.aRunR || S.aWalkR) : (S.aWalkR || S.walkR);
-        // walkL art faces LEFT and walkR art faces RIGHT — use the matching set AS-IS.
-        if (L && R) { const arr = mdir < 0 ? L : R; return { img: arr[Math.floor(f.walkAnim) % arr.length], flip: false }; }
-        const solo = R || L;               // only one side has art: mirror it for the other direction
-        if (solo) return { img: solo[Math.floor(f.walkAnim) % solo.length], flip: solo === R ? mdir < 0 : mdir > 0 };
-        return { img: S.aIdle || S.idle, flip: mdir < 0 };
+        const L = fast ? (S.aRunL || S.aWalkL) : S.aWalkL, R = fast ? (S.aRunR || S.aWalkR) : S.aWalkR;
+        // Walk/run art is drawn facing LEFT — mirror it when the fighter moves right.
+        if (L && R) { const arr = f.direction < 0 ? L : R; return { img: arr[Math.floor(f.walkAnim) % arr.length], flip: f.direction > 0 }; }
+        return { img: S.walkR[Math.floor(f.walkAnim) % S.walkR.length], flip: f.direction > 0 };
     }
     return { img: S.aIdle || S.idle, flip: false };
 }
@@ -2688,38 +2413,8 @@ function render() {
     // 11. canvas HUD
     drawHUD();
 
-    // 11.5 ring calibration overlay
-    if (calib.on) {
-        ctx.save();
-        ctx.fillStyle = 'rgba(141,255,30,0.13)';
-        ctx.fillRect(matRect.L, matRect.T, matRect.R - matRect.L, matRect.B - matRect.T);
-        ctx.strokeStyle = '#8dff1e'; ctx.lineWidth = 2; ctx.setLineDash([8, 6]);
-        ctx.strokeRect(matRect.L, matRect.T, matRect.R - matRect.L, matRect.B - matRect.T);
-        ctx.setLineDash([]);
-        [[matRect.L, matRect.T, '#8dff1e'], [matRect.R, matRect.B, '#8dff1e'],
-         [(matRect.L + matRect.R) / 2, (matRect.T + matRect.B) / 2, '#ff8c1a']].forEach(([hx2, hy2, col]) => {
-            ctx.fillStyle = col;
-            ctx.beginPath(); ctx.arc(hx2, hy2, 11, 0, Math.PI * 2); ctx.fill();
-            ctx.strokeStyle = '#000'; ctx.lineWidth = 2; ctx.stroke();
-        });
-        ctx.font = '900 14px Arial'; ctx.textAlign = 'center';
-        const lines = [
-            'RING CALIBRATION — green dots: back-left + front-right mat corners · orange dot: move box',
-            calibString(),
-            'C: COPY   ·   R: RESET DEFAULTS   ·   ESC: CANCEL   ·   K: SAVE & EXIT'
-        ];
-        lines.forEach((t, i) => {
-            const yy = 84 + i * 24;
-            ctx.strokeStyle = '#000'; ctx.lineWidth = 4;
-            ctx.strokeText(t, canvas.width / 2, yy);
-            ctx.fillStyle = i === 1 ? '#ffe000' : '#8dff1e';
-            ctx.fillText(t, canvas.width / 2, yy);
-        });
-        ctx.restore();
-    }
-
     // 12. pause overlay
-    if (paused && !calib.on) {
+    if (paused) {
         ctx.fillStyle = 'rgba(0,0,0,0.55)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.textAlign = 'center';
@@ -2759,35 +2454,15 @@ function drawFighter(f) {
     ctx.beginPath(); ctx.ellipse(f.x, feetY, 34 * depthScale, 10 * depthScale, 0, 0, Math.PI * 2); ctx.stroke();
 
     if (img && img.complete && img.naturalWidth) {
-        // hoisted overhead mid-lift: body is horizontal, rises above the holder
-        const gLift2 = M.grapple;
-        const lifted = gLift2 && gLift2.throwing && gLift2.throwing.kind === 'over' && gLift2.victim === f &&
-                       SPRITES[gLift2.holder.wrestler.id] && SPRITES[gLift2.holder.wrestler.id].aLift;
-        const isDown = f.downTimer > 0 || lifted || (M.grapple && M.grapple.isPin && M.grapple.victim === f);
-        const standH = Math.max(88, Math.min(matH * 0.52, canvas.height * 0.23));
-        let targetH;
-        if (isDown && img.naturalWidth > img.naturalHeight) {
-            // lying art is sideways (wide, short). Size it so the BODY LENGTH matches the
-            // standing height — wrestlers used to balloon to ~2.5x the moment they fell.
-            targetH = standH * 1.02 * (img.naturalHeight / img.naturalWidth) * depthScale * 1.1;
-        } else if (isDown) {
-            targetH = Math.max(50, Math.min(matH * 0.24, canvas.height * 0.11)) * depthScale * 1.1;
-        } else {
-            targetH = standH * depthScale * 1.1;    // wrestlers 10% larger
-        }
+        const isDown = f.downTimer > 0 || (M.grapple && M.grapple.isPin && M.grapple.victim === f);
+        const baseH = isDown
+            ? Math.max(50, Math.min(matH * 0.24, canvas.height * 0.11))
+            : Math.max(88, Math.min(matH * 0.52, canvas.height * 0.23));
+        const targetH = baseH * depthScale * 1.1;   // wrestlers 10% larger
         const scale = targetH / img.naturalHeight;
         const w = img.naturalWidth * scale, h = targetH;
         const flip = !!sp.flip;
-        // procedural step-bounce: the body rises and falls with each stride so walking
-        // reads as steps, not gliding (one bounce per step = 2 art frames)
-        let bob = 0;
-        const inHold = M.grapple && (M.grapple.holder === f || M.grapple.victim === f);
-        if (f.moving && f.downTimer <= 0 && f.stunTimer <= 0 && !f.climb && f.diveTimer <= 0 && !inHold) {
-            bob = Math.abs(Math.sin(f.walkAnim * Math.PI / 2)) * Math.min(3.5, h * 0.025);
-        }
-        let liftY = 0;
-        if (lifted) liftY = (1 - gLift2.throwing.timer / gLift2.throwing.total) * standH * 0.85;
-        const drawY = feetY - h - jumpArc - bob - liftY;
+        const drawY = feetY - h - jumpArc;
 
         // placeholder wrestlers ride a tinted base body until their own art lands
         const tintF = (f.wrestler.real === false && f.wrestler.hue)
@@ -2795,11 +2470,11 @@ function drawFighter(f) {
 
         // motion trail on fast bodies (throws, specials)
         const speed = Math.hypot(f.vx, f.vy);
-        if (speed > 8) {                       // only genuinely launched bodies leave a trail
-            for (let k = 2; k >= 1; k--) {
+        if (speed > 6.5) {
+            for (let k = 3; k >= 1; k--) {
                 ctx.save();
                 if (tintF) ctx.filter = tintF;
-                ctx.globalAlpha = 0.08 * k;
+                ctx.globalAlpha = 0.10 * k;
                 ctx.imageSmoothingEnabled = false;
                 const tx = f.x - f.vx * k * 1.6, ty = drawY - f.vy * k * 1.6;
                 if (flip) { ctx.translate(tx, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w/2, ty, w, h); }
@@ -2807,23 +2482,6 @@ function drawFighter(f) {
                 ctx.restore();
             }
         }
-
-        // held weapon: rests BEHIND the body (reads as gripped, not pasted on top);
-        // sweeps in FRONT only during the swing
-        const drawHeld = () => {
-            if (!(f.weapon && f.downTimer <= 0 && !sp.noHeld && !f.climb)) return;
-            const prog = f.swingTimer > 0 ? (18 - f.swingTimer) / 18 : -1;
-            // round/bulky items (lid, can, guitar) THRUST forward instead of the big
-            // overhead arc — the arc spun them through the wrestler's own torso
-            const round = f.weapon.type === 'lid' || f.weapon.type === 'trashcan' || f.weapon.type === 'guitar';
-            const rot = prog < 0 ? f.direction * 0.5
-                                 : f.direction * (round ? (-0.25 + prog * 0.9) : (-0.7 + prog * 2.1));
-            // resting: carried low at the far hand (hip height, tucked behind the body)
-            const hx = f.x + f.direction * w * (prog < 0 ? 0.38 : (round ? 0.46 : 0.34));
-            const hy = drawY + h * (prog < 0 ? 0.6 : 0.42);
-            drawWeaponSprite(WEAPON_TYPES[f.weapon.type].held, hx, hy, targetH * (prog < 0 ? 0.34 : 0.42), rot, f.direction < 0, true);
-        };
-        if (f.swingTimer <= 0) drawHeld();
 
         const pinning = M.grapple && M.grapple.isPin && M.grapple.holder === f;
         const ph = pinning && !SPRITES[f.wrestler.id].aCrouch ? h * 0.78 : h;
@@ -2836,7 +2494,15 @@ function drawFighter(f) {
         else ctx.drawImage(img, f.x - w / 2, py, w, ph);
         ctx.restore();
 
-        if (f.swingTimer > 0) drawHeld();
+        // weapon in hand: grip pivot, wind-up swing arc (skipped when the swing sprite draws the weapon)
+        if (f.weapon && f.downTimer <= 0 && !sp.noHeld && !f.climb) {
+            const prog = f.swingTimer > 0 ? (18 - f.swingTimer) / 18 : -1;
+            const rot = prog < 0 ? f.direction * 0.22
+                                 : f.direction * (-0.7 + prog * 2.1);
+            const hx = f.x + f.direction * w * 0.34;
+            const hy = drawY + h * 0.42;
+            drawWeaponSprite(WEAPON_TYPES[f.weapon.type].held, hx, hy, targetH * 0.42, rot, f.direction < 0, true);
+        }
     }
 }
 
@@ -2889,7 +2555,6 @@ function loop(t) {
     lastT = t;
     while (acc >= DT) { step(); acc -= DT; }
     render();
-    DBG.tick(t);
     requestAnimationFrame(loop);
 }
 
