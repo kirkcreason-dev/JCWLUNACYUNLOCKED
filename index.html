@@ -2452,6 +2452,26 @@ function render() {
 function drawFighter(f) {
     const sp = spriteFor(f);
     const img = sp && sp.img;
+    // missing-art guard: never render an invisible wrestler — draw a loud placeholder
+    if (!img || !img.naturalWidth) {
+        if (!f._artWarned) {
+            f._artWarned = true;
+            console.warn('MISSING ART for', f.wrestler.id, '— game folder is out of date (sprites/ + manifest.json)');
+            addFx(f.x, f.y - 90, 'MISSING ART — UPDATE GAME FOLDER!', { color: '#ff2255', size: 14 });
+        }
+        const dropYm = f.elev * ringDrop();
+        const feetYm = f.y + 52 + dropYm;
+        ctx.save();
+        ctx.fillStyle = f.isP1 ? 'rgba(255,204,51,0.85)' : 'rgba(102,170,255,0.85)';
+        ctx.strokeStyle = '#000'; ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(f.x - 28, feetYm - 130, 56, 130, 16) : ctx.rect(f.x - 28, feetYm - 130, 56, 130);
+        ctx.fill(); ctx.stroke();
+        ctx.fillStyle = '#000'; ctx.font = '900 30px Arial'; ctx.textAlign = 'center';
+        ctx.fillText('?', f.x, feetYm - 60);
+        ctx.restore();
+        return;
+    }
     const dropY = f.elev * ringDrop();
     let jumpArc = f.jumpTimer > 0 ? Math.sin((30 - f.jumpTimer) / 30 * Math.PI) * 30 : 0;
     if (f.climb) jumpArc = 42;                                                    // perched on the turnbuckle
