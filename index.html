@@ -26,6 +26,8 @@ body { background:#0a0a0a; font-family:Arial,sans-serif; overflow:hidden; height
 .roster-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); gap:8px; width:100%; max-width:640px; margin-bottom:12px; }
 .wrestler-card { border:3px solid #6a6a6a; border-radius:6px; cursor:pointer; transition:all 0.12s; overflow:hidden; position:relative; background:#111; }
 .wrestler-card.secret-card { border-color:#8dff1e; box-shadow:0 0 12px rgba(141,255,30,0.65); }
+.wrestler-card.vj-pulse { animation: vjpulse 0.55s ease-in-out 5; }
+@keyframes vjpulse { 0%,100% { box-shadow:0 0 12px rgba(141,255,30,0.65); transform:scale(1); } 50% { box-shadow:0 0 34px #8dff1e; transform:scale(1.07); } }
 .wrestler-card img { width:100%; display:block; image-rendering:pixelated; }
 .wrestler-card .card-name { display:flex; align-items:center; justify-content:center; min-height:24px; text-align:center; font-size:8px; font-weight:900; text-transform:uppercase; color:#ddd; letter-spacing:0.5px; background:linear-gradient(180deg,#3a3a3a,#1c1c1c); padding:3px 2px; border-top:2px solid #555; line-height:1.2; }
 .wrestler-card:hover { border-color:#ffcc33; box-shadow:0 0 14px rgba(255,204,51,0.5); }
@@ -606,11 +608,17 @@ function unlockVJ() {
     if (!w) return;
     let img = document.querySelector('.wrestler-card img[data-wid="violentj"]');
     if (!img) { addRosterCard(w); img = document.querySelector('.wrestler-card img[data-wid="violentj"]'); }
-    if (already) return;                       // repeat trigger: card exists, stay quiet
-    if (img) img.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // every trigger: point the player straight at the card
+    if (img) {
+        const card = img.parentElement;
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.remove('vj-pulse'); void card.offsetWidth;
+        card.classList.add('vj-pulse');
+    }
     Snd.unlock(); Snd.crowdPop();
     const b = document.createElement('div');
-    b.textContent = 'WHOOP WHOOP! VIOLENT J HAS ENTERED THE BUILDING';
+    b.textContent = already ? 'VIOLENT J IS ALREADY HERE — GREEN CARD, BOTTOM OF THE ROSTER'
+                            : 'WHOOP WHOOP! VIOLENT J HAS ENTERED THE BUILDING';
     b.style.cssText = 'position:fixed;top:18%;left:50%;transform:translateX(-50%);z-index:999;' +
         'background:#000;color:#8dff1e;border:3px solid #8dff1e;padding:14px 22px;font-weight:900;' +
         'font-size:17px;letter-spacing:1px;box-shadow:0 0 40px #8dff1e;text-align:center;max-width:86vw;';
@@ -618,20 +626,31 @@ function unlockVJ() {
     setTimeout(() => b.remove(), 3200);
 }
 (function secretInputs() {
+    // keyboard: letters only, so WHOOPWHOOP works with or without spaces/typos before it
     let buf = '';
     document.addEventListener('keydown', e => {
         if (!e.key || e.key.length !== 1) return;
-        buf = (buf + e.key.toLowerCase()).slice(-10);
-        if (buf === 'whoopwhoop') unlockVJ();
+        const c = e.key.toLowerCase();
+        if (c < 'a' || c > 'z') return;                  // ignore spaces, digits, symbols
+        buf = (buf + c).slice(-10);
+        if (buf === 'whoopwhoop') { buf = ''; unlockVJ(); }
     });
+    // touch: 7 quick taps on the title logo (2s window per tap, zoom-proof)
     let taps = 0, last = 0;
     const logo = document.querySelector('#characterSelect .title-img');
-    if (logo) logo.addEventListener('pointerdown', () => {
-        const now = Date.now();
-        taps = (now - last < 1600) ? taps + 1 : 1;
-        last = now;
-        if (taps >= 7) { taps = 0; unlockVJ(); }
-    });
+    if (logo) {
+        logo.style.touchAction = 'manipulation';
+        const tap = () => {
+            const now = Date.now();
+            taps = (now - last < 2000) ? taps + 1 : 1;
+            last = now;
+            if (taps >= 7) { taps = 0; unlockVJ(); }
+        };
+        if (window.PointerEvent) logo.addEventListener('pointerdown', tap);
+        else { logo.addEventListener('touchstart', tap); logo.addEventListener('mousedown', tap); }
+    }
+    // fail-safe: open the game with ?vj at the end of the URL
+    try { if (/[?&]vj/.test(location.search)) unlockVJ(); } catch (e) {}
 })();
 function showStats(w) {
     document.getElementById('bigPortrait').src = uiSrc('big', w);
