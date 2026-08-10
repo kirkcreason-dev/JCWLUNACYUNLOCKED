@@ -1971,9 +1971,6 @@
   "aFallF": {
    "file": "sprites/ringrat/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/ringrat/crouch.png"
-  },
   "jump": {
    "file": "sprites/ringrat/jump_air.png"
   },
@@ -2151,9 +2148,6 @@
   "aFallF": {
    "file": "sprites/alice/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/alice/crouch.png"
-  },
   "aJump": [
    {
     "file": "sprites/alice/jump_crouch.png"
@@ -2305,13 +2299,19 @@
  },
  "tony": {
   "idle": {
-   "file": "sprites/tony/idle.png"
+   "file": "sprites/tony/idle.png",
+   "w": 513,
+   "h": 935
   },
   "aIdle": {
-   "file": "sprites/tony/idle.png"
+   "file": "sprites/tony/idle.png",
+   "w": 513,
+   "h": 935
   },
   "aIdleB": {
-   "file": "sprites/tony/idle_back.png"
+   "file": "sprites/tony/idle_back.png",
+   "w": 509,
+   "h": 938
   },
   "fallen": {
    "file": "sprites/tony/fall_b.png"
@@ -2321,9 +2321,6 @@
   },
   "aFallF": {
    "file": "sprites/tony/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/tony/crouch.png"
   },
   "aJump": [
    {
@@ -2476,7 +2473,273 @@
     "file": "sprites/tony/over0.png"
    },
    {
-    "file": "sprites/tony/over1.png"
+    "file": "sprites/tony/over1.png",
+    "w": 585,
+    "h": 1104
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/tony/run_l0.png",
+    "w": 329,
+    "h": 421
+   },
+   {
+    "file": "sprites/tony/run_l1.png",
+    "w": 332,
+    "h": 422
+   },
+   {
+    "file": "sprites/tony/run_l2.png",
+    "w": 329,
+    "h": 422
+   },
+   {
+    "file": "sprites/tony/run_l3.png",
+    "w": 328,
+    "h": 423
+   },
+   {
+    "file": "sprites/tony/run_l4.png",
+    "w": 327,
+    "h": 422
+   },
+   {
+    "file": "sprites/tony/run_l5.png",
+    "w": 332,
+    "h": 421
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/tony/run_r0.png",
+    "w": 328,
+    "h": 428
+   },
+   {
+    "file": "sprites/tony/run_r1.png",
+    "w": 322,
+    "h": 431
+   },
+   {
+    "file": "sprites/tony/run_r2.png",
+    "w": 335,
+    "h": 430
+   },
+   {
+    "file": "sprites/tony/run_r3.png",
+    "w": 336,
+    "h": 430
+   },
+   {
+    "file": "sprites/tony/run_r4.png",
+    "w": 320,
+    "h": 431
+   },
+   {
+    "file": "sprites/tony/run_r5.png",
+    "w": 332,
+    "h": 432
+   }
+  ],
+  "aStagger": {
+   "file": "sprites/tony/stagger.png",
+   "w": 502,
+   "h": 936
+  },
+  "aGetup": [
+   {
+    "file": "sprites/tony/getup0.png",
+    "w": 513,
+    "h": 396
+   },
+   {
+    "file": "sprites/tony/getup1.png",
+    "w": 412,
+    "h": 563
+   },
+   {
+    "file": "sprites/tony/getup2.png",
+    "w": 400,
+    "h": 721
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/tony/taunt.png",
+    "w": 563,
+    "h": 935
+   }
+  ],
+  "aWin": {
+   "file": "sprites/tony/win.png",
+   "w": 465,
+   "h": 1000
+  },
+  "aLose": {
+   "file": "sprites/tony/lose.png",
+   "w": 518,
+   "h": 806
+  },
+  "aCrouch": {
+   "file": "sprites/tony/crouch.png",
+   "w": 135,
+   "h": 127
+  },
+  "aDive": [
+   {
+    "file": "sprites/tony/dive0.png",
+    "w": 694,
+    "h": 286
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/tony/chair_a0.png",
+    "w": 414,
+    "h": 962
+   },
+   {
+    "file": "sprites/tony/chair_a1.png",
+    "w": 595,
+    "h": 632
+   },
+   {
+    "file": "sprites/tony/chair_a2.png",
+    "w": 511,
+    "h": 636
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/tony/kendo_a0.png",
+    "w": 480,
+    "h": 962
+   },
+   {
+    "file": "sprites/tony/kendo_a1.png",
+    "w": 442,
+    "h": 754
+   },
+   {
+    "file": "sprites/tony/kendo_a2.png",
+    "w": 522,
+    "h": 767
+   }
+  ],
+  "aGuitarR": [
+   {
+    "file": "sprites/tony/guitar_a0.png",
+    "w": 431,
+    "h": 843
+   },
+   {
+    "file": "sprites/tony/guitar_a1.png",
+    "w": 654,
+    "h": 610
+   },
+   {
+    "file": "sprites/tony/guitar_a2.png",
+    "w": 292,
+    "h": 563
+   }
+  ],
+  "aCanR": [
+   {
+    "file": "sprites/tony/can_a0.png",
+    "w": 505,
+    "h": 821
+   },
+   {
+    "file": "sprites/tony/can_a1.png",
+    "w": 435,
+    "h": 1024
+   },
+   {
+    "file": "sprites/tony/can_a2.png",
+    "w": 526,
+    "h": 767
+   }
+  ],
+  "wWalkChairL": [
+   {
+    "file": "sprites/tony/wchair_l0.png",
+    "w": 282,
+    "h": 457
+   },
+   {
+    "file": "sprites/tony/wchair_l1.png",
+    "w": 282,
+    "h": 456
+   },
+   {
+    "file": "sprites/tony/wchair_l2.png",
+    "w": 281,
+    "h": 458
+   },
+   {
+    "file": "sprites/tony/wchair_l3.png",
+    "w": 279,
+    "h": 457
+   },
+   {
+    "file": "sprites/tony/wchair_l4.png",
+    "w": 273,
+    "h": 457
+   }
+  ],
+  "wWalkChairR": [
+   {
+    "file": "sprites/tony/wchair_r0.png",
+    "w": 282,
+    "h": 441
+   },
+   {
+    "file": "sprites/tony/wchair_r1.png",
+    "w": 282,
+    "h": 442
+   },
+   {
+    "file": "sprites/tony/wchair_r2.png",
+    "w": 283,
+    "h": 443
+   },
+   {
+    "file": "sprites/tony/wchair_r3.png",
+    "w": 279,
+    "h": 441
+   },
+   {
+    "file": "sprites/tony/wchair_r4.png",
+    "w": 280,
+    "h": 442
+   }
+  ],
+  "wWalkCanL": [
+   {
+    "file": "sprites/tony/wcan_l0.png",
+    "w": 468,
+    "h": 743
+   },
+   {
+    "file": "sprites/tony/wcan_l1.png",
+    "w": 468,
+    "h": 744
+   },
+   {
+    "file": "sprites/tony/wcan_l2.png",
+    "w": 417,
+    "h": 746
+   },
+   {
+    "file": "sprites/tony/wcan_l3.png",
+    "w": 465,
+    "h": 743
+   },
+   {
+    "file": "sprites/tony/wcan_l4.png",
+    "w": 461,
+    "h": 744
    }
   ]
  },
@@ -2498,9 +2761,6 @@
   },
   "aFallF": {
    "file": "sprites/cokane/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/cokane/crouch.png"
   },
   "aJump": [
    {
@@ -2670,9 +2930,6 @@
   "aFallF": {
    "file": "sprites/ec3/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/ec3/crouch.png"
-  },
   "aJump": [
    {
     "file": "sprites/ec3/jump_crouch.png"
@@ -2840,9 +3097,6 @@
   },
   "aFallF": {
    "file": "sprites/jrod/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/jrod/crouch.png"
   },
   "aJump": [
    {
@@ -3012,9 +3266,6 @@
   "aFallF": {
    "file": "sprites/kerry/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/kerry/crouch.png"
-  },
   "aJump": [
    {
     "file": "sprites/kerry/jump_crouch.png"
@@ -3182,9 +3433,6 @@
   },
   "aFallF": {
    "file": "sprites/hokane/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/hokane/crouch.png"
   },
   "aJump": [
    {
@@ -3354,9 +3602,6 @@
   "aFallF": {
    "file": "sprites/facade/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/facade/crouch.png"
-  },
   "aJump": [
    {
     "file": "sprites/facade/jump_crouch.png"
@@ -3524,9 +3769,6 @@
   },
   "aFallF": {
    "file": "sprites/krule/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/krule/crouch.png"
   },
   "gGrappleR": [
    {
@@ -3701,9 +3943,6 @@
   },
   "aFallF": {
    "file": "sprites/flowe/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/flowe/crouch.png"
   },
   "gGrappleR": [
    {
@@ -4038,9 +4277,6 @@
   "aFallF": {
    "file": "sprites/moshpit/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/moshpit/crouch.png"
-  },
   "gGrappleR": [
    {
     "file": "sprites/moshpit/grap_r0.png"
@@ -4191,32 +4427,20 @@
   "aFallF": {
    "file": "sprites/phantom/fall_f.png"
   },
-  "gGrappleR": [
+  "aJump": [
    {
-    "file": "sprites/phantom/grap_r0.png"
-   }
-  ],
-  "gGrappleL": [
-   {
-    "file": "sprites/phantom/grap_l0.png"
-   }
-  ],
-  "gThrowR": [
-   {
-    "file": "sprites/phantom/throw_r0.png"
+    "file": "sprites/phantom/jump_crouch.png"
    },
    {
-    "file": "sprites/phantom/throw_r1.png"
-   }
-  ],
-  "gThrowL": [
-   {
-    "file": "sprites/phantom/throw_l0.png"
+    "file": "sprites/phantom/jump_air.png"
    },
    {
-    "file": "sprites/phantom/throw_l1.png"
+    "file": "sprites/phantom/jump_land.png"
    }
   ],
+  "jump": {
+   "file": "sprites/phantom/jump_air.png"
+  },
   "walkL": [
    {
     "file": "sprites/phantom/walk_l0.png"
@@ -4273,20 +4497,22 @@
     "file": "sprites/phantom/walk_r3.png"
    }
   ],
-  "aJump": [
+  "elbowR": [
    {
-    "file": "sprites/phantom/jump_crouch.png"
+    "file": "sprites/phantom/elbow_r0.png"
    },
    {
-    "file": "sprites/phantom/jump_air.png"
-   },
-   {
-    "file": "sprites/phantom/jump_land.png"
+    "file": "sprites/phantom/elbow_r1.png"
    }
   ],
-  "jump": {
-   "file": "sprites/phantom/jump_air.png"
-  },
+  "aElbowR": [
+   {
+    "file": "sprites/phantom/elbow_r0.png"
+   },
+   {
+    "file": "sprites/phantom/elbow_r1.png"
+   }
+  ],
   "elbowL": [
    {
     "file": "sprites/phantom/elbow_l0.png"
@@ -4309,20 +4535,20 @@
     "file": "sprites/phantom/elbow_l2.png"
    }
   ],
-  "elbowR": [
+  "gThrowR": [
    {
-    "file": "sprites/phantom/elbow_r0.png"
+    "file": "sprites/phantom/throw_r0.png"
    },
    {
-    "file": "sprites/phantom/elbow_r1.png"
+    "file": "sprites/phantom/throw_r1.png"
    }
   ],
-  "aElbowR": [
+  "gThrowL": [
    {
-    "file": "sprites/phantom/elbow_r0.png"
+    "file": "sprites/phantom/throw_l0.png"
    },
    {
-    "file": "sprites/phantom/elbow_r1.png"
+    "file": "sprites/phantom/throw_l1.png"
    }
   ],
   "gOverhead": [
@@ -4349,9 +4575,6 @@
   },
   "aFallF": {
    "file": "sprites/sallyboy/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/sallyboy/crouch.png"
   },
   "gGrappleR": [
    {
@@ -4521,9 +4744,102 @@
   "aFallF": {
    "file": "sprites/vincenzo/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/vincenzo/crouch.png"
+  "aJump": [
+   {
+    "file": "sprites/vincenzo/jump_crouch.png"
+   },
+   {
+    "file": "sprites/vincenzo/jump_air.png"
+   },
+   {
+    "file": "sprites/vincenzo/jump_land.png"
+   }
+  ],
+  "jump": {
+   "file": "sprites/vincenzo/jump_air.png"
   },
+  "walkL": [
+   {
+    "file": "sprites/vincenzo/walk_l0.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_l1.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_l2.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/vincenzo/walk_l0.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_l1.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_l2.png"
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/vincenzo/walk_r0.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_r1.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_r2.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/vincenzo/walk_r0.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_r1.png"
+   },
+   {
+    "file": "sprites/vincenzo/walk_r2.png"
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/vincenzo/elbow_r0.png"
+   },
+   {
+    "file": "sprites/vincenzo/elbow_r1.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/vincenzo/elbow_r0.png"
+   },
+   {
+    "file": "sprites/vincenzo/elbow_r1.png"
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/vincenzo/elbow_l0.png"
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l1.png"
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l2.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/vincenzo/elbow_l0.png"
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l1.png"
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l2.png"
+   }
+  ],
   "gGrappleR": [
    {
     "file": "sprites/vincenzo/grap_r0.png"
@@ -4556,108 +4872,6 @@
     "file": "sprites/vincenzo/throw_l1.png"
    }
   ],
-  "walkL": [
-   {
-    "file": "sprites/vincenzo/walk_l0.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_l1.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_l2.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_l3.png"
-   }
-  ],
-  "aWalkL": [
-   {
-    "file": "sprites/vincenzo/walk_l0.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_l1.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_l2.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_l3.png"
-   }
-  ],
-  "walkR": [
-   {
-    "file": "sprites/vincenzo/walk_r0.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_r1.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_r2.png"
-   }
-  ],
-  "aWalkR": [
-   {
-    "file": "sprites/vincenzo/walk_r0.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_r1.png"
-   },
-   {
-    "file": "sprites/vincenzo/walk_r2.png"
-   }
-  ],
-  "aJump": [
-   {
-    "file": "sprites/vincenzo/jump_crouch.png"
-   },
-   {
-    "file": "sprites/vincenzo/jump_air.png"
-   },
-   {
-    "file": "sprites/vincenzo/jump_land.png"
-   }
-  ],
-  "jump": {
-   "file": "sprites/vincenzo/jump_air.png"
-  },
-  "elbowL": [
-   {
-    "file": "sprites/vincenzo/elbow_l0.png"
-   },
-   {
-    "file": "sprites/vincenzo/elbow_l1.png"
-   },
-   {
-    "file": "sprites/vincenzo/elbow_l2.png"
-   }
-  ],
-  "aElbowL": [
-   {
-    "file": "sprites/vincenzo/elbow_l0.png"
-   },
-   {
-    "file": "sprites/vincenzo/elbow_l1.png"
-   },
-   {
-    "file": "sprites/vincenzo/elbow_l2.png"
-   }
-  ],
-  "elbowR": [
-   {
-    "file": "sprites/vincenzo/elbow_r0.png"
-   },
-   {
-    "file": "sprites/vincenzo/elbow_r1.png"
-   }
-  ],
-  "aElbowR": [
-   {
-    "file": "sprites/vincenzo/elbow_r0.png"
-   },
-   {
-    "file": "sprites/vincenzo/elbow_r1.png"
-   }
-  ],
   "gOverhead": [
    {
     "file": "sprites/vincenzo/over0.png"
@@ -4685,9 +4899,6 @@
   },
   "aFallF": {
    "file": "sprites/bigvito/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/bigvito/crouch.png"
   },
   "gGrappleR": [
    {
@@ -4863,9 +5074,6 @@
   "aFallF": {
    "file": "sprites/haleyj/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/haleyj/crouch.png"
-  },
   "gGrappleR": [
    {
     "file": "sprites/haleyj/grap_r0.png"
@@ -5034,9 +5242,120 @@
   "aFallF": {
    "file": "sprites/kongokong/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/kongokong/crouch.png"
+  "aJump": [
+   {
+    "file": "sprites/kongokong/jump_crouch.png"
+   },
+   {
+    "file": "sprites/kongokong/jump_air.png"
+   },
+   {
+    "file": "sprites/kongokong/jump_land.png"
+   }
+  ],
+  "jump": {
+   "file": "sprites/kongokong/jump_air.png"
   },
+  "walkL": [
+   {
+    "file": "sprites/kongokong/walk_l0.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_l1.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_l2.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_l3.png"
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/kongokong/walk_l0.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_l1.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_l2.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_l3.png"
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/kongokong/walk_r0.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_r1.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_r2.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_r3.png"
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/kongokong/walk_r0.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_r1.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_r2.png"
+   },
+   {
+    "file": "sprites/kongokong/walk_r3.png"
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/kongokong/elbow_r0.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_r1.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_r2.png"
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/kongokong/elbow_r0.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_r1.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_r2.png"
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/kongokong/elbow_l0.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_l1.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_l2.png"
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/kongokong/elbow_l0.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_l1.png"
+   },
+   {
+    "file": "sprites/kongokong/elbow_l2.png"
+   }
+  ],
   "gGrappleR": [
    {
     "file": "sprites/kongokong/grap_r0.png"
@@ -5069,97 +5388,14 @@
     "file": "sprites/kongokong/throw_l1.png"
    }
   ],
-  "walkL": [
+  "gOverhead": [
    {
-    "file": "sprites/kongokong/walk_l0.png"
+    "file": "sprites/kongokong/over0.png"
    },
    {
-    "file": "sprites/kongokong/walk_l1.png"
-   },
-   {
-    "file": "sprites/kongokong/walk_l2.png"
+    "file": "sprites/kongokong/over1.png"
    }
-  ],
-  "aWalkL": [
-   {
-    "file": "sprites/kongokong/walk_l0.png"
-   },
-   {
-    "file": "sprites/kongokong/walk_l1.png"
-   },
-   {
-    "file": "sprites/kongokong/walk_l2.png"
-   }
-  ],
-  "walkR": [
-   {
-    "file": "sprites/kongokong/walk_r0.png"
-   },
-   {
-    "file": "sprites/kongokong/walk_r1.png"
-   },
-   {
-    "file": "sprites/kongokong/walk_r2.png"
-   }
-  ],
-  "aWalkR": [
-   {
-    "file": "sprites/kongokong/walk_r0.png"
-   },
-   {
-    "file": "sprites/kongokong/walk_r1.png"
-   },
-   {
-    "file": "sprites/kongokong/walk_r2.png"
-   }
-  ],
-  "aJump": [
-   {
-    "file": "sprites/kongokong/jump_crouch.png"
-   },
-   {
-    "file": "sprites/kongokong/jump_air.png"
-   },
-   {
-    "file": "sprites/kongokong/jump_land.png"
-   }
-  ],
-  "jump": {
-   "file": "sprites/kongokong/jump_air.png"
-  },
-  "elbowL": [
-   {
-    "file": "sprites/kongokong/elbow_l0.png"
-   },
-   {
-    "file": "sprites/kongokong/elbow_l1.png"
-   }
-  ],
-  "aElbowL": [
-   {
-    "file": "sprites/kongokong/elbow_l0.png"
-   },
-   {
-    "file": "sprites/kongokong/elbow_l1.png"
-   }
-  ],
-  "elbowR": [
-   {
-    "file": "sprites/kongokong/elbow_r0.png"
-   },
-   {
-    "file": "sprites/kongokong/elbow_r1.png"
-   }
-  ],
-  "aElbowR": [
-   {
-    "file": "sprites/kongokong/elbow_r0.png"
-   },
-   {
-    "file": "sprites/kongokong/elbow_r1.png"
-   }
-  ],
-  "gOverhead": []
+  ]
  },
  "mechawolf": {
   "idle": {
@@ -5179,9 +5415,6 @@
   },
   "aFallF": {
    "file": "sprites/mechawolf/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/mechawolf/crouch.png"
   },
   "gGrappleR": [
    {
@@ -5351,9 +5584,6 @@
   "aFallF": {
    "file": "sprites/mickie/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/mickie/crouch.png"
-  },
   "gGrappleR": [
    {
     "file": "sprites/mickie/grap_r0.png"
@@ -5512,9 +5742,6 @@
   },
   "aFallF": {
    "file": "sprites/mrhappy/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/mrhappy/crouch.png"
   },
   "gGrappleR": [
    {
@@ -5677,9 +5904,6 @@
   },
   "aFallF": {
    "file": "sprites/sophia/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/sophia/crouch.png"
   },
   "gGrappleR": [
    {
@@ -5848,9 +6072,6 @@
   },
   "aFallF": {
    "file": "sprites/jeeves/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/jeeves/crouch.png"
   },
   "gGrappleR": [
    {
@@ -6178,9 +6399,6 @@
   "aFallF": {
    "file": "sprites/mercer/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/mercer/crouch.png"
-  },
   "aJump": [
    {
     "file": "sprites/mercer/jump_crouch.png"
@@ -6330,9 +6548,6 @@
   },
   "aFallF": {
    "file": "sprites/tgrayson/fall_f.png"
-  },
-  "aCrouch": {
-   "file": "sprites/tgrayson/crouch.png"
   },
   "gGrappleR": [
    {
@@ -6496,9 +6711,6 @@
   "aFallF": {
    "file": "sprites/jpgrayson/fall_f.png"
   },
-  "aCrouch": {
-   "file": "sprites/jpgrayson/crouch.png"
-  },
   "walkL": [
    {
     "file": "sprites/jpgrayson/walk_l0.png"
@@ -6573,6 +6785,595 @@
    },
    {
     "file": "sprites/jpgrayson/throw_l1.png"
+   }
+  ]
+ },
+ "violentj": {
+  "idle": {
+   "file": "sprites/violentj/idle.png",
+   "w": 540,
+   "h": 905
+  },
+  "aIdle": {
+   "file": "sprites/violentj/idle.png",
+   "w": 540,
+   "h": 905
+  },
+  "aIdleB": {
+   "file": "sprites/violentj/idle_back.png",
+   "w": 531,
+   "h": 901
+  },
+  "fallen": {
+   "file": "sprites/violentj/fall_b.png",
+   "w": 1016,
+   "h": 340
+  },
+  "aFallB": {
+   "file": "sprites/violentj/fall_b.png",
+   "w": 1016,
+   "h": 340
+  },
+  "aFallF": {
+   "file": "sprites/violentj/fall_f.png",
+   "w": 903,
+   "h": 394
+  },
+  "jump": {
+   "file": "sprites/violentj/jump_air.png",
+   "w": 564,
+   "h": 739
+  },
+  "aJump": [
+   {
+    "file": "sprites/violentj/jump_crouch.png",
+    "w": 413,
+    "h": 560
+   },
+   {
+    "file": "sprites/violentj/jump_air.png",
+    "w": 564,
+    "h": 739
+   },
+   {
+    "file": "sprites/violentj/jump_land.png",
+    "w": 447,
+    "h": 603
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/violentj/walk_l0.png",
+    "w": 311,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l1.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l2.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l3.png",
+    "w": 309,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l4.png",
+    "w": 460,
+    "h": 538
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/violentj/walk_l0.png",
+    "w": 311,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l1.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l2.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l3.png",
+    "w": 309,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l4.png",
+    "w": 460,
+    "h": 538
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/violentj/walk_r0.png",
+    "w": 301,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r1.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r2.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r3.png",
+    "w": 300,
+    "h": 507
+   },
+   {
+    "file": "sprites/violentj/walk_r4.png",
+    "w": 455,
+    "h": 580
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/violentj/walk_r0.png",
+    "w": 301,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r1.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r2.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r3.png",
+    "w": 300,
+    "h": 507
+   },
+   {
+    "file": "sprites/violentj/walk_r4.png",
+    "w": 455,
+    "h": 580
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/violentj/run_l0.png",
+    "w": 327,
+    "h": 420
+   },
+   {
+    "file": "sprites/violentj/run_l1.png",
+    "w": 325,
+    "h": 419
+   },
+   {
+    "file": "sprites/violentj/run_l2.png",
+    "w": 326,
+    "h": 419
+   },
+   {
+    "file": "sprites/violentj/run_l3.png",
+    "w": 324,
+    "h": 419
+   },
+   {
+    "file": "sprites/violentj/run_l4.png",
+    "w": 321,
+    "h": 420
+   },
+   {
+    "file": "sprites/violentj/run_l5.png",
+    "w": 332,
+    "h": 418
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/violentj/run_r0.png",
+    "w": 326,
+    "h": 428
+   },
+   {
+    "file": "sprites/violentj/run_r1.png",
+    "w": 315,
+    "h": 429
+   },
+   {
+    "file": "sprites/violentj/run_r2.png",
+    "w": 327,
+    "h": 428
+   },
+   {
+    "file": "sprites/violentj/run_r3.png",
+    "w": 327,
+    "h": 429
+   },
+   {
+    "file": "sprites/violentj/run_r4.png",
+    "w": 315,
+    "h": 430
+   },
+   {
+    "file": "sprites/violentj/run_r5.png",
+    "w": 330,
+    "h": 428
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/violentj/elbow_r0.png",
+    "w": 545,
+    "h": 773
+   },
+   {
+    "file": "sprites/violentj/elbow_r1.png",
+    "w": 688,
+    "h": 928
+   },
+   {
+    "file": "sprites/violentj/elbow_r2.png",
+    "w": 366,
+    "h": 776
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/violentj/elbow_r0.png",
+    "w": 545,
+    "h": 773
+   },
+   {
+    "file": "sprites/violentj/elbow_r1.png",
+    "w": 688,
+    "h": 928
+   },
+   {
+    "file": "sprites/violentj/elbow_r2.png",
+    "w": 366,
+    "h": 776
+   }
+  ],
+  "aStagger": {
+   "file": "sprites/violentj/stagger.png",
+   "w": 519,
+   "h": 916
+  },
+  "aGetup": [
+   {
+    "file": "sprites/violentj/getup0.png",
+    "w": 417,
+    "h": 337
+   },
+   {
+    "file": "sprites/violentj/getup1.png",
+    "w": 340,
+    "h": 515
+   },
+   {
+    "file": "sprites/violentj/getup2.png",
+    "w": 355,
+    "h": 649
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/violentj/taunt.png",
+    "w": 616,
+    "h": 866
+   }
+  ],
+  "aWin": {
+   "file": "sprites/violentj/win.png",
+   "w": 467,
+   "h": 1023
+  },
+  "aLose": {
+   "file": "sprites/violentj/lose.png",
+   "w": 522,
+   "h": 813
+  },
+  "aCrouch": {
+   "file": "sprites/violentj/crouch.png",
+   "w": 630,
+   "h": 390
+  },
+  "aDive": [
+   {
+    "file": "sprites/violentj/dive0.png",
+    "w": 697,
+    "h": 286
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/violentj/grap_r0.png",
+    "w": 634,
+    "h": 968
+   },
+   {
+    "file": "sprites/violentj/grap_r1.png",
+    "w": 621,
+    "h": 956
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/violentj/grap_l0.png",
+    "w": 607,
+    "h": 936
+   },
+   {
+    "file": "sprites/violentj/grap_l1.png",
+    "w": 585,
+    "h": 906
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/violentj/throw_r0.png",
+    "w": 475,
+    "h": 1222
+   },
+   {
+    "file": "sprites/violentj/throw_r1.png",
+    "w": 656,
+    "h": 968
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/violentj/over0.png",
+    "w": 475,
+    "h": 939
+   },
+   {
+    "file": "sprites/violentj/over1.png",
+    "w": 576,
+    "h": 1103
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/violentj/chair_a0.png",
+    "w": 404,
+    "h": 967
+   },
+   {
+    "file": "sprites/violentj/chair_a1.png",
+    "w": 595,
+    "h": 632
+   },
+   {
+    "file": "sprites/violentj/chair_a2.png",
+    "w": 527,
+    "h": 646
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/violentj/kendo_a0.png",
+    "w": 483,
+    "h": 970
+   },
+   {
+    "file": "sprites/violentj/kendo_a1.png",
+    "w": 445,
+    "h": 762
+   },
+   {
+    "file": "sprites/violentj/kendo_a2.png",
+    "w": 527,
+    "h": 771
+   }
+  ],
+  "aGuitarR": [
+   {
+    "file": "sprites/violentj/guitar_a0.png",
+    "w": 438,
+    "h": 838
+   },
+   {
+    "file": "sprites/violentj/guitar_a1.png",
+    "w": 668,
+    "h": 613
+   },
+   {
+    "file": "sprites/violentj/guitar_a2.png",
+    "w": 303,
+    "h": 600
+   }
+  ],
+  "aCanR": [
+   {
+    "file": "sprites/violentj/can_a0.png",
+    "w": 509,
+    "h": 820
+   },
+   {
+    "file": "sprites/violentj/can_a1.png",
+    "w": 437,
+    "h": 1028
+   },
+   {
+    "file": "sprites/violentj/can_a2.png",
+    "w": 526,
+    "h": 773
+   }
+  ],
+  "wWalkChairL": [
+   {
+    "file": "sprites/violentj/wchair_l0.png",
+    "w": 281,
+    "h": 451
+   },
+   {
+    "file": "sprites/violentj/wchair_l1.png",
+    "w": 281,
+    "h": 450
+   },
+   {
+    "file": "sprites/violentj/wchair_l2.png",
+    "w": 281,
+    "h": 451
+   },
+   {
+    "file": "sprites/violentj/wchair_l3.png",
+    "w": 278,
+    "h": 451
+   },
+   {
+    "file": "sprites/violentj/wchair_l4.png",
+    "w": 280,
+    "h": 452
+   }
+  ],
+  "wWalkChairR": [
+   {
+    "file": "sprites/violentj/wchair_r0.png",
+    "w": 286,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r1.png",
+    "w": 288,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r2.png",
+    "w": 288,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r3.png",
+    "w": 283,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r4.png",
+    "w": 287,
+    "h": 437
+   }
+  ],
+  "wWalkKendoL": [
+   {
+    "file": "sprites/violentj/wkendo_l0.png",
+    "w": 455,
+    "h": 880
+   },
+   {
+    "file": "sprites/violentj/wkendo_l1.png",
+    "w": 504,
+    "h": 861
+   },
+   {
+    "file": "sprites/violentj/wkendo_l2.png",
+    "w": 465,
+    "h": 867
+   },
+   {
+    "file": "sprites/violentj/wkendo_l3.png",
+    "w": 443,
+    "h": 874
+   },
+   {
+    "file": "sprites/violentj/wkendo_l4.png",
+    "w": 443,
+    "h": 876
+   }
+  ],
+  "wWalkCanL": [
+   {
+    "file": "sprites/violentj/wcan_l0.png",
+    "w": 473,
+    "h": 735
+   },
+   {
+    "file": "sprites/violentj/wcan_l1.png",
+    "w": 470,
+    "h": 738
+   },
+   {
+    "file": "sprites/violentj/wcan_l2.png",
+    "w": 446,
+    "h": 740
+   },
+   {
+    "file": "sprites/violentj/wcan_l3.png",
+    "w": 468,
+    "h": 737
+   },
+   {
+    "file": "sprites/violentj/wcan_l4.png",
+    "w": 460,
+    "h": 738
+   }
+  ],
+  "wWalkGuitarL": [
+   {
+    "file": "sprites/violentj/wguitar_l0.png",
+    "w": 356,
+    "h": 483
+   },
+   {
+    "file": "sprites/violentj/wguitar_l1.png",
+    "w": 351,
+    "h": 482
+   },
+   {
+    "file": "sprites/violentj/wguitar_l2.png",
+    "w": 350,
+    "h": 482
+   },
+   {
+    "file": "sprites/violentj/wguitar_l3.png",
+    "w": 354,
+    "h": 482
+   },
+   {
+    "file": "sprites/violentj/wguitar_l4.png",
+    "w": 352,
+    "h": 480
+   }
+  ],
+  "wWalkGuitarR": [
+   {
+    "file": "sprites/violentj/wguitar_r0.png",
+    "w": 355,
+    "h": 460
+   },
+   {
+    "file": "sprites/violentj/wguitar_r1.png",
+    "w": 350,
+    "h": 461
+   },
+   {
+    "file": "sprites/violentj/wguitar_r2.png",
+    "w": 350,
+    "h": 461
+   },
+   {
+    "file": "sprites/violentj/wguitar_r3.png",
+    "w": 350,
+    "h": 460
+   },
+   {
+    "file": "sprites/violentj/wguitar_r4.png",
+    "w": 351,
+    "h": 460
    }
   ]
  }
