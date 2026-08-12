@@ -497,9 +497,13 @@ const WEAPON_IMGS = {};
 const STAGE_IMGS = {};
 let spritesReady = false;
 
-function loadImg(src, jobs) {
+function loadImg(src, jobs, rec) {
     const img = new Image();
     if (jobs) jobs.push(new Promise(res => { img.onload = res; img.onerror = res; }));
+    // Re-cut art records where the feet sit inside the frame. Cropping is tight to the
+    // ink, so on a pose with a weapon swung out the middle of the image is nowhere near
+    // the middle of the wrestler; drawFighter plants this point instead.
+    if (rec && rec.ax != null) img.ax = rec.ax;
     img.src = src;
     return img;
 }
@@ -509,7 +513,11 @@ async function loadAssets() {
     for (const [wid, states] of Object.entries(manifest)) {
         SPRITES[wid] = {};
         for (const [state, val] of Object.entries(states)) {
-            SPRITES[wid][state] = Array.isArray(val) ? val.map(v => loadImg(v.file, jobs)) : loadImg(val.file, jobs);
+            // _refH: the height of this wrestler's standing frame on disk. Where it is
+            // present every frame was exported at one scale, so poses can be drawn at
+            // their true relative size instead of each being stretched to a fixed height.
+            if (state.startsWith('_')) { SPRITES[wid][state] = val; continue; }
+            SPRITES[wid][state] = Array.isArray(val) ? val.map(v => loadImg(v.file, jobs, v)) : loadImg(val.file, jobs, val);
         }
     }
     ['chair_open','chair_folded','kendo','trashcan','lid','guitar','belt'].forEach(n => {
@@ -1123,7 +1131,10 @@ function dealDamage(attacker, victim, base, opts = {}) {
 }
 
 function tryStrike(att, def) {
-    att.strikeKind = (att.strikeKind === undefined ? 0 : att.strikeKind + 1) % 3;   // elbow → punch → kick
+    // rotate only through the strikes this wrestler has art for, so the animation and the
+    // swing that scored the hit always agree
+    const variants = Math.max(1, strikeSets(att.wrestler.id).length);
+    att.strikeKind = (att.strikeKind === undefined ? 0 : att.strikeKind + 1) % variants;
     const adx = def.x - att.x, ady = def.y - att.y;
     att.direction = Math.sign(adx) || att.direction;
     att.vx += att.direction * 1.8;
@@ -2219,24 +2230,56 @@ function drawHUD() {
 }
 
 // ---------------- RENDER ----------------
+// Most of the roster only ships idle/walk/elbow/jump/fallen art. Cycling a fixed
+// elbow->punch->kick rotation on those wrestlers lands on missing sets two swings out
+// of three and drops through to the legacy frames, which use the opposite flip rule and
+// visibly face the wrong way. Cycle only through the sets a wrestler actually owns.
+const STRIKE_SETS = {};
+function strikeSets(wid) {
+    if (STRIKE_SETS[wid]) return STRIKE_SETS[wid];
+    const S = SPRITES[wid] || {};
+    const sets = [];
+    if (S.aElbowL && S.aElbowR) sets.push([S.aElbowL, S.aElbowR]);
+    if (S.aPunchL && S.aPunchR) sets.push([S.aPunchL, S.aPunchR]);
+    if (S.aKickL  && S.aKickR)  sets.push([S.aKickL,  S.aKickR]);
+    return (STRIKE_SETS[wid] = sets);
+}
+
+// Frames were authored at inconsistent scales, so drawFighter normalises each one to a
+// target height. That target has to vary by pose or a crouch renders at full standing
+// height and a torso-cropped victory pose gets stretched to a legless giant.
+const POSE_RATIO = {
+    stand: 1, crouch: 0.66, dive: 0.64, win: 0.74, lose: 0.70,
+    getup0: 0.56, getup1: 0.70, getup2: 0.86
+};
+
 function spriteFor(f) {
     const S = SPRITES[f.wrestler.id];
     if (!S) return null;
-    if ((M.phase === 'slowmo' || M.phase === 'over') && M.winner === f && S.aWin && f.downTimer <= 0)
-        return { img: S.aWin, flip: false };
-    if ((M.phase === 'slowmo' || M.phase === 'over') && M.winner && M.winner !== f && S.aLose && f.downTimer <= 0)
-        return { img: S.aLose, flip: false };   // standing loser shows the dejected pose
+    const settled = M.phase === 'slowmo' || M.phase === 'over';
+    // aWin/aLose are torso-cropped on the wrestlers that have them, so they carry their
+    // own pose ratio; wrestlers without the art keep their taunt or idle rather than
+    // freezing on a walk frame.
+    if (settled && M.winner === f && f.downTimer <= 0) {
+        if (S.aWin) return { img: S.aWin, flip: false, pose: 'win' };
+        if (S.aTaunt) return { img: S.aTaunt[0], flip: f.direction < 0 };
+    }
+    if (settled && M.winner && M.winner !== f && f.downTimer <= 0 && S.aLose)
+        return { img: S.aLose, flip: false, pose: 'lose' };   // standing loser shows the dejected pose
     const pinned = M.grapple && M.grapple.isPin && M.grapple.victim === f;
     if (M.grapple && M.grapple.isPin && M.grapple.holder === f && S.aCrouch)
-        return { img: S.aCrouch, flip: f.direction < 0 };                            // covering the pin
+        return { img: S.aCrouch, flip: f.direction < 0, pose: 'crouch' };            // covering the pin
     if (f.climb) return { img: S.aIdleB || S.idle, flip: false };                     // back to camera on the ropes
     if (f.diveTimer > 0) {
         if (f.diveTimer > 20 && S.aJump) return { img: S.aJump[0], flip: f.direction < 0, noHeld: true };   // leap off the post
-        return { img: (S.aDive && S.aDive[0]) || S.jump, flip: f.direction > 0, noHeld: true };
+        if (S.aDive) return { img: S.aDive[0], flip: f.direction > 0, noHeld: true, pose: 'dive' };
+        return { img: S.jump, flip: f.direction > 0, noHeld: true };
     }
     if (pinned || f.downTimer > 0) {
-        if (!pinned && f.downTimer > 0 && f.downTimer <= 26 && S.aGetup)              // rising animation
-            return { img: S.aGetup[Math.min(2, Math.floor((26 - f.downTimer) / 9))], flip: f.direction < 0 };
+        if (!pinned && f.downTimer > 0 && f.downTimer <= 26 && S.aGetup) {            // rising animation
+            const gi = Math.min(S.aGetup.length - 1, Math.floor((26 - f.downTimer) / 9));
+            return { img: S.aGetup[gi], flip: f.direction < 0, pose: 'getup' + Math.min(2, gi) };
+        }
         const fb = f.fallFace === 'F' ? (S.aFallF || S.fallen) : (S.aFallB || S.fallen);
         return { img: fb, flip: f.direction < 0 };
     }
@@ -2264,13 +2307,16 @@ function spriteFor(f) {
                 return { img: pick(arr), flip: f.direction < 0, noHeld: true };
             }
         }
-        // bare-handed strike variety: elbow / punch / kick, chosen per swing
-        const kind = f.strikeKind || 0;
-        const sets = [ [S.aElbowL, S.aElbowR], [S.aPunchL, S.aPunchR], [S.aKickL, S.aKickR] ];
-        const [L, R] = sets[kind % sets.length];
-        if (L && R) return { img: pick(f.direction < 0 ? L : R), flip: f.direction < 0 };
-        const fr = S.elbowR;
-        return { img: pick(fr), flip: f.direction < 0 };
+        // bare-handed strike variety, limited to the sets this wrestler actually has
+        const sets = strikeSets(f.wrestler.id);
+        if (sets.length) {
+            const [L, R] = sets[(f.strikeKind || 0) % sets.length];
+            return { img: pick(f.direction < 0 ? L : R), flip: f.direction < 0 };
+        }
+        // legacy art only: elbowL/elbowR are direction-true, so don't mirror them
+        const legacy = f.direction < 0 ? (S.elbowL || S.elbowR) : (S.elbowR || S.elbowL);
+        if (legacy) return { img: pick(legacy), flip: f.direction < 0 && !S.elbowL };
+        return { img: S.aIdle || S.idle, flip: f.direction < 0 };
     }
     if (f.jumpTimer > 0) return { img: S.jump, flip: f.direction < 0 };
     if (f.moving) {
@@ -2291,8 +2337,12 @@ function spriteFor(f) {
         }
         const fast = Math.hypot(f.vx, f.vy) > 3.3;
         const L = fast ? (S.aRunL || S.aWalkL) : S.aWalkL, R = fast ? (S.aRunR || S.aWalkR) : S.aWalkR;
-        // Walk/run art is drawn facing LEFT — mirror it when the fighter moves right.
-        if (L && R) { const arr = f.direction < 0 ? L : R; return { img: arr[Math.floor(f.walkAnim) % arr.length], flip: f.direction > 0 }; }
+        // Legacy walk/run art is drawn facing LEFT in both sets, so it gets mirrored when
+        // the fighter moves right. Re-cut art has a real frame per direction.
+        if (L && R) {
+            const arr = f.direction < 0 ? L : R;
+            return { img: arr[Math.floor(f.walkAnim) % arr.length], flip: !S._dirTrue && f.direction > 0 };
+        }
         return { img: S.walkR[Math.floor(f.walkAnim) % S.walkR.length], flip: f.direction > 0 };
     }
     return { img: S.aIdle || S.idle, flip: false };
@@ -2497,11 +2547,20 @@ function drawFighter(f) {
         const baseH = isDown
             ? Math.max(50, Math.min(matH * 0.24, canvas.height * 0.11))
             : Math.max(88, Math.min(matH * 0.52, canvas.height * 0.23));
-        const targetH = baseH * depthScale * 1.1;   // wrestlers 10% larger
-        const scale = targetH / img.naturalHeight;
-        const w = img.naturalWidth * scale, h = targetH;
+        // Wrestlers cut from the new sheets carry a reference standing height, so one
+        // scale covers every pose and a crouch is genuinely shorter than a stand. The
+        // older art was authored frame by frame at whatever size, so it still has to be
+        // normalised per frame with a fudge factor for poses that are cropped short.
+        const refH = SPRITES[f.wrestler.id] && SPRITES[f.wrestler.id]._refH;
+        const standH = baseH * depthScale * 1.1;
+        const targetH = refH ? standH : standH * (POSE_RATIO[sp.pose] || POSE_RATIO.stand);
+        const scale = targetH / (refH || img.naturalHeight);
+        const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
         const flip = !!sp.flip;
         const drawY = feetY - h - jumpArc;
+        // horizontal anchor: feet if the frame recorded them, otherwise the frame centre.
+        // Mirroring happens around f.x, so the same offset works for both facings.
+        const ax = img.ax != null ? img.ax : 0.5;
 
         // placeholder wrestlers ride a tinted base body until their own art lands
         const tintF = (f.wrestler.real === false && f.wrestler.hue)
@@ -2516,8 +2575,8 @@ function drawFighter(f) {
                 ctx.globalAlpha = 0.10 * k;
                 ctx.imageSmoothingEnabled = false;
                 const tx = f.x - f.vx * k * 1.6, ty = drawY - f.vy * k * 1.6;
-                if (flip) { ctx.translate(tx, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w/2, ty, w, h); }
-                else ctx.drawImage(img, tx - w/2, ty, w, h);
+                if (flip) { ctx.translate(tx, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w * ax, ty, w, h); }
+                else ctx.drawImage(img, tx - w * ax, ty, w, h);
                 ctx.restore();
             }
         }
@@ -2529,8 +2588,8 @@ function drawFighter(f) {
         if (tintF) ctx.filter = tintF;
         if ((f.stunTimer > 0 || f.invuln > 0) && Math.floor(M.frame / 4) % 2 === 0) ctx.globalAlpha = 0.6;
         ctx.imageSmoothingEnabled = false;
-        if (flip) { ctx.translate(f.x, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w / 2, py, w, ph); }
-        else ctx.drawImage(img, f.x - w / 2, py, w, ph);
+        if (flip) { ctx.translate(f.x, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w * ax, py, w, ph); }
+        else ctx.drawImage(img, f.x - w * ax, py, w, ph);
         ctx.restore();
 
         // weapon in hand: grip pivot, wind-up swing arc (skipped when the swing sprite draws the weapon)
