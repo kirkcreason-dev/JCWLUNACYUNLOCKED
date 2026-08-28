@@ -62,6 +62,10 @@ body { background:#0a0a0a; font-family:Arial,sans-serif; overflow:hidden; height
     background:linear-gradient(135deg,#2c2c2c,#161616); color:#8dff1e; border:2px solid #8dff1e; border-radius:4px; cursor:pointer; }
 .online-btn:active { transform:scale(0.96); }
 .online-status { margin-top:10px; font-size:12px; font-weight:900; color:#ffcc33; letter-spacing:1px; min-height:16px; text-transform:uppercase; }
+.tcg-btn { margin-top:10px; padding:10px 18px; font-size:12px; font-weight:900; text-transform:uppercase; letter-spacing:1px;
+    background:linear-gradient(135deg,#2a1020,#12080e); color:#ff2bd6; border:2px solid #ff2bd6; border-radius:4px; cursor:pointer;
+    box-shadow:0 0 14px rgba(255,43,214,0.25); text-decoration:none; display:inline-block; }
+.tcg-btn:hover { color:#ffe135; border-color:#ffe135; box-shadow:0 0 18px rgba(255,225,53,0.3); }
 
 /* ============ GAME ============ */
 #gameContainer { flex:1; position:relative; background:#000; display:none; }
@@ -170,9 +174,10 @@ body.no-touch .hint-text { bottom:12px; }
         </div>
         <div class="stage-row">
             <div class="stage-thumb sel" onclick="setStage(-1)"><div class="stage-rand">?</div><span>RANDOM</span></div>
-            <div class="stage-thumb" onclick="setStage(0)"><img src="ui/arena_funhouse_thumb.jpg" alt=""><span>FUNHOUSE</span></div>
-            <div class="stage-thumb" onclick="setStage(1)"><img src="ui/arena_lunacy_thumb.jpg" alt=""><span>LUNACY</span></div>
-            <div class="stage-thumb" onclick="setStage(2)"><img src="ui/arena_warehouse_thumb.jpg" alt=""><span>WAREHOUSE</span></div>
+            <div class="stage-thumb" onclick="setStage(0)"><img src="ui/arena_warehouse_thumb.jpg" alt=""><span>WAREHOUSE</span></div>
+            <div class="stage-thumb" onclick="setStage(1)"><img src="ui/arena_hellspit_thumb.jpg" alt=""><span>HELL'S PIT</span></div>
+            <div class="stage-thumb" onclick="setStage(2)"><img src="ui/arena_madhouse_thumb.jpg" alt=""><span>MADHOUSE</span></div>
+            <div class="stage-thumb" onclick="setStage(3)"><img src="ui/arena_bloodymania_thumb.jpg" alt=""><span>BLOODYMANIA</span></div>
         </div>
         <div class="stats-panel" id="statsPanel">
             <img class="big-portrait" id="bigPortrait" src="ui/big_caleb.png" alt="">
@@ -191,6 +196,7 @@ body.no-touch .hint-text { bottom:12px; }
             <button class="online-btn" id="btnCreate">CREATE ROOM</button>
             <button class="online-btn" id="btnJoin">JOIN ROOM</button>
         </div>
+        <a class="tcg-btn" href="tcg/index.html">🃏 OFFICIAL TCG — RARES &amp; FOILS</a>
         <div id="onlineStatus" class="online-status"></div>
         <div id="loadingMsg">Loading...</div>
     </div>
@@ -241,6 +247,7 @@ body.no-touch .hint-text { bottom:12px; }
     </div>
 </div>
 
+<script src="sprites/manifest.data.js"></script>
 <script>
 console.log('%cLUNACY UNLOCKED — BUILD 2026-08-10-VJ-SECRET', 'color:#8dff1e;font-weight:bold');
 'use strict';
@@ -322,9 +329,10 @@ const WEAPON_TYPES = {
 };
 
 const STAGES = [
-    { id:'funhouse',  name:'FUNHOUSE',  src:'ui/arena_funhouse.jpg',  mat:{x0:0.345,x1:0.71,y0:0.47,y1:0.615}, rope:{x0:0.27,x1:0.77,y0:0.545,y1:0.66} },
-    { id:'lunacy',    name:'LUNACY',    src:'ui/arena_lunacy.jpg',    mat:{x0:0.315,x1:0.71,y0:0.385,y1:0.60},  rope:{x0:0.25,x1:0.78,y0:0.50,y1:0.645} },
-    { id:'warehouse', name:'WAREHOUSE', src:'ui/arena_warehouse.jpg', mat:{x0:0.315,x1:0.71,y0:0.46,y1:0.595},  rope:{x0:0.28,x1:0.76,y0:0.545,y1:0.655} }
+    { id:'warehouse',   name:'RUSTED WAREHOUSE', src:'ui/arena_warehouse.jpg',   mat:{x0:0.30,x1:0.70,y0:0.60,y1:0.79}, rope:{x0:0.25,x1:0.75,y0:0.555,y1:0.81} },
+    { id:'hellspit',    name:"HELL'S PIT",       src:'ui/arena_hellspit.jpg',    mat:{x0:0.30,x1:0.70,y0:0.61,y1:0.80}, rope:{x0:0.25,x1:0.75,y0:0.565,y1:0.82} },
+    { id:'madhouse',    name:'MADHOUSE',         src:'ui/arena_madhouse.jpg',    mat:{x0:0.30,x1:0.70,y0:0.60,y1:0.79}, rope:{x0:0.25,x1:0.75,y0:0.555,y1:0.81} },
+    { id:'bloodymania', name:'BLOODYMANIA',      src:'ui/arena_bloodymania.jpg', mat:{x0:0.30,x1:0.70,y0:0.62,y1:0.81}, rope:{x0:0.25,x1:0.75,y0:0.575,y1:0.83} }
 ];
 // portraits for canvas HUD (placeholders start on their base body's art; tinted copies swap in after load)
 const CARD_IMGS = {};
@@ -469,6 +477,62 @@ const Snd = (() => {
         const g = ac.createGain(); env(g, t, 0.004, 0.12, 0.14);
         o.connect(g); g.connect(master); o.start(t); o.stop(t + 0.25);
     }
+    // Looping entrance riff. The theme was always a missing mp3, so the arena has been
+    // silent under the crowd noise; this is synthesised from the same graph as the rest
+    // of the effects so it needs no asset and stops cleanly when the match ends.
+    let themeStop = null;
+    function theme() {
+        if (!unlocked || themeStop) return;
+        const bpm = 148, beat = 60 / bpm, bar = beat * 4;
+        const bus = ac.createGain(); bus.gain.value = 0.34; bus.connect(master);
+        // minor riff over a driving root: carnival menace rather than fight-song major
+        const RIFF = [0, 0, 3, 0, 5, 3, 0, -2];
+        const ROOT = 98;                                  // G2
+        let bar_i = 0, timer = null;
+        function schedule() {
+            const t0 = ac.currentTime + 0.06;
+            RIFF.forEach((step, i) => {
+                const t = t0 + i * (beat / 2);
+                const f = ROOT * Math.pow(2, step / 12) * (bar_i % 4 === 3 && i > 5 ? 2 : 1);
+                const o = ac.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f;
+                const sub = ac.createOscillator(); sub.type = 'square'; sub.frequency.value = f / 2;
+                const lp = ac.createBiquadFilter(); lp.type = 'lowpass';
+                lp.frequency.setValueAtTime(900, t);
+                lp.frequency.exponentialRampToValueAtTime(320, t + beat * 0.45);
+                const g = ac.createGain(); env(g, t, 0.006, 0.20, beat * 0.42);
+                o.connect(lp); sub.connect(lp); lp.connect(g); g.connect(bus);
+                o.start(t); sub.start(t); o.stop(t + beat); sub.stop(t + beat);
+            });
+            for (let i = 0; i < 4; i++) {                 // four-on-the-floor kick + backbeat
+                thudAt(t0 + i * beat, 62, 0.34, 0.16, bus);
+                if (i % 2 === 1) snareAt(t0 + i * beat, bus);
+            }
+            bar_i++;
+            timer = setTimeout(schedule, bar * 1000);
+        }
+        schedule();
+        themeStop = () => {
+            clearTimeout(timer);
+            const t = ac.currentTime;
+            bus.gain.cancelScheduledValues(t);
+            bus.gain.setValueAtTime(bus.gain.value, t);
+            bus.gain.exponentialRampToValueAtTime(0.0001, t + 0.6);
+            themeStop = null;
+        };
+    }
+    function thudAt(t, freq, peak, dur, out) {
+        const o = ac.createOscillator(); o.type = 'sine';
+        o.frequency.setValueAtTime(freq, t);
+        o.frequency.exponentialRampToValueAtTime(Math.max(30, freq * 0.4), t + dur);
+        const g = ac.createGain(); env(g, t, 0.005, peak, dur);
+        o.connect(g); g.connect(out); o.start(t); o.stop(t + dur + 0.05);
+    }
+    function snareAt(t, out) {
+        const n = ac.createBufferSource(); n.buffer = noiseBuf(0.2);
+        const bp = ac.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 1900; bp.Q.value = 0.7;
+        const g = ac.createGain(); env(g, t, 0.002, 0.13, 0.16);
+        n.connect(bp); bp.connect(g); g.connect(out); n.start(t); n.stop(t + 0.3);
+    }
     function riser() {
         if (!unlocked) return;
         const t = ac.currentTime;
@@ -480,7 +544,8 @@ const Snd = (() => {
         setTimeout(() => thud(70, 0.5, 0.35), 280);
     }
     return {
-        unlock, crowdPop, bell, beep, riser, clang, guitarSmash,
+        unlock, crowdPop, bell, beep, riser, clang, guitarSmash, theme,
+        themeOff: () => { if (themeStop) themeStop(); },
         punch: () => thud(180, 0.3, 0.09),
         kick:  () => thud(130, 0.35, 0.12),
         whack: () => { thud(220, 0.25, 0.07); },
@@ -509,7 +574,8 @@ function loadImg(src, jobs, rec) {
 }
 async function loadAssets() {
     const jobs = [];
-    const manifest = await (await fetch('sprites/manifest.json')).json();
+    // sprites/manifest.data.js inlines the same data so the game also runs off file://
+    const manifest = window.__LUNACY_SPRITES__ || await (await fetch('sprites/manifest.json')).json();
     for (const [wid, states] of Object.entries(manifest)) {
         SPRITES[wid] = {};
         for (const [state, val] of Object.entries(states)) {
@@ -696,7 +762,20 @@ function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = can
 window.addEventListener('resize', () => { resizeCanvas(); });
 
 // ---------------- MATCH STATE ----------------
+// GAME_SPEED feeds the loop accumulator less than real time, so the simulation advances
+// fewer ticks per second while rendering stays at the display rate. Everything measured in
+// ticks slows together - travel, animation, recovery, pin counts - which keeps the
+// relationships between them intact. Tuning any of those individually is what
+// desynchronises a walk cycle from the ground. Raise toward 1 for the original pace.
+const GAME_SPEED = 0.65;
+
 const TIME_LIMIT = 180;                    // seconds — countdown clock, decision at zero
+// The clock is driven by simulation ticks, and the simulation no longer runs at one tick
+// per 1/60s of real time. Converting through GAME_SPEED keeps a three minute round three
+// real minutes long and keeps the displayed countdown in true seconds; without it the
+// plate would read 3:00 and take four and a half minutes to run out.
+const TICKS_PER_SECOND = 60 * GAME_SPEED;
+const TIME_LIMIT_TICKS = Math.round(TIME_LIMIT * TICKS_PER_SECOND);
 const ARENA = new Image();
 let activeStage = STAGES[1];
 let matRect = { L:0, R:0, T:0, B:0 };
@@ -729,7 +808,16 @@ const M = {
     winner:null, winMethod:null, winFrame:0
 };
 
-const input = { dpad:{x:0,y:0}, attackTap:false, grapTap:false, specialTap:false };
+// Taps are frame counters, not booleans. A press used to be dropped outright if it landed
+// while the wrestler was still recovering from the last swing, so at speed most of what the
+// player pressed never happened and the game read as unresponsive. Holding the count lets
+// the press fire the instant recovery ends instead.
+// Sized to the 18 frame strike recovery: a shorter buffer leaves a dead zone at the start
+// of every recovery window where presses still expire unheard, and a longer one only
+// queues stale inputs. tools/input_buffer_test.js measures both effects.
+// Anything truthy still means "pressed this tick" for the netcode packers below.
+const TAP_BUFFER = 18;
+const input = { dpad:{x:0,y:0}, attackTap:0, grapTap:0, specialTap:0 };
 
 // ---------------- JUICE HELPERS ----------------
 function addFx(x, y, text, opts = {}) {
@@ -768,8 +856,19 @@ const introTheme = new Audio('jcw_intro_theme.mp3');
 introTheme.preload = 'auto';
 introTheme.loop = true;
 introTheme.volume = 0.7;
+// jcw_intro_theme.mp3 has never shipped with the build, so the play() below has always
+// rejected and left the arena silent. Fall back to the synthesised riff whenever the
+// file is missing; drop the mp3 in beside index.html and it takes over automatically.
+let themeIsSynth = false;
 function playIntroTheme() {
-    try { if (introTheme.paused) introTheme.play().catch(() => {}); } catch (e) {}
+    try {
+        if (!introTheme.paused) return;
+        introTheme.play().catch(() => { themeIsSynth = true; Snd.theme(); });
+    } catch (e) { themeIsSynth = true; Snd.theme(); }
+}
+function stopIntroTheme() {
+    if (themeIsSynth) Snd.themeOff();
+    else { try { introTheme.pause(); introTheme.currentTime = 0; } catch (e) {} }
 }
 function startMatch() {
     if (!gameState.p1Selected || !gameState.p2Selected || !spritesReady) return;
@@ -792,7 +891,11 @@ function initializeMatch() {
     M.p1 = makeFighter(true);  M.p1.wrestler = gameState.p1Selected;
     M.p2 = makeFighter(false); M.p2.wrestler = gameState.p2Selected;
     [M.p1, M.p2].forEach(p => {
-        p.maxHealth = p.wrestler.health * 3.6;   // 10% less health (was *4)
+        // A 3.6x pool against a 4-point strike put a clean knockout 83 swings away, so
+        // exchanges never read as progress and matches were decided by the clock. At 1.7x
+        // a strike is worth ~3% of the bar, a finisher ~17%, which keeps the comeback
+        // thresholds below (all expressed as fractions of maxHealth) in the same places.
+        p.maxHealth = p.wrestler.health * 1.7;
         p.health = p.ghostHP = p.maxHealth;
     });
 
@@ -836,6 +939,7 @@ function endMatch(winner, method) {
     M.winner = winner; M.winMethod = method; M.winFrame = M.frame;
     NET.hostReportEnd();
     M.phase = 'slowmo'; M.slowmoTimer = 90;
+    stopIntroTheme();
     Snd.slam(); shake(14); hitStop(10);
     addParticles(winner === M.p1 ? M.p2.x : M.p1.x, winner === M.p1 ? M.p2.y : M.p1.y, 30, 4, true);
     addFx(canvas.width / 2, canvas.height * 0.4 + 60, method + '!',
@@ -930,18 +1034,22 @@ function bindButton(id, fn) {
     btn.addEventListener('touchstart', press); btn.addEventListener('touchend', rel); btn.addEventListener('touchcancel', rel);
     btn.addEventListener('mousedown', press); btn.addEventListener('mouseup', rel);
 }
-bindButton('btnA', () => input.grapTap = true);
-bindButton('btnB', () => input.attackTap = true);
-bindButton('btnY', () => input.specialTap = true);
+bindButton('btnA', () => input.grapTap = TAP_BUFFER);
+bindButton('btnB', () => input.attackTap = TAP_BUFFER);
+bindButton('btnY', () => input.specialTap = TAP_BUFFER);
 
 const KEYMAP = { arrowleft:['x',-1], arrowright:['x',1], arrowup:['y',-1], arrowdown:['y',1],
                  a:['x',-1], d:['x',1], w:['y',-1], s:['y',1] };
 document.addEventListener('keydown', e => {
     const k = e.key.toLowerCase();
     if (KEYMAP[k]) { const [ax,v] = KEYMAP[k]; input.dpad[ax] = v; e.preventDefault(); }
-    if (k === 'z') input.attackTap = true;
-    if (k === 'x') input.grapTap = true;
-    if (k === 'c') input.specialTap = true;
+    // Held keys autorepeat at the OS rate, which made holding a button a faster and more
+    // reliable attack than tapping it. Action buttons take the initial press only.
+    if (!e.repeat) {
+        if (k === 'z') { input.attackTap = TAP_BUFFER; e.preventDefault(); }
+        if (k === 'x') { input.grapTap = TAP_BUFFER; e.preventDefault(); }
+        if (k === 'c') { input.specialTap = TAP_BUFFER; e.preventDefault(); }
+    }
     if (k === 'p' || k === 'escape') togglePause();
     if (k === 'f') toggleFullscreen();
     if (k === 'enter' && M.phase === 'idle' && !document.getElementById('startButton').disabled) startMatch();
@@ -1158,11 +1266,13 @@ function tryStrike(att, def) {
             if (wd.damage >= 15) { def.downTimer = 90; def.fallFace = 'F'; addFx(def.x, def.y + 18, 'DOWN!', { color: '#ff4455' }); Snd.slam(); }
         } else Snd.whoosh();
     } else {
-        att.attackCooldown = 22;
+        // Matches the 18 frame swing animation. It used to run four frames longer, so the
+        // wrestler stood idle at the end of every strike while still refusing input.
+        att.attackCooldown = 18;
         if (inBand && Math.abs(adx) < 105 && def.downTimer <= 0 && def.invuln <= 0) {
             def.vx = Math.sign(def.x - att.x) * 6.5;
             def.vy = (Math.random() - 0.5) * 2;
-            dealDamage(att, def, 4, {});
+            dealDamage(att, def, 5, {});
             Math.random() < 0.5 ? Snd.punch() : Snd.kick();
         } else Snd.whoosh();
     }
@@ -1368,6 +1478,16 @@ function step() {
     simTick();
 }
 
+// Advance a walk cycle by how far the wrestler actually travelled rather than by a flat
+// amount per tick. The old constant ran the legs at a fixed rate whatever the body was
+// doing, so a slow wrestler skated and a fast one moonwalked. PX_PER_WALK_FRAME is the
+// ground covered per frame of art, chosen to match the previous cadence at normal walking
+// speed, so ordinary walking looks unchanged while every other speed now lines up.
+const PX_PER_WALK_FRAME = 18.6;
+function advanceWalk(f) {
+    f.walkAnim += Math.hypot(f.vx, f.vy) / PX_PER_WALK_FRAME;
+}
+
 function simTick() {
     if (NET.mode === 'guest') {
         // guest renders host state; local sim limited to cosmetics
@@ -1415,7 +1535,7 @@ function simTick() {
                 addFxOnce('mash', g.victim.x, g.victim.y + 34 + g.victim.elev * ringDrop(), 'MASH B!!');
                 if (input.attackTap && g.victim.health > g.victim.maxHealth * kickFloor(g.victim)) {
                     breakPin(g, 'KICK OUT!');
-                    input.attackTap = false;
+                    input.attackTap = 0;
                 }
             } else if (g.victim === M.p2 && g.victim.health > g.victim.maxHealth * (difficulty === 0 ? 0.4 : difficulty === 2 ? 0.15 : 0.25) && g.frames > 92 - techOf(g.victim) * 4) {
                 breakPin(g, 'KICK OUT!');
@@ -1432,7 +1552,7 @@ function simTick() {
         } else {
             // B while holding = grapple strike
             if (g.holder === p1 && input.attackTap) {
-                input.attackTap = false;
+                input.attackTap = 0;
                 p1.swingTimer = 14;
                 dealDamage(p1, g.victim, 4, { text: 'CLUBBED!', size: 13, meterGain: 5 });
                 Snd.punch();
@@ -1441,7 +1561,7 @@ function simTick() {
             // victim escape: mash if player
             if (g.victim === p1 && input.attackTap) {
                 g.escape = (g.escape || 0) + 1;
-                input.attackTap = false;
+                input.attackTap = 0;
                 if (g.escape >= escNeed(p1)) { M.grapple = null; addFx(p1.x, p1.y, 'ESCAPE!', { color: '#66aaff' }); }
             }
             // AI holder auto-throws (sometimes goes overhead)
@@ -1479,7 +1599,7 @@ function simTick() {
         else p1.vy *= 0.8;
     }
     if (p1.moving) {
-        p1.walkAnim += 0.15;
+        advanceWalk(p1);
         if (M.frame % 9 === 0) {
             M.particles.push({ x: p1.x + (Math.random()-0.5)*16, y: p1.y + 46 + p1.elev * ringDrop(),
                 vx: -p1.vx * 0.15, vy: -0.4 - Math.random()*0.4, life: 16, maxLife: 16,
@@ -1487,15 +1607,23 @@ function simTick() {
         }
     }
 
-    if (input.attackTap && p1.climb) { launchDive(p1, p2); input.attackTap = false; }
+    if (input.attackTap && p1.climb) { launchDive(p1, p2); input.attackTap = 0; }
     if (input.attackTap && !p1Locked && p1.attackCooldown <= 0 && p1.downTimer <= 0 && p1.diveTimer <= 0) {
         if (!tryStomp(p1, p2)) tryStrike(p1, p2);
+        input.attackTap = 0;
     }
     if (input.grapTap && p1.downTimer <= 0 && (!p1Locked || (M.grapple && M.grapple.holder === p1))) {
         performGrappleBtn(p1, p2, input.dpad);
+        input.grapTap = 0;
     }
-    if (input.specialTap && !p1Locked && p1.downTimer <= 0 && !p1.climb && p1.diveTimer <= 0) trySpecial(p1, p2);
-    input.attackTap = input.grapTap = input.specialTap = false;
+    if (input.specialTap && !p1Locked && p1.downTimer <= 0 && !p1.climb && p1.diveTimer <= 0) {
+        trySpecial(p1, p2);
+        input.specialTap = 0;
+    }
+    // Unconsumed presses stay live for a few more frames rather than being discarded.
+    if (input.attackTap > 0) input.attackTap--;
+    if (input.grapTap > 0) input.grapTap--;
+    if (input.specialTap > 0) input.specialTap--;
 
     // ---- P2: AI offline, remote human online ----
     if (NET.mode === 'host') applyRemote(p2, p1);
@@ -1573,10 +1701,10 @@ function simTick() {
     if (p2.health <= 0 && M.phase === 'fight') { endMatch(p1, 'KNOCKOUT'); return; }
 
     // time limit: leader wins by decision; dead even = sudden death
-    if (M.phase === 'fight' && M.frame >= TIME_LIMIT * 60) {
+    if (M.phase === 'fight' && M.frame >= TIME_LIMIT_TICKS) {
         const h1 = p1.health / p1.maxHealth, h2 = p2.health / p2.maxHealth;
         if (h1 !== h2) { endMatch(h1 > h2 ? p1 : p2, 'DECISION'); return; }
-        if (M.frame === TIME_LIMIT * 60) {
+        if (M.frame === TIME_LIMIT_TICKS) {
             addFx(canvas.width / 2, canvas.height * 0.42 + 60, 'SUDDEN DEATH!', { color: '#ff2255', size: 44, life: 85, rise: false });
             Snd.bell(2); Snd.crowdPop();
         }
@@ -1697,7 +1825,12 @@ function aiUpdate(ai, target) {
             }
         }
     }
-    ai.direction = Math.sign(dx) || ai.direction;
+    // Face the way we are actually travelling. retreat, strafe, reset and weapon runs all
+    // move away from the opponent on purpose, and pinning the sprite to face him regardless
+    // meant the wrestler moonwalked for most of that movement. Standing still or winding up
+    // a strike still squares him up, which is where facing the opponent actually reads.
+    const travelling = ai.moving && Math.abs(ai.vx) > 0.35;
+    ai.direction = (travelling ? Math.sign(ai.vx) : Math.sign(dx)) || ai.direction;
 }
 function moveToward(ai, tx, ty, spd) {
     const dx = tx - ai.x, dy = ty - ai.y;
@@ -1706,7 +1839,7 @@ function moveToward(ai, tx, ty, spd) {
     ai.vx = dx / d * spd * ai.wrestler.speed * sm;
     ai.vy = dy / d * spd * ai.wrestler.speed * sm;
     ai.moving = true;
-    ai.walkAnim += 0.15;
+    advanceWalk(ai);
 }
 function aiStrike(ai, target, wd) {
     ai.swingTimer = 18;
@@ -1746,7 +1879,7 @@ function applyRemote(p, opp) {
         if (inp.dy !== 0) { p.vy = inp.dy * 2.7 * p.wrestler.speed; p.moving = true; }
         else p.vy *= 0.8;
     }
-    if (p.moving) p.walkAnim += 0.15;
+    if (p.moving) advanceWalk(p);
     if (p.downTimer > 0) { p.downTimer--; p.vx *= 0.9; p.vy *= 0.9; }
 
     // pinned guest mashing attack = kick out (mirrors P1 pin logic handled in grapple block via flags)
@@ -2006,7 +2139,7 @@ const NET = {
         const pkt = { d: [input.dpad.x, input.dpad.y], b };
         if (this.pendingTaps.length) { pkt.t = this.pendingTaps; this.pendingTaps = []; }
         this.roomRef.child('input').set(pkt);
-        input.attackTap = input.grapTap = input.specialTap = false;
+        input.attackTap = input.grapTap = input.specialTap = 0;
     },
     // ---- host: broadcast snapshot ----
     packF(p) {
@@ -2036,6 +2169,7 @@ const NET = {
     // ---- guest: apply interpolated snapshot to local M for rendering ----
     unpackF(p, arr, prevArr, t) {
         const lerp = (a, b) => a + (b - a) * t;
+        const wasX = p.x, wasY = p.y;
         p.x = this.dx(lerp(prevArr[0], arr[0]));
         p.y = this.dy(lerp(prevArr[1], arr[1]));
         p.direction = arr[2];
@@ -2043,7 +2177,10 @@ const NET = {
         p.downTimer = arr[4]; p.swingTimer = arr[5]; p.elev = arr[6];
         p.weapon = arr[7] ? { type: arr[7], durability: arr[8] } : null;
         p.moving = !!arr[9];
-        if (p.moving) p.walkAnim += 0.15;
+        // Snapshots carry position but no velocity, so measure the ground the remote
+        // wrestler actually covered between updates. Feeding advanceWalk its usual vx/vy
+        // here would read zero and leave a sliding wrestler with motionless legs.
+        if (p.moving) p.walkAnim += Math.hypot(p.x - wasX, p.y - wasY) / PX_PER_WALK_FRAME;
         p.jumpTimer = arr[10]; p.specialCharge = arr[11]; p.combo = arr[12];
         p.climb = arr[13] ? { x: p.x, y: p.y } : null;
         p.diveTimer = arr[14] || 0;
@@ -2195,8 +2332,8 @@ function drawHUD() {
     });
 
     // timer plate — counts DOWN to the decision (responsive)
-    const remainF = Math.max(0, TIME_LIMIT * 60 - M.frame);
-    const secs = Math.ceil(remainF / 60);
+    const remainF = Math.max(0, TIME_LIMIT_TICKS - M.frame);
+    const secs = Math.ceil(remainF / TICKS_PER_SECOND);
     const urgent = secs <= 30;
     const tt = `${Math.floor(secs/60)}:${String(secs%60).padStart(2,'0')}`;
     const tw = mobile ? 62 : 76, th = mobile ? 24 : 30, ty = mobile ? 10 : 12;
@@ -2234,14 +2371,23 @@ function drawHUD() {
 // elbow->punch->kick rotation on those wrestlers lands on missing sets two swings out
 // of three and drops through to the legacy frames, which use the opposite flip rule and
 // visibly face the wrong way. Cycle only through the sets a wrestler actually owns.
+// The "a*" strike poses face the camera, and the L frames are mirrored copies of the R
+// frames, so the engine's mirror-when-facing-left cancels the baked-in mirror out and
+// both facings look the same. That means a wrestler who only got one side cut can still
+// use the set: take the side that exists and mirror it only if it is the pre-mirrored L
+// art, which lands on the same picture instead of a backwards shirt logo.
 const STRIKE_SETS = {};
 function strikeSets(wid) {
     if (STRIKE_SETS[wid]) return STRIKE_SETS[wid];
     const S = SPRITES[wid] || {};
     const sets = [];
-    if (S.aElbowL && S.aElbowR) sets.push([S.aElbowL, S.aElbowR]);
-    if (S.aPunchL && S.aPunchR) sets.push([S.aPunchL, S.aPunchR]);
-    if (S.aKickL  && S.aKickR)  sets.push([S.aKickL,  S.aKickR]);
+    for (const [l, r] of [['aElbowL', 'aElbowR'], ['aPunchL', 'aPunchR'], ['aKickL', 'aKickR']]) {
+        if (!S[l] && !S[r]) continue;
+        sets.push({
+            L: S[l] ? { arr: S[l], flip: true } : { arr: S[r], flip: false },
+            R: S[r] ? { arr: S[r], flip: false } : { arr: S[l], flip: true }
+        });
+    }
     return (STRIKE_SETS[wid] = sets);
 }
 
@@ -2253,6 +2399,15 @@ const POSE_RATIO = {
     getup0: 0.56, getup1: 0.70, getup2: 0.86
 };
 
+// A state holds an array when it was cut as a cycle and a bare frame when it was cut as a
+// single pose, and which one you get varies by wrestler for the same state -- aDive is one
+// frame on the re-cut premium set and a four frame arc on the older sheets. Indexing [0]
+// blind returns undefined on the single-frame half, so every frame lookup goes through here.
+function frameAt(v, i) {
+    if (!v) return null;
+    return Array.isArray(v) ? v[Math.max(0, Math.min(v.length - 1, i | 0))] : v;
+}
+
 function spriteFor(f) {
     const S = SPRITES[f.wrestler.id];
     if (!S) return null;
@@ -2262,7 +2417,7 @@ function spriteFor(f) {
     // freezing on a walk frame.
     if (settled && M.winner === f && f.downTimer <= 0) {
         if (S.aWin) return { img: S.aWin, flip: false, pose: 'win' };
-        if (S.aTaunt) return { img: S.aTaunt[0], flip: f.direction < 0 };
+        if (S.aTaunt) return { img: frameAt(S.aTaunt, 0), flip: f.direction < 0 };
     }
     if (settled && M.winner && M.winner !== f && f.downTimer <= 0 && S.aLose)
         return { img: S.aLose, flip: false, pose: 'lose' };   // standing loser shows the dejected pose
@@ -2271,9 +2426,9 @@ function spriteFor(f) {
         return { img: S.aCrouch, flip: f.direction < 0, pose: 'crouch' };            // covering the pin
     if (f.climb) return { img: S.aIdleB || S.idle, flip: false };                     // back to camera on the ropes
     if (f.diveTimer > 0) {
-        if (f.diveTimer > 20 && S.aJump) return { img: S.aJump[0], flip: f.direction < 0, noHeld: true };   // leap off the post
-        if (S.aDive) return { img: S.aDive[0], flip: f.direction > 0, noHeld: true, pose: 'dive' };
-        return { img: S.jump, flip: f.direction > 0, noHeld: true };
+        if (f.diveTimer > 20 && S.aJump) return { img: frameAt(S.aJump, 0), flip: f.direction < 0, noHeld: true };   // leap off the post
+        if (S.aDive) return { img: frameAt(S.aDive, 0), flip: f.direction > 0, noHeld: true, pose: 'dive' };
+        return { img: S.jump || frameAt(S.aJump, 0) || S.aIdle || S.idle, flip: f.direction > 0, noHeld: true };
     }
     if (pinned || f.downTimer > 0) {
         if (!pinned && f.downTimer > 0 && f.downTimer <= 26 && S.aGetup) {            // rising animation
@@ -2286,7 +2441,7 @@ function spriteFor(f) {
     if (f.stunTimer > 0 && S.aStagger) return { img: S.aStagger, flip: f.direction < 0 };
     if (f.swingTimer > 0) {
         const idx = Math.min(2, Math.floor((18 - f.swingTimer) / 6));
-        const pick = (arr) => arr[Math.min(arr.length - 1, idx)];
+        const pick = (arr) => frameAt(arr, idx);
         if (f.weapon) {                                                               // weapon-specific swing frames
             const t = f.weapon.type;
             if (t === 'chair' && S.aChairR) return { img: pick(S.aChairR), flip: f.direction < 0, noHeld: true };
@@ -2310,15 +2465,17 @@ function spriteFor(f) {
         // bare-handed strike variety, limited to the sets this wrestler actually has
         const sets = strikeSets(f.wrestler.id);
         if (sets.length) {
-            const [L, R] = sets[(f.strikeKind || 0) % sets.length];
-            return { img: pick(f.direction < 0 ? L : R), flip: f.direction < 0 };
+            const side = sets[(f.strikeKind || 0) % sets.length][f.direction < 0 ? 'L' : 'R'];
+            return { img: pick(side.arr), flip: side.flip };
         }
         // legacy art only: elbowL/elbowR are direction-true, so don't mirror them
         const legacy = f.direction < 0 ? (S.elbowL || S.elbowR) : (S.elbowR || S.elbowL);
         if (legacy) return { img: pick(legacy), flip: f.direction < 0 && !S.elbowL };
         return { img: S.aIdle || S.idle, flip: f.direction < 0 };
     }
-    if (f.jumpTimer > 0) return { img: S.jump, flip: f.direction < 0 };
+    // a few of the thinnest roster entries never got airborne art; fall back through the
+    // re-cut leap frames to the idle pose so they never drop to the missing-art placeholder
+    if (f.jumpTimer > 0) return { img: S.jump || frameAt(S.aJump, 0) || S.aIdle || S.idle, flip: f.direction < 0 };
     if (f.moving) {
         // Moving UP (away from camera) with little horizontal motion: show the back.
         if (f.vy < -0.6 && Math.abs(f.vy) >= Math.abs(f.vx) && (S.aIdleB || S.idle))
@@ -2544,9 +2701,15 @@ function drawFighter(f) {
 
     if (img && img.complete && img.naturalWidth) {
         const isDown = f.downTimer > 0 || (M.grapple && M.grapple.isPin && M.grapple.victim === f);
+        // A body is sized against the viewport and then held to the mat so it cannot
+        // outgrow the ring it is standing in. The mat is a shallow band because the arena
+        // art is a perspective shot -- a wrestler is normally taller than that band is
+        // deep -- so the mat multiplier has to exceed 1 for the viewport share to be what
+        // actually decides the size. Below about 1.2 the band wins on every stage and
+        // bodies collapse to roughly a tenth of the screen no matter how big the window.
         const baseH = isDown
-            ? Math.max(50, Math.min(matH * 0.24, canvas.height * 0.11))
-            : Math.max(88, Math.min(matH * 0.52, canvas.height * 0.23));
+            ? Math.max(50, Math.min(matH * 0.58, canvas.height * 0.11))
+            : Math.max(88, Math.min(matH * 1.25, canvas.height * 0.23));
         // Wrestlers cut from the new sheets carry a reference standing height, so one
         // scale covers every pose and a crouch is genuinely shorter than a stand. The
         // older art was authored frame by frame at whatever size, so it still has to be
@@ -2649,7 +2812,7 @@ const DT = 1000 / 60;
 function loop(t) {
     if (M.phase === 'idle') return;
     if (!lastT) lastT = t;
-    acc += Math.min(100, t - lastT);
+    acc += Math.min(100, t - lastT) * GAME_SPEED;
     lastT = t;
     while (acc >= DT) { step(); acc -= DT; }
     render();
