@@ -1,0 +1,10638 @@
+{
+ "bruce": {
+  "idle": {
+   "file": "sprites/bruce/idle.png",
+   "w": 89,
+   "h": 160
+  },
+  "jump": {
+   "file": "sprites/bruce/jump.png",
+   "w": 161,
+   "h": 160
+  },
+  "fallen": {
+   "file": "sprites/bruce/fallen.png",
+   "w": 110,
+   "h": 70
+  },
+  "walkL": [
+   {
+    "file": "sprites/bruce/walkL_0.png",
+    "w": 97,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/walkL_1.png",
+    "w": 85,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/walkL_2.png",
+    "w": 96,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/walkL_3.png",
+    "w": 96,
+    "h": 160
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/bruce/walkR_0.png",
+    "w": 100,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/walkR_1.png",
+    "w": 100,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/walkR_2.png",
+    "w": 95,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/walkR_3.png",
+    "w": 88,
+    "h": 160
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/bruce/elbowL_0.png",
+    "w": 112,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/elbowL_1.png",
+    "w": 153,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/elbowL_2.png",
+    "w": 91,
+    "h": 160
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/bruce/elbowR_0.png",
+    "w": 104,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/elbowR_1.png",
+    "w": 134,
+    "h": 160
+   },
+   {
+    "file": "sprites/bruce/elbowR_2.png",
+    "w": 103,
+    "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/bruce/a_idle_0.png",
+   "w": 59,
+   "h": 96
+  },
+  "aIdleB": {
+   "file": "sprites/bruce/a_idleB_0.png",
+   "w": 59,
+   "h": 96
+  },
+  "aStagger": {
+   "file": "sprites/bruce/a_stagger_0.png",
+   "w": 61,
+   "h": 79
+  },
+  "aFallB": {
+   "file": "sprites/bruce/a_fallB_0.png",
+   "w": 100,
+   "h": 32
+  },
+  "aFallF": {
+   "file": "sprites/bruce/a_fallF_0.png",
+   "w": 105,
+   "h": 33
+  },
+  "aGetup": [
+   {
+    "file": "sprites/bruce/a_getup_0.png",
+    "w": 70,
+    "h": 53
+   },
+   {
+    "file": "sprites/bruce/a_getup_1.png",
+    "w": 67,
+    "h": 56
+   },
+   {
+    "file": "sprites/bruce/a_getup_2.png",
+    "w": 69,
+    "h": 66
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/bruce/a_walkL_0.png",
+    "w": 51,
+    "h": 88
+   },
+   {
+    "file": "sprites/bruce/a_walkL_1.png",
+    "w": 50,
+    "h": 88
+   },
+   {
+    "file": "sprites/bruce/a_walkL_2.png",
+    "w": 49,
+    "h": 88
+   },
+   {
+    "file": "sprites/bruce/a_walkL_3.png",
+    "w": 38,
+    "h": 88
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bruce/a_walkR_0.png",
+    "w": 52,
+    "h": 90
+   },
+   {
+    "file": "sprites/bruce/a_walkR_1.png",
+    "w": 49,
+    "h": 90
+   },
+   {
+    "file": "sprites/bruce/a_walkR_2.png",
+    "w": 51,
+    "h": 91
+   },
+   {
+    "file": "sprites/bruce/a_walkR_3.png",
+    "w": 51,
+    "h": 90
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/bruce/a_runL_0.png",
+    "w": 63,
+    "h": 78
+   },
+   {
+    "file": "sprites/bruce/a_runL_1.png",
+    "w": 60,
+    "h": 78
+   },
+   {
+    "file": "sprites/bruce/a_runL_2.png",
+    "w": 58,
+    "h": 77
+   },
+   {
+    "file": "sprites/bruce/a_runL_3.png",
+    "w": 57,
+    "h": 78
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/bruce/a_runR_0.png",
+    "w": 59,
+    "h": 75
+   },
+   {
+    "file": "sprites/bruce/a_runR_1.png",
+    "w": 49,
+    "h": 78
+   },
+   {
+    "file": "sprites/bruce/a_runR_2.png",
+    "w": 53,
+    "h": 78
+   },
+   {
+    "file": "sprites/bruce/a_runR_3.png",
+    "w": 57,
+    "h": 78
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/bruce/a_elbowL_0.png",
+    "w": 58,
+    "h": 72
+   },
+   {
+    "file": "sprites/bruce/a_elbowL_1.png",
+    "w": 61,
+    "h": 70
+   },
+   {
+    "file": "sprites/bruce/a_elbowL_2.png",
+    "w": 59,
+    "h": 72
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bruce/a_elbowR_0.png",
+    "w": 62,
+    "h": 70
+   },
+   {
+    "file": "sprites/bruce/a_elbowR_1.png",
+    "w": 61,
+    "h": 71
+   },
+   {
+    "file": "sprites/bruce/a_elbowR_2.png",
+    "w": 60,
+    "h": 73
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/bruce/a_taunt_0.png",
+    "w": 60,
+    "h": 72
+   },
+   {
+    "file": "sprites/bruce/a_taunt_1.png",
+    "w": 63,
+    "h": 72
+   },
+   {
+    "file": "sprites/bruce/a_taunt_2.png",
+    "w": 57,
+    "h": 70
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/bruce/a_diveL_0.png",
+    "w": 85,
+    "h": 51
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/bruce/a_chairR_0.png",
+    "w": 66,
+    "h": 65
+   },
+   {
+    "file": "sprites/bruce/a_chairR_1.png",
+    "w": 85,
+    "h": 57
+   },
+   {
+    "file": "sprites/bruce/a_chairR_2.png",
+    "w": 87,
+    "h": 64
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/bruce/a_kendoL_0.png",
+    "w": 70,
+    "h": 63
+   },
+   {
+    "file": "sprites/bruce/a_kendoL_1.png",
+    "w": 51,
+    "h": 63
+   },
+   {
+    "file": "sprites/bruce/a_kendoL_2.png",
+    "w": 66,
+    "h": 64
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/bruce/a_kendoR_0.png",
+    "w": 65,
+    "h": 64
+   },
+   {
+    "file": "sprites/bruce/a_kendoR_1.png",
+    "w": 39,
+    "h": 62
+   },
+   {
+    "file": "sprites/bruce/a_kendoR_2.png",
+    "w": 66,
+    "h": 63
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/bruce/a_beltR_0.png",
+    "w": 57,
+    "h": 62
+   },
+   {
+    "file": "sprites/bruce/a_beltR_1.png",
+    "w": 58,
+    "h": 64
+   },
+   {
+    "file": "sprites/bruce/a_beltR_2.png",
+    "w": 65,
+    "h": 64
+   }
+  ],
+  "aCrouch": {
+   "file": "sprites/bruce/a_crouch_0.png",
+   "w": 49,
+   "h": 57
+  },
+  "aWin": {
+   "file": "sprites/bruce/a_winPose_0.png",
+   "w": 57,
+   "h": 70
+  },
+  "aLose": {
+   "file": "sprites/bruce/a_losePose_0.png",
+   "w": 70,
+   "h": 53
+  },
+  "aBeltL": [
+   {
+    "file": "sprites/bruce/a_beltL_0.png",
+    "w": 63,
+    "h": 62
+   },
+   {
+    "file": "sprites/bruce/a_beltL_1.png",
+    "w": 59,
+    "h": 62
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/bruce/a_jump_0.png",
+    "w": 55,
+    "h": 69
+   },
+   {
+    "file": "sprites/bruce/a_jump_1.png",
+    "w": 41,
+    "h": 55
+   },
+   {
+    "file": "sprites/bruce/a_jump_2.png",
+    "w": 54,
+    "h": 69
+   },
+   {
+    "file": "sprites/bruce/a_jump_3.png",
+    "w": 48,
+    "h": 69
+   }
+  ],
+  "aPunchL": [
+   {
+    "file": "sprites/bruce/a_punchL_0.png",
+    "w": 59,
+    "h": 74
+   },
+   {
+    "file": "sprites/bruce/a_punchL_1.png",
+    "w": 76,
+    "h": 74
+   },
+   {
+    "file": "sprites/bruce/a_punchL_2.png",
+    "w": 40,
+    "h": 74
+   }
+  ],
+  "aPunchR": [
+   {
+    "file": "sprites/bruce/a_punchR_0.png",
+    "w": 60,
+    "h": 74
+   },
+   {
+    "file": "sprites/bruce/a_punchR_1.png",
+    "w": 67,
+    "h": 74
+   }
+  ],
+  "aKickL": [
+   {
+    "file": "sprites/bruce/a_kickL_0.png",
+    "w": 86,
+    "h": 74
+   },
+   {
+    "file": "sprites/bruce/a_kickL_1.png",
+    "w": 49,
+    "h": 74
+   }
+  ],
+  "aKickR": [
+   {
+    "file": "sprites/bruce/a_kickR_0.png",
+    "w": 49,
+    "h": 74
+   },
+   {
+    "file": "sprites/bruce/a_kickR_1.png",
+    "w": 49,
+    "h": 74
+   }
+  ]
+ },
+ "atiba": {
+  "idle": {
+   "file": "sprites/atiba/idle.png",
+   "w": 105,
+   "h": 160
+  },
+  "jump": {
+   "file": "sprites/atiba/jump.png",
+   "w": 121,
+   "h": 160
+  },
+  "fallen": {
+   "file": "sprites/atiba/fallen.png",
+   "w": 163,
+   "h": 70
+  },
+  "walkL": [
+   {
+    "file": "sprites/atiba/walkL_0.png",
+    "w": 92,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/walkL_1.png",
+    "w": 88,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/walkL_2.png",
+    "w": 85,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/walkL_3.png",
+    "w": 85,
+    "h": 160
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/atiba/walkR_0.png",
+    "w": 90,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/walkR_1.png",
+    "w": 91,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/walkR_2.png",
+    "w": 91,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/walkR_3.png",
+    "w": 88,
+    "h": 160
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/atiba/elbowL_0.png",
+    "w": 110,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/elbowL_1.png",
+    "w": 92,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/elbowL_2.png",
+    "w": 138,
+    "h": 160
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/atiba/elbowR_0.png",
+    "w": 97,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/elbowR_1.png",
+    "w": 118,
+    "h": 160
+   },
+   {
+    "file": "sprites/atiba/elbowR_2.png",
+    "w": 142,
+    "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/atiba/a_idle_0.png",
+   "w": 63,
+   "h": 94
+  },
+  "aIdleB": {
+   "file": "sprites/atiba/a_idleB_0.png",
+   "w": 61,
+   "h": 95
+  },
+  "aStagger": {
+   "file": "sprites/atiba/a_stagger_0.png",
+   "w": 65,
+   "h": 75
+  },
+  "aFallB": {
+   "file": "sprites/atiba/a_fallB_0.png",
+   "w": 97,
+   "h": 30
+  },
+  "aFallF": {
+   "file": "sprites/atiba/a_fallF_0.png",
+   "w": 106,
+   "h": 32
+  },
+  "aGetup": [
+   {
+    "file": "sprites/atiba/a_getup_0.png",
+    "w": 71,
+    "h": 51
+   },
+   {
+    "file": "sprites/atiba/a_getup_1.png",
+    "w": 65,
+    "h": 52
+   },
+   {
+    "file": "sprites/atiba/a_getup_2.png",
+    "w": 70,
+    "h": 64
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/atiba/a_walkL_0.png",
+    "w": 49,
+    "h": 90
+   },
+   {
+    "file": "sprites/atiba/a_walkL_1.png",
+    "w": 50,
+    "h": 89
+   },
+   {
+    "file": "sprites/atiba/a_walkL_2.png",
+    "w": 49,
+    "h": 89
+   },
+   {
+    "file": "sprites/atiba/a_walkL_3.png",
+    "w": 47,
+    "h": 89
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/atiba/a_walkR_0.png",
+    "w": 50,
+    "h": 89
+   },
+   {
+    "file": "sprites/atiba/a_walkR_1.png",
+    "w": 51,
+    "h": 89
+   },
+   {
+    "file": "sprites/atiba/a_walkR_2.png",
+    "w": 50,
+    "h": 90
+   },
+   {
+    "file": "sprites/atiba/a_walkR_3.png",
+    "w": 50,
+    "h": 90
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/atiba/a_runL_0.png",
+    "w": 57,
+    "h": 75
+   },
+   {
+    "file": "sprites/atiba/a_runL_1.png",
+    "w": 62,
+    "h": 75
+   },
+   {
+    "file": "sprites/atiba/a_runL_2.png",
+    "w": 58,
+    "h": 74
+   },
+   {
+    "file": "sprites/atiba/a_runL_3.png",
+    "w": 59,
+    "h": 76
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/atiba/a_runR_0.png",
+    "w": 60,
+    "h": 74
+   },
+   {
+    "file": "sprites/atiba/a_runR_1.png",
+    "w": 54,
+    "h": 76
+   },
+   {
+    "file": "sprites/atiba/a_runR_2.png",
+    "w": 53,
+    "h": 75
+   },
+   {
+    "file": "sprites/atiba/a_runR_3.png",
+    "w": 63,
+    "h": 74
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/atiba/a_elbowL_0.png",
+    "w": 56,
+    "h": 70
+   },
+   {
+    "file": "sprites/atiba/a_elbowL_1.png",
+    "w": 59,
+    "h": 70
+   },
+   {
+    "file": "sprites/atiba/a_elbowL_2.png",
+    "w": 57,
+    "h": 70
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/atiba/a_elbowR_0.png",
+    "w": 62,
+    "h": 71
+   },
+   {
+    "file": "sprites/atiba/a_elbowR_1.png",
+    "w": 60,
+    "h": 70
+   },
+   {
+    "file": "sprites/atiba/a_elbowR_2.png",
+    "w": 61,
+    "h": 72
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/atiba/a_taunt_0.png",
+    "w": 58,
+    "h": 73
+   },
+   {
+    "file": "sprites/atiba/a_taunt_1.png",
+    "w": 50,
+    "h": 72
+   },
+   {
+    "file": "sprites/atiba/a_taunt_2.png",
+    "w": 62,
+    "h": 71
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/atiba/a_diveL_0.png",
+    "w": 86,
+    "h": 50
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/atiba/a_chairR_0.png",
+    "w": 65,
+    "h": 59
+   },
+   {
+    "file": "sprites/atiba/a_chairR_1.png",
+    "w": 87,
+    "h": 59
+   },
+   {
+    "file": "sprites/atiba/a_chairR_2.png",
+    "w": 87,
+    "h": 61
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/atiba/a_kendoL_0.png",
+    "w": 71,
+    "h": 59
+   },
+   {
+    "file": "sprites/atiba/a_kendoL_1.png",
+    "w": 49,
+    "h": 59
+   },
+   {
+    "file": "sprites/atiba/a_kendoL_2.png",
+    "w": 65,
+    "h": 60
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/atiba/a_kendoR_0.png",
+    "w": 65,
+    "h": 61
+   },
+   {
+    "file": "sprites/atiba/a_kendoR_1.png",
+    "w": 39,
+    "h": 60
+   },
+   {
+    "file": "sprites/atiba/a_kendoR_2.png",
+    "w": 71,
+    "h": 59
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/atiba/a_beltR_0.png",
+    "w": 56,
+    "h": 61
+   },
+   {
+    "file": "sprites/atiba/a_beltR_1.png",
+    "w": 61,
+    "h": 62
+   },
+   {
+    "file": "sprites/atiba/a_beltR_2.png",
+    "w": 67,
+    "h": 61
+   }
+  ],
+  "aCrouch": {
+   "file": "sprites/atiba/a_crouch_0.png",
+   "w": 49,
+   "h": 56
+  },
+  "aWin": {
+   "file": "sprites/atiba/a_winPose_0.png",
+   "w": 62,
+   "h": 71
+  },
+  "aLose": {
+   "file": "sprites/atiba/a_losePose_0.png",
+   "w": 71,
+   "h": 51
+  },
+  "aBeltL": [
+   {
+    "file": "sprites/atiba/a_beltL_0.png",
+    "w": 62,
+    "h": 67
+   },
+   {
+    "file": "sprites/atiba/a_beltL_1.png",
+    "w": 57,
+    "h": 65
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/atiba/a_jump_0.png",
+    "w": 57,
+    "h": 69
+   },
+   {
+    "file": "sprites/atiba/a_jump_1.png",
+    "w": 43,
+    "h": 54
+   },
+   {
+    "file": "sprites/atiba/a_jump_2.png",
+    "w": 53,
+    "h": 69
+   },
+   {
+    "file": "sprites/atiba/a_jump_3.png",
+    "w": 47,
+    "h": 67
+   }
+  ],
+  "aPunchL": [
+   {
+    "file": "sprites/atiba/a_punchL_0.png",
+    "w": 57,
+    "h": 71
+   },
+   {
+    "file": "sprites/atiba/a_punchL_1.png",
+    "w": 75,
+    "h": 72
+   },
+   {
+    "file": "sprites/atiba/a_punchL_2.png",
+    "w": 33,
+    "h": 72
+   }
+  ],
+  "aPunchR": [
+   {
+    "file": "sprites/atiba/a_punchR_0.png",
+    "w": 59,
+    "h": 72
+   },
+   {
+    "file": "sprites/atiba/a_punchR_1.png",
+    "w": 65,
+    "h": 71
+   }
+  ],
+  "aKickL": [
+   {
+    "file": "sprites/atiba/a_kickL_0.png",
+    "w": 81,
+    "h": 73
+   },
+   {
+    "file": "sprites/atiba/a_kickL_1.png",
+    "w": 49,
+    "h": 73
+   }
+  ],
+  "aKickR": [
+   {
+    "file": "sprites/atiba/a_kickR_0.png",
+    "w": 77,
+    "h": 72
+   },
+   {
+    "file": "sprites/atiba/a_kickR_1.png",
+    "w": 49,
+    "h": 73
+   }
+  ]
+ },
+ "bishop": {
+  "idle": {
+   "file": "sprites/bishop/idle.png",
+   "w": 87,
+   "h": 160
+  },
+  "jump": {
+   "file": "sprites/bishop/jump.png",
+   "w": 120,
+   "h": 160
+  },
+  "fallen": {
+   "file": "sprites/bishop/fallen.png",
+   "w": 235,
+   "h": 70
+  },
+  "walkL": [
+   {
+    "file": "sprites/bishop/walkL_0.png",
+    "w": 97,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/walkL_1.png",
+    "w": 92,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/walkL_2.png",
+    "w": 85,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/walkL_3.png",
+    "w": 99,
+    "h": 160
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/bishop/walkR_0.png",
+    "w": 100,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/walkR_1.png",
+    "w": 88,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/walkR_2.png",
+    "w": 88,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/walkR_3.png",
+    "w": 99,
+    "h": 160
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/bishop/elbowL_0.png",
+    "w": 114,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/elbowL_1.png",
+    "w": 111,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/elbowL_2.png",
+    "w": 116,
+    "h": 160
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/bishop/elbowR_0.png",
+    "w": 111,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/elbowR_1.png",
+    "w": 107,
+    "h": 160
+   },
+   {
+    "file": "sprites/bishop/elbowR_2.png",
+    "w": 124,
+    "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/bishop/a_idle_0.png",
+   "w": 52,
+   "h": 93
+  },
+  "aIdleB": {
+   "file": "sprites/bishop/a_idleB_0.png",
+   "w": 51,
+   "h": 91
+  },
+  "aStagger": {
+   "file": "sprites/bishop/a_stagger_0.png",
+   "w": 73,
+   "h": 77
+  },
+  "aFallB": {
+   "file": "sprites/bishop/a_fallB_0.png",
+   "w": 91,
+   "h": 33
+  },
+  "aFallF": {
+   "file": "sprites/bishop/a_fallF_0.png",
+   "w": 95,
+   "h": 31
+  },
+  "aGetup": [
+   {
+    "file": "sprites/bishop/a_getup_0.png",
+    "w": 64,
+    "h": 55
+   },
+   {
+    "file": "sprites/bishop/a_getup_1.png",
+    "w": 60,
+    "h": 54
+   },
+   {
+    "file": "sprites/bishop/a_getup_2.png",
+    "w": 76,
+    "h": 66
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/bishop/a_walkL_0.png",
+    "w": 40,
+    "h": 92
+   },
+   {
+    "file": "sprites/bishop/a_walkL_1.png",
+    "w": 48,
+    "h": 89
+   },
+   {
+    "file": "sprites/bishop/a_walkL_2.png",
+    "w": 43,
+    "h": 88
+   },
+   {
+    "file": "sprites/bishop/a_walkL_3.png",
+    "w": 43,
+    "h": 87
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bishop/a_walkR_0.png",
+    "w": 39,
+    "h": 87
+   },
+   {
+    "file": "sprites/bishop/a_walkR_1.png",
+    "w": 46,
+    "h": 87
+   },
+   {
+    "file": "sprites/bishop/a_walkR_2.png",
+    "w": 43,
+    "h": 87
+   },
+   {
+    "file": "sprites/bishop/a_walkR_3.png",
+    "w": 44,
+    "h": 88
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/bishop/a_runL_0.png",
+    "w": 56,
+    "h": 75
+   },
+   {
+    "file": "sprites/bishop/a_runL_1.png",
+    "w": 55,
+    "h": 76
+   },
+   {
+    "file": "sprites/bishop/a_runL_2.png",
+    "w": 55,
+    "h": 77
+   },
+   {
+    "file": "sprites/bishop/a_runL_3.png",
+    "w": 53,
+    "h": 80
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/bishop/a_runR_0.png",
+    "w": 57,
+    "h": 73
+   },
+   {
+    "file": "sprites/bishop/a_runR_1.png",
+    "w": 49,
+    "h": 77
+   },
+   {
+    "file": "sprites/bishop/a_runR_2.png",
+    "w": 45,
+    "h": 75
+   },
+   {
+    "file": "sprites/bishop/a_runR_3.png",
+    "w": 50,
+    "h": 75
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/bishop/a_elbowL_0.png",
+    "w": 57,
+    "h": 76
+   },
+   {
+    "file": "sprites/bishop/a_elbowL_1.png",
+    "w": 58,
+    "h": 76
+   },
+   {
+    "file": "sprites/bishop/a_elbowL_2.png",
+    "w": 58,
+    "h": 76
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bishop/a_elbowR_0.png",
+    "w": 60,
+    "h": 76
+   },
+   {
+    "file": "sprites/bishop/a_elbowR_1.png",
+    "w": 62,
+    "h": 76
+   },
+   {
+    "file": "sprites/bishop/a_elbowR_2.png",
+    "w": 58,
+    "h": 78
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/bishop/a_taunt_0.png",
+    "w": 60,
+    "h": 80
+   },
+   {
+    "file": "sprites/bishop/a_taunt_1.png",
+    "w": 60,
+    "h": 77
+   },
+   {
+    "file": "sprites/bishop/a_taunt_2.png",
+    "w": 66,
+    "h": 77
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/bishop/a_diveL_0.png",
+    "w": 85,
+    "h": 54
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/bishop/a_chairR_0.png",
+    "w": 63,
+    "h": 69
+   },
+   {
+    "file": "sprites/bishop/a_chairR_1.png",
+    "w": 87,
+    "h": 65
+   },
+   {
+    "file": "sprites/bishop/a_chairR_2.png",
+    "w": 88,
+    "h": 69
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/bishop/a_kendoL_0.png",
+    "w": 68,
+    "h": 67
+   },
+   {
+    "file": "sprites/bishop/a_kendoL_1.png",
+    "w": 52,
+    "h": 67
+   },
+   {
+    "file": "sprites/bishop/a_kendoL_2.png",
+    "w": 68,
+    "h": 68
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/bishop/a_kendoR_0.png",
+    "w": 68,
+    "h": 68
+   },
+   {
+    "file": "sprites/bishop/a_kendoR_1.png",
+    "w": 37,
+    "h": 68
+   },
+   {
+    "file": "sprites/bishop/a_kendoR_2.png",
+    "w": 69,
+    "h": 67
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/bishop/a_beltR_0.png",
+    "w": 56,
+    "h": 66
+   },
+   {
+    "file": "sprites/bishop/a_beltR_1.png",
+    "w": 61,
+    "h": 68
+   },
+   {
+    "file": "sprites/bishop/a_beltR_2.png",
+    "w": 64,
+    "h": 70
+   }
+  ],
+  "aCrouch": {
+   "file": "sprites/bishop/a_crouch_0.png",
+   "w": 44,
+   "h": 58
+  },
+  "aWin": {
+   "file": "sprites/bishop/a_winPose_0.png",
+   "w": 66,
+   "h": 77
+  },
+  "aLose": {
+   "file": "sprites/bishop/a_losePose_0.png",
+   "w": 64,
+   "h": 55
+  },
+  "aBeltL": [
+   {
+    "file": "sprites/bishop/a_beltL_0.png",
+    "w": 63,
+    "h": 67
+   },
+   {
+    "file": "sprites/bishop/a_beltL_1.png",
+    "w": 56,
+    "h": 67
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/bishop/a_jump_0.png",
+    "w": 55,
+    "h": 68
+   },
+   {
+    "file": "sprites/bishop/a_jump_1.png",
+    "w": 41,
+    "h": 61
+   },
+   {
+    "file": "sprites/bishop/a_jump_2.png",
+    "w": 48,
+    "h": 68
+   },
+   {
+    "file": "sprites/bishop/a_jump_3.png",
+    "w": 37,
+    "h": 68
+   }
+  ],
+  "aPunchL": [
+   {
+    "file": "sprites/bishop/a_punchL_0.png",
+    "w": 65,
+    "h": 74
+   },
+   {
+    "file": "sprites/bishop/a_punchL_1.png",
+    "w": 74,
+    "h": 73
+   },
+   {
+    "file": "sprites/bishop/a_punchL_2.png",
+    "w": 27,
+    "h": 73
+   }
+  ],
+  "aPunchR": [
+   {
+    "file": "sprites/bishop/a_punchR_0.png",
+    "w": 58,
+    "h": 74
+   },
+   {
+    "file": "sprites/bishop/a_punchR_1.png",
+    "w": 64,
+    "h": 74
+   }
+  ],
+  "aKickL": [
+   {
+    "file": "sprites/bishop/a_kickL_0.png",
+    "w": 76,
+    "h": 72
+   },
+   {
+    "file": "sprites/bishop/a_kickL_1.png",
+    "w": 76,
+    "h": 72
+   }
+  ],
+  "aKickR": [
+   {
+    "file": "sprites/bishop/a_kickR_0.png",
+    "w": 76,
+    "h": 72
+   },
+   {
+    "file": "sprites/bishop/a_kickR_1.png",
+    "w": 76,
+    "h": 72
+   }
+  ]
+ },
+ "bronson": {
+  "idle": {
+   "file": "sprites/bronson/idle.png",
+   "w": 95,
+   "h": 160
+  },
+  "jump": {
+   "file": "sprites/bronson/jump.png",
+   "w": 127,
+   "h": 160
+  },
+  "fallen": {
+   "file": "sprites/bronson/fallen.png",
+   "w": 201,
+   "h": 70
+  },
+  "walkL": [
+   {
+    "file": "sprites/bronson/walkL_0.png",
+    "w": 106,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/walkL_1.png",
+    "w": 89,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/walkL_2.png",
+    "w": 94,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/walkL_3.png",
+    "w": 105,
+    "h": 160
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/bronson/walkR_0.png",
+    "w": 107,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/walkR_1.png",
+    "w": 107,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/walkR_2.png",
+    "w": 109,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/walkR_3.png",
+    "w": 110,
+    "h": 160
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/bronson/elbowL_0.png",
+    "w": 125,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/elbowL_1.png",
+    "w": 112,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/elbowL_2.png",
+    "w": 133,
+    "h": 160
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/bronson/elbowR_0.png",
+    "w": 133,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/elbowR_1.png",
+    "w": 141,
+    "h": 160
+   },
+   {
+    "file": "sprites/bronson/elbowR_2.png",
+    "w": 145,
+    "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/bronson/a_idle_0.png",
+   "w": 58,
+   "h": 97
+  },
+  "aIdleB": {
+   "file": "sprites/bronson/a_idleB_0.png",
+   "w": 51,
+   "h": 97
+  },
+  "aStagger": {
+   "file": "sprites/bronson/a_stagger_0.png",
+   "w": 83,
+   "h": 74
+  },
+  "aFallB": {
+   "file": "sprites/bronson/a_fallB_0.png",
+   "w": 100,
+   "h": 31
+  },
+  "aFallF": {
+   "file": "sprites/bronson/a_fallF_0.png",
+   "w": 107,
+   "h": 34
+  },
+  "aGetup": [
+   {
+    "file": "sprites/bronson/a_getup_0.png",
+    "w": 71,
+    "h": 57
+   },
+   {
+    "file": "sprites/bronson/a_getup_1.png",
+    "w": 70,
+    "h": 58
+   },
+   {
+    "file": "sprites/bronson/a_getup_2.png",
+    "w": 72,
+    "h": 67
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/bronson/a_walkL_0.png",
+    "w": 49,
+    "h": 95
+   },
+   {
+    "file": "sprites/bronson/a_walkL_1.png",
+    "w": 48,
+    "h": 94
+   },
+   {
+    "file": "sprites/bronson/a_walkL_2.png",
+    "w": 49,
+    "h": 94
+   },
+   {
+    "file": "sprites/bronson/a_walkL_3.png",
+    "w": 47,
+    "h": 92
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bronson/a_walkR_0.png",
+    "w": 50,
+    "h": 91
+   },
+   {
+    "file": "sprites/bronson/a_walkR_1.png",
+    "w": 49,
+    "h": 91
+   },
+   {
+    "file": "sprites/bronson/a_walkR_2.png",
+    "w": 50,
+    "h": 93
+   },
+   {
+    "file": "sprites/bronson/a_walkR_3.png",
+    "w": 50,
+    "h": 94
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/bronson/a_runL_0.png",
+    "w": 64,
+    "h": 78
+   },
+   {
+    "file": "sprites/bronson/a_runL_1.png",
+    "w": 62,
+    "h": 78
+   },
+   {
+    "file": "sprites/bronson/a_runL_2.png",
+    "w": 61,
+    "h": 76
+   },
+   {
+    "file": "sprites/bronson/a_runL_3.png",
+    "w": 60,
+    "h": 79
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/bronson/a_runR_0.png",
+    "w": 60,
+    "h": 75
+   },
+   {
+    "file": "sprites/bronson/a_runR_1.png",
+    "w": 51,
+    "h": 78
+   },
+   {
+    "file": "sprites/bronson/a_runR_2.png",
+    "w": 54,
+    "h": 78
+   },
+   {
+    "file": "sprites/bronson/a_runR_3.png",
+    "w": 60,
+    "h": 77
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/bronson/a_elbowL_0.png",
+    "w": 55,
+    "h": 73
+   },
+   {
+    "file": "sprites/bronson/a_elbowL_1.png",
+    "w": 61,
+    "h": 71
+   },
+   {
+    "file": "sprites/bronson/a_elbowL_2.png",
+    "w": 56,
+    "h": 71
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bronson/a_elbowR_0.png",
+    "w": 61,
+    "h": 71
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_1.png",
+    "w": 59,
+    "h": 70
+   },
+   {
+    "file": "sprites/bronson/a_elbowR_2.png",
+    "w": 61,
+    "h": 71
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/bronson/a_taunt_0.png",
+    "w": 57,
+    "h": 73
+   },
+   {
+    "file": "sprites/bronson/a_taunt_1.png",
+    "w": 61,
+    "h": 74
+   },
+   {
+    "file": "sprites/bronson/a_taunt_2.png",
+    "w": 63,
+    "h": 71
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/bronson/a_diveL_0.png",
+    "w": 86,
+    "h": 51
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/bronson/a_chairR_0.png",
+    "w": 63,
+    "h": 60
+   },
+   {
+    "file": "sprites/bronson/a_chairR_1.png",
+    "w": 84,
+    "h": 58
+   },
+   {
+    "file": "sprites/bronson/a_chairR_2.png",
+    "w": 85,
+    "h": 60
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/bronson/a_kendoL_0.png",
+    "w": 71,
+    "h": 60
+   },
+   {
+    "file": "sprites/bronson/a_kendoL_1.png",
+    "w": 51,
+    "h": 60
+   },
+   {
+    "file": "sprites/bronson/a_kendoL_2.png",
+    "w": 67,
+    "h": 60
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/bronson/a_kendoR_0.png",
+    "w": 66,
+    "h": 60
+   },
+   {
+    "file": "sprites/bronson/a_kendoR_1.png",
+    "w": 38,
+    "h": 60
+   },
+   {
+    "file": "sprites/bronson/a_kendoR_2.png",
+    "w": 70,
+    "h": 60
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/bronson/a_beltR_0.png",
+    "w": 59,
+    "h": 57
+   },
+   {
+    "file": "sprites/bronson/a_beltR_1.png",
+    "w": 60,
+    "h": 61
+   },
+   {
+    "file": "sprites/bronson/a_beltR_2.png",
+    "w": 67,
+    "h": 60
+   }
+  ],
+  "aCrouch": {
+   "file": "sprites/bronson/a_crouch_0.png",
+   "w": 49,
+   "h": 57
+  },
+  "aWin": {
+   "file": "sprites/bronson/a_winPose_0.png",
+   "w": 63,
+   "h": 71
+  },
+  "aLose": {
+   "file": "sprites/bronson/a_losePose_0.png",
+   "w": 71,
+   "h": 57
+  },
+  "aBeltL": [
+   {
+    "file": "sprites/bronson/a_beltL_0.png",
+    "w": 64,
+    "h": 66
+   },
+   {
+    "file": "sprites/bronson/a_beltL_1.png",
+    "w": 58,
+    "h": 65
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/bronson/a_jump_0.png",
+    "w": 52,
+    "h": 69
+   },
+   {
+    "file": "sprites/bronson/a_jump_1.png",
+    "w": 42,
+    "h": 54
+   },
+   {
+    "file": "sprites/bronson/a_jump_2.png",
+    "w": 53,
+    "h": 69
+   },
+   {
+    "file": "sprites/bronson/a_jump_3.png",
+    "w": 46,
+    "h": 69
+   }
+  ],
+  "aPunchL": [
+   {
+    "file": "sprites/bronson/a_punchL_0.png",
+    "w": 61,
+    "h": 74
+   },
+   {
+    "file": "sprites/bronson/a_punchL_1.png",
+    "w": 76,
+    "h": 74
+   },
+   {
+    "file": "sprites/bronson/a_punchL_2.png",
+    "w": 39,
+    "h": 74
+   }
+  ],
+  "aPunchR": [
+   {
+    "file": "sprites/bronson/a_punchR_0.png",
+    "w": 60,
+    "h": 74
+   },
+   {
+    "file": "sprites/bronson/a_punchR_1.png",
+    "w": 66,
+    "h": 74
+   }
+  ],
+  "aKickL": [
+   {
+    "file": "sprites/bronson/a_kickL_0.png",
+    "w": 81,
+    "h": 74
+   },
+   {
+    "file": "sprites/bronson/a_kickL_1.png",
+    "w": 51,
+    "h": 74
+   }
+  ],
+  "aKickR": [
+   {
+    "file": "sprites/bronson/a_kickR_0.png",
+    "w": 81,
+    "h": 74
+   },
+   {
+    "file": "sprites/bronson/a_kickR_1.png",
+    "w": 51,
+    "h": 74
+   }
+  ]
+ },
+ "dani": {
+  "idle": {
+   "file": "sprites/dani/idle.png",
+   "w": 82,
+   "h": 160
+  },
+  "jump": {
+   "file": "sprites/dani/jump.png",
+   "w": 137,
+   "h": 160
+  },
+  "fallen": {
+   "file": "sprites/dani/fallen.png",
+   "w": 93,
+   "h": 70
+  },
+  "walkL": [
+   {
+    "file": "sprites/dani/walkL_0.png",
+    "w": 89,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/walkL_1.png",
+    "w": 79,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/walkL_2.png",
+    "w": 99,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/walkL_3.png",
+    "w": 90,
+    "h": 160
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/dani/walkR_0.png",
+    "w": 91,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/walkR_1.png",
+    "w": 95,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/walkR_2.png",
+    "w": 94,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/walkR_3.png",
+    "w": 94,
+    "h": 160
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/dani/elbowL_0.png",
+    "w": 90,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/elbowL_1.png",
+    "w": 87,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/elbowL_2.png",
+    "w": 129,
+    "h": 160
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/dani/elbowR_0.png",
+    "w": 116,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/elbowR_1.png",
+    "w": 89,
+    "h": 160
+   },
+   {
+    "file": "sprites/dani/elbowR_2.png",
+    "w": 130,
+    "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/dani/a_idle_0.png",
+   "w": 49,
+   "h": 94
+  },
+  "aIdleB": {
+   "file": "sprites/dani/a_idleB_0.png",
+   "w": 51,
+   "h": 92
+  },
+  "aStagger": {
+   "file": "sprites/dani/a_stagger_0.png",
+   "w": 67,
+   "h": 78
+  },
+  "aFallB": {
+   "file": "sprites/dani/a_fallB_0.png",
+   "w": 99,
+   "h": 30
+  },
+  "aFallF": {
+   "file": "sprites/dani/a_fallF_0.png",
+   "w": 104,
+   "h": 31
+  },
+  "aGetup": [
+   {
+    "file": "sprites/dani/a_getup_0.png",
+    "w": 71,
+    "h": 55
+   },
+   {
+    "file": "sprites/dani/a_getup_1.png",
+    "w": 64,
+    "h": 56
+   },
+   {
+    "file": "sprites/dani/a_getup_2.png",
+    "w": 66,
+    "h": 62
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/dani/a_walkL_0.png",
+    "w": 44,
+    "h": 85
+   },
+   {
+    "file": "sprites/dani/a_walkL_1.png",
+    "w": 45,
+    "h": 85
+   },
+   {
+    "file": "sprites/dani/a_walkL_2.png",
+    "w": 44,
+    "h": 85
+   },
+   {
+    "file": "sprites/dani/a_walkL_3.png",
+    "w": 43,
+    "h": 85
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/dani/a_walkR_0.png",
+    "w": 44,
+    "h": 88
+   },
+   {
+    "file": "sprites/dani/a_walkR_1.png",
+    "w": 43,
+    "h": 88
+   },
+   {
+    "file": "sprites/dani/a_walkR_2.png",
+    "w": 45,
+    "h": 88
+   },
+   {
+    "file": "sprites/dani/a_walkR_3.png",
+    "w": 47,
+    "h": 88
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/dani/a_runL_0.png",
+    "w": 58,
+    "h": 77
+   },
+   {
+    "file": "sprites/dani/a_runL_1.png",
+    "w": 58,
+    "h": 79
+   },
+   {
+    "file": "sprites/dani/a_runL_2.png",
+    "w": 52,
+    "h": 77
+   },
+   {
+    "file": "sprites/dani/a_runL_3.png",
+    "w": 55,
+    "h": 79
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/dani/a_runR_0.png",
+    "w": 54,
+    "h": 75
+   },
+   {
+    "file": "sprites/dani/a_runR_1.png",
+    "w": 48,
+    "h": 78
+   },
+   {
+    "file": "sprites/dani/a_runR_2.png",
+    "w": 48,
+    "h": 77
+   },
+   {
+    "file": "sprites/dani/a_runR_3.png",
+    "w": 56,
+    "h": 76
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/dani/a_elbowL_0.png",
+    "w": 54,
+    "h": 71
+   },
+   {
+    "file": "sprites/dani/a_elbowL_1.png",
+    "w": 60,
+    "h": 69
+   },
+   {
+    "file": "sprites/dani/a_elbowL_2.png",
+    "w": 54,
+    "h": 71
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/dani/a_elbowR_0.png",
+    "w": 60,
+    "h": 71
+   },
+   {
+    "file": "sprites/dani/a_elbowR_1.png",
+    "w": 60,
+    "h": 69
+   },
+   {
+    "file": "sprites/dani/a_elbowR_2.png",
+    "w": 59,
+    "h": 70
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/dani/a_taunt_0.png",
+    "w": 57,
+    "h": 72
+   },
+   {
+    "file": "sprites/dani/a_taunt_1.png",
+    "w": 59,
+    "h": 71
+   },
+   {
+    "file": "sprites/dani/a_taunt_2.png",
+    "w": 63,
+    "h": 70
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/dani/a_diveL_0.png",
+    "w": 86,
+    "h": 52
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/dani/a_chairR_0.png",
+    "w": 63,
+    "h": 64
+   },
+   {
+    "file": "sprites/dani/a_chairR_1.png",
+    "w": 87,
+    "h": 62
+   },
+   {
+    "file": "sprites/dani/a_chairR_2.png",
+    "w": 87,
+    "h": 64
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/dani/a_kendoL_0.png",
+    "w": 69,
+    "h": 63
+   },
+   {
+    "file": "sprites/dani/a_kendoL_1.png",
+    "w": 48,
+    "h": 65
+   },
+   {
+    "file": "sprites/dani/a_kendoL_2.png",
+    "w": 64,
+    "h": 66
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/dani/a_kendoR_0.png",
+    "w": 66,
+    "h": 66
+   },
+   {
+    "file": "sprites/dani/a_kendoR_1.png",
+    "w": 37,
+    "h": 65
+   },
+   {
+    "file": "sprites/dani/a_kendoR_2.png",
+    "w": 69,
+    "h": 65
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/dani/a_beltR_0.png",
+    "w": 53,
+    "h": 63
+   },
+   {
+    "file": "sprites/dani/a_beltR_1.png",
+    "w": 60,
+    "h": 66
+   },
+   {
+    "file": "sprites/dani/a_beltR_2.png",
+    "w": 68,
+    "h": 66
+   }
+  ],
+  "aCrouch": {
+   "file": "sprites/dani/a_crouch_0.png",
+   "w": 46,
+   "h": 59
+  },
+  "aWin": {
+   "file": "sprites/dani/a_winPose_0.png",
+   "w": 56,
+   "h": 35
+  },
+  "aLose": {
+   "file": "sprites/dani/a_losePose_0.png",
+   "w": 35,
+   "h": 33
+  },
+  "aBeltL": [
+   {
+    "file": "sprites/dani/a_beltL_0.png",
+    "w": 65,
+    "h": 65
+   },
+   {
+    "file": "sprites/dani/a_beltL_1.png",
+    "w": 64,
+    "h": 65
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/dani/a_jump_0.png",
+    "w": 52,
+    "h": 69
+   },
+   {
+    "file": "sprites/dani/a_jump_1.png",
+    "w": 39,
+    "h": 58
+   },
+   {
+    "file": "sprites/dani/a_jump_2.png",
+    "w": 51,
+    "h": 69
+   },
+   {
+    "file": "sprites/dani/a_jump_3.png",
+    "w": 45,
+    "h": 69
+   }
+  ],
+  "aPunchL": [
+   {
+    "file": "sprites/dani/a_punchL_0.png",
+    "w": 57,
+    "h": 74
+   },
+   {
+    "file": "sprites/dani/a_punchL_1.png",
+    "w": 71,
+    "h": 74
+   },
+   {
+    "file": "sprites/dani/a_punchL_2.png",
+    "w": 38,
+    "h": 74
+   }
+  ],
+  "aPunchR": [
+   {
+    "file": "sprites/dani/a_punchR_0.png",
+    "w": 59,
+    "h": 74
+   },
+   {
+    "file": "sprites/dani/a_punchR_1.png",
+    "w": 60,
+    "h": 74
+   }
+  ],
+  "aKickL": [
+   {
+    "file": "sprites/dani/a_kickL_0.png",
+    "w": 79,
+    "h": 74
+   },
+   {
+    "file": "sprites/dani/a_kickL_1.png",
+    "w": 47,
+    "h": 74
+   }
+  ],
+  "aKickR": [
+   {
+    "file": "sprites/dani/a_kickR_0.png",
+    "w": 75,
+    "h": 74
+   },
+   {
+    "file": "sprites/dani/a_kickR_1.png",
+    "w": 47,
+    "h": 74
+   }
+  ]
+ },
+ "caleb": {
+  "idle": {
+   "file": "sprites/caleb/idle.png",
+   "w": 87,
+   "h": 160
+  },
+  "jump": {
+   "file": "sprites/caleb/jump.png",
+   "w": 130,
+   "h": 160
+  },
+  "fallen": {
+   "file": "sprites/caleb/fallen.png",
+   "w": 219,
+   "h": 70
+  },
+  "walkL": [
+   {
+    "file": "sprites/caleb/walkL_0.png",
+    "w": 96,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/walkL_1.png",
+    "w": 94,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/walkL_2.png",
+    "w": 108,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/walkL_3.png",
+    "w": 94,
+    "h": 160
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/caleb/walkR_0.png",
+    "w": 93,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/walkR_1.png",
+    "w": 94,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/walkR_2.png",
+    "w": 95,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/walkR_3.png",
+    "w": 98,
+    "h": 160
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/caleb/elbowL_0.png",
+    "w": 113,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/elbowL_1.png",
+    "w": 127,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/elbowL_2.png",
+    "w": 137,
+    "h": 160
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/caleb/elbowR_0.png",
+    "w": 104,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/elbowR_1.png",
+    "w": 130,
+    "h": 160
+   },
+   {
+    "file": "sprites/caleb/elbowR_2.png",
+    "w": 132,
+    "h": 160
+   }
+  ],
+  "aIdle": {
+   "file": "sprites/caleb/a_idle_0.png",
+   "w": 60,
+   "h": 95
+  },
+  "aIdleB": {
+   "file": "sprites/caleb/a_idleB_0.png",
+   "w": 58,
+   "h": 95
+  },
+  "aStagger": {
+   "file": "sprites/caleb/a_stagger_0.png",
+   "w": 59,
+   "h": 78
+  },
+  "aFallB": {
+   "file": "sprites/caleb/a_fallB_0.png",
+   "w": 99,
+   "h": 31
+  },
+  "aFallF": {
+   "file": "sprites/caleb/a_fallF_0.png",
+   "w": 104,
+   "h": 33
+  },
+  "aGetup": [
+   {
+    "file": "sprites/caleb/a_getup_0.png",
+    "w": 69,
+    "h": 52
+   },
+   {
+    "file": "sprites/caleb/a_getup_1.png",
+    "w": 66,
+    "h": 54
+   },
+   {
+    "file": "sprites/caleb/a_getup_2.png",
+    "w": 69,
+    "h": 63
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/caleb/a_walkL_0.png",
+    "w": 49,
+    "h": 91
+   },
+   {
+    "file": "sprites/caleb/a_walkL_1.png",
+    "w": 45,
+    "h": 89
+   },
+   {
+    "file": "sprites/caleb/a_walkL_2.png",
+    "w": 49,
+    "h": 92
+   },
+   {
+    "file": "sprites/caleb/a_walkL_3.png",
+    "w": 49,
+    "h": 89
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/caleb/a_walkR_0.png",
+    "w": 49,
+    "h": 88
+   },
+   {
+    "file": "sprites/caleb/a_walkR_1.png",
+    "w": 49,
+    "h": 88
+   },
+   {
+    "file": "sprites/caleb/a_walkR_2.png",
+    "w": 47,
+    "h": 91
+   },
+   {
+    "file": "sprites/caleb/a_walkR_3.png",
+    "w": 48,
+    "h": 91
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/caleb/a_runL_0.png",
+    "w": 62,
+    "h": 77
+   },
+   {
+    "file": "sprites/caleb/a_runL_1.png",
+    "w": 61,
+    "h": 78
+   },
+   {
+    "file": "sprites/caleb/a_runL_2.png",
+    "w": 55,
+    "h": 77
+   },
+   {
+    "file": "sprites/caleb/a_runL_3.png",
+    "w": 57,
+    "h": 78
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/caleb/a_runR_0.png",
+    "w": 57,
+    "h": 75
+   },
+   {
+    "file": "sprites/caleb/a_runR_1.png",
+    "w": 50,
+    "h": 80
+   },
+   {
+    "file": "sprites/caleb/a_runR_2.png",
+    "w": 52,
+    "h": 79
+   },
+   {
+    "file": "sprites/caleb/a_runR_3.png",
+    "w": 56,
+    "h": 78
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/caleb/a_elbowL_0.png",
+    "w": 55,
+    "h": 70
+   },
+   {
+    "file": "sprites/caleb/a_elbowL_1.png",
+    "w": 62,
+    "h": 67
+   },
+   {
+    "file": "sprites/caleb/a_elbowL_2.png",
+    "w": 57,
+    "h": 70
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/caleb/a_elbowR_0.png",
+    "w": 61,
+    "h": 70
+   },
+   {
+    "file": "sprites/caleb/a_elbowR_1.png",
+    "w": 61,
+    "h": 68
+   },
+   {
+    "file": "sprites/caleb/a_elbowR_2.png",
+    "w": 60,
+    "h": 71
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/caleb/a_taunt_0.png",
+    "w": 59,
+    "h": 72
+   },
+   {
+    "file": "sprites/caleb/a_taunt_1.png",
+    "w": 61,
+    "h": 69
+   },
+   {
+    "file": "sprites/caleb/a_taunt_2.png",
+    "w": 62,
+    "h": 69
+   }
+  ],
+  "aDive": [
+   {
+    "file": "sprites/caleb/a_diveL_0.png",
+    "w": 85,
+    "h": 50
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/caleb/a_chairR_0.png",
+    "w": 64,
+    "h": 62
+   },
+   {
+    "file": "sprites/caleb/a_chairR_1.png",
+    "w": 88,
+    "h": 60
+   },
+   {
+    "file": "sprites/caleb/a_chairR_2.png",
+    "w": 88,
+    "h": 62
+   }
+  ],
+  "aKendoL": [
+   {
+    "file": "sprites/caleb/a_kendoL_0.png",
+    "w": 72,
+    "h": 61
+   },
+   {
+    "file": "sprites/caleb/a_kendoL_1.png",
+    "w": 50,
+    "h": 61
+   },
+   {
+    "file": "sprites/caleb/a_kendoL_2.png",
+    "w": 66,
+    "h": 61
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/caleb/a_kendoR_0.png",
+    "w": 64,
+    "h": 60
+   },
+   {
+    "file": "sprites/caleb/a_kendoR_1.png",
+    "w": 40,
+    "h": 60
+   },
+   {
+    "file": "sprites/caleb/a_kendoR_2.png",
+    "w": 69,
+    "h": 61
+   }
+  ],
+  "aBeltR": [
+   {
+    "file": "sprites/caleb/a_beltR_0.png",
+    "w": 59,
+    "h": 62
+   },
+   {
+    "file": "sprites/caleb/a_beltR_1.png",
+    "w": 61,
+    "h": 61
+   },
+   {
+    "file": "sprites/caleb/a_beltR_2.png",
+    "w": 68,
+    "h": 60
+   }
+  ],
+  "aCrouch": {
+   "file": "sprites/caleb/a_crouch_0.png",
+   "w": 49,
+   "h": 54
+  },
+  "aWin": {
+   "file": "sprites/caleb/a_winPose_0.png",
+   "w": 59,
+   "h": 40
+  },
+  "aLose": {
+   "file": "sprites/caleb/a_losePose_0.png",
+   "w": 37,
+   "h": 38
+  },
+  "aBeltL": [
+   {
+    "file": "sprites/caleb/a_beltL_0.png",
+    "w": 59,
+    "h": 62
+   },
+   {
+    "file": "sprites/caleb/a_beltL_1.png",
+    "w": 61,
+    "h": 61
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/caleb/a_jump_0.png",
+    "w": 55,
+    "h": 69
+   },
+   {
+    "file": "sprites/caleb/a_jump_1.png",
+    "w": 42,
+    "h": 52
+   },
+   {
+    "file": "sprites/caleb/a_jump_2.png",
+    "w": 53,
+    "h": 69
+   },
+   {
+    "file": "sprites/caleb/a_jump_3.png",
+    "w": 47,
+    "h": 66
+   }
+  ],
+  "aPunchL": [
+   {
+    "file": "sprites/caleb/a_punchL_0.png",
+    "w": 58,
+    "h": 70
+   },
+   {
+    "file": "sprites/caleb/a_punchL_1.png",
+    "w": 77,
+    "h": 71
+   },
+   {
+    "file": "sprites/caleb/a_punchL_2.png",
+    "w": 44,
+    "h": 71
+   }
+  ],
+  "aPunchR": [
+   {
+    "file": "sprites/caleb/a_punchR_0.png",
+    "w": 59,
+    "h": 70
+   },
+   {
+    "file": "sprites/caleb/a_punchR_1.png",
+    "w": 65,
+    "h": 70
+   }
+  ],
+  "aKickL": [
+   {
+    "file": "sprites/caleb/a_kickL_0.png",
+    "w": 81,
+    "h": 70
+   },
+   {
+    "file": "sprites/caleb/a_kickL_1.png",
+    "w": 50,
+    "h": 71
+   }
+  ],
+  "aKickR": [
+   {
+    "file": "sprites/caleb/a_kickR_0.png",
+    "w": 78,
+    "h": 71
+   },
+   {
+    "file": "sprites/caleb/a_kickR_1.png",
+    "w": 48,
+    "h": 71
+   },
+   {
+    "file": "sprites/caleb/a_kickR_2.png",
+    "w": 76,
+    "h": 69
+   }
+  ]
+ },
+ "ringrat": {
+  "idle": {
+   "file": "sprites/ringrat/idle.png",
+   "w": 103,
+   "h": 201
+  },
+  "aIdle": {
+   "file": "sprites/ringrat/idle.png",
+   "w": 103,
+   "h": 201
+  },
+  "aIdleB": {
+   "file": "sprites/ringrat/idle_back.png",
+   "w": 99,
+   "h": 202
+  },
+  "fallen": {
+   "file": "sprites/ringrat/fall_b.png",
+   "w": 171,
+   "h": 75
+  },
+  "aFallB": {
+   "file": "sprites/ringrat/fall_b.png",
+   "w": 171,
+   "h": 75
+  },
+  "aFallF": {
+   "file": "sprites/ringrat/fall_f.png",
+   "w": 195,
+   "h": 56
+  },
+  "jump": {
+   "file": "sprites/ringrat/jump_air.png",
+   "w": 82,
+   "h": 151
+  },
+  "aJump": [
+   {
+    "file": "sprites/ringrat/jump_crouch.png",
+    "w": 77,
+    "h": 122
+   },
+   {
+    "file": "sprites/ringrat/jump_air.png",
+    "w": 82,
+    "h": 151
+   },
+   {
+    "file": "sprites/ringrat/jump_land.png",
+    "w": 79,
+    "h": 114
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/ringrat/walk_l0.png",
+    "w": 74,
+    "h": 135
+   },
+   {
+    "file": "sprites/ringrat/walk_l1.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_l2.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_l3.png",
+    "w": 71,
+    "h": 134
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/ringrat/walk_l0.png",
+    "w": 74,
+    "h": 135
+   },
+   {
+    "file": "sprites/ringrat/walk_l1.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_l2.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_l3.png",
+    "w": 71,
+    "h": 134
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/ringrat/walk_r0.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_r1.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_r2.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_r3.png",
+    "w": 71,
+    "h": 134
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/ringrat/walk_r0.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_r1.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_r2.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/ringrat/walk_r3.png",
+    "w": 71,
+    "h": 134
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/ringrat/elbow_r0.png",
+    "w": 94,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_r1.png",
+    "w": 87,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_r2.png",
+    "w": 85,
+    "h": 163
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/ringrat/elbow_r0.png",
+    "w": 94,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_r1.png",
+    "w": 87,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_r2.png",
+    "w": 85,
+    "h": 163
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/ringrat/elbow_l0.png",
+    "w": 85,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_l1.png",
+    "w": 87,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_l2.png",
+    "w": 91,
+    "h": 164
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/ringrat/elbow_l0.png",
+    "w": 85,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_l1.png",
+    "w": 87,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/elbow_l2.png",
+    "w": 91,
+    "h": 164
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/ringrat/grap_r0.png",
+    "w": 155,
+    "h": 187
+   },
+   {
+    "file": "sprites/ringrat/grap_r1.png",
+    "w": 156,
+    "h": 179
+   },
+   {
+    "file": "sprites/ringrat/grap_r2.png",
+    "w": 149,
+    "h": 135
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/ringrat/grap_l0.png",
+    "w": 131,
+    "h": 164
+   },
+   {
+    "file": "sprites/ringrat/grap_l1.png",
+    "w": 134,
+    "h": 163
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/ringrat/throw_r0.png",
+    "w": 99,
+    "h": 158
+   },
+   {
+    "file": "sprites/ringrat/throw_r1.png",
+    "w": 133,
+    "h": 192
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/ringrat/throw_l0.png",
+    "w": 88,
+    "h": 140
+   },
+   {
+    "file": "sprites/ringrat/throw_l1.png",
+    "w": 161,
+    "h": 142
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/ringrat/over0.png",
+    "w": 95,
+    "h": 184
+   },
+   {
+    "file": "sprites/ringrat/over1.png",
+    "w": 149,
+    "h": 168
+   }
+  ]
+ },
+ "alice": {
+  "idle": {
+   "file": "sprites/alice/idle.png",
+   "w": 90,
+   "h": 189
+  },
+  "aIdle": {
+   "file": "sprites/alice/idle.png",
+   "w": 90,
+   "h": 189
+  },
+  "aIdleB": {
+   "file": "sprites/alice/idle_back.png",
+   "w": 91,
+   "h": 189
+  },
+  "fallen": {
+   "file": "sprites/alice/fall_b.png",
+   "w": 169,
+   "h": 68
+  },
+  "aFallB": {
+   "file": "sprites/alice/fall_b.png",
+   "w": 169,
+   "h": 68
+  },
+  "aFallF": {
+   "file": "sprites/alice/fall_f.png",
+   "w": 169,
+   "h": 68
+  },
+  "aJump": [
+   {
+    "file": "sprites/alice/jump_crouch.png",
+    "w": 73,
+    "h": 118
+   },
+   {
+    "file": "sprites/alice/jump_air.png",
+    "w": 103,
+    "h": 134
+   },
+   {
+    "file": "sprites/alice/jump_land.png",
+    "w": 75,
+    "h": 116
+   }
+  ],
+  "jump": {
+   "file": "sprites/alice/jump_air.png",
+   "w": 103,
+   "h": 134
+  },
+  "walkL": [
+   {
+    "file": "sprites/alice/walk_l0.png",
+    "w": 77,
+    "h": 147
+   },
+   {
+    "file": "sprites/alice/walk_l1.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/alice/walk_l2.png",
+    "w": 66,
+    "h": 146
+   },
+   {
+    "file": "sprites/alice/walk_l3.png",
+    "w": 62,
+    "h": 147
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/alice/walk_l0.png",
+    "w": 77,
+    "h": 147
+   },
+   {
+    "file": "sprites/alice/walk_l1.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/alice/walk_l2.png",
+    "w": 66,
+    "h": 146
+   },
+   {
+    "file": "sprites/alice/walk_l3.png",
+    "w": 62,
+    "h": 147
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/alice/walk_r0.png",
+    "w": 75,
+    "h": 148
+   },
+   {
+    "file": "sprites/alice/walk_r1.png",
+    "w": 75,
+    "h": 148
+   },
+   {
+    "file": "sprites/alice/walk_r2.png",
+    "w": 59,
+    "h": 149
+   },
+   {
+    "file": "sprites/alice/walk_r3.png",
+    "w": 75,
+    "h": 149
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/alice/walk_r0.png",
+    "w": 75,
+    "h": 148
+   },
+   {
+    "file": "sprites/alice/walk_r1.png",
+    "w": 75,
+    "h": 148
+   },
+   {
+    "file": "sprites/alice/walk_r2.png",
+    "w": 59,
+    "h": 149
+   },
+   {
+    "file": "sprites/alice/walk_r3.png",
+    "w": 75,
+    "h": 149
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/alice/elbow_r0.png",
+    "w": 96,
+    "h": 169
+   },
+   {
+    "file": "sprites/alice/elbow_r1.png",
+    "w": 89,
+    "h": 165
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/alice/elbow_r0.png",
+    "w": 96,
+    "h": 169
+   },
+   {
+    "file": "sprites/alice/elbow_r1.png",
+    "w": 89,
+    "h": 165
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/alice/elbow_l0.png",
+    "w": 103,
+    "h": 165
+   },
+   {
+    "file": "sprites/alice/elbow_l1.png",
+    "w": 95,
+    "h": 168
+   },
+   {
+    "file": "sprites/alice/elbow_l2.png",
+    "w": 130,
+    "h": 166
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/alice/elbow_l0.png",
+    "w": 103,
+    "h": 165
+   },
+   {
+    "file": "sprites/alice/elbow_l1.png",
+    "w": 95,
+    "h": 168
+   },
+   {
+    "file": "sprites/alice/elbow_l2.png",
+    "w": 130,
+    "h": 166
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/alice/grap_r0.png",
+    "w": 161,
+    "h": 180
+   },
+   {
+    "file": "sprites/alice/grap_r1.png",
+    "w": 155,
+    "h": 176
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/alice/grap_l0.png",
+    "w": 133,
+    "h": 172
+   },
+   {
+    "file": "sprites/alice/grap_l1.png",
+    "w": 142,
+    "h": 170
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/alice/throw_r0.png",
+    "w": 123,
+    "h": 167
+   },
+   {
+    "file": "sprites/alice/throw_r1.png",
+    "w": 145,
+    "h": 188
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/alice/throw_l0.png",
+    "w": 104,
+    "h": 147
+   },
+   {
+    "file": "sprites/alice/throw_l1.png",
+    "w": 170,
+    "h": 148
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/alice/over0.png",
+    "w": 90,
+    "h": 182
+   },
+   {
+    "file": "sprites/alice/over1.png",
+    "w": 142,
+    "h": 170
+   }
+  ]
+ },
+ "tony": {
+  "idle": {
+   "file": "sprites/tony/idle.png",
+   "w": 513,
+   "h": 935
+  },
+  "aIdle": {
+   "file": "sprites/tony/idle.png",
+   "w": 513,
+   "h": 935
+  },
+  "aIdleB": {
+   "file": "sprites/tony/idle_back.png",
+   "w": 509,
+   "h": 938
+  },
+  "fallen": {
+   "file": "sprites/tony/fall_b.png",
+   "w": 161,
+   "h": 84
+  },
+  "aFallB": {
+   "file": "sprites/tony/fall_b.png",
+   "w": 161,
+   "h": 84
+  },
+  "aFallF": {
+   "file": "sprites/tony/fall_f.png",
+   "w": 201,
+   "h": 65
+  },
+  "aJump": [
+   {
+    "file": "sprites/tony/jump_crouch.png",
+    "w": 78,
+    "h": 110
+   },
+   {
+    "file": "sprites/tony/jump_air.png",
+    "w": 101,
+    "h": 119
+   },
+   {
+    "file": "sprites/tony/jump_land.png",
+    "w": 80,
+    "h": 94
+   }
+  ],
+  "jump": {
+   "file": "sprites/tony/jump_air.png",
+   "w": 101,
+   "h": 119
+  },
+  "walkL": [
+   {
+    "file": "sprites/tony/walk_l0.png",
+    "w": 74,
+    "h": 134
+   },
+   {
+    "file": "sprites/tony/walk_l1.png",
+    "w": 77,
+    "h": 135
+   },
+   {
+    "file": "sprites/tony/walk_l2.png",
+    "w": 73,
+    "h": 134
+   },
+   {
+    "file": "sprites/tony/walk_l3.png",
+    "w": 75,
+    "h": 134
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/tony/walk_l0.png",
+    "w": 74,
+    "h": 134
+   },
+   {
+    "file": "sprites/tony/walk_l1.png",
+    "w": 77,
+    "h": 135
+   },
+   {
+    "file": "sprites/tony/walk_l2.png",
+    "w": 73,
+    "h": 134
+   },
+   {
+    "file": "sprites/tony/walk_l3.png",
+    "w": 75,
+    "h": 134
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/tony/walk_r0.png",
+    "w": 74,
+    "h": 135
+   },
+   {
+    "file": "sprites/tony/walk_r1.png",
+    "w": 77,
+    "h": 135
+   },
+   {
+    "file": "sprites/tony/walk_r2.png",
+    "w": 75,
+    "h": 134
+   },
+   {
+    "file": "sprites/tony/walk_r3.png",
+    "w": 77,
+    "h": 136
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/tony/walk_r0.png",
+    "w": 74,
+    "h": 135
+   },
+   {
+    "file": "sprites/tony/walk_r1.png",
+    "w": 77,
+    "h": 135
+   },
+   {
+    "file": "sprites/tony/walk_r2.png",
+    "w": 75,
+    "h": 134
+   },
+   {
+    "file": "sprites/tony/walk_r3.png",
+    "w": 77,
+    "h": 136
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/tony/elbow_r0.png",
+    "w": 98,
+    "h": 136
+   },
+   {
+    "file": "sprites/tony/elbow_r1.png",
+    "w": 107,
+    "h": 137
+   },
+   {
+    "file": "sprites/tony/elbow_r2.png",
+    "w": 127,
+    "h": 136
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/tony/elbow_r0.png",
+    "w": 98,
+    "h": 136
+   },
+   {
+    "file": "sprites/tony/elbow_r1.png",
+    "w": 107,
+    "h": 137
+   },
+   {
+    "file": "sprites/tony/elbow_r2.png",
+    "w": 127,
+    "h": 136
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/tony/elbow_l0.png",
+    "w": 100,
+    "h": 137
+   },
+   {
+    "file": "sprites/tony/elbow_l1.png",
+    "w": 86,
+    "h": 138
+   },
+   {
+    "file": "sprites/tony/elbow_l2.png",
+    "w": 129,
+    "h": 138
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/tony/elbow_l0.png",
+    "w": 100,
+    "h": 137
+   },
+   {
+    "file": "sprites/tony/elbow_l1.png",
+    "w": 86,
+    "h": 138
+   },
+   {
+    "file": "sprites/tony/elbow_l2.png",
+    "w": 129,
+    "h": 138
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/tony/grap_r0.png",
+    "w": 172,
+    "h": 165
+   },
+   {
+    "file": "sprites/tony/grap_r1.png",
+    "w": 157,
+    "h": 161
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/tony/grap_l0.png",
+    "w": 140,
+    "h": 145
+   },
+   {
+    "file": "sprites/tony/grap_l1.png",
+    "w": 139,
+    "h": 145
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/tony/throw_r0.png",
+    "w": 130,
+    "h": 149
+   },
+   {
+    "file": "sprites/tony/throw_r1.png",
+    "w": 150,
+    "h": 163
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/tony/throw_l0.png",
+    "w": 112,
+    "h": 135
+   },
+   {
+    "file": "sprites/tony/throw_l1.png",
+    "w": 163,
+    "h": 136
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/tony/over0.png",
+    "w": 123,
+    "h": 123
+   },
+   {
+    "file": "sprites/tony/over1.png",
+    "w": 585,
+    "h": 1104
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/tony/run_l0.png",
+    "w": 329,
+    "h": 421
+   },
+   {
+    "file": "sprites/tony/run_l1.png",
+    "w": 332,
+    "h": 422
+   },
+   {
+    "file": "sprites/tony/run_l2.png",
+    "w": 329,
+    "h": 422
+   },
+   {
+    "file": "sprites/tony/run_l3.png",
+    "w": 328,
+    "h": 423
+   },
+   {
+    "file": "sprites/tony/run_l4.png",
+    "w": 327,
+    "h": 422
+   },
+   {
+    "file": "sprites/tony/run_l5.png",
+    "w": 332,
+    "h": 421
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/tony/run_r0.png",
+    "w": 328,
+    "h": 428
+   },
+   {
+    "file": "sprites/tony/run_r1.png",
+    "w": 322,
+    "h": 431
+   },
+   {
+    "file": "sprites/tony/run_r2.png",
+    "w": 335,
+    "h": 430
+   },
+   {
+    "file": "sprites/tony/run_r3.png",
+    "w": 336,
+    "h": 430
+   },
+   {
+    "file": "sprites/tony/run_r4.png",
+    "w": 320,
+    "h": 431
+   },
+   {
+    "file": "sprites/tony/run_r5.png",
+    "w": 332,
+    "h": 432
+   }
+  ],
+  "aStagger": {
+   "file": "sprites/tony/stagger.png",
+   "w": 502,
+   "h": 936
+  },
+  "aGetup": [
+   {
+    "file": "sprites/tony/getup0.png",
+    "w": 513,
+    "h": 396
+   },
+   {
+    "file": "sprites/tony/getup1.png",
+    "w": 412,
+    "h": 563
+   },
+   {
+    "file": "sprites/tony/getup2.png",
+    "w": 400,
+    "h": 721
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/tony/taunt.png",
+    "w": 563,
+    "h": 935
+   }
+  ],
+  "aWin": {
+   "file": "sprites/tony/win.png",
+   "w": 465,
+   "h": 1000
+  },
+  "aLose": {
+   "file": "sprites/tony/lose.png",
+   "w": 518,
+   "h": 806
+  },
+  "aCrouch": {
+   "file": "sprites/tony/crouch.png",
+   "w": 135,
+   "h": 127
+  },
+  "aDive": [
+   {
+    "file": "sprites/tony/dive0.png",
+    "w": 694,
+    "h": 286
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/tony/chair_a0.png",
+    "w": 414,
+    "h": 962
+   },
+   {
+    "file": "sprites/tony/chair_a1.png",
+    "w": 595,
+    "h": 632
+   },
+   {
+    "file": "sprites/tony/chair_a2.png",
+    "w": 511,
+    "h": 636
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/tony/kendo_a0.png",
+    "w": 480,
+    "h": 962
+   },
+   {
+    "file": "sprites/tony/kendo_a1.png",
+    "w": 442,
+    "h": 754
+   },
+   {
+    "file": "sprites/tony/kendo_a2.png",
+    "w": 522,
+    "h": 767
+   }
+  ],
+  "aGuitarR": [
+   {
+    "file": "sprites/tony/guitar_a0.png",
+    "w": 431,
+    "h": 843
+   },
+   {
+    "file": "sprites/tony/guitar_a1.png",
+    "w": 654,
+    "h": 610
+   },
+   {
+    "file": "sprites/tony/guitar_a2.png",
+    "w": 292,
+    "h": 563
+   }
+  ],
+  "aCanR": [
+   {
+    "file": "sprites/tony/can_a0.png",
+    "w": 505,
+    "h": 821
+   },
+   {
+    "file": "sprites/tony/can_a1.png",
+    "w": 435,
+    "h": 1024
+   },
+   {
+    "file": "sprites/tony/can_a2.png",
+    "w": 526,
+    "h": 767
+   }
+  ],
+  "wWalkChairL": [
+   {
+    "file": "sprites/tony/wchair_l0.png",
+    "w": 282,
+    "h": 457
+   },
+   {
+    "file": "sprites/tony/wchair_l1.png",
+    "w": 282,
+    "h": 456
+   },
+   {
+    "file": "sprites/tony/wchair_l2.png",
+    "w": 281,
+    "h": 458
+   },
+   {
+    "file": "sprites/tony/wchair_l3.png",
+    "w": 279,
+    "h": 457
+   },
+   {
+    "file": "sprites/tony/wchair_l4.png",
+    "w": 273,
+    "h": 457
+   }
+  ],
+  "wWalkChairR": [
+   {
+    "file": "sprites/tony/wchair_r0.png",
+    "w": 282,
+    "h": 441
+   },
+   {
+    "file": "sprites/tony/wchair_r1.png",
+    "w": 282,
+    "h": 442
+   },
+   {
+    "file": "sprites/tony/wchair_r2.png",
+    "w": 283,
+    "h": 443
+   },
+   {
+    "file": "sprites/tony/wchair_r3.png",
+    "w": 279,
+    "h": 441
+   },
+   {
+    "file": "sprites/tony/wchair_r4.png",
+    "w": 280,
+    "h": 442
+   }
+  ],
+  "wWalkCanL": [
+   {
+    "file": "sprites/tony/wcan_l0.png",
+    "w": 468,
+    "h": 743
+   },
+   {
+    "file": "sprites/tony/wcan_l1.png",
+    "w": 468,
+    "h": 744
+   },
+   {
+    "file": "sprites/tony/wcan_l2.png",
+    "w": 417,
+    "h": 746
+   },
+   {
+    "file": "sprites/tony/wcan_l3.png",
+    "w": 465,
+    "h": 743
+   },
+   {
+    "file": "sprites/tony/wcan_l4.png",
+    "w": 461,
+    "h": 744
+   }
+  ]
+ },
+ "cokane": {
+  "idle": {
+   "file": "sprites/cokane/idle.png",
+   "w": 103,
+   "h": 191
+  },
+  "aIdle": {
+   "file": "sprites/cokane/idle.png",
+   "w": 103,
+   "h": 191
+  },
+  "aIdleB": {
+   "file": "sprites/cokane/idle_back.png",
+   "w": 100,
+   "h": 189
+  },
+  "fallen": {
+   "file": "sprites/cokane/fall_b.png",
+   "w": 154,
+   "h": 88
+  },
+  "aFallB": {
+   "file": "sprites/cokane/fall_b.png",
+   "w": 154,
+   "h": 88
+  },
+  "aFallF": {
+   "file": "sprites/cokane/fall_f.png",
+   "w": 154,
+   "h": 88
+  },
+  "aJump": [
+   {
+    "file": "sprites/cokane/jump_crouch.png",
+    "w": 73,
+    "h": 116
+   },
+   {
+    "file": "sprites/cokane/jump_air.png",
+    "w": 104,
+    "h": 137
+   },
+   {
+    "file": "sprites/cokane/jump_land.png",
+    "w": 76,
+    "h": 112
+   }
+  ],
+  "jump": {
+   "file": "sprites/cokane/jump_air.png",
+   "w": 104,
+   "h": 137
+  },
+  "walkL": [
+   {
+    "file": "sprites/cokane/walk_l0.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_l1.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_l2.png",
+    "w": 73,
+    "h": 145
+   },
+   {
+    "file": "sprites/cokane/walk_l3.png",
+    "w": 73,
+    "h": 145
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/cokane/walk_l0.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_l1.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_l2.png",
+    "w": 73,
+    "h": 145
+   },
+   {
+    "file": "sprites/cokane/walk_l3.png",
+    "w": 73,
+    "h": 145
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/cokane/walk_r0.png",
+    "w": 74,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_r1.png",
+    "w": 74,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_r2.png",
+    "w": 73,
+    "h": 147
+   },
+   {
+    "file": "sprites/cokane/walk_r3.png",
+    "w": 73,
+    "h": 147
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/cokane/walk_r0.png",
+    "w": 74,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_r1.png",
+    "w": 74,
+    "h": 146
+   },
+   {
+    "file": "sprites/cokane/walk_r2.png",
+    "w": 73,
+    "h": 147
+   },
+   {
+    "file": "sprites/cokane/walk_r3.png",
+    "w": 73,
+    "h": 147
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/cokane/elbow_r0.png",
+    "w": 94,
+    "h": 167
+   },
+   {
+    "file": "sprites/cokane/elbow_r1.png",
+    "w": 92,
+    "h": 168
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/cokane/elbow_r0.png",
+    "w": 94,
+    "h": 167
+   },
+   {
+    "file": "sprites/cokane/elbow_r1.png",
+    "w": 92,
+    "h": 168
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/cokane/elbow_l0.png",
+    "w": 101,
+    "h": 168
+   },
+   {
+    "file": "sprites/cokane/elbow_l1.png",
+    "w": 83,
+    "h": 167
+   },
+   {
+    "file": "sprites/cokane/elbow_l2.png",
+    "w": 136,
+    "h": 167
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/cokane/elbow_l0.png",
+    "w": 101,
+    "h": 168
+   },
+   {
+    "file": "sprites/cokane/elbow_l1.png",
+    "w": 83,
+    "h": 167
+   },
+   {
+    "file": "sprites/cokane/elbow_l2.png",
+    "w": 136,
+    "h": 167
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/cokane/grap_r0.png",
+    "w": 164,
+    "h": 185
+   },
+   {
+    "file": "sprites/cokane/grap_r1.png",
+    "w": 165,
+    "h": 180
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/cokane/grap_l0.png",
+    "w": 136,
+    "h": 169
+   },
+   {
+    "file": "sprites/cokane/grap_l1.png",
+    "w": 141,
+    "h": 173
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/cokane/throw_r0.png",
+    "w": 114,
+    "h": 169
+   },
+   {
+    "file": "sprites/cokane/throw_r1.png",
+    "w": 145,
+    "h": 202
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/cokane/throw_l0.png",
+    "w": 102,
+    "h": 149
+   },
+   {
+    "file": "sprites/cokane/throw_l1.png",
+    "w": 159,
+    "h": 154
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/cokane/over0.png",
+    "w": 98,
+    "h": 182
+   },
+   {
+    "file": "sprites/cokane/over1.png",
+    "w": 142,
+    "h": 170
+   }
+  ]
+ },
+ "ec3": {
+  "idle": {
+   "file": "sprites/ec3/idle.png",
+   "w": 103,
+   "h": 199
+  },
+  "aIdle": {
+   "file": "sprites/ec3/idle.png",
+   "w": 103,
+   "h": 199
+  },
+  "aIdleB": {
+   "file": "sprites/ec3/idle_back.png",
+   "w": 103,
+   "h": 199
+  },
+  "fallen": {
+   "file": "sprites/ec3/fall_b.png",
+   "w": 160,
+   "h": 82
+  },
+  "aFallB": {
+   "file": "sprites/ec3/fall_b.png",
+   "w": 160,
+   "h": 82
+  },
+  "aFallF": {
+   "file": "sprites/ec3/fall_f.png",
+   "w": 160,
+   "h": 82
+  },
+  "aJump": [
+   {
+    "file": "sprites/ec3/jump_crouch.png",
+    "w": 73,
+    "h": 117
+   },
+   {
+    "file": "sprites/ec3/jump_air.png",
+    "w": 108,
+    "h": 132
+   },
+   {
+    "file": "sprites/ec3/jump_land.png",
+    "w": 74,
+    "h": 117
+   }
+  ],
+  "jump": {
+   "file": "sprites/ec3/jump_air.png",
+   "w": 108,
+   "h": 132
+  },
+  "walkL": [
+   {
+    "file": "sprites/ec3/walk_l0.png",
+    "w": 77,
+    "h": 148
+   },
+   {
+    "file": "sprites/ec3/walk_l1.png",
+    "w": 74,
+    "h": 149
+   },
+   {
+    "file": "sprites/ec3/walk_l2.png",
+    "w": 75,
+    "h": 148
+   },
+   {
+    "file": "sprites/ec3/walk_l3.png",
+    "w": 74,
+    "h": 148
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/ec3/walk_l0.png",
+    "w": 77,
+    "h": 148
+   },
+   {
+    "file": "sprites/ec3/walk_l1.png",
+    "w": 74,
+    "h": 149
+   },
+   {
+    "file": "sprites/ec3/walk_l2.png",
+    "w": 75,
+    "h": 148
+   },
+   {
+    "file": "sprites/ec3/walk_l3.png",
+    "w": 74,
+    "h": 148
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/ec3/walk_r0.png",
+    "w": 76,
+    "h": 148
+   },
+   {
+    "file": "sprites/ec3/walk_r1.png",
+    "w": 76,
+    "h": 150
+   },
+   {
+    "file": "sprites/ec3/walk_r2.png",
+    "w": 75,
+    "h": 150
+   },
+   {
+    "file": "sprites/ec3/walk_r3.png",
+    "w": 75,
+    "h": 149
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/ec3/walk_r0.png",
+    "w": 76,
+    "h": 148
+   },
+   {
+    "file": "sprites/ec3/walk_r1.png",
+    "w": 76,
+    "h": 150
+   },
+   {
+    "file": "sprites/ec3/walk_r2.png",
+    "w": 75,
+    "h": 150
+   },
+   {
+    "file": "sprites/ec3/walk_r3.png",
+    "w": 75,
+    "h": 149
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/ec3/elbow_r0.png",
+    "w": 92,
+    "h": 167
+   },
+   {
+    "file": "sprites/ec3/elbow_r1.png",
+    "w": 92,
+    "h": 167
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/ec3/elbow_r0.png",
+    "w": 92,
+    "h": 167
+   },
+   {
+    "file": "sprites/ec3/elbow_r1.png",
+    "w": 92,
+    "h": 167
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/ec3/elbow_l0.png",
+    "w": 93,
+    "h": 168
+   },
+   {
+    "file": "sprites/ec3/elbow_l1.png",
+    "w": 85,
+    "h": 168
+   },
+   {
+    "file": "sprites/ec3/elbow_l2.png",
+    "w": 140,
+    "h": 168
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/ec3/elbow_l0.png",
+    "w": 93,
+    "h": 168
+   },
+   {
+    "file": "sprites/ec3/elbow_l1.png",
+    "w": 85,
+    "h": 168
+   },
+   {
+    "file": "sprites/ec3/elbow_l2.png",
+    "w": 140,
+    "h": 168
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/ec3/grap_r0.png",
+    "w": 172,
+    "h": 191
+   },
+   {
+    "file": "sprites/ec3/grap_r1.png",
+    "w": 170,
+    "h": 187
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/ec3/grap_l0.png",
+    "w": 138,
+    "h": 176
+   },
+   {
+    "file": "sprites/ec3/grap_l1.png",
+    "w": 144,
+    "h": 176
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/ec3/throw_r0.png",
+    "w": 121,
+    "h": 173
+   },
+   {
+    "file": "sprites/ec3/throw_r1.png",
+    "w": 147,
+    "h": 203
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/ec3/throw_l0.png",
+    "w": 102,
+    "h": 153
+   },
+   {
+    "file": "sprites/ec3/throw_l1.png",
+    "w": 161,
+    "h": 150
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/ec3/over0.png",
+    "w": 96,
+    "h": 178
+   },
+   {
+    "file": "sprites/ec3/over1.png",
+    "w": 143,
+    "h": 167
+   }
+  ]
+ },
+ "jrod": {
+  "idle": {
+   "file": "sprites/jrod/idle.png",
+   "w": 98,
+   "h": 195
+  },
+  "aIdle": {
+   "file": "sprites/jrod/idle.png",
+   "w": 98,
+   "h": 195
+  },
+  "aIdleB": {
+   "file": "sprites/jrod/idle_back.png",
+   "w": 93,
+   "h": 194
+  },
+  "fallen": {
+   "file": "sprites/jrod/fall_b.png",
+   "w": 165,
+   "h": 76
+  },
+  "aFallB": {
+   "file": "sprites/jrod/fall_b.png",
+   "w": 165,
+   "h": 76
+  },
+  "aFallF": {
+   "file": "sprites/jrod/fall_f.png",
+   "w": 165,
+   "h": 76
+  },
+  "aJump": [
+   {
+    "file": "sprites/jrod/jump_crouch.png",
+    "w": 73,
+    "h": 111
+   },
+   {
+    "file": "sprites/jrod/jump_air.png",
+    "w": 103,
+    "h": 129
+   },
+   {
+    "file": "sprites/jrod/jump_land.png",
+    "w": 72,
+    "h": 111
+   }
+  ],
+  "jump": {
+   "file": "sprites/jrod/jump_air.png",
+   "w": 103,
+   "h": 129
+  },
+  "walkL": [
+   {
+    "file": "sprites/jrod/walk_l0.png",
+    "w": 76,
+    "h": 149
+   },
+   {
+    "file": "sprites/jrod/walk_l1.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/jrod/walk_l2.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/jrod/walk_l3.png",
+    "w": 78,
+    "h": 149
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/jrod/walk_l0.png",
+    "w": 76,
+    "h": 149
+   },
+   {
+    "file": "sprites/jrod/walk_l1.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/jrod/walk_l2.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/jrod/walk_l3.png",
+    "w": 78,
+    "h": 149
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/jrod/walk_r0.png",
+    "w": 77,
+    "h": 150
+   },
+   {
+    "file": "sprites/jrod/walk_r1.png",
+    "w": 77,
+    "h": 150
+   },
+   {
+    "file": "sprites/jrod/walk_r2.png",
+    "w": 78,
+    "h": 150
+   },
+   {
+    "file": "sprites/jrod/walk_r3.png",
+    "w": 78,
+    "h": 150
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/jrod/walk_r0.png",
+    "w": 77,
+    "h": 150
+   },
+   {
+    "file": "sprites/jrod/walk_r1.png",
+    "w": 77,
+    "h": 150
+   },
+   {
+    "file": "sprites/jrod/walk_r2.png",
+    "w": 78,
+    "h": 150
+   },
+   {
+    "file": "sprites/jrod/walk_r3.png",
+    "w": 78,
+    "h": 150
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/jrod/elbow_r0.png",
+    "w": 93,
+    "h": 165
+   },
+   {
+    "file": "sprites/jrod/elbow_r1.png",
+    "w": 91,
+    "h": 165
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/jrod/elbow_r0.png",
+    "w": 93,
+    "h": 165
+   },
+   {
+    "file": "sprites/jrod/elbow_r1.png",
+    "w": 91,
+    "h": 165
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/jrod/elbow_l0.png",
+    "w": 95,
+    "h": 165
+   },
+   {
+    "file": "sprites/jrod/elbow_l1.png",
+    "w": 84,
+    "h": 165
+   },
+   {
+    "file": "sprites/jrod/elbow_l2.png",
+    "w": 129,
+    "h": 165
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/jrod/elbow_l0.png",
+    "w": 95,
+    "h": 165
+   },
+   {
+    "file": "sprites/jrod/elbow_l1.png",
+    "w": 84,
+    "h": 165
+   },
+   {
+    "file": "sprites/jrod/elbow_l2.png",
+    "w": 129,
+    "h": 165
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/jrod/grap_r0.png",
+    "w": 171,
+    "h": 188
+   },
+   {
+    "file": "sprites/jrod/grap_r1.png",
+    "w": 168,
+    "h": 187
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/jrod/grap_l0.png",
+    "w": 139,
+    "h": 175
+   },
+   {
+    "file": "sprites/jrod/grap_l1.png",
+    "w": 140,
+    "h": 175
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/jrod/throw_r0.png",
+    "w": 126,
+    "h": 174
+   },
+   {
+    "file": "sprites/jrod/throw_r1.png",
+    "w": 158,
+    "h": 198
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/jrod/throw_l0.png",
+    "w": 113,
+    "h": 152
+   },
+   {
+    "file": "sprites/jrod/throw_l1.png",
+    "w": 154,
+    "h": 150
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/jrod/over0.png",
+    "w": 97,
+    "h": 176
+   },
+   {
+    "file": "sprites/jrod/over1.png",
+    "w": 142,
+    "h": 162
+   }
+  ]
+ },
+ "kerry": {
+  "idle": {
+   "file": "sprites/kerry/idle.png",
+   "w": 99,
+   "h": 189
+  },
+  "aIdle": {
+   "file": "sprites/kerry/idle.png",
+   "w": 99,
+   "h": 189
+  },
+  "aIdleB": {
+   "file": "sprites/kerry/idle_back.png",
+   "w": 98,
+   "h": 189
+  },
+  "fallen": {
+   "file": "sprites/kerry/fall_b.png",
+   "w": 189,
+   "h": 99
+  },
+  "aFallB": {
+   "file": "sprites/kerry/fall_b.png",
+   "w": 189,
+   "h": 99
+  },
+  "aFallF": {
+   "file": "sprites/kerry/fall_f.png",
+   "w": 189,
+   "h": 99
+  },
+  "aJump": [
+   {
+    "file": "sprites/kerry/jump_crouch.png",
+    "w": 71,
+    "h": 113
+   },
+   {
+    "file": "sprites/kerry/jump_air.png",
+    "w": 99,
+    "h": 130
+   },
+   {
+    "file": "sprites/kerry/jump_land.png",
+    "w": 71,
+    "h": 111
+   }
+  ],
+  "jump": {
+   "file": "sprites/kerry/jump_air.png",
+   "w": 99,
+   "h": 130
+  },
+  "walkL": [
+   {
+    "file": "sprites/kerry/walk_l0.png",
+    "w": 72,
+    "h": 147
+   },
+   {
+    "file": "sprites/kerry/walk_l1.png",
+    "w": 72,
+    "h": 146
+   },
+   {
+    "file": "sprites/kerry/walk_l2.png",
+    "w": 72,
+    "h": 146
+   },
+   {
+    "file": "sprites/kerry/walk_l3.png",
+    "w": 72,
+    "h": 147
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/kerry/walk_l0.png",
+    "w": 72,
+    "h": 147
+   },
+   {
+    "file": "sprites/kerry/walk_l1.png",
+    "w": 72,
+    "h": 146
+   },
+   {
+    "file": "sprites/kerry/walk_l2.png",
+    "w": 72,
+    "h": 146
+   },
+   {
+    "file": "sprites/kerry/walk_l3.png",
+    "w": 72,
+    "h": 147
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/kerry/walk_r0.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/kerry/walk_r1.png",
+    "w": 72,
+    "h": 147
+   },
+   {
+    "file": "sprites/kerry/walk_r2.png",
+    "w": 71,
+    "h": 148
+   },
+   {
+    "file": "sprites/kerry/walk_r3.png",
+    "w": 73,
+    "h": 148
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/kerry/walk_r0.png",
+    "w": 73,
+    "h": 146
+   },
+   {
+    "file": "sprites/kerry/walk_r1.png",
+    "w": 72,
+    "h": 147
+   },
+   {
+    "file": "sprites/kerry/walk_r2.png",
+    "w": 71,
+    "h": 148
+   },
+   {
+    "file": "sprites/kerry/walk_r3.png",
+    "w": 73,
+    "h": 148
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/kerry/elbow_r0.png",
+    "w": 126,
+    "h": 166
+   },
+   {
+    "file": "sprites/kerry/elbow_r1.png",
+    "w": 87,
+    "h": 164
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/kerry/elbow_r0.png",
+    "w": 126,
+    "h": 166
+   },
+   {
+    "file": "sprites/kerry/elbow_r1.png",
+    "w": 87,
+    "h": 164
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/kerry/elbow_l0.png",
+    "w": 88,
+    "h": 162
+   },
+   {
+    "file": "sprites/kerry/elbow_l1.png",
+    "w": 83,
+    "h": 164
+   },
+   {
+    "file": "sprites/kerry/elbow_l2.png",
+    "w": 124,
+    "h": 166
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/kerry/elbow_l0.png",
+    "w": 88,
+    "h": 162
+   },
+   {
+    "file": "sprites/kerry/elbow_l1.png",
+    "w": 83,
+    "h": 164
+   },
+   {
+    "file": "sprites/kerry/elbow_l2.png",
+    "w": 124,
+    "h": 166
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/kerry/grap_r0.png",
+    "w": 159,
+    "h": 180
+   },
+   {
+    "file": "sprites/kerry/grap_r1.png",
+    "w": 157,
+    "h": 176
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/kerry/grap_l0.png",
+    "w": 134,
+    "h": 169
+   },
+   {
+    "file": "sprites/kerry/grap_l1.png",
+    "w": 139,
+    "h": 169
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/kerry/throw_r0.png",
+    "w": 119,
+    "h": 167
+   },
+   {
+    "file": "sprites/kerry/throw_r1.png",
+    "w": 137,
+    "h": 193
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/kerry/throw_l0.png",
+    "w": 101,
+    "h": 146
+   },
+   {
+    "file": "sprites/kerry/throw_l1.png",
+    "w": 167,
+    "h": 148
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/kerry/over0.png",
+    "w": 88,
+    "h": 183
+   },
+   {
+    "file": "sprites/kerry/over1.png",
+    "w": 140,
+    "h": 168
+   }
+  ]
+ },
+ "hokane": {
+  "idle": {
+   "file": "sprites/hokane/idle.png",
+   "w": 92,
+   "h": 194
+  },
+  "aIdle": {
+   "file": "sprites/hokane/idle.png",
+   "w": 92,
+   "h": 194
+  },
+  "aIdleB": {
+   "file": "sprites/hokane/idle_back.png",
+   "w": 92,
+   "h": 195
+  },
+  "fallen": {
+   "file": "sprites/hokane/fall_b.png",
+   "w": 158,
+   "h": 77
+  },
+  "aFallB": {
+   "file": "sprites/hokane/fall_b.png",
+   "w": 158,
+   "h": 77
+  },
+  "aFallF": {
+   "file": "sprites/hokane/fall_f.png",
+   "w": 158,
+   "h": 77
+  },
+  "aJump": [
+   {
+    "file": "sprites/hokane/jump_crouch.png",
+    "w": 74,
+    "h": 109
+   },
+   {
+    "file": "sprites/hokane/jump_air.png",
+    "w": 113,
+    "h": 131
+   },
+   {
+    "file": "sprites/hokane/jump_land.png",
+    "w": 75,
+    "h": 110
+   }
+  ],
+  "jump": {
+   "file": "sprites/hokane/jump_air.png",
+   "w": 113,
+   "h": 131
+  },
+  "walkL": [
+   {
+    "file": "sprites/hokane/walk_l0.png",
+    "w": 78,
+    "h": 147
+   },
+   {
+    "file": "sprites/hokane/walk_l1.png",
+    "w": 78,
+    "h": 147
+   },
+   {
+    "file": "sprites/hokane/walk_l2.png",
+    "w": 78,
+    "h": 148
+   },
+   {
+    "file": "sprites/hokane/walk_l3.png",
+    "w": 78,
+    "h": 148
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/hokane/walk_l0.png",
+    "w": 78,
+    "h": 147
+   },
+   {
+    "file": "sprites/hokane/walk_l1.png",
+    "w": 78,
+    "h": 147
+   },
+   {
+    "file": "sprites/hokane/walk_l2.png",
+    "w": 78,
+    "h": 148
+   },
+   {
+    "file": "sprites/hokane/walk_l3.png",
+    "w": 78,
+    "h": 148
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/hokane/walk_r0.png",
+    "w": 79,
+    "h": 149
+   },
+   {
+    "file": "sprites/hokane/walk_r1.png",
+    "w": 80,
+    "h": 149
+   },
+   {
+    "file": "sprites/hokane/walk_r2.png",
+    "w": 79,
+    "h": 150
+   },
+   {
+    "file": "sprites/hokane/walk_r3.png",
+    "w": 81,
+    "h": 150
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/hokane/walk_r0.png",
+    "w": 79,
+    "h": 149
+   },
+   {
+    "file": "sprites/hokane/walk_r1.png",
+    "w": 80,
+    "h": 149
+   },
+   {
+    "file": "sprites/hokane/walk_r2.png",
+    "w": 79,
+    "h": 150
+   },
+   {
+    "file": "sprites/hokane/walk_r3.png",
+    "w": 81,
+    "h": 150
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/hokane/elbow_r0.png",
+    "w": 102,
+    "h": 168
+   },
+   {
+    "file": "sprites/hokane/elbow_r1.png",
+    "w": 93,
+    "h": 168
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/hokane/elbow_r0.png",
+    "w": 102,
+    "h": 168
+   },
+   {
+    "file": "sprites/hokane/elbow_r1.png",
+    "w": 93,
+    "h": 168
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/hokane/elbow_l0.png",
+    "w": 99,
+    "h": 168
+   },
+   {
+    "file": "sprites/hokane/elbow_l1.png",
+    "w": 82,
+    "h": 168
+   },
+   {
+    "file": "sprites/hokane/elbow_l2.png",
+    "w": 130,
+    "h": 166
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/hokane/elbow_l0.png",
+    "w": 99,
+    "h": 168
+   },
+   {
+    "file": "sprites/hokane/elbow_l1.png",
+    "w": 82,
+    "h": 168
+   },
+   {
+    "file": "sprites/hokane/elbow_l2.png",
+    "w": 130,
+    "h": 166
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/hokane/grap_r0.png",
+    "w": 167,
+    "h": 187
+   },
+   {
+    "file": "sprites/hokane/grap_r1.png",
+    "w": 174,
+    "h": 184
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/hokane/grap_l0.png",
+    "w": 292,
+    "h": 174
+   },
+   {
+    "file": "sprites/hokane/grap_l1.png",
+    "w": 82,
+    "h": 135
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/hokane/throw_r0.png",
+    "w": 117,
+    "h": 171
+   },
+   {
+    "file": "sprites/hokane/throw_r1.png",
+    "w": 145,
+    "h": 200
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/hokane/throw_l0.png",
+    "w": 108,
+    "h": 156
+   },
+   {
+    "file": "sprites/hokane/throw_l1.png",
+    "w": 159,
+    "h": 153
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/hokane/over0.png",
+    "w": 104,
+    "h": 173
+   },
+   {
+    "file": "sprites/hokane/over1.png",
+    "w": 142,
+    "h": 162
+   }
+  ]
+ },
+ "facade": {
+  "idle": {
+   "file": "sprites/facade/idle.png",
+   "w": 103,
+   "h": 196
+  },
+  "aIdle": {
+   "file": "sprites/facade/idle.png",
+   "w": 103,
+   "h": 196
+  },
+  "aIdleB": {
+   "file": "sprites/facade/idle_back.png",
+   "w": 98,
+   "h": 196
+  },
+  "fallen": {
+   "file": "sprites/facade/fall_b.png",
+   "w": 125,
+   "h": 172
+  },
+  "aFallB": {
+   "file": "sprites/facade/fall_b.png",
+   "w": 125,
+   "h": 172
+  },
+  "aFallF": {
+   "file": "sprites/facade/fall_f.png",
+   "w": 125,
+   "h": 172
+  },
+  "aJump": [
+   {
+    "file": "sprites/facade/jump_crouch.png",
+    "w": 72,
+    "h": 109
+   },
+   {
+    "file": "sprites/facade/jump_air.png",
+    "w": 108,
+    "h": 127
+   },
+   {
+    "file": "sprites/facade/jump_land.png",
+    "w": 73,
+    "h": 110
+   }
+  ],
+  "jump": {
+   "file": "sprites/facade/jump_air.png",
+   "w": 108,
+   "h": 127
+  },
+  "walkL": [
+   {
+    "file": "sprites/facade/walk_l0.png",
+    "w": 76,
+    "h": 147
+   },
+   {
+    "file": "sprites/facade/walk_l1.png",
+    "w": 74,
+    "h": 147
+   },
+   {
+    "file": "sprites/facade/walk_l2.png",
+    "w": 75,
+    "h": 147
+   },
+   {
+    "file": "sprites/facade/walk_l3.png",
+    "w": 75,
+    "h": 147
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/facade/walk_l0.png",
+    "w": 76,
+    "h": 147
+   },
+   {
+    "file": "sprites/facade/walk_l1.png",
+    "w": 74,
+    "h": 147
+   },
+   {
+    "file": "sprites/facade/walk_l2.png",
+    "w": 75,
+    "h": 147
+   },
+   {
+    "file": "sprites/facade/walk_l3.png",
+    "w": 75,
+    "h": 147
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/facade/walk_r0.png",
+    "w": 78,
+    "h": 150
+   },
+   {
+    "file": "sprites/facade/walk_r1.png",
+    "w": 76,
+    "h": 150
+   },
+   {
+    "file": "sprites/facade/walk_r2.png",
+    "w": 76,
+    "h": 150
+   },
+   {
+    "file": "sprites/facade/walk_r3.png",
+    "w": 76,
+    "h": 151
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/facade/walk_r0.png",
+    "w": 78,
+    "h": 150
+   },
+   {
+    "file": "sprites/facade/walk_r1.png",
+    "w": 76,
+    "h": 150
+   },
+   {
+    "file": "sprites/facade/walk_r2.png",
+    "w": 76,
+    "h": 150
+   },
+   {
+    "file": "sprites/facade/walk_r3.png",
+    "w": 76,
+    "h": 151
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/facade/elbow_r0.png",
+    "w": 94,
+    "h": 168
+   },
+   {
+    "file": "sprites/facade/elbow_r1.png",
+    "w": 90,
+    "h": 162
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/facade/elbow_r0.png",
+    "w": 94,
+    "h": 168
+   },
+   {
+    "file": "sprites/facade/elbow_r1.png",
+    "w": 90,
+    "h": 162
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/facade/elbow_l0.png",
+    "w": 96,
+    "h": 161
+   },
+   {
+    "file": "sprites/facade/elbow_l1.png",
+    "w": 78,
+    "h": 161
+   },
+   {
+    "file": "sprites/facade/elbow_l2.png",
+    "w": 133,
+    "h": 161
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/facade/elbow_l0.png",
+    "w": 96,
+    "h": 161
+   },
+   {
+    "file": "sprites/facade/elbow_l1.png",
+    "w": 78,
+    "h": 161
+   },
+   {
+    "file": "sprites/facade/elbow_l2.png",
+    "w": 133,
+    "h": 161
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/facade/grap_r0.png",
+    "w": 167,
+    "h": 189
+   },
+   {
+    "file": "sprites/facade/grap_r1.png",
+    "w": 168,
+    "h": 185
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/facade/grap_l0.png",
+    "w": 382,
+    "h": 171
+   },
+   {
+    "file": "sprites/facade/grap_l1.png",
+    "w": 168,
+    "h": 73
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/facade/throw_r0.png",
+    "w": 146,
+    "h": 206
+   },
+   {
+    "file": "sprites/facade/throw_r1.png",
+    "w": 203,
+    "h": 96
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/facade/throw_l0.png",
+    "w": 109,
+    "h": 149
+   },
+   {
+    "file": "sprites/facade/throw_l1.png",
+    "w": 173,
+    "h": 149
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/facade/over0.png",
+    "w": 99,
+    "h": 179
+   },
+   {
+    "file": "sprites/facade/over1.png",
+    "w": 141,
+    "h": 164
+   }
+  ]
+ },
+ "krule": {
+  "idle": {
+   "file": "sprites/krule/idle.png",
+   "w": 115,
+   "h": 192
+  },
+  "aIdle": {
+   "file": "sprites/krule/idle.png",
+   "w": 115,
+   "h": 192
+  },
+  "aIdleB": {
+   "file": "sprites/krule/idle_back.png",
+   "w": 115,
+   "h": 191
+  },
+  "fallen": {
+   "file": "sprites/krule/fall_b.png",
+   "w": 159,
+   "h": 78
+  },
+  "aFallB": {
+   "file": "sprites/krule/fall_b.png",
+   "w": 159,
+   "h": 78
+  },
+  "aFallF": {
+   "file": "sprites/krule/fall_f.png",
+   "w": 193,
+   "h": 62
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/krule/grap_r0.png",
+    "w": 150,
+    "h": 185
+   },
+   {
+    "file": "sprites/krule/grap_r1.png",
+    "w": 171,
+    "h": 179
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/krule/grap_l0.png",
+    "w": 271,
+    "h": 171
+   },
+   {
+    "file": "sprites/krule/grap_l1.png",
+    "w": 100,
+    "h": 144
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/krule/throw_r0.png",
+    "w": 135,
+    "h": 168
+   },
+   {
+    "file": "sprites/krule/throw_r1.png",
+    "w": 138,
+    "h": 187
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/krule/throw_l0.png",
+    "w": 111,
+    "h": 148
+   },
+   {
+    "file": "sprites/krule/throw_l1.png",
+    "w": 168,
+    "h": 155
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/krule/walk_l0.png",
+    "w": 76,
+    "h": 139
+   },
+   {
+    "file": "sprites/krule/walk_l1.png",
+    "w": 71,
+    "h": 139
+   },
+   {
+    "file": "sprites/krule/walk_l2.png",
+    "w": 71,
+    "h": 139
+   },
+   {
+    "file": "sprites/krule/walk_l3.png",
+    "w": 71,
+    "h": 139
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/krule/walk_l0.png",
+    "w": 76,
+    "h": 139
+   },
+   {
+    "file": "sprites/krule/walk_l1.png",
+    "w": 71,
+    "h": 139
+   },
+   {
+    "file": "sprites/krule/walk_l2.png",
+    "w": 71,
+    "h": 139
+   },
+   {
+    "file": "sprites/krule/walk_l3.png",
+    "w": 71,
+    "h": 139
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/krule/walk_r0.png",
+    "w": 78,
+    "h": 138
+   },
+   {
+    "file": "sprites/krule/walk_r1.png",
+    "w": 77,
+    "h": 138
+   },
+   {
+    "file": "sprites/krule/walk_r2.png",
+    "w": 73,
+    "h": 138
+   },
+   {
+    "file": "sprites/krule/walk_r3.png",
+    "w": 74,
+    "h": 138
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/krule/walk_r0.png",
+    "w": 78,
+    "h": 138
+   },
+   {
+    "file": "sprites/krule/walk_r1.png",
+    "w": 77,
+    "h": 138
+   },
+   {
+    "file": "sprites/krule/walk_r2.png",
+    "w": 73,
+    "h": 138
+   },
+   {
+    "file": "sprites/krule/walk_r3.png",
+    "w": 74,
+    "h": 138
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/krule/jump_crouch.png",
+    "w": 82,
+    "h": 116
+   },
+   {
+    "file": "sprites/krule/jump_air.png",
+    "w": 100,
+    "h": 134
+   },
+   {
+    "file": "sprites/krule/jump_land.png",
+    "w": 80,
+    "h": 102
+   }
+  ],
+  "jump": {
+   "file": "sprites/krule/jump_air.png",
+   "w": 100,
+   "h": 134
+  },
+  "elbowL": [
+   {
+    "file": "sprites/krule/elbow_l0.png",
+    "w": 102,
+    "h": 158
+   },
+   {
+    "file": "sprites/krule/elbow_l1.png",
+    "w": 86,
+    "h": 157
+   },
+   {
+    "file": "sprites/krule/elbow_l2.png",
+    "w": 112,
+    "h": 144
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/krule/elbow_l0.png",
+    "w": 102,
+    "h": 158
+   },
+   {
+    "file": "sprites/krule/elbow_l1.png",
+    "w": 86,
+    "h": 157
+   },
+   {
+    "file": "sprites/krule/elbow_l2.png",
+    "w": 112,
+    "h": 144
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/krule/elbow_r0.png",
+    "w": 90,
+    "h": 154
+   },
+   {
+    "file": "sprites/krule/elbow_r1.png",
+    "w": 115,
+    "h": 154
+   },
+   {
+    "file": "sprites/krule/elbow_r2.png",
+    "w": 77,
+    "h": 161
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/krule/elbow_r0.png",
+    "w": 90,
+    "h": 154
+   },
+   {
+    "file": "sprites/krule/elbow_r1.png",
+    "w": 115,
+    "h": 154
+   },
+   {
+    "file": "sprites/krule/elbow_r2.png",
+    "w": 77,
+    "h": 161
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/krule/over0.png",
+    "w": 101,
+    "h": 162
+   },
+   {
+    "file": "sprites/krule/over1.png",
+    "w": 174,
+    "h": 135
+   }
+  ]
+ },
+ "flowe": {
+  "idle": {
+   "file": "sprites/flowe/idle.png",
+   "w": 122,
+   "h": 216
+  },
+  "aIdle": {
+   "file": "sprites/flowe/idle.png",
+   "w": 122,
+   "h": 216
+  },
+  "aIdleB": {
+   "file": "sprites/flowe/idle_back.png",
+   "w": 113,
+   "h": 212
+  },
+  "fallen": {
+   "file": "sprites/flowe/fall_b.png",
+   "w": 125,
+   "h": 96
+  },
+  "aFallB": {
+   "file": "sprites/flowe/fall_b.png",
+   "w": 125,
+   "h": 96
+  },
+  "aFallF": {
+   "file": "sprites/flowe/fall_f.png",
+   "w": 125,
+   "h": 96
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/flowe/grap_r0.png",
+    "w": 146,
+    "h": 197
+   },
+   {
+    "file": "sprites/flowe/grap_r1.png",
+    "w": 142,
+    "h": 196
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/flowe/grap_l0.png",
+    "w": 142,
+    "h": 197
+   },
+   {
+    "file": "sprites/flowe/grap_l1.png",
+    "w": 136,
+    "h": 197
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/flowe/throw_r0.png",
+    "w": 124,
+    "h": 195
+   },
+   {
+    "file": "sprites/flowe/throw_r1.png",
+    "w": 123,
+    "h": 221
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/flowe/throw_l0.png",
+    "w": 128,
+    "h": 200
+   },
+   {
+    "file": "sprites/flowe/throw_l1.png",
+    "w": 128,
+    "h": 229
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/flowe/walk_l0.png",
+    "w": 73,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_l1.png",
+    "w": 75,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_l2.png",
+    "w": 74,
+    "h": 210
+   },
+   {
+    "file": "sprites/flowe/walk_l3.png",
+    "w": 74,
+    "h": 210
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/flowe/walk_l0.png",
+    "w": 73,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_l1.png",
+    "w": 75,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_l2.png",
+    "w": 74,
+    "h": 210
+   },
+   {
+    "file": "sprites/flowe/walk_l3.png",
+    "w": 74,
+    "h": 210
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/flowe/walk_r0.png",
+    "w": 87,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_r1.png",
+    "w": 84,
+    "h": 208
+   },
+   {
+    "file": "sprites/flowe/walk_r2.png",
+    "w": 85,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_r3.png",
+    "w": 88,
+    "h": 209
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/flowe/walk_r0.png",
+    "w": 87,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_r1.png",
+    "w": 84,
+    "h": 208
+   },
+   {
+    "file": "sprites/flowe/walk_r2.png",
+    "w": 85,
+    "h": 209
+   },
+   {
+    "file": "sprites/flowe/walk_r3.png",
+    "w": 88,
+    "h": 209
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/flowe/jump_crouch.png",
+    "w": 73,
+    "h": 135
+   },
+   {
+    "file": "sprites/flowe/jump_air.png",
+    "w": 105,
+    "h": 158
+   },
+   {
+    "file": "sprites/flowe/jump_land.png",
+    "w": 75,
+    "h": 132
+   }
+  ],
+  "jump": {
+   "file": "sprites/flowe/jump_air.png",
+   "w": 105,
+   "h": 158
+  },
+  "elbowL": [
+   {
+    "file": "sprites/flowe/elbow_l0.png",
+    "w": 87,
+    "h": 199
+   },
+   {
+    "file": "sprites/flowe/elbow_l1.png",
+    "w": 83,
+    "h": 203
+   },
+   {
+    "file": "sprites/flowe/elbow_l2.png",
+    "w": 97,
+    "h": 197
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/flowe/elbow_l0.png",
+    "w": 87,
+    "h": 199
+   },
+   {
+    "file": "sprites/flowe/elbow_l1.png",
+    "w": 83,
+    "h": 203
+   },
+   {
+    "file": "sprites/flowe/elbow_l2.png",
+    "w": 97,
+    "h": 197
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/flowe/elbow_r0.png",
+    "w": 73,
+    "h": 203
+   },
+   {
+    "file": "sprites/flowe/elbow_r1.png",
+    "w": 79,
+    "h": 203
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/flowe/elbow_r0.png",
+    "w": 73,
+    "h": 203
+   },
+   {
+    "file": "sprites/flowe/elbow_r1.png",
+    "w": 79,
+    "h": 203
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/flowe/over0.png",
+    "w": 98,
+    "h": 229
+   },
+   {
+    "file": "sprites/flowe/over1.png",
+    "w": 172,
+    "h": 205
+   }
+  ]
+ },
+ "williemack": {
+  "idle": {
+   "file": "sprites/williemack/idle.png",
+   "w": 116,
+   "h": 204
+  },
+  "aIdle": {
+   "file": "sprites/williemack/idle.png",
+   "w": 116,
+   "h": 204
+  },
+  "aIdleB": {
+   "file": "sprites/williemack/idle_back.png",
+   "w": 112,
+   "h": 202
+  },
+  "fallen": {
+   "file": "sprites/williemack/fall_b.png",
+   "w": 123,
+   "h": 90
+  },
+  "aFallB": {
+   "file": "sprites/williemack/fall_b.png",
+   "w": 123,
+   "h": 90
+  },
+  "aFallF": {
+   "file": "sprites/williemack/fall_f.png",
+   "w": 119,
+   "h": 58
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/williemack/grap_r0.png",
+    "w": 54,
+    "h": 206
+   },
+   {
+    "file": "sprites/williemack/grap_r1.png",
+    "w": 403,
+    "h": 199
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/williemack/grap_l0.png",
+    "w": 340,
+    "h": 196
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/williemack/throw_r0.png",
+    "w": 121,
+    "h": 196
+   },
+   {
+    "file": "sprites/williemack/throw_r1.png",
+    "w": 124,
+    "h": 225
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/williemack/throw_l0.png",
+    "w": 121,
+    "h": 195
+   },
+   {
+    "file": "sprites/williemack/throw_l1.png",
+    "w": 126,
+    "h": 226
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/williemack/walk_l0.png",
+    "w": 72,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_l1.png",
+    "w": 74,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_l2.png",
+    "w": 73,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_l3.png",
+    "w": 73,
+    "h": 205
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/williemack/walk_l0.png",
+    "w": 72,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_l1.png",
+    "w": 74,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_l2.png",
+    "w": 73,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_l3.png",
+    "w": 73,
+    "h": 205
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/williemack/walk_r0.png",
+    "w": 83,
+    "h": 203
+   },
+   {
+    "file": "sprites/williemack/walk_r1.png",
+    "w": 82,
+    "h": 204
+   },
+   {
+    "file": "sprites/williemack/walk_r2.png",
+    "w": 71,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_r3.png",
+    "w": 79,
+    "h": 205
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/williemack/walk_r0.png",
+    "w": 83,
+    "h": 203
+   },
+   {
+    "file": "sprites/williemack/walk_r1.png",
+    "w": 82,
+    "h": 204
+   },
+   {
+    "file": "sprites/williemack/walk_r2.png",
+    "w": 71,
+    "h": 205
+   },
+   {
+    "file": "sprites/williemack/walk_r3.png",
+    "w": 79,
+    "h": 205
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/williemack/jump_crouch.png",
+    "w": 72,
+    "h": 142
+   },
+   {
+    "file": "sprites/williemack/jump_air.png",
+    "w": 92,
+    "h": 143
+   },
+   {
+    "file": "sprites/williemack/jump_land.png",
+    "w": 72,
+    "h": 142
+   }
+  ],
+  "jump": {
+   "file": "sprites/williemack/jump_air.png",
+   "w": 92,
+   "h": 143
+  },
+  "elbowL": [
+   {
+    "file": "sprites/williemack/elbow_l0.png",
+    "w": 75,
+    "h": 202
+   },
+   {
+    "file": "sprites/williemack/elbow_l1.png",
+    "w": 81,
+    "h": 203
+   },
+   {
+    "file": "sprites/williemack/elbow_l2.png",
+    "w": 94,
+    "h": 201
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/williemack/elbow_l0.png",
+    "w": 75,
+    "h": 202
+   },
+   {
+    "file": "sprites/williemack/elbow_l1.png",
+    "w": 81,
+    "h": 203
+   },
+   {
+    "file": "sprites/williemack/elbow_l2.png",
+    "w": 94,
+    "h": 201
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/williemack/elbow_r0.png",
+    "w": 83,
+    "h": 202
+   },
+   {
+    "file": "sprites/williemack/elbow_r1.png",
+    "w": 84,
+    "h": 202
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/williemack/elbow_r0.png",
+    "w": 83,
+    "h": 202
+   },
+   {
+    "file": "sprites/williemack/elbow_r1.png",
+    "w": 84,
+    "h": 202
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/williemack/over0.png",
+    "w": 106,
+    "h": 228
+   },
+   {
+    "file": "sprites/williemack/over1.png",
+    "w": 139,
+    "h": 215
+   }
+  ]
+ },
+ "moshpit": {
+  "idle": {
+   "file": "sprites/moshpit/idle.png",
+   "w": 123,
+   "h": 214
+  },
+  "aIdle": {
+   "file": "sprites/moshpit/idle.png",
+   "w": 123,
+   "h": 214
+  },
+  "aIdleB": {
+   "file": "sprites/moshpit/idle_back.png",
+   "w": 122,
+   "h": 216
+  },
+  "fallen": {
+   "file": "sprites/moshpit/fall_b.png",
+   "w": 204,
+   "h": 94
+  },
+  "aFallB": {
+   "file": "sprites/moshpit/fall_b.png",
+   "w": 204,
+   "h": 94
+  },
+  "aFallF": {
+   "file": "sprites/moshpit/fall_f.png",
+   "w": 162,
+   "h": 186
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/moshpit/grap_r0.png",
+    "w": 186,
+    "h": 213
+   },
+   {
+    "file": "sprites/moshpit/grap_r1.png",
+    "w": 249,
+    "h": 108
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/moshpit/grap_l0.png",
+    "w": 164,
+    "h": 186
+   },
+   {
+    "file": "sprites/moshpit/grap_l1.png",
+    "w": 151,
+    "h": 186
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/moshpit/throw_r0.png",
+    "w": 146,
+    "h": 186
+   },
+   {
+    "file": "sprites/moshpit/throw_r1.png",
+    "w": 209,
+    "h": 95
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/moshpit/throw_l0.png",
+    "w": 74,
+    "h": 152
+   },
+   {
+    "file": "sprites/moshpit/throw_l1.png",
+    "w": 71,
+    "h": 152
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/moshpit/walk_l0.png",
+    "w": 72,
+    "h": 152
+   },
+   {
+    "file": "sprites/moshpit/walk_l1.png",
+    "w": 74,
+    "h": 153
+   },
+   {
+    "file": "sprites/moshpit/walk_l2.png",
+    "w": 73,
+    "h": 152
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/moshpit/walk_l0.png",
+    "w": 72,
+    "h": 152
+   },
+   {
+    "file": "sprites/moshpit/walk_l1.png",
+    "w": 74,
+    "h": 153
+   },
+   {
+    "file": "sprites/moshpit/walk_l2.png",
+    "w": 73,
+    "h": 152
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/moshpit/walk_r0.png",
+    "w": 74,
+    "h": 152
+   },
+   {
+    "file": "sprites/moshpit/walk_r1.png",
+    "w": 72,
+    "h": 152
+   },
+   {
+    "file": "sprites/moshpit/walk_r2.png",
+    "w": 117,
+    "h": 155
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/moshpit/walk_r0.png",
+    "w": 74,
+    "h": 152
+   },
+   {
+    "file": "sprites/moshpit/walk_r1.png",
+    "w": 72,
+    "h": 152
+   },
+   {
+    "file": "sprites/moshpit/walk_r2.png",
+    "w": 117,
+    "h": 155
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/moshpit/jump_crouch.png",
+    "w": 112,
+    "h": 174
+   },
+   {
+    "file": "sprites/moshpit/jump_air.png",
+    "w": 98,
+    "h": 174
+   },
+   {
+    "file": "sprites/moshpit/jump_land.png",
+    "w": 119,
+    "h": 174
+   }
+  ],
+  "jump": {
+   "file": "sprites/moshpit/jump_air.png",
+   "w": 98,
+   "h": 174
+  },
+  "elbowL": [
+   {
+    "file": "sprites/moshpit/elbow_l0.png",
+    "w": 92,
+    "h": 176
+   },
+   {
+    "file": "sprites/moshpit/elbow_l1.png",
+    "w": 114,
+    "h": 175
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/moshpit/elbow_l0.png",
+    "w": 92,
+    "h": 176
+   },
+   {
+    "file": "sprites/moshpit/elbow_l1.png",
+    "w": 114,
+    "h": 175
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/moshpit/elbow_r0.png",
+    "w": 124,
+    "h": 175
+   },
+   {
+    "file": "sprites/moshpit/elbow_r1.png",
+    "w": 150,
+    "h": 194
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/moshpit/elbow_r0.png",
+    "w": 124,
+    "h": 175
+   },
+   {
+    "file": "sprites/moshpit/elbow_r1.png",
+    "w": 150,
+    "h": 194
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/moshpit/over0.png",
+    "w": 145,
+    "h": 203
+   },
+   {
+    "file": "sprites/moshpit/over1.png",
+    "w": 112,
+    "h": 160
+   }
+  ]
+ },
+ "phantom": {
+  "idle": {
+   "file": "sprites/phantom/idle.png",
+   "w": 124,
+   "h": 225
+  },
+  "aIdle": {
+   "file": "sprites/phantom/idle.png",
+   "w": 124,
+   "h": 225
+  },
+  "aIdleB": {
+   "file": "sprites/phantom/idle_back.png",
+   "w": 113,
+   "h": 225
+  },
+  "fallen": {
+   "file": "sprites/phantom/fall_b.png",
+   "w": 126,
+   "h": 102
+  },
+  "aFallB": {
+   "file": "sprites/phantom/fall_b.png",
+   "w": 126,
+   "h": 102
+  },
+  "aFallF": {
+   "file": "sprites/phantom/fall_f.png",
+   "w": 126,
+   "h": 102
+  },
+  "aJump": [
+   {
+    "file": "sprites/phantom/jump_crouch.png",
+    "w": 72,
+    "h": 140
+   },
+   {
+    "file": "sprites/phantom/jump_air.png",
+    "w": 78,
+    "h": 139
+   },
+   {
+    "file": "sprites/phantom/jump_land.png",
+    "w": 73,
+    "h": 140
+   }
+  ],
+  "jump": {
+   "file": "sprites/phantom/jump_air.png",
+   "w": 78,
+   "h": 139
+  },
+  "walkL": [
+   {
+    "file": "sprites/phantom/walk_l0.png",
+    "w": 73,
+    "h": 215
+   },
+   {
+    "file": "sprites/phantom/walk_l1.png",
+    "w": 74,
+    "h": 215
+   },
+   {
+    "file": "sprites/phantom/walk_l2.png",
+    "w": 74,
+    "h": 215
+   },
+   {
+    "file": "sprites/phantom/walk_l3.png",
+    "w": 74,
+    "h": 216
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/phantom/walk_l0.png",
+    "w": 73,
+    "h": 215
+   },
+   {
+    "file": "sprites/phantom/walk_l1.png",
+    "w": 74,
+    "h": 215
+   },
+   {
+    "file": "sprites/phantom/walk_l2.png",
+    "w": 74,
+    "h": 215
+   },
+   {
+    "file": "sprites/phantom/walk_l3.png",
+    "w": 74,
+    "h": 216
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/phantom/walk_r0.png",
+    "w": 85,
+    "h": 218
+   },
+   {
+    "file": "sprites/phantom/walk_r1.png",
+    "w": 80,
+    "h": 217
+   },
+   {
+    "file": "sprites/phantom/walk_r2.png",
+    "w": 82,
+    "h": 218
+   },
+   {
+    "file": "sprites/phantom/walk_r3.png",
+    "w": 81,
+    "h": 218
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/phantom/walk_r0.png",
+    "w": 85,
+    "h": 218
+   },
+   {
+    "file": "sprites/phantom/walk_r1.png",
+    "w": 80,
+    "h": 217
+   },
+   {
+    "file": "sprites/phantom/walk_r2.png",
+    "w": 82,
+    "h": 218
+   },
+   {
+    "file": "sprites/phantom/walk_r3.png",
+    "w": 81,
+    "h": 218
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/phantom/elbow_r0.png",
+    "w": 79,
+    "h": 190
+   },
+   {
+    "file": "sprites/phantom/elbow_r1.png",
+    "w": 75,
+    "h": 189
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/phantom/elbow_r0.png",
+    "w": 79,
+    "h": 190
+   },
+   {
+    "file": "sprites/phantom/elbow_r1.png",
+    "w": 75,
+    "h": 189
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/phantom/elbow_l0.png",
+    "w": 76,
+    "h": 187
+   },
+   {
+    "file": "sprites/phantom/elbow_l1.png",
+    "w": 63,
+    "h": 190
+   },
+   {
+    "file": "sprites/phantom/elbow_l2.png",
+    "w": 90,
+    "h": 187
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/phantom/elbow_l0.png",
+    "w": 76,
+    "h": 187
+   },
+   {
+    "file": "sprites/phantom/elbow_l1.png",
+    "w": 63,
+    "h": 190
+   },
+   {
+    "file": "sprites/phantom/elbow_l2.png",
+    "w": 90,
+    "h": 187
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/phantom/throw_r0.png",
+    "w": 132,
+    "h": 227
+   },
+   {
+    "file": "sprites/phantom/throw_r1.png",
+    "w": 129,
+    "h": 269
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/phantom/throw_l0.png",
+    "w": 119,
+    "h": 213
+   },
+   {
+    "file": "sprites/phantom/throw_l1.png",
+    "w": 112,
+    "h": 245
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/phantom/over0.png",
+    "w": 114,
+    "h": 227
+   },
+   {
+    "file": "sprites/phantom/over1.png",
+    "w": 148,
+    "h": 198
+   }
+  ]
+ },
+ "sallyboy": {
+  "idle": {
+   "file": "sprites/sallyboy/idle.png",
+   "w": 88,
+   "h": 228
+  },
+  "aIdle": {
+   "file": "sprites/sallyboy/idle.png",
+   "w": 88,
+   "h": 228
+  },
+  "fallen": {
+   "file": "sprites/sallyboy/fall_b.png",
+   "w": 141,
+   "h": 92
+  },
+  "aFallB": {
+   "file": "sprites/sallyboy/fall_b.png",
+   "w": 141,
+   "h": 92
+  },
+  "aFallF": {
+   "file": "sprites/sallyboy/fall_f.png",
+   "w": 141,
+   "h": 92
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/sallyboy/grap_r0.png",
+    "w": 156,
+    "h": 210
+   },
+   {
+    "file": "sprites/sallyboy/grap_r1.png",
+    "w": 136,
+    "h": 144
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/sallyboy/grap_l0.png",
+    "w": 122,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/grap_l1.png",
+    "w": 77,
+    "h": 141
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/sallyboy/throw_r0.png",
+    "w": 103,
+    "h": 195
+   },
+   {
+    "file": "sprites/sallyboy/throw_r1.png",
+    "w": 130,
+    "h": 219
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/sallyboy/throw_l0.png",
+    "w": 106,
+    "h": 201
+   },
+   {
+    "file": "sprites/sallyboy/throw_l1.png",
+    "w": 144,
+    "h": 212
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/sallyboy/walk_l0.png",
+    "w": 75,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_l1.png",
+    "w": 76,
+    "h": 199
+   },
+   {
+    "file": "sprites/sallyboy/walk_l2.png",
+    "w": 76,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_l3.png",
+    "w": 76,
+    "h": 200
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/sallyboy/walk_l0.png",
+    "w": 75,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_l1.png",
+    "w": 76,
+    "h": 199
+   },
+   {
+    "file": "sprites/sallyboy/walk_l2.png",
+    "w": 76,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_l3.png",
+    "w": 76,
+    "h": 200
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/sallyboy/walk_r0.png",
+    "w": 85,
+    "h": 199
+   },
+   {
+    "file": "sprites/sallyboy/walk_r1.png",
+    "w": 76,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_r2.png",
+    "w": 54,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_r3.png",
+    "w": 86,
+    "h": 200
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/sallyboy/walk_r0.png",
+    "w": 85,
+    "h": 199
+   },
+   {
+    "file": "sprites/sallyboy/walk_r1.png",
+    "w": 76,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_r2.png",
+    "w": 54,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/walk_r3.png",
+    "w": 86,
+    "h": 200
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/sallyboy/jump_crouch.png",
+    "w": 69,
+    "h": 139
+   },
+   {
+    "file": "sprites/sallyboy/jump_air.png",
+    "w": 81,
+    "h": 147
+   },
+   {
+    "file": "sprites/sallyboy/jump_land.png",
+    "w": 71,
+    "h": 140
+   }
+  ],
+  "jump": {
+   "file": "sprites/sallyboy/jump_air.png",
+   "w": 81,
+   "h": 147
+  },
+  "elbowL": [
+   {
+    "file": "sprites/sallyboy/elbow_l0.png",
+    "w": 73,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/elbow_l1.png",
+    "w": 82,
+    "h": 198
+   },
+   {
+    "file": "sprites/sallyboy/elbow_l2.png",
+    "w": 96,
+    "h": 195
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/sallyboy/elbow_l0.png",
+    "w": 73,
+    "h": 200
+   },
+   {
+    "file": "sprites/sallyboy/elbow_l1.png",
+    "w": 82,
+    "h": 198
+   },
+   {
+    "file": "sprites/sallyboy/elbow_l2.png",
+    "w": 96,
+    "h": 195
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/sallyboy/elbow_r0.png",
+    "w": 81,
+    "h": 197
+   },
+   {
+    "file": "sprites/sallyboy/elbow_r1.png",
+    "w": 72,
+    "h": 199
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/sallyboy/elbow_r0.png",
+    "w": 81,
+    "h": 197
+   },
+   {
+    "file": "sprites/sallyboy/elbow_r1.png",
+    "w": 72,
+    "h": 199
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/sallyboy/over0.png",
+    "w": 99,
+    "h": 213
+   },
+   {
+    "file": "sprites/sallyboy/over1.png",
+    "w": 173,
+    "h": 178
+   }
+  ]
+ },
+ "vincenzo": {
+  "idle": {
+   "file": "sprites/vincenzo/idle.png",
+   "w": 103,
+   "h": 218
+  },
+  "aIdle": {
+   "file": "sprites/vincenzo/idle.png",
+   "w": 103,
+   "h": 218
+  },
+  "aIdleB": {
+   "file": "sprites/vincenzo/idle_back.png",
+   "w": 100,
+   "h": 218
+  },
+  "fallen": {
+   "file": "sprites/vincenzo/fall_b.png",
+   "w": 124,
+   "h": 94
+  },
+  "aFallB": {
+   "file": "sprites/vincenzo/fall_b.png",
+   "w": 124,
+   "h": 94
+  },
+  "aFallF": {
+   "file": "sprites/vincenzo/fall_f.png",
+   "w": 124,
+   "h": 94
+  },
+  "aJump": [
+   {
+    "file": "sprites/vincenzo/jump_crouch.png",
+    "w": 68,
+    "h": 138
+   },
+   {
+    "file": "sprites/vincenzo/jump_air.png",
+    "w": 87,
+    "h": 149
+   },
+   {
+    "file": "sprites/vincenzo/jump_land.png",
+    "w": 71,
+    "h": 135
+   }
+  ],
+  "jump": {
+   "file": "sprites/vincenzo/jump_air.png",
+   "w": 87,
+   "h": 149
+  },
+  "walkL": [
+   {
+    "file": "sprites/vincenzo/walk_l0.png",
+    "w": 157,
+    "h": 204
+   },
+   {
+    "file": "sprites/vincenzo/walk_l1.png",
+    "w": 84,
+    "h": 203
+   },
+   {
+    "file": "sprites/vincenzo/walk_l2.png",
+    "w": 87,
+    "h": 204
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/vincenzo/walk_l0.png",
+    "w": 157,
+    "h": 204
+   },
+   {
+    "file": "sprites/vincenzo/walk_l1.png",
+    "w": 84,
+    "h": 203
+   },
+   {
+    "file": "sprites/vincenzo/walk_l2.png",
+    "w": 87,
+    "h": 204
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/vincenzo/walk_r0.png",
+    "w": 157,
+    "h": 204
+   },
+   {
+    "file": "sprites/vincenzo/walk_r1.png",
+    "w": 84,
+    "h": 203
+   },
+   {
+    "file": "sprites/vincenzo/walk_r2.png",
+    "w": 87,
+    "h": 204
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/vincenzo/walk_r0.png",
+    "w": 157,
+    "h": 204
+   },
+   {
+    "file": "sprites/vincenzo/walk_r1.png",
+    "w": 84,
+    "h": 203
+   },
+   {
+    "file": "sprites/vincenzo/walk_r2.png",
+    "w": 87,
+    "h": 204
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/vincenzo/elbow_r0.png",
+    "w": 79,
+    "h": 199
+   },
+   {
+    "file": "sprites/vincenzo/elbow_r1.png",
+    "w": 84,
+    "h": 199
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/vincenzo/elbow_r0.png",
+    "w": 79,
+    "h": 199
+   },
+   {
+    "file": "sprites/vincenzo/elbow_r1.png",
+    "w": 84,
+    "h": 199
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/vincenzo/elbow_l0.png",
+    "w": 74,
+    "h": 199
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l1.png",
+    "w": 86,
+    "h": 199
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l2.png",
+    "w": 89,
+    "h": 199
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/vincenzo/elbow_l0.png",
+    "w": 74,
+    "h": 199
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l1.png",
+    "w": 86,
+    "h": 199
+   },
+   {
+    "file": "sprites/vincenzo/elbow_l2.png",
+    "w": 89,
+    "h": 199
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/vincenzo/grap_r0.png",
+    "w": 152,
+    "h": 207
+   },
+   {
+    "file": "sprites/vincenzo/grap_r1.png",
+    "w": 247,
+    "h": 206
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/vincenzo/grap_l0.png",
+    "w": 125,
+    "h": 208
+   },
+   {
+    "file": "sprites/vincenzo/grap_l1.png",
+    "w": 131,
+    "h": 206
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/vincenzo/throw_r0.png",
+    "w": 116,
+    "h": 205
+   },
+   {
+    "file": "sprites/vincenzo/throw_r1.png",
+    "w": 125,
+    "h": 232
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/vincenzo/throw_l0.png",
+    "w": 119,
+    "h": 207
+   },
+   {
+    "file": "sprites/vincenzo/throw_l1.png",
+    "w": 125,
+    "h": 231
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/vincenzo/over0.png",
+    "w": 102,
+    "h": 215
+   },
+   {
+    "file": "sprites/vincenzo/over1.png",
+    "w": 152,
+    "h": 209
+   }
+  ]
+ },
+ "bigvito": {
+  "idle": {
+   "file": "sprites/bigvito/idle.png",
+   "w": 113,
+   "h": 195
+  },
+  "aIdle": {
+   "file": "sprites/bigvito/idle.png",
+   "w": 113,
+   "h": 195
+  },
+  "aIdleB": {
+   "file": "sprites/bigvito/idle_back.png",
+   "w": 113,
+   "h": 193
+  },
+  "fallen": {
+   "file": "sprites/bigvito/fall_b.png",
+   "w": 161,
+   "h": 87
+  },
+  "aFallB": {
+   "file": "sprites/bigvito/fall_b.png",
+   "w": 161,
+   "h": 87
+  },
+  "aFallF": {
+   "file": "sprites/bigvito/fall_f.png",
+   "w": 182,
+   "h": 64
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/bigvito/grap_r0.png",
+    "w": 166,
+    "h": 182
+   },
+   {
+    "file": "sprites/bigvito/grap_r1.png",
+    "w": 168,
+    "h": 176
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/bigvito/grap_l0.png",
+    "w": 135,
+    "h": 171
+   },
+   {
+    "file": "sprites/bigvito/grap_l1.png",
+    "w": 140,
+    "h": 168
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/bigvito/throw_r0.png",
+    "w": 111,
+    "h": 166
+   },
+   {
+    "file": "sprites/bigvito/throw_r1.png",
+    "w": 153,
+    "h": 202
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/bigvito/throw_l0.png",
+    "w": 101,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/throw_l1.png",
+    "w": 160,
+    "h": 157
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/bigvito/walk_l0.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_l1.png",
+    "w": 76,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_l2.png",
+    "w": 77,
+    "h": 150
+   },
+   {
+    "file": "sprites/bigvito/walk_l3.png",
+    "w": 75,
+    "h": 151
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/bigvito/walk_l0.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_l1.png",
+    "w": 76,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_l2.png",
+    "w": 77,
+    "h": 150
+   },
+   {
+    "file": "sprites/bigvito/walk_l3.png",
+    "w": 75,
+    "h": 151
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/bigvito/walk_r0.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_r1.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_r2.png",
+    "w": 77,
+    "h": 148
+   },
+   {
+    "file": "sprites/bigvito/walk_r3.png",
+    "w": 75,
+    "h": 150
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/bigvito/walk_r0.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_r1.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/bigvito/walk_r2.png",
+    "w": 77,
+    "h": 148
+   },
+   {
+    "file": "sprites/bigvito/walk_r3.png",
+    "w": 75,
+    "h": 150
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/bigvito/jump_crouch.png",
+    "w": 78,
+    "h": 113
+   },
+   {
+    "file": "sprites/bigvito/jump_air.png",
+    "w": 104,
+    "h": 135
+   },
+   {
+    "file": "sprites/bigvito/jump_land.png",
+    "w": 80,
+    "h": 114
+   }
+  ],
+  "jump": {
+   "file": "sprites/bigvito/jump_air.png",
+   "w": 104,
+   "h": 135
+  },
+  "elbowL": [
+   {
+    "file": "sprites/bigvito/elbow_l0.png",
+    "w": 99,
+    "h": 165
+   },
+   {
+    "file": "sprites/bigvito/elbow_l1.png",
+    "w": 89,
+    "h": 165
+   },
+   {
+    "file": "sprites/bigvito/elbow_l2.png",
+    "w": 93,
+    "h": 163
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/bigvito/elbow_l0.png",
+    "w": 99,
+    "h": 165
+   },
+   {
+    "file": "sprites/bigvito/elbow_l1.png",
+    "w": 89,
+    "h": 165
+   },
+   {
+    "file": "sprites/bigvito/elbow_l2.png",
+    "w": 93,
+    "h": 163
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/bigvito/elbow_r0.png",
+    "w": 100,
+    "h": 158
+   },
+   {
+    "file": "sprites/bigvito/elbow_r1.png",
+    "w": 95,
+    "h": 160
+   },
+   {
+    "file": "sprites/bigvito/elbow_r2.png",
+    "w": 91,
+    "h": 165
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/bigvito/elbow_r0.png",
+    "w": 100,
+    "h": 158
+   },
+   {
+    "file": "sprites/bigvito/elbow_r1.png",
+    "w": 95,
+    "h": 160
+   },
+   {
+    "file": "sprites/bigvito/elbow_r2.png",
+    "w": 91,
+    "h": 165
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/bigvito/over0.png",
+    "w": 105,
+    "h": 183
+   },
+   {
+    "file": "sprites/bigvito/over1.png",
+    "w": 148,
+    "h": 165
+   }
+  ]
+ },
+ "haleyj": {
+  "idle": {
+   "file": "sprites/haleyj/idle.png",
+   "w": 109,
+   "h": 201
+  },
+  "aIdle": {
+   "file": "sprites/haleyj/idle.png",
+   "w": 109,
+   "h": 201
+  },
+  "aIdleB": {
+   "file": "sprites/haleyj/idle_back.png",
+   "w": 107,
+   "h": 198
+  },
+  "fallen": {
+   "file": "sprites/haleyj/fall_b.png",
+   "w": 167,
+   "h": 87
+  },
+  "aFallB": {
+   "file": "sprites/haleyj/fall_b.png",
+   "w": 167,
+   "h": 87
+  },
+  "aFallF": {
+   "file": "sprites/haleyj/fall_f.png",
+   "w": 167,
+   "h": 87
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/haleyj/grap_r0.png",
+    "w": 167,
+    "h": 192
+   },
+   {
+    "file": "sprites/haleyj/grap_r1.png",
+    "w": 175,
+    "h": 190
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/haleyj/grap_l0.png",
+    "w": 141,
+    "h": 173
+   },
+   {
+    "file": "sprites/haleyj/grap_l1.png",
+    "w": 143,
+    "h": 173
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/haleyj/throw_r0.png",
+    "w": 121,
+    "h": 176
+   },
+   {
+    "file": "sprites/haleyj/throw_r1.png",
+    "w": 151,
+    "h": 201
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/haleyj/throw_l0.png",
+    "w": 110,
+    "h": 154
+   },
+   {
+    "file": "sprites/haleyj/throw_l1.png",
+    "w": 163,
+    "h": 153
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/haleyj/walk_l0.png",
+    "w": 77,
+    "h": 148
+   },
+   {
+    "file": "sprites/haleyj/walk_l1.png",
+    "w": 76,
+    "h": 148
+   },
+   {
+    "file": "sprites/haleyj/walk_l2.png",
+    "w": 78,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_l3.png",
+    "w": 77,
+    "h": 149
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/haleyj/walk_l0.png",
+    "w": 77,
+    "h": 148
+   },
+   {
+    "file": "sprites/haleyj/walk_l1.png",
+    "w": 76,
+    "h": 148
+   },
+   {
+    "file": "sprites/haleyj/walk_l2.png",
+    "w": 78,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_l3.png",
+    "w": 77,
+    "h": 149
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/haleyj/walk_r0.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_r1.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_r2.png",
+    "w": 76,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_r3.png",
+    "w": 80,
+    "h": 150
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/haleyj/walk_r0.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_r1.png",
+    "w": 77,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_r2.png",
+    "w": 76,
+    "h": 149
+   },
+   {
+    "file": "sprites/haleyj/walk_r3.png",
+    "w": 80,
+    "h": 150
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/haleyj/jump_crouch.png",
+    "w": 76,
+    "h": 117
+   },
+   {
+    "file": "sprites/haleyj/jump_air.png",
+    "w": 112,
+    "h": 124
+   },
+   {
+    "file": "sprites/haleyj/jump_land.png",
+    "w": 76,
+    "h": 117
+   }
+  ],
+  "jump": {
+   "file": "sprites/haleyj/jump_air.png",
+   "w": 112,
+   "h": 124
+  },
+  "elbowL": [
+   {
+    "file": "sprites/haleyj/elbow_l0.png",
+    "w": 95,
+    "h": 167
+   },
+   {
+    "file": "sprites/haleyj/elbow_l1.png",
+    "w": 82,
+    "h": 167
+   },
+   {
+    "file": "sprites/haleyj/elbow_l2.png",
+    "w": 131,
+    "h": 166
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/haleyj/elbow_l0.png",
+    "w": 95,
+    "h": 167
+   },
+   {
+    "file": "sprites/haleyj/elbow_l1.png",
+    "w": 82,
+    "h": 167
+   },
+   {
+    "file": "sprites/haleyj/elbow_l2.png",
+    "w": 131,
+    "h": 166
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/haleyj/elbow_r0.png",
+    "w": 96,
+    "h": 167
+   },
+   {
+    "file": "sprites/haleyj/elbow_r1.png",
+    "w": 93,
+    "h": 167
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/haleyj/elbow_r0.png",
+    "w": 96,
+    "h": 167
+   },
+   {
+    "file": "sprites/haleyj/elbow_r1.png",
+    "w": 93,
+    "h": 167
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/haleyj/over0.png",
+    "w": 104,
+    "h": 176
+   },
+   {
+    "file": "sprites/haleyj/over1.png",
+    "w": 142,
+    "h": 169
+   }
+  ]
+ },
+ "kongokong": {
+  "idle": {
+   "file": "sprites/kongokong/idle.png",
+   "w": 113,
+   "h": 185
+  },
+  "aIdle": {
+   "file": "sprites/kongokong/idle.png",
+   "w": 113,
+   "h": 185
+  },
+  "aIdleB": {
+   "file": "sprites/kongokong/idle_back.png",
+   "w": 112,
+   "h": 183
+  },
+  "fallen": {
+   "file": "sprites/kongokong/fall_b.png",
+   "w": 185,
+   "h": 113
+  },
+  "aFallB": {
+   "file": "sprites/kongokong/fall_b.png",
+   "w": 185,
+   "h": 113
+  },
+  "aFallF": {
+   "file": "sprites/kongokong/fall_f.png",
+   "w": 185,
+   "h": 113
+  },
+  "aJump": [
+   {
+    "file": "sprites/kongokong/jump_crouch.png",
+    "w": 77,
+    "h": 111
+   },
+   {
+    "file": "sprites/kongokong/jump_air.png",
+    "w": 98,
+    "h": 126
+   },
+   {
+    "file": "sprites/kongokong/jump_land.png",
+    "w": 86,
+    "h": 105
+   }
+  ],
+  "jump": {
+   "file": "sprites/kongokong/jump_air.png",
+   "w": 98,
+   "h": 126
+  },
+  "walkL": [
+   {
+    "file": "sprites/kongokong/walk_l0.png",
+    "w": 72,
+    "h": 135
+   },
+   {
+    "file": "sprites/kongokong/walk_l1.png",
+    "w": 73,
+    "h": 135
+   },
+   {
+    "file": "sprites/kongokong/walk_l2.png",
+    "w": 71,
+    "h": 135
+   },
+   {
+    "file": "sprites/kongokong/walk_l3.png",
+    "w": 62,
+    "h": 135
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/kongokong/walk_l0.png",
+    "w": 72,
+    "h": 135
+   },
+   {
+    "file": "sprites/kongokong/walk_l1.png",
+    "w": 73,
+    "h": 135
+   },
+   {
+    "file": "sprites/kongokong/walk_l2.png",
+    "w": 71,
+    "h": 135
+   },
+   {
+    "file": "sprites/kongokong/walk_l3.png",
+    "w": 62,
+    "h": 135
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/kongokong/walk_r0.png",
+    "w": 73,
+    "h": 134
+   },
+   {
+    "file": "sprites/kongokong/walk_r1.png",
+    "w": 70,
+    "h": 134
+   },
+   {
+    "file": "sprites/kongokong/walk_r2.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/kongokong/walk_r3.png",
+    "w": 73,
+    "h": 134
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/kongokong/walk_r0.png",
+    "w": 73,
+    "h": 134
+   },
+   {
+    "file": "sprites/kongokong/walk_r1.png",
+    "w": 70,
+    "h": 134
+   },
+   {
+    "file": "sprites/kongokong/walk_r2.png",
+    "w": 71,
+    "h": 134
+   },
+   {
+    "file": "sprites/kongokong/walk_r3.png",
+    "w": 73,
+    "h": 134
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/kongokong/elbow_r0.png",
+    "w": 95,
+    "h": 149
+   },
+   {
+    "file": "sprites/kongokong/elbow_r1.png",
+    "w": 104,
+    "h": 149
+   },
+   {
+    "file": "sprites/kongokong/elbow_r2.png",
+    "w": 131,
+    "h": 149
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/kongokong/elbow_r0.png",
+    "w": 95,
+    "h": 149
+   },
+   {
+    "file": "sprites/kongokong/elbow_r1.png",
+    "w": 104,
+    "h": 149
+   },
+   {
+    "file": "sprites/kongokong/elbow_r2.png",
+    "w": 131,
+    "h": 149
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/kongokong/elbow_l0.png",
+    "w": 106,
+    "h": 149
+   },
+   {
+    "file": "sprites/kongokong/elbow_l1.png",
+    "w": 95,
+    "h": 147
+   },
+   {
+    "file": "sprites/kongokong/elbow_l2.png",
+    "w": 129,
+    "h": 148
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/kongokong/elbow_l0.png",
+    "w": 106,
+    "h": 149
+   },
+   {
+    "file": "sprites/kongokong/elbow_l1.png",
+    "w": 95,
+    "h": 147
+   },
+   {
+    "file": "sprites/kongokong/elbow_l2.png",
+    "w": 129,
+    "h": 148
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/kongokong/grap_r0.png",
+    "w": 150,
+    "h": 169
+   },
+   {
+    "file": "sprites/kongokong/grap_r1.png",
+    "w": 146,
+    "h": 167
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/kongokong/grap_l0.png",
+    "w": 129,
+    "h": 161
+   },
+   {
+    "file": "sprites/kongokong/grap_l1.png",
+    "w": 127,
+    "h": 156
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/kongokong/throw_r0.png",
+    "w": 136,
+    "h": 152
+   },
+   {
+    "file": "sprites/kongokong/throw_r1.png",
+    "w": 140,
+    "h": 158
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/kongokong/throw_l0.png",
+    "w": 102,
+    "h": 137
+   },
+   {
+    "file": "sprites/kongokong/throw_l1.png",
+    "w": 154,
+    "h": 137
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/kongokong/over0.png",
+    "w": 88,
+    "h": 127
+   },
+   {
+    "file": "sprites/kongokong/over1.png",
+    "w": 96,
+    "h": 131
+   }
+  ]
+ },
+ "mechawolf": {
+  "idle": {
+   "file": "sprites/mechawolf/idle.png",
+   "w": 92,
+   "h": 201
+  },
+  "aIdle": {
+   "file": "sprites/mechawolf/idle.png",
+   "w": 92,
+   "h": 201
+  },
+  "aIdleB": {
+   "file": "sprites/mechawolf/idle_back.png",
+   "w": 91,
+   "h": 200
+  },
+  "fallen": {
+   "file": "sprites/mechawolf/fall_b.png",
+   "w": 138,
+   "h": 100
+  },
+  "aFallB": {
+   "file": "sprites/mechawolf/fall_b.png",
+   "w": 138,
+   "h": 100
+  },
+  "aFallF": {
+   "file": "sprites/mechawolf/fall_f.png",
+   "w": 138,
+   "h": 100
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/mechawolf/grap_r0.png",
+    "w": 150,
+    "h": 199
+   },
+   {
+    "file": "sprites/mechawolf/grap_r1.png",
+    "w": 146,
+    "h": 199
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/mechawolf/grap_l0.png",
+    "w": 244,
+    "h": 204
+   },
+   {
+    "file": "sprites/mechawolf/grap_l1.png",
+    "w": 74,
+    "h": 126
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/mechawolf/throw_r0.png",
+    "w": 114,
+    "h": 204
+   },
+   {
+    "file": "sprites/mechawolf/throw_r1.png",
+    "w": 141,
+    "h": 236
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/mechawolf/throw_l0.png",
+    "w": 120,
+    "h": 199
+   },
+   {
+    "file": "sprites/mechawolf/throw_l1.png",
+    "w": 137,
+    "h": 198
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/mechawolf/walk_l0.png",
+    "w": 87,
+    "h": 199
+   },
+   {
+    "file": "sprites/mechawolf/walk_l1.png",
+    "w": 76,
+    "h": 196
+   },
+   {
+    "file": "sprites/mechawolf/walk_l2.png",
+    "w": 79,
+    "h": 198
+   },
+   {
+    "file": "sprites/mechawolf/walk_l3.png",
+    "w": 76,
+    "h": 197
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/mechawolf/walk_l0.png",
+    "w": 87,
+    "h": 199
+   },
+   {
+    "file": "sprites/mechawolf/walk_l1.png",
+    "w": 76,
+    "h": 196
+   },
+   {
+    "file": "sprites/mechawolf/walk_l2.png",
+    "w": 79,
+    "h": 198
+   },
+   {
+    "file": "sprites/mechawolf/walk_l3.png",
+    "w": 76,
+    "h": 197
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/mechawolf/walk_r0.png",
+    "w": 84,
+    "h": 202
+   },
+   {
+    "file": "sprites/mechawolf/walk_r1.png",
+    "w": 85,
+    "h": 202
+   },
+   {
+    "file": "sprites/mechawolf/walk_r2.png",
+    "w": 84,
+    "h": 202
+   },
+   {
+    "file": "sprites/mechawolf/walk_r3.png",
+    "w": 84,
+    "h": 203
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/mechawolf/walk_r0.png",
+    "w": 84,
+    "h": 202
+   },
+   {
+    "file": "sprites/mechawolf/walk_r1.png",
+    "w": 85,
+    "h": 202
+   },
+   {
+    "file": "sprites/mechawolf/walk_r2.png",
+    "w": 84,
+    "h": 202
+   },
+   {
+    "file": "sprites/mechawolf/walk_r3.png",
+    "w": 84,
+    "h": 203
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/mechawolf/jump_crouch.png",
+    "w": 69,
+    "h": 131
+   },
+   {
+    "file": "sprites/mechawolf/jump_air.png",
+    "w": 89,
+    "h": 157
+   },
+   {
+    "file": "sprites/mechawolf/jump_land.png",
+    "w": 68,
+    "h": 130
+   }
+  ],
+  "jump": {
+   "file": "sprites/mechawolf/jump_air.png",
+   "w": 89,
+   "h": 157
+  },
+  "elbowL": [
+   {
+    "file": "sprites/mechawolf/elbow_l0.png",
+    "w": 87,
+    "h": 208
+   },
+   {
+    "file": "sprites/mechawolf/elbow_l1.png",
+    "w": 83,
+    "h": 207
+   },
+   {
+    "file": "sprites/mechawolf/elbow_l2.png",
+    "w": 110,
+    "h": 203
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/mechawolf/elbow_l0.png",
+    "w": 87,
+    "h": 208
+   },
+   {
+    "file": "sprites/mechawolf/elbow_l1.png",
+    "w": 83,
+    "h": 207
+   },
+   {
+    "file": "sprites/mechawolf/elbow_l2.png",
+    "w": 110,
+    "h": 203
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/mechawolf/elbow_r0.png",
+    "w": 90,
+    "h": 207
+   },
+   {
+    "file": "sprites/mechawolf/elbow_r1.png",
+    "w": 89,
+    "h": 208
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/mechawolf/elbow_r0.png",
+    "w": 90,
+    "h": 207
+   },
+   {
+    "file": "sprites/mechawolf/elbow_r1.png",
+    "w": 89,
+    "h": 208
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/mechawolf/over0.png",
+    "w": 94,
+    "h": 222
+   },
+   {
+    "file": "sprites/mechawolf/over1.png",
+    "w": 164,
+    "h": 199
+   }
+  ]
+ },
+ "mickie": {
+  "idle": {
+   "file": "sprites/mickie/idle.png",
+   "w": 114,
+   "h": 172
+  },
+  "aIdle": {
+   "file": "sprites/mickie/idle.png",
+   "w": 114,
+   "h": 172
+  },
+  "aIdleB": {
+   "file": "sprites/mickie/idle_back.png",
+   "w": 112,
+   "h": 171
+  },
+  "fallen": {
+   "file": "sprites/mickie/fall_b.png",
+   "w": 161,
+   "h": 77
+  },
+  "aFallB": {
+   "file": "sprites/mickie/fall_b.png",
+   "w": 161,
+   "h": 77
+  },
+  "aFallF": {
+   "file": "sprites/mickie/fall_f.png",
+   "w": 115,
+   "h": 60
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/mickie/grap_r0.png",
+    "w": 147,
+    "h": 170
+   },
+   {
+    "file": "sprites/mickie/grap_r1.png",
+    "w": 138,
+    "h": 167
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/mickie/grap_l0.png",
+    "w": 135,
+    "h": 153
+   },
+   {
+    "file": "sprites/mickie/grap_l1.png",
+    "w": 125,
+    "h": 153
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/mickie/throw_r0.png",
+    "w": 125,
+    "h": 159
+   },
+   {
+    "file": "sprites/mickie/throw_r1.png",
+    "w": 168,
+    "h": 162
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/mickie/throw_l0.png",
+    "w": 130,
+    "h": 145
+   },
+   {
+    "file": "sprites/mickie/throw_l1.png",
+    "w": 74,
+    "h": 110
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/mickie/walk_l0.png",
+    "w": 96,
+    "h": 141
+   },
+   {
+    "file": "sprites/mickie/walk_l1.png",
+    "w": 80,
+    "h": 140
+   },
+   {
+    "file": "sprites/mickie/walk_l2.png",
+    "w": 77,
+    "h": 141
+   },
+   {
+    "file": "sprites/mickie/walk_l3.png",
+    "w": 89,
+    "h": 140
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/mickie/walk_l0.png",
+    "w": 96,
+    "h": 141
+   },
+   {
+    "file": "sprites/mickie/walk_l1.png",
+    "w": 80,
+    "h": 140
+   },
+   {
+    "file": "sprites/mickie/walk_l2.png",
+    "w": 77,
+    "h": 141
+   },
+   {
+    "file": "sprites/mickie/walk_l3.png",
+    "w": 89,
+    "h": 140
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/mickie/walk_r0.png",
+    "w": 95,
+    "h": 139
+   },
+   {
+    "file": "sprites/mickie/walk_r1.png",
+    "w": 60,
+    "h": 140
+   },
+   {
+    "file": "sprites/mickie/walk_r2.png",
+    "w": 102,
+    "h": 138
+   },
+   {
+    "file": "sprites/mickie/walk_r3.png",
+    "w": 74,
+    "h": 140
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/mickie/walk_r0.png",
+    "w": 95,
+    "h": 139
+   },
+   {
+    "file": "sprites/mickie/walk_r1.png",
+    "w": 60,
+    "h": 140
+   },
+   {
+    "file": "sprites/mickie/walk_r2.png",
+    "w": 102,
+    "h": 138
+   },
+   {
+    "file": "sprites/mickie/walk_r3.png",
+    "w": 74,
+    "h": 140
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/mickie/jump_crouch.png",
+    "w": 126,
+    "h": 126
+   },
+   {
+    "file": "sprites/mickie/jump_air.png",
+    "w": 105,
+    "h": 125
+   },
+   {
+    "file": "sprites/mickie/jump_land.png",
+    "w": 105,
+    "h": 125
+   }
+  ],
+  "jump": {
+   "file": "sprites/mickie/jump_air.png",
+   "w": 105,
+   "h": 125
+  },
+  "elbowL": [
+   {
+    "file": "sprites/mickie/elbow_l0.png",
+    "w": 131,
+    "h": 147
+   },
+   {
+    "file": "sprites/mickie/elbow_l1.png",
+    "w": 104,
+    "h": 126
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/mickie/elbow_l0.png",
+    "w": 131,
+    "h": 147
+   },
+   {
+    "file": "sprites/mickie/elbow_l1.png",
+    "w": 104,
+    "h": 126
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/mickie/elbow_r0.png",
+    "w": 99,
+    "h": 139
+   },
+   {
+    "file": "sprites/mickie/elbow_r1.png",
+    "w": 139,
+    "h": 83
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/mickie/elbow_r0.png",
+    "w": 99,
+    "h": 139
+   },
+   {
+    "file": "sprites/mickie/elbow_r1.png",
+    "w": 139,
+    "h": 83
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/mickie/over0.png",
+    "w": 82,
+    "h": 131
+   }
+  ]
+ },
+ "mrhappy": {
+  "idle": {
+   "file": "sprites/mrhappy/idle.png",
+   "w": 124,
+   "h": 204
+  },
+  "aIdle": {
+   "file": "sprites/mrhappy/idle.png",
+   "w": 124,
+   "h": 204
+  },
+  "aIdleB": {
+   "file": "sprites/mrhappy/idle_back.png",
+   "w": 121,
+   "h": 203
+  },
+  "fallen": {
+   "file": "sprites/mrhappy/fall_b.png",
+   "w": 204,
+   "h": 92
+  },
+  "aFallB": {
+   "file": "sprites/mrhappy/fall_b.png",
+   "w": 204,
+   "h": 92
+  },
+  "aFallF": {
+   "file": "sprites/mrhappy/fall_f.png",
+   "w": 162,
+   "h": 192
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/mrhappy/grap_r0.png",
+    "w": 205,
+    "h": 204
+   },
+   {
+    "file": "sprites/mrhappy/grap_r1.png",
+    "w": 203,
+    "h": 96
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/mrhappy/grap_l0.png",
+    "w": 163,
+    "h": 194
+   },
+   {
+    "file": "sprites/mrhappy/grap_l1.png",
+    "w": 147,
+    "h": 189
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/mrhappy/throw_r0.png",
+    "w": 162,
+    "h": 192
+   },
+   {
+    "file": "sprites/mrhappy/throw_r1.png",
+    "w": 151,
+    "h": 193
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/mrhappy/throw_l0.png",
+    "w": 78,
+    "h": 159
+   },
+   {
+    "file": "sprites/mrhappy/throw_l1.png",
+    "w": 73,
+    "h": 158
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/mrhappy/walk_l0.png",
+    "w": 76,
+    "h": 157
+   },
+   {
+    "file": "sprites/mrhappy/walk_l1.png",
+    "w": 72,
+    "h": 159
+   },
+   {
+    "file": "sprites/mrhappy/walk_l2.png",
+    "w": 77,
+    "h": 159
+   },
+   {
+    "file": "sprites/mrhappy/walk_l3.png",
+    "w": 70,
+    "h": 159
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/mrhappy/walk_l0.png",
+    "w": 76,
+    "h": 157
+   },
+   {
+    "file": "sprites/mrhappy/walk_l1.png",
+    "w": 72,
+    "h": 159
+   },
+   {
+    "file": "sprites/mrhappy/walk_l2.png",
+    "w": 77,
+    "h": 159
+   },
+   {
+    "file": "sprites/mrhappy/walk_l3.png",
+    "w": 70,
+    "h": 159
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/mrhappy/walk_r0.png",
+    "w": 74,
+    "h": 159
+   },
+   {
+    "file": "sprites/mrhappy/walk_r1.png",
+    "w": 74,
+    "h": 129
+   },
+   {
+    "file": "sprites/mrhappy/walk_r2.png",
+    "w": 101,
+    "h": 146
+   },
+   {
+    "file": "sprites/mrhappy/walk_r3.png",
+    "w": 92,
+    "h": 134
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/mrhappy/walk_r0.png",
+    "w": 74,
+    "h": 159
+   },
+   {
+    "file": "sprites/mrhappy/walk_r1.png",
+    "w": 74,
+    "h": 129
+   },
+   {
+    "file": "sprites/mrhappy/walk_r2.png",
+    "w": 101,
+    "h": 146
+   },
+   {
+    "file": "sprites/mrhappy/walk_r3.png",
+    "w": 92,
+    "h": 134
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/mrhappy/jump_crouch.png",
+    "w": 111,
+    "h": 179
+   },
+   {
+    "file": "sprites/mrhappy/jump_air.png",
+    "w": 102,
+    "h": 179
+   },
+   {
+    "file": "sprites/mrhappy/jump_land.png",
+    "w": 125,
+    "h": 179
+   }
+  ],
+  "jump": {
+   "file": "sprites/mrhappy/jump_air.png",
+   "w": 102,
+   "h": 179
+  },
+  "elbowL": [
+   {
+    "file": "sprites/mrhappy/elbow_l0.png",
+    "w": 90,
+    "h": 180
+   },
+   {
+    "file": "sprites/mrhappy/elbow_l1.png",
+    "w": 108,
+    "h": 180
+   },
+   {
+    "file": "sprites/mrhappy/elbow_l2.png",
+    "w": 124,
+    "h": 180
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/mrhappy/elbow_l0.png",
+    "w": 90,
+    "h": 180
+   },
+   {
+    "file": "sprites/mrhappy/elbow_l1.png",
+    "w": 108,
+    "h": 180
+   },
+   {
+    "file": "sprites/mrhappy/elbow_l2.png",
+    "w": 124,
+    "h": 180
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/mrhappy/elbow_r0.png",
+    "w": 155,
+    "h": 197
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/mrhappy/elbow_r0.png",
+    "w": 155,
+    "h": 197
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/mrhappy/over0.png",
+    "w": 153,
+    "h": 199
+   },
+   {
+    "file": "sprites/mrhappy/over1.png",
+    "w": 100,
+    "h": 172
+   }
+  ]
+ },
+ "sophia": {
+  "idle": {
+   "file": "sprites/sophia/idle.png",
+   "w": 87,
+   "h": 195
+  },
+  "aIdle": {
+   "file": "sprites/sophia/idle.png",
+   "w": 87,
+   "h": 195
+  },
+  "aIdleB": {
+   "file": "sprites/sophia/idle_back.png",
+   "w": 85,
+   "h": 195
+  },
+  "fallen": {
+   "file": "sprites/sophia/fall_b.png",
+   "w": 114,
+   "h": 158
+  },
+  "aFallB": {
+   "file": "sprites/sophia/fall_b.png",
+   "w": 114,
+   "h": 158
+  },
+  "aFallF": {
+   "file": "sprites/sophia/fall_f.png",
+   "w": 332,
+   "h": 173
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/sophia/grap_r0.png",
+    "w": 105,
+    "h": 169
+   },
+   {
+    "file": "sprites/sophia/grap_r1.png",
+    "w": 105,
+    "h": 169
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/sophia/grap_l0.png",
+    "w": 157,
+    "h": 61
+   },
+   {
+    "file": "sprites/sophia/grap_l1.png",
+    "w": 114,
+    "h": 158
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/sophia/throw_r0.png",
+    "w": 115,
+    "h": 157
+   },
+   {
+    "file": "sprites/sophia/throw_r1.png",
+    "w": 111,
+    "h": 153
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/sophia/throw_l0.png",
+    "w": 83,
+    "h": 142
+   },
+   {
+    "file": "sprites/sophia/throw_l1.png",
+    "w": 83,
+    "h": 140
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/sophia/walk_l0.png",
+    "w": 75,
+    "h": 141
+   },
+   {
+    "file": "sprites/sophia/walk_l1.png",
+    "w": 70,
+    "h": 139
+   },
+   {
+    "file": "sprites/sophia/walk_l2.png",
+    "w": 67,
+    "h": 139
+   },
+   {
+    "file": "sprites/sophia/walk_l3.png",
+    "w": 78,
+    "h": 139
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/sophia/walk_l0.png",
+    "w": 75,
+    "h": 141
+   },
+   {
+    "file": "sprites/sophia/walk_l1.png",
+    "w": 70,
+    "h": 139
+   },
+   {
+    "file": "sprites/sophia/walk_l2.png",
+    "w": 67,
+    "h": 139
+   },
+   {
+    "file": "sprites/sophia/walk_l3.png",
+    "w": 78,
+    "h": 139
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/sophia/walk_r0.png",
+    "w": 72,
+    "h": 118
+   },
+   {
+    "file": "sprites/sophia/walk_r1.png",
+    "w": 82,
+    "h": 103
+   },
+   {
+    "file": "sprites/sophia/walk_r2.png",
+    "w": 87,
+    "h": 125
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/sophia/walk_r0.png",
+    "w": 72,
+    "h": 118
+   },
+   {
+    "file": "sprites/sophia/walk_r1.png",
+    "w": 82,
+    "h": 103
+   },
+   {
+    "file": "sprites/sophia/walk_r2.png",
+    "w": 87,
+    "h": 125
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/sophia/jump_crouch.png",
+    "w": 78,
+    "h": 165
+   },
+   {
+    "file": "sprites/sophia/jump_air.png",
+    "w": 86,
+    "h": 162
+   },
+   {
+    "file": "sprites/sophia/jump_land.png",
+    "w": 85,
+    "h": 162
+   }
+  ],
+  "jump": {
+   "file": "sprites/sophia/jump_air.png",
+   "w": 86,
+   "h": 162
+  },
+  "elbowL": [
+   {
+    "file": "sprites/sophia/elbow_l0.png",
+    "w": 82,
+    "h": 162
+   },
+   {
+    "file": "sprites/sophia/elbow_l1.png",
+    "w": 83,
+    "h": 162
+   },
+   {
+    "file": "sprites/sophia/elbow_l2.png",
+    "w": 76,
+    "h": 165
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/sophia/elbow_l0.png",
+    "w": 82,
+    "h": 162
+   },
+   {
+    "file": "sprites/sophia/elbow_l1.png",
+    "w": 83,
+    "h": 162
+   },
+   {
+    "file": "sprites/sophia/elbow_l2.png",
+    "w": 76,
+    "h": 165
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/sophia/elbow_r0.png",
+    "w": 49,
+    "h": 156
+   },
+   {
+    "file": "sprites/sophia/elbow_r1.png",
+    "w": 48,
+    "h": 153
+   },
+   {
+    "file": "sprites/sophia/elbow_r2.png",
+    "w": 86,
+    "h": 156
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/sophia/elbow_r0.png",
+    "w": 49,
+    "h": 156
+   },
+   {
+    "file": "sprites/sophia/elbow_r1.png",
+    "w": 48,
+    "h": 153
+   },
+   {
+    "file": "sprites/sophia/elbow_r2.png",
+    "w": 86,
+    "h": 156
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/sophia/over0.png",
+    "w": 170,
+    "h": 182
+   },
+   {
+    "file": "sprites/sophia/over1.png",
+    "w": 90,
+    "h": 151
+   }
+  ]
+ },
+ "jeeves": {
+  "idle": {
+   "file": "sprites/jeeves/idle.png",
+   "w": 105,
+   "h": 208
+  },
+  "aIdle": {
+   "file": "sprites/jeeves/idle.png",
+   "w": 105,
+   "h": 208
+  },
+  "aIdleB": {
+   "file": "sprites/jeeves/idle_back.png",
+   "w": 103,
+   "h": 208
+  },
+  "fallen": {
+   "file": "sprites/jeeves/fall_b.png",
+   "w": 167,
+   "h": 86
+  },
+  "aFallB": {
+   "file": "sprites/jeeves/fall_b.png",
+   "w": 167,
+   "h": 86
+  },
+  "aFallF": {
+   "file": "sprites/jeeves/fall_f.png",
+   "w": 167,
+   "h": 86
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/jeeves/grap_r0.png",
+    "w": 180,
+    "h": 198
+   },
+   {
+    "file": "sprites/jeeves/grap_r1.png",
+    "w": 179,
+    "h": 196
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/jeeves/grap_l0.png",
+    "w": 147,
+    "h": 181
+   },
+   {
+    "file": "sprites/jeeves/grap_l1.png",
+    "w": 147,
+    "h": 181
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/jeeves/throw_r0.png",
+    "w": 124,
+    "h": 180
+   },
+   {
+    "file": "sprites/jeeves/throw_r1.png",
+    "w": 160,
+    "h": 195
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/jeeves/throw_l0.png",
+    "w": 109,
+    "h": 159
+   },
+   {
+    "file": "sprites/jeeves/throw_l1.png",
+    "w": 164,
+    "h": 156
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/jeeves/walk_l0.png",
+    "w": 74,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_l1.png",
+    "w": 73,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_l2.png",
+    "w": 74,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_l3.png",
+    "w": 75,
+    "h": 152
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/jeeves/walk_l0.png",
+    "w": 74,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_l1.png",
+    "w": 73,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_l2.png",
+    "w": 74,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_l3.png",
+    "w": 75,
+    "h": 152
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/jeeves/walk_r0.png",
+    "w": 76,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_r1.png",
+    "w": 76,
+    "h": 153
+   },
+   {
+    "file": "sprites/jeeves/walk_r2.png",
+    "w": 75,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_r3.png",
+    "w": 75,
+    "h": 153
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/jeeves/walk_r0.png",
+    "w": 76,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_r1.png",
+    "w": 76,
+    "h": 153
+   },
+   {
+    "file": "sprites/jeeves/walk_r2.png",
+    "w": 75,
+    "h": 152
+   },
+   {
+    "file": "sprites/jeeves/walk_r3.png",
+    "w": 75,
+    "h": 153
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/jeeves/jump_crouch.png",
+    "w": 74,
+    "h": 115
+   },
+   {
+    "file": "sprites/jeeves/jump_air.png",
+    "w": 111,
+    "h": 129
+   },
+   {
+    "file": "sprites/jeeves/jump_land.png",
+    "w": 73,
+    "h": 118
+   }
+  ],
+  "jump": {
+   "file": "sprites/jeeves/jump_air.png",
+   "w": 111,
+   "h": 129
+  },
+  "elbowL": [
+   {
+    "file": "sprites/jeeves/elbow_l0.png",
+    "w": 97,
+    "h": 170
+   },
+   {
+    "file": "sprites/jeeves/elbow_l1.png",
+    "w": 80,
+    "h": 170
+   },
+   {
+    "file": "sprites/jeeves/elbow_l2.png",
+    "w": 137,
+    "h": 170
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/jeeves/elbow_l0.png",
+    "w": 97,
+    "h": 170
+   },
+   {
+    "file": "sprites/jeeves/elbow_l1.png",
+    "w": 80,
+    "h": 170
+   },
+   {
+    "file": "sprites/jeeves/elbow_l2.png",
+    "w": 137,
+    "h": 170
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/jeeves/elbow_r0.png",
+    "w": 92,
+    "h": 170
+   },
+   {
+    "file": "sprites/jeeves/elbow_r1.png",
+    "w": 88,
+    "h": 170
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/jeeves/elbow_r0.png",
+    "w": 92,
+    "h": 170
+   },
+   {
+    "file": "sprites/jeeves/elbow_r1.png",
+    "w": 88,
+    "h": 170
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/jeeves/over0.png",
+    "w": 95,
+    "h": 170
+   },
+   {
+    "file": "sprites/jeeves/over1.png",
+    "w": 143,
+    "h": 157
+   }
+  ]
+ },
+ "mattcross": {
+  "idle": {
+   "file": "sprites/mattcross/idle.png",
+   "w": 102,
+   "h": 190
+  },
+  "aIdle": {
+   "file": "sprites/mattcross/idle.png",
+   "w": 102,
+   "h": 190
+  },
+  "aIdleB": {
+   "file": "sprites/mattcross/idle_back.png",
+   "w": 101,
+   "h": 189
+  },
+  "fallen": {
+   "file": "sprites/mattcross/fall_b.png",
+   "w": 140,
+   "h": 90
+  },
+  "aFallB": {
+   "file": "sprites/mattcross/fall_b.png",
+   "w": 140,
+   "h": 90
+  },
+  "aFallF": {
+   "file": "sprites/mattcross/fall_f.png",
+   "w": 131,
+   "h": 83
+  },
+  "aJump": [
+   {
+    "file": "sprites/mattcross/jump_crouch.png",
+    "w": 74,
+    "h": 132
+   },
+   {
+    "file": "sprites/mattcross/jump_air.png",
+    "w": 95,
+    "h": 110
+   },
+   {
+    "file": "sprites/mattcross/jump_land.png",
+    "w": 79,
+    "h": 116
+   }
+  ],
+  "jump": {
+   "file": "sprites/mattcross/jump_air.png",
+   "w": 95,
+   "h": 110
+  },
+  "walkL": [
+   {
+    "file": "sprites/mattcross/walk_l0.png",
+    "w": 81,
+    "h": 145
+   },
+   {
+    "file": "sprites/mattcross/walk_l1.png",
+    "w": 71,
+    "h": 144
+   },
+   {
+    "file": "sprites/mattcross/walk_l2.png",
+    "w": 79,
+    "h": 145
+   },
+   {
+    "file": "sprites/mattcross/walk_l3.png",
+    "w": 78,
+    "h": 146
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/mattcross/walk_l0.png",
+    "w": 81,
+    "h": 145
+   },
+   {
+    "file": "sprites/mattcross/walk_l1.png",
+    "w": 71,
+    "h": 144
+   },
+   {
+    "file": "sprites/mattcross/walk_l2.png",
+    "w": 79,
+    "h": 145
+   },
+   {
+    "file": "sprites/mattcross/walk_l3.png",
+    "w": 78,
+    "h": 146
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/mattcross/walk_r0.png",
+    "w": 80,
+    "h": 147
+   },
+   {
+    "file": "sprites/mattcross/walk_r1.png",
+    "w": 81,
+    "h": 146
+   },
+   {
+    "file": "sprites/mattcross/walk_r2.png",
+    "w": 63,
+    "h": 146
+   },
+   {
+    "file": "sprites/mattcross/walk_r3.png",
+    "w": 79,
+    "h": 145
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/mattcross/walk_r0.png",
+    "w": 80,
+    "h": 147
+   },
+   {
+    "file": "sprites/mattcross/walk_r1.png",
+    "w": 81,
+    "h": 146
+   },
+   {
+    "file": "sprites/mattcross/walk_r2.png",
+    "w": 63,
+    "h": 146
+   },
+   {
+    "file": "sprites/mattcross/walk_r3.png",
+    "w": 79,
+    "h": 145
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/mattcross/elbow_r0.png",
+    "w": 97,
+    "h": 159
+   },
+   {
+    "file": "sprites/mattcross/elbow_r1.png",
+    "w": 91,
+    "h": 160
+   },
+   {
+    "file": "sprites/mattcross/elbow_r2.png",
+    "w": 120,
+    "h": 159
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/mattcross/elbow_r0.png",
+    "w": 97,
+    "h": 159
+   },
+   {
+    "file": "sprites/mattcross/elbow_r1.png",
+    "w": 91,
+    "h": 160
+   },
+   {
+    "file": "sprites/mattcross/elbow_r2.png",
+    "w": 120,
+    "h": 159
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/mattcross/elbow_l0.png",
+    "w": 97,
+    "h": 162
+   },
+   {
+    "file": "sprites/mattcross/elbow_l1.png",
+    "w": 91,
+    "h": 161
+   },
+   {
+    "file": "sprites/mattcross/elbow_l2.png",
+    "w": 122,
+    "h": 158
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/mattcross/elbow_l0.png",
+    "w": 97,
+    "h": 162
+   },
+   {
+    "file": "sprites/mattcross/elbow_l1.png",
+    "w": 91,
+    "h": 161
+   },
+   {
+    "file": "sprites/mattcross/elbow_l2.png",
+    "w": 122,
+    "h": 158
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/mattcross/throw_r0.png",
+    "w": 100,
+    "h": 146
+   },
+   {
+    "file": "sprites/mattcross/throw_r1.png",
+    "w": 101,
+    "h": 146
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/mattcross/throw_l0.png",
+    "w": 116,
+    "h": 145
+   },
+   {
+    "file": "sprites/mattcross/throw_l1.png",
+    "w": 99,
+    "h": 147
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/mattcross/over0.png",
+    "w": 103,
+    "h": 155
+   },
+   {
+    "file": "sprites/mattcross/over1.png",
+    "w": 120,
+    "h": 177
+   }
+  ]
+ },
+ "mercer": {
+  "idle": {
+   "file": "sprites/mercer/idle.png",
+   "w": 99,
+   "h": 216
+  },
+  "aIdle": {
+   "file": "sprites/mercer/idle.png",
+   "w": 99,
+   "h": 216
+  },
+  "aIdleB": {
+   "file": "sprites/mercer/idle_back.png",
+   "w": 99,
+   "h": 216
+  },
+  "fallen": {
+   "file": "sprites/mercer/fall_b.png",
+   "w": 127,
+   "h": 83
+  },
+  "aFallB": {
+   "file": "sprites/mercer/fall_b.png",
+   "w": 127,
+   "h": 83
+  },
+  "aFallF": {
+   "file": "sprites/mercer/fall_f.png",
+   "w": 127,
+   "h": 83
+  },
+  "aJump": [
+   {
+    "file": "sprites/mercer/jump_crouch.png",
+    "w": 65,
+    "h": 133
+   },
+   {
+    "file": "sprites/mercer/jump_air.png",
+    "w": 81,
+    "h": 138
+   },
+   {
+    "file": "sprites/mercer/jump_land.png",
+    "w": 65,
+    "h": 132
+   }
+  ],
+  "jump": {
+   "file": "sprites/mercer/jump_air.png",
+   "w": 81,
+   "h": 138
+  },
+  "walkL": [
+   {
+    "file": "sprites/mercer/walk_l0.png",
+    "w": 146,
+    "h": 182
+   },
+   {
+    "file": "sprites/mercer/walk_l1.png",
+    "w": 53,
+    "h": 180
+   },
+   {
+    "file": "sprites/mercer/walk_l2.png",
+    "w": 82,
+    "h": 181
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/mercer/walk_l0.png",
+    "w": 146,
+    "h": 182
+   },
+   {
+    "file": "sprites/mercer/walk_l1.png",
+    "w": 53,
+    "h": 180
+   },
+   {
+    "file": "sprites/mercer/walk_l2.png",
+    "w": 82,
+    "h": 181
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/mercer/walk_r0.png",
+    "w": 170,
+    "h": 182
+   },
+   {
+    "file": "sprites/mercer/walk_r1.png",
+    "w": 161,
+    "h": 182
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/mercer/walk_r0.png",
+    "w": 170,
+    "h": 182
+   },
+   {
+    "file": "sprites/mercer/walk_r1.png",
+    "w": 161,
+    "h": 182
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/mercer/elbow_r0.png",
+    "w": 67,
+    "h": 188
+   },
+   {
+    "file": "sprites/mercer/elbow_r1.png",
+    "w": 70,
+    "h": 188
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/mercer/elbow_r0.png",
+    "w": 67,
+    "h": 188
+   },
+   {
+    "file": "sprites/mercer/elbow_r1.png",
+    "w": 70,
+    "h": 188
+   }
+  ],
+  "elbowL": [
+   {
+    "file": "sprites/mercer/elbow_l0.png",
+    "w": 68,
+    "h": 186
+   },
+   {
+    "file": "sprites/mercer/elbow_l1.png",
+    "w": 78,
+    "h": 186
+   },
+   {
+    "file": "sprites/mercer/elbow_l2.png",
+    "w": 92,
+    "h": 185
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/mercer/elbow_l0.png",
+    "w": 68,
+    "h": 186
+   },
+   {
+    "file": "sprites/mercer/elbow_l1.png",
+    "w": 78,
+    "h": 186
+   },
+   {
+    "file": "sprites/mercer/elbow_l2.png",
+    "w": 92,
+    "h": 185
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/mercer/grap_r0.png",
+    "w": 140,
+    "h": 211
+   },
+   {
+    "file": "sprites/mercer/grap_r1.png",
+    "w": 151,
+    "h": 211
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/mercer/grap_l0.png",
+    "w": 137,
+    "h": 210
+   },
+   {
+    "file": "sprites/mercer/grap_l1.png",
+    "w": 150,
+    "h": 210
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/mercer/throw_r0.png",
+    "w": 111,
+    "h": 208
+   },
+   {
+    "file": "sprites/mercer/throw_r1.png",
+    "w": 123,
+    "h": 220
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/mercer/throw_l0.png",
+    "w": 109,
+    "h": 193
+   },
+   {
+    "file": "sprites/mercer/throw_l1.png",
+    "w": 115,
+    "h": 200
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/mercer/over0.png",
+    "w": 99,
+    "h": 215
+   },
+   {
+    "file": "sprites/mercer/over1.png",
+    "w": 115,
+    "h": 192
+   }
+  ]
+ },
+ "tgrayson": {
+  "idle": {
+   "file": "sprites/tgrayson/idle.png",
+   "w": 80,
+   "h": 116
+  },
+  "aIdle": {
+   "file": "sprites/tgrayson/idle.png",
+   "w": 80,
+   "h": 116
+  },
+  "aIdleB": {
+   "file": "sprites/tgrayson/idle_back.png",
+   "w": 76,
+   "h": 114
+  },
+  "fallen": {
+   "file": "sprites/tgrayson/fall_b.png",
+   "w": 138,
+   "h": 60
+  },
+  "aFallB": {
+   "file": "sprites/tgrayson/fall_b.png",
+   "w": 138,
+   "h": 60
+  },
+  "aFallF": {
+   "file": "sprites/tgrayson/fall_f.png",
+   "w": 138,
+   "h": 60
+  },
+  "gGrappleR": [
+   {
+    "file": "sprites/tgrayson/grap_r0.png",
+    "w": 127,
+    "h": 117
+   },
+   {
+    "file": "sprites/tgrayson/grap_r1.png",
+    "w": 124,
+    "h": 117
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/tgrayson/grap_l0.png",
+    "w": 123,
+    "h": 118
+   },
+   {
+    "file": "sprites/tgrayson/grap_l1.png",
+    "w": 117,
+    "h": 114
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/tgrayson/throw_r0.png",
+    "w": 102,
+    "h": 110
+   },
+   {
+    "file": "sprites/tgrayson/throw_r1.png",
+    "w": 134,
+    "h": 121
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/tgrayson/throw_l0.png",
+    "w": 89,
+    "h": 95
+   },
+   {
+    "file": "sprites/tgrayson/throw_l1.png",
+    "w": 138,
+    "h": 102
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/tgrayson/walk_l0.png",
+    "w": 66,
+    "h": 97
+   },
+   {
+    "file": "sprites/tgrayson/walk_l1.png",
+    "w": 63,
+    "h": 97
+   },
+   {
+    "file": "sprites/tgrayson/walk_l2.png",
+    "w": 59,
+    "h": 98
+   },
+   {
+    "file": "sprites/tgrayson/walk_l3.png",
+    "w": 60,
+    "h": 97
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/tgrayson/walk_l0.png",
+    "w": 66,
+    "h": 97
+   },
+   {
+    "file": "sprites/tgrayson/walk_l1.png",
+    "w": 63,
+    "h": 97
+   },
+   {
+    "file": "sprites/tgrayson/walk_l2.png",
+    "w": 59,
+    "h": 98
+   },
+   {
+    "file": "sprites/tgrayson/walk_l3.png",
+    "w": 60,
+    "h": 97
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/tgrayson/walk_r0.png",
+    "w": 56,
+    "h": 99
+   },
+   {
+    "file": "sprites/tgrayson/walk_r1.png",
+    "w": 59,
+    "h": 98
+   },
+   {
+    "file": "sprites/tgrayson/walk_r2.png",
+    "w": 57,
+    "h": 98
+   },
+   {
+    "file": "sprites/tgrayson/walk_r3.png",
+    "w": 56,
+    "h": 100
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/tgrayson/walk_r0.png",
+    "w": 56,
+    "h": 99
+   },
+   {
+    "file": "sprites/tgrayson/walk_r1.png",
+    "w": 59,
+    "h": 98
+   },
+   {
+    "file": "sprites/tgrayson/walk_r2.png",
+    "w": 57,
+    "h": 98
+   },
+   {
+    "file": "sprites/tgrayson/walk_r3.png",
+    "w": 56,
+    "h": 100
+   }
+  ],
+  "aJump": [
+   {
+    "file": "sprites/tgrayson/jump_crouch.png",
+    "w": 59,
+    "h": 72
+   },
+   {
+    "file": "sprites/tgrayson/jump_air.png",
+    "w": 79,
+    "h": 80
+   },
+   {
+    "file": "sprites/tgrayson/jump_land.png",
+    "w": 67,
+    "h": 74
+   }
+  ],
+  "jump": {
+   "file": "sprites/tgrayson/jump_air.png",
+   "w": 79,
+   "h": 80
+  },
+  "elbowL": [
+   {
+    "file": "sprites/tgrayson/elbow_l0.png",
+    "w": 82,
+    "h": 101
+   },
+   {
+    "file": "sprites/tgrayson/elbow_l1.png",
+    "w": 68,
+    "h": 101
+   }
+  ],
+  "aElbowL": [
+   {
+    "file": "sprites/tgrayson/elbow_l0.png",
+    "w": 82,
+    "h": 101
+   },
+   {
+    "file": "sprites/tgrayson/elbow_l1.png",
+    "w": 68,
+    "h": 101
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/tgrayson/elbow_r0.png",
+    "w": 99,
+    "h": 102
+   },
+   {
+    "file": "sprites/tgrayson/elbow_r1.png",
+    "w": 70,
+    "h": 103
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/tgrayson/elbow_r0.png",
+    "w": 99,
+    "h": 102
+   },
+   {
+    "file": "sprites/tgrayson/elbow_r1.png",
+    "w": 70,
+    "h": 103
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/tgrayson/over0.png",
+    "w": 80,
+    "h": 98
+   },
+   {
+    "file": "sprites/tgrayson/over1.png",
+    "w": 98,
+    "h": 102
+   }
+  ]
+ },
+ "jpgrayson": {
+  "idle": {
+   "file": "sprites/jpgrayson/idle.png",
+   "w": 81,
+   "h": 105
+  },
+  "aIdle": {
+   "file": "sprites/jpgrayson/idle.png",
+   "w": 81,
+   "h": 105
+  },
+  "aIdleB": {
+   "file": "sprites/jpgrayson/idle_back.png",
+   "w": 69,
+   "h": 101
+  },
+  "fallen": {
+   "file": "sprites/jpgrayson/fall_b.png",
+   "w": 105,
+   "h": 81
+  },
+  "aFallB": {
+   "file": "sprites/jpgrayson/fall_b.png",
+   "w": 105,
+   "h": 81
+  },
+  "aFallF": {
+   "file": "sprites/jpgrayson/fall_f.png",
+   "w": 105,
+   "h": 81
+  },
+  "walkL": [
+   {
+    "file": "sprites/jpgrayson/walk_l0.png",
+    "w": 64,
+    "h": 103
+   },
+   {
+    "file": "sprites/jpgrayson/walk_l1.png",
+    "w": 65,
+    "h": 103
+   },
+   {
+    "file": "sprites/jpgrayson/walk_l2.png",
+    "w": 83,
+    "h": 102
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/jpgrayson/walk_l0.png",
+    "w": 64,
+    "h": 103
+   },
+   {
+    "file": "sprites/jpgrayson/walk_l1.png",
+    "w": 65,
+    "h": 103
+   },
+   {
+    "file": "sprites/jpgrayson/walk_l2.png",
+    "w": 83,
+    "h": 102
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/jpgrayson/walk_r0.png",
+    "w": 55,
+    "h": 101
+   },
+   {
+    "file": "sprites/jpgrayson/walk_r1.png",
+    "w": 56,
+    "h": 105
+   },
+   {
+    "file": "sprites/jpgrayson/walk_r2.png",
+    "w": 73,
+    "h": 104
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/jpgrayson/walk_r0.png",
+    "w": 55,
+    "h": 101
+   },
+   {
+    "file": "sprites/jpgrayson/walk_r1.png",
+    "w": 56,
+    "h": 105
+   },
+   {
+    "file": "sprites/jpgrayson/walk_r2.png",
+    "w": 73,
+    "h": 104
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/jpgrayson/grap_r0.png",
+    "w": 126,
+    "h": 108
+   },
+   {
+    "file": "sprites/jpgrayson/grap_r1.png",
+    "w": 125,
+    "h": 105
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/jpgrayson/grap_l0.png",
+    "w": 123,
+    "h": 105
+   },
+   {
+    "file": "sprites/jpgrayson/grap_l1.png",
+    "w": 135,
+    "h": 100
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/jpgrayson/throw_r0.png",
+    "w": 92,
+    "h": 99
+   },
+   {
+    "file": "sprites/jpgrayson/throw_r1.png",
+    "w": 126,
+    "h": 105
+   }
+  ],
+  "gThrowL": [
+   {
+    "file": "sprites/jpgrayson/throw_l0.png",
+    "w": 84,
+    "h": 94
+   },
+   {
+    "file": "sprites/jpgrayson/throw_l1.png",
+    "w": 144,
+    "h": 109
+   }
+  ]
+ },
+ "violentj": {
+  "idle": {
+   "file": "sprites/violentj/idle.png",
+   "w": 540,
+   "h": 905
+  },
+  "aIdle": {
+   "file": "sprites/violentj/idle.png",
+   "w": 540,
+   "h": 905
+  },
+  "aIdleB": {
+   "file": "sprites/violentj/idle_back.png",
+   "w": 531,
+   "h": 901
+  },
+  "fallen": {
+   "file": "sprites/violentj/fall_b.png",
+   "w": 1016,
+   "h": 340
+  },
+  "aFallB": {
+   "file": "sprites/violentj/fall_b.png",
+   "w": 1016,
+   "h": 340
+  },
+  "aFallF": {
+   "file": "sprites/violentj/fall_f.png",
+   "w": 903,
+   "h": 394
+  },
+  "jump": {
+   "file": "sprites/violentj/jump_air.png",
+   "w": 564,
+   "h": 739
+  },
+  "aJump": [
+   {
+    "file": "sprites/violentj/jump_crouch.png",
+    "w": 413,
+    "h": 560
+   },
+   {
+    "file": "sprites/violentj/jump_air.png",
+    "w": 564,
+    "h": 739
+   },
+   {
+    "file": "sprites/violentj/jump_land.png",
+    "w": 447,
+    "h": 603
+   }
+  ],
+  "walkL": [
+   {
+    "file": "sprites/violentj/walk_l0.png",
+    "w": 311,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l1.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l2.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l3.png",
+    "w": 309,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l4.png",
+    "w": 460,
+    "h": 507
+   }
+  ],
+  "aWalkL": [
+   {
+    "file": "sprites/violentj/walk_l0.png",
+    "w": 311,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l1.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l2.png",
+    "w": 310,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l3.png",
+    "w": 309,
+    "h": 506
+   },
+   {
+    "file": "sprites/violentj/walk_l4.png",
+    "w": 460,
+    "h": 507
+   }
+  ],
+  "walkR": [
+   {
+    "file": "sprites/violentj/walk_r0.png",
+    "w": 301,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r1.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r2.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r3.png",
+    "w": 300,
+    "h": 507
+   },
+   {
+    "file": "sprites/violentj/walk_r4.png",
+    "w": 455,
+    "h": 580
+   }
+  ],
+  "aWalkR": [
+   {
+    "file": "sprites/violentj/walk_r0.png",
+    "w": 301,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r1.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r2.png",
+    "w": 299,
+    "h": 508
+   },
+   {
+    "file": "sprites/violentj/walk_r3.png",
+    "w": 300,
+    "h": 507
+   },
+   {
+    "file": "sprites/violentj/walk_r4.png",
+    "w": 455,
+    "h": 580
+   }
+  ],
+  "aRunL": [
+   {
+    "file": "sprites/violentj/run_l0.png",
+    "w": 327,
+    "h": 420
+   },
+   {
+    "file": "sprites/violentj/run_l1.png",
+    "w": 325,
+    "h": 419
+   },
+   {
+    "file": "sprites/violentj/run_l2.png",
+    "w": 326,
+    "h": 419
+   },
+   {
+    "file": "sprites/violentj/run_l3.png",
+    "w": 324,
+    "h": 419
+   },
+   {
+    "file": "sprites/violentj/run_l4.png",
+    "w": 321,
+    "h": 420
+   },
+   {
+    "file": "sprites/violentj/run_l5.png",
+    "w": 332,
+    "h": 418
+   }
+  ],
+  "aRunR": [
+   {
+    "file": "sprites/violentj/run_r0.png",
+    "w": 326,
+    "h": 428
+   },
+   {
+    "file": "sprites/violentj/run_r1.png",
+    "w": 315,
+    "h": 429
+   },
+   {
+    "file": "sprites/violentj/run_r2.png",
+    "w": 327,
+    "h": 428
+   },
+   {
+    "file": "sprites/violentj/run_r3.png",
+    "w": 327,
+    "h": 429
+   },
+   {
+    "file": "sprites/violentj/run_r4.png",
+    "w": 315,
+    "h": 430
+   },
+   {
+    "file": "sprites/violentj/run_r5.png",
+    "w": 330,
+    "h": 428
+   }
+  ],
+  "elbowR": [
+   {
+    "file": "sprites/violentj/elbow_r0.png",
+    "w": 545,
+    "h": 773
+   },
+   {
+    "file": "sprites/violentj/elbow_r1.png",
+    "w": 688,
+    "h": 928
+   },
+   {
+    "file": "sprites/violentj/elbow_r2.png",
+    "w": 366,
+    "h": 776
+   }
+  ],
+  "aElbowR": [
+   {
+    "file": "sprites/violentj/elbow_r0.png",
+    "w": 545,
+    "h": 773
+   },
+   {
+    "file": "sprites/violentj/elbow_r1.png",
+    "w": 688,
+    "h": 928
+   },
+   {
+    "file": "sprites/violentj/elbow_r2.png",
+    "w": 366,
+    "h": 776
+   }
+  ],
+  "aStagger": {
+   "file": "sprites/violentj/stagger.png",
+   "w": 519,
+   "h": 916
+  },
+  "aGetup": [
+   {
+    "file": "sprites/violentj/getup0.png",
+    "w": 417,
+    "h": 337
+   },
+   {
+    "file": "sprites/violentj/getup1.png",
+    "w": 340,
+    "h": 515
+   },
+   {
+    "file": "sprites/violentj/getup2.png",
+    "w": 355,
+    "h": 649
+   }
+  ],
+  "aTaunt": [
+   {
+    "file": "sprites/violentj/taunt.png",
+    "w": 616,
+    "h": 866
+   }
+  ],
+  "aWin": {
+   "file": "sprites/violentj/win.png",
+   "w": 467,
+   "h": 1023
+  },
+  "aLose": {
+   "file": "sprites/violentj/lose.png",
+   "w": 522,
+   "h": 813
+  },
+  "aCrouch": {
+   "file": "sprites/violentj/crouch.png",
+   "w": 630,
+   "h": 700
+  },
+  "aDive": [
+   {
+    "file": "sprites/violentj/dive0.png",
+    "w": 697,
+    "h": 286
+   }
+  ],
+  "gGrappleR": [
+   {
+    "file": "sprites/violentj/grap_r0.png",
+    "w": 634,
+    "h": 968
+   },
+   {
+    "file": "sprites/violentj/grap_r1.png",
+    "w": 621,
+    "h": 956
+   }
+  ],
+  "gGrappleL": [
+   {
+    "file": "sprites/violentj/grap_l0.png",
+    "w": 607,
+    "h": 936
+   },
+   {
+    "file": "sprites/violentj/grap_l1.png",
+    "w": 585,
+    "h": 906
+   }
+  ],
+  "gThrowR": [
+   {
+    "file": "sprites/violentj/throw_r0.png",
+    "w": 475,
+    "h": 1222
+   },
+   {
+    "file": "sprites/violentj/throw_r1.png",
+    "w": 656,
+    "h": 968
+   }
+  ],
+  "gOverhead": [
+   {
+    "file": "sprites/violentj/over0.png",
+    "w": 475,
+    "h": 939
+   },
+   {
+    "file": "sprites/violentj/over1.png",
+    "w": 576,
+    "h": 1103
+   }
+  ],
+  "aChairR": [
+   {
+    "file": "sprites/violentj/chair_a0.png",
+    "w": 404,
+    "h": 967
+   },
+   {
+    "file": "sprites/violentj/chair_a1.png",
+    "w": 595,
+    "h": 632
+   },
+   {
+    "file": "sprites/violentj/chair_a2.png",
+    "w": 527,
+    "h": 646
+   }
+  ],
+  "aKendoR": [
+   {
+    "file": "sprites/violentj/kendo_a0.png",
+    "w": 483,
+    "h": 970
+   },
+   {
+    "file": "sprites/violentj/kendo_a1.png",
+    "w": 445,
+    "h": 762
+   },
+   {
+    "file": "sprites/violentj/kendo_a2.png",
+    "w": 527,
+    "h": 771
+   }
+  ],
+  "aGuitarR": [
+   {
+    "file": "sprites/violentj/guitar_a0.png",
+    "w": 438,
+    "h": 838
+   },
+   {
+    "file": "sprites/violentj/guitar_a1.png",
+    "w": 668,
+    "h": 613
+   },
+   {
+    "file": "sprites/violentj/guitar_a2.png",
+    "w": 303,
+    "h": 600
+   }
+  ],
+  "aCanR": [
+   {
+    "file": "sprites/violentj/can_a0.png",
+    "w": 509,
+    "h": 820
+   },
+   {
+    "file": "sprites/violentj/can_a1.png",
+    "w": 437,
+    "h": 1028
+   },
+   {
+    "file": "sprites/violentj/can_a2.png",
+    "w": 526,
+    "h": 773
+   }
+  ],
+  "wWalkChairL": [
+   {
+    "file": "sprites/violentj/wchair_l0.png",
+    "w": 281,
+    "h": 451
+   },
+   {
+    "file": "sprites/violentj/wchair_l1.png",
+    "w": 281,
+    "h": 450
+   },
+   {
+    "file": "sprites/violentj/wchair_l2.png",
+    "w": 281,
+    "h": 451
+   },
+   {
+    "file": "sprites/violentj/wchair_l3.png",
+    "w": 278,
+    "h": 451
+   },
+   {
+    "file": "sprites/violentj/wchair_l4.png",
+    "w": 280,
+    "h": 452
+   }
+  ],
+  "wWalkChairR": [
+   {
+    "file": "sprites/violentj/wchair_r0.png",
+    "w": 286,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r1.png",
+    "w": 288,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r2.png",
+    "w": 288,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r3.png",
+    "w": 283,
+    "h": 437
+   },
+   {
+    "file": "sprites/violentj/wchair_r4.png",
+    "w": 287,
+    "h": 437
+   }
+  ],
+  "wWalkKendoL": [
+   {
+    "file": "sprites/violentj/wkendo_l0.png",
+    "w": 455,
+    "h": 880
+   },
+   {
+    "file": "sprites/violentj/wkendo_l1.png",
+    "w": 504,
+    "h": 861
+   },
+   {
+    "file": "sprites/violentj/wkendo_l2.png",
+    "w": 465,
+    "h": 867
+   },
+   {
+    "file": "sprites/violentj/wkendo_l3.png",
+    "w": 443,
+    "h": 874
+   },
+   {
+    "file": "sprites/violentj/wkendo_l4.png",
+    "w": 443,
+    "h": 876
+   }
+  ],
+  "wWalkCanL": [
+   {
+    "file": "sprites/violentj/wcan_l0.png",
+    "w": 473,
+    "h": 735
+   },
+   {
+    "file": "sprites/violentj/wcan_l1.png",
+    "w": 470,
+    "h": 738
+   },
+   {
+    "file": "sprites/violentj/wcan_l2.png",
+    "w": 446,
+    "h": 740
+   },
+   {
+    "file": "sprites/violentj/wcan_l3.png",
+    "w": 468,
+    "h": 737
+   },
+   {
+    "file": "sprites/violentj/wcan_l4.png",
+    "w": 460,
+    "h": 738
+   }
+  ],
+  "wWalkGuitarL": [
+   {
+    "file": "sprites/violentj/wguitar_l0.png",
+    "w": 356,
+    "h": 483
+   },
+   {
+    "file": "sprites/violentj/wguitar_l1.png",
+    "w": 351,
+    "h": 482
+   },
+   {
+    "file": "sprites/violentj/wguitar_l2.png",
+    "w": 350,
+    "h": 482
+   },
+   {
+    "file": "sprites/violentj/wguitar_l3.png",
+    "w": 354,
+    "h": 482
+   },
+   {
+    "file": "sprites/violentj/wguitar_l4.png",
+    "w": 352,
+    "h": 480
+   }
+  ],
+  "wWalkGuitarR": [
+   {
+    "file": "sprites/violentj/wguitar_r0.png",
+    "w": 355,
+    "h": 460
+   },
+   {
+    "file": "sprites/violentj/wguitar_r1.png",
+    "w": 350,
+    "h": 461
+   },
+   {
+    "file": "sprites/violentj/wguitar_r2.png",
+    "w": 350,
+    "h": 461
+   },
+   {
+    "file": "sprites/violentj/wguitar_r3.png",
+    "w": 350,
+    "h": 460
+   },
+   {
+    "file": "sprites/violentj/wguitar_r4.png",
+    "w": 351,
+    "h": 460
+   }
+  ]
+ }
+}
