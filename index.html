@@ -328,15 +328,6 @@ const WEAPON_TYPES = {
     belt:     { name:"JCW BELT",    damage:10, durability:10, range:110, ground:"belt",        held:"belt",         sfx:"whack" }
 };
 
-const HELD_WEAPON_SCALE = {
-    chair: 0.34,
-    kendo: 0.42,
-    trashcan: 0.32,
-    lid: 0.18,
-    guitar: 0.34,
-    belt: 0.26
-};
-
 const STAGES = [
     { id:'warehouse',   name:'RUSTED WAREHOUSE', src:'ui/arena_warehouse.jpg',   mat:{x0:0.30,x1:0.70,y0:0.60,y1:0.79}, rope:{x0:0.25,x1:0.75,y0:0.555,y1:0.81} },
     { id:'hellspit',    name:"HELL'S PIT",       src:'ui/arena_hellspit.jpg',    mat:{x0:0.30,x1:0.70,y0:0.61,y1:0.80}, rope:{x0:0.25,x1:0.75,y0:0.565,y1:0.82} },
@@ -2771,7 +2762,7 @@ function drawFighter(f) {
                                  : f.direction * (-0.7 + prog * 2.1);
             const hx = f.x + f.direction * w * 0.34;
             const hy = drawY + h * 0.42;
-            drawWeaponSprite(WEAPON_TYPES[f.weapon.type].held, hx, hy, targetH * (HELD_WEAPON_SCALE[f.weapon.type] || 0.34), rot, f.direction < 0, true);
+            drawWeaponSprite(WEAPON_TYPES[f.weapon.type].held, hx, hy, targetH * 0.42, rot, f.direction < 0, true);
         }
     }
 }

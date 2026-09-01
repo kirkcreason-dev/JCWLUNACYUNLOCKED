@@ -1,63 +1,31 @@
-# Lunacy Unlocked — rebuild notes
+# Lunacy Unlocked — notes
 
-This folder (`~/Desktop/LUNACY_REBUILT_CLEAN`) is the **current working build**.
-`~/Documents/jcwlunacy-unlocked` is the older GitHub copy
-(`kirkcreason-dev/JCWLUNACYUNLOCKED`, commit 7f5ccf1) — keep it as reference only.
-
-2,172 files, 73 MB. Static, no build step. Runs off `file://` as well as HTTP,
-because `sprites/manifest.data.js` inlines the manifest.
+Static site, no build step. Runs off `file://` as well as HTTP, because
+`sprites/manifest.data.js` inlines the sprite manifest.
 
 ```
 python3 -m http.server 8000    # http://localhost:8000
 ```
 
-## What changed vs. the GitHub copy
+Current: **36 wrestlers, 2,418 frames, 0 missing.** 39 roster entries — the
+other three (`abel`, `jacksyn`, `ruffo`) are tinted placeholders. `violentj`
+is secret: type `WHOOPWHOOP` on the select screen, tap the title 7x, or `?vj`.
 
-- **4 new arenas**: RUSTED WAREHOUSE, HELL'S PIT, MADHOUSE, BLOODYMANIA
-  (funhouse + old lunacy retired; warehouse geometry retuned).
-- **Violent J merged into `index.html`** — `vj_addon.js` is gone. Unlock is
-  unchanged: type `WHOOPWHOOP`, tap the title 7×, or `?vj`.
-- **Missing-art guard** (`drawFighter`, ~line 2678): draws a loud placeholder
-  body and logs `MISSING ART for <id>` instead of rendering nothing. This is
-  what the old build lacked — `loadImg` still sets `onerror = resolve`, so 404s
-  are still silent at load time, but they can't produce an invisible fighter.
-- **Deterministic clock**: `TIME_LIMIT_TICKS` replaces wall-clock seconds —
-  matters for online desync.
-- **All four broken characters fixed**: bronson, hokane, haleyj, kongokong now
-  have complete art. yabo gained real art too.
-- New **`ax` anchor points** across the manifest — the feet-plant fix, so poses
-  with a weapon swung out no longer drift.
-- TCG button on the select screen → `tcg/index.html`. **Not built yet**; the
-  folder isn't here, so it's a dead link until that ships.
-
-## Sprite manifests — read this before touching art
-
-Three files in `sprites/`:
+## Sprite manifests — read before touching art
 
 | File | Role |
 |---|---|
-| `manifest.json` | **The source of truth.** Edit this one. |
-| `manifest.data.js` | **Generated** from it. Loaded by a `<script>` tag at index.html:250. |
-| `manifest.legacy.json` | Dead — old paths, 242 missing files. Reference only. |
+| `sprites/manifest.json` | **Source of truth.** Edit this one. |
+| `sprites/manifest.data.js` | **Generated** from it. Loaded by the `<script>` at index.html:250. |
+| `sprites/manifest.legacy.json` | Dead. Old paths, reference only. |
 
-`loadAssets()` reads `window.__LUNACY_SPRITES__ || fetch('manifest.json')` —
-so **`manifest.data.js` always wins.** If you edit `manifest.json` and don't
-regenerate `manifest.data.js`, the game silently loads the stale copy and your
-change does nothing.
+`loadAssets()` reads `window.__LUNACY_SPRITES__ || fetch('manifest.json')`, so
+**`manifest.data.js` always wins.** Edit `manifest.json` without regenerating
+`manifest.data.js` and the game silently loads the stale copy — your change
+does nothing, with no error anywhere. This has already caused one lost batch
+of work. The two are currently in sync; keep them that way.
 
-**This had already happened.** Fixed 2026-08-26: `manifest.data.js` was 18 days
-behind `manifest.json`, which meant at runtime yabo had no art, and cokane,
-kerry, mickie, moshpit and mrhappy were missing their run cycles, taunts, dives,
-weapon-carry walks, weapon swings and `_refH`/`_dirTrue` scaling. The two files
-were merged (json won every shared state; 25 grapple/throw states that only
-existed in data.js were carried back in) and data.js regenerated from the result.
-Originals are in `sprites/_backup_2026-08-26/`.
-
-Current state: **36 wrestlers, 2,443 frames, 0 missing.** Both manifests are
-byte-identical in content. `manifest.data.js` carries
-`window.__LUNACY_SPRITES_BUILD__` — bump it when you regenerate.
-
-To regenerate after editing `manifest.json`, from the game root:
+Regenerate from the game root after editing `manifest.json`:
 
 ```python
 import json
@@ -65,45 +33,55 @@ m = json.load(open('sprites/manifest.json'))
 with open('sprites/manifest.data.js','w') as f:
     f.write("window.__LUNACY_SPRITES__ = ")
     json.dump(m, f, separators=(',',':'), sort_keys=True)
-    f.write(";\nwindow.__LUNACY_SPRITES_BUILD__ = 'YYYY-MM-DD';\n")
+    f.write(";\n")
 ```
 
-## Roster
+## Held weapon size
 
-39 entries. 36 have their own art; **abel, jacksyn, ruffo** are still tinted
-placeholders (`base` + `hue` — aliased to a base body and hue-rotated at load).
-`violentj` is secret. `// not built: Luigi Primo (approval: NO)`.
+`drawWeaponSprite(...)` uses a flat `targetH * 0.42` for every weapon. An
+earlier build had a per-weapon `HELD_WEAPON_SCALE` table (chair 0.34, kendo
+0.42, trashcan 0.32, lid 0.18, guitar 0.34, belt 0.26) — it shrank the chair,
+lid and belt too much and was deliberately reverted. Don't reintroduce it
+without looking at a chair in-hand first.
 
-## index.html — section map (2,893 lines; CSS 10–152, JS 251–2891)
+## index.html — section map (2,884 lines; CSS 10-152, JS 251-2882)
 
 | Line | Section |
 |---|---|
 | 259 | DATA — `W()` factory, `wrestlers[]`, `WEAPON_TYPES`, `STAGES` |
-| 391 | AUDIO — synthesized WebAudio, no sound files |
-| 568 | ASSETS — `loadAssets()`, the manifest precedence above |
-| 647 | SELECT SCREEN |
-| 683 | SECRET CHARACTER — Violent J unlock |
-| 767 | CANVAS |
-| 773 | MATCH STATE — `M`, `TIME_LIMIT` 180s, `TIME_LIMIT_TICKS` |
-| 831 | JUICE HELPERS |
-| 862 | MATCH FLOW |
-| 980 | GEOMETRY — mat/rope rects as fractions of the arena image |
-| 1022 | INPUT |
-| 1194 | COMBAT CORE |
-| 1310 | THROWS — pair art: `gGrappleL/R`, `gThrowL/R`, `gOverhead` |
-| 1459 | SIM STEP |
-| 1743 | AI |
-| 1879 | REMOTE PLAYER |
-| 1922 | ONLINE — Firebase RTDB, host-authoritative, 12 Hz |
-| 2246 | HUD |
-| 2378 | RENDER |
-| 2818 | FIXED-TIMESTEP LOOP |
-| 2831 | WIRE UP |
+| 391 | AUDIO — synthesized WebAudio |
+| 559 | ASSETS — `loadAssets()`, manifest precedence above |
+| 638 | SELECT SCREEN |
+| 674 | SECRET CHARACTER |
+| 758 | CANVAS |
+| 764 | MATCH STATE — `TIME_LIMIT` 180s, `TIME_LIMIT_TICKS` |
+| 853 | MATCH FLOW |
+| 971 | GEOMETRY — mat/rope rects as fractions of the arena image |
+| 1185 | COMBAT CORE |
+| 1301 | THROWS — pair art: `gGrappleL/R`, `gThrowL/R`, `gOverhead` |
+| 1450 | SIM STEP |
+| 1734 | AI |
+| 1913 | ONLINE — Firebase RTDB, host-authoritative, 12 Hz |
+| 2237 | HUD |
+| 2369 | RENDER |
+| 2809 | FIXED-TIMESTEP LOOP |
+
+Arenas: RUSTED WAREHOUSE, HELL'S PIT, MADHOUSE, BLOODYMANIA.
+
+`drawFighter` has a missing-art guard — it draws a loud placeholder and logs
+`MISSING ART for <id>`. If a wrestler shows as a colored block, check the
+console and the manifest sync above.
+
+## Other files
+
+- `admin.html` — match-report dashboard, reads `/reports.json`. Standalone.
+- `jcw_intro_theme.mp3` — loaded at index.html:855, falls back to synth audio
+  if absent. Not in the working folder, so don't delete it from the repo.
+- TCG button on the select screen points at `tcg/index.html` — not built yet.
 
 ## Online
 
-Firebase RTDB, project `jcw-lunacy`, SDK 10.14.1 lazy-loaded from gstatic.
-Host runs the sim and broadcasts snapshots normalized to `floorRect` fractions;
-guest sends inputs and renders interpolation. Config inline at ~line 1940 — the
-web API key is public by design, so **RTDB security rules are the only thing
-guarding the database.** Worth reviewing.
+Firebase RTDB, project `jcw-lunacy`, SDK lazy-loaded from gstatic. Host runs
+the sim and broadcasts snapshots normalized to `floorRect` fractions. The web
+API key is public by design, so **RTDB security rules are the only thing
+guarding the database** — worth reviewing.
