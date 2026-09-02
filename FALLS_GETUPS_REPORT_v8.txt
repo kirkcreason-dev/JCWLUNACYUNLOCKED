@@ -1,0 +1,30 @@
+LUNACY UNLOCKED — v8 FALLS / GET-UP PASS
+
+Focus:
+- knockdown state consistency
+- early fall / impact readability
+- get-up transition timing
+- dive crash knockdown feedback
+- preserving down-state timing across render/network flow
+
+Changes made:
+1. Added a shared setDownState() helper so knockdowns consistently store:
+   - downTimer
+   - downTotal
+   - fallFace
+2. Converted direct knockdown assignments (hits, slams, throws, specials, dives, AI knockdowns)
+   to use the shared helper.
+3. Added downTotal to each fighter so the renderer knows how long the current knockdown
+   was supposed to last and can stage the recovery properly.
+4. Updated render logic for downed wrestlers:
+   - very early knockdown frames briefly show stagger/impact art when available
+   - lying/fallen pose holds through the middle of the knockdown
+   - get-up art now plays across a dedicated getup window based on authored frame count
+5. Added a dedicated 'down' pose classification in the pose-ratio table.
+6. Missed top-rope dives now force a short face-first knockdown instead of only applying stun.
+7. Guest snapshot application now preserves downTotal while a remote wrestler is still down,
+   so recovery timing renders more cleanly in multiplayer/remote playback.
+8. Down-state bookkeeping now clears downTotal automatically once a wrestler is fully back up.
+
+Files changed:
+- index.html

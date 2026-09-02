@@ -788,7 +788,7 @@ function makeFighter(isP1) {
         x:0, y:0, vx:0, vy:0, direction: isP1 ? 1 : -1,
         health:100, maxHealth:100, ghostHP:100,
         weapon:null, attackCooldown:0, swingTimer:0,
-        stunTimer:0, downTimer:0, jumpTimer:0, invuln:0,
+        stunTimer:0, downTimer:0, downTotal:0, jumpTimer:0, invuln:0,
         specialCharge:0, walkAnim:0, moving:false, elev:0,
         combo:0, comboTimer:0,
         // AI
@@ -1166,6 +1166,8 @@ function performTap(p1, p2, x, y) {
     // pin
     if (dEnemy < 95 && p2.downTimer > 0 && !M.grapple) {
         if (pEnemy < 190) {
+            if (p1.weapon) dropWeapon(p1);
+            if (p2.weapon) dropWeapon(p2);
             p1.x = p2.x - p1.direction * 30; p1.y = p2.y;
             M.grapple = { holder: p1, victim: p2, frames: 0, isPin: true };
             addFx(p2.x, p2.y, 'PIN ATTEMPT!', { color: '#ff4455', size: 20 });
@@ -1176,6 +1178,7 @@ function performTap(p1, p2, x, y) {
     // grapple
     if (dEnemy < 95 && pEnemy < 150 && p2.downTimer <= 0 && !M.grapple) {
         if (p1.weapon) dropWeapon(p1);
+        if (p2.weapon) dropWeapon(p2);
         p1.direction = Math.sign(p2.x - p1.x) || p1.direction;
         M.grapple = { holder: p1, victim: p2, frames: 0, isPin: false };
         addFx(p2.x, p2.y, 'GRAPPLE!', { color: '#ffcc33' });
@@ -1189,10 +1192,28 @@ const escNeed   = f => techOf(f) >= 9 ? 2 : techOf(f) >= 6 ? 3 : 4;             
 const kickFloor = f => Math.max(0.06, 0.18 - 0.01 * techOf(f));                     // HP floor to kick out of a pin
 const powerOutHP = f => 0.70 - 0.014 * techOf(f);                                   // HP fraction to power out of early pins
 
+function setDownState(f, duration, face = 'B', keepLonger = false) {
+    const next = keepLonger ? Math.max(f.downTimer || 0, duration) : duration;
+    const refresh = !keepLonger || next > (f.downTimer || 0) || !f.downTotal;
+    f.downTimer = next;
+    if (refresh) {
+        f.downTotal = next;
+        f.fallFace = face;
+    } else if (!f.fallFace) {
+        f.fallFace = face;
+    }
+}
+
 function dealDamage(attacker, victim, base, opts = {}) {
     if (victim.climb) {                                     // struck on the ropes: crash down
+        const c = climbData(victim);
         victim.climb = null;
-        victim.downTimer = 80; victim.fallFace = 'B';
+        if (c) {
+            victim.x = c.perchX; victim.y = c.perchY + 18;
+            victim.direction = c.dir;
+        }
+        victim.vx = 0; victim.vy = 0;
+        setDownState(victim, 80, 'B');
         addFx(victim.x, victim.y - 30, 'CROTCHED!', { color: '#ff8c1a', size: 16 });
         shake(5);
     }
@@ -1228,7 +1249,7 @@ function dealDamage(attacker, victim, base, opts = {}) {
     if (victim.health > 0 && victim.health < victim.maxHealth * 0.22 && dmg >= 4 &&
         victim.downTimer <= 0 && Math.random() < 0.25) {
         attacker.combo = 0; attacker.comboTimer = 0;   // knockdown ends the combo
-        victim.downTimer = 85; victim.fallFace = opts.slam ? 'B' : 'F';
+        setDownState(victim, 85, opts.slam ? 'B' : 'F');
         addFx(victim.x, victim.y + 18, 'DOWN!', { color: '#ff4455', size: 18 });
         Snd.slam(); shake(6);
     }
@@ -1263,7 +1284,7 @@ function tryStrike(att, def) {
                 addParticles(def.x, def.y, 10, 3, false);
                 att.weapon = null;
             }
-            if (wd.damage >= 15) { def.downTimer = 90; def.fallFace = 'F'; addFx(def.x, def.y + 18, 'DOWN!', { color: '#ff4455' }); Snd.slam(); }
+            if (wd.damage >= 15) { setDownState(def, 90, 'F'); addFx(def.x, def.y + 18, 'DOWN!', { color: '#ff4455' }); Snd.slam(); }
         } else Snd.whoosh();
     } else {
         // Matches the 18 frame swing animation. It used to run four frames longer, so the
@@ -1284,7 +1305,7 @@ function trySpecial(att, def) {
     att.swingTimer = 18;
     if (Math.abs(def.y - att.y) < 70 && Math.abs(def.x - att.x) < 150 && def.invuln <= 0) {
         att.specialCharge = 0;
-        def.downTimer = 120; def.fallFace = 'B';
+        setDownState(def, 120, 'B');
         def.vx = Math.sign(def.x - att.x) * 9;
         Snd.riser();
         dealDamage(att, def, 25, { text: (att.wrestler.special || 'FINISHER') + '!!!', color: '#ff2ea6', size: 22, slam: true, meterGain: 0 });
@@ -1303,12 +1324,11 @@ function trySpecial(att, def) {
 // wrestlers without art resolve instantly, same as before
 function startThrow(g, kind, dx, dy) {
     if (g.throwing) return;
-    const S = SPRITES[g.holder.wrestler.id] || {};
-    const hasArt = kind === 'over' ? !!S.gOverhead : !!(S.gThrowR || S.gThrowL);
     if (kind === 'L') g.holder.direction = -1;
     if (kind === 'R') g.holder.direction = 1;
     g.throwing = { kind, dx, dy, timer: 22, total: 22 };
-    if (!hasArt) { resolveThrow(g); return; }
+    g.holder.vx = g.holder.vy = 0;
+    g.victim.vx = g.victim.vy = 0;
     Snd.whoosh();
 }
 function resolveThrow(g) {
@@ -1316,29 +1336,84 @@ function resolveThrow(g) {
     if (t.kind === 'over') {
         o.x = p.x - p.direction * 20;
         o.vx = -p.direction * 3.5; o.vy = 2.5;
-        o.downTimer = 95; o.fallFace = 'B';
+        setDownState(o, 95, 'B');
+        o.stunTimer = Math.max(o.stunTimer || 0, 24);
         dealDamage(p, o, 12, { text: 'OVERHEAD THROW!!', slam: true, meterGain: 10 });
+        addParticles(o.x, o.y, 16, 4, true);
+        addSplat(o.x, o.y);
         shake(8);
     } else {
         const dx = t.dx || p.direction, dy = t.dy || 0;
         const d = Math.hypot(dx, dy) || 1;
         o.vx = dx / d * 13; o.vy = dy / d * 8;
-        o.downTimer = 75; o.fallFace = 'B';
+        setDownState(o, 75, 'B');
+        o.stunTimer = Math.max(o.stunTimer || 0, 18);
         dealDamage(p, o, 9, { text: (t.dx || t.dy) ? 'THROWN!' : 'SLAMMED!', slam: true });
+        addParticles(o.x, o.y, 12, 3.5, false);
     }
     if (o.weapon) dropWeapon(o);
     M.grapple = null;
 }
 
 // A button — Wrestling Revolution style context action
+function climbMetaFrom(cx2, cy2) {
+    const left = cx2 <= (matRect.L + matRect.R) / 2;
+    const top = cy2 <= (matRect.T + matRect.B) / 2;
+    const inwardX = left ? 18 : -18;
+    const inwardY = top ? 8 : -10;
+    return {
+        dir: left ? 1 : -1,
+        mountX: cx2 + inwardX * 0.35,
+        mountY: cy2 + (top ? 6 : -2),
+        perchX: cx2 + inwardX,
+        perchY: cy2 + inwardY,
+        downX: cx2 + inwardX * 1.15,
+        downY: cy2 + (top ? 30 : -20),
+        top
+    };
+}
+function climbData(p) {
+    if (!p.climb) return null;
+    if (p.climb.mountX != null) return p.climb;
+    const cx2 = p.climb.x != null ? p.climb.x : p.x;
+    const cy2 = p.climb.y != null ? p.climb.y : p.y;
+    const meta = climbMetaFrom(cx2, cy2);
+    p.climb = {
+        x: cx2, y: cy2,
+        phase: p.climb.phase || 'perch',
+        timer: p.climb.timer || 0,
+        dir: meta.dir,
+        mountX: meta.mountX, mountY: meta.mountY,
+        perchX: meta.perchX, perchY: meta.perchY,
+        downX: meta.downX, downY: meta.downY,
+        top: meta.top
+    };
+    return p.climb;
+}
+function stepDownFromClimb(p, silent = false) {
+    const c = climbData(p);
+    if (!c) { p.climb = null; return; }
+    p.climb = null;
+    p.x = c.downX; p.y = c.downY; p.vx = p.vy = 0; p.moving = false;
+    p.direction = c.dir;
+    if (!silent) addFx(p.x, p.y - 40, 'DOWN', { color: '#8899aa', size: 12 });
+}
 function tryClimb(p) {
     if (M.grapple || p.weapon || p.downTimer > 0 || p.stunTimer > 0 || isRingside(p)) return false;
     const corners = [[matRect.L, matRect.T], [matRect.R, matRect.T], [matRect.L, matRect.B], [matRect.R, matRect.B]];
     for (const [cx2, cy2] of corners) {
         if (Math.hypot(p.x - cx2, p.y - cy2) < 62) {
-            p.climb = { x: cx2, y: cy2 };
-            p.x = cx2; p.y = cy2; p.vx = p.vy = 0; p.moving = false;
-            p.direction = cx2 < (matRect.L + matRect.R) / 2 ? 1 : -1;   // face into the ring
+            const c = climbMetaFrom(cx2, cy2);
+            p.climb = {
+                x: cx2, y: cy2, phase: 'mount', timer: 10,
+                dir: c.dir,
+                mountX: c.mountX, mountY: c.mountY,
+                perchX: c.perchX, perchY: c.perchY,
+                downX: c.downX, downY: c.downY,
+                top: c.top
+            };
+            p.x = c.mountX; p.y = c.mountY; p.vx = p.vy = 0; p.moving = false;
+            p.direction = c.dir;   // face into the ring
             addFx(p.x, p.y - 60, 'CLIMB!', { color: '#66e0ff', size: 15 });
             Snd.whoosh();
             return true;
@@ -1347,7 +1422,10 @@ function tryClimb(p) {
     return false;
 }
 function launchDive(p, o) {
-    if (!p.climb) return;
+    const c = climbData(p);
+    if (!c) return;
+    p.x = c.perchX; p.y = c.perchY;
+    p.direction = c.dir;
     p.climb = null;
     p.diveTimer = 26;
     const dx = o.x - p.x, dy = o.y - p.y;
@@ -1363,11 +1441,12 @@ function resolveDive(p, o) {
     const hit = o.downTimer <= 0 && o.invuln <= 0 && !o.climb &&
                 Math.abs(o.x - p.x) < 78 && Math.abs(o.y - p.y) < 60;
     if (hit) {
-        o.downTimer = 95; o.fallFace = 'B';
+        setDownState(o, 95, 'B');
         o.vx = Math.sign(o.x - p.x || p.direction) * 5;
         dealDamage(p, o, 16, { text: 'TOP ROPE DIVE!!', color: '#ffdd00', size: 21, slam: true, meterGain: 14 });
         Snd.crowdPop(); shake(9);
     } else {
+        setDownState(p, 34, 'F');
         p.stunTimer = 42;
         addFx(p.x, p.y - 40, 'CRASHED!', { color: '#ff4455', size: 16 });
         Snd.slam(); shake(6);
@@ -1377,8 +1456,7 @@ function resolveDive(p, o) {
 function performGrappleBtn(p, o, dir) {
     // on the turnbuckle: A climbs back down
     if (p.climb) {
-        p.climb = null;
-        addFx(p.x, p.y - 40, 'DOWN', { color: '#8899aa', size: 12 });
+        stepDownFromClimb(p);
         return;
     }
     // holding a grapple: A throws in held direction (or slams in place); UP = overhead throw
@@ -1391,6 +1469,8 @@ function performGrappleBtn(p, o, dir) {
     const adx = Math.abs(o.x - p.x), ady = Math.abs(o.y - p.y);
     // pin a downed opponent
     if (o.downTimer > 0 && adx < 100 && ady < 70) {
+        if (p.weapon) dropWeapon(p);
+        if (o.weapon) dropWeapon(o);
         p.x = o.x - (Math.sign(o.x - p.x) || p.direction) * 34;
         p.y = o.y + 8;
         p.direction = Math.sign(o.x - p.x) || p.direction;
@@ -1402,6 +1482,7 @@ function performGrappleBtn(p, o, dir) {
     // tie-up a standing opponent (not one perched on the ropes)
     if (o.downTimer <= 0 && o.invuln <= 0 && !o.climb && adx < 80 && ady < 55) {
         if (p.weapon) dropWeapon(p);
+        if (o.weapon) dropWeapon(o);
         p.direction = Math.sign(o.x - p.x) || p.direction;
         o.direction = -p.direction;                     // face each other
         M.grapple = { holder: p, victim: o, frames: 0, isPin: false };
@@ -1510,6 +1591,7 @@ function simTick() {
         if (p.jumpTimer > 0) p.jumpTimer--;
         if (p.invuln > 0) p.invuln--;
         if (p.downTimer === 1) p.invuln = 32;   // brief safety on get-up
+        if (p.downTimer <= 0) p.downTotal = 0;
         if (p.comboTimer > 0) { p.comboTimer--; if (p.comboTimer === 0) p.combo = 0; }
     });
     if (p1.downTimer > 0) { p1.downTimer--; p1.vx *= 0.9; p1.vy *= 0.9; }
@@ -1579,7 +1661,19 @@ function simTick() {
     // turnbuckle + dive states
     for (const f of [p1, p2]) {
         const foe = f === p1 ? p2 : p1;
-        if (f.climb) { f.x = f.climb.x; f.y = f.climb.y; f.vx = f.vy = 0; }
+        if (f.climb) {
+            const c = climbData(f);
+            const tx = c.phase === 'perch' ? c.perchX : c.mountX;
+            const ty = c.phase === 'perch' ? c.perchY : c.mountY;
+            f.x += (tx - f.x) * 0.46;
+            f.y += (ty - f.y) * 0.46;
+            if (Math.abs(tx - f.x) < 0.6) f.x = tx;
+            if (Math.abs(ty - f.y) < 0.6) f.y = ty;
+            f.direction = c.dir;
+            f.vx = f.vy = 0;
+            if (c.timer > 0) c.timer--;
+            if (c.phase === 'mount' && c.timer <= 0) c.phase = 'perch';
+        }
         if (f.diveTimer > 0) {
             f.diveTimer--;
             f.invuln = Math.max(f.invuln, 2);
@@ -1591,7 +1685,7 @@ function simTick() {
 
     // ---- P1 control ----
     p1.moving = false;
-    if (p1.climb && input.dpad.y > 0) { p1.climb = null; }                 // step down off the ropes
+    if (p1.climb && input.dpad.y > 0) { stepDownFromClimb(p1, true); }     // step down off the ropes
     if (!p1Locked && p1.downTimer <= 0 && p1.stunTimer <= 0 && !p1.climb && p1.diveTimer <= 0) {
         if (input.dpad.x !== 0) { p1.vx = input.dpad.x * 3.6 * p1.wrestler.speed; p1.direction = input.dpad.x; p1.moving = true; }
         else p1.vx *= 0.8;
@@ -1671,18 +1765,50 @@ function simTick() {
 
     if (M.grapple && !M.grapple.isPin) {
         const g = M.grapple;
-        g.victim.x = g.holder.x + g.holder.direction * 62;   // stand apart, not merged
-        g.victim.y = g.holder.y;
-        g.victim.direction = -g.holder.direction;       // stay locked facing each other
-        // struggle shimmy
-        g.holder.x += Math.sin(g.frames * 0.4) * 0.4;
+        g.holder.vx = g.holder.vy = 0;
+        g.victim.vx = g.victim.vy = 0;
+        if (g.throwing) {
+            const t = g.throwing;
+            const prog = 1 - t.timer / Math.max(1, t.total || 1);
+            if (t.kind === 'over') {
+                const arc = Math.sin(prog * Math.PI);
+                const shoulderX = g.holder.x + g.holder.direction * (prog < 0.55 ? 20 : 8);
+                g.victim.x = shoulderX - g.holder.direction * Math.max(0, (prog - 0.58) * 72);
+                g.victim.y = g.holder.y - 86 * arc;
+                g.victim.direction = -g.holder.direction;
+                g.holder.x += Math.sin(g.frames * 0.32) * 0.16;
+            } else {
+                const side = t.kind === 'L' ? -1 : 1;
+                const rise = Math.sin(Math.min(1, prog * 1.12) * Math.PI) * 42;
+                const reach = prog < 0.46 ? (56 - prog * 34) : (40 + (prog - 0.46) * 92);
+                g.victim.x = g.holder.x + side * reach;
+                g.victim.y = g.holder.y - rise;
+                g.victim.direction = side < 0 ? 1 : -1;
+                g.holder.x -= side * Math.sin(Math.min(1, prog) * Math.PI) * 1.5;
+            }
+        } else {
+            const dir = g.holder.direction || (g.victim.x >= g.holder.x ? 1 : -1) || 1;
+            const midY = (g.holder.y + g.victim.y) * 0.5;
+            const lock = 54 + Math.sin(g.frames * 0.4) * 2.5;
+            g.holder.direction = dir;
+            g.victim.direction = -dir;
+            g.holder.y += (midY - g.holder.y) * 0.22;
+            g.victim.y += ((midY + 2) - g.victim.y) * 0.22;
+            g.victim.x = g.holder.x + dir * lock;                 // stand apart, not merged
+            g.holder.x += Math.sin(g.frames * 0.4) * 0.35;        // struggle shimmy
+        }
     } else if (M.grapple && M.grapple.isPin) {
         // lock both wrestlers in place during a pin — no gliding
         const g = M.grapple;
+        const dir = g.holder.direction || (g.victim.x >= g.holder.x ? 1 : -1) || 1;
+        const breathe = Math.sin(g.frames * 0.16);
         g.holder.vx = g.holder.vy = 0;
         g.victim.vx = g.victim.vy = 0;
-        g.victim.x = g.holder.x + g.holder.direction * 40;
-        g.victim.y = g.holder.y;
+        g.holder.direction = dir;
+        g.victim.direction = -dir;
+        setDownState(g.victim, 4, g.victim.fallFace || 'B', true);
+        g.holder.x = g.victim.x - dir * (26 + breathe * 1.8);
+        g.holder.y = g.victim.y + 8 + breathe * 0.6;
     }
 
     // meters
@@ -1723,8 +1849,15 @@ function addFxOnce(key, x, y, text) {
     addFx(x, y, text, { color: '#ff4455', size: 18, rise: false, life: 28 });
 }
 function breakPin(g, text) {
+    const dir = g.holder.direction || (g.victim.x >= g.holder.x ? 1 : -1) || 1;
     M.grapple = null;
-    g.victim.downTimer = 0;
+    setDownState(g.victim, 16, g.victim.fallFace || 'B', true);
+    g.victim.invuln = Math.max(g.victim.invuln, 18);
+    g.holder.stunTimer = Math.max(g.holder.stunTimer || 0, 10);
+    g.holder.x -= dir * 16;
+    g.victim.x += dir * 10;
+    g.holder.vx = -dir * 1.6; g.holder.vy = 0;
+    g.victim.vx = dir * 1.1; g.victim.vy = 0;
     M.lastPinCount = 0;
     addFx(g.victim.x, g.victim.y, text, { color: '#66aaff', size: 22 });
     Snd.crowdPop();
@@ -1752,6 +1885,8 @@ function aiUpdate(ai, target) {
     // pin downed player - always priority
     if (target.downTimer > 0 && !M.grapple) {
         if (dist < 85) {
+            if (ai.weapon) dropWeapon(ai);
+            if (target.weapon) dropWeapon(target);
             ai.x = target.x - (Math.sign(target.x - ai.x) || ai.direction) * 34;
             ai.y = target.y + 8;
             ai.direction = Math.sign(target.x - ai.x) || ai.direction;
@@ -1811,6 +1946,7 @@ function aiUpdate(ai, target) {
                 if (Math.random() < 0.08 * aggression && dist < 110 && !M.grapple) {
                     // grapple gambit
                     if (ai.weapon) dropWeapon(ai);
+                    if (target.weapon) dropWeapon(target);
                     ai.direction = Math.sign(target.x - ai.x) || ai.direction;
                     target.direction = -ai.direction;
                     M.grapple = { holder: ai, victim: target, frames: 0, isPin: false };
@@ -1853,13 +1989,13 @@ function aiStrike(ai, target, wd) {
         (Snd[wd.sfx === 'guitar' ? 'guitarSmash' : wd.sfx] || Snd.whack)();
         ai.weapon.durability--;
         if (ai.weapon.durability <= 0) ai.weapon = null;
-        if (wd.damage >= 15) { target.downTimer = 80; target.fallFace = 'F'; Snd.slam(); }
+        if (wd.damage >= 15) { setDownState(target, 80, 'F'); Snd.slam(); }
     } else Snd.punch();
 }
 function trySpecialAI(ai, target) {
     ai.specialCharge = 0;
     ai.swingTimer = 18;
-    target.downTimer = 110; target.fallFace = 'B';
+    setDownState(target, 110, 'B');
     target.vx = Math.sign(target.x - ai.x) * 8;
     Snd.riser();
     dealDamage(ai, target, 20, { text: (ai.wrestler.special || 'FINISHER') + '!!!', color: '#ff2ea6', size: 20, slam: true, meterGain: 0 });
@@ -1872,7 +2008,7 @@ function applyRemote(p, opp) {
     const inp = NET.remote;
     const locked = M.grapple && (M.grapple.holder === p || M.grapple.victim === p);
     p.moving = false;
-    if (p.climb && inp.dy > 0) p.climb = null;
+    if (p.climb && inp.dy > 0) stepDownFromClimb(p, true);
     if (!locked && p.downTimer <= 0 && p.stunTimer <= 0 && !p.climb && p.diveTimer <= 0) {
         if (inp.dx !== 0) { p.vx = inp.dx * 3.6 * p.wrestler.speed; p.direction = inp.dx; p.moving = true; }
         else p.vx *= 0.8;
@@ -2158,7 +2294,14 @@ const NET = {
         this.roomRef.child('snap').set({
             f: M.frame, ph: M.phase,
             a: this.packF(M.p1), b: this.packF(M.p2),
-            g: g ? [g.holder === M.p1 ? 1 : 2, g.isPin ? 1 : 0, g.frames] : 0,
+            g: g ? [
+                g.holder === M.p1 ? 1 : 2,
+                g.isPin ? 1 : 0,
+                g.frames,
+                g.throwing ? (g.throwing.kind === 'over' ? 3 : g.throwing.kind === 'L' ? 1 : 2) : 0,
+                g.throwing ? g.throwing.timer : 0,
+                g.throwing ? g.throwing.total : 0
+            ] : 0,
             w: M.weaponsOnGround.map(w => [w.type, +this.nx(w.x).toFixed(3), +this.ny(w.y).toFixed(3)])
         });
     },
@@ -2174,7 +2317,7 @@ const NET = {
         p.y = this.dy(lerp(prevArr[1], arr[1]));
         p.direction = arr[2];
         p.health = arr[3];
-        p.downTimer = arr[4]; p.swingTimer = arr[5]; p.elev = arr[6];
+        p.downTimer = arr[4]; p.downTotal = p.downTimer > 0 ? Math.max(p.downTotal || 0, p.downTimer) : 0; p.swingTimer = arr[5]; p.elev = arr[6];
         p.weapon = arr[7] ? { type: arr[7], durability: arr[8] } : null;
         p.moving = !!arr[9];
         // Snapshots carry position but no velocity, so measure the ground the remote
@@ -2209,7 +2352,13 @@ const NET = {
         this.unpackF(M.p1, sn.a, sp.a, t);
         this.unpackF(M.p2, sn.b, sp.b, t);
         M.frame = sn.f;
-        M.grapple = sn.g ? { holder: sn.g[0] === 1 ? M.p1 : M.p2, victim: sn.g[0] === 1 ? M.p2 : M.p1, isPin: !!sn.g[1], frames: sn.g[2] } : null;
+        M.grapple = sn.g ? {
+            holder: sn.g[0] === 1 ? M.p1 : M.p2,
+            victim: sn.g[0] === 1 ? M.p2 : M.p1,
+            isPin: !!sn.g[1],
+            frames: sn.g[2],
+            throwing: sn.g[3] ? { kind: sn.g[3] === 3 ? 'over' : sn.g[3] === 1 ? 'L' : 'R', timer: sn.g[4], total: sn.g[5] || 22 } : null
+        } : null;
         const pinC = M.grapple && M.grapple.isPin ? Math.min(3, Math.floor(M.grapple.frames / 60) + 1) : 0;
         if (pinC && pinC !== this.prevPin) {
             Snd.beep(500 + pinC * 150);
@@ -2396,7 +2545,8 @@ function strikeSets(wid) {
 // height and a torso-cropped victory pose gets stretched to a legless giant.
 const POSE_RATIO = {
     stand: 1, crouch: 0.66, dive: 0.64, win: 0.74, lose: 0.70,
-    getup0: 0.56, getup1: 0.70, getup2: 0.86
+    grapple: 1, throw: 1, thrown: 0.92, overhead: 0.98, pin: 0.78,
+    down: 0.34, getup0: 0.56, getup1: 0.70, getup2: 0.86
 };
 
 // A state holds an array when it was cut as a cycle and a bare frame when it was cut as a
@@ -2406,6 +2556,64 @@ const POSE_RATIO = {
 function frameAt(v, i) {
     if (!v) return null;
     return Array.isArray(v) ? v[Math.max(0, Math.min(v.length - 1, i | 0))] : v;
+}
+
+function grappleFallbackSprite(f, S) {
+    const g = M.grapple;
+    if (!g || g.isPin || M.phase === 'over') return null;
+    const prog = g.throwing ? (1 - g.throwing.timer / Math.max(1, g.throwing.total || 1)) : 0;
+    const holder = g.holder === f, victim = g.victim === f;
+    if (!holder && !victim) return null;
+
+    const grapplePose = () => {
+        const wantsLeft = f.direction < 0;
+        const arr = wantsLeft ? (S.aGrappleL || S.aGrappleR) : (S.aGrappleR || S.aGrappleL);
+        if (!arr) return null;
+        const idx = Math.min(arr.length - 1, Math.floor(g.frames / 9));
+        const missingSide = wantsLeft ? !S.aGrappleL : !S.aGrappleR;
+        const flip = S._grappleDirTrue ? missingSide : wantsLeft;
+        return { img: frameAt(arr, idx), flip, pose: 'grapple', noHeld: true };
+    };
+
+    if (holder) {
+        if (g.throwing) {
+            let arr = null, pose = 'throw';
+            if (g.throwing.kind === 'over') {
+                arr = S.aOverhead || S.aThrow;
+                pose = 'overhead';
+            } else arr = S.aThrow;
+            if (arr) {
+                const idx = Math.min(arr.length - 1, Math.floor(prog * arr.length));
+                return { img: frameAt(arr, idx), flip: f.direction < 0, pose, noHeld: true };
+            }
+            if (S.aStrike) return { img: frameAt(S.aStrike, Math.min((S.aStrike.length || 1) - 1, Math.floor(prog * 2.99))), flip: f.direction < 0, pose, noHeld: true };
+            if (S.aTaunt) return { img: frameAt(S.aTaunt, Math.min((S.aTaunt.length || 1) - 1, 1)), flip: f.direction < 0, pose, noHeld: true };
+        }
+        const authored = grapplePose();
+        if (authored) return authored;
+        if (S.aTaunt) return { img: frameAt(S.aTaunt, Math.floor(M.frame / 14) % (S.aTaunt.length || 1)), flip: f.direction < 0, pose: 'grapple', noHeld: true };
+        if (S.aStrike) return { img: frameAt(S.aStrike, 0), flip: f.direction < 0, pose: 'grapple', noHeld: true };
+    }
+
+    if (victim) {
+        if (g.throwing) {
+            let arr = null;
+            if (g.throwing.kind === 'over') arr = S.aLifted || S.aThrown;
+            else arr = S.aThrown || S.aLifted;
+            if (arr) {
+                const idx = Math.min(arr.length - 1, Math.floor(prog * arr.length));
+                return { img: frameAt(arr, idx), flip: f.direction < 0, pose: 'thrown', noHeld: true };
+            }
+            if (g.throwing.kind === 'over' && S.aJump) return { img: frameAt(S.aJump, Math.min((S.aJump.length || 1) - 1, 1 + Math.floor(prog * 2))), flip: f.direction < 0, pose: 'thrown', noHeld: true };
+            if (prog < 0.55 && S.aStagger) return { img: S.aStagger, flip: f.direction < 0, pose: 'grapple', noHeld: true };
+            if (S.aFallB) return { img: S.aFallB, flip: f.direction < 0, pose: 'thrown', noHeld: true };
+        }
+        const authored = grapplePose();
+        if (authored) return authored;
+        if (S.aStagger) return { img: S.aStagger, flip: f.direction < 0, pose: 'grapple', noHeld: true };
+        if (S.aIdle) return { img: S.aIdle, flip: f.direction < 0, pose: 'grapple', noHeld: true };
+    }
+    return null;
 }
 
 function spriteFor(f) {
@@ -2422,21 +2630,48 @@ function spriteFor(f) {
     if (settled && M.winner && M.winner !== f && f.downTimer <= 0 && S.aLose)
         return { img: S.aLose, flip: false, pose: 'lose' };   // standing loser shows the dejected pose
     const pinned = M.grapple && M.grapple.isPin && M.grapple.victim === f;
-    if (M.grapple && M.grapple.isPin && M.grapple.holder === f && S.aCrouch)
-        return { img: S.aCrouch, flip: f.direction < 0, pose: 'crouch' };            // covering the pin
-    if (f.climb) return { img: S.aIdleB || S.idle, flip: false };                     // back to camera on the ropes
+    if (M.grapple && M.grapple.isPin && M.grapple.holder === f) {
+        if (S.aPin) {
+            const pi = Math.min(S.aPin.length - 1, Math.floor(M.grapple.frames / 10));
+            return { img: frameAt(S.aPin, pi), flip: f.direction < 0, pose: 'pin', noHeld: true };
+        }
+        if (S.aCrouch) return { img: S.aCrouch, flip: f.direction < 0, pose: 'crouch', noHeld: true };
+        if (S.aTaunt) return { img: frameAt(S.aTaunt, 0), flip: f.direction < 0, pose: 'crouch', noHeld: true };
+        if (S.aStrike) return { img: frameAt(S.aStrike, 0), flip: f.direction < 0, pose: 'crouch', noHeld: true };
+    }
+    const gsp = grappleFallbackSprite(f, S);
+    if (gsp) return gsp;
+    if (f.climb) {
+        const c = climbData(f);
+        if (c.phase === 'mount') {
+            if (S.aIdleB) return { img: S.aIdleB, flip: false, noHeld: true };
+            if (S.aJump) return { img: frameAt(S.aJump, 0), flip: f.direction < 0, noHeld: true };
+        }
+        if (S.aCrouch) return { img: S.aCrouch, flip: f.direction < 0, pose: 'crouch', noHeld: true };
+        return { img: S.aIdleB || S.idle, flip: false, noHeld: true };                // perched on the turnbuckle
+    }
     if (f.diveTimer > 0) {
         if (f.diveTimer > 20 && S.aJump) return { img: frameAt(S.aJump, 0), flip: f.direction < 0, noHeld: true };   // leap off the post
         if (S.aDive) return { img: frameAt(S.aDive, 0), flip: f.direction > 0, noHeld: true, pose: 'dive' };
         return { img: S.jump || frameAt(S.aJump, 0) || S.aIdle || S.idle, flip: f.direction > 0, noHeld: true };
     }
     if (pinned || f.downTimer > 0) {
-        if (!pinned && f.downTimer > 0 && f.downTimer <= 26 && S.aGetup) {            // rising animation
-            const gi = Math.min(S.aGetup.length - 1, Math.floor((26 - f.downTimer) / 9));
-            return { img: S.aGetup[gi], flip: f.direction < 0, pose: 'getup' + Math.min(2, gi) };
-        }
         const fb = f.fallFace === 'F' ? (S.aFallF || S.fallen) : (S.aFallB || S.fallen);
-        return { img: fb, flip: f.direction < 0 };
+        if (!pinned && f.downTimer > 0) {
+            const total = Math.max(f.downTotal || f.downTimer, f.downTimer);
+            const elapsed = Math.max(0, total - f.downTimer);
+            const getupWindow = S.aGetup ? Math.min(30, Math.max(18, S.aGetup.length * 9 - 1)) : 0;
+            const impactWindow = Math.min(10, Math.max(4, Math.floor(total * 0.12)));
+            if (elapsed < Math.min(5, impactWindow) && S.aStagger) {
+                return { img: S.aStagger, flip: f.direction < 0, pose: 'grapple', noHeld: true };
+            }
+            if (S.aGetup && f.downTimer <= getupWindow) {                              // rising animation
+                const prog = 1 - (f.downTimer / Math.max(1, getupWindow));
+                const gi = Math.min(S.aGetup.length - 1, Math.floor(prog * S.aGetup.length));
+                return { img: S.aGetup[gi], flip: f.direction < 0, pose: 'getup' + Math.min(2, gi), noHeld: true };
+            }
+        }
+        return { img: fb, flip: f.direction < 0, pose: 'down', noHeld: true };
     }
     if (f.stunTimer > 0 && S.aStagger) return { img: S.aStagger, flip: f.direction < 0 };
     if (f.swingTimer > 0) {
@@ -2462,6 +2697,10 @@ function spriteFor(f) {
                 return { img: pick(arr), flip: f.direction < 0, noHeld: true };
             }
         }
+        // Corrected expanded sets carry a verified single-fighter strike cycle.
+        // This takes priority over legacy "elbow" sheets, several of which contain a
+        // second baked-in copy of the wrestler and otherwise create extra bodies.
+        if (S.aStrike) return { img: pick(S.aStrike), flip: f.direction < 0 };
         // bare-handed strike variety, limited to the sets this wrestler actually has
         const sets = strikeSets(f.wrestler.id);
         if (sets.length) {
@@ -2549,7 +2788,7 @@ function render() {
     // Pair-art (grapple/throw/overhead sprites) bakes in a CLONE of the holder as the opponent,
     // so it only looks right in a mirror match (same wrestler both sides). For any normal matchup
     // we skip it and draw BOTH real fighters — otherwise it looks like grappling yourself.
-    const mirrorMatch = gg && gg.holder.wrestler.id === gg.victim.wrestler.id;
+    const mirrorMatch = gg && gg.holder.wrestler.id === gg.victim.wrestler.id && (SPRITES[gg.holder.wrestler.id] || {})._pairSafe !== false;
     if (gg && !gg.isPin && mirrorMatch && M.phase !== 'over') {
         const S = SPRITES[gg.holder.wrestler.id] || {};
         const t = gg.throwing;
@@ -2681,11 +2920,17 @@ function drawFighter(f) {
     }
     const dropY = f.elev * ringDrop();
     let jumpArc = f.jumpTimer > 0 ? Math.sin((30 - f.jumpTimer) / 30 * Math.PI) * 30 : 0;
-    if (f.climb) jumpArc = 42;                                                    // perched on the turnbuckle
+    if (f.climb) {
+        const c = climbData(f);
+        jumpArc = c.phase === 'mount' ? 24 : 42;                                  // transition onto / perched on the turnbuckle
+    }
     if (f.diveTimer > 0) jumpArc = Math.sin(f.diveTimer / 26 * Math.PI) * 62;     // flight arc
-    const feetY = f.y + 52 + dropY;
+    const thrownVictim = M.grapple && !M.grapple.isPin && M.grapple.throwing && M.grapple.victim === f;
+    const renderGroundY = thrownVictim ? M.grapple.holder.y : f.y;
+    if (thrownVictim) jumpArc += Math.max(0, M.grapple.holder.y - f.y);
+    const feetY = renderGroundY + 52 + dropY;
     const matH = matRect.B - matRect.T;
-    const depth = (f.y - matRect.T) / Math.max(1, matH);
+    const depth = (renderGroundY - matRect.T) / Math.max(1, matH);
     const depthScale = 0.86 + Math.max(0, Math.min(1.2, depth)) * 0.22;
 
     // soft radial contact shadow + player ring indicator
@@ -2707,15 +2952,16 @@ function drawFighter(f) {
         // deep -- so the mat multiplier has to exceed 1 for the viewport share to be what
         // actually decides the size. Below about 1.2 the band wins on every stage and
         // bodies collapse to roughly a tenth of the screen no matter how big the window.
-        const baseH = isDown
+        const standingBaseH = Math.max(88, Math.min(matH * 1.25, canvas.height * 0.23));
+        const legacyBaseH = isDown
             ? Math.max(50, Math.min(matH * 0.58, canvas.height * 0.11))
-            : Math.max(88, Math.min(matH * 1.25, canvas.height * 0.23));
-        // Wrestlers cut from the new sheets carry a reference standing height, so one
-        // scale covers every pose and a crouch is genuinely shorter than a stand. The
-        // older art was authored frame by frame at whatever size, so it still has to be
-        // normalised per frame with a fudge factor for poses that are cropped short.
+            : standingBaseH;
+        // Wrestlers cut from the expanded sheets carry a reference standing height. Their
+        // lying/get-up frames were exported at the SAME scale as standing, so shrinking the
+        // target a second time when down makes the body collapse into a tiny pile. Keep one
+        // standing scale for those sets; only legacy per-frame art uses the old down target.
         const refH = SPRITES[f.wrestler.id] && SPRITES[f.wrestler.id]._refH;
-        const standH = baseH * depthScale * 1.1;
+        const standH = (refH ? standingBaseH : legacyBaseH) * depthScale * 1.1;
         const targetH = refH ? standH : standH * (POSE_RATIO[sp.pose] || POSE_RATIO.stand);
         const scale = targetH / (refH || img.naturalHeight);
         const w = img.naturalWidth * scale, h = img.naturalHeight * scale;
@@ -2770,23 +3016,26 @@ function drawFighter(f) {
 function drawPairSprite(g, img, flip) {
     if (!img || !img.complete || !img.naturalWidth) return;
     const f = g.holder;
-    const x = (g.holder.x + g.victim.x) / 2;
     const dropY = f.elev * ringDrop();
     const feetY = f.y + 52 + dropY;
     const matH = matRect.B - matRect.T;
     const depth = (f.y - matRect.T) / Math.max(1, matH);
     const depthScale = 0.86 + Math.max(0, Math.min(1.2, depth)) * 0.22;
-    const h = Math.max(88, Math.min(matH * 0.52, canvas.height * 0.23)) * 1.04 * depthScale;
+    const pose = g.throwing ? (g.throwing.kind === 'over' ? 'overhead' : 'throw') : 'grapple';
+    const standingBaseH = Math.max(88, Math.min(matH * 1.18, canvas.height * 0.24));
+    const h = standingBaseH * (POSE_RATIO[pose] || 1) * depthScale * 1.06;
     const w = img.naturalWidth * (h / img.naturalHeight);
+    const ax = img.ax != null ? img.ax : 0.5;
+    const x = img.ax != null ? g.holder.x : (g.holder.x + g.victim.x) / 2;
     // shared contact shadow
-    const sg = ctx.createRadialGradient(x, feetY, 2, x, feetY, 48 * depthScale);
+    const sg = ctx.createRadialGradient((g.holder.x + g.victim.x) / 2, feetY, 2, (g.holder.x + g.victim.x) / 2, feetY, 48 * depthScale);
     sg.addColorStop(0, 'rgba(0,0,0,0.55)'); sg.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = sg;
-    ctx.beginPath(); ctx.ellipse(x, feetY, 48 * depthScale, 14 * depthScale, 0, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse((g.holder.x + g.victim.x) / 2, feetY, 48 * depthScale, 14 * depthScale, 0, 0, Math.PI * 2); ctx.fill();
     ctx.save();
     ctx.imageSmoothingEnabled = false;
-    if (flip) { ctx.translate(x, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w / 2, feetY - h, w, h); }
-    else ctx.drawImage(img, x - w / 2, feetY - h, w, h);
+    if (flip) { ctx.translate(x, 0); ctx.scale(-1, 1); ctx.drawImage(img, -w * ax, feetY - h, w, h); }
+    else ctx.drawImage(img, x - w * ax, feetY - h, w, h);
     ctx.restore();
 }
 

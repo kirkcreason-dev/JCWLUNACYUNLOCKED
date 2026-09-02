@@ -1,0 +1,21 @@
+LUNACY UNLOCKED — v7 ROPE / TOP-ROPE PASS
+
+Focus:
+- corner climb entry
+- climb-to-perch transition
+- stepping down from ropes
+- top-rope dive launch alignment
+- better visual pose selection while on the turnbuckle
+- rope-hit crash positioning
+
+Changes made:
+1. Added structured climb state with mount/perch phases.
+2. Climbers now move to a mount position first, then settle into a perched turnbuckle position.
+3. Step-down from ropes now places the wrestler back inside the ring with consistent offsets instead of just clearing the flag.
+4. Dive launches now start from the perched turnbuckle position for cleaner takeoff alignment.
+5. Fighters struck while climbing now fall from the rope position instead of dropping from a stale corner anchor.
+6. Render logic now uses back-facing climb art while mounting and crouch/perch art once settled on the turnbuckle.
+7. Climb jump-arc rendering now distinguishes between mount and perched states.
+
+Files changed:
+- index.html

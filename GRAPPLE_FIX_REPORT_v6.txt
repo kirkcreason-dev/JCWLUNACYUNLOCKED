@@ -1,0 +1,42 @@
+LUNACY UNLOCKED — DEDICATED GRAPPLE ART PASS v6
+
+Base build:
+- LUNACY_UNLOCKED_SPRITES_GRAPPLES_FIXED_v5.zip
+
+Dedicated interaction art added for:
+- Cokane
+- Kerry Morton
+- Mickie Knuckles
+- Moshpit Mike
+- Mr. Happy
+- Yabo (source files labeled Yahoo were assigned to Yabo)
+
+New source-derived animation states:
+- directional grapple / tie-up poses
+- holder throw sequence
+- holder overhead-lift sequence where supplied
+- victim lifted sequence
+- victim thrown sequence where supplied
+- four-stage pin-cover sequence
+
+154 new transparent runtime PNG frames were created from the supplied source sheets.
+Sheet headings, frame captions, border lines, and paper backgrounds were removed from the new cuts.
+
+Code changes:
+- Grapples now prioritize the new single-wrestler grapple poses instead of taunt/stagger stand-ins.
+- Side throws use the holder's throw sequence and the victim's thrown/lifted sequence.
+- Overhead throws use the holder's overhead sequence and the victim's lifted sequence.
+- Pin attempts animate through the wrestler's dedicated pin sequence.
+- Throw shadows stay on the mat while the victim is airborne.
+- Both wrestlers drop held weapons before a grapple or pin, preventing floating weapon overlap.
+- Throw impacts now add a short stun and stronger landing effects.
+- Existing v4/v5 grapple positioning, kick-out separation, pair-art safety, and online throw synchronization remain intact.
+
+Validation:
+- JavaScript syntax check: passed.
+- Manifest asset records checked: 2,546.
+- Missing manifest files: 0.
+- Incorrect manifest dimensions: 0.
+- Existing gameplay files changed from v5: index.html and the three manifest representations only.
+- 154 interaction PNGs were added inside the six expanded wrestler folders.
+- Four obsolete root-level diagnostic/report artifacts from v5 were removed; no unrelated game assets were changed or removed.
