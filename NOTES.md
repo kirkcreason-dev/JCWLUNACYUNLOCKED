@@ -81,6 +81,37 @@ Knockdowns go through `setDownState()` (v8), which stores `downTimer`,
 `downTotal` and `fallFace` together — use it rather than assigning those
 directly, or remote playback loses recovery timing.
 
+## Sprite art — paper backgrounds
+
+Sprites are cut from scanned/illustrated sheets on white paper. The v6 pass
+keyed the new interaction frames properly, but the older animated and walk
+frames for **cokane, mickie, kerry and moshpit** (138 files) shipped with the
+paper still on them — some fully opaque (a white box in-game, e.g. the pinned
+wrestler), most half-keyed (a white speckle haze). Fixed 2026-09-02 by
+flood-filling paper from the edges and dropping sheet furniture (caption
+bars, "RUN CYCLE" labels, grid lines, neighbouring-frame fragments). Canvas
+sizes unchanged, so the manifest w/h/ax stayed valid. Originals are in the
+working folder under `_backup_paper_2026-09-02/`.
+
+Quick test for a bad cut — any sprite over ~25% opaque near-white pixels:
+
+```python
+import numpy as np; from PIL import Image
+a = np.array(Image.open(f).convert('RGBA'))
+bad = ((a[...,3] > 200) & (a[...,:3].min(axis=2) > 225)).mean() > 0.25
+```
+(Violent J's white jersey trips this legitimately — eyeball before trusting it.)
+
+Still needing a re-cut from the source sheets:
+- `mickie/aDive.png`, `cokane/aDive.png` — the export cropped a strip of ring
+  ropes instead of the dive pose. Their `aDive` manifest entries are removed so
+  the engine falls back to the jump pose. Restore the entries when real art lands.
+- `violentj/aIdle.png` — the white pants were keyed out as background and
+  render see-through. Needs the source.
+- `aCrouch` for cokane/mickie/kerry is drawn *on* a turnbuckle (white apron and
+  ropes are part of the art). The engine uses it for the turnbuckle perch, so
+  it doubles up with the real ring corner. Art decision, not a bug.
+
 ## Other files
 
 - `admin.html` — match-report dashboard, reads `/reports.json`. Standalone.
