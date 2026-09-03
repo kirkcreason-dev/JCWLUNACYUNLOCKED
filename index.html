@@ -788,7 +788,7 @@ function makeFighter(isP1) {
         x:0, y:0, vx:0, vy:0, direction: isP1 ? 1 : -1,
         health:100, maxHealth:100, ghostHP:100,
         weapon:null, attackCooldown:0, swingTimer:0,
-        stunTimer:0, downTimer:0, downTotal:0, jumpTimer:0, invuln:0,
+        stunTimer:0, downTimer:0, downTotal:0, jumpTimer:0, invuln:0, pinGrace:0,
         specialCharge:0, walkAnim:0, moving:false, elev:0,
         combo:0, comboTimer:0,
         // AI
@@ -861,14 +861,21 @@ introTheme.volume = 0.7;
 // file is missing; drop the mp3 in beside index.html and it takes over automatically.
 let themeIsSynth = false;
 function playIntroTheme() {
-    try {
-        if (!introTheme.paused) return;
-        introTheme.play().catch(() => { themeIsSynth = true; Snd.theme(); });
-    } catch (e) { themeIsSynth = true; Snd.theme(); }
+    if (!introTheme.paused) return;                       // mp3 already playing
+    let p;
+    try { p = introTheme.play(); } catch (e) { p = Promise.reject(e); }
+    Promise.resolve(p).then(() => {
+        // the real theme is playing: never let the synth fallback double it
+        if (themeIsSynth) { themeIsSynth = false; Snd.themeOff(); }
+    }).catch(() => {
+        // file missing or autoplay refused: synth riff instead, started once
+        if (!themeIsSynth) { themeIsSynth = true; Snd.theme(); }
+    });
 }
 function stopIntroTheme() {
-    if (themeIsSynth) Snd.themeOff();
-    else { try { introTheme.pause(); introTheme.currentTime = 0; } catch (e) {} }
+    // stop both unconditionally: a late-succeeding play() can leave the mp3 running
+    if (themeIsSynth) { themeIsSynth = false; Snd.themeOff(); }
+    try { introTheme.pause(); introTheme.currentTime = 0; } catch (e) {}
 }
 function startMatch() {
     if (!gameState.p1Selected || !gameState.p2Selected || !spritesReady) return;
@@ -1164,7 +1171,7 @@ function performTap(p1, p2, x, y) {
     const dEnemy = Math.hypot(x - p2.x, y - p2vy);
     const pEnemy = Math.hypot(p1.x - p2.x, p1.y - p2.y);
     // pin
-    if (dEnemy < 95 && p2.downTimer > 0 && !M.grapple) {
+    if (dEnemy < 95 && p2.downTimer > 0 && p2.pinGrace <= 0 && !M.grapple) {
         if (pEnemy < 190) {
             if (p1.weapon) dropWeapon(p1);
             if (p2.weapon) dropWeapon(p2);
@@ -1468,7 +1475,7 @@ function performGrappleBtn(p, o, dir) {
     if (M.grapple) return;
     const adx = Math.abs(o.x - p.x), ady = Math.abs(o.y - p.y);
     // pin a downed opponent
-    if (o.downTimer > 0 && adx < 100 && ady < 70) {
+    if (o.downTimer > 0 && o.pinGrace <= 0 && adx < 100 && ady < 70) {
         if (p.weapon) dropWeapon(p);
         if (o.weapon) dropWeapon(o);
         p.x = o.x - (Math.sign(o.x - p.x) || p.direction) * 34;
@@ -1590,6 +1597,7 @@ function simTick() {
         if (p.stunTimer > 0) p.stunTimer--;
         if (p.jumpTimer > 0) p.jumpTimer--;
         if (p.invuln > 0) p.invuln--;
+        if (p.pinGrace > 0) p.pinGrace--;
         if (p.downTimer === 1) p.invuln = 32;   // brief safety on get-up
         if (p.downTimer <= 0) p.downTotal = 0;
         if (p.comboTimer > 0) { p.comboTimer--; if (p.comboTimer === 0) p.combo = 0; }
@@ -1853,6 +1861,10 @@ function breakPin(g, text) {
     M.grapple = null;
     setDownState(g.victim, 16, g.victim.fallFace || 'B', true);
     g.victim.invuln = Math.max(g.victim.invuln, 18);
+    // A kick-out has to mean something: nobody may cover this wrestler again until they are
+    // back on their feet plus a beat. Without this the holder's 10-frame stun ends while the
+    // victim still has 6 frames on the mat, so a healthy wrestler gets re-covered forever.
+    g.victim.pinGrace = g.victim.downTimer + 24;
     g.holder.stunTimer = Math.max(g.holder.stunTimer || 0, 10);
     g.holder.x -= dir * 16;
     g.victim.x += dir * 10;
@@ -1883,7 +1895,7 @@ function aiUpdate(ai, target) {
     ai.aiThink--;
 
     // pin downed player - always priority
-    if (target.downTimer > 0 && !M.grapple) {
+    if (target.downTimer > 0 && target.pinGrace <= 0 && !M.grapple) {
         if (dist < 85) {
             if (ai.weapon) dropWeapon(ai);
             if (target.weapon) dropWeapon(target);
