@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+__MACOSX/
+.env
+*.log
+asset-source/
+.openai/
+__pycache__/
+*.py[cod]

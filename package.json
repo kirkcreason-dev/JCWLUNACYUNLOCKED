@@ -1,0 +1,17 @@
+{
+  "name": "jcw-lunacy-unlocked",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "description": "JCW Lunacy: Lunacy Unlocked \u2014 2D arcade wrestling fighter",
+  "scripts": {
+    "start": "node tools/serve.mjs",
+    "dev": "node tools/serve.mjs --qa",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node tools/check.mjs",
+    "build": "node tools/check.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
