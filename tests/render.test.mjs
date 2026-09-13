@@ -1,0 +1,76 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {Match,MOVES,FLOOR} from '../dist/src/engine.js';
+import {Renderer} from '../dist/src/render.js';
+const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
+const gradient={addColorStop(){}};
+function renderer(){
+ let count=0;
+ const ctx=new Proxy({createLinearGradient(){return gradient;},drawImage(img,sx,sy,sw,sh,...args){assert.ok(img);assert.ok([sx,sy,sw,sh,...args].every(Number.isFinite));if(args.length){assert.ok(sx>=0&&sy>=0);assert.ok(sx+sw<=img.width&&sy+sh<=img.height,'Sprite crop is outside its atlas');}count++;}}, {get:(t,k)=>k in t?t[k]:()=>{},set:(t,k,v)=>(t[k]=v,true)});
+ const atlases=Object.fromEntries(roster.map((r,i)=>[i,{width:r.atlasSize[0],height:r.atlasSize[1]}]));
+ return {r:new Renderer({getContext:()=>ctx},roster,atlases,[0,1,2,3].map(()=>({width:1672,height:941}))),ctx,count:()=>count};
+}
+test('every roster animation and fighter facing uses a valid transparent atlas crop',()=>{
+ const {r,count}=renderer();
+ for(let i=0;i<roster.length;i++){
+   const m=new Match(roster,i,(i+1)%roster.length,{mode:'local'});m.phase='fight';
+   for(const state of ['idle','walk','jump','block','light','heavy','special','hurt','down','pinned','rise','grapple','grabbed','lifted','thrown','throw','pin','victory','defeat','run','equip','taunt','climb','perch','dive']){
+     for(const facing of [-1,1])for(const t of [0,.11,.3,.7,1.1]){m.fighters[0].state=state;m.fighters[0].facing=facing;m.fighters[0].t=t;r.draw(m,i%4);}
+   }
+ }
+ assert.ok(count()>4000);
+});
+test('HUD and banners handle pin, intro, timeout draw and match result states',()=>{
+ const {r}=renderer();const m=new Match(roster,0,1,{mode:'local'});
+ r.draw(m);m.phaseTime=2;r.draw(m);m.phase='fight';m.startPin(0);m.pin.count=2;m.pin.escape=4;r.draw(m);m.pin=null;m.phase='roundEnd';m.roundWinner=null;r.draw(m);m.roundWinner=1;r.draw(m);r.receive([{type:'hit',x:550,z:0,combo:2},{type:'special'},{type:'guardBreak'}]);r.draw(m);
+});
+
+test('portrait camera and six arena crops handle corners, airborne fighters, and pins',()=>{
+ const {r}=renderer();r.portrait=true;r.arenas=Array.from({length:6},()=>({width:1672,height:941}));
+ const m=new Match(roster,0,1,{mode:'practice'});m.phase='fight';
+ for(const positions of [[200,280],[200,1080],[980,1080],[560,640]]){
+  m.fighters.forEach((f,i)=>{f.x=positions[i];f.z=i?245:150;f.state=i?'lifted':'jump';});
+  for(let arena=0;arena<6;arena++)r.draw(m,arena);
+ }
+ m.fighters.forEach(f=>f.z=0);m.startPin(1);r.draw(m,5);m.phase='roundEnd';m.roundWinner=0;r.draw(m,4);
+});
+
+test('either attacker is drawn above the defender without reversing pin and lift layers',()=>{
+ const {r}=renderer(),m=new Match(roster,9,10,{mode:'local'});m.phase='fight';let order=[];r.fighter=(_f,i)=>order.push(i);
+ for(const attacker of [0,1]){
+  m.fighters.forEach((f,i)=>f.move=i===attacker?'light':null);order=[];r.draw(m);assert.deepEqual(order,[1-attacker,attacker]);
+  m.pin={attacker,count:1,escape:0};order=[];r.draw(m);assert.deepEqual(order,[1-attacker,attacker]);m.pin=null;
+  m.grapple={attacker,time:.5};order=[];r.draw(m);assert.deepEqual(order,[attacker,1-attacker]);m.grapple=null;
+ }
+});
+
+test('guitar contact overlays stay attached to intact bodies in both directions',()=>{
+ const {r,ctx}=renderer();const original=ctx.drawImage;let props=0,expected;
+ ctx.drawImage=(img,x,y,...args)=>{original(img,x,y,...args);if(x===expected.x&&y===expected.y)props++;};
+ for(const id of roster.map((f,i)=>f.animations.propGuitar?i:-1).filter(i=>i>=0))for(const facing of [-1,1]){
+  const m=new Match(roster,id,9,{mode:'local'});m.phase='fight';const f=m.fighters[0];
+  f.state='heavy';f.move='guitar';f.attackStyle='guitar';f.facing=facing;expected=f.definition.animations.propGuitar[0];
+  for(const t of [0,MOVES.guitar.startup,MOVES.guitar.startup+MOVES.guitar.active]){f.t=t;r.fighter(f,0,m);}
+ }
+ assert.equal(props,roster.filter(f=>f.animations.propGuitar).length*2,'Only the active contact window needs the extra guitar');
+});
+
+test('supplied combat effects follow event positions, expire, and honor reduced motion',async()=>{
+ const manifest=JSON.parse(await readFile(new URL('../dist/assets/fx/manifest.json',import.meta.url),'utf8'));
+ const {r}=renderer(),m=new Match(roster,16,20,{mode:'local'});m.phase='fight';
+ r.combatFx=Object.fromEntries(Object.entries(manifest).map(([k,v])=>[k,{...v,image:{width:1024,height:Math.ceil(v.frames/4)*256}}]));
+ r.receive([{type:'hit',index:1,attacker:0,move:'light',x:590,z:30},{type:'hit',index:1,move:'heavy',x:610},{type:'block',index:0,x:530},{type:'slam',index:1,x:600},{type:'land',index:0}],m);
+ assert.deepEqual(r.spriteFx.map(f=>f.key),['chips','impact','guard','ground','ground']);assert.equal(r.spriteFx[0].y,FLOOR-135-30);assert.equal(r.spriteFx[4].x,m.fighters[0].x);
+ for(let n=0;n<90;n++)r.draw(m,0,1/60);assert.equal(r.spriteFx.length,0);
+ r.reduced=true;r.receive([{type:'hit',x:500,index:1}],m);assert.equal(r.spriteFx.length,0);
+});
+test('announcement artwork renders for the correct pinfall, tap-out and special events',()=>{
+ const {r}=renderer(),m=new Match(roster,16,20,{mode:'local'});r.bannerArt=Object.fromEntries(['pinfall','tapout','kickout','lunacy'].map(k=>[k,{width:1600,height:400}]));
+ m.phase='roundEnd';m.roundWinner=0;for(const method of ['PINFALL','TAP OUT']){m.method=method;r.draw(m);}
+ m.phase='fight';r.receive([{type:'kickout'}]);assert.equal(r.graphic.key,'kickout');r.draw(m);r.receive([{type:'special'}]);assert.equal(r.graphic.key,'lunacy');r.draw(m);
+});
+test('Ruffo uses the supplied back recovery and KO poses in their actual states',()=>{
+ const {r,ctx}=renderer(),m=new Match(roster,20,16,{mode:'local'});m.phase='fight';const f=m.fighters[0];let last;ctx.drawImage=(_img,x,y)=>{last={x,y};};
+ for(const [state,hp,anim] of [['rise',40,'riseBack'],['down',0,'ko']]){Object.assign(f,{state,hp,fallFace:'back',fallDuration:0,t:.3});r.fighter(f,0,m);assert.ok(f.definition.animations[anim].some(e=>e.x===last.x&&e.y===last.y));}
+});
