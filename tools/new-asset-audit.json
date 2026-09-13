@@ -1,0 +1,11390 @@
+[
+  {
+    "fighter": "able",
+    "animation": "idle",
+    "source": "Able/Able standing.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1325,
+        "y": 292,
+        "w": 157,
+        "h": 564
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "walk",
+    "source": "Able/Able walking.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 139,
+        "y": 205,
+        "w": 181,
+        "h": 316
+      },
+      {
+        "x": 526,
+        "y": 205,
+        "w": 182,
+        "h": 316
+      },
+      {
+        "x": 900,
+        "y": 205,
+        "w": 184,
+        "h": 317
+      },
+      {
+        "x": 1287,
+        "y": 206,
+        "w": 184,
+        "h": 316
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "run",
+    "source": "Able/Able running.jpg",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 72,
+        "y": 207,
+        "w": 222,
+        "h": 304
+      },
+      {
+        "x": 324,
+        "y": 207,
+        "w": 223,
+        "h": 305
+      },
+      {
+        "x": 577,
+        "y": 237,
+        "w": 221,
+        "h": 274
+      },
+      {
+        "x": 827,
+        "y": 237,
+        "w": 219,
+        "h": 274
+      },
+      {
+        "x": 1059,
+        "y": 237,
+        "w": 219,
+        "h": 276
+      },
+      {
+        "x": 1311,
+        "y": 238,
+        "w": 221,
+        "h": 275
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "chair",
+    "source": "Able/Able attacking with chair.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 56,
+        "y": 248,
+        "w": 333,
+        "h": 555
+      },
+      {
+        "x": 56,
+        "y": 248,
+        "w": 333,
+        "h": 555
+      },
+      {
+        "x": 807,
+        "y": 396,
+        "w": 414,
+        "h": 407
+      },
+      {
+        "x": 1189,
+        "y": 369,
+        "w": 351,
+        "h": 434
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "bat",
+    "source": "Able/Able attacking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 76,
+        "y": 318,
+        "w": 335,
+        "h": 520
+      },
+      {
+        "x": 442,
+        "y": 242,
+        "w": 298,
+        "h": 592
+      },
+      {
+        "x": 824,
+        "y": 329,
+        "w": 451,
+        "h": 505
+      },
+      {
+        "x": 1223,
+        "y": 344,
+        "w": 316,
+        "h": 491
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "guitar",
+    "source": "Able/Able attacking with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 125,
+        "y": 324,
+        "w": 293,
+        "h": 463
+      },
+      {
+        "x": 455,
+        "y": 240,
+        "w": 290,
+        "h": 545
+      },
+      {
+        "x": 860,
+        "y": 378,
+        "w": 466,
+        "h": 407
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "trashcan",
+    "source": "Able/Able attacking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 77,
+        "y": 347,
+        "w": 318,
+        "h": 503
+      },
+      {
+        "x": 442,
+        "y": 347,
+        "w": 339,
+        "h": 503
+      },
+      {
+        "x": 800,
+        "y": 214,
+        "w": 301,
+        "h": 637
+      },
+      {
+        "x": 1135,
+        "y": 394,
+        "w": 419,
+        "h": 456
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "carryChair",
+    "source": "Able/Able walking with chair.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 133,
+        "y": 203,
+        "w": 165,
+        "h": 273
+      },
+      {
+        "x": 527,
+        "y": 203,
+        "w": 164,
+        "h": 273
+      },
+      {
+        "x": 919,
+        "y": 203,
+        "w": 165,
+        "h": 273
+      },
+      {
+        "x": 1312,
+        "y": 203,
+        "w": 165,
+        "h": 273
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "carryBat",
+    "source": "Able/Able walking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 86,
+        "y": 247,
+        "w": 330,
+        "h": 525
+      },
+      {
+        "x": 459,
+        "y": 247,
+        "w": 331,
+        "h": 525
+      },
+      {
+        "x": 840,
+        "y": 247,
+        "w": 329,
+        "h": 525
+      },
+      {
+        "x": 1219,
+        "y": 247,
+        "w": 330,
+        "h": 525
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "carryGuitar",
+    "source": "Able/Able walking with guitar.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 125,
+        "y": 78,
+        "w": 216,
+        "h": 354
+      },
+      {
+        "x": 502,
+        "y": 78,
+        "w": 215,
+        "h": 354
+      },
+      {
+        "x": 878,
+        "y": 78,
+        "w": 216,
+        "h": 354
+      },
+      {
+        "x": 1268,
+        "y": 78,
+        "w": 220,
+        "h": 355
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "carryTrashcan",
+    "source": "Able/Able walking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 76,
+        "y": 259,
+        "w": 329,
+        "h": 511
+      },
+      {
+        "x": 466,
+        "y": 257,
+        "w": 315,
+        "h": 513
+      },
+      {
+        "x": 833,
+        "y": 259,
+        "w": 322,
+        "h": 512
+      },
+      {
+        "x": 1224,
+        "y": 259,
+        "w": 305,
+        "h": 513
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "lift",
+    "source": "Able/Able lifting overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 101,
+        "y": 492,
+        "w": 295,
+        "h": 361
+      },
+      {
+        "x": 448,
+        "y": 412,
+        "w": 313,
+        "h": 442
+      },
+      {
+        "x": 847,
+        "y": 328,
+        "w": 273,
+        "h": 525
+      },
+      {
+        "x": 1222,
+        "y": 298,
+        "w": 274,
+        "h": 555
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "throw",
+    "source": "Able/Able throwing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 98,
+        "y": 474,
+        "w": 337,
+        "h": 384
+      },
+      {
+        "x": 474,
+        "y": 295,
+        "w": 286,
+        "h": 563
+      },
+      {
+        "x": 769,
+        "y": 439,
+        "w": 422,
+        "h": 419
+      },
+      {
+        "x": 1228,
+        "y": 400,
+        "w": 291,
+        "h": 455
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "lifted",
+    "source": "Able/Able being lifted overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 102,
+        "y": 472,
+        "w": 279,
+        "h": 314
+      },
+      {
+        "x": 437,
+        "y": 342,
+        "w": 284,
+        "h": 381
+      },
+      {
+        "x": 765,
+        "y": 285,
+        "w": 351,
+        "h": 273
+      },
+      {
+        "x": 1123,
+        "y": 257,
+        "w": 417,
+        "h": 205
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "thrown",
+    "source": "Able/Able being thrown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 96,
+        "y": 354,
+        "w": 295,
+        "h": 455
+      },
+      {
+        "x": 455,
+        "y": 236,
+        "w": 312,
+        "h": 510
+      },
+      {
+        "x": 835,
+        "y": 312,
+        "w": 270,
+        "h": 434
+      },
+      {
+        "x": 1139,
+        "y": 644,
+        "w": 421,
+        "h": 166
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "hurt",
+    "source": "Able/Able dazzed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 95,
+        "y": 305,
+        "w": 263,
+        "h": 549
+      },
+      {
+        "x": 475,
+        "y": 303,
+        "w": 266,
+        "h": 551
+      },
+      {
+        "x": 866,
+        "y": 317,
+        "w": 265,
+        "h": 537
+      },
+      {
+        "x": 1253,
+        "y": 300,
+        "w": 264,
+        "h": 554
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "fallBack",
+    "source": "Able/Able falling backwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 102,
+        "y": 322,
+        "w": 279,
+        "h": 469
+      },
+      {
+        "x": 399,
+        "y": 365,
+        "w": 392,
+        "h": 355
+      },
+      {
+        "x": 794,
+        "y": 515,
+        "w": 337,
+        "h": 284
+      },
+      {
+        "x": 1112,
+        "y": 702,
+        "w": 429,
+        "h": 123
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "fallFront",
+    "source": "Able/Able falling forward.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 340,
+        "w": 313,
+        "h": 461
+      },
+      {
+        "x": 435,
+        "y": 440,
+        "w": 330,
+        "h": 347
+      },
+      {
+        "x": 822,
+        "y": 576,
+        "w": 348,
+        "h": 241
+      },
+      {
+        "x": 1175,
+        "y": 686,
+        "w": 371,
+        "h": 133
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "down",
+    "source": "Able/Able laying facedown and faceup.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 105,
+        "y": 282,
+        "w": 654,
+        "h": 226
+      },
+      {
+        "x": 854,
+        "y": 315,
+        "w": 674,
+        "h": 190
+      },
+      {
+        "x": 95,
+        "y": 644,
+        "w": 672,
+        "h": 205
+      },
+      {
+        "x": 854,
+        "y": 663,
+        "w": 660,
+        "h": 186
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "rise",
+    "source": "Able/Able getting up from facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 51,
+        "y": 634,
+        "w": 416,
+        "h": 111
+      },
+      {
+        "x": 489,
+        "y": 514,
+        "w": 297,
+        "h": 236
+      },
+      {
+        "x": 893,
+        "y": 431,
+        "w": 265,
+        "h": 312
+      },
+      {
+        "x": 1276,
+        "y": 278,
+        "w": 253,
+        "h": 464
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "taunt",
+    "source": "Able/Able taunting.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 188,
+        "w": 300,
+        "h": 610
+      },
+      {
+        "x": 450,
+        "y": 187,
+        "w": 307,
+        "h": 609
+      },
+      {
+        "x": 820,
+        "y": 152,
+        "w": 350,
+        "h": 646
+      },
+      {
+        "x": 1182,
+        "y": 186,
+        "w": 369,
+        "h": 610
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "victory",
+    "source": "Able/Able victory stance.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 79,
+        "y": 263,
+        "w": 339,
+        "h": 582
+      },
+      {
+        "x": 454,
+        "y": 262,
+        "w": 306,
+        "h": 583
+      },
+      {
+        "x": 870,
+        "y": 297,
+        "w": 237,
+        "h": 548
+      },
+      {
+        "x": 1173,
+        "y": 263,
+        "w": 346,
+        "h": 582
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "defeat",
+    "source": "Able/Able defeated pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 79,
+        "y": 351,
+        "w": 321,
+        "h": 489
+      },
+      {
+        "x": 485,
+        "y": 346,
+        "w": 292,
+        "h": 509
+      },
+      {
+        "x": 884,
+        "y": 347,
+        "w": 302,
+        "h": 489
+      },
+      {
+        "x": 1215,
+        "y": 350,
+        "w": 302,
+        "h": 488
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "exhausted",
+    "source": "Able/Able passed out.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1211,
+        "y": 326,
+        "w": 307,
+        "h": 503
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "jump",
+    "source": "Able/Able jumping.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 98,
+        "y": 506,
+        "w": 278,
+        "h": 354
+      },
+      {
+        "x": 433,
+        "y": 401,
+        "w": 318,
+        "h": 450
+      },
+      {
+        "x": 874,
+        "y": 298,
+        "w": 266,
+        "h": 383
+      },
+      {
+        "x": 1262,
+        "y": 493,
+        "w": 259,
+        "h": 367
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "pin",
+    "source": "Able/Able pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 82,
+        "y": 297,
+        "w": 309,
+        "h": 532
+      },
+      {
+        "x": 430,
+        "y": 441,
+        "w": 320,
+        "h": 388
+      },
+      {
+        "x": 786,
+        "y": 503,
+        "w": 358,
+        "h": 322
+      },
+      {
+        "x": 1174,
+        "y": 557,
+        "w": 365,
+        "h": 278
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "climb",
+    "source": "Able/Able climbing on top corners.jpg",
+    "detected": 4,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 479,
+        "y": 440,
+        "w": 230,
+        "h": 330
+      },
+      {
+        "x": 890,
+        "y": 358,
+        "w": 189,
+        "h": 325
+      },
+      {
+        "x": 1285,
+        "y": 288,
+        "w": 150,
+        "h": 302
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "entry",
+    "source": "Able/Able climbing on ropes.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1285,
+        "y": 289,
+        "w": 217,
+        "h": 486
+      }
+    ]
+  },
+  {
+    "fighter": "able",
+    "animation": "dive",
+    "source": "Able/Able jumping off corner ropes.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 416,
+        "y": 303,
+        "w": 263,
+        "h": 287
+      },
+      {
+        "x": 724,
+        "y": 415,
+        "w": 412,
+        "h": 176
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "idle",
+    "source": "Dani Mo/Dani Mo standing.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1318,
+        "y": 296,
+        "w": 140,
+        "h": 555
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "walk",
+    "source": "Dani Mo/Dani Mo walking.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 147,
+        "y": 208,
+        "w": 187,
+        "h": 316
+      },
+      {
+        "x": 521,
+        "y": 208,
+        "w": 189,
+        "h": 316
+      },
+      {
+        "x": 894,
+        "y": 208,
+        "w": 189,
+        "h": 316
+      },
+      {
+        "x": 1271,
+        "y": 208,
+        "w": 188,
+        "h": 316
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "run",
+    "source": "Dani Mo/Dani Mo running.jpg",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 77,
+        "y": 242,
+        "w": 210,
+        "h": 266
+      },
+      {
+        "x": 330,
+        "y": 242,
+        "w": 211,
+        "h": 266
+      },
+      {
+        "x": 586,
+        "y": 239,
+        "w": 210,
+        "h": 268
+      },
+      {
+        "x": 835,
+        "y": 239,
+        "w": 212,
+        "h": 267
+      },
+      {
+        "x": 1070,
+        "y": 238,
+        "w": 210,
+        "h": 268
+      },
+      {
+        "x": 1322,
+        "y": 239,
+        "w": 210,
+        "h": 267
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "chair",
+    "source": "Dani Mo/Dani Mo attacking with chair.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 51,
+        "y": 250,
+        "w": 335,
+        "h": 555
+      },
+      {
+        "x": 455,
+        "y": 207,
+        "w": 278,
+        "h": 598
+      },
+      {
+        "x": 814,
+        "y": 397,
+        "w": 409,
+        "h": 408
+      },
+      {
+        "x": 1205,
+        "y": 371,
+        "w": 339,
+        "h": 434
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "bat",
+    "source": "Dani Mo/Dani Mo attacking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 71,
+        "y": 318,
+        "w": 335,
+        "h": 523
+      },
+      {
+        "x": 438,
+        "y": 244,
+        "w": 299,
+        "h": 592
+      },
+      {
+        "x": 825,
+        "y": 330,
+        "w": 451,
+        "h": 506
+      },
+      {
+        "x": 1224,
+        "y": 344,
+        "w": 318,
+        "h": 492
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "guitar",
+    "source": "Dani Mo/Dani Mo attacking with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 132,
+        "y": 261,
+        "w": 286,
+        "h": 548
+      },
+      {
+        "x": 451,
+        "y": 261,
+        "w": 289,
+        "h": 525
+      },
+      {
+        "x": 856,
+        "y": 377,
+        "w": 470,
+        "h": 409
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "trashcan",
+    "source": "Dani Mo/Dani Mo attacking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 69,
+        "y": 348,
+        "w": 321,
+        "h": 505
+      },
+      {
+        "x": 436,
+        "y": 347,
+        "w": 343,
+        "h": 506
+      },
+      {
+        "x": 801,
+        "y": 215,
+        "w": 301,
+        "h": 639
+      },
+      {
+        "x": 1136,
+        "y": 391,
+        "w": 424,
+        "h": 462
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "carryChair",
+    "source": "Dani Mo/Dani Mo walking with chair.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 124,
+        "y": 208,
+        "w": 168,
+        "h": 272
+      },
+      {
+        "x": 524,
+        "y": 207,
+        "w": 166,
+        "h": 273
+      },
+      {
+        "x": 921,
+        "y": 207,
+        "w": 166,
+        "h": 273
+      },
+      {
+        "x": 1315,
+        "y": 207,
+        "w": 168,
+        "h": 273
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "carryBat",
+    "source": "Dani Mo/Dani Mo walking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 87,
+        "y": 248,
+        "w": 327,
+        "h": 523
+      },
+      {
+        "x": 460,
+        "y": 248,
+        "w": 331,
+        "h": 521
+      },
+      {
+        "x": 845,
+        "y": 248,
+        "w": 329,
+        "h": 523
+      },
+      {
+        "x": 1224,
+        "y": 248,
+        "w": 331,
+        "h": 523
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "carryGuitar",
+    "source": "Dani Mo/Dani Mo walking with guitar.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 125,
+        "y": 79,
+        "w": 215,
+        "h": 351
+      },
+      {
+        "x": 509,
+        "y": 79,
+        "w": 218,
+        "h": 351
+      },
+      {
+        "x": 884,
+        "y": 79,
+        "w": 215,
+        "h": 351
+      },
+      {
+        "x": 1264,
+        "y": 79,
+        "w": 216,
+        "h": 351
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "carryTrashcan",
+    "source": "Dani Mo/Dani Mo walking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 70,
+        "y": 258,
+        "w": 332,
+        "h": 510
+      },
+      {
+        "x": 472,
+        "y": 258,
+        "w": 309,
+        "h": 510
+      },
+      {
+        "x": 837,
+        "y": 259,
+        "w": 319,
+        "h": 510
+      },
+      {
+        "x": 1236,
+        "y": 259,
+        "w": 297,
+        "h": 508
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "lift",
+    "source": "Dani Mo/Dani Mo lifting overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 97,
+        "y": 496,
+        "w": 304,
+        "h": 359
+      },
+      {
+        "x": 444,
+        "y": 404,
+        "w": 314,
+        "h": 451
+      },
+      {
+        "x": 845,
+        "y": 332,
+        "w": 283,
+        "h": 523
+      },
+      {
+        "x": 1231,
+        "y": 268,
+        "w": 294,
+        "h": 588
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "throw",
+    "source": "Dani Mo/Dani Mo throwing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 91,
+        "y": 472,
+        "w": 329,
+        "h": 386
+      },
+      {
+        "x": 483,
+        "y": 300,
+        "w": 269,
+        "h": 557
+      },
+      {
+        "x": 772,
+        "y": 429,
+        "w": 422,
+        "h": 429
+      },
+      {
+        "x": 1232,
+        "y": 397,
+        "w": 295,
+        "h": 460
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "lifted",
+    "source": "Dani Mo/Dani Mo being lifted overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 96,
+        "y": 467,
+        "w": 279,
+        "h": 319
+      },
+      {
+        "x": 432,
+        "y": 334,
+        "w": 299,
+        "h": 395
+      },
+      {
+        "x": 783,
+        "y": 295,
+        "w": 333,
+        "h": 273
+      },
+      {
+        "x": 1134,
+        "y": 256,
+        "w": 417,
+        "h": 207
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "thrown",
+    "source": "Dani Mo/Dani Mo being thrown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 90,
+        "y": 354,
+        "w": 297,
+        "h": 458
+      },
+      {
+        "x": 452,
+        "y": 236,
+        "w": 315,
+        "h": 511
+      },
+      {
+        "x": 835,
+        "y": 312,
+        "w": 261,
+        "h": 387
+      },
+      {
+        "x": 1141,
+        "y": 646,
+        "w": 425,
+        "h": 165
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "hurt",
+    "source": "Dani Mo/Dani Mo dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 99,
+        "y": 304,
+        "w": 244,
+        "h": 552
+      },
+      {
+        "x": 488,
+        "y": 305,
+        "w": 243,
+        "h": 552
+      },
+      {
+        "x": 878,
+        "y": 313,
+        "w": 243,
+        "h": 544
+      },
+      {
+        "x": 1264,
+        "y": 294,
+        "w": 244,
+        "h": 563
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "fallBack",
+    "source": "Dani Mo/Dani Mo falling backwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 101,
+        "y": 309,
+        "w": 278,
+        "h": 488
+      },
+      {
+        "x": 401,
+        "y": 334,
+        "w": 390,
+        "h": 398
+      },
+      {
+        "x": 797,
+        "y": 500,
+        "w": 338,
+        "h": 300
+      },
+      {
+        "x": 1115,
+        "y": 705,
+        "w": 430,
+        "h": 123
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "fallFront",
+    "source": "Dani Mo/Dani Mo falling forward.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 64,
+        "y": 351,
+        "w": 310,
+        "h": 455
+      },
+      {
+        "x": 435,
+        "y": 454,
+        "w": 332,
+        "h": 337
+      },
+      {
+        "x": 822,
+        "y": 589,
+        "w": 348,
+        "h": 230
+      },
+      {
+        "x": 1175,
+        "y": 693,
+        "w": 375,
+        "h": 126
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "down",
+    "source": "Dani Mo/Dani Mo laying facedown and up.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 100,
+        "y": 283,
+        "w": 660,
+        "h": 227
+      },
+      {
+        "x": 856,
+        "y": 317,
+        "w": 680,
+        "h": 191
+      },
+      {
+        "x": 93,
+        "y": 647,
+        "w": 675,
+        "h": 206
+      },
+      {
+        "x": 855,
+        "y": 669,
+        "w": 667,
+        "h": 184
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "rise",
+    "source": "Dani Mo/Dani Mo getting back up from facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 45,
+        "y": 643,
+        "w": 421,
+        "h": 100
+      },
+      {
+        "x": 495,
+        "y": 510,
+        "w": 293,
+        "h": 240
+      },
+      {
+        "x": 896,
+        "y": 430,
+        "w": 259,
+        "h": 314
+      },
+      {
+        "x": 1295,
+        "y": 282,
+        "w": 208,
+        "h": 466
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "taunt",
+    "source": "Dani Mo/Dani Mo taunting.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 100,
+        "y": 295,
+        "w": 301,
+        "h": 556
+      },
+      {
+        "x": 493,
+        "y": 296,
+        "w": 291,
+        "h": 558
+      },
+      {
+        "x": 866,
+        "y": 296,
+        "w": 298,
+        "h": 560
+      },
+      {
+        "x": 1223,
+        "y": 295,
+        "w": 304,
+        "h": 558
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "victory",
+    "source": "Dani Mo/Dani Mo victory pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 76,
+        "y": 264,
+        "w": 344,
+        "h": 583
+      },
+      {
+        "x": 454,
+        "y": 264,
+        "w": 304,
+        "h": 583
+      },
+      {
+        "x": 872,
+        "y": 303,
+        "w": 237,
+        "h": 544
+      },
+      {
+        "x": 1174,
+        "y": 265,
+        "w": 345,
+        "h": 582
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "defeat",
+    "source": "Dani Mo/Dani Mo defeated pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 83,
+        "y": 356,
+        "w": 319,
+        "h": 488
+      },
+      {
+        "x": 488,
+        "y": 346,
+        "w": 284,
+        "h": 508
+      },
+      {
+        "x": 883,
+        "y": 356,
+        "w": 299,
+        "h": 475
+      },
+      {
+        "x": 1213,
+        "y": 355,
+        "w": 303,
+        "h": 480
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "exhausted",
+    "source": "Dani Mo/Dani Mo passed out.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1216,
+        "y": 308,
+        "w": 302,
+        "h": 533
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "jump",
+    "source": "Dani Mo/Dani Mo jumping.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 98,
+        "y": 509,
+        "w": 278,
+        "h": 354
+      },
+      {
+        "x": 433,
+        "y": 410,
+        "w": 320,
+        "h": 444
+      },
+      {
+        "x": 894,
+        "y": 304,
+        "w": 245,
+        "h": 375
+      },
+      {
+        "x": 1262,
+        "y": 510,
+        "w": 259,
+        "h": 352
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "pin",
+    "source": "Dani Mo/Dani Mo pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 76,
+        "y": 298,
+        "w": 309,
+        "h": 531
+      },
+      {
+        "x": 429,
+        "y": 460,
+        "w": 325,
+        "h": 370
+      },
+      {
+        "x": 780,
+        "y": 507,
+        "w": 338,
+        "h": 316
+      },
+      {
+        "x": 1146,
+        "y": 625,
+        "w": 398,
+        "h": 209
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "climb",
+    "source": "Dani Mo/Dani Mo climbing on top rope corner.jpg",
+    "detected": 4,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 519,
+        "y": 435,
+        "w": 190,
+        "h": 248
+      },
+      {
+        "x": 889,
+        "y": 350,
+        "w": 183,
+        "h": 333
+      },
+      {
+        "x": 1286,
+        "y": 290,
+        "w": 147,
+        "h": 300
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "entry",
+    "source": "Dani Mo/Dani Mo climbing on rope.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1300,
+        "y": 292,
+        "w": 203,
+        "h": 483
+      }
+    ]
+  },
+  {
+    "fighter": "dani-mo",
+    "animation": "dive",
+    "source": "Dani Mo/Dani Mo jumping off corner ropes.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 416,
+        "y": 304,
+        "w": 263,
+        "h": 288
+      },
+      {
+        "x": 725,
+        "y": 419,
+        "w": 411,
+        "h": 174
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "idle",
+    "source": "Facade/Facade standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1339,
+        "y": 282,
+        "w": 131,
+        "h": 583
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "run",
+    "source": "Facade/Facade running.png",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 229,
+        "w": 208,
+        "h": 277
+      },
+      {
+        "x": 239,
+        "y": 228,
+        "w": 204,
+        "h": 279
+      },
+      {
+        "x": 435,
+        "y": 230,
+        "w": 195,
+        "h": 277
+      },
+      {
+        "x": 648,
+        "y": 230,
+        "w": 206,
+        "h": 277
+      },
+      {
+        "x": 855,
+        "y": 228,
+        "w": 214,
+        "h": 283
+      },
+      {
+        "x": 1072,
+        "y": 229,
+        "w": 189,
+        "h": 282
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "chair",
+    "source": "Facade/Facade attack with chair.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 82,
+        "y": 238,
+        "w": 264,
+        "h": 570
+      },
+      {
+        "x": 474,
+        "y": 211,
+        "w": 255,
+        "h": 597
+      },
+      {
+        "x": 849,
+        "y": 417,
+        "w": 384,
+        "h": 390
+      },
+      {
+        "x": 1280,
+        "y": 372,
+        "w": 269,
+        "h": 436
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "bat",
+    "source": "Facade/Facade attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 379,
+        "w": 216,
+        "h": 425
+      },
+      {
+        "x": 237,
+        "y": 284,
+        "w": 238,
+        "h": 520
+      },
+      {
+        "x": 472,
+        "y": 384,
+        "w": 319,
+        "h": 420
+      },
+      {
+        "x": 749,
+        "y": 388,
+        "w": 346,
+        "h": 416
+      },
+      {
+        "x": 1049,
+        "y": 351,
+        "w": 219,
+        "h": 453
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "guitar",
+    "source": "Facade/Facade attack with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 13,
+        "y": 424,
+        "w": 256,
+        "h": 401
+      },
+      {
+        "x": 264,
+        "y": 278,
+        "w": 267,
+        "h": 546
+      },
+      {
+        "x": 519,
+        "y": 474,
+        "w": 275,
+        "h": 353
+      },
+      {
+        "x": 755,
+        "y": 502,
+        "w": 253,
+        "h": 360
+      },
+      {
+        "x": 995,
+        "y": 291,
+        "w": 260,
+        "h": 537
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "trashcan",
+    "source": "Facade/Facade attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 479,
+        "w": 225,
+        "h": 337
+      },
+      {
+        "x": 259,
+        "y": 274,
+        "w": 217,
+        "h": 542
+      },
+      {
+        "x": 484,
+        "y": 322,
+        "w": 266,
+        "h": 494
+      },
+      {
+        "x": 763,
+        "y": 447,
+        "w": 243,
+        "h": 369
+      },
+      {
+        "x": 998,
+        "y": 427,
+        "w": 270,
+        "h": 390
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "carryChair",
+    "source": "Facade/facade walking with chair.png",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 133,
+        "y": 207,
+        "w": 167,
+        "h": 272
+      },
+      {
+        "x": 527,
+        "y": 207,
+        "w": 166,
+        "h": 272
+      },
+      {
+        "x": 920,
+        "y": 207,
+        "w": 166,
+        "h": 272
+      },
+      {
+        "x": 1310,
+        "y": 207,
+        "w": 166,
+        "h": 272
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "carryBat",
+    "source": "Facade/Facade walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 314,
+        "w": 235,
+        "h": 486
+      },
+      {
+        "x": 266,
+        "y": 314,
+        "w": 220,
+        "h": 485
+      },
+      {
+        "x": 500,
+        "y": 315,
+        "w": 243,
+        "h": 485
+      },
+      {
+        "x": 764,
+        "y": 315,
+        "w": 264,
+        "h": 485
+      },
+      {
+        "x": 1035,
+        "y": 314,
+        "w": 233,
+        "h": 486
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "carryGuitar",
+    "source": "Facade/Facade walking with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 326,
+        "w": 245,
+        "h": 502
+      },
+      {
+        "x": 274,
+        "y": 326,
+        "w": 240,
+        "h": 503
+      },
+      {
+        "x": 512,
+        "y": 326,
+        "w": 246,
+        "h": 503
+      },
+      {
+        "x": 745,
+        "y": 326,
+        "w": 273,
+        "h": 502
+      },
+      {
+        "x": 1010,
+        "y": 326,
+        "w": 250,
+        "h": 503
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "carryTrashcan",
+    "source": "Facade/Facade walking with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 314,
+        "w": 250,
+        "h": 515
+      },
+      {
+        "x": 275,
+        "y": 317,
+        "w": 234,
+        "h": 516
+      },
+      {
+        "x": 532,
+        "y": 315,
+        "w": 222,
+        "h": 516
+      },
+      {
+        "x": 763,
+        "y": 314,
+        "w": 256,
+        "h": 513
+      },
+      {
+        "x": 1036,
+        "y": 312,
+        "w": 232,
+        "h": 521
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "lift",
+    "source": "Facade/Facade lifting overhead.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 102,
+        "y": 499,
+        "w": 309,
+        "h": 354
+      },
+      {
+        "x": 467,
+        "y": 449,
+        "w": 316,
+        "h": 405
+      },
+      {
+        "x": 846,
+        "y": 346,
+        "w": 294,
+        "h": 507
+      },
+      {
+        "x": 1224,
+        "y": 296,
+        "w": 271,
+        "h": 557
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "throw",
+    "source": "Facade/Facade throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 369,
+        "w": 270,
+        "h": 460
+      },
+      {
+        "x": 276,
+        "y": 320,
+        "w": 234,
+        "h": 510
+      },
+      {
+        "x": 536,
+        "y": 298,
+        "w": 214,
+        "h": 531
+      },
+      {
+        "x": 764,
+        "y": 406,
+        "w": 273,
+        "h": 426
+      },
+      {
+        "x": 1041,
+        "y": 369,
+        "w": 219,
+        "h": 462
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "hurt",
+    "source": "Facade/Facade dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 306,
+        "w": 276,
+        "h": 529
+      },
+      {
+        "x": 374,
+        "y": 327,
+        "w": 262,
+        "h": 508
+      },
+      {
+        "x": 636,
+        "y": 303,
+        "w": 313,
+        "h": 532
+      },
+      {
+        "x": 975,
+        "y": 338,
+        "w": 278,
+        "h": 497
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "fallBack",
+    "source": "Facade/facade falling backwards.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 333,
+        "w": 304,
+        "h": 451
+      },
+      {
+        "x": 342,
+        "y": 410,
+        "w": 443,
+        "h": 368
+      },
+      {
+        "x": 777,
+        "y": 643,
+        "w": 472,
+        "h": 153
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "fallFront",
+    "source": "Facade/facade falling forwards.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 302,
+        "w": 416,
+        "h": 481
+      },
+      {
+        "x": 384,
+        "y": 420,
+        "w": 507,
+        "h": 354
+      },
+      {
+        "x": 745,
+        "y": 648,
+        "w": 507,
+        "h": 143
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "rise",
+    "source": "Facade/Facade getting up from facedown.png",
+    "detected": 5,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 528,
+        "y": 508,
+        "w": 181,
+        "h": 241
+      },
+      {
+        "x": 717,
+        "y": 445,
+        "w": 162,
+        "h": 306
+      },
+      {
+        "x": 896,
+        "y": 394,
+        "w": 163,
+        "h": 356
+      },
+      {
+        "x": 1083,
+        "y": 330,
+        "w": 181,
+        "h": 420
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "taunt",
+    "source": "Facade/Facade victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 340,
+        "w": 236,
+        "h": 498
+      },
+      {
+        "x": 246,
+        "y": 355,
+        "w": 268,
+        "h": 483
+      },
+      {
+        "x": 517,
+        "y": 282,
+        "w": 245,
+        "h": 556
+      },
+      {
+        "x": 771,
+        "y": 355,
+        "w": 255,
+        "h": 483
+      },
+      {
+        "x": 1029,
+        "y": 341,
+        "w": 237,
+        "h": 497
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "victory",
+    "source": "Facade/Facade victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 340,
+        "w": 236,
+        "h": 498
+      },
+      {
+        "x": 246,
+        "y": 355,
+        "w": 268,
+        "h": 483
+      },
+      {
+        "x": 517,
+        "y": 282,
+        "w": 245,
+        "h": 556
+      },
+      {
+        "x": 771,
+        "y": 355,
+        "w": 255,
+        "h": 483
+      },
+      {
+        "x": 1029,
+        "y": 341,
+        "w": 237,
+        "h": 497
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "kneel",
+    "source": "Facade/Facade kneeling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 295,
+        "w": 256,
+        "h": 552
+      },
+      {
+        "x": 330,
+        "y": 347,
+        "w": 285,
+        "h": 503
+      },
+      {
+        "x": 660,
+        "y": 438,
+        "w": 281,
+        "h": 411
+      },
+      {
+        "x": 992,
+        "y": 452,
+        "w": 260,
+        "h": 398
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "pin",
+    "source": "Facade/Facade pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 367,
+        "w": 265,
+        "h": 467
+      },
+      {
+        "x": 326,
+        "y": 442,
+        "w": 319,
+        "h": 392
+      },
+      {
+        "x": 630,
+        "y": 531,
+        "w": 312,
+        "h": 303
+      },
+      {
+        "x": 941,
+        "y": 595,
+        "w": 327,
+        "h": 239
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "grapple",
+    "source": "Facade/Facade grappling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 335,
+        "w": 366,
+        "h": 528
+      },
+      {
+        "x": 401,
+        "y": 335,
+        "w": 372,
+        "h": 528
+      },
+      {
+        "x": 801,
+        "y": 344,
+        "w": 430,
+        "h": 520
+      },
+      {
+        "x": 1229,
+        "y": 342,
+        "w": 353,
+        "h": 523
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "elbow",
+    "source": "Facade/Facade attack with elbow.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 373,
+        "w": 218,
+        "h": 407
+      },
+      {
+        "x": 211,
+        "y": 372,
+        "w": 216,
+        "h": 409
+      },
+      {
+        "x": 433,
+        "y": 373,
+        "w": 198,
+        "h": 408
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "kick",
+    "source": "Facade/Facade kicking.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 309,
+        "w": 311,
+        "h": 515
+      },
+      {
+        "x": 445,
+        "y": 303,
+        "w": 323,
+        "h": 521
+      },
+      {
+        "x": 805,
+        "y": 307,
+        "w": 446,
+        "h": 518
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "climb",
+    "source": "Facade/Facade climb on top ropes.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 99,
+        "y": 472,
+        "w": 204,
+        "h": 420
+      },
+      {
+        "x": 398,
+        "y": 399,
+        "w": 219,
+        "h": 348
+      },
+      {
+        "x": 724,
+        "y": 337,
+        "w": 197,
+        "h": 346
+      },
+      {
+        "x": 1057,
+        "y": 250,
+        "w": 178,
+        "h": 412
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "entry",
+    "source": "Facade/Facade climbing through rope.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 309,
+        "w": 248,
+        "h": 489
+      },
+      {
+        "x": 387,
+        "y": 302,
+        "w": 239,
+        "h": 489
+      },
+      {
+        "x": 697,
+        "y": 305,
+        "w": 260,
+        "h": 482
+      },
+      {
+        "x": 1008,
+        "y": 291,
+        "w": 249,
+        "h": 507
+      }
+    ]
+  },
+  {
+    "fighter": "facade",
+    "animation": "dive",
+    "source": "Facade/Facade jumping off corner.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 416,
+        "y": 305,
+        "w": 263,
+        "h": 283
+      },
+      {
+        "x": 723,
+        "y": 417,
+        "w": 413,
+        "h": 173
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "idle",
+    "source": "J-Rod/J-Rod standing.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1321,
+        "y": 294,
+        "w": 144,
+        "h": 561
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "walk",
+    "source": "J-Rod/J-Rod walking.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 147,
+        "y": 207,
+        "w": 187,
+        "h": 316
+      },
+      {
+        "x": 520,
+        "y": 206,
+        "w": 187,
+        "h": 317
+      },
+      {
+        "x": 892,
+        "y": 206,
+        "w": 188,
+        "h": 317
+      },
+      {
+        "x": 1270,
+        "y": 207,
+        "w": 189,
+        "h": 316
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "run",
+    "source": "J-Rod/J-Rod running.jpg",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 76,
+        "y": 207,
+        "w": 218,
+        "h": 298
+      },
+      {
+        "x": 327,
+        "y": 207,
+        "w": 219,
+        "h": 298
+      },
+      {
+        "x": 577,
+        "y": 238,
+        "w": 219,
+        "h": 267
+      },
+      {
+        "x": 829,
+        "y": 237,
+        "w": 218,
+        "h": 268
+      },
+      {
+        "x": 1060,
+        "y": 237,
+        "w": 215,
+        "h": 267
+      },
+      {
+        "x": 1312,
+        "y": 237,
+        "w": 217,
+        "h": 268
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "chair",
+    "source": "J-Rod/J-Rod attack with chair.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 53,
+        "y": 248,
+        "w": 333,
+        "h": 556
+      },
+      {
+        "x": 53,
+        "y": 248,
+        "w": 333,
+        "h": 556
+      },
+      {
+        "x": 812,
+        "y": 395,
+        "w": 410,
+        "h": 409
+      },
+      {
+        "x": 1205,
+        "y": 369,
+        "w": 338,
+        "h": 434
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "bat",
+    "source": "J-Rod/J-Rod attack with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 73,
+        "y": 317,
+        "w": 336,
+        "h": 524
+      },
+      {
+        "x": 440,
+        "y": 243,
+        "w": 298,
+        "h": 593
+      },
+      {
+        "x": 826,
+        "y": 329,
+        "w": 449,
+        "h": 507
+      },
+      {
+        "x": 1222,
+        "y": 344,
+        "w": 317,
+        "h": 492
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "guitar",
+    "source": "J-Rod/J-Rod attack with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 136,
+        "y": 260,
+        "w": 282,
+        "h": 549
+      },
+      {
+        "x": 453,
+        "y": 241,
+        "w": 288,
+        "h": 544
+      },
+      {
+        "x": 862,
+        "y": 378,
+        "w": 464,
+        "h": 407
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "trashcan",
+    "source": "J-Rod/J-Rod attack with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 72,
+        "y": 347,
+        "w": 320,
+        "h": 505
+      },
+      {
+        "x": 438,
+        "y": 348,
+        "w": 342,
+        "h": 504
+      },
+      {
+        "x": 801,
+        "y": 215,
+        "w": 301,
+        "h": 637
+      },
+      {
+        "x": 1136,
+        "y": 391,
+        "w": 421,
+        "h": 461
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "carryChair",
+    "source": "J-Rod/J-Rod walk with chair.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 131,
+        "y": 205,
+        "w": 166,
+        "h": 274
+      },
+      {
+        "x": 525,
+        "y": 205,
+        "w": 167,
+        "h": 274
+      },
+      {
+        "x": 918,
+        "y": 205,
+        "w": 167,
+        "h": 274
+      },
+      {
+        "x": 1311,
+        "y": 205,
+        "w": 167,
+        "h": 274
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "carryBat",
+    "source": "J-Rod/J-Rod walk with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 88,
+        "y": 247,
+        "w": 326,
+        "h": 525
+      },
+      {
+        "x": 460,
+        "y": 247,
+        "w": 329,
+        "h": 524
+      },
+      {
+        "x": 841,
+        "y": 247,
+        "w": 330,
+        "h": 525
+      },
+      {
+        "x": 1219,
+        "y": 246,
+        "w": 326,
+        "h": 524
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "carryGuitar",
+    "source": "J-Rod/J-Rod walking with guitar.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 128,
+        "y": 79,
+        "w": 214,
+        "h": 351
+      },
+      {
+        "x": 509,
+        "y": 79,
+        "w": 216,
+        "h": 351
+      },
+      {
+        "x": 883,
+        "y": 79,
+        "w": 216,
+        "h": 351
+      },
+      {
+        "x": 1263,
+        "y": 79,
+        "w": 215,
+        "h": 351
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "carryTrashcan",
+    "source": "J-Rod/J-Rod walking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 74,
+        "y": 258,
+        "w": 331,
+        "h": 513
+      },
+      {
+        "x": 468,
+        "y": 258,
+        "w": 313,
+        "h": 512
+      },
+      {
+        "x": 838,
+        "y": 259,
+        "w": 318,
+        "h": 512
+      },
+      {
+        "x": 1230,
+        "y": 258,
+        "w": 300,
+        "h": 514
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "lift",
+    "source": "J-Rod/J-Rod lifting overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 100,
+        "y": 494,
+        "w": 302,
+        "h": 360
+      },
+      {
+        "x": 445,
+        "y": 404,
+        "w": 313,
+        "h": 451
+      },
+      {
+        "x": 845,
+        "y": 331,
+        "w": 281,
+        "h": 524
+      },
+      {
+        "x": 1228,
+        "y": 268,
+        "w": 266,
+        "h": 587
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "throw",
+    "source": "J-Rod/J-Rod throwing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 95,
+        "y": 473,
+        "w": 325,
+        "h": 385
+      },
+      {
+        "x": 480,
+        "y": 299,
+        "w": 286,
+        "h": 559
+      },
+      {
+        "x": 772,
+        "y": 429,
+        "w": 420,
+        "h": 429
+      },
+      {
+        "x": 1231,
+        "y": 398,
+        "w": 292,
+        "h": 459
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "lifted",
+    "source": "J-Rod/J-Rod getting lifted overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 100,
+        "y": 472,
+        "w": 277,
+        "h": 315
+      },
+      {
+        "x": 445,
+        "y": 345,
+        "w": 276,
+        "h": 385
+      },
+      {
+        "x": 771,
+        "y": 296,
+        "w": 345,
+        "h": 261
+      },
+      {
+        "x": 1125,
+        "y": 258,
+        "w": 420,
+        "h": 206
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "thrown",
+    "source": "J-Rod/J-Rod being thrown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 93,
+        "y": 353,
+        "w": 296,
+        "h": 458
+      },
+      {
+        "x": 454,
+        "y": 235,
+        "w": 314,
+        "h": 510
+      },
+      {
+        "x": 836,
+        "y": 311,
+        "w": 249,
+        "h": 436
+      },
+      {
+        "x": 1140,
+        "y": 645,
+        "w": 423,
+        "h": 165
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "hurt",
+    "source": "J-Rod/J-Rod dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 100,
+        "y": 304,
+        "w": 243,
+        "h": 551
+      },
+      {
+        "x": 489,
+        "y": 306,
+        "w": 243,
+        "h": 549
+      },
+      {
+        "x": 879,
+        "y": 313,
+        "w": 241,
+        "h": 542
+      },
+      {
+        "x": 1266,
+        "y": 296,
+        "w": 242,
+        "h": 559
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "fallBack",
+    "source": "J-Rod/J-Rod falling backwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 103,
+        "y": 309,
+        "w": 277,
+        "h": 489
+      },
+      {
+        "x": 401,
+        "y": 343,
+        "w": 389,
+        "h": 390
+      },
+      {
+        "x": 798,
+        "y": 513,
+        "w": 336,
+        "h": 287
+      },
+      {
+        "x": 1112,
+        "y": 703,
+        "w": 430,
+        "h": 124
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "fallFront",
+    "source": "J-Rod/J-Rod falling forward.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 65,
+        "y": 350,
+        "w": 310,
+        "h": 454
+      },
+      {
+        "x": 435,
+        "y": 453,
+        "w": 331,
+        "h": 336
+      },
+      {
+        "x": 822,
+        "y": 588,
+        "w": 348,
+        "h": 231
+      },
+      {
+        "x": 1175,
+        "y": 691,
+        "w": 374,
+        "h": 128
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "down",
+    "source": "J-Rod/J-Rod laying facedown and up.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 102,
+        "y": 282,
+        "w": 657,
+        "h": 227
+      },
+      {
+        "x": 853,
+        "y": 316,
+        "w": 679,
+        "h": 190
+      },
+      {
+        "x": 93,
+        "y": 645,
+        "w": 674,
+        "h": 207
+      },
+      {
+        "x": 855,
+        "y": 667,
+        "w": 663,
+        "h": 185
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "rise",
+    "source": "J-Rod/J-Rod getting up from facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 47,
+        "y": 642,
+        "w": 419,
+        "h": 99
+      },
+      {
+        "x": 496,
+        "y": 523,
+        "w": 291,
+        "h": 225
+      },
+      {
+        "x": 895,
+        "y": 437,
+        "w": 261,
+        "h": 306
+      },
+      {
+        "x": 1296,
+        "y": 280,
+        "w": 217,
+        "h": 463
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "taunt",
+    "source": "J-Rod/J-Rod taunting.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 77,
+        "y": 183,
+        "w": 302,
+        "h": 616
+      },
+      {
+        "x": 454,
+        "y": 185,
+        "w": 303,
+        "h": 612
+      },
+      {
+        "x": 819,
+        "y": 155,
+        "w": 347,
+        "h": 642
+      },
+      {
+        "x": 1195,
+        "y": 181,
+        "w": 341,
+        "h": 616
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "victory",
+    "source": "J-Rod/J-Rod victory stance.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 263,
+        "w": 342,
+        "h": 584
+      },
+      {
+        "x": 456,
+        "y": 263,
+        "w": 302,
+        "h": 584
+      },
+      {
+        "x": 874,
+        "y": 302,
+        "w": 234,
+        "h": 544
+      },
+      {
+        "x": 1172,
+        "y": 264,
+        "w": 345,
+        "h": 582
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "defeat",
+    "source": "J-Rod/J-Rod defeated pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 84,
+        "y": 354,
+        "w": 320,
+        "h": 491
+      },
+      {
+        "x": 488,
+        "y": 348,
+        "w": 286,
+        "h": 507
+      },
+      {
+        "x": 883,
+        "y": 354,
+        "w": 299,
+        "h": 478
+      },
+      {
+        "x": 1213,
+        "y": 354,
+        "w": 302,
+        "h": 480
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "exhausted",
+    "source": "J-Rod/J-Rod passed out.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1216,
+        "y": 314,
+        "w": 299,
+        "h": 525
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "jump",
+    "source": "J-Rod/J-Rod jumping.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 98,
+        "y": 507,
+        "w": 278,
+        "h": 357
+      },
+      {
+        "x": 432,
+        "y": 401,
+        "w": 313,
+        "h": 454
+      },
+      {
+        "x": 891,
+        "y": 298,
+        "w": 245,
+        "h": 379
+      },
+      {
+        "x": 1262,
+        "y": 506,
+        "w": 259,
+        "h": 357
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "pin",
+    "source": "J-Rod/J-Rod pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 78,
+        "y": 298,
+        "w": 307,
+        "h": 532
+      },
+      {
+        "x": 429,
+        "y": 443,
+        "w": 320,
+        "h": 386
+      },
+      {
+        "x": 785,
+        "y": 504,
+        "w": 332,
+        "h": 321
+      },
+      {
+        "x": 1157,
+        "y": 569,
+        "w": 385,
+        "h": 266
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "climb",
+    "source": "J-Rod/J-Rod climbing on top rope corner.jpg",
+    "detected": 4,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 499,
+        "y": 435,
+        "w": 207,
+        "h": 332
+      },
+      {
+        "x": 904,
+        "y": 351,
+        "w": 175,
+        "h": 330
+      },
+      {
+        "x": 1293,
+        "y": 291,
+        "w": 140,
+        "h": 299
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "entry",
+    "source": "J-Rod/J-Rod climbing on ropes.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1298,
+        "y": 292,
+        "w": 204,
+        "h": 483
+      }
+    ]
+  },
+  {
+    "fighter": "j-rod",
+    "animation": "dive",
+    "source": "J-Rod/J-Rod jumping off corner ropes.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 416,
+        "y": 304,
+        "w": 263,
+        "h": 288
+      },
+      {
+        "x": 725,
+        "y": 418,
+        "w": 411,
+        "h": 175
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "idle",
+    "source": "Matt Cross/Matt Cross standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1343,
+        "y": 281,
+        "w": 127,
+        "h": 584
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "run",
+    "source": "Matt Cross/MC running.png",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 260,
+        "w": 197,
+        "h": 259
+      },
+      {
+        "x": 239,
+        "y": 259,
+        "w": 178,
+        "h": 270
+      },
+      {
+        "x": 449,
+        "y": 260,
+        "w": 188,
+        "h": 269
+      },
+      {
+        "x": 653,
+        "y": 260,
+        "w": 196,
+        "h": 270
+      },
+      {
+        "x": 863,
+        "y": 260,
+        "w": 181,
+        "h": 273
+      },
+      {
+        "x": 1073,
+        "y": 258,
+        "w": 194,
+        "h": 273
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "chair",
+    "source": "Matt Cross/MC attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 267,
+        "w": 220,
+        "h": 523
+      },
+      {
+        "x": 281,
+        "y": 252,
+        "w": 215,
+        "h": 538
+      },
+      {
+        "x": 506,
+        "y": 451,
+        "w": 308,
+        "h": 339
+      },
+      {
+        "x": 759,
+        "y": 444,
+        "w": 288,
+        "h": 346
+      },
+      {
+        "x": 1048,
+        "y": 401,
+        "w": 209,
+        "h": 389
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "bat",
+    "source": "Matt Cross/MC attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 345,
+        "w": 268,
+        "h": 445
+      },
+      {
+        "x": 326,
+        "y": 245,
+        "w": 270,
+        "h": 545
+      },
+      {
+        "x": 606,
+        "y": 390,
+        "w": 415,
+        "h": 400
+      },
+      {
+        "x": 941,
+        "y": 390,
+        "w": 405,
+        "h": 401
+      },
+      {
+        "x": 1318,
+        "y": 387,
+        "w": 260,
+        "h": 404
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "guitar",
+    "source": "Matt Cross/MC attack with guitar.png",
+    "detected": 5,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 43,
+        "y": 350,
+        "w": 259,
+        "h": 402
+      },
+      {
+        "x": 345,
+        "y": 236,
+        "w": 270,
+        "h": 516
+      },
+      {
+        "x": 1320,
+        "y": 350,
+        "w": 253,
+        "h": 402
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "trashcan",
+    "source": "Matt Cross/MC attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 400,
+        "w": 277,
+        "h": 418
+      },
+      {
+        "x": 330,
+        "y": 400,
+        "w": 306,
+        "h": 418
+      },
+      {
+        "x": 649,
+        "y": 237,
+        "w": 274,
+        "h": 582
+      },
+      {
+        "x": 943,
+        "y": 407,
+        "w": 364,
+        "h": 412
+      },
+      {
+        "x": 1290,
+        "y": 400,
+        "w": 290,
+        "h": 419
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "carryChair",
+    "source": "Matt Cross/MC walking with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 67,
+        "y": 178,
+        "w": 202,
+        "h": 260
+      },
+      {
+        "x": 378,
+        "y": 177,
+        "w": 211,
+        "h": 261
+      },
+      {
+        "x": 695,
+        "y": 178,
+        "w": 208,
+        "h": 260
+      },
+      {
+        "x": 1013,
+        "y": 178,
+        "w": 213,
+        "h": 260
+      },
+      {
+        "x": 1334,
+        "y": 178,
+        "w": 201,
+        "h": 260
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "carryBat",
+    "source": "Matt Cross/MC walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 338,
+        "w": 235,
+        "h": 397
+      },
+      {
+        "x": 256,
+        "y": 338,
+        "w": 260,
+        "h": 398
+      },
+      {
+        "x": 525,
+        "y": 338,
+        "w": 245,
+        "h": 401
+      },
+      {
+        "x": 780,
+        "y": 338,
+        "w": 248,
+        "h": 401
+      },
+      {
+        "x": 1044,
+        "y": 338,
+        "w": 224,
+        "h": 401
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "carryGuitar",
+    "source": "Matt Cross/MC walking with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 354,
+        "w": 225,
+        "h": 451
+      },
+      {
+        "x": 283,
+        "y": 354,
+        "w": 234,
+        "h": 450
+      },
+      {
+        "x": 538,
+        "y": 354,
+        "w": 221,
+        "h": 449
+      },
+      {
+        "x": 790,
+        "y": 354,
+        "w": 223,
+        "h": 450
+      },
+      {
+        "x": 1049,
+        "y": 354,
+        "w": 210,
+        "h": 450
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "carryTrashcan",
+    "source": "Matt Cross/MC walking with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 352,
+        "w": 238,
+        "h": 426
+      },
+      {
+        "x": 266,
+        "y": 352,
+        "w": 246,
+        "h": 427
+      },
+      {
+        "x": 531,
+        "y": 352,
+        "w": 225,
+        "h": 427
+      },
+      {
+        "x": 757,
+        "y": 352,
+        "w": 253,
+        "h": 428
+      },
+      {
+        "x": 1027,
+        "y": 352,
+        "w": 227,
+        "h": 428
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "lift",
+    "source": "Matt Cross/MC lifting overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 423,
+        "w": 234,
+        "h": 355
+      },
+      {
+        "x": 281,
+        "y": 422,
+        "w": 228,
+        "h": 355
+      },
+      {
+        "x": 541,
+        "y": 358,
+        "w": 220,
+        "h": 419
+      },
+      {
+        "x": 803,
+        "y": 318,
+        "w": 214,
+        "h": 460
+      },
+      {
+        "x": 1058,
+        "y": 294,
+        "w": 203,
+        "h": 484
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "throw",
+    "source": "Matt Cross/MC throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 13,
+        "y": 442,
+        "w": 266,
+        "h": 352
+      },
+      {
+        "x": 277,
+        "y": 371,
+        "w": 242,
+        "h": 423
+      },
+      {
+        "x": 540,
+        "y": 277,
+        "w": 277,
+        "h": 476
+      },
+      {
+        "x": 741,
+        "y": 428,
+        "w": 290,
+        "h": 366
+      },
+      {
+        "x": 1026,
+        "y": 449,
+        "w": 233,
+        "h": 345
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "hurt",
+    "source": "Matt Cross/MC dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 72,
+        "y": 327,
+        "w": 263,
+        "h": 519
+      },
+      {
+        "x": 461,
+        "y": 327,
+        "w": 262,
+        "h": 519
+      },
+      {
+        "x": 869,
+        "y": 338,
+        "w": 262,
+        "h": 508
+      },
+      {
+        "x": 1268,
+        "y": 321,
+        "w": 261,
+        "h": 525
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "fallBack",
+    "source": "Matt Cross/MC falling backwards.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 358,
+        "w": 219,
+        "h": 374
+      },
+      {
+        "x": 263,
+        "y": 397,
+        "w": 329,
+        "h": 335
+      },
+      {
+        "x": 597,
+        "y": 515,
+        "w": 308,
+        "h": 195
+      },
+      {
+        "x": 936,
+        "y": 576,
+        "w": 336,
+        "h": 136
+      },
+      {
+        "x": 1276,
+        "y": 642,
+        "w": 307,
+        "h": 76
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "fallFront",
+    "source": "Matt Cross/MC falling forward.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 345,
+        "w": 185,
+        "h": 410
+      },
+      {
+        "x": 249,
+        "y": 388,
+        "w": 271,
+        "h": 369
+      },
+      {
+        "x": 525,
+        "y": 460,
+        "w": 297,
+        "h": 296
+      },
+      {
+        "x": 799,
+        "y": 602,
+        "w": 335,
+        "h": 161
+      },
+      {
+        "x": 1158,
+        "y": 666,
+        "w": 415,
+        "h": 98
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "down",
+    "source": "Matt Cross/MC laying facedown and faceup.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 59,
+        "y": 312,
+        "w": 511,
+        "h": 210
+      },
+      {
+        "x": 676,
+        "y": 397,
+        "w": 537,
+        "h": 125
+      },
+      {
+        "x": 88,
+        "y": 697,
+        "w": 504,
+        "h": 181
+      },
+      {
+        "x": 685,
+        "y": 731,
+        "w": 556,
+        "h": 152
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "rise",
+    "source": "Matt Cross/MC getting back up.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 679,
+        "w": 260,
+        "h": 68
+      },
+      {
+        "x": 295,
+        "y": 613,
+        "w": 207,
+        "h": 132
+      },
+      {
+        "x": 517,
+        "y": 576,
+        "w": 175,
+        "h": 172
+      },
+      {
+        "x": 720,
+        "y": 531,
+        "w": 159,
+        "h": 213
+      },
+      {
+        "x": 902,
+        "y": 490,
+        "w": 166,
+        "h": 254
+      },
+      {
+        "x": 1100,
+        "y": 431,
+        "w": 152,
+        "h": 313
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "taunt",
+    "source": "Matt Cross/MC victory stance.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 374,
+        "w": 209,
+        "h": 423
+      },
+      {
+        "x": 262,
+        "y": 378,
+        "w": 253,
+        "h": 419
+      },
+      {
+        "x": 535,
+        "y": 316,
+        "w": 210,
+        "h": 482
+      },
+      {
+        "x": 781,
+        "y": 380,
+        "w": 226,
+        "h": 417
+      },
+      {
+        "x": 1044,
+        "y": 374,
+        "w": 209,
+        "h": 423
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "victory",
+    "source": "Matt Cross/MC victory stance.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 374,
+        "w": 209,
+        "h": 423
+      },
+      {
+        "x": 262,
+        "y": 378,
+        "w": 253,
+        "h": 419
+      },
+      {
+        "x": 535,
+        "y": 316,
+        "w": 210,
+        "h": 482
+      },
+      {
+        "x": 781,
+        "y": 380,
+        "w": 226,
+        "h": 417
+      },
+      {
+        "x": 1044,
+        "y": 374,
+        "w": 209,
+        "h": 423
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "defeat",
+    "source": "Matt Cross/MC defeated.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 345,
+        "w": 340,
+        "h": 449
+      },
+      {
+        "x": 466,
+        "y": 353,
+        "w": 308,
+        "h": 452
+      },
+      {
+        "x": 879,
+        "y": 351,
+        "w": 283,
+        "h": 445
+      },
+      {
+        "x": 1253,
+        "y": 349,
+        "w": 285,
+        "h": 447
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "kneel",
+    "source": "Matt Cross/MC kneeling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 295,
+        "w": 238,
+        "h": 444
+      },
+      {
+        "x": 330,
+        "y": 401,
+        "w": 281,
+        "h": 335
+      },
+      {
+        "x": 662,
+        "y": 433,
+        "w": 253,
+        "h": 301
+      },
+      {
+        "x": 989,
+        "y": 491,
+        "w": 255,
+        "h": 243
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "jump",
+    "source": "Matt Cross/MC jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 53,
+        "y": 535,
+        "w": 243,
+        "h": 274
+      },
+      {
+        "x": 383,
+        "y": 426,
+        "w": 243,
+        "h": 333
+      },
+      {
+        "x": 683,
+        "y": 370,
+        "w": 224,
+        "h": 303
+      },
+      {
+        "x": 1022,
+        "y": 541,
+        "w": 213,
+        "h": 269
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "pin",
+    "source": "Matt Cross/MC pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 331,
+        "w": 282,
+        "h": 403
+      },
+      {
+        "x": 315,
+        "y": 396,
+        "w": 321,
+        "h": 336
+      },
+      {
+        "x": 633,
+        "y": 481,
+        "w": 301,
+        "h": 251
+      },
+      {
+        "x": 955,
+        "y": 548,
+        "w": 309,
+        "h": 190
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "grapple",
+    "source": "Matt Cross/MC grapple.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 373,
+        "w": 277,
+        "h": 372
+      },
+      {
+        "x": 334,
+        "y": 373,
+        "w": 268,
+        "h": 372
+      },
+      {
+        "x": 643,
+        "y": 373,
+        "w": 324,
+        "h": 372
+      },
+      {
+        "x": 994,
+        "y": 377,
+        "w": 260,
+        "h": 368
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "elbow",
+    "source": "Matt Cross/MC elbow attack.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 320,
+        "w": 337,
+        "h": 514
+      },
+      {
+        "x": 424,
+        "y": 320,
+        "w": 372,
+        "h": 514
+      },
+      {
+        "x": 800,
+        "y": 324,
+        "w": 402,
+        "h": 510
+      },
+      {
+        "x": 1228,
+        "y": 320,
+        "w": 336,
+        "h": 514
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "kick",
+    "source": "Matt Cross/MC kicking.png",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 44,
+        "y": 192,
+        "w": 192,
+        "h": 244
+      },
+      {
+        "x": 354,
+        "y": 192,
+        "w": 197,
+        "h": 244
+      },
+      {
+        "x": 619,
+        "y": 192,
+        "w": 351,
+        "h": 244
+      },
+      {
+        "x": 1040,
+        "y": 192,
+        "w": 190,
+        "h": 244
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "climb",
+    "source": "Matt Cross/MC climbing on top corner ropes.png",
+    "detected": 7,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 258,
+        "y": 477,
+        "w": 170,
+        "h": 343
+      },
+      {
+        "x": 482,
+        "y": 431,
+        "w": 178,
+        "h": 327
+      },
+      {
+        "x": 709,
+        "y": 393,
+        "w": 170,
+        "h": 308
+      },
+      {
+        "x": 950,
+        "y": 411,
+        "w": 158,
+        "h": 194
+      },
+      {
+        "x": 1177,
+        "y": 406,
+        "w": 164,
+        "h": 205
+      },
+      {
+        "x": 1404,
+        "y": 284,
+        "w": 149,
+        "h": 331
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "entry",
+    "source": "Matt Cross/MC climbing through ropes.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 32,
+        "y": 340,
+        "w": 272,
+        "h": 444
+      },
+      {
+        "x": 367,
+        "y": 340,
+        "w": 249,
+        "h": 444
+      },
+      {
+        "x": 656,
+        "y": 348,
+        "w": 279,
+        "h": 436
+      },
+      {
+        "x": 1003,
+        "y": 340,
+        "w": 246,
+        "h": 444
+      },
+      {
+        "x": 1329,
+        "y": 297,
+        "w": 222,
+        "h": 487
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "dive",
+    "source": "Matt Cross/MC jumping off corner ropes.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 449,
+        "y": 320,
+        "w": 258,
+        "h": 252
+      },
+      {
+        "x": 754,
+        "y": 445,
+        "w": 382,
+        "h": 121
+      }
+    ]
+  },
+  {
+    "fighter": "matt-cross",
+    "animation": "propGuitar",
+    "source": "Matt Cross/MC attack with guitar.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 204,
+        "y": 453,
+        "w": 98,
+        "h": 288
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "idle",
+    "source": "Vincenzo/Vincenzo standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1337,
+        "y": 280,
+        "w": 131,
+        "h": 582
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "run",
+    "source": "Vincenzo/Vinc running.png",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 242,
+        "w": 197,
+        "h": 247
+      },
+      {
+        "x": 237,
+        "y": 242,
+        "w": 189,
+        "h": 240
+      },
+      {
+        "x": 461,
+        "y": 242,
+        "w": 151,
+        "h": 249
+      },
+      {
+        "x": 649,
+        "y": 241,
+        "w": 178,
+        "h": 243
+      },
+      {
+        "x": 852,
+        "y": 239,
+        "w": 181,
+        "h": 253
+      },
+      {
+        "x": 1064,
+        "y": 241,
+        "w": 195,
+        "h": 249
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "chair",
+    "source": "Vincenzo/Vinc attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 358,
+        "w": 244,
+        "h": 461
+      },
+      {
+        "x": 269,
+        "y": 315,
+        "w": 228,
+        "h": 504
+      },
+      {
+        "x": 500,
+        "y": 456,
+        "w": 243,
+        "h": 363
+      },
+      {
+        "x": 737,
+        "y": 487,
+        "w": 324,
+        "h": 332
+      },
+      {
+        "x": 1045,
+        "y": 452,
+        "w": 211,
+        "h": 367
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "bat",
+    "source": "Vincenzo/Vinc attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 358,
+        "w": 281,
+        "h": 497
+      },
+      {
+        "x": 319,
+        "y": 245,
+        "w": 275,
+        "h": 609
+      },
+      {
+        "x": 596,
+        "y": 399,
+        "w": 381,
+        "h": 451
+      },
+      {
+        "x": 899,
+        "y": 401,
+        "w": 421,
+        "h": 455
+      },
+      {
+        "x": 1250,
+        "y": 396,
+        "w": 266,
+        "h": 460
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "guitar",
+    "source": "Vincenzo/Vinc attack with guitar.png",
+    "detected": 5,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 344,
+        "w": 261,
+        "h": 478
+      },
+      {
+        "x": 321,
+        "y": 234,
+        "w": 279,
+        "h": 586
+      },
+      {
+        "x": 1256,
+        "y": 344,
+        "w": 256,
+        "h": 479
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "trashcan",
+    "source": "Vincenzo/Vinc attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 408,
+        "w": 269,
+        "h": 457
+      },
+      {
+        "x": 304,
+        "y": 408,
+        "w": 308,
+        "h": 457
+      },
+      {
+        "x": 605,
+        "y": 246,
+        "w": 280,
+        "h": 619
+      },
+      {
+        "x": 893,
+        "y": 411,
+        "w": 366,
+        "h": 454
+      },
+      {
+        "x": 1240,
+        "y": 408,
+        "w": 280,
+        "h": 457
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "carryChair",
+    "source": "Vincenzo/Vinc walking with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 230,
+        "w": 200,
+        "h": 268
+      },
+      {
+        "x": 278,
+        "y": 230,
+        "w": 201,
+        "h": 268
+      },
+      {
+        "x": 533,
+        "y": 231,
+        "w": 205,
+        "h": 266
+      },
+      {
+        "x": 784,
+        "y": 230,
+        "w": 206,
+        "h": 268
+      },
+      {
+        "x": 1035,
+        "y": 231,
+        "w": 204,
+        "h": 267
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "carryBat",
+    "source": "Vincenzo/Vinc walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 372,
+        "w": 242,
+        "h": 425
+      },
+      {
+        "x": 289,
+        "y": 371,
+        "w": 229,
+        "h": 426
+      },
+      {
+        "x": 521,
+        "y": 371,
+        "w": 250,
+        "h": 428
+      },
+      {
+        "x": 770,
+        "y": 372,
+        "w": 253,
+        "h": 425
+      },
+      {
+        "x": 1024,
+        "y": 372,
+        "w": 244,
+        "h": 426
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "carryGuitar",
+    "source": "Vincenzo/Vinc walking with guitar.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 123,
+        "y": 78,
+        "w": 211,
+        "h": 353
+      },
+      {
+        "x": 507,
+        "y": 78,
+        "w": 211,
+        "h": 353
+      },
+      {
+        "x": 883,
+        "y": 78,
+        "w": 210,
+        "h": 353
+      },
+      {
+        "x": 1270,
+        "y": 78,
+        "w": 212,
+        "h": 353
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "carryTrashcan",
+    "source": "Vincenzo/Vinc walking with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 381,
+        "w": 225,
+        "h": 454
+      },
+      {
+        "x": 256,
+        "y": 385,
+        "w": 248,
+        "h": 450
+      },
+      {
+        "x": 549,
+        "y": 386,
+        "w": 198,
+        "h": 451
+      },
+      {
+        "x": 736,
+        "y": 387,
+        "w": 272,
+        "h": 449
+      },
+      {
+        "x": 1021,
+        "y": 386,
+        "w": 237,
+        "h": 450
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "lift",
+    "source": "Vincenzo/Vinc lifting overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 381,
+        "w": 230,
+        "h": 370
+      },
+      {
+        "x": 267,
+        "y": 470,
+        "w": 227,
+        "h": 282
+      },
+      {
+        "x": 519,
+        "y": 378,
+        "w": 232,
+        "h": 376
+      },
+      {
+        "x": 769,
+        "y": 332,
+        "w": 243,
+        "h": 422
+      },
+      {
+        "x": 1042,
+        "y": 272,
+        "w": 222,
+        "h": 483
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "throw",
+    "source": "Vincenzo/Vinc throwing (unique).png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 446,
+        "w": 240,
+        "h": 333
+      },
+      {
+        "x": 256,
+        "y": 414,
+        "w": 249,
+        "h": 365
+      },
+      {
+        "x": 532,
+        "y": 363,
+        "w": 192,
+        "h": 422
+      },
+      {
+        "x": 757,
+        "y": 458,
+        "w": 278,
+        "h": 326
+      },
+      {
+        "x": 1049,
+        "y": 444,
+        "w": 207,
+        "h": 342
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "hurt",
+    "source": "Vincenzo/Vinc dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 48,
+        "y": 325,
+        "w": 269,
+        "h": 570
+      },
+      {
+        "x": 439,
+        "y": 325,
+        "w": 270,
+        "h": 570
+      },
+      {
+        "x": 820,
+        "y": 341,
+        "w": 273,
+        "h": 554
+      },
+      {
+        "x": 1214,
+        "y": 325,
+        "w": 271,
+        "h": 570
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "fallBack",
+    "source": "Vincenzo/Vinc falling backwards.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 344,
+        "w": 258,
+        "h": 432
+      },
+      {
+        "x": 263,
+        "y": 375,
+        "w": 302,
+        "h": 393
+      },
+      {
+        "x": 587,
+        "y": 496,
+        "w": 343,
+        "h": 248
+      },
+      {
+        "x": 956,
+        "y": 566,
+        "w": 426,
+        "h": 152
+      },
+      {
+        "x": 998,
+        "y": 741,
+        "w": 507,
+        "h": 110
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "fallFront",
+    "source": "Vincenzo/Vinc falling forwards.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 339,
+        "w": 197,
+        "h": 451
+      },
+      {
+        "x": 258,
+        "y": 392,
+        "w": 271,
+        "h": 398
+      },
+      {
+        "x": 511,
+        "y": 459,
+        "w": 310,
+        "h": 329
+      },
+      {
+        "x": 749,
+        "y": 612,
+        "w": 338,
+        "h": 184
+      },
+      {
+        "x": 1096,
+        "y": 694,
+        "w": 423,
+        "h": 108
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "down",
+    "source": "Vincenzo/Vinc laying facedown and faceup.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 63,
+        "y": 361,
+        "w": 559,
+        "h": 137
+      },
+      {
+        "x": 701,
+        "y": 365,
+        "w": 515,
+        "h": 119
+      },
+      {
+        "x": 46,
+        "y": 692,
+        "w": 562,
+        "h": 169
+      },
+      {
+        "x": 667,
+        "y": 703,
+        "w": 563,
+        "h": 155
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "rise",
+    "source": "Vincenzo/Vinc getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 625,
+        "w": 241,
+        "h": 102
+      },
+      {
+        "x": 264,
+        "y": 559,
+        "w": 205,
+        "h": 157
+      },
+      {
+        "x": 481,
+        "y": 507,
+        "w": 190,
+        "h": 211
+      },
+      {
+        "x": 692,
+        "y": 448,
+        "w": 173,
+        "h": 263
+      },
+      {
+        "x": 887,
+        "y": 393,
+        "w": 166,
+        "h": 320
+      },
+      {
+        "x": 1074,
+        "y": 319,
+        "w": 179,
+        "h": 395
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "taunt",
+    "source": "Vincenzo/Vinc taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 372,
+        "w": 215,
+        "h": 470
+      },
+      {
+        "x": 260,
+        "y": 383,
+        "w": 232,
+        "h": 464
+      },
+      {
+        "x": 481,
+        "y": 364,
+        "w": 327,
+        "h": 483
+      },
+      {
+        "x": 821,
+        "y": 373,
+        "w": 199,
+        "h": 474
+      },
+      {
+        "x": 1047,
+        "y": 372,
+        "w": 215,
+        "h": 470
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "victory",
+    "source": "Vincenzo/Vinc taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 372,
+        "w": 215,
+        "h": 470
+      },
+      {
+        "x": 260,
+        "y": 383,
+        "w": 232,
+        "h": 464
+      },
+      {
+        "x": 481,
+        "y": 364,
+        "w": 327,
+        "h": 483
+      },
+      {
+        "x": 821,
+        "y": 373,
+        "w": 199,
+        "h": 474
+      },
+      {
+        "x": 1047,
+        "y": 372,
+        "w": 215,
+        "h": 470
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "defeat",
+    "source": "Vincenzo/Vinc defeated pose.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 38,
+        "y": 404,
+        "w": 303,
+        "h": 440
+      },
+      {
+        "x": 442,
+        "y": 404,
+        "w": 303,
+        "h": 445
+      },
+      {
+        "x": 824,
+        "y": 404,
+        "w": 285,
+        "h": 443
+      },
+      {
+        "x": 1206,
+        "y": 404,
+        "w": 285,
+        "h": 443
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "kneel",
+    "source": "Vincenzo/Vinc kneeling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 300,
+        "w": 233,
+        "h": 464
+      },
+      {
+        "x": 363,
+        "y": 356,
+        "w": 220,
+        "h": 407
+      },
+      {
+        "x": 654,
+        "y": 435,
+        "w": 263,
+        "h": 329
+      },
+      {
+        "x": 971,
+        "y": 488,
+        "w": 279,
+        "h": 278
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "jump",
+    "source": "Vincenzo/Vinc jumping.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 531,
+        "w": 224,
+        "h": 227
+      },
+      {
+        "x": 258,
+        "y": 447,
+        "w": 269,
+        "h": 302
+      },
+      {
+        "x": 530,
+        "y": 365,
+        "w": 246,
+        "h": 282
+      },
+      {
+        "x": 781,
+        "y": 441,
+        "w": 253,
+        "h": 308
+      },
+      {
+        "x": 1030,
+        "y": 539,
+        "w": 215,
+        "h": 221
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "pin",
+    "source": "Vincenzo/Vinc pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 329,
+        "w": 241,
+        "h": 437
+      },
+      {
+        "x": 332,
+        "y": 421,
+        "w": 267,
+        "h": 345
+      },
+      {
+        "x": 622,
+        "y": 503,
+        "w": 308,
+        "h": 274
+      },
+      {
+        "x": 950,
+        "y": 553,
+        "w": 309,
+        "h": 224
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "grapple",
+    "source": "Vincenzo/Vinc grappling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 308,
+        "w": 344,
+        "h": 437
+      },
+      {
+        "x": 349,
+        "y": 309,
+        "w": 280,
+        "h": 435
+      },
+      {
+        "x": 650,
+        "y": 310,
+        "w": 295,
+        "h": 430
+      },
+      {
+        "x": 989,
+        "y": 310,
+        "w": 272,
+        "h": 435
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "elbow",
+    "source": "Vincenzo/Vinc elbow attack.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 352,
+        "w": 327,
+        "h": 502
+      },
+      {
+        "x": 394,
+        "y": 355,
+        "w": 367,
+        "h": 497
+      },
+      {
+        "x": 774,
+        "y": 353,
+        "w": 382,
+        "h": 501
+      },
+      {
+        "x": 1194,
+        "y": 352,
+        "w": 323,
+        "h": 502
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "kick",
+    "source": "Vincenzo/Vinc kicking.png",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 61,
+        "y": 263,
+        "w": 197,
+        "h": 266
+      },
+      {
+        "x": 393,
+        "y": 258,
+        "w": 163,
+        "h": 271
+      },
+      {
+        "x": 659,
+        "y": 261,
+        "w": 292,
+        "h": 268
+      },
+      {
+        "x": 1021,
+        "y": 259,
+        "w": 196,
+        "h": 270
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "climb",
+    "source": "Vincenzo/Vinc climbing top rope corner.png",
+    "detected": 7,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 249,
+        "y": 540,
+        "w": 164,
+        "h": 355
+      },
+      {
+        "x": 464,
+        "y": 494,
+        "w": 172,
+        "h": 359
+      },
+      {
+        "x": 676,
+        "y": 440,
+        "w": 179,
+        "h": 329
+      },
+      {
+        "x": 896,
+        "y": 462,
+        "w": 173,
+        "h": 217
+      },
+      {
+        "x": 1121,
+        "y": 455,
+        "w": 169,
+        "h": 236
+      },
+      {
+        "x": 1335,
+        "y": 334,
+        "w": 167,
+        "h": 374
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "entry",
+    "source": "Vincenzo/Vinc climb through ropes.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 348,
+        "w": 275,
+        "h": 486
+      },
+      {
+        "x": 348,
+        "y": 348,
+        "w": 250,
+        "h": 487
+      },
+      {
+        "x": 630,
+        "y": 359,
+        "w": 274,
+        "h": 476
+      },
+      {
+        "x": 955,
+        "y": 350,
+        "w": 251,
+        "h": 486
+      },
+      {
+        "x": 1257,
+        "y": 316,
+        "w": 245,
+        "h": 520
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "dive",
+    "source": "Vincenzo/Vinc jumping off top ropes.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 448,
+        "y": 333,
+        "w": 283,
+        "h": 209
+      },
+      {
+        "x": 803,
+        "y": 373,
+        "w": 285,
+        "h": 138
+      }
+    ]
+  },
+  {
+    "fighter": "vincenzo",
+    "animation": "propGuitar",
+    "source": "Matt Cross/MC attack with guitar.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 204,
+        "y": 453,
+        "w": 98,
+        "h": 288
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "idle",
+    "source": "Caleb Konley/Caleb Konley standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1332,
+        "y": 279,
+        "w": 148,
+        "h": 585
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "run",
+    "source": "Caleb Konley/CK running.png",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 266,
+        "w": 211,
+        "h": 270
+      },
+      {
+        "x": 282,
+        "y": 266,
+        "w": 214,
+        "h": 269
+      },
+      {
+        "x": 514,
+        "y": 268,
+        "w": 169,
+        "h": 268
+      },
+      {
+        "x": 740,
+        "y": 269,
+        "w": 234,
+        "h": 263
+      },
+      {
+        "x": 990,
+        "y": 268,
+        "w": 217,
+        "h": 268
+      },
+      {
+        "x": 1230,
+        "y": 269,
+        "w": 169,
+        "h": 267
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "chair",
+    "source": "Caleb Konley/CK attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 271,
+        "w": 244,
+        "h": 546
+      },
+      {
+        "x": 305,
+        "y": 282,
+        "w": 244,
+        "h": 536
+      },
+      {
+        "x": 560,
+        "y": 469,
+        "w": 310,
+        "h": 349
+      },
+      {
+        "x": 834,
+        "y": 469,
+        "w": 365,
+        "h": 348
+      },
+      {
+        "x": 1193,
+        "y": 417,
+        "w": 213,
+        "h": 403
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "bat",
+    "source": "Caleb Konley/CK attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 356,
+        "w": 248,
+        "h": 427
+      },
+      {
+        "x": 289,
+        "y": 239,
+        "w": 249,
+        "h": 544
+      },
+      {
+        "x": 549,
+        "y": 365,
+        "w": 359,
+        "h": 417
+      },
+      {
+        "x": 857,
+        "y": 365,
+        "w": 371,
+        "h": 419
+      },
+      {
+        "x": 1178,
+        "y": 363,
+        "w": 249,
+        "h": 423
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "guitar",
+    "source": "Caleb Konley/CK attack with guitar.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 365,
+        "w": 260,
+        "h": 424
+      },
+      {
+        "x": 301,
+        "y": 217,
+        "w": 269,
+        "h": 592
+      },
+      {
+        "x": 1178,
+        "y": 362,
+        "w": 247,
+        "h": 427
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "trashcan",
+    "source": "Caleb Konley/CK attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 407,
+        "w": 253,
+        "h": 404
+      },
+      {
+        "x": 291,
+        "y": 365,
+        "w": 272,
+        "h": 446
+      },
+      {
+        "x": 570,
+        "y": 241,
+        "w": 253,
+        "h": 570
+      },
+      {
+        "x": 829,
+        "y": 427,
+        "w": 337,
+        "h": 384
+      },
+      {
+        "x": 1151,
+        "y": 427,
+        "w": 271,
+        "h": 384
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "carryChair",
+    "source": "Caleb Konley/CK walking with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 32,
+        "y": 179,
+        "w": 202,
+        "h": 277
+      },
+      {
+        "x": 291,
+        "y": 179,
+        "w": 198,
+        "h": 277
+      },
+      {
+        "x": 546,
+        "y": 179,
+        "w": 200,
+        "h": 277
+      },
+      {
+        "x": 798,
+        "y": 179,
+        "w": 199,
+        "h": 276
+      },
+      {
+        "x": 1056,
+        "y": 179,
+        "w": 193,
+        "h": 277
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "carryBat",
+    "source": "Caleb Konley/CK walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 307,
+        "w": 245,
+        "h": 467
+      },
+      {
+        "x": 258,
+        "y": 308,
+        "w": 258,
+        "h": 464
+      },
+      {
+        "x": 512,
+        "y": 308,
+        "w": 261,
+        "h": 463
+      },
+      {
+        "x": 769,
+        "y": 308,
+        "w": 263,
+        "h": 463
+      },
+      {
+        "x": 1046,
+        "y": 307,
+        "w": 222,
+        "h": 464
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "carryGuitar",
+    "source": "Caleb Konley/CK walking with guitar.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 71,
+        "y": 547,
+        "w": 225,
+        "h": 315
+      },
+      {
+        "x": 381,
+        "y": 547,
+        "w": 224,
+        "h": 315
+      },
+      {
+        "x": 700,
+        "y": 547,
+        "w": 215,
+        "h": 315
+      },
+      {
+        "x": 1004,
+        "y": 547,
+        "w": 224,
+        "h": 315
+      },
+      {
+        "x": 1326,
+        "y": 547,
+        "w": 218,
+        "h": 315
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "carryTrashcan",
+    "source": "Caleb Konley/CK walking with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 325,
+        "w": 286,
+        "h": 506
+      },
+      {
+        "x": 315,
+        "y": 325,
+        "w": 279,
+        "h": 506
+      },
+      {
+        "x": 594,
+        "y": 326,
+        "w": 264,
+        "h": 507
+      },
+      {
+        "x": 875,
+        "y": 326,
+        "w": 290,
+        "h": 505
+      },
+      {
+        "x": 1155,
+        "y": 326,
+        "w": 260,
+        "h": 505
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "lift",
+    "source": "Caleb Konley/CK lifting overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 373,
+        "w": 229,
+        "h": 424
+      },
+      {
+        "x": 262,
+        "y": 374,
+        "w": 238,
+        "h": 423
+      },
+      {
+        "x": 518,
+        "y": 340,
+        "w": 242,
+        "h": 457
+      },
+      {
+        "x": 776,
+        "y": 297,
+        "w": 241,
+        "h": 500
+      },
+      {
+        "x": 1036,
+        "y": 268,
+        "w": 232,
+        "h": 529
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "throw",
+    "source": "Caleb Konley/CK throwing wrestler.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 430,
+        "w": 317,
+        "h": 384
+      },
+      {
+        "x": 303,
+        "y": 400,
+        "w": 295,
+        "h": 414
+      },
+      {
+        "x": 583,
+        "y": 326,
+        "w": 264,
+        "h": 488
+      },
+      {
+        "x": 845,
+        "y": 419,
+        "w": 352,
+        "h": 392
+      },
+      {
+        "x": 1177,
+        "y": 400,
+        "w": 243,
+        "h": 414
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "hurt",
+    "source": "Caleb Konley/CK dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 320,
+        "w": 265,
+        "h": 569
+      },
+      {
+        "x": 398,
+        "y": 320,
+        "w": 267,
+        "h": 569
+      },
+      {
+        "x": 761,
+        "y": 345,
+        "w": 269,
+        "h": 544
+      },
+      {
+        "x": 1135,
+        "y": 323,
+        "w": 261,
+        "h": 566
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "fallBack",
+    "source": "Caleb Konley/CK falling backwards.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 349,
+        "w": 262,
+        "h": 432
+      },
+      {
+        "x": 294,
+        "y": 436,
+        "w": 302,
+        "h": 347
+      },
+      {
+        "x": 576,
+        "y": 588,
+        "w": 329,
+        "h": 194
+      },
+      {
+        "x": 882,
+        "y": 680,
+        "w": 375,
+        "h": 107
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "fallFront",
+    "source": "Caleb Konley/CK falling forwards.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 319,
+        "w": 229,
+        "h": 487
+      },
+      {
+        "x": 321,
+        "y": 385,
+        "w": 311,
+        "h": 414
+      },
+      {
+        "x": 576,
+        "y": 593,
+        "w": 381,
+        "h": 206
+      },
+      {
+        "x": 970,
+        "y": 689,
+        "w": 440,
+        "h": 108
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "down",
+    "source": "Caleb Konley/CK laying facedown and faceup.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 297,
+        "w": 525,
+        "h": 228
+      },
+      {
+        "x": 645,
+        "y": 388,
+        "w": 592,
+        "h": 128
+      },
+      {
+        "x": 44,
+        "y": 690,
+        "w": 563,
+        "h": 187
+      },
+      {
+        "x": 638,
+        "y": 717,
+        "w": 608,
+        "h": 161
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "rise",
+    "source": "Caleb Konley/CK getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 680,
+        "w": 269,
+        "h": 82
+      },
+      {
+        "x": 296,
+        "y": 616,
+        "w": 209,
+        "h": 149
+      },
+      {
+        "x": 512,
+        "y": 563,
+        "w": 179,
+        "h": 202
+      },
+      {
+        "x": 710,
+        "y": 519,
+        "w": 169,
+        "h": 241
+      },
+      {
+        "x": 894,
+        "y": 463,
+        "w": 175,
+        "h": 300
+      },
+      {
+        "x": 1096,
+        "y": 416,
+        "w": 162,
+        "h": 348
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "taunt",
+    "source": "Caleb Konley/CK victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 381,
+        "w": 231,
+        "h": 471
+      },
+      {
+        "x": 313,
+        "y": 385,
+        "w": 243,
+        "h": 466
+      },
+      {
+        "x": 591,
+        "y": 342,
+        "w": 257,
+        "h": 509
+      },
+      {
+        "x": 874,
+        "y": 386,
+        "w": 253,
+        "h": 465
+      },
+      {
+        "x": 1167,
+        "y": 381,
+        "w": 231,
+        "h": 470
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "victory",
+    "source": "Caleb Konley/CK victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 381,
+        "w": 231,
+        "h": 471
+      },
+      {
+        "x": 313,
+        "y": 385,
+        "w": 243,
+        "h": 466
+      },
+      {
+        "x": 591,
+        "y": 342,
+        "w": 257,
+        "h": 509
+      },
+      {
+        "x": 874,
+        "y": 386,
+        "w": 253,
+        "h": 465
+      },
+      {
+        "x": 1167,
+        "y": 381,
+        "w": 231,
+        "h": 470
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "defeat",
+    "source": "Caleb Konley/CK kneeling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 32,
+        "y": 272,
+        "w": 240,
+        "h": 523
+      },
+      {
+        "x": 338,
+        "y": 414,
+        "w": 275,
+        "h": 378
+      },
+      {
+        "x": 675,
+        "y": 444,
+        "w": 246,
+        "h": 348
+      },
+      {
+        "x": 988,
+        "y": 534,
+        "w": 256,
+        "h": 259
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "kneel",
+    "source": "Caleb Konley/Calabe kneeling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 47,
+        "y": 242,
+        "w": 269,
+        "h": 550
+      },
+      {
+        "x": 397,
+        "y": 311,
+        "w": 279,
+        "h": 479
+      },
+      {
+        "x": 749,
+        "y": 408,
+        "w": 306,
+        "h": 382
+      },
+      {
+        "x": 1132,
+        "y": 472,
+        "w": 271,
+        "h": 319
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "jump",
+    "source": "Caleb Konley/CK jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 530,
+        "w": 262,
+        "h": 311
+      },
+      {
+        "x": 377,
+        "y": 397,
+        "w": 229,
+        "h": 324
+      },
+      {
+        "x": 675,
+        "y": 341,
+        "w": 238,
+        "h": 331
+      },
+      {
+        "x": 972,
+        "y": 538,
+        "w": 268,
+        "h": 303
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "pin",
+    "source": "Caleb Konley/CK pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 345,
+        "w": 271,
+        "h": 463
+      },
+      {
+        "x": 393,
+        "y": 449,
+        "w": 280,
+        "h": 359
+      },
+      {
+        "x": 731,
+        "y": 550,
+        "w": 324,
+        "h": 260
+      },
+      {
+        "x": 1087,
+        "y": 582,
+        "w": 333,
+        "h": 228
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "grapple",
+    "source": "Caleb Konley/CK grappling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 299,
+        "w": 325,
+        "h": 502
+      },
+      {
+        "x": 332,
+        "y": 299,
+        "w": 298,
+        "h": 502
+      },
+      {
+        "x": 643,
+        "y": 303,
+        "w": 353,
+        "h": 498
+      },
+      {
+        "x": 989,
+        "y": 308,
+        "w": 279,
+        "h": 493
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "elbow",
+    "source": "Caleb Konley/CK elbow attack.png",
+    "detected": 4,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 50,
+        "y": 307,
+        "w": 382,
+        "h": 534
+      },
+      {
+        "x": 514,
+        "y": 310,
+        "w": 385,
+        "h": 531
+      },
+      {
+        "x": 1030,
+        "y": 307,
+        "w": 364,
+        "h": 534
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "kick",
+    "source": "Caleb Konley/CK kicking.png",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 255,
+        "w": 197,
+        "h": 271
+      },
+      {
+        "x": 374,
+        "y": 255,
+        "w": 156,
+        "h": 271
+      },
+      {
+        "x": 657,
+        "y": 255,
+        "w": 333,
+        "h": 271
+      },
+      {
+        "x": 1046,
+        "y": 253,
+        "w": 188,
+        "h": 273
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "climb",
+    "source": "Caleb Konley/CK climb on top rope corner.png",
+    "detected": 4,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 432,
+        "y": 442,
+        "w": 217,
+        "h": 376
+      },
+      {
+        "x": 796,
+        "y": 392,
+        "w": 200,
+        "h": 276
+      },
+      {
+        "x": 1189,
+        "y": 285,
+        "w": 144,
+        "h": 394
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "entry",
+    "source": "Caleb Konley/CK climb through ropes.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 397,
+        "w": 213,
+        "h": 464
+      },
+      {
+        "x": 412,
+        "y": 380,
+        "w": 234,
+        "h": 447
+      },
+      {
+        "x": 786,
+        "y": 369,
+        "w": 249,
+        "h": 419
+      },
+      {
+        "x": 1188,
+        "y": 316,
+        "w": 194,
+        "h": 485
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "dive",
+    "source": "Caleb Konley/CK jumping off corner ropes.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 344,
+        "y": 281,
+        "w": 257,
+        "h": 263
+      },
+      {
+        "x": 632,
+        "y": 380,
+        "w": 385,
+        "h": 185
+      }
+    ]
+  },
+  {
+    "fighter": "caleb-konley",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "idle",
+    "source": "Sally Boy/Sally Boy standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1348,
+        "y": 279,
+        "w": 121,
+        "h": 586
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "run",
+    "source": "Sally Boy/SB running.png",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 269,
+        "w": 185,
+        "h": 254
+      },
+      {
+        "x": 243,
+        "y": 267,
+        "w": 190,
+        "h": 255
+      },
+      {
+        "x": 441,
+        "y": 273,
+        "w": 159,
+        "h": 253
+      },
+      {
+        "x": 649,
+        "y": 273,
+        "w": 217,
+        "h": 242
+      },
+      {
+        "x": 881,
+        "y": 270,
+        "w": 199,
+        "h": 253
+      },
+      {
+        "x": 1095,
+        "y": 270,
+        "w": 160,
+        "h": 255
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "chair",
+    "source": "Sally Boy/SB attacking with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 346,
+        "w": 219,
+        "h": 452
+      },
+      {
+        "x": 269,
+        "y": 348,
+        "w": 220,
+        "h": 450
+      },
+      {
+        "x": 505,
+        "y": 500,
+        "w": 264,
+        "h": 297
+      },
+      {
+        "x": 751,
+        "y": 499,
+        "w": 307,
+        "h": 297
+      },
+      {
+        "x": 1058,
+        "y": 467,
+        "w": 198,
+        "h": 333
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "bat",
+    "source": "Sally Boy/SB Attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 352,
+        "w": 264,
+        "h": 448
+      },
+      {
+        "x": 321,
+        "y": 269,
+        "w": 263,
+        "h": 532
+      },
+      {
+        "x": 604,
+        "y": 386,
+        "w": 384,
+        "h": 413
+      },
+      {
+        "x": 914,
+        "y": 384,
+        "w": 386,
+        "h": 415
+      },
+      {
+        "x": 1258,
+        "y": 381,
+        "w": 257,
+        "h": 420
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "guitar",
+    "source": "Sally Boy/SB attacking with guitar.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 29,
+        "y": 350,
+        "w": 272,
+        "h": 490
+      },
+      {
+        "x": 319,
+        "y": 239,
+        "w": 281,
+        "h": 576
+      },
+      {
+        "x": 1255,
+        "y": 350,
+        "w": 268,
+        "h": 490
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "trashcan",
+    "source": "Sally Boy/SB attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 422,
+        "w": 283,
+        "h": 422
+      },
+      {
+        "x": 319,
+        "y": 396,
+        "w": 280,
+        "h": 448
+      },
+      {
+        "x": 608,
+        "y": 246,
+        "w": 273,
+        "h": 598
+      },
+      {
+        "x": 893,
+        "y": 429,
+        "w": 347,
+        "h": 415
+      },
+      {
+        "x": 1233,
+        "y": 434,
+        "w": 289,
+        "h": 410
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "carryChair",
+    "source": "Sally Boy/SB walking with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 63,
+        "y": 172,
+        "w": 214,
+        "h": 273
+      },
+      {
+        "x": 380,
+        "y": 172,
+        "w": 215,
+        "h": 273
+      },
+      {
+        "x": 700,
+        "y": 171,
+        "w": 216,
+        "h": 274
+      },
+      {
+        "x": 1017,
+        "y": 172,
+        "w": 212,
+        "h": 272
+      },
+      {
+        "x": 1332,
+        "y": 171,
+        "w": 209,
+        "h": 273
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "carryBat",
+    "source": "Sally Boy/SB walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 309,
+        "w": 241,
+        "h": 463
+      },
+      {
+        "x": 264,
+        "y": 308,
+        "w": 249,
+        "h": 463
+      },
+      {
+        "x": 515,
+        "y": 308,
+        "w": 257,
+        "h": 463
+      },
+      {
+        "x": 769,
+        "y": 308,
+        "w": 260,
+        "h": 463
+      },
+      {
+        "x": 1045,
+        "y": 307,
+        "w": 228,
+        "h": 466
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "carryGuitar",
+    "source": "Sally Boy/SB walking with guitar.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 124,
+        "y": 78,
+        "w": 211,
+        "h": 353
+      },
+      {
+        "x": 508,
+        "y": 78,
+        "w": 210,
+        "h": 353
+      },
+      {
+        "x": 884,
+        "y": 78,
+        "w": 209,
+        "h": 353
+      },
+      {
+        "x": 1269,
+        "y": 78,
+        "w": 211,
+        "h": 353
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "carryTrashcan",
+    "source": "Sally Boy/SB walking with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 358,
+        "w": 262,
+        "h": 458
+      },
+      {
+        "x": 271,
+        "y": 358,
+        "w": 246,
+        "h": 458
+      },
+      {
+        "x": 520,
+        "y": 358,
+        "w": 238,
+        "h": 458
+      },
+      {
+        "x": 778,
+        "y": 358,
+        "w": 264,
+        "h": 458
+      },
+      {
+        "x": 1037,
+        "y": 358,
+        "w": 233,
+        "h": 458
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "lift",
+    "source": "Sally Boy/SB lifting up overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 6,
+        "y": 369,
+        "w": 231,
+        "h": 427
+      },
+      {
+        "x": 264,
+        "y": 369,
+        "w": 236,
+        "h": 427
+      },
+      {
+        "x": 522,
+        "y": 335,
+        "w": 238,
+        "h": 461
+      },
+      {
+        "x": 779,
+        "y": 296,
+        "w": 236,
+        "h": 500
+      },
+      {
+        "x": 1039,
+        "y": 274,
+        "w": 234,
+        "h": 522
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "throw",
+    "source": "Sally Boy/SB grappling throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 5,
+        "y": 445,
+        "w": 273,
+        "h": 336
+      },
+      {
+        "x": 267,
+        "y": 407,
+        "w": 242,
+        "h": 374
+      },
+      {
+        "x": 515,
+        "y": 332,
+        "w": 223,
+        "h": 449
+      },
+      {
+        "x": 720,
+        "y": 420,
+        "w": 338,
+        "h": 358
+      },
+      {
+        "x": 1041,
+        "y": 405,
+        "w": 232,
+        "h": 378
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "hurt",
+    "source": "Sally Boy/SB dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 60,
+        "y": 326,
+        "w": 252,
+        "h": 569
+      },
+      {
+        "x": 442,
+        "y": 329,
+        "w": 249,
+        "h": 566
+      },
+      {
+        "x": 836,
+        "y": 349,
+        "w": 252,
+        "h": 546
+      },
+      {
+        "x": 1228,
+        "y": 327,
+        "w": 251,
+        "h": 568
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "fallBack",
+    "source": "Sally Boy/SB falling backwards.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 385,
+        "w": 239,
+        "h": 449
+      },
+      {
+        "x": 270,
+        "y": 433,
+        "w": 303,
+        "h": 401
+      },
+      {
+        "x": 560,
+        "y": 594,
+        "w": 310,
+        "h": 229
+      },
+      {
+        "x": 873,
+        "y": 685,
+        "w": 330,
+        "h": 146
+      },
+      {
+        "x": 1165,
+        "y": 735,
+        "w": 341,
+        "h": 98
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "fallFront",
+    "source": "Sally Boy/SB falling forward.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 44,
+        "y": 361,
+        "w": 205,
+        "h": 474
+      },
+      {
+        "x": 280,
+        "y": 404,
+        "w": 223,
+        "h": 430
+      },
+      {
+        "x": 512,
+        "y": 464,
+        "w": 303,
+        "h": 370
+      },
+      {
+        "x": 738,
+        "y": 644,
+        "w": 374,
+        "h": 191
+      },
+      {
+        "x": 1107,
+        "y": 732,
+        "w": 405,
+        "h": 106
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "down",
+    "source": "Sally Boy/SB laying facedown and faceup.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 292,
+        "w": 523,
+        "h": 232
+      },
+      {
+        "x": 649,
+        "y": 393,
+        "w": 583,
+        "h": 123
+      },
+      {
+        "x": 65,
+        "y": 687,
+        "w": 542,
+        "h": 190
+      },
+      {
+        "x": 662,
+        "y": 714,
+        "w": 587,
+        "h": 163
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "rise",
+    "source": "Sally Boy/SB getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 679,
+        "w": 269,
+        "h": 84
+      },
+      {
+        "x": 298,
+        "y": 617,
+        "w": 210,
+        "h": 150
+      },
+      {
+        "x": 512,
+        "y": 570,
+        "w": 181,
+        "h": 197
+      },
+      {
+        "x": 711,
+        "y": 522,
+        "w": 168,
+        "h": 239
+      },
+      {
+        "x": 895,
+        "y": 468,
+        "w": 175,
+        "h": 297
+      },
+      {
+        "x": 1097,
+        "y": 419,
+        "w": 161,
+        "h": 348
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "taunt",
+    "source": "Sally Boy/SB taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 377,
+        "w": 207,
+        "h": 458
+      },
+      {
+        "x": 272,
+        "y": 387,
+        "w": 220,
+        "h": 449
+      },
+      {
+        "x": 520,
+        "y": 340,
+        "w": 240,
+        "h": 495
+      },
+      {
+        "x": 778,
+        "y": 384,
+        "w": 233,
+        "h": 452
+      },
+      {
+        "x": 1043,
+        "y": 377,
+        "w": 206,
+        "h": 458
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "victory",
+    "source": "Sally Boy/SB taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 377,
+        "w": 207,
+        "h": 458
+      },
+      {
+        "x": 272,
+        "y": 387,
+        "w": 220,
+        "h": 449
+      },
+      {
+        "x": 520,
+        "y": 340,
+        "w": 240,
+        "h": 495
+      },
+      {
+        "x": 778,
+        "y": 384,
+        "w": 233,
+        "h": 452
+      },
+      {
+        "x": 1043,
+        "y": 377,
+        "w": 206,
+        "h": 458
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "kneel",
+    "source": "Sally Boy/SB kneeling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 67,
+        "y": 293,
+        "w": 243,
+        "h": 520
+      },
+      {
+        "x": 428,
+        "y": 409,
+        "w": 287,
+        "h": 401
+      },
+      {
+        "x": 812,
+        "y": 458,
+        "w": 279,
+        "h": 352
+      },
+      {
+        "x": 1225,
+        "y": 530,
+        "w": 275,
+        "h": 280
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "jump",
+    "source": "Sally Boy/SB jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 531,
+        "w": 262,
+        "h": 310
+      },
+      {
+        "x": 379,
+        "y": 399,
+        "w": 225,
+        "h": 328
+      },
+      {
+        "x": 673,
+        "y": 336,
+        "w": 239,
+        "h": 339
+      },
+      {
+        "x": 955,
+        "y": 535,
+        "w": 297,
+        "h": 307
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "pin",
+    "source": "Sally Boy/SB pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 376,
+        "w": 261,
+        "h": 419
+      },
+      {
+        "x": 358,
+        "y": 469,
+        "w": 223,
+        "h": 327
+      },
+      {
+        "x": 652,
+        "y": 526,
+        "w": 275,
+        "h": 270
+      },
+      {
+        "x": 961,
+        "y": 560,
+        "w": 308,
+        "h": 236
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "grapple",
+    "source": "Sally Boy/SB grappling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 3,
+        "y": 304,
+        "w": 333,
+        "h": 497
+      },
+      {
+        "x": 333,
+        "y": 306,
+        "w": 293,
+        "h": 495
+      },
+      {
+        "x": 644,
+        "y": 311,
+        "w": 351,
+        "h": 491
+      },
+      {
+        "x": 991,
+        "y": 320,
+        "w": 287,
+        "h": 482
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "elbow",
+    "source": "Sally Boy/SB elbow attack.png",
+    "detected": 5,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 332,
+        "w": 327,
+        "h": 538
+      },
+      {
+        "x": 433,
+        "y": 336,
+        "w": 325,
+        "h": 534
+      },
+      {
+        "x": 795,
+        "y": 340,
+        "w": 343,
+        "h": 530
+      },
+      {
+        "x": 1198,
+        "y": 333,
+        "w": 321,
+        "h": 537
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "kick",
+    "source": "Sally Boy/SB kicking.png",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 43,
+        "y": 255,
+        "w": 197,
+        "h": 270
+      },
+      {
+        "x": 377,
+        "y": 255,
+        "w": 157,
+        "h": 270
+      },
+      {
+        "x": 658,
+        "y": 262,
+        "w": 325,
+        "h": 263
+      },
+      {
+        "x": 1045,
+        "y": 255,
+        "w": 189,
+        "h": 271
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "climb",
+    "source": "Sally Boy/SB climbing on top ropes.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 260,
+        "y": 538,
+        "w": 156,
+        "h": 334
+      },
+      {
+        "x": 481,
+        "y": 472,
+        "w": 162,
+        "h": 341
+      },
+      {
+        "x": 681,
+        "y": 422,
+        "w": 172,
+        "h": 308
+      },
+      {
+        "x": 906,
+        "y": 442,
+        "w": 154,
+        "h": 201
+      },
+      {
+        "x": 1130,
+        "y": 433,
+        "w": 143,
+        "h": 209
+      },
+      {
+        "x": 1337,
+        "y": 320,
+        "w": 153,
+        "h": 331
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "entry",
+    "source": "Sally Boy/SB climb through rope.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 363,
+        "w": 238,
+        "h": 446
+      },
+      {
+        "x": 356,
+        "y": 367,
+        "w": 236,
+        "h": 447
+      },
+      {
+        "x": 665,
+        "y": 373,
+        "w": 234,
+        "h": 444
+      },
+      {
+        "x": 977,
+        "y": 369,
+        "w": 231,
+        "h": 459
+      },
+      {
+        "x": 1282,
+        "y": 345,
+        "w": 227,
+        "h": 492
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "dive",
+    "source": "Sally Boy/SB jumping off top corner ropes.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 437,
+        "y": 295,
+        "w": 284,
+        "h": 279
+      },
+      {
+        "x": 784,
+        "y": 407,
+        "w": 416,
+        "h": 200
+      }
+    ]
+  },
+  {
+    "fighter": "sally-boy",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "idle",
+    "source": "Big Vito/Big Vito standing.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1332,
+        "y": 294,
+        "w": 135,
+        "h": 561
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "walk",
+    "source": "Big Vito/Big Vito walking.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 144,
+        "y": 210,
+        "w": 189,
+        "h": 315
+      },
+      {
+        "x": 520,
+        "y": 210,
+        "w": 189,
+        "h": 315
+      },
+      {
+        "x": 891,
+        "y": 210,
+        "w": 190,
+        "h": 315
+      },
+      {
+        "x": 1271,
+        "y": 210,
+        "w": 191,
+        "h": 314
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "run",
+    "source": "Big Vito/Big Vito running.jpg",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 70,
+        "y": 248,
+        "w": 212,
+        "h": 261
+      },
+      {
+        "x": 324,
+        "y": 247,
+        "w": 218,
+        "h": 261
+      },
+      {
+        "x": 580,
+        "y": 240,
+        "w": 216,
+        "h": 268
+      },
+      {
+        "x": 832,
+        "y": 239,
+        "w": 218,
+        "h": 268
+      },
+      {
+        "x": 1070,
+        "y": 238,
+        "w": 215,
+        "h": 271
+      },
+      {
+        "x": 1325,
+        "y": 238,
+        "w": 215,
+        "h": 270
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "chair",
+    "source": "Big Vito/Big Vito attacking with chair.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 249,
+        "w": 335,
+        "h": 555
+      },
+      {
+        "x": 454,
+        "y": 206,
+        "w": 278,
+        "h": 598
+      },
+      {
+        "x": 811,
+        "y": 396,
+        "w": 412,
+        "h": 408
+      },
+      {
+        "x": 1205,
+        "y": 371,
+        "w": 341,
+        "h": 433
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "bat",
+    "source": "Big Vito/Big Vito attacking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 68,
+        "y": 318,
+        "w": 337,
+        "h": 527
+      },
+      {
+        "x": 436,
+        "y": 244,
+        "w": 303,
+        "h": 596
+      },
+      {
+        "x": 830,
+        "y": 327,
+        "w": 448,
+        "h": 513
+      },
+      {
+        "x": 1226,
+        "y": 348,
+        "w": 321,
+        "h": 491
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "guitar",
+    "source": "Big Vito/Big Vito attacking with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 119,
+        "y": 259,
+        "w": 299,
+        "h": 549
+      },
+      {
+        "x": 451,
+        "y": 242,
+        "w": 339,
+        "h": 566
+      },
+      {
+        "x": 119,
+        "y": 259,
+        "w": 299,
+        "h": 549
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "trashcan",
+    "source": "Big Vito/Big Vito attacking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 65,
+        "y": 334,
+        "w": 322,
+        "h": 521
+      },
+      {
+        "x": 429,
+        "y": 338,
+        "w": 349,
+        "h": 517
+      },
+      {
+        "x": 787,
+        "y": 212,
+        "w": 311,
+        "h": 643
+      },
+      {
+        "x": 1130,
+        "y": 382,
+        "w": 433,
+        "h": 473
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "carryChair",
+    "source": "Big Vito/Big Vito walking with chair.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 122,
+        "y": 209,
+        "w": 171,
+        "h": 271
+      },
+      {
+        "x": 524,
+        "y": 209,
+        "w": 169,
+        "h": 271
+      },
+      {
+        "x": 922,
+        "y": 209,
+        "w": 168,
+        "h": 271
+      },
+      {
+        "x": 1318,
+        "y": 209,
+        "w": 172,
+        "h": 271
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "carryBat",
+    "source": "Big Vito/Big Vito walking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 77,
+        "y": 247,
+        "w": 334,
+        "h": 525
+      },
+      {
+        "x": 459,
+        "y": 247,
+        "w": 329,
+        "h": 523
+      },
+      {
+        "x": 842,
+        "y": 247,
+        "w": 334,
+        "h": 525
+      },
+      {
+        "x": 1225,
+        "y": 247,
+        "w": 334,
+        "h": 525
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "carryGuitar",
+    "source": "Big Vito/Big Vito walking with guitar.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 122,
+        "y": 80,
+        "w": 211,
+        "h": 351
+      },
+      {
+        "x": 507,
+        "y": 79,
+        "w": 210,
+        "h": 352
+      },
+      {
+        "x": 885,
+        "y": 80,
+        "w": 210,
+        "h": 351
+      },
+      {
+        "x": 1272,
+        "y": 79,
+        "w": 211,
+        "h": 352
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "carryTrashcan",
+    "source": "Big Vito/Big Vito walking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 68,
+        "y": 252,
+        "w": 335,
+        "h": 516
+      },
+      {
+        "x": 450,
+        "y": 255,
+        "w": 335,
+        "h": 514
+      },
+      {
+        "x": 834,
+        "y": 255,
+        "w": 327,
+        "h": 517
+      },
+      {
+        "x": 1212,
+        "y": 255,
+        "w": 324,
+        "h": 516
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "lift",
+    "source": "Big Vito/Big Vito lifting overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 81,
+        "y": 480,
+        "w": 334,
+        "h": 378
+      },
+      {
+        "x": 456,
+        "y": 390,
+        "w": 338,
+        "h": 468
+      },
+      {
+        "x": 866,
+        "y": 340,
+        "w": 284,
+        "h": 518
+      },
+      {
+        "x": 1262,
+        "y": 302,
+        "w": 252,
+        "h": 556
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "throw",
+    "source": "Big Vito/Big Vito throwing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 473,
+        "w": 337,
+        "h": 387
+      },
+      {
+        "x": 477,
+        "y": 299,
+        "w": 279,
+        "h": 560
+      },
+      {
+        "x": 817,
+        "y": 416,
+        "w": 378,
+        "h": 443
+      },
+      {
+        "x": 1232,
+        "y": 404,
+        "w": 302,
+        "h": 455
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "lifted",
+    "source": "Big Vito/Big Vito being lifted overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 81,
+        "y": 457,
+        "w": 283,
+        "h": 328
+      },
+      {
+        "x": 406,
+        "y": 321,
+        "w": 280,
+        "h": 392
+      },
+      {
+        "x": 716,
+        "y": 300,
+        "w": 381,
+        "h": 217
+      },
+      {
+        "x": 1131,
+        "y": 267,
+        "w": 409,
+        "h": 211
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "thrown",
+    "source": "Big Vito/Big Vito being thrown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 87,
+        "y": 352,
+        "w": 298,
+        "h": 461
+      },
+      {
+        "x": 448,
+        "y": 236,
+        "w": 323,
+        "h": 513
+      },
+      {
+        "x": 835,
+        "y": 314,
+        "w": 255,
+        "h": 388
+      },
+      {
+        "x": 1143,
+        "y": 646,
+        "w": 406,
+        "h": 166
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "hurt",
+    "source": "Big Vito/Big Vito dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 70,
+        "y": 302,
+        "w": 299,
+        "h": 556
+      },
+      {
+        "x": 460,
+        "y": 303,
+        "w": 295,
+        "h": 555
+      },
+      {
+        "x": 850,
+        "y": 312,
+        "w": 295,
+        "h": 547
+      },
+      {
+        "x": 1238,
+        "y": 293,
+        "w": 295,
+        "h": 565
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "fallBack",
+    "source": "Big Vito/Big Vito falling backwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 103,
+        "y": 309,
+        "w": 273,
+        "h": 492
+      },
+      {
+        "x": 402,
+        "y": 335,
+        "w": 388,
+        "h": 401
+      },
+      {
+        "x": 798,
+        "y": 501,
+        "w": 338,
+        "h": 302
+      },
+      {
+        "x": 1119,
+        "y": 709,
+        "w": 432,
+        "h": 122
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "fallFront",
+    "source": "Big Vito/Big Vito falling farwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 57,
+        "y": 325,
+        "w": 319,
+        "h": 492
+      },
+      {
+        "x": 435,
+        "y": 440,
+        "w": 334,
+        "h": 353
+      },
+      {
+        "x": 822,
+        "y": 567,
+        "w": 348,
+        "h": 252
+      },
+      {
+        "x": 1175,
+        "y": 695,
+        "w": 375,
+        "h": 124
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "down",
+    "source": "Big Vito/Big Vito laying facedown and faceup.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 112,
+        "y": 262,
+        "w": 603,
+        "h": 248
+      },
+      {
+        "x": 857,
+        "y": 313,
+        "w": 641,
+        "h": 169
+      },
+      {
+        "x": 120,
+        "y": 646,
+        "w": 649,
+        "h": 213
+      },
+      {
+        "x": 889,
+        "y": 649,
+        "w": 632,
+        "h": 206
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "rise",
+    "source": "Big Vito/Big Vito getting up from facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 639,
+        "w": 424,
+        "h": 106
+      },
+      {
+        "x": 493,
+        "y": 527,
+        "w": 300,
+        "h": 223
+      },
+      {
+        "x": 896,
+        "y": 430,
+        "w": 262,
+        "h": 317
+      },
+      {
+        "x": 1275,
+        "y": 279,
+        "w": 251,
+        "h": 469
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "taunt",
+    "source": "Big Vito/Big Vito taunting.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 62,
+        "y": 300,
+        "w": 323,
+        "h": 555
+      },
+      {
+        "x": 468,
+        "y": 291,
+        "w": 317,
+        "h": 564
+      },
+      {
+        "x": 845,
+        "y": 295,
+        "w": 320,
+        "h": 560
+      },
+      {
+        "x": 1161,
+        "y": 216,
+        "w": 437,
+        "h": 663
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "victory",
+    "source": "Big Vito/Big Vito victory pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 73,
+        "y": 265,
+        "w": 346,
+        "h": 582
+      },
+      {
+        "x": 454,
+        "y": 264,
+        "w": 320,
+        "h": 583
+      },
+      {
+        "x": 872,
+        "y": 306,
+        "w": 237,
+        "h": 542
+      },
+      {
+        "x": 1175,
+        "y": 265,
+        "w": 355,
+        "h": 583
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "defeat",
+    "source": "Big Vito/Big Vito defeated pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 83,
+        "y": 364,
+        "w": 318,
+        "h": 472
+      },
+      {
+        "x": 485,
+        "y": 348,
+        "w": 284,
+        "h": 498
+      },
+      {
+        "x": 879,
+        "y": 358,
+        "w": 299,
+        "h": 463
+      },
+      {
+        "x": 1209,
+        "y": 358,
+        "w": 306,
+        "h": 465
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "exhausted",
+    "source": "Big Vito/Big Vito passed out.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1200,
+        "y": 313,
+        "w": 331,
+        "h": 508
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "jump",
+    "source": "Big Vito/Big Vito jumping.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 270,
+        "w": 315,
+        "h": 595
+      },
+      {
+        "x": 410,
+        "y": 270,
+        "w": 386,
+        "h": 587
+      },
+      {
+        "x": 813,
+        "y": 270,
+        "w": 377,
+        "h": 585
+      },
+      {
+        "x": 1210,
+        "y": 270,
+        "w": 335,
+        "h": 594
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "pin",
+    "source": "Big Vito/Big Vito pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 73,
+        "y": 297,
+        "w": 316,
+        "h": 535
+      },
+      {
+        "x": 428,
+        "y": 430,
+        "w": 316,
+        "h": 402
+      },
+      {
+        "x": 784,
+        "y": 500,
+        "w": 340,
+        "h": 324
+      },
+      {
+        "x": 1158,
+        "y": 622,
+        "w": 388,
+        "h": 214
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "climb",
+    "source": "Big Vito/Big Vito climbing on top ropes.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 522,
+        "y": 412,
+        "w": 187,
+        "h": 267
+      },
+      {
+        "x": 896,
+        "y": 386,
+        "w": 190,
+        "h": 293
+      },
+      {
+        "x": 1279,
+        "y": 282,
+        "w": 169,
+        "h": 306
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "entry",
+    "source": "Big Vito/Big Vito climbing on ropes.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1285,
+        "y": 286,
+        "w": 233,
+        "h": 538
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "dive",
+    "source": "Big Vito/Big Vito jumping off corner.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 416,
+        "y": 305,
+        "w": 266,
+        "h": 288
+      },
+      {
+        "x": 727,
+        "y": 424,
+        "w": 409,
+        "h": 169
+      }
+    ]
+  },
+  {
+    "fighter": "big-vito",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "idle",
+    "source": "Bruce Wayans/Bruce Wayans standing.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1328,
+        "y": 295,
+        "w": 140,
+        "h": 559
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "walk",
+    "source": "Bruce Wayans/Bruce Wayans walking left and right.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 149,
+        "y": 212,
+        "w": 185,
+        "h": 312
+      },
+      {
+        "x": 526,
+        "y": 212,
+        "w": 185,
+        "h": 312
+      },
+      {
+        "x": 897,
+        "y": 212,
+        "w": 185,
+        "h": 313
+      },
+      {
+        "x": 1281,
+        "y": 212,
+        "w": 186,
+        "h": 313
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "run",
+    "source": "Bruce Wayans/Bruce Wayans jumping.jpg",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 62,
+        "y": 588,
+        "w": 224,
+        "h": 275
+      },
+      {
+        "x": 321,
+        "y": 588,
+        "w": 222,
+        "h": 275
+      },
+      {
+        "x": 569,
+        "y": 588,
+        "w": 210,
+        "h": 273
+      },
+      {
+        "x": 826,
+        "y": 589,
+        "w": 202,
+        "h": 272
+      },
+      {
+        "x": 1069,
+        "y": 586,
+        "w": 220,
+        "h": 277
+      },
+      {
+        "x": 1328,
+        "y": 587,
+        "w": 220,
+        "h": 277
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "chair",
+    "source": "Bruce Wayans/Bruce Wayans attack with chair.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 249,
+        "w": 336,
+        "h": 555
+      },
+      {
+        "x": 452,
+        "y": 206,
+        "w": 278,
+        "h": 598
+      },
+      {
+        "x": 809,
+        "y": 394,
+        "w": 415,
+        "h": 410
+      },
+      {
+        "x": 1206,
+        "y": 363,
+        "w": 344,
+        "h": 441
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "bat",
+    "source": "Bruce Wayans/Bruce Wayans attack with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 316,
+        "w": 338,
+        "h": 530
+      },
+      {
+        "x": 435,
+        "y": 244,
+        "w": 301,
+        "h": 597
+      },
+      {
+        "x": 831,
+        "y": 330,
+        "w": 449,
+        "h": 511
+      },
+      {
+        "x": 1229,
+        "y": 351,
+        "w": 320,
+        "h": 489
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "guitar",
+    "source": "Bruce Wayans/Bruce Wayans attack with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 124,
+        "y": 259,
+        "w": 291,
+        "h": 549
+      },
+      {
+        "x": 451,
+        "y": 243,
+        "w": 338,
+        "h": 565
+      },
+      {
+        "x": 124,
+        "y": 259,
+        "w": 291,
+        "h": 549
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "trashcan",
+    "source": "Bruce Wayans/Bruce Wayans attacking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 59,
+        "y": 321,
+        "w": 322,
+        "h": 537
+      },
+      {
+        "x": 428,
+        "y": 325,
+        "w": 346,
+        "h": 533
+      },
+      {
+        "x": 785,
+        "y": 211,
+        "w": 314,
+        "h": 647
+      },
+      {
+        "x": 1132,
+        "y": 366,
+        "w": 434,
+        "h": 491
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "carryChair",
+    "source": "Bruce Wayans/Bruce Wayans walk with chair.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 118,
+        "y": 210,
+        "w": 171,
+        "h": 270
+      },
+      {
+        "x": 520,
+        "y": 210,
+        "w": 173,
+        "h": 269
+      },
+      {
+        "x": 919,
+        "y": 210,
+        "w": 172,
+        "h": 269
+      },
+      {
+        "x": 1319,
+        "y": 210,
+        "w": 172,
+        "h": 269
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "carryBat",
+    "source": "Bruce Wayans/Bruce Wayans walk with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 73,
+        "y": 237,
+        "w": 339,
+        "h": 542
+      },
+      {
+        "x": 452,
+        "y": 237,
+        "w": 341,
+        "h": 542
+      },
+      {
+        "x": 836,
+        "y": 238,
+        "w": 345,
+        "h": 543
+      },
+      {
+        "x": 1221,
+        "y": 238,
+        "w": 340,
+        "h": 543
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "carryGuitar",
+    "source": "Bruce Wayans/Bruce Wayans walk with guitar.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 121,
+        "y": 80,
+        "w": 209,
+        "h": 356
+      },
+      {
+        "x": 511,
+        "y": 80,
+        "w": 208,
+        "h": 356
+      },
+      {
+        "x": 887,
+        "y": 80,
+        "w": 209,
+        "h": 356
+      },
+      {
+        "x": 1275,
+        "y": 80,
+        "w": 211,
+        "h": 356
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "carryTrashcan",
+    "source": "Bruce Wayans/Bruce Wayans walking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 67,
+        "y": 248,
+        "w": 331,
+        "h": 521
+      },
+      {
+        "x": 454,
+        "y": 249,
+        "w": 331,
+        "h": 524
+      },
+      {
+        "x": 832,
+        "y": 249,
+        "w": 326,
+        "h": 525
+      },
+      {
+        "x": 1217,
+        "y": 249,
+        "w": 316,
+        "h": 526
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "lift",
+    "source": "Bruce Wayans/Bruce Wayans lifting overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 473,
+        "w": 338,
+        "h": 385
+      },
+      {
+        "x": 455,
+        "y": 379,
+        "w": 350,
+        "h": 480
+      },
+      {
+        "x": 865,
+        "y": 334,
+        "w": 295,
+        "h": 525
+      },
+      {
+        "x": 1262,
+        "y": 302,
+        "w": 254,
+        "h": 556
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "throw",
+    "source": "Bruce Wayans/Bruce Wayans throwing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 200,
+        "w": 391,
+        "h": 685
+      },
+      {
+        "x": 478,
+        "y": 298,
+        "w": 276,
+        "h": 564
+      },
+      {
+        "x": 815,
+        "y": 403,
+        "w": 381,
+        "h": 459
+      },
+      {
+        "x": 1234,
+        "y": 399,
+        "w": 302,
+        "h": 464
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "lifted",
+    "source": "Bruce Wayans/Bruce Wayans being lifted up overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 77,
+        "y": 455,
+        "w": 266,
+        "h": 329
+      },
+      {
+        "x": 399,
+        "y": 314,
+        "w": 274,
+        "h": 382
+      },
+      {
+        "x": 709,
+        "y": 283,
+        "w": 380,
+        "h": 247
+      },
+      {
+        "x": 1125,
+        "y": 254,
+        "w": 424,
+        "h": 229
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "thrown",
+    "source": "Bruce Wayans/Bruce Wayans being thrown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 84,
+        "y": 345,
+        "w": 300,
+        "h": 469
+      },
+      {
+        "x": 447,
+        "y": 233,
+        "w": 322,
+        "h": 516
+      },
+      {
+        "x": 834,
+        "y": 314,
+        "w": 255,
+        "h": 390
+      },
+      {
+        "x": 1145,
+        "y": 645,
+        "w": 408,
+        "h": 168
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "hurt",
+    "source": "Bruce Wayans/Bruce Wayans dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 305,
+        "w": 272,
+        "h": 555
+      },
+      {
+        "x": 473,
+        "y": 306,
+        "w": 272,
+        "h": 554
+      },
+      {
+        "x": 864,
+        "y": 313,
+        "w": 272,
+        "h": 547
+      },
+      {
+        "x": 1252,
+        "y": 297,
+        "w": 272,
+        "h": 563
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "fallBack",
+    "source": "Bruce Wayans/Bruce Wayans falling backwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 89,
+        "y": 321,
+        "w": 270,
+        "h": 483
+      },
+      {
+        "x": 387,
+        "y": 342,
+        "w": 393,
+        "h": 397
+      },
+      {
+        "x": 794,
+        "y": 496,
+        "w": 328,
+        "h": 309
+      },
+      {
+        "x": 1118,
+        "y": 706,
+        "w": 435,
+        "h": 128
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "fallFront",
+    "source": "Bruce Wayans/Bruce Wayans falling forwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 51,
+        "y": 320,
+        "w": 295,
+        "h": 499
+      },
+      {
+        "x": 435,
+        "y": 433,
+        "w": 318,
+        "h": 361
+      },
+      {
+        "x": 822,
+        "y": 553,
+        "w": 348,
+        "h": 266
+      },
+      {
+        "x": 1175,
+        "y": 680,
+        "w": 375,
+        "h": 139
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "down",
+    "source": "Bruce Wayans/Bruce Wayans laying facedown and faceup.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 101,
+        "y": 256,
+        "w": 602,
+        "h": 245
+      },
+      {
+        "x": 854,
+        "y": 328,
+        "w": 648,
+        "h": 159
+      },
+      {
+        "x": 105,
+        "y": 654,
+        "w": 668,
+        "h": 206
+      },
+      {
+        "x": 876,
+        "y": 661,
+        "w": 659,
+        "h": 195
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "rise",
+    "source": "Bruce Wayans/Bruce Wayans getting up from facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 644,
+        "w": 425,
+        "h": 103
+      },
+      {
+        "x": 489,
+        "y": 516,
+        "w": 303,
+        "h": 237
+      },
+      {
+        "x": 895,
+        "y": 432,
+        "w": 264,
+        "h": 317
+      },
+      {
+        "x": 1285,
+        "y": 277,
+        "w": 229,
+        "h": 474
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "taunt",
+    "source": "Bruce Wayans/Bruce Wayans taunting.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 32,
+        "y": 180,
+        "w": 403,
+        "h": 609
+      },
+      {
+        "x": 480,
+        "y": 180,
+        "w": 297,
+        "h": 617
+      },
+      {
+        "x": 851,
+        "y": 180,
+        "w": 342,
+        "h": 613
+      },
+      {
+        "x": 1254,
+        "y": 180,
+        "w": 293,
+        "h": 610
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "victory",
+    "source": "Bruce Wayans/Bruce Wayans victory stance.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 71,
+        "y": 265,
+        "w": 347,
+        "h": 583
+      },
+      {
+        "x": 454,
+        "y": 264,
+        "w": 317,
+        "h": 585
+      },
+      {
+        "x": 872,
+        "y": 293,
+        "w": 237,
+        "h": 556
+      },
+      {
+        "x": 1175,
+        "y": 266,
+        "w": 355,
+        "h": 583
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "defeat",
+    "source": "Bruce Wayans/Bruce Wayans defeated pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 81,
+        "y": 363,
+        "w": 321,
+        "h": 474
+      },
+      {
+        "x": 486,
+        "y": 343,
+        "w": 284,
+        "h": 504
+      },
+      {
+        "x": 881,
+        "y": 359,
+        "w": 301,
+        "h": 462
+      },
+      {
+        "x": 1213,
+        "y": 359,
+        "w": 304,
+        "h": 465
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "exhausted",
+    "source": "Bruce Wayans/Bruce Wayans passed out.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1204,
+        "y": 320,
+        "w": 322,
+        "h": 505
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "pin",
+    "source": "Bruce Wayans/Bruce Wayans pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 74,
+        "y": 283,
+        "w": 298,
+        "h": 562
+      },
+      {
+        "x": 431,
+        "y": 394,
+        "w": 306,
+        "h": 451
+      },
+      {
+        "x": 810,
+        "y": 496,
+        "w": 324,
+        "h": 348
+      },
+      {
+        "x": 1161,
+        "y": 566,
+        "w": 385,
+        "h": 273
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "climb",
+    "source": "Bruce Wayans/Bruce Wayans climbing on top ropes.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 521,
+        "y": 404,
+        "w": 187,
+        "h": 278
+      },
+      {
+        "x": 897,
+        "y": 372,
+        "w": 189,
+        "h": 307
+      },
+      {
+        "x": 1288,
+        "y": 283,
+        "w": 155,
+        "h": 305
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "entry",
+    "source": "Bruce Wayans/Bruce Wayans on the ropes.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1283,
+        "y": 285,
+        "w": 235,
+        "h": 539
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "dive",
+    "source": "Bruce Wayans/Bruce Wayans jumping off corner ropes.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 416,
+        "y": 304,
+        "w": 265,
+        "h": 295
+      },
+      {
+        "x": 728,
+        "y": 423,
+        "w": 408,
+        "h": 170
+      }
+    ]
+  },
+  {
+    "fighter": "bruce-wayans",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "idle",
+    "source": "Alice Crowley/Alice Crowley standing.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1319,
+        "y": 290,
+        "w": 157,
+        "h": 559
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "walk",
+    "source": "Alice Crowley/Alice Crlowley walking.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 133,
+        "y": 210,
+        "w": 196,
+        "h": 315
+      },
+      {
+        "x": 521,
+        "y": 210,
+        "w": 194,
+        "h": 315
+      },
+      {
+        "x": 897,
+        "y": 210,
+        "w": 197,
+        "h": 315
+      },
+      {
+        "x": 1291,
+        "y": 210,
+        "w": 196,
+        "h": 315
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "run",
+    "source": "Alice Crowley/Alice Crowley running.jpg",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 54,
+        "y": 243,
+        "w": 221,
+        "h": 263
+      },
+      {
+        "x": 315,
+        "y": 243,
+        "w": 221,
+        "h": 261
+      },
+      {
+        "x": 576,
+        "y": 236,
+        "w": 222,
+        "h": 268
+      },
+      {
+        "x": 831,
+        "y": 236,
+        "w": 219,
+        "h": 266
+      },
+      {
+        "x": 1068,
+        "y": 234,
+        "w": 223,
+        "h": 269
+      },
+      {
+        "x": 1327,
+        "y": 234,
+        "w": 219,
+        "h": 269
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "chair",
+    "source": "Alice Crowley/Alice Crowley attacking with chair.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 90,
+        "y": 234,
+        "w": 272,
+        "h": 568
+      },
+      {
+        "x": 472,
+        "y": 218,
+        "w": 254,
+        "h": 584
+      },
+      {
+        "x": 811,
+        "y": 407,
+        "w": 386,
+        "h": 394
+      },
+      {
+        "x": 1239,
+        "y": 341,
+        "w": 285,
+        "h": 459
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "bat",
+    "source": "Alice Crowley/Alice Crowley attack with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 61,
+        "y": 311,
+        "w": 339,
+        "h": 539
+      },
+      {
+        "x": 432,
+        "y": 242,
+        "w": 302,
+        "h": 603
+      },
+      {
+        "x": 831,
+        "y": 321,
+        "w": 452,
+        "h": 525
+      },
+      {
+        "x": 1232,
+        "y": 344,
+        "w": 322,
+        "h": 500
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "guitar",
+    "source": "Alice Crowley/Alice Crowley attack with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 124,
+        "y": 259,
+        "w": 290,
+        "h": 549
+      },
+      {
+        "x": 451,
+        "y": 242,
+        "w": 337,
+        "h": 566
+      },
+      {
+        "x": 124,
+        "y": 259,
+        "w": 290,
+        "h": 549
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "trashcan",
+    "source": "Alice Crowley/Alice Crowley attacking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 57,
+        "y": 318,
+        "w": 322,
+        "h": 541
+      },
+      {
+        "x": 425,
+        "y": 322,
+        "w": 349,
+        "h": 537
+      },
+      {
+        "x": 784,
+        "y": 212,
+        "w": 315,
+        "h": 647
+      },
+      {
+        "x": 1133,
+        "y": 363,
+        "w": 436,
+        "h": 496
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "carryChair",
+    "source": "Alice Crowley/Alice Crowly walking with chair.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 134,
+        "y": 200,
+        "w": 193,
+        "h": 282
+      },
+      {
+        "x": 517,
+        "y": 200,
+        "w": 193,
+        "h": 282
+      },
+      {
+        "x": 895,
+        "y": 200,
+        "w": 193,
+        "h": 282
+      },
+      {
+        "x": 1272,
+        "y": 200,
+        "w": 194,
+        "h": 282
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "carryBat",
+    "source": "Alice Crowley/Alice Crowley bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 71,
+        "y": 234,
+        "w": 339,
+        "h": 547
+      },
+      {
+        "x": 441,
+        "y": 234,
+        "w": 348,
+        "h": 542
+      },
+      {
+        "x": 827,
+        "y": 234,
+        "w": 349,
+        "h": 547
+      },
+      {
+        "x": 1219,
+        "y": 234,
+        "w": 344,
+        "h": 547
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "carryGuitar",
+    "source": "Alice Crowley/Alice Crowley walking with guitar.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 119,
+        "y": 79,
+        "w": 208,
+        "h": 358
+      },
+      {
+        "x": 507,
+        "y": 80,
+        "w": 208,
+        "h": 357
+      },
+      {
+        "x": 890,
+        "y": 80,
+        "w": 208,
+        "h": 357
+      },
+      {
+        "x": 1278,
+        "y": 80,
+        "w": 209,
+        "h": 358
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "carryTrashcan",
+    "source": "Alice Crowley/Alice Crowley walking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 68,
+        "y": 241,
+        "w": 334,
+        "h": 530
+      },
+      {
+        "x": 454,
+        "y": 243,
+        "w": 330,
+        "h": 529
+      },
+      {
+        "x": 834,
+        "y": 241,
+        "w": 326,
+        "h": 532
+      },
+      {
+        "x": 1223,
+        "y": 243,
+        "w": 313,
+        "h": 530
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "lift",
+    "source": "Alice Crowley/Alice Crowley lifting overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 78,
+        "y": 461,
+        "w": 327,
+        "h": 398
+      },
+      {
+        "x": 484,
+        "y": 394,
+        "w": 275,
+        "h": 465
+      },
+      {
+        "x": 877,
+        "y": 342,
+        "w": 246,
+        "h": 516
+      },
+      {
+        "x": 1270,
+        "y": 300,
+        "w": 246,
+        "h": 559
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "throw",
+    "source": "Alice Crowley/Alice Crowley throwing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 79,
+        "y": 452,
+        "w": 334,
+        "h": 413
+      },
+      {
+        "x": 477,
+        "y": 298,
+        "w": 276,
+        "h": 566
+      },
+      {
+        "x": 816,
+        "y": 402,
+        "w": 381,
+        "h": 463
+      },
+      {
+        "x": 1237,
+        "y": 398,
+        "w": 304,
+        "h": 467
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "lifted",
+    "source": "Alice Crowley/Alice Crowley being liefted.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 74,
+        "y": 448,
+        "w": 270,
+        "h": 337
+      },
+      {
+        "x": 400,
+        "y": 310,
+        "w": 284,
+        "h": 386
+      },
+      {
+        "x": 710,
+        "y": 280,
+        "w": 384,
+        "h": 251
+      },
+      {
+        "x": 1128,
+        "y": 253,
+        "w": 427,
+        "h": 231
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "thrown",
+    "source": "Alice Crowley/Alice Crowley being thrown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 84,
+        "y": 300,
+        "w": 288,
+        "h": 499
+      },
+      {
+        "x": 436,
+        "y": 254,
+        "w": 328,
+        "h": 415
+      },
+      {
+        "x": 835,
+        "y": 269,
+        "w": 239,
+        "h": 435
+      },
+      {
+        "x": 1123,
+        "y": 654,
+        "w": 392,
+        "h": 148
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "hurt",
+    "source": "Alice Crowley/Alice Crowley dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 84,
+        "y": 305,
+        "w": 268,
+        "h": 557
+      },
+      {
+        "x": 477,
+        "y": 306,
+        "w": 266,
+        "h": 556
+      },
+      {
+        "x": 869,
+        "y": 314,
+        "w": 266,
+        "h": 548
+      },
+      {
+        "x": 1260,
+        "y": 295,
+        "w": 267,
+        "h": 567
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "fallBack",
+    "source": "Alice Crowley/Alice Crowley falling backwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 86,
+        "y": 321,
+        "w": 271,
+        "h": 485
+      },
+      {
+        "x": 384,
+        "y": 342,
+        "w": 395,
+        "h": 399
+      },
+      {
+        "x": 796,
+        "y": 498,
+        "w": 327,
+        "h": 308
+      },
+      {
+        "x": 1118,
+        "y": 691,
+        "w": 438,
+        "h": 143
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "fallFront",
+    "source": "Alice Crowley/Alice Crowley falling farwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 50,
+        "y": 315,
+        "w": 301,
+        "h": 504
+      },
+      {
+        "x": 435,
+        "y": 422,
+        "w": 317,
+        "h": 372
+      },
+      {
+        "x": 822,
+        "y": 550,
+        "w": 348,
+        "h": 269
+      },
+      {
+        "x": 1175,
+        "y": 680,
+        "w": 375,
+        "h": 139
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "down",
+    "source": "Alice Crowley/Alice Crlowley laying faceup and facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 99,
+        "y": 256,
+        "w": 614,
+        "h": 245
+      },
+      {
+        "x": 856,
+        "y": 319,
+        "w": 650,
+        "h": 168
+      },
+      {
+        "x": 95,
+        "y": 629,
+        "w": 678,
+        "h": 232
+      },
+      {
+        "x": 866,
+        "y": 654,
+        "w": 674,
+        "h": 204
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "rise",
+    "source": "Alice Crowley/Alice Crowley getting up from facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 647,
+        "w": 380,
+        "h": 100
+      },
+      {
+        "x": 486,
+        "y": 499,
+        "w": 302,
+        "h": 256
+      },
+      {
+        "x": 897,
+        "y": 417,
+        "w": 266,
+        "h": 333
+      },
+      {
+        "x": 1296,
+        "y": 279,
+        "w": 215,
+        "h": 472
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "taunt",
+    "source": "Alice Crowley/Alice Crowley taunting.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 276,
+        "w": 417,
+        "h": 582
+      },
+      {
+        "x": 485,
+        "y": 273,
+        "w": 264,
+        "h": 585
+      },
+      {
+        "x": 859,
+        "y": 276,
+        "w": 265,
+        "h": 582
+      },
+      {
+        "x": 1204,
+        "y": 250,
+        "w": 325,
+        "h": 608
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "victory",
+    "source": "Alice Crowley/Alice Crowley victory.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 69,
+        "y": 266,
+        "w": 346,
+        "h": 582
+      },
+      {
+        "x": 451,
+        "y": 264,
+        "w": 320,
+        "h": 584
+      },
+      {
+        "x": 872,
+        "y": 289,
+        "w": 238,
+        "h": 559
+      },
+      {
+        "x": 1176,
+        "y": 266,
+        "w": 356,
+        "h": 582
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "defeat",
+    "source": "Alice Crowley/Alice Crowley defeated.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 82,
+        "y": 342,
+        "w": 318,
+        "h": 497
+      },
+      {
+        "x": 487,
+        "y": 328,
+        "w": 283,
+        "h": 520
+      },
+      {
+        "x": 882,
+        "y": 346,
+        "w": 300,
+        "h": 477
+      },
+      {
+        "x": 1215,
+        "y": 342,
+        "w": 301,
+        "h": 485
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "exhausted",
+    "source": "Alice Crowley/Alice Crowley passed out.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1207,
+        "y": 317,
+        "w": 320,
+        "h": 509
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "jump",
+    "source": "Alice Crowley/Alice Crowley jumping.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 493,
+        "w": 315,
+        "h": 372
+      },
+      {
+        "x": 410,
+        "y": 393,
+        "w": 386,
+        "h": 463
+      },
+      {
+        "x": 911,
+        "y": 285,
+        "w": 228,
+        "h": 417
+      },
+      {
+        "x": 1210,
+        "y": 488,
+        "w": 335,
+        "h": 377
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "pin",
+    "source": "Alice Crowley/Alice Crowley pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 65,
+        "y": 281,
+        "w": 289,
+        "h": 568
+      },
+      {
+        "x": 419,
+        "y": 401,
+        "w": 323,
+        "h": 446
+      },
+      {
+        "x": 806,
+        "y": 488,
+        "w": 333,
+        "h": 358
+      },
+      {
+        "x": 1163,
+        "y": 541,
+        "w": 386,
+        "h": 299
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "climb",
+    "source": "Alice Crowley/Alice Crowley climbing on top ropes.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 522,
+        "y": 387,
+        "w": 186,
+        "h": 315
+      },
+      {
+        "x": 871,
+        "y": 355,
+        "w": 216,
+        "h": 329
+      },
+      {
+        "x": 1296,
+        "y": 283,
+        "w": 149,
+        "h": 304
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "entry",
+    "source": "Alice Crowley/Alice Crowley climbing on ropes.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1290,
+        "y": 284,
+        "w": 228,
+        "h": 540
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "dive",
+    "source": "Alice Crowley/Alice Crowley jumping off corner ropes.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 416,
+        "y": 305,
+        "w": 264,
+        "h": 295
+      },
+      {
+        "x": 727,
+        "y": 424,
+        "w": 409,
+        "h": 169
+      }
+    ]
+  },
+  {
+    "fighter": "alice-crowley",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "idle",
+    "source": "Ruffo/Ruffo standing.jpg",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1329,
+        "y": 287,
+        "w": 142,
+        "h": 565
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "walk",
+    "source": "Ruffo/Ruffo walking left and right.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 159,
+        "y": 206,
+        "w": 200,
+        "h": 322
+      },
+      {
+        "x": 521,
+        "y": 206,
+        "w": 199,
+        "h": 322
+      },
+      {
+        "x": 886,
+        "y": 206,
+        "w": 199,
+        "h": 322
+      },
+      {
+        "x": 1247,
+        "y": 206,
+        "w": 199,
+        "h": 322
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "run",
+    "source": "Ruffo/Ruffo running left and right.jpg",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 61,
+        "y": 580,
+        "w": 214,
+        "h": 283
+      },
+      {
+        "x": 315,
+        "y": 581,
+        "w": 220,
+        "h": 283
+      },
+      {
+        "x": 562,
+        "y": 580,
+        "w": 202,
+        "h": 275
+      },
+      {
+        "x": 819,
+        "y": 578,
+        "w": 204,
+        "h": 291
+      },
+      {
+        "x": 1064,
+        "y": 578,
+        "w": 224,
+        "h": 281
+      },
+      {
+        "x": 1327,
+        "y": 578,
+        "w": 221,
+        "h": 284
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "chair",
+    "source": "Ruffo/Ruffo attacking with chair.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 79,
+        "y": 224,
+        "w": 273,
+        "h": 589
+      },
+      {
+        "x": 468,
+        "y": 208,
+        "w": 268,
+        "h": 605
+      },
+      {
+        "x": 839,
+        "y": 395,
+        "w": 381,
+        "h": 416
+      },
+      {
+        "x": 1252,
+        "y": 374,
+        "w": 305,
+        "h": 437
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "bat",
+    "source": "Ruffo/Ruffo attacking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 56,
+        "y": 313,
+        "w": 342,
+        "h": 538
+      },
+      {
+        "x": 430,
+        "y": 244,
+        "w": 304,
+        "h": 602
+      },
+      {
+        "x": 831,
+        "y": 322,
+        "w": 454,
+        "h": 524
+      },
+      {
+        "x": 1234,
+        "y": 346,
+        "w": 325,
+        "h": 498
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "guitar",
+    "source": "Ruffo/Ruffo attacking with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 81,
+        "y": 259,
+        "w": 330,
+        "h": 549
+      },
+      {
+        "x": 451,
+        "y": 244,
+        "w": 337,
+        "h": 564
+      },
+      {
+        "x": 81,
+        "y": 259,
+        "w": 330,
+        "h": 549
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "trashcan",
+    "source": "Ruffo/Ruffo attacking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 51,
+        "y": 313,
+        "w": 324,
+        "h": 548
+      },
+      {
+        "x": 421,
+        "y": 313,
+        "w": 352,
+        "h": 548
+      },
+      {
+        "x": 773,
+        "y": 212,
+        "w": 332,
+        "h": 649
+      },
+      {
+        "x": 1139,
+        "y": 348,
+        "w": 436,
+        "h": 513
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "carryChair",
+    "source": "Ruffo/Ruffo walking with chair.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 140,
+        "y": 202,
+        "w": 173,
+        "h": 285
+      },
+      {
+        "x": 534,
+        "y": 202,
+        "w": 172,
+        "h": 286
+      },
+      {
+        "x": 923,
+        "y": 202,
+        "w": 172,
+        "h": 285
+      },
+      {
+        "x": 1307,
+        "y": 202,
+        "w": 172,
+        "h": 286
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "carryBat",
+    "source": "Ruffo/Ruffo walking with bat.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 102,
+        "y": 232,
+        "w": 312,
+        "h": 550
+      },
+      {
+        "x": 453,
+        "y": 232,
+        "w": 343,
+        "h": 548
+      },
+      {
+        "x": 845,
+        "y": 232,
+        "w": 332,
+        "h": 549
+      },
+      {
+        "x": 1222,
+        "y": 232,
+        "w": 340,
+        "h": 550
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "carryGuitar",
+    "source": "Ruffo/Ruffo walking with guitar.jpg",
+    "detected": 8,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 113,
+        "y": 527,
+        "w": 212,
+        "h": 354
+      },
+      {
+        "x": 506,
+        "y": 527,
+        "w": 211,
+        "h": 354
+      },
+      {
+        "x": 892,
+        "y": 527,
+        "w": 211,
+        "h": 354
+      },
+      {
+        "x": 1280,
+        "y": 527,
+        "w": 212,
+        "h": 354
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "carryTrashcan",
+    "source": "Ruffo/Ruffo walking with trashcan.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 58,
+        "y": 237,
+        "w": 343,
+        "h": 538
+      },
+      {
+        "x": 448,
+        "y": 238,
+        "w": 334,
+        "h": 538
+      },
+      {
+        "x": 827,
+        "y": 238,
+        "w": 334,
+        "h": 538
+      },
+      {
+        "x": 1211,
+        "y": 238,
+        "w": 330,
+        "h": 538
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "lift",
+    "source": "Ruffo/Ruffo lifting overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 75,
+        "y": 442,
+        "w": 330,
+        "h": 418
+      },
+      {
+        "x": 480,
+        "y": 394,
+        "w": 283,
+        "h": 467
+      },
+      {
+        "x": 876,
+        "y": 345,
+        "w": 258,
+        "h": 514
+      },
+      {
+        "x": 1271,
+        "y": 303,
+        "w": 254,
+        "h": 557
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "throw",
+    "source": "Ruffo/Ruffo grappling and thowing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 450,
+        "w": 390,
+        "h": 417
+      },
+      {
+        "x": 472,
+        "y": 299,
+        "w": 283,
+        "h": 566
+      },
+      {
+        "x": 811,
+        "y": 392,
+        "w": 388,
+        "h": 474
+      },
+      {
+        "x": 1239,
+        "y": 396,
+        "w": 308,
+        "h": 471
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "lifted",
+    "source": "Ruffo/Ruffo being lifted overhead.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 64,
+        "y": 439,
+        "w": 278,
+        "h": 346
+      },
+      {
+        "x": 421,
+        "y": 306,
+        "w": 258,
+        "h": 390
+      },
+      {
+        "x": 724,
+        "y": 281,
+        "w": 379,
+        "h": 276
+      },
+      {
+        "x": 1136,
+        "y": 243,
+        "w": 425,
+        "h": 242
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "thrown",
+    "source": "Ruffo/Ruffo being thrown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 85,
+        "y": 298,
+        "w": 314,
+        "h": 551
+      },
+      {
+        "x": 459,
+        "y": 252,
+        "w": 324,
+        "h": 482
+      },
+      {
+        "x": 833,
+        "y": 302,
+        "w": 288,
+        "h": 429
+      },
+      {
+        "x": 1119,
+        "y": 653,
+        "w": 444,
+        "h": 205
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "hurt",
+    "source": "Ruffo/Ruffo dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 83,
+        "y": 269,
+        "w": 281,
+        "h": 596
+      },
+      {
+        "x": 470,
+        "y": 263,
+        "w": 280,
+        "h": 602
+      },
+      {
+        "x": 858,
+        "y": 266,
+        "w": 280,
+        "h": 599
+      },
+      {
+        "x": 1240,
+        "y": 268,
+        "w": 281,
+        "h": 597
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "fallBack",
+    "source": "Ruffo/Ruffo falling backwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 74,
+        "y": 320,
+        "w": 281,
+        "h": 489
+      },
+      {
+        "x": 370,
+        "y": 343,
+        "w": 409,
+        "h": 405
+      },
+      {
+        "x": 790,
+        "y": 511,
+        "w": 332,
+        "h": 296
+      },
+      {
+        "x": 1121,
+        "y": 704,
+        "w": 437,
+        "h": 131
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "fallFront",
+    "source": "Ruffo/Ruffo falling forwards.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 50,
+        "y": 309,
+        "w": 282,
+        "h": 510
+      },
+      {
+        "x": 435,
+        "y": 375,
+        "w": 310,
+        "h": 408
+      },
+      {
+        "x": 822,
+        "y": 537,
+        "w": 348,
+        "h": 282
+      },
+      {
+        "x": 1175,
+        "y": 689,
+        "w": 375,
+        "h": 130
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "down",
+    "source": "Ruffo/Ruffo laying facedown and faceup.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 96,
+        "y": 257,
+        "w": 617,
+        "h": 245
+      },
+      {
+        "x": 856,
+        "y": 322,
+        "w": 654,
+        "h": 167
+      },
+      {
+        "x": 92,
+        "y": 648,
+        "w": 682,
+        "h": 214
+      },
+      {
+        "x": 864,
+        "y": 655,
+        "w": 678,
+        "h": 204
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "rise",
+    "source": "Ruffo/Ruffo getting back up from facedown.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 33,
+        "y": 646,
+        "w": 381,
+        "h": 101
+      },
+      {
+        "x": 485,
+        "y": 519,
+        "w": 303,
+        "h": 235
+      },
+      {
+        "x": 896,
+        "y": 377,
+        "w": 266,
+        "h": 371
+      },
+      {
+        "x": 1295,
+        "y": 282,
+        "w": 223,
+        "h": 469
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "taunt",
+    "source": "Ruffo/Ruffo taunting.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 180,
+        "w": 286,
+        "h": 611
+      },
+      {
+        "x": 344,
+        "y": 180,
+        "w": 289,
+        "h": 609
+      },
+      {
+        "x": 645,
+        "y": 180,
+        "w": 290,
+        "h": 616
+      },
+      {
+        "x": 974,
+        "y": 228,
+        "w": 306,
+        "h": 563
+      },
+      {
+        "x": 1321,
+        "y": 180,
+        "w": 263,
+        "h": 619
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "victory",
+    "source": "Ruffo/Ruffo victory stance.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 56,
+        "y": 248,
+        "w": 359,
+        "h": 613
+      },
+      {
+        "x": 454,
+        "y": 247,
+        "w": 325,
+        "h": 614
+      },
+      {
+        "x": 864,
+        "y": 270,
+        "w": 259,
+        "h": 591
+      },
+      {
+        "x": 1181,
+        "y": 248,
+        "w": 372,
+        "h": 613
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "defeat",
+    "source": "Ruffo/Ruffo defeated pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 72,
+        "y": 334,
+        "w": 326,
+        "h": 522
+      },
+      {
+        "x": 489,
+        "y": 332,
+        "w": 283,
+        "h": 533
+      },
+      {
+        "x": 878,
+        "y": 333,
+        "w": 306,
+        "h": 506
+      },
+      {
+        "x": 1221,
+        "y": 332,
+        "w": 310,
+        "h": 509
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "jump",
+    "source": "Ruffo/Ruffo jumping.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 80,
+        "y": 478,
+        "w": 315,
+        "h": 386
+      },
+      {
+        "x": 410,
+        "y": 382,
+        "w": 386,
+        "h": 475
+      },
+      {
+        "x": 911,
+        "y": 275,
+        "w": 255,
+        "h": 449
+      },
+      {
+        "x": 1210,
+        "y": 478,
+        "w": 335,
+        "h": 387
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "pin",
+    "source": "Ruffo/Ruffo pinning .jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 62,
+        "y": 282,
+        "w": 309,
+        "h": 568
+      },
+      {
+        "x": 417,
+        "y": 395,
+        "w": 320,
+        "h": 452
+      },
+      {
+        "x": 806,
+        "y": 492,
+        "w": 324,
+        "h": 354
+      },
+      {
+        "x": 1164,
+        "y": 616,
+        "w": 388,
+        "h": 225
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "grapple",
+    "source": "Ruffo/Ruffo grappling and thowing.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 450,
+        "w": 390,
+        "h": 417
+      },
+      {
+        "x": 472,
+        "y": 299,
+        "w": 283,
+        "h": 566
+      },
+      {
+        "x": 811,
+        "y": 392,
+        "w": 388,
+        "h": 474
+      },
+      {
+        "x": 1239,
+        "y": 396,
+        "w": 308,
+        "h": 471
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "climb",
+    "source": "Ruffo/Ruffo climbing on corner ropes.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 497,
+        "y": 415,
+        "w": 211,
+        "h": 351
+      },
+      {
+        "x": 899,
+        "y": 360,
+        "w": 217,
+        "h": 311
+      },
+      {
+        "x": 1302,
+        "y": 255,
+        "w": 173,
+        "h": 323
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "entry",
+    "source": "Ruffo/Ruffo climbing through ropes.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 32,
+        "y": 346,
+        "w": 332,
+        "h": 405
+      },
+      {
+        "x": 460,
+        "y": 310,
+        "w": 314,
+        "h": 502
+      },
+      {
+        "x": 865,
+        "y": 277,
+        "w": 300,
+        "h": 477
+      },
+      {
+        "x": 1248,
+        "y": 295,
+        "w": 285,
+        "h": 552
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "dive",
+    "source": "Ruffo/Ruffo jumping off corner ropes.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 402,
+        "y": 298,
+        "w": 277,
+        "h": 337
+      },
+      {
+        "x": 727,
+        "y": 403,
+        "w": 423,
+        "h": 190
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "riseBack",
+    "source": "Ruffo/Ruffo getting up from face up.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 523,
+        "w": 537,
+        "h": 234
+      },
+      {
+        "x": 579,
+        "y": 511,
+        "w": 247,
+        "h": 247
+      },
+      {
+        "x": 837,
+        "y": 421,
+        "w": 218,
+        "h": 327
+      },
+      {
+        "x": 1103,
+        "y": 399,
+        "w": 189,
+        "h": 351
+      },
+      {
+        "x": 1339,
+        "y": 305,
+        "w": 199,
+        "h": 445
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "ropePose",
+    "source": "Ruffo/Ruffo climing on ropes.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1292,
+        "y": 275,
+        "w": 226,
+        "h": 549
+      }
+    ]
+  },
+  {
+    "fighter": "ruffo",
+    "animation": "ko",
+    "source": "Ruffo/Ruffo passed out.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 167,
+        "y": 270,
+        "w": 1339,
+        "h": 568
+      }
+    ]
+  }
+]
