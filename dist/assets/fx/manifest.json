@@ -1,0 +1,30 @@
+{
+  "chips": {
+    "frames": 8,
+    "cell": 256,
+    "columns": 4,
+    "anchorY": 128,
+    "fps": 24
+  },
+  "impact": {
+    "frames": 8,
+    "cell": 256,
+    "columns": 4,
+    "anchorY": 128,
+    "fps": 24
+  },
+  "ground": {
+    "frames": 12,
+    "cell": 256,
+    "columns": 4,
+    "anchorY": 196,
+    "fps": 20
+  },
+  "guard": {
+    "frames": 8,
+    "cell": 256,
+    "columns": 4,
+    "anchorY": 128,
+    "fps": 24
+  }
+}
