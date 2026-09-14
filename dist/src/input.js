@@ -68,6 +68,7 @@ export class InputState {
 export class Input extends InputState {
   constructor(onPause){
     super(onPause);
+    this.touchButtons=Array.from(document.querySelectorAll('[data-key]'));
     addEventListener('keydown',e=>{
       if(e.target instanceof HTMLSelectElement||e.target instanceof HTMLInputElement||e.target?.isContentEditable)return;
       if(this.active&&(this.keymaps().some(m=>m[e.code])||pauseKeys.has(e.code)||e.code==='Space'))e.preventDefault();
@@ -78,19 +79,19 @@ export class Input extends InputState {
     addEventListener('blur',()=>{this.clear();if(this.active)this.onPause(true);});
     document.addEventListener('visibilitychange',()=>{if(document.hidden){this.clear();if(this.active)this.onPause(true);}});
     const dpad=document.getElementById('dpad');
-    const move=e=>{const rect=dpad.getBoundingClientRect();this.pressTouch(e.pointerId,dpadDirections((e.clientX-rect.left)/rect.width,(e.clientY-rect.top)/rect.height));this.paintTouch();};
-    dpad.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.preventDefault();dpad.setPointerCapture(e.pointerId);move(e);});
-    dpad.addEventListener('pointermove',e=>{if(!dpad.hasPointerCapture(e.pointerId))return;e.preventDefault();move(e);});
+    const move=e=>{const rect=this.dpadRect;this.pressTouch(e.pointerId,dpadDirections((e.clientX-rect.left)/rect.width,(e.clientY-rect.top)/rect.height));this.paintTouch();};
+    dpad.addEventListener('pointerdown',e=>{if(e.button!==0||!this.active)return;e.preventDefault();this.dpadRect=dpad.getBoundingClientRect();dpad.setPointerCapture(e.pointerId);move(e);});
+    dpad.addEventListener('pointermove',e=>{if(!dpad.hasPointerCapture(e.pointerId)||!this.dpadRect)return;e.preventDefault();move(e);});
     const release=e=>{this.releaseTouch(e.pointerId);this.paintTouch();};
     for(const event of ['pointerup','pointercancel','lostpointercapture'])dpad.addEventListener(event,release);
     for(const button of document.querySelectorAll('.action-pad [data-key], .utility-pad [data-key]')){
-      button.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.preventDefault();button.setPointerCapture(e.pointerId);this.pressTouch(e.pointerId,button.dataset.key);this.paintTouch();});
+      button.addEventListener('pointerdown',e=>{if(e.button!==0||!this.active)return;e.preventDefault();button.setPointerCapture(e.pointerId);this.pressTouch(e.pointerId,button.dataset.key);this.paintTouch();});
       for(const event of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(event,release);
     }
     document.getElementById('touch-controls').addEventListener('contextmenu',e=>e.preventDefault());
   }
-  paintTouch(){document.querySelectorAll('[data-key]').forEach(button=>button.classList.toggle('pressed',button.dataset.key==='escape'?[...this.pointers.values()].some(p=>p.escape):Boolean(this.touch[button.dataset.key])));}
-  clearTouch(){super.clearTouch();this.paintTouch();}
+  paintTouch(){const escape=[...this.pointers.values()].some(p=>p.escape);for(const button of this.touchButtons||[]){const pressed=button.dataset.key==='escape'?escape:Boolean(this.touch[button.dataset.key]);if(button.classList.contains('pressed')!==pressed)button.classList.toggle('pressed',pressed);}}
+  clearTouch(){super.clearTouch();this.dpadRect=null;this.paintTouch();}
   clear(){super.clear();this.paintTouch();}
   read(){return super.read(navigator.getGamepads?.()||[]);}
 }
