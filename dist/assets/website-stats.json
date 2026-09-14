@@ -1,0 +1,194 @@
+{
+  "source": "https://jcwlunacy.net/",
+  "retrieved": "2026-09-13",
+  "scale": 10,
+  "ratings": {
+    "2-tuff-tony": {
+      "websiteName": "2 Tuff Tony",
+      "power": 8,
+      "speed": 5,
+      "technique": 6,
+      "toughness": 10,
+      "finisher": "The Meteorite"
+    },
+    "willie-mack": {
+      "websiteName": "Willie Mack",
+      "power": 7,
+      "speed": 7,
+      "technique": 9,
+      "toughness": 8,
+      "finisher": "Stunner"
+    },
+    "mickie-knuckles": {
+      "websiteName": "Mickie Knuckles",
+      "power": 8,
+      "speed": 5,
+      "technique": 6,
+      "toughness": 9,
+      "finisher": null
+    },
+    "kerry-morton": {
+      "websiteName": "Kerry Morton",
+      "power": 7,
+      "speed": 8,
+      "technique": 10,
+      "toughness": 7,
+      "finisher": "Kiss It Goodbye"
+    },
+    "mr-happy": {
+      "websiteName": "Mr. Happy",
+      "power": 10,
+      "speed": 4,
+      "technique": 6,
+      "toughness": 8,
+      "finisher": null
+    },
+    "moshpit-mike": {
+      "websiteName": "Mosh Pit Mike",
+      "power": 6,
+      "speed": 6,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": "Snapmare Powerbomb"
+    },
+    "cokane": {
+      "websiteName": "Cokane",
+      "power": 7,
+      "speed": 8,
+      "technique": 10,
+      "toughness": 7,
+      "finisher": "Coke Slam"
+    },
+    "yabo": {
+      "websiteName": "Yabo the Clown",
+      "power": 7,
+      "speed": 8,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": null
+    },
+    "able": {
+      "websiteName": "Abel",
+      "power": 7,
+      "speed": 6,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": "As Above So Below (Tag)"
+    },
+    "dani-mo": {
+      "websiteName": "Dani Mo",
+      "power": 6,
+      "speed": 8,
+      "technique": 8,
+      "toughness": 8,
+      "finisher": "Moon Mist Twist"
+    },
+    "facade": {
+      "websiteName": "Facade",
+      "power": 5,
+      "speed": 10,
+      "technique": 8,
+      "toughness": 7,
+      "finisher": null
+    },
+    "j-rod": {
+      "websiteName": "J-Rod",
+      "power": 9,
+      "speed": 6,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": null
+    },
+    "matt-cross": {
+      "websiteName": "Matt Cross",
+      "power": 6,
+      "speed": 10,
+      "technique": 9,
+      "toughness": 6,
+      "finisher": "Shooting Star Press"
+    },
+    "vincenzo": {
+      "websiteName": "Vincenzo",
+      "power": 8,
+      "speed": 5,
+      "technique": 6,
+      "toughness": 7,
+      "finisher": null
+    },
+    "caleb-konley": {
+      "websiteName": "Caleb Konley",
+      "power": 7,
+      "speed": 8,
+      "technique": 9,
+      "toughness": 8,
+      "finisher": "Burning Hammer"
+    },
+    "sally-boy": {
+      "websiteName": "Sally Boy",
+      "power": 7,
+      "speed": 8,
+      "technique": 5,
+      "toughness": 7,
+      "finisher": "Hook Kick"
+    },
+    "big-vito": {
+      "websiteName": "Big Vito",
+      "power": 9,
+      "speed": 5,
+      "technique": 6,
+      "toughness": 10,
+      "finisher": "Implant DDT"
+    },
+    "bruce-wayans": {
+      "websiteName": "Bruce Wayans",
+      "power": 9,
+      "speed": 5,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": "Sucka Busta (Tag)"
+    },
+    "alice-crowley": {
+      "websiteName": "Alice Crowley",
+      "power": 8,
+      "speed": 6,
+      "technique": 8,
+      "toughness": 9,
+      "finisher": "Uni-Lariat"
+    },
+    "ruffo": {
+      "websiteName": "Ruffo the Clown",
+      "power": 8,
+      "speed": 7,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": null
+    },
+    "kongo-kong": {
+      "websiteName": "Kongo Kong",
+      "power": 10,
+      "speed": 5,
+      "technique": 7,
+      "toughness": 9,
+      "finisher": null
+    },
+    "father-bronson": {
+      "power": 8,
+      "speed": 6,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": "The Red Bloom",
+      "websiteName": "Father Bronson"
+    },
+    "hokane": {
+      "power": 8,
+      "speed": 6,
+      "technique": 6,
+      "toughness": 8,
+      "finisher": "",
+      "websiteName": "Hokane"
+    }
+  },
+  "unlisted": [
+    "violent-j"
+  ]
+}
