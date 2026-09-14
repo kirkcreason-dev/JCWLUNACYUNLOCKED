@@ -1,3 +1,15 @@
+# v0.8.3 supplied UNLOCKED artwork — September 14, 2026
+
+The static module/asset/UI checker passes. All **21 targeted renderer and phone-performance tests** pass after the branding change. No new tests were added for the visual replacement. The earlier 152-test gameplay baseline is retained below; this pass changes branding and rendering only.
+
+The supplied UNLOCKED PNG is byte-identical to the attachment. All 73 previous asset files remain unchanged. The renderer uses the new image at five known wordmarks across three arenas and restores the foreground rope above the Bloodymania mat logo. Title, selection, and header use the same source image with CSS framing. Browser-tab titles and screen-reader labels keep their text names.
+
+`node tools/review_branding.mjs` produced and was used to inspect a native-canvas before/after review of all five arena placements and the image at interface sizes. HTML nesting and image references pass. Renderer and artwork-loader entry imports are versioned for the new release. No fresh browser or physical-device test is claimed; the previous browser access restriction remains.
+
+The full v0.8.3 ZIP contains all 24 fighters and the v0.8.2 phone work. These branding changes have not been pushed or deployed from this conversation.
+
+---
+
 # v0.8.2 phone optimization — September 14, 2026
 
 **152 automated tests pass.** `npm run check` passes JavaScript syntax, HTML references, 24 fighters, 2,418 animation records, six arenas, and both music tracks. HTML nesting passes. All 73 existing assets, including the roster and website ratings, are byte-identical to v0.8.1.

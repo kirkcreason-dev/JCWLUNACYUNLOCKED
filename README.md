@@ -1,14 +1,20 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.8.2**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.8.3**.
 
 The gameplay refinement adds confirmed strike chains, gradual run acceleration, fair simultaneous grab breaks, more responsive recovery, rope breaks, manual hold release, and smarter CPU attack spacing. All 24 wrestlers and their existing website ratings remain intact. The supplied startup logos, title artwork, arenas, effects, and music are included. See [GAMEPLAY.md](GAMEPLAY.md) for the updated fight rules and [TESTING.md](TESTING.md) for validation and limitations.
+
+## Supplied UNLOCKED branding (v0.8.3)
+
+The supplied neon UNLOCKED artwork replaces the text treatment in the header, opening screen, and fighter selection. The same PNG appears over all five existing UNLOCKED signs, mat, and apron wordmarks across Bloodymania, Hell’s Pit, and Rusted Warehouse. Other arenas have no existing UNLOCKED wordmarks to replace. The opening background now uses the same branded canvas as gameplay.
+
+The original PNG is included byte-for-byte as `dist/assets/banners/unlocked.png`; CSS frames its empty margins and blends the black background into the interface. Arena placement is handled by the renderer, preserving the original arena images and the foreground rope over the mat graphic. Text remains in page titles and accessibility labels so the game is still named correctly for browser tabs and screen readers. Phone sizes, 24 fighters, gameplay rules, and v8 multiplayer compatibility are retained.
 
 ## Phone fighter selection
 
 This package contains **24 fighters**. On a portrait phone, use **MORE / BACK** to browse four pages of six fighters, or use **PICK ANY FIGHTER** to select any name directly. **USE FIGHTER** opens match setup. The **FIGHTERS** button takes you back; rotation preserves your chosen wrestler. Website stats are visible in the phone setup panel.
 
-If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.8.2 package has not been deployed to either repository.
+If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.8.3 package has not been deployed to either repository.
 
 ## Phone match optimization (v0.8.2)
 
