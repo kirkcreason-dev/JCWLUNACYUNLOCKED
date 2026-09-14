@@ -91,6 +91,6 @@ test('failed optional banner and effects downloads keep successful artwork and d
     loadImage:async url=>{if(url.includes('kickout')||url.includes('guard'))throw new Error('Offline');return {url};},
     loadManifest:async()=>({impact:{frames:8},guard:{frames:8}}),onChange:()=>updates++});
   assert.ok(banners.lunacy);assert.equal(banners.kickout,undefined);assert.ok(combatFx.impact.image);assert.equal(combatFx.guard,undefined);
-  assert.equal(updates,5);assert.equal(result.filter(r=>r.status==='rejected').length,1);
+  assert.equal(updates,6);assert.equal(result.filter(r=>r.status==='rejected').length,1);
   await assert.doesNotReject(loadOptionalArtwork({banners:{},combatFx:{},loadImage:async()=>{throw new Error('Offline');},loadManifest:async()=>{throw new Error('Offline');}}));
 });
