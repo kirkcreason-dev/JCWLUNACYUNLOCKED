@@ -1,5 +1,5 @@
 import {Match,STEP,emptyInput} from './engine.js';
-import {Renderer} from './render.js';
+import {Renderer} from './render.js?v=0.8.3';
 import {Input} from './input.js';
 import {Sound} from './audio.js';
 import {ARENAS} from './arenas.js';
@@ -11,7 +11,7 @@ import {RosterSelection} from './roster-selection.js';
 import {retainMatchArtwork} from './artwork-cache.js';
 import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js';
 import {FramePacer} from './frame-pacer.js';
-import {loadOptionalArtwork} from './optional-artwork.js';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.8.3';
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help');
 let roster=[],atlases={},arenas=[],renderer,match=null,chosen=0,arena=0,paused=false,helpWasPaused=false,arcadeOpponents=[],arcadeIndex=0,session=0,loading=false,returnFocus=null;

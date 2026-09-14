@@ -2,6 +2,7 @@ import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget} from './engine.js';
 import {ARENAS} from './arenas.js';
 import {attackPose} from './attack-animation.js';
 import {phoneCamera} from './phone-layout.js';
+import {drawArenaWordmarks} from './branding.js';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={}){this.bannerArt=banners;this.combatFx=combatFx;this.canvas=canvas;this.ctx=canvas.getContext('2d');this.roster=roster;this.atlases=atlases;this.arenas=arenas;this.reduced=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;this.scheme='keyboard';this.reset();}
@@ -37,12 +38,12 @@ export class Renderer {
     c.save();c.scale((this.canvas.width||1280)/1280,(this.canvas.height||height)/height);
     c.save();c.clearRect(0,0,1280,height);c.fillStyle='#130b18';c.fillRect(0,0,1280,height);
     const bg=this.arenas[arena]||this.arenas[0];
-    if(this.portrait&&bg)c.drawImage(bg,0,0,1280,height);
+    if(this.portrait&&bg){c.drawImage(bg,0,0,1280,height);drawArenaWordmarks(c,bg,arena,this.bannerArt.unlocked,1280,height);}
     if((this.portrait||this.compact)&&match&&!menu){const camera=phoneCamera(match.fighters,{portrait:this.portrait,floor:FLOOR});c.translate(camera.x,camera.y);c.scale(camera.zoom,camera.zoom);}
     this.clock+=dt;
     if(dt>0)this.shakeOffset=match?.shake&&!this.reduced&&!menu?[(Math.random()-.5)*match.shake,(Math.random()-.5)*match.shake*.55]:[0,0];
     c.translate(...this.shakeOffset);
-    if(bg){const crop=ARENAS[arena]?.crop;if(crop)c.drawImage(bg,...crop,0,0,1280,720);else c.drawImage(bg,0,0,1280,720);}
+    if(bg){const crop=ARENAS[arena]?.crop;if(crop)c.drawImage(bg,...crop,0,0,1280,720);else{c.drawImage(bg,0,0,1280,720);drawArenaWordmarks(c,bg,arena,this.bannerArt.unlocked);}}
     // Keep the supplied ring and arena visible; tint only the upper HUD area.
     const shade=c.createLinearGradient(0,0,0,210);shade.addColorStop(0,'#08060cf5');shade.addColorStop(.65,'#08060caa');shade.addColorStop(1,'#08060c00');c.fillStyle=shade;c.fillRect(0,0,1280,210);
     if(match&&!menu){
