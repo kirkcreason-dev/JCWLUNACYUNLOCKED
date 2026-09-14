@@ -11386,5 +11386,3280 @@
         "h": 568
       }
     ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "idle",
+    "source": "Kongo Kong/Kongo Kong standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1313,
+        "y": 278,
+        "w": 184,
+        "h": 588
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "run",
+    "source": "Kongo Kong/KK running.png",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 609,
+        "w": 192,
+        "h": 291
+      },
+      {
+        "x": 230,
+        "y": 610,
+        "w": 195,
+        "h": 288
+      },
+      {
+        "x": 438,
+        "y": 609,
+        "w": 192,
+        "h": 292
+      },
+      {
+        "x": 654,
+        "y": 609,
+        "w": 183,
+        "h": 295
+      },
+      {
+        "x": 856,
+        "y": 610,
+        "w": 191,
+        "h": 294
+      },
+      {
+        "x": 1057,
+        "y": 609,
+        "w": 205,
+        "h": 291
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "chair",
+    "source": "Kongo Kong/KK attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 200,
+        "w": 287,
+        "h": 591
+      },
+      {
+        "x": 330,
+        "y": 215,
+        "w": 293,
+        "h": 576
+      },
+      {
+        "x": 636,
+        "y": 385,
+        "w": 370,
+        "h": 406
+      },
+      {
+        "x": 942,
+        "y": 392,
+        "w": 399,
+        "h": 399
+      },
+      {
+        "x": 1308,
+        "y": 330,
+        "w": 275,
+        "h": 461
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "bat",
+    "source": "Kongo Kong/KK attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 13,
+        "y": 342,
+        "w": 306,
+        "h": 465
+      },
+      {
+        "x": 348,
+        "y": 233,
+        "w": 281,
+        "h": 579
+      },
+      {
+        "x": 635,
+        "y": 372,
+        "w": 436,
+        "h": 434
+      },
+      {
+        "x": 973,
+        "y": 366,
+        "w": 406,
+        "h": 442
+      },
+      {
+        "x": 1322,
+        "y": 357,
+        "w": 264,
+        "h": 453
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "guitar",
+    "source": "Kongo Kong/KK attack with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 228,
+        "w": 219,
+        "h": 296
+      },
+      {
+        "x": 367,
+        "y": 169,
+        "w": 216,
+        "h": 355
+      },
+      {
+        "x": 663,
+        "y": 270,
+        "w": 273,
+        "h": 254
+      },
+      {
+        "x": 992,
+        "y": 286,
+        "w": 252,
+        "h": 238
+      },
+      {
+        "x": 1345,
+        "y": 228,
+        "w": 218,
+        "h": 296
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "trashcan",
+    "source": "Kongo Kong/KK attack with trrashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 363,
+        "w": 272,
+        "h": 460
+      },
+      {
+        "x": 320,
+        "y": 363,
+        "w": 325,
+        "h": 462
+      },
+      {
+        "x": 630,
+        "y": 197,
+        "w": 296,
+        "h": 628
+      },
+      {
+        "x": 937,
+        "y": 367,
+        "w": 367,
+        "h": 458
+      },
+      {
+        "x": 1263,
+        "y": 369,
+        "w": 324,
+        "h": 457
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "carryChair",
+    "source": "Kongo Kong/KK walking with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 65,
+        "y": 160,
+        "w": 221,
+        "h": 286
+      },
+      {
+        "x": 380,
+        "y": 161,
+        "w": 224,
+        "h": 284
+      },
+      {
+        "x": 694,
+        "y": 161,
+        "w": 225,
+        "h": 285
+      },
+      {
+        "x": 1016,
+        "y": 161,
+        "w": 226,
+        "h": 284
+      },
+      {
+        "x": 1330,
+        "y": 160,
+        "w": 220,
+        "h": 286
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "carryBat",
+    "source": "Kongo Kong/KK walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 295,
+        "w": 313,
+        "h": 505
+      },
+      {
+        "x": 314,
+        "y": 295,
+        "w": 308,
+        "h": 505
+      },
+      {
+        "x": 619,
+        "y": 294,
+        "w": 307,
+        "h": 507
+      },
+      {
+        "x": 929,
+        "y": 296,
+        "w": 307,
+        "h": 506
+      },
+      {
+        "x": 1255,
+        "y": 294,
+        "w": 264,
+        "h": 508
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "carryGuitar",
+    "source": "Kongo Kong/KK walk with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 309,
+        "w": 283,
+        "h": 553
+      },
+      {
+        "x": 340,
+        "y": 312,
+        "w": 266,
+        "h": 550
+      },
+      {
+        "x": 624,
+        "y": 315,
+        "w": 274,
+        "h": 547
+      },
+      {
+        "x": 918,
+        "y": 312,
+        "w": 274,
+        "h": 550
+      },
+      {
+        "x": 1231,
+        "y": 311,
+        "w": 271,
+        "h": 551
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "carryTrashcan",
+    "source": "Kongo Kong/KK walk with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 291,
+        "w": 279,
+        "h": 535
+      },
+      {
+        "x": 335,
+        "y": 291,
+        "w": 266,
+        "h": 529
+      },
+      {
+        "x": 627,
+        "y": 293,
+        "w": 275,
+        "h": 533
+      },
+      {
+        "x": 926,
+        "y": 293,
+        "w": 276,
+        "h": 533
+      },
+      {
+        "x": 1244,
+        "y": 292,
+        "w": 267,
+        "h": 534
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "lift",
+    "source": "Kongo Kong/KK lifting up overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 342,
+        "w": 290,
+        "h": 457
+      },
+      {
+        "x": 335,
+        "y": 335,
+        "w": 304,
+        "h": 467
+      },
+      {
+        "x": 664,
+        "y": 290,
+        "w": 291,
+        "h": 512
+      },
+      {
+        "x": 985,
+        "y": 246,
+        "w": 293,
+        "h": 556
+      },
+      {
+        "x": 1300,
+        "y": 212,
+        "w": 287,
+        "h": 590
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "throw",
+    "source": "Kongo Kong/KK throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 430,
+        "w": 331,
+        "h": 425
+      },
+      {
+        "x": 350,
+        "y": 309,
+        "w": 255,
+        "h": 546
+      },
+      {
+        "x": 629,
+        "y": 238,
+        "w": 289,
+        "h": 616
+      },
+      {
+        "x": 874,
+        "y": 396,
+        "w": 369,
+        "h": 462
+      },
+      {
+        "x": 1220,
+        "y": 402,
+        "w": 298,
+        "h": 454
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "hurt",
+    "source": "Kongo Kong/KK dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 297,
+        "w": 308,
+        "h": 546
+      },
+      {
+        "x": 439,
+        "y": 296,
+        "w": 311,
+        "h": 547
+      },
+      {
+        "x": 846,
+        "y": 319,
+        "w": 309,
+        "h": 524
+      },
+      {
+        "x": 1247,
+        "y": 303,
+        "w": 309,
+        "h": 540
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "fallBack",
+    "source": "Kongo Kong/KK falling backwards.png",
+    "detected": 5,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 347,
+        "w": 245,
+        "h": 445
+      },
+      {
+        "x": 240,
+        "y": 369,
+        "w": 380,
+        "h": 418
+      },
+      {
+        "x": 611,
+        "y": 501,
+        "w": 381,
+        "h": 253
+      },
+      {
+        "x": 1018,
+        "y": 553,
+        "w": 472,
+        "h": 163
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "fallFront",
+    "source": "Kongo Kong/KK falling forwards.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 29,
+        "y": 292,
+        "w": 228,
+        "h": 473
+      },
+      {
+        "x": 267,
+        "y": 352,
+        "w": 276,
+        "h": 413
+      },
+      {
+        "x": 532,
+        "y": 404,
+        "w": 319,
+        "h": 361
+      },
+      {
+        "x": 795,
+        "y": 582,
+        "w": 362,
+        "h": 194
+      },
+      {
+        "x": 1161,
+        "y": 650,
+        "w": 426,
+        "h": 127
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "down",
+    "source": "Kongo Kong/KK laying facedown and faceup.png",
+    "detected": 4,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 787,
+        "y": 362,
+        "w": 670,
+        "h": 180
+      },
+      {
+        "x": 800,
+        "y": 718,
+        "w": 692,
+        "h": 182
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "rise",
+    "source": "Kongo Kong/KK getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 652,
+        "w": 324,
+        "h": 109
+      },
+      {
+        "x": 344,
+        "y": 567,
+        "w": 268,
+        "h": 195
+      },
+      {
+        "x": 621,
+        "y": 521,
+        "w": 241,
+        "h": 241
+      },
+      {
+        "x": 874,
+        "y": 452,
+        "w": 222,
+        "h": 307
+      },
+      {
+        "x": 1119,
+        "y": 401,
+        "w": 221,
+        "h": 359
+      },
+      {
+        "x": 1362,
+        "y": 333,
+        "w": 222,
+        "h": 427
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "taunt",
+    "source": "Kongo Kong/KK tuanting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 294,
+        "w": 298,
+        "h": 552
+      },
+      {
+        "x": 326,
+        "y": 307,
+        "w": 316,
+        "h": 539
+      },
+      {
+        "x": 652,
+        "y": 257,
+        "w": 297,
+        "h": 589
+      },
+      {
+        "x": 969,
+        "y": 306,
+        "w": 300,
+        "h": 540
+      },
+      {
+        "x": 1287,
+        "y": 294,
+        "w": 297,
+        "h": 552
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "victory",
+    "source": "Kongo Kong/KK tuanting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 294,
+        "w": 298,
+        "h": 552
+      },
+      {
+        "x": 326,
+        "y": 307,
+        "w": 316,
+        "h": 539
+      },
+      {
+        "x": 652,
+        "y": 257,
+        "w": 297,
+        "h": 589
+      },
+      {
+        "x": 969,
+        "y": 306,
+        "w": 300,
+        "h": 540
+      },
+      {
+        "x": 1287,
+        "y": 294,
+        "w": 297,
+        "h": 552
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "defeat",
+    "source": "Kongo Kong/KK defeated.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1236,
+        "y": 349,
+        "w": 294,
+        "h": 476
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "kneel",
+    "source": "Kongo Kong/kk kneeling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 251,
+        "w": 304,
+        "h": 561
+      },
+      {
+        "x": 402,
+        "y": 396,
+        "w": 343,
+        "h": 415
+      },
+      {
+        "x": 788,
+        "y": 423,
+        "w": 327,
+        "h": 389
+      },
+      {
+        "x": 1176,
+        "y": 482,
+        "w": 326,
+        "h": 330
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "jump",
+    "source": "Kongo Kong/KK jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 476,
+        "w": 360,
+        "h": 379
+      },
+      {
+        "x": 424,
+        "y": 358,
+        "w": 366,
+        "h": 445
+      },
+      {
+        "x": 812,
+        "y": 285,
+        "w": 370,
+        "h": 428
+      },
+      {
+        "x": 1219,
+        "y": 490,
+        "w": 360,
+        "h": 366
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "pin",
+    "source": "Kongo Kong/KK pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 33,
+        "y": 307,
+        "w": 330,
+        "h": 529
+      },
+      {
+        "x": 367,
+        "y": 384,
+        "w": 411,
+        "h": 452
+      },
+      {
+        "x": 765,
+        "y": 467,
+        "w": 379,
+        "h": 369
+      },
+      {
+        "x": 1157,
+        "y": 530,
+        "w": 365,
+        "h": 309
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "grapple",
+    "source": "Kongo Kong/KK grappling.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 296,
+        "w": 381,
+        "h": 536
+      },
+      {
+        "x": 423,
+        "y": 302,
+        "w": 353,
+        "h": 530
+      },
+      {
+        "x": 809,
+        "y": 309,
+        "w": 422,
+        "h": 523
+      },
+      {
+        "x": 1257,
+        "y": 310,
+        "w": 329,
+        "h": 522
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "elbow",
+    "source": "Kongo Kong/KK elbow attack.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 295,
+        "w": 323,
+        "h": 525
+      },
+      {
+        "x": 406,
+        "y": 289,
+        "w": 381,
+        "h": 531
+      },
+      {
+        "x": 800,
+        "y": 293,
+        "w": 366,
+        "h": 527
+      },
+      {
+        "x": 1240,
+        "y": 293,
+        "w": 330,
+        "h": 527
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "kick",
+    "source": "Kongo Kong/KK kicking.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 44,
+        "y": 177,
+        "w": 191,
+        "h": 301
+      },
+      {
+        "x": 365,
+        "y": 177,
+        "w": 203,
+        "h": 300
+      },
+      {
+        "x": 648,
+        "y": 177,
+        "w": 275,
+        "h": 300
+      },
+      {
+        "x": 1054,
+        "y": 177,
+        "w": 188,
+        "h": 301
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "climb",
+    "source": "Kongo Kong/KK climbing on top ropes corner.png",
+    "detected": 7,
+    "count": 7,
+    "bounds": [
+      {
+        "x": 32,
+        "y": 273,
+        "w": 148,
+        "h": 247
+      },
+      {
+        "x": 264,
+        "y": 263,
+        "w": 163,
+        "h": 257
+      },
+      {
+        "x": 498,
+        "y": 226,
+        "w": 161,
+        "h": 259
+      },
+      {
+        "x": 723,
+        "y": 200,
+        "w": 151,
+        "h": 226
+      },
+      {
+        "x": 950,
+        "y": 211,
+        "w": 152,
+        "h": 165
+      },
+      {
+        "x": 1177,
+        "y": 208,
+        "w": 154,
+        "h": 178
+      },
+      {
+        "x": 1424,
+        "y": 186,
+        "w": 125,
+        "h": 229
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "entry",
+    "source": "Kongo Kong/KK climbing through ropes.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 312,
+        "w": 273,
+        "h": 494
+      },
+      {
+        "x": 361,
+        "y": 325,
+        "w": 277,
+        "h": 481
+      },
+      {
+        "x": 688,
+        "y": 331,
+        "w": 260,
+        "h": 475
+      },
+      {
+        "x": 1008,
+        "y": 325,
+        "w": 257,
+        "h": 481
+      },
+      {
+        "x": 1318,
+        "y": 283,
+        "w": 250,
+        "h": 523
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "dive",
+    "source": "Kongo Kong/KK jumping off top rope.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 446,
+        "y": 272,
+        "w": 283,
+        "h": 256
+      },
+      {
+        "x": 739,
+        "y": 380,
+        "w": 448,
+        "h": 166
+      }
+    ]
+  },
+  {
+    "fighter": "kongo-kong",
+    "animation": "guitar",
+    "source": "Kongo Kong/Kongo Kong attack with guitar.png",
+    "duplicateOf": "Kongo Kong/KK attack with guitar.png",
+    "detected": 0,
+    "count": 0,
+    "bounds": []
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "idle",
+    "source": "Father Bronson/Father Bronson 4 way stance.png",
+    "detected": 2,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 952,
+        "y": 271,
+        "w": 206,
+        "h": 597
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "walk",
+    "source": "Father Bronson/Father Bronson Walking.png",
+    "detected": 12,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 76,
+        "y": 203,
+        "w": 179,
+        "h": 304
+      },
+      {
+        "x": 331,
+        "y": 203,
+        "w": 189,
+        "h": 303
+      },
+      {
+        "x": 588,
+        "y": 203,
+        "w": 176,
+        "h": 304
+      },
+      {
+        "x": 838,
+        "y": 203,
+        "w": 177,
+        "h": 306
+      },
+      {
+        "x": 1086,
+        "y": 203,
+        "w": 193,
+        "h": 303
+      },
+      {
+        "x": 1353,
+        "y": 203,
+        "w": 182,
+        "h": 303
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "run",
+    "source": "Father Bronson/Father Bronson Running.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 48,
+        "y": 234,
+        "w": 206,
+        "h": 256
+      },
+      {
+        "x": 293,
+        "y": 234,
+        "w": 236,
+        "h": 256
+      },
+      {
+        "x": 557,
+        "y": 234,
+        "w": 224,
+        "h": 256
+      },
+      {
+        "x": 820,
+        "y": 234,
+        "w": 218,
+        "h": 256
+      },
+      {
+        "x": 1075,
+        "y": 234,
+        "w": 225,
+        "h": 256
+      },
+      {
+        "x": 1344,
+        "y": 234,
+        "w": 207,
+        "h": 256
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "bat",
+    "source": "Father Bronson/Father Bronson atk with bat.jpeg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 331,
+        "w": 322,
+        "h": 530
+      },
+      {
+        "x": 329,
+        "y": 225,
+        "w": 304,
+        "h": 632
+      },
+      {
+        "x": 624,
+        "y": 351,
+        "w": 472,
+        "h": 508
+      },
+      {
+        "x": 950,
+        "y": 357,
+        "w": 394,
+        "h": 494
+      },
+      {
+        "x": 1260,
+        "y": 354,
+        "w": 323,
+        "h": 497
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "guitar",
+    "source": "Father Bronson/Father Bronson atk with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 304,
+        "w": 285,
+        "h": 520
+      },
+      {
+        "x": 354,
+        "y": 243,
+        "w": 260,
+        "h": 549
+      },
+      {
+        "x": 1288,
+        "y": 334,
+        "w": 270,
+        "h": 455
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "trashcan",
+    "source": "Father Bronson/Father Bronson atk w trashcan.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 343,
+        "w": 298,
+        "h": 527
+      },
+      {
+        "x": 320,
+        "y": 347,
+        "w": 334,
+        "h": 520
+      },
+      {
+        "x": 627,
+        "y": 233,
+        "w": 315,
+        "h": 639
+      },
+      {
+        "x": 925,
+        "y": 362,
+        "w": 375,
+        "h": 505
+      },
+      {
+        "x": 1237,
+        "y": 372,
+        "w": 350,
+        "h": 497
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "carryChair",
+    "source": "Father Bronson/Father Bronson walk with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 78,
+        "y": 172,
+        "w": 226,
+        "h": 275
+      },
+      {
+        "x": 385,
+        "y": 172,
+        "w": 229,
+        "h": 275
+      },
+      {
+        "x": 706,
+        "y": 172,
+        "w": 241,
+        "h": 275
+      },
+      {
+        "x": 1030,
+        "y": 172,
+        "w": 232,
+        "h": 275
+      },
+      {
+        "x": 1348,
+        "y": 171,
+        "w": 221,
+        "h": 276
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "carryBat",
+    "source": "Father Bronson/Father Bronson walk with bat.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 233,
+        "w": 304,
+        "h": 553
+      },
+      {
+        "x": 343,
+        "y": 236,
+        "w": 309,
+        "h": 545
+      },
+      {
+        "x": 659,
+        "y": 233,
+        "w": 302,
+        "h": 553
+      },
+      {
+        "x": 972,
+        "y": 233,
+        "w": 289,
+        "h": 549
+      },
+      {
+        "x": 1277,
+        "y": 233,
+        "w": 291,
+        "h": 553
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "carryGuitar",
+    "source": "Father Bronson/Father Bronson walk left w guitar.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 273,
+        "w": 342,
+        "h": 583
+      },
+      {
+        "x": 372,
+        "y": 272,
+        "w": 291,
+        "h": 594
+      },
+      {
+        "x": 661,
+        "y": 273,
+        "w": 329,
+        "h": 587
+      },
+      {
+        "x": 1004,
+        "y": 273,
+        "w": 277,
+        "h": 593
+      },
+      {
+        "x": 1306,
+        "y": 273,
+        "w": 268,
+        "h": 595
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "carryTrashcan",
+    "source": "Father Bronson/Father Bronson walk w trashcan.jpeg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 223,
+        "w": 268,
+        "h": 651
+      },
+      {
+        "x": 316,
+        "y": 223,
+        "w": 309,
+        "h": 648
+      },
+      {
+        "x": 644,
+        "y": 223,
+        "w": 291,
+        "h": 651
+      },
+      {
+        "x": 950,
+        "y": 223,
+        "w": 303,
+        "h": 647
+      },
+      {
+        "x": 1264,
+        "y": 224,
+        "w": 323,
+        "h": 641
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "lift",
+    "source": "Father Bronson/Father Bronson lift overhead.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 298,
+        "w": 276,
+        "h": 514
+      },
+      {
+        "x": 348,
+        "y": 315,
+        "w": 300,
+        "h": 497
+      },
+      {
+        "x": 678,
+        "y": 274,
+        "w": 272,
+        "h": 538
+      },
+      {
+        "x": 1018,
+        "y": 219,
+        "w": 239,
+        "h": 593
+      },
+      {
+        "x": 1326,
+        "y": 219,
+        "w": 240,
+        "h": 593
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "throw",
+    "source": "Father Bronson/Father Bronson throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 400,
+        "w": 361,
+        "h": 467
+      },
+      {
+        "x": 377,
+        "y": 302,
+        "w": 282,
+        "h": 563
+      },
+      {
+        "x": 661,
+        "y": 228,
+        "w": 379,
+        "h": 607
+      },
+      {
+        "x": 963,
+        "y": 341,
+        "w": 326,
+        "h": 522
+      },
+      {
+        "x": 1286,
+        "y": 374,
+        "w": 283,
+        "h": 489
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "hurt",
+    "source": "Father Bronson/Father Bronson dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 45,
+        "y": 296,
+        "w": 325,
+        "h": 578
+      },
+      {
+        "x": 445,
+        "y": 299,
+        "w": 324,
+        "h": 575
+      },
+      {
+        "x": 848,
+        "y": 316,
+        "w": 318,
+        "h": 557
+      },
+      {
+        "x": 1239,
+        "y": 292,
+        "w": 320,
+        "h": 582
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "fallBack",
+    "source": "Father Bronson/Father Bronson falling left.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 78,
+        "y": 291,
+        "w": 229,
+        "h": 502
+      },
+      {
+        "x": 289,
+        "y": 293,
+        "w": 348,
+        "h": 472
+      },
+      {
+        "x": 654,
+        "y": 406,
+        "w": 401,
+        "h": 298
+      },
+      {
+        "x": 1076,
+        "y": 433,
+        "w": 471,
+        "h": 178
+      },
+      {
+        "x": 996,
+        "y": 737,
+        "w": 564,
+        "h": 116
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "fallFront",
+    "source": "Father Bronson/Father Bronson fall forward.jpeg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 65,
+        "y": 268,
+        "w": 224,
+        "h": 429
+      },
+      {
+        "x": 340,
+        "y": 322,
+        "w": 261,
+        "h": 374
+      },
+      {
+        "x": 619,
+        "y": 398,
+        "w": 293,
+        "h": 299
+      },
+      {
+        "x": 892,
+        "y": 538,
+        "w": 302,
+        "h": 156
+      },
+      {
+        "x": 1207,
+        "y": 592,
+        "w": 350,
+        "h": 110
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "down",
+    "source": "Father Bronson/Father Bronson Lying down-up.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 859,
+        "y": 313,
+        "w": 637,
+        "h": 158
+      },
+      {
+        "x": 827,
+        "y": 649,
+        "w": 727,
+        "h": 220
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "rise",
+    "source": "Father Bronson/Father Bronson getting up.jpg",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 649,
+        "w": 302,
+        "h": 102
+      },
+      {
+        "x": 340,
+        "y": 536,
+        "w": 260,
+        "h": 225
+      },
+      {
+        "x": 606,
+        "y": 478,
+        "w": 219,
+        "h": 279
+      },
+      {
+        "x": 854,
+        "y": 414,
+        "w": 228,
+        "h": 336
+      },
+      {
+        "x": 1116,
+        "y": 366,
+        "w": 196,
+        "h": 390
+      },
+      {
+        "x": 1347,
+        "y": 338,
+        "w": 208,
+        "h": 415
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "taunt",
+    "source": "Father Bronson/Father Bronson taunt.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 292,
+        "w": 291,
+        "h": 581
+      },
+      {
+        "x": 320,
+        "y": 300,
+        "w": 335,
+        "h": 573
+      },
+      {
+        "x": 650,
+        "y": 236,
+        "w": 336,
+        "h": 637
+      },
+      {
+        "x": 993,
+        "y": 298,
+        "w": 274,
+        "h": 575
+      },
+      {
+        "x": 1297,
+        "y": 291,
+        "w": 275,
+        "h": 582
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "victory",
+    "source": "Father Bronson/Father Bronson victory.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 318,
+        "w": 253,
+        "h": 503
+      },
+      {
+        "x": 341,
+        "y": 318,
+        "w": 279,
+        "h": 501
+      },
+      {
+        "x": 645,
+        "y": 240,
+        "w": 282,
+        "h": 580
+      },
+      {
+        "x": 941,
+        "y": 227,
+        "w": 353,
+        "h": 592
+      },
+      {
+        "x": 1308,
+        "y": 318,
+        "w": 246,
+        "h": 502
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "defeat",
+    "source": "Father Bronson/Father Bronson lose pose 2.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1228,
+        "y": 371,
+        "w": 322,
+        "h": 481
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "kneel",
+    "source": "Father Bronson/Father Bronson lose pose.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 234,
+        "w": 333,
+        "h": 574
+      },
+      {
+        "x": 405,
+        "y": 359,
+        "w": 357,
+        "h": 446
+      },
+      {
+        "x": 817,
+        "y": 394,
+        "w": 339,
+        "h": 412
+      },
+      {
+        "x": 1205,
+        "y": 472,
+        "w": 363,
+        "h": 334
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "exhausted",
+    "source": "Father Bronson/Father Bronson passed out.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1248,
+        "y": 316,
+        "w": 334,
+        "h": 525
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "jump",
+    "source": "Father Bronson/Father Bronson Jumping & landing.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 491,
+        "w": 276,
+        "h": 376
+      },
+      {
+        "x": 426,
+        "y": 350,
+        "w": 299,
+        "h": 407
+      },
+      {
+        "x": 839,
+        "y": 270,
+        "w": 267,
+        "h": 448
+      },
+      {
+        "x": 1259,
+        "y": 478,
+        "w": 254,
+        "h": 389
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "pin",
+    "source": "Father Bronson/Father Bronson pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 43,
+        "y": 277,
+        "w": 326,
+        "h": 584
+      },
+      {
+        "x": 404,
+        "y": 358,
+        "w": 392,
+        "h": 499
+      },
+      {
+        "x": 801,
+        "y": 464,
+        "w": 349,
+        "h": 392
+      },
+      {
+        "x": 1161,
+        "y": 558,
+        "w": 406,
+        "h": 291
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "grapple",
+    "source": "Father Bronson/Father Bronsons lift overhead 2.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 378,
+        "w": 305,
+        "h": 496
+      },
+      {
+        "x": 354,
+        "y": 451,
+        "w": 305,
+        "h": 423
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "elbow",
+    "source": "Father Bronson/Father Bronson Elbow Attack.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 221,
+        "w": 290,
+        "h": 494
+      },
+      {
+        "x": 421,
+        "y": 226,
+        "w": 355,
+        "h": 488
+      },
+      {
+        "x": 805,
+        "y": 226,
+        "w": 344,
+        "h": 488
+      },
+      {
+        "x": 1236,
+        "y": 221,
+        "w": 289,
+        "h": 494
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "kick",
+    "source": "Father Bronson/Father Bronson Kick.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 62,
+        "y": 142,
+        "w": 195,
+        "h": 291
+      },
+      {
+        "x": 435,
+        "y": 141,
+        "w": 194,
+        "h": 292
+      },
+      {
+        "x": 779,
+        "y": 146,
+        "w": 282,
+        "h": 287
+      },
+      {
+        "x": 1273,
+        "y": 142,
+        "w": 195,
+        "h": 291
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "climb",
+    "source": "Father Bronson/Father Bronson Climbing rops on top.jpg",
+    "detected": 7,
+    "count": 7,
+    "bounds": [
+      {
+        "x": 29,
+        "y": 526,
+        "w": 174,
+        "h": 338
+      },
+      {
+        "x": 247,
+        "y": 492,
+        "w": 192,
+        "h": 359
+      },
+      {
+        "x": 489,
+        "y": 430,
+        "w": 163,
+        "h": 338
+      },
+      {
+        "x": 709,
+        "y": 386,
+        "w": 187,
+        "h": 332
+      },
+      {
+        "x": 930,
+        "y": 361,
+        "w": 195,
+        "h": 238
+      },
+      {
+        "x": 1152,
+        "y": 357,
+        "w": 200,
+        "h": 252
+      },
+      {
+        "x": 1368,
+        "y": 281,
+        "w": 189,
+        "h": 306
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "entry",
+    "source": "Father Bronson/Father Bronson walking through ropes.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 330,
+        "w": 265,
+        "h": 454
+      },
+      {
+        "x": 354,
+        "y": 329,
+        "w": 261,
+        "h": 454
+      },
+      {
+        "x": 668,
+        "y": 333,
+        "w": 265,
+        "h": 462
+      },
+      {
+        "x": 986,
+        "y": 332,
+        "w": 270,
+        "h": 455
+      },
+      {
+        "x": 1314,
+        "y": 282,
+        "w": 249,
+        "h": 542
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "dive",
+    "source": "Father Bronson/Father Bronson top rope jump.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 646,
+        "y": 333,
+        "w": 389,
+        "h": 239
+      },
+      {
+        "x": 966,
+        "y": 446,
+        "w": 317,
+        "h": 296
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "ropePose",
+    "source": "Father Bronson/Father Bronson climbing ropes.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 479,
+        "w": 208,
+        "h": 380
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "fallBackReverse",
+    "source": "Father Bronson/Father Bronson falling right.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 64,
+        "y": 294,
+        "w": 220,
+        "h": 505
+      },
+      {
+        "x": 317,
+        "y": 294,
+        "w": 356,
+        "h": 476
+      },
+      {
+        "x": 659,
+        "y": 408,
+        "w": 377,
+        "h": 303
+      },
+      {
+        "x": 1065,
+        "y": 462,
+        "w": 497,
+        "h": 153
+      },
+      {
+        "x": 1016,
+        "y": 742,
+        "w": 548,
+        "h": 117
+      }
+    ]
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "reviewed-alternate",
+    "source": "Father Bronson/Father Bronson Grapple.png",
+    "detected": 0,
+    "count": 0,
+    "bounds": [],
+    "reason": "Paired, occluded bodies; replaced by intact tie-up preparation from the second lift sheet."
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "reviewed-alternate",
+    "source": "Father Bronson/Father Bronson fall backward.jpg",
+    "detected": 0,
+    "count": 0,
+    "bounds": [],
+    "reason": "Alternate backward sequence ends facedown; dedicated directional back-fall sheets provide consistent landings."
+  },
+  {
+    "fighter": "father-bronson",
+    "animation": "reviewed-alternate",
+    "source": "Father Bronson/Father Bronsons walk right w guitar.jpg",
+    "detected": 0,
+    "count": 0,
+    "bounds": [],
+    "reason": "Alternate front-facing carry; the side-facing left carry is normalized and mirrored for both directions."
+  },
+  {
+    "fighter": "hokane",
+    "animation": "idle",
+    "source": "Hokane Sprite Set/Hokane standing.jpg",
+    "detected": 2,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1327,
+        "y": 279,
+        "w": 154,
+        "h": 587
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "walk",
+    "source": "Hokane Sprite Set/Hokane walking.jpg",
+    "detected": 10,
+    "count": 10,
+    "bounds": [
+      {
+        "x": 86,
+        "y": 207,
+        "w": 195,
+        "h": 275
+      },
+      {
+        "x": 395,
+        "y": 208,
+        "w": 191,
+        "h": 274
+      },
+      {
+        "x": 702,
+        "y": 208,
+        "w": 186,
+        "h": 273
+      },
+      {
+        "x": 996,
+        "y": 208,
+        "w": 224,
+        "h": 273
+      },
+      {
+        "x": 1309,
+        "y": 207,
+        "w": 203,
+        "h": 277
+      },
+      {
+        "x": 84,
+        "y": 542,
+        "w": 201,
+        "h": 282
+      },
+      {
+        "x": 389,
+        "y": 542,
+        "w": 198,
+        "h": 280
+      },
+      {
+        "x": 684,
+        "y": 542,
+        "w": 231,
+        "h": 280
+      },
+      {
+        "x": 999,
+        "y": 542,
+        "w": 221,
+        "h": 284
+      },
+      {
+        "x": 1344,
+        "y": 542,
+        "w": 153,
+        "h": 283
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "run",
+    "source": "Hokane Sprite Set/Hokane running.jpg",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 1066,
+        "y": 229,
+        "w": 223,
+        "h": 268
+      },
+      {
+        "x": 1328,
+        "y": 231,
+        "w": 225,
+        "h": 265
+      },
+      {
+        "x": 560,
+        "y": 580,
+        "w": 204,
+        "h": 277
+      },
+      {
+        "x": 819,
+        "y": 577,
+        "w": 209,
+        "h": 293
+      },
+      {
+        "x": 1076,
+        "y": 577,
+        "w": 208,
+        "h": 282
+      },
+      {
+        "x": 1350,
+        "y": 578,
+        "w": 195,
+        "h": 286
+      }
+    ],
+    "note": "Six consistently right-facing frames selected from both mixed-direction rows."
+  },
+  {
+    "fighter": "hokane",
+    "animation": "chair",
+    "source": "Hokane Sprite Set/Hokane attack with chair.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 236,
+        "w": 262,
+        "h": 579
+      },
+      {
+        "x": 349,
+        "y": 216,
+        "w": 255,
+        "h": 600
+      },
+      {
+        "x": 641,
+        "y": 417,
+        "w": 386,
+        "h": 398
+      },
+      {
+        "x": 954,
+        "y": 399,
+        "w": 346,
+        "h": 414
+      },
+      {
+        "x": 1297,
+        "y": 364,
+        "w": 267,
+        "h": 451
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "bat",
+    "source": "Hokane Sprite Set/Hokane attack with bat.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 52,
+        "y": 334,
+        "w": 327,
+        "h": 520
+      },
+      {
+        "x": 351,
+        "y": 242,
+        "w": 291,
+        "h": 609
+      },
+      {
+        "x": 656,
+        "y": 345,
+        "w": 419,
+        "h": 509
+      },
+      {
+        "x": 974,
+        "y": 360,
+        "w": 368,
+        "h": 483
+      },
+      {
+        "x": 1247,
+        "y": 362,
+        "w": 324,
+        "h": 485
+      }
+    ],
+    "note": "Last recovery has crossed neighboring bats; runtime repeats the clean ready frame."
+  },
+  {
+    "fighter": "hokane",
+    "animation": "guitar",
+    "source": "Hokane Sprite Set/Hokane attack with guitar.jpg",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 55,
+        "y": 330,
+        "w": 266,
+        "h": 456
+      },
+      {
+        "x": 351,
+        "y": 255,
+        "w": 265,
+        "h": 533
+      },
+      {
+        "x": 1286,
+        "y": 338,
+        "w": 263,
+        "h": 447
+      }
+    ],
+    "note": "Clipped contact replaced by Hokane throw pose 3 and own isolated guitar prop."
+  },
+  {
+    "fighter": "hokane",
+    "animation": "trashcan",
+    "source": "Hokane Sprite Set/Hokane attack with trashcan.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 338,
+        "w": 297,
+        "h": 527
+      },
+      {
+        "x": 328,
+        "y": 343,
+        "w": 328,
+        "h": 520
+      },
+      {
+        "x": 634,
+        "y": 216,
+        "w": 274,
+        "h": 650
+      },
+      {
+        "x": 935,
+        "y": 361,
+        "w": 363,
+        "h": 504
+      },
+      {
+        "x": 1240,
+        "y": 365,
+        "w": 344,
+        "h": 500
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "carryChair",
+    "source": "Hokane Sprite Set/Hokane walking with chair.jpg",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 107,
+        "y": 212,
+        "w": 169,
+        "h": 268
+      },
+      {
+        "x": 415,
+        "y": 212,
+        "w": 161,
+        "h": 268
+      },
+      {
+        "x": 724,
+        "y": 212,
+        "w": 158,
+        "h": 268
+      },
+      {
+        "x": 1026,
+        "y": 212,
+        "w": 160,
+        "h": 268
+      },
+      {
+        "x": 1338,
+        "y": 212,
+        "w": 166,
+        "h": 268
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "carryBat",
+    "source": "Hokane Sprite Set/Hokane walk with bat.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 70,
+        "y": 232,
+        "w": 274,
+        "h": 554
+      },
+      {
+        "x": 345,
+        "y": 233,
+        "w": 314,
+        "h": 548
+      },
+      {
+        "x": 693,
+        "y": 232,
+        "w": 267,
+        "h": 555
+      },
+      {
+        "x": 968,
+        "y": 232,
+        "w": 293,
+        "h": 554
+      },
+      {
+        "x": 1270,
+        "y": 232,
+        "w": 294,
+        "h": 553
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "carryGuitar",
+    "source": "Hokane Sprite Set/Hokane walk with guitar.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 277,
+        "w": 314,
+        "h": 571
+      },
+      {
+        "x": 374,
+        "y": 277,
+        "w": 257,
+        "h": 577
+      },
+      {
+        "x": 651,
+        "y": 277,
+        "w": 308,
+        "h": 571
+      },
+      {
+        "x": 1004,
+        "y": 277,
+        "w": 250,
+        "h": 577
+      },
+      {
+        "x": 1261,
+        "y": 276,
+        "w": 304,
+        "h": 572
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "carryTrashcan",
+    "source": "Hokane Sprite Set/Hokane walking with trashcan.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 286,
+        "w": 298,
+        "h": 460
+      },
+      {
+        "x": 366,
+        "y": 288,
+        "w": 281,
+        "h": 462
+      },
+      {
+        "x": 686,
+        "y": 288,
+        "w": 275,
+        "h": 462
+      },
+      {
+        "x": 976,
+        "y": 286,
+        "w": 288,
+        "h": 464
+      },
+      {
+        "x": 1295,
+        "y": 285,
+        "w": 277,
+        "h": 464
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "lift",
+    "source": "Hokane Sprite Set/Hokane lifting up overhead.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 53,
+        "y": 432,
+        "w": 315,
+        "h": 432
+      },
+      {
+        "x": 381,
+        "y": 385,
+        "w": 275,
+        "h": 479
+      },
+      {
+        "x": 688,
+        "y": 335,
+        "w": 261,
+        "h": 528
+      },
+      {
+        "x": 1014,
+        "y": 294,
+        "w": 240,
+        "h": 570
+      },
+      {
+        "x": 1320,
+        "y": 298,
+        "w": 232,
+        "h": 566
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "throw",
+    "source": "Hokane Sprite Set/Hokane throwing.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 50,
+        "y": 449,
+        "w": 302,
+        "h": 421
+      },
+      {
+        "x": 404,
+        "y": 356,
+        "w": 258,
+        "h": 509
+      },
+      {
+        "x": 680,
+        "y": 235,
+        "w": 359,
+        "h": 586
+      },
+      {
+        "x": 966,
+        "y": 406,
+        "w": 329,
+        "h": 463
+      },
+      {
+        "x": 1303,
+        "y": 390,
+        "w": 257,
+        "h": 479
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "lifted",
+    "source": "Hokane Sprite Set/Hokane getting lifted overhead.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 44,
+        "y": 487,
+        "w": 257,
+        "h": 300
+      },
+      {
+        "x": 335,
+        "y": 380,
+        "w": 264,
+        "h": 318
+      },
+      {
+        "x": 614,
+        "y": 366,
+        "w": 289,
+        "h": 239
+      },
+      {
+        "x": 928,
+        "y": 346,
+        "w": 296,
+        "h": 186
+      },
+      {
+        "x": 1244,
+        "y": 334,
+        "w": 324,
+        "h": 183
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "thrown",
+    "source": "Hokane Sprite Set/Hokane being thrown.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 88,
+        "y": 314,
+        "w": 257,
+        "h": 497
+      },
+      {
+        "x": 365,
+        "y": 287,
+        "w": 341,
+        "h": 468
+      },
+      {
+        "x": 696,
+        "y": 279,
+        "w": 221,
+        "h": 448
+      },
+      {
+        "x": 969,
+        "y": 317,
+        "w": 284,
+        "h": 387
+      },
+      {
+        "x": 1210,
+        "y": 630,
+        "w": 361,
+        "h": 171
+      }
+    ],
+    "note": "Printed shadows excluded; five complete body poses only."
+  },
+  {
+    "fighter": "hokane",
+    "animation": "hurt",
+    "source": "Hokane Sprite Set/Hokane dazed.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 64,
+        "y": 283,
+        "w": 321,
+        "h": 583
+      },
+      {
+        "x": 460,
+        "y": 288,
+        "w": 304,
+        "h": 578
+      },
+      {
+        "x": 851,
+        "y": 285,
+        "w": 301,
+        "h": 581
+      },
+      {
+        "x": 1227,
+        "y": 282,
+        "w": 311,
+        "h": 584
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "fallBack",
+    "source": "Hokane Sprite Set/Hokane falling backwards.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 292,
+        "w": 273,
+        "h": 493
+      },
+      {
+        "x": 316,
+        "y": 316,
+        "w": 346,
+        "h": 424
+      },
+      {
+        "x": 676,
+        "y": 428,
+        "w": 363,
+        "h": 284
+      },
+      {
+        "x": 1071,
+        "y": 478,
+        "w": 473,
+        "h": 126
+      },
+      {
+        "x": 996,
+        "y": 738,
+        "w": 560,
+        "h": 117
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "fallFront",
+    "source": "Hokane Sprite Set/Hokane falling forwards.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 295,
+        "w": 260,
+        "h": 503
+      },
+      {
+        "x": 324,
+        "y": 315,
+        "w": 402,
+        "h": 432
+      },
+      {
+        "x": 594,
+        "y": 470,
+        "w": 459,
+        "h": 256
+      },
+      {
+        "x": 1048,
+        "y": 477,
+        "w": 506,
+        "h": 133
+      },
+      {
+        "x": 1020,
+        "y": 736,
+        "w": 540,
+        "h": 120
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "down",
+    "source": "Hokane Sprite Set/Hokane laying facedown and faceup.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 857,
+        "y": 318,
+        "w": 693,
+        "h": 172
+      },
+      {
+        "x": 823,
+        "y": 652,
+        "w": 724,
+        "h": 215
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "rise",
+    "source": "Hokane Sprite Set/Hokane getting up from facedown.jpg",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 654,
+        "w": 300,
+        "h": 93
+      },
+      {
+        "x": 341,
+        "y": 542,
+        "w": 258,
+        "h": 215
+      },
+      {
+        "x": 606,
+        "y": 480,
+        "w": 218,
+        "h": 265
+      },
+      {
+        "x": 851,
+        "y": 405,
+        "w": 222,
+        "h": 341
+      },
+      {
+        "x": 1116,
+        "y": 352,
+        "w": 176,
+        "h": 402
+      },
+      {
+        "x": 1339,
+        "y": 328,
+        "w": 207,
+        "h": 421
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "taunt",
+    "source": "Hokane Sprite Set/Hokane taunting.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 45,
+        "y": 276,
+        "w": 313,
+        "h": 584
+      },
+      {
+        "x": 352,
+        "y": 337,
+        "w": 290,
+        "h": 520
+      },
+      {
+        "x": 662,
+        "y": 326,
+        "w": 267,
+        "h": 531
+      },
+      {
+        "x": 944,
+        "y": 314,
+        "w": 298,
+        "h": 544
+      },
+      {
+        "x": 1252,
+        "y": 272,
+        "w": 302,
+        "h": 584
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "victory",
+    "source": "Hokane Sprite Set/Hokane victory.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 62,
+        "y": 225,
+        "w": 295,
+        "h": 638
+      },
+      {
+        "x": 393,
+        "y": 232,
+        "w": 261,
+        "h": 629
+      },
+      {
+        "x": 694,
+        "y": 303,
+        "w": 233,
+        "h": 561
+      },
+      {
+        "x": 972,
+        "y": 312,
+        "w": 273,
+        "h": 553
+      },
+      {
+        "x": 1279,
+        "y": 221,
+        "w": 265,
+        "h": 645
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "defeat",
+    "source": "Hokane Sprite Set/Hokane defeated.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1212,
+        "y": 354,
+        "w": 303,
+        "h": 479
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "jump",
+    "source": "Hokane Sprite Set/Hokane jumping.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 490,
+        "w": 263,
+        "h": 377
+      },
+      {
+        "x": 424,
+        "y": 372,
+        "w": 326,
+        "h": 461
+      },
+      {
+        "x": 858,
+        "y": 276,
+        "w": 330,
+        "h": 472
+      },
+      {
+        "x": 1302,
+        "y": 479,
+        "w": 225,
+        "h": 388
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "pin",
+    "source": "Hokane Sprite Set/Hokane pinning.jpg",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 59,
+        "y": 281,
+        "w": 309,
+        "h": 569
+      },
+      {
+        "x": 414,
+        "y": 393,
+        "w": 311,
+        "h": 453
+      },
+      {
+        "x": 801,
+        "y": 502,
+        "w": 346,
+        "h": 343
+      },
+      {
+        "x": 1166,
+        "y": 613,
+        "w": 390,
+        "h": 226
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "climb",
+    "source": "Hokane Sprite Set/Hokane climbing on top ropes.jpg",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 268,
+        "y": 465,
+        "w": 176,
+        "h": 302
+      },
+      {
+        "x": 493,
+        "y": 450,
+        "w": 174,
+        "h": 317
+      },
+      {
+        "x": 713,
+        "y": 404,
+        "w": 167,
+        "h": 303
+      },
+      {
+        "x": 954,
+        "y": 377,
+        "w": 169,
+        "h": 201
+      },
+      {
+        "x": 1151,
+        "y": 325,
+        "w": 196,
+        "h": 286
+      },
+      {
+        "x": 1374,
+        "y": 284,
+        "w": 185,
+        "h": 295
+      }
+    ],
+    "note": "First back-view source pose is occluded by a printed post; six side-facing climb poses follow the separate rope setup."
+  },
+  {
+    "fighter": "hokane",
+    "animation": "entry",
+    "source": "Hokane Sprite Set/Hokane climbing through ropes.jpg",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 50,
+        "y": 320,
+        "w": 249,
+        "h": 425
+      },
+      {
+        "x": 376,
+        "y": 341,
+        "w": 244,
+        "h": 447
+      },
+      {
+        "x": 696,
+        "y": 325,
+        "w": 238,
+        "h": 489
+      },
+      {
+        "x": 1012,
+        "y": 294,
+        "w": 247,
+        "h": 512
+      },
+      {
+        "x": 1329,
+        "y": 286,
+        "w": 228,
+        "h": 537
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "dive",
+    "source": "Hokane Sprite Set/Hokane jumping off corner ropes.jpg",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 648,
+        "y": 340,
+        "w": 367,
+        "h": 243
+      },
+      {
+        "x": 936,
+        "y": 514,
+        "w": 367,
+        "h": 219
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "propGuitar",
+    "source": "Hokane Sprite Set/Hokane attack with guitar.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 210,
+        "y": 465,
+        "w": 119,
+        "h": 288
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "ropePose",
+    "source": "Hokane Sprite Set/Hokane climbing on ropes.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1297,
+        "y": 282,
+        "w": 235,
+        "h": 557
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "ko",
+    "source": "Hokane Sprite Set/Hokane passed out.jpg",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 96,
+        "y": 252,
+        "w": 1422,
+        "h": 592
+      }
+    ]
+  },
+  {
+    "fighter": "hokane",
+    "animation": "fallFrontReverse",
+    "source": "Hokane Sprite Set/Hokane falling forward.jpg",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 60,
+        "y": 371,
+        "w": 165,
+        "h": 348
+      },
+      {
+        "x": 303,
+        "y": 404,
+        "w": 188,
+        "h": 315
+      },
+      {
+        "x": 520,
+        "y": 464,
+        "w": 232,
+        "h": 255
+      },
+      {
+        "x": 769,
+        "y": 510,
+        "w": 227,
+        "h": 209
+      },
+      {
+        "x": 1001,
+        "y": 574,
+        "w": 226,
+        "h": 146
+      },
+      {
+        "x": 1244,
+        "y": 629,
+        "w": 321,
+        "h": 91
+      }
+    ]
   }
 ]

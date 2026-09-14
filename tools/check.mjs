@@ -7,12 +7,13 @@ import {ARENAS} from '../dist/src/arenas.js';
 const root=fileURLToPath(new URL('../',import.meta.url));const dist=path.join(root,'dist');
 for(const file of await readdir(path.join(dist,'src')))if(file.endsWith('.js'))execFileSync(process.execPath,['--check',path.join(dist,'src',file)]);
 const html=await readFile(path.join(dist,'index.html'),'utf8');
-for(const match of html.matchAll(/(?:src|href)="(\.\/[^"#?]+)"/g))await access(path.join(dist,match[1]));
+for(const match of html.matchAll(/(?:src|href)="(\.\/[^"#?]+)(?:[?#][^"]*)?"/g))await access(path.join(dist,match[1]));
 const ids=Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML ids');
 const main=await readFile(path.join(dist,'src/main.js'),'utf8');for(const match of main.matchAll(/\$\('([^']+)'\)/g))assert.ok(ids.includes(match[1]),`Missing UI element ${match[1]}`);
-const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,21);assert.equal(new Set(roster.map(f=>f.id )).size,21);
+const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,24);assert.equal(new Set(roster.map(f=>f.id )).size,24);
 let count=0;
 for(const f of roster){
+  for(const key of ['power','speed','technique','toughness'])assert.ok(Number.isFinite(f[key])&&f[key]>0,`${f.name}: invalid ${key}`);
   await access(path.join(dist,f.atlas));await access(path.join(dist,`assets/${f.id}-portrait.png`));
   for(const animation of ['idle','walk','light','heavy','lift','throw','hurt','down','rise','victory','jump','pin']){
     assert.ok(f.animations[animation]?.length,`${f.name} missing ${animation}`);

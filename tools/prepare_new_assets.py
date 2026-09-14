@@ -11,12 +11,19 @@ from PIL import Image,ImageOps,ImageDraw
 from scipy import ndimage as ndi
 from sprite_anchor import frame_anchor
 from roster_expansion import FIGHTERS, OVERRIDES, CLIMBS, SALLY_ENTRY, clean_mask
+from kongo_assets import FIGHTER as KONGO, OVERRIDES as KONGO_NAMES, special_extract as kongo_extract
+from bronson_assets import FIGHTER as BRONSON, NAMES as BRONSON_NAMES, extract as bronson_extract, chair_frames
+from hokane_assets import FIGHTER as HOKANE, NAMES as HOKANE_NAMES, extract as hokane_extract
 ROOT=Path(__file__).resolve().parents[1]; SRC=Path(sys.argv[1]);OUT=ROOT/'dist/assets'
 NEW=[('able','Able','Outbreak','#bd774b',1.08,.97,1.06,'OUTBREAK SLAM'),('dani-mo','Dani Mo','Dino-Myte','#f7af44',.98,1.12,1.00,'MOON MIST TWIST'),('facade','Facade','Neon Ninja','#95fb38',.94,1.19,.95,'NEON NINJA DIVE'),('j-rod','J-Rod','Powerhouse','#9878ff',1.12,.98,1.04,'STAR-SPANGLED SLAM'),('matt-cross','Matt Cross','High flyer','#68dfe4',.98,1.19,.94,'SHOOTING STAR PRESS'),('vincenzo','Vincenzo','The enforcer','#eed9b9',1.10,.93,1.07,'THE COLLECTION'),('caleb-konley','Caleb Konley','All-rounder','#ec3685',1.02,1.08,1.00,'LUNACY FINISHER')]
 NEW += FIGHTERS
+NEW.extend([KONGO,BRONSON,HOKANE])
+OVERRIDES['kongo-kong']=KONGO_NAMES
+OVERRIDES['father-bronson']=BRONSON_NAMES
+OVERRIDES['hokane']=HOKANE_NAMES
 EXPANSION={v[0] for v in FIGHTERS}
 patterns={'idle':['standing.'],'walk':['walking.jpg'],'run':['running.'],'chair':['attack with chair','attacking with chair'],'bat':['attack with bat','attacking with bat'],'guitar':['attack with guitar','attacking with guitar'],'trashcan':['attack with trashcan','attacking with trashcan'],'carryChair':['walking with chair','walk with chair'],'carryBat':['walking with bat','walk with bat'],'carryGuitar':['walking with guitar'],'carryTrashcan':['walking with trashcan'],'lift':['lifting overhead'],'throw':['throwing.','throwing (','throwing wrestler'],'lifted':['being lifted','getting lifted'],'thrown':['being thrown'],'hurt':['dazed','dazzed'],'fallBack':['falling back'],'fallFront':['falling forward'],'down':['laying face'],'rise':['getting up','getting back up'],'taunt':['taunting','victory'],'victory':['victory','taunting'],'defeat':['defeated'],'kneel':['kneeling'],'exhausted':['passed out'],'jump':['jumping.'],'pin':['pinning'],'grapple':['grappl'],'elbow':['elbow'],'kick':['kicking'],'climb':['climbing on top','climb on top','climbing top'],'entry':['climbing on rope','climbing through','climb through'],'dive':['jumping off'],'propGuitar':['attack with guitar']}
-patterns.update({'riseBack':[], 'ropePose':[], 'ko':[]})
+patterns.update({'riseBack':[], 'ropePose':[], 'ko':[], 'fallBackReverse':[], 'fallFrontReverse':[]})
 selected=set(sys.argv[2:]);targets=[v for v in NEW if not selected or v[0] in selected]
 if selected-set(v[0] for v in NEW):raise ValueError('Unknown wrestler ID')
 audit_path=ROOT/'tools/new-asset-audit.json';audit=json.loads(audit_path.read_text()) if audit_path.exists() else []
@@ -65,8 +72,13 @@ def mask_image(im,region=None,rope=False,strict=False,minheight=58,bridge=None):
 
 base_mask_image=mask_image
 def extract(path,anim,id):
- mask_image=clean_mask if id in EXPANSION else base_mask_image
+ mask_image=clean_mask if id in EXPANSION or id=='kongo-kong' else base_mask_image
  im=source_image(path);a=np.array(im);h,w=a.shape[:2]
+ if id=='father-bronson':return bronson_extract(im,anim)
+ if id=='hokane':return hokane_extract(im,anim)
+ if id=='kongo-kong':
+  special=kongo_extract(im,anim)
+  if special is not None:return special
  dark=(a.max(2)<100).mean(1);heads=np.where((dark>.58)&(np.arange(h)<h*.31))[0];start=int(heads[-1]+7) if len(heads) else int(h*.2)
  region=np.ones((h,w),dtype=bool);region[:start]=False;region[-12:]=False;region[:,:12]=False;region[:,-12:]=False
  if id in EXPANSION:
@@ -273,25 +285,31 @@ def extract(path,anim,id):
  return [v for row in rows for v in sorted(row,key=lambda p:p['x'])]
 
 for id,name,style,color,power,speed,toughness,finisher in targets:
- files=sorted((SRC/name).iterdir());record=dict(id=id,name=name,style=style,color=color,power=power,speed=speed,toughness=toughness,finisher=finisher,edition='2026-09',animations={});frames=[];preview=[]
+ source_dir=SRC/('Hokane Sprite Set' if id=='hokane' else name)
+ files=sorted(source_dir.iterdir());record=dict(id=id,name=name,style=style,color=color,power=power,speed=speed,toughness=toughness,finisher=finisher,edition='2026-09',animations={});frames=[];preview=[]
  for anim,pats in patterns.items():
   chosen=next((p for pat in pats for p in files if pat.lower() in p.name.lower()),None)
   if anim in OVERRIDES.get(id,{}):
-   override=OVERRIDES[id][anim];chosen=SRC/name/override if override else None
+   override=OVERRIDES[id][anim];chosen=source_dir/override if override else None
   if id=='caleb-konley' and anim in ['kneel','defeat']:
    chosen=SRC/name/('Calabe kneeling.png' if anim=='kneel' else 'CK kneeling.png')
   if anim=='propGuitar':
-   if id=='caleb-konley' or id in EXPANSION:
+   if id in ['caleb-konley','father-bronson'] or id in EXPANSION:
     base=next(f for f in roster if f['id']=='matt-cross');e=base['animations']['propGuitar'][0]
     prop=Image.open(OUT/'matt-cross.png').crop((e['x'],e['y'],e['x']+e['w'],e['y']+e['h']))
     items=[dict(image=prop,x=e['x'],y=e['y'],w=e['w'],h=e['h'],area=e['w']*e['h'])];chosen=OUT/'matt-cross.png'
+   elif id=='hokane':chosen=source_dir/HOKANE_NAMES['guitar']
    elif id not in ['matt-cross','vincenzo']:continue
    else:chosen=next((SRC/'Matt Cross').glob('*attack with guitar*'))
   if not chosen:continue
-  if not ((id=='caleb-konley' or id in EXPANSION) and anim=='propGuitar'):items=extract(chosen,anim,id)
+  if not ((id in ['caleb-konley','father-bronson'] or id in EXPANSION) and anim=='propGuitar'):items=extract(chosen,anim,id)
   raw=len(items)
   if not items:print('MISSING',id,anim,chosen.name);continue
   flip=False
+  if id=='kongo-kong':
+   if anim=='down':items=[items[1],items[-1]] # resting facedown, resting faceup
+   if anim=='fallBack':items=items[:4] # final source panel repeats a facedown pose
+   if anim=='defeat':items=items[-1:] # four views, not an animation cycle
   if id in ['caleb-konley','sally-boy'] and anim=='elbow':items=[v for v in items if v['h']>max(x['h'] for x in items)*.6]
   if anim=='guitar' and id in ['matt-cross','vincenzo']:items=[items[0],items[1],items[-1]]
   if anim=='rise' and id=='facade':items=items[1:]
@@ -299,13 +317,13 @@ for id,name,style,color,power,speed,toughness,finisher in targets:
   if anim=='chair' and id in ['able','j-rod']:items[1]=items[0]
   if anim=='idle':
    portrait=items[0]['image'].copy();portrait.thumbnail((220,320));portrait.save(OUT/f'{id}-portrait.png');items=items[-1:]
-  elif anim in ['walk','run','carryChair','kick'] and len(items)>=8:
-   items=items[len(items)//2:] if id in ['bruce-wayans','ruffo'] and anim=='run' else items[:len(items)//2]
+  elif anim in ['walk','run','carryChair','kick'] and len(items)>=8 and not (id=='hokane' and anim=='walk'):
+   items=items[len(items)//2:] if id in ['bruce-wayans','ruffo','kongo-kong'] and anim=='run' else items[:len(items)//2]
   elif anim=='carryGuitar':
    if len(items)>=8:items=items[len(items)//2:]
    else:flip=True
   elif anim=='elbow' and len(items)==6:items=items[:3]
-  elif anim=='climb' and id!='facade' and id not in EXPANSION:items=items[1:]
+  elif anim=='climb' and id not in ['facade','kongo-kong','father-bronson','hokane'] and id not in EXPANSION:items=items[1:]
   if id in ['caleb-konley','sally-boy'] and anim=='carryTrashcan':flip=True
   elif anim=='entry' and id in ['able','dani-mo','j-rod']:items=items[-1:]
   # Reference upright body height, excluding raised arms/weapons and tuck poses.
@@ -315,7 +333,7 @@ for id,name,style,color,power,speed,toughness,finisher in targets:
   elif anim=='throw':ref=items[-1]['h']
   elif anim in ['victory','taunt']:ref=min(v['h'] for v in items)
   elif anim in ['down','defeat','kneel','ko']:ref=max(v['w'] for v in items)*1.07 if anim in ['down','ko'] else max(v['h'] for v in items)/(.58 if anim=='defeat' else 1)
-  elif anim in ['fallFront','fallBack']:ref=items[0]['h']
+  elif anim in ['fallFront','fallBack','fallBackReverse','fallFrontReverse']:ref=items[0]['h']
   elif anim=='jump':ref=max(v['h'] for v in items)/.76
   elif anim=='dive':ref=max(v['w'] for v in items)*.90
   elif anim=='lifted':ref=items[0]['h']/.84
@@ -323,18 +341,20 @@ for id,name,style,color,power,speed,toughness,finisher in targets:
   elif anim=='climb':ref=items[-1]['h']
   elif anim=='run':ref=max(v['h'] for v in items)/.83
   if id in ['caleb-konley','sally-boy'] and anim=='defeat':ref=items[0]['h']
+  if id in ['father-bronson','hokane'] and anim=='ropePose':ref=items[0]['h']
+  if id=='father-bronson' and anim=='exhausted':ref=items[0]['h']/.62
   if anim=='propGuitar':ref=ref*220/145
   if anim=='trashcan' and id=='facade':ref*=1.22
   entry=[]
   for j,v in enumerate(items):
    im=v['image'];scale=220/ref
    im=im.resize((max(1,round(im.width*scale)),max(1,round(im.height*scale))),Image.Resampling.LANCZOS)
-   if flip or (id=='facade' and anim=='climb' and j<3):im=ImageOps.mirror(im)
+   if flip or (id=='facade' and anim=='climb' and j<3) or (id=='kongo-kong' and anim=='elbow' and j==0):im=ImageOps.mirror(im)
    # No attack scale changes in runtime. Feet anchor the body, even with a wide weapon.
    ent=dict(frame=len(frames),w=im.width,h=im.height,**frame_anchor(im,anim))
    entry.append(ent);frames.append(im);preview.append((anim,j,im))
   record['animations'][anim]=entry
-  audit.append(dict(fighter=id,animation=anim,source='prepared:matt-cross.png#propGuitar' if (id=='caleb-konley' or id in EXPANSION) and anim=='propGuitar' else str(chosen.relative_to(SRC)),detected=raw,count=len(items),bounds=[{k:v[k] for k in ['x','y','w','h']} for v in items]))
+  audit.append(dict(fighter=id,animation=anim,source='prepared:matt-cross.png#propGuitar' if (id in ['caleb-konley','father-bronson'] or id in EXPANSION) and anim=='propGuitar' else str(chosen.relative_to(SRC)),detected=raw,count=len(items),bounds=[{k:v[k] for k in ['x','y','w','h']} for v in items]))
  A=record['animations']
  if 'run' not in A:A['run']=A['walk']
  if 'walk' not in A:A['walk']=A['run'] # no unarmed walk sheet supplied; slower jog
@@ -348,6 +368,13 @@ for id,name,style,color,power,speed,toughness,finisher in targets:
  # Contact phases deliberately select a forward strike, never an overhead lift.
  A['light']=[A['elbow'][0],A['elbow'][2 if len(A['elbow'])>=4 else 1],A['elbow'][-1],A['idle'][0]] if 'elbow' in A else [A['throw'][0],A['throw'][2],A['throw'][0],A['idle'][0]]
  if 'propGuitar' in A:A['guitar']=[A['guitar'][0],A['guitar'][1],A['throw'][-2 if id in EXPANSION else 3],A['guitar'][2]]
+ if id=='hokane':
+  A['bat'][-1]=A['bat'][0] # crossed recovery bats occlude the source body; clean ready pose
+  A['light']=[A['throw'][0],A['throw'][3],A['throw'][4],A['idle'][0]]
+  record['guitarGrip']={'xFromRight':10,'height':.64}
+ if id=='father-bronson':
+  chair_frames(frames,A,frame_anchor)
+  record['guitarGrip']={'xFromRight':16,'height':.70}
  A['heavy']=A['chair']
  record['weapons']=['chair','bat','guitar','trashcan']
  width=2048;x=y=rowh=0;positions=[]
@@ -366,6 +393,27 @@ for id,name,style,color,power,speed,toughness,finisher in targets:
  for i,(anim,j,im) in enumerate(preview):
   x=i%8*200;y=i//8*280;sm=ImageOps.contain(im,(194,245));contact.paste(sm,(x+(200-sm.width)//2,y+256-sm.height),sm);d.text((x+5,y+5),f'{anim} {j}',fill='white')
  contact.save(ROOT/'tools'/f'review-{id}.jpg',quality=90)
+ if id=='kongo-kong':
+  import hashlib
+  original=SRC/name/'KK attack with guitar.png';duplicate=SRC/name/'Kongo Kong attack with guitar.png'
+  if hashlib.sha256(original.read_bytes()).digest()!=hashlib.sha256(duplicate.read_bytes()).digest():raise ValueError('Kongo guitar duplicate changed; inspect it before rebuilding')
+  audit.append(dict(fighter=id,animation='guitar',source=str(duplicate.relative_to(SRC)),duplicateOf=str(original.relative_to(SRC)),detected=0,count=0,bounds=[]))
+ if id=='father-bronson':
+  used={a['source'] for a in audit if a['fighter']==id}
+  for source in files:
+   if str(source.relative_to(SRC)) not in used:
+    reason={'Father Bronson Grapple.png':'Paired, occluded bodies; replaced by intact tie-up preparation from the second lift sheet.','Father Bronson fall backward.jpg':'Alternate backward sequence ends facedown; dedicated directional back-fall sheets provide consistent landings.','Father Bronsons walk right w guitar.jpg':'Alternate front-facing carry; the side-facing left carry is normalized and mirrored for both directions.'}.get(source.name)
+    if not reason:raise ValueError('Unreviewed source: '+source.name)
+    audit.append(dict(fighter=id,animation='reviewed-alternate',source=str(source.relative_to(SRC)),detected=0,count=0,bounds=[],reason=reason))
+ if id=='hokane':
+  used={a['source'] for a in audit if a['fighter']==id}
+  assert all(str(p.relative_to(SRC)) in used for p in files), 'Every supplied Hokane sheet must have a reviewed use'
+  notes={'climb':'First back-view source pose is occluded by a printed post; six side-facing climb poses follow the separate rope setup.','bat':'Last recovery has crossed neighboring bats; runtime repeats the clean ready frame.','guitar':'Clipped contact replaced by Hokane throw pose 3 and own isolated guitar prop.','run':'Six consistently right-facing frames selected from both mixed-direction rows.','thrown':'Printed shadows excluded; five complete body poses only.'}
+  for item in audit:
+   if item['fighter']==id and item['animation'] in notes:item['note']=notes[item['animation']]
  print(id,[(a,len(v)) for a,v in A.items()])
+if (OUT/'website-stats.json').exists():
+ from apply_website_stats import apply
+ roster=apply(roster,json.loads((OUT/'website-stats.json').read_text()))
 (OUT/'roster.json').write_text(json.dumps(roster,separators=(',',':')))
 (ROOT/'tools/new-asset-audit.json').write_text(json.dumps(audit,indent=2))
