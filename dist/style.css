@@ -108,7 +108,7 @@
 @media(min-width:1100px){#roster{max-height:470px;overflow-y:auto;scrollbar-color:#b0ff20 #201529;padding:3px 10px 8px 3px;scroll-padding-block:8px}.roster-side .section-label{position:sticky;top:0}}
 /* Lunacy's supplied graffiti art carries through the title and character select. */
 .at-title #stage-wrap{border:2px solid #d521ef66;box-shadow:0 0 50px #b200ff24,0 25px 80px #000}
-.opening{position:absolute;inset:0;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 50% 35%,#13062350 0,#0a001b20 38%,#07040dcc 85%),linear-gradient(0deg,#090312ee,transparent 65%),url('./assets/arena-0.jpg') center 55%/cover}
+.opening{position:absolute;inset:0;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:radial-gradient(ellipse at 50% 35%,#13062350 0,#0a001b20 38%,#07040dcc 85%),linear-gradient(0deg,#090312ee,transparent 65%)}
 .opening:before{content:'';position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(0deg,transparent 0 3px,#0003 3px 4px);pointer-events:none}
 .opening:after{content:'';position:absolute;inset:18px;border:1px solid #ffffff2b;clip-path:polygon(0 0,28% 0,28% 1%,1% 1%,1% 99%,28% 99%,28% 100%,0 100%);pointer-events:none}
 .opening-noise{position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 10% 70%,#92ff003a,transparent 42%),radial-gradient(ellipse at 90% 40%,#ff00e53a,transparent 45%)}

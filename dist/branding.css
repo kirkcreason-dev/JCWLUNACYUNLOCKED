@@ -1,0 +1,25 @@
+/* The supplied PNG is used unchanged. The frame hides its empty black margins;
+   screen blending lets the neon lettering sit on the existing dark interface. */
+.unlocked-art{display:block;position:relative;aspect-ratio:2000/512;overflow:hidden;flex:none;mix-blend-mode:screen}
+.unlocked-art>img.unlocked-logo,
+#select-title .unlocked-art>img.unlocked-logo{position:absolute;left:-1.2%;top:-17.1875%;width:102.4%;height:auto;max-width:none;max-height:none;margin:0;transform:none;filter:none}
+.wordmark-name{display:block;width:126px}
+.wordmark-name .unlocked-art{width:100%;margin-top:3px}
+.opening-center h1>.unlocked-art{width:84%;margin:-1% auto 0}
+.selection-logo>.unlocked-art{width:clamp(170px,26vw,350px)}
+.at-title #game{object-fit:cover}
+@media(max-width:650px){
+ .wordmark-name{width:80px}
+}
+@media(max-width:650px) and (orientation:portrait){
+ .opening{padding:82px 16px 80px}
+ .opening-center h1>.unlocked-art{width:88%;margin:0 auto}
+ #selection .selection-logo{gap:8px}
+ #selection .selection-logo>img{width:44%}
+ #selection .selection-logo>.unlocked-art{width:52%}
+}
+@media(max-height:600px) and (orientation:landscape){
+ .opening-center h1>.unlocked-art{width:64%;margin:0 auto}
+}
+#cabinet[data-phone-layout] .wordmark-name{width:60px;line-height:1}
+#cabinet[data-phone-layout] .wordmark-name .unlocked-art{margin-top:2px}
