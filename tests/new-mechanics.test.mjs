@@ -12,8 +12,8 @@ const create=(a=9,b=10)=>{const m=new Match(roster,a,b,{mode:'local'});m.phase='
 const advance=(m,n=1,p1={},p2={})=>{for(let i=0;i<n;i++)m.step([{...emptyInput(),...p1},{...emptyInput(),...p2}],STEP);};
 const tap=(m,action,index=0)=>{const inputs=[emptyInput(),emptyInput()];inputs[index][action]=true;m.step(inputs,STEP);};
 
-test('all twelve supplied wrestlers are selectable and the new network version accepts them',()=>{
- assert.equal(roster.length,21);assert.deepEqual(roster.slice(9).map(f=>f.name),['Able','Dani Mo','Facade','J-Rod','Matt Cross','Vincenzo','Caleb Konley','Sally Boy','Big Vito','Bruce Wayans','Alice Crowley','Ruffo']);
+test('all fifteen supplied wrestlers are selectable and the new network version accepts them',()=>{
+ assert.equal(roster.length,24);assert.deepEqual(roster.slice(9).map(f=>f.name),['Able','Dani Mo','Facade','J-Rod','Matt Cross','Vincenzo','Caleb Konley','Sally Boy','Big Vito','Bruce Wayans','Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane']);
  for(let i=9;i<roster.length;i++)assert.ok(validRoom({protocol:PROTOCOL,host:{id:'host',fighter:i,online:true},guest:{id:'guest',fighter:14,online:true},arena:0,state:'lobby',created:Date.now()}));
  assert.ok(!validRoom({protocol:'lunacy-2d-v1',host:{id:'host',fighter:0},arena:0,state:'lobby',created:Date.now()}));
 });

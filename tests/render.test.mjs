@@ -21,9 +21,23 @@ test('every roster animation and fighter facing uses a valid transparent atlas c
  }
  assert.ok(count()>4000);
 });
+test('Bronson uses the supplied opposite-facing back fall on the correct side',()=>{
+ const {r,ctx}=renderer(),id=roster.findIndex(f=>f.id==='father-bronson'),m=new Match(roster,id,9,{mode:'local'});m.phase='fight';
+ const f=m.fighters[0];f.state='down';f.fallFace='back';f.fallDuration=1;f.t=.21;
+ const crops=[];ctx.drawImage=(_image,x,y)=>crops.push([x,y]);
+ for(const facing of [-1,1]){f.facing=facing;crops.length=0;r.fighter(f,0,m);const e=f.definition.animations[facing===-1?'fallBackReverse':'fallBack'][1];assert.deepEqual(crops[0],[e.x,e.y]);}
+});
 test('HUD and banners handle pin, intro, timeout draw and match result states',()=>{
  const {r}=renderer();const m=new Match(roster,0,1,{mode:'local'});
  r.draw(m);m.phaseTime=2;r.draw(m);m.phase='fight';m.startPin(0);m.pin.count=2;m.pin.escape=4;r.draw(m);m.pin=null;m.phase='roundEnd';m.roundWinner=null;r.draw(m);m.roundWinner=1;r.draw(m);r.receive([{type:'hit',x:550,z:0,combo:2},{type:'special'},{type:'guardBreak'}]);r.draw(m);
+});
+
+test('combo numbers replace the earlier count instead of overlapping it',()=>{
+ const {r}=renderer();
+ r.receive([{type:'hit',attacker:0,x:550,combo:2},{type:'hit',attacker:0,x:570,combo:3}]);
+ assert.deepEqual(r.popups.filter(p=>p.kind==='combo').map(p=>p.text),['3 HIT']);
+ r.receive([{type:'hit',attacker:1,x:500,combo:2}]);
+ assert.equal(r.popups.filter(p=>p.kind==='combo').length,2);
 });
 
 test('portrait camera and six arena crops handle corners, airborne fighters, and pins',()=>{
@@ -73,4 +87,33 @@ test('announcement artwork renders for the correct pinfall, tap-out and special 
 test('Ruffo uses the supplied back recovery and KO poses in their actual states',()=>{
  const {r,ctx}=renderer(),m=new Match(roster,20,16,{mode:'local'});m.phase='fight';const f=m.fighters[0];let last;ctx.drawImage=(_img,x,y)=>{last={x,y};};
  for(const [state,hp,anim] of [['rise',40,'riseBack'],['down',0,'ko']]){Object.assign(f,{state,hp,fallFace:'back',fallDuration:0,t:.3});r.fighter(f,0,m);assert.ok(f.definition.animations[anim].some(e=>e.x===last.x&&e.y===last.y));}
+});
+
+test('Hokane renders the alternate fall and KO artwork in the matching states',()=>{
+ const {r,ctx}=renderer(),id=roster.findIndex(f=>f.id==='hokane'),m=new Match(roster,id,9,{mode:'local'});m.phase='fight';const f=m.fighters[0];let last;
+ ctx.drawImage=(_img,x,y)=>{last={x,y};};
+ for(const [facing,hp,duration,anim] of [[1,30,.4,'fallFront'],[-1,30,.4,'fallFrontReverse'],[1,0,0,'ko']]){
+  Object.assign(f,{state:'down',facing,hp,fallFace:'front',fallDuration:duration,t:.2});r.fighter(f,0,m);
+  assert.ok(f.definition.animations[anim].some(e=>e.x===last.x&&e.y===last.y),anim);
+ }
+});
+
+test('adaptive phone canvas scaling covers world and HUD and restores its transform each frame',()=>{
+ const {r,ctx}=renderer(),m=new Match(roster,23,22,{mode:'local'});m.phase='fight';
+ let scale=[1,1],stack=[],hudScale;
+ ctx.save=()=>stack.push([...scale]);ctx.restore=()=>{assert.ok(stack.length);scale=stack.pop();};ctx.scale=(x,y)=>{scale=[scale[0]*x,scale[1]*y];};
+ const hud=r.hud.bind(r);r.hud=(...args)=>{hudScale=[...scale];hud(...args);};
+ for(const portrait of [true,false]){
+  r.portrait=portrait;r.compact=!portrait;r.canvas.width=768;r.canvas.height=portrait?576:432;
+  for(let i=0;i<3;i++){r.draw(m);assert.deepEqual(hudScale,[.6,.6]);assert.deepEqual(scale,[1,1]);assert.equal(stack.length,0);}
+ }
+});
+
+test('phone effects remain bounded while combo and escape cues are retained',()=>{
+ const {r}=renderer(),m=new Match(roster,23,22,{mode:'local'});r.lowPower=true;
+ for(let i=0;i<20;i++)r.receive([{type:'hit',index:1,attacker:0,x:550,combo:3}],m);
+ assert.equal(r.particles.length,48);assert.equal(r.popups.filter(p=>p.kind==='combo').length,1);
+ r.receive([{type:'throwBreak'},{type:'kickout'}],m);
+ assert.ok(r.popups.some(p=>p.text==='THROW BREAK'));assert.equal(r.graphic.key,'kickout');
+ r.compact=true;r.draw(m);r.reduced=true;const count=r.particles.length;r.receive([{type:'hit',x:550}],m);assert.equal(r.particles.length,count);
 });
