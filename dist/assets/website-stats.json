@@ -186,9 +186,42 @@
       "toughness": 8,
       "finisher": "",
       "websiteName": "Hokane"
+    },
+    "steven-flowe": {
+      "websiteName": "Steven Flowe",
+      "power": 6,
+      "speed": 10,
+      "technique": 8,
+      "toughness": 7,
+      "finisher": "Steven Flowesion"
+    },
+    "ec3": {
+      "websiteName": "EC3",
+      "power": 8,
+      "speed": 6,
+      "technique": 8,
+      "toughness": 8,
+      "finisher": "One Percenter"
+    },
+    "krule": {
+      "websiteName": "Krule",
+      "power": 10,
+      "speed": 5,
+      "technique": 6,
+      "toughness": 9,
+      "finisher": ""
+    },
+    "jeeves": {
+      "websiteName": "Jeeves",
+      "power": 5,
+      "speed": 7,
+      "technique": 7,
+      "toughness": 6,
+      "finisher": "Heads Bangers Balls"
     }
   },
   "unlisted": [
     "violent-j"
-  ]
+  ],
+  "newFightersRetrieved": "2026-09-14"
 }
