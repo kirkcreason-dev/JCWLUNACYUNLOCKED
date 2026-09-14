@@ -1,20 +1,28 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.8.3**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.10.0**.
 
 The gameplay refinement adds confirmed strike chains, gradual run acceleration, fair simultaneous grab breaks, more responsive recovery, rope breaks, manual hold release, and smarter CPU attack spacing. All 24 wrestlers and their existing website ratings remain intact. The supplied startup logos, title artwork, arenas, effects, and music are included. See [GAMEPLAY.md](GAMEPLAY.md) for the updated fight rules and [TESTING.md](TESTING.md) for validation and limitations.
+
+## Krule and Jeeves (v0.10.0)
+
+Krule and Jeeves join as fighters 27 and 28. Their supplied portraits and animation sets cover movement, four weapons, grapples, pins, recoveries, and rope moves. Both use ratings from jcwlunacy.net; Krule's finisher remains marked as unlisted there. The final portrait page contains Steven Flowe, EC3, Krule, and Jeeves. Online play uses v10 / LU100 rooms; both players need v0.10.0.
+
+## Steven Flowe and EC3 (v0.9.0)
+
+Steven Flowe and EC3 join as fighters 25 and 26, with their supplied animation sets, four weapons, rope moves, and ratings/finishers from jcwlunacy.net. The first 24 roster slots are unchanged. Phone paging and direct selection include both new fighters. The v0.9.0 release introduced LU90 rooms; the current release uses LU100.
 
 ## Supplied UNLOCKED branding (v0.8.3)
 
 The supplied neon UNLOCKED artwork replaces the text treatment in the header, opening screen, and fighter selection. The same PNG appears over all five existing UNLOCKED signs, mat, and apron wordmarks across Bloodymania, Hell’s Pit, and Rusted Warehouse. Other arenas have no existing UNLOCKED wordmarks to replace. The opening background now uses the same branded canvas as gameplay.
 
-The original PNG is included byte-for-byte as `dist/assets/banners/unlocked.png`; CSS frames its empty margins and blends the black background into the interface. Arena placement is handled by the renderer, preserving the original arena images and the foreground rope over the mat graphic. Text remains in page titles and accessibility labels so the game is still named correctly for browser tabs and screen readers. Phone sizes, 24 fighters, gameplay rules, and v8 multiplayer compatibility are retained.
+The original PNG is included byte-for-byte as `dist/assets/banners/unlocked.png`; CSS frames its empty margins and blends the black background into the interface. Arena placement is handled by the renderer, preserving the original arena images and the foreground rope over the mat graphic. Text remains in page titles and accessibility labels so the game is still named correctly for browser tabs and screen readers. Phone layouts, existing fighters, and gameplay rules are retained. Multiplayer uses protocol v10 for the 28-fighter roster.
 
 ## Phone fighter selection
 
-This package contains **24 fighters**. On a portrait phone, use **MORE / BACK** to browse four pages of six fighters, or use **PICK ANY FIGHTER** to select any name directly. **USE FIGHTER** opens match setup. The **FIGHTERS** button takes you back; rotation preserves your chosen wrestler. Website stats are visible in the phone setup panel.
+This package contains **28 fighters**. On a portrait phone, use **MORE / BACK** to browse five pages (six fighters per page; four on the last), or use **PICK ANY FIGHTER** to select any name directly. **USE FIGHTER** opens match setup. The **FIGHTERS** button takes you back; rotation preserves your chosen wrestler. Website stats are visible in the phone setup panel.
 
-If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.8.3 package has not been deployed to either repository.
+If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.10.0 package has not been deployed to either repository.
 
 ## Phone match optimization (v0.8.2)
 
@@ -185,6 +193,6 @@ Preparation needs Pillow, numpy, and scipy; playing the prepared game needs none
 
 ## Validation and release status
 
-See [TESTING.md](TESTING.md) for the current v0.8.1 checks. This release adds targeted regressions for chains, grab clashes, recovery input, guard damage, dives, pins, CPU spacing, and online messages. Both online players need v0.8.0. The complete 24-fighter roster, website stats, and asset bytes are retained from v0.7.2.
+See [TESTING.md](TESTING.md) for the current v0.8.1 checks. This release adds targeted regressions for chains, grab clashes, recovery input, guard damage, dives, pins, CPU spacing, and online messages. Both online players need v0.10.0. The complete 24-fighter roster, website stats, and asset bytes are retained from v0.7.2.
 
 The local browser preview was blocked, so this pass uses automated simulation and native canvas renders of the actual Match/Renderer. No new live Firebase or physical phone/controller test was performed. This ZIP has not been deployed.

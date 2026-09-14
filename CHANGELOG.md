@@ -1,3 +1,19 @@
+# v0.10.0 — Krule and Jeeves
+
+- Expanded the roster to 28 with Krule and Jeeves, using all 59 supplied source sheets. Existing 26 roster slots and their assets are preserved.
+- Integrated reviewed portraits, four weapon types, movement, attacks, lifts, throws, pins, recoveries and rope moves. Krule's missing thrown-victim sheet is covered by his own lifted, tumbling and face-up landing poses.
+- Added exact JCW website ratings. Jeeves uses the listed Heads Bangers Balls finisher; Krule retains the honest unlisted-finisher presentation.
+- Extended phone and desktop selection; the fifth portrait page contains all four recent additions.
+- Isolated older online clients with protocol v10 and the LU100 namespace.
+
+# v0.9.0 — 26 fighters
+
+- Added Steven Flowe and EC3 from all 60 supplied sheets, with reviewed transparent sprites, portraits, four weapons, throws, pins, falls, and rope animations.
+- Added their exact JCW website ratings and named finishers.
+- Extended phone and desktop selection to 26; portrait page five contains the two new fighters.
+- Updated online bounds and isolated incompatible older rosters with v9 / LU90 rooms.
+- Preserved existing roster slots, assets, UNLOCKED branding, and phone/gameplay refinements.
+
 # v0.8.1 — Phone roster and setup — September 13, 2026
 
 - Added clearly counted roster pages: six fighters on portrait phones, eight on smaller landscape/tablet screens, twelve on desktop. The direct native picker contains all 24 names.

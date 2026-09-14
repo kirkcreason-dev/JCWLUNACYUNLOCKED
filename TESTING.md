@@ -1,3 +1,29 @@
+# v0.10.0 — Krule and Jeeves — September 14, 2026
+
+161 automated tests pass. `npm run check` passes: 28 unique fighters, 2,986 animation entries, six arenas, both music tracks, valid JavaScript and UI references.
+
+- Krule and Jeeves occupy roster indices 26 and 27. All 59 supplied sheets have audited uses and source hashes. Tests cover exact JCW ratings, animation coverage, clean contact poses, four weapons, and phone selection through the final partial page.
+- Krule has no dedicated thrown-victim sheet. His own lifted, tumbling and face-up landing poses supply that sequence. Jeeves's crossed recovery bats are replaced with his own clean ready pose. These choices are documented in the preparation tool/audit.
+- CPU checks finish matches for all 28 fighters on easy, normal and hard (84 matches). Both new fighters host and join via the in-memory Firebase-shaped adapter; v9 rooms and out-of-range fighters are rejected by v10 / LU100 clients.
+- Native Match/Renderer output was visually reviewed for twelve combat scenarios per new fighter and five phone sizes. Detailed weapon and rope frames were reviewed separately. No physical-phone, interactive-browser, or live Firebase verification was performed.
+- All 26 previous roster records and 76 existing artwork/audio files are unchanged from v0.9.0. Supplied UNLOCKED branding and phone performance work remain included.
+- This ZIP has not been pushed or deployed to GitHub Pages. Both online players need v0.10.0.
+
+Reproduce with `npm test` and `npm run check`. Native review additionally needs optional `@napi-rs/canvas`: `node tools/review_roster28.mjs`, `node tools/render_review.mjs krule`, and `node tools/render_review.mjs jeeves`.
+
+# v0.9.0 — 26-fighter release — September 14, 2026
+
+157 automated tests pass. `npm run check` passes: 26 unique fighters, 2,703 animation entries, six arenas, both music tracks, valid JavaScript and UI references.
+
+- Steven Flowe and EC3 are roster indices 24 and 25. All 60 supplied PNG sheets have audited uses and source hashes. Tests cover exact website ratings, clean attack contacts, expected movement/weapon/fall/rope frame counts, and complete selection access.
+- Both new fighters can host and join through the in-memory Firebase-shaped transport. Protocol v9 and LU90 rooms reject v8 clients and out-of-range fighters.
+- CPU completion checks cover all 26 fighters on easy, normal, and hard (78 matches). Every fighter also passes the chained-hit check from both sides.
+- Phone paging includes the final two-fighter page; selection survives rotation. Native Match/Renderer output was reviewed at five phone sizes and across 12 combat scenarios for each new fighter. These are native rendering reviews, not physical-phone or browser tests.
+- The original 24 roster records and all 72 existing artwork/audio files are unchanged from v0.8.3. The roster and website ratings files gain only the two fighters (and the new ratings retrieval date).
+- No live Firebase or GitHub Pages deployment was performed for this release. Both online players must load v0.9.0.
+
+Reproduce with `npm test`, `npm run check`, and optionally `node tools/review_roster26.mjs` / `node tools/render_review.mjs steven-flowe` / `node tools/render_review.mjs ec3` (native canvas dependency required only for image review).
+
 # v0.8.3 supplied UNLOCKED artwork — September 14, 2026
 
 The static module/asset/UI checker passes. All **21 targeted renderer and phone-performance tests** pass after the branding change. No new tests were added for the visual replacement. The earlier 152-test gameplay baseline is retained below; this pass changes branding and rendering only.
