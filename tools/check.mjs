@@ -10,7 +10,7 @@ const html=await readFile(path.join(dist,'index.html'),'utf8');
 for(const match of html.matchAll(/(?:src|href)="(\.\/[^"#?]+)(?:[?#][^"]*)?"/g))await access(path.join(dist,match[1]));
 const ids=Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML ids');
 const main=await readFile(path.join(dist,'src/main.js'),'utf8');for(const match of main.matchAll(/\$\('([^']+)'\)/g))assert.ok(ids.includes(match[1]),`Missing UI element ${match[1]}`);
-const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,24);assert.equal(new Set(roster.map(f=>f.id )).size,24);
+const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,28);assert.equal(new Set(roster.map(f=>f.id )).size,28);
 let count=0;
 for(const f of roster){
   for(const key of ['power','speed','technique','toughness'])assert.ok(Number.isFinite(f[key])&&f[key]>0,`${f.name}: invalid ${key}`);

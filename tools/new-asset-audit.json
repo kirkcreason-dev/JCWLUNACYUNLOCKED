@@ -14661,5 +14661,4265 @@
         "h": 91
       }
     ]
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "idle",
+    "source": "Steven Flowe/Steven Flowe standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1341,
+        "y": 280,
+        "w": 129,
+        "h": 584
+      }
+    ],
+    "sourceSHA256": "1f6987d6c6efd653ee598ae11006f9e82773ceef531933797127955da2524104"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "walk",
+    "source": "Steven Flowe/SW walking.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 58,
+        "y": 558,
+        "w": 233,
+        "h": 294
+      },
+      {
+        "x": 415,
+        "y": 542,
+        "w": 131,
+        "h": 311
+      },
+      {
+        "x": 679,
+        "y": 542,
+        "w": 232,
+        "h": 309
+      },
+      {
+        "x": 1030,
+        "y": 542,
+        "w": 134,
+        "h": 309
+      },
+      {
+        "x": 1300,
+        "y": 542,
+        "w": 234,
+        "h": 309
+      }
+    ],
+    "sourceSHA256": "0faa0c9726a9308dbae184c61b45ef3e10005e5fdc3c1728720a204d3cb6eb39",
+    "note": "Five right-facing source poses; runtime mirrors for left movement."
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "run",
+    "source": "Steven Flowe/SW running.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 563,
+        "w": 232,
+        "h": 278
+      },
+      {
+        "x": 283,
+        "y": 563,
+        "w": 225,
+        "h": 284
+      },
+      {
+        "x": 526,
+        "y": 563,
+        "w": 243,
+        "h": 282
+      },
+      {
+        "x": 801,
+        "y": 563,
+        "w": 241,
+        "h": 274
+      },
+      {
+        "x": 1072,
+        "y": 559,
+        "w": 234,
+        "h": 282
+      },
+      {
+        "x": 1337,
+        "y": 560,
+        "w": 236,
+        "h": 287
+      }
+    ],
+    "sourceSHA256": "03bfe0e45ecab797514fd76c5f003d48ed5114d1da33370ca293e1650936213d",
+    "note": "Six right-facing poses from the second row."
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "chair",
+    "source": "Steven Flowe/SF attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 32,
+        "y": 204,
+        "w": 267,
+        "h": 593
+      },
+      {
+        "x": 337,
+        "y": 208,
+        "w": 278,
+        "h": 588
+      },
+      {
+        "x": 617,
+        "y": 393,
+        "w": 383,
+        "h": 402
+      },
+      {
+        "x": 915,
+        "y": 407,
+        "w": 414,
+        "h": 388
+      },
+      {
+        "x": 1303,
+        "y": 339,
+        "w": 275,
+        "h": 458
+      }
+    ],
+    "sourceSHA256": "267930f3b3c83ecbc96fa96e4416bdf8f8643311102585ecf617f1c1d65fb43e"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "bat",
+    "source": "Steven Flowe/SF attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 321,
+        "w": 292,
+        "h": 493
+      },
+      {
+        "x": 323,
+        "y": 217,
+        "w": 288,
+        "h": 597
+      },
+      {
+        "x": 642,
+        "y": 321,
+        "w": 404,
+        "h": 498
+      },
+      {
+        "x": 956,
+        "y": 333,
+        "w": 402,
+        "h": 487
+      },
+      {
+        "x": 20,
+        "y": 321,
+        "w": 292,
+        "h": 493
+      }
+    ],
+    "sourceSHA256": "3f222c7921fcbdfaab29357aeb12e50a077adae1bcbe78a775cef3712adb7356",
+    "note": "Source contact touches neighboring recovery. Reviewed separate silhouettes; last frame repeats clean ready pose."
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "guitar",
+    "source": "Steven Flowe/SF attack with guitar.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 334,
+        "w": 268,
+        "h": 458
+      },
+      {
+        "x": 351,
+        "y": 249,
+        "w": 273,
+        "h": 542
+      },
+      {
+        "x": 1289,
+        "y": 334,
+        "w": 266,
+        "h": 459
+      }
+    ],
+    "sourceSHA256": "99e5b05487634ec929df863418808f815668272dbece0ba393fa022cac48d328",
+    "note": "Overlapping contact replaced by forward throw pose with shared isolated guitar prop."
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "trashcan",
+    "source": "Steven Flowe/SF attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 324,
+        "w": 304,
+        "h": 507
+      },
+      {
+        "x": 337,
+        "y": 326,
+        "w": 300,
+        "h": 505
+      },
+      {
+        "x": 637,
+        "y": 202,
+        "w": 278,
+        "h": 632
+      },
+      {
+        "x": 916,
+        "y": 367,
+        "w": 379,
+        "h": 465
+      },
+      {
+        "x": 1226,
+        "y": 368,
+        "w": 365,
+        "h": 466
+      }
+    ],
+    "sourceSHA256": "2d11866181b13cb7ddca4974abf19dfaf748565eb3d14be64de5295965971e6a"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "carryChair",
+    "source": "Steven Flowe/SW walking with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 67,
+        "y": 188,
+        "w": 206,
+        "h": 293
+      },
+      {
+        "x": 390,
+        "y": 188,
+        "w": 204,
+        "h": 295
+      },
+      {
+        "x": 706,
+        "y": 188,
+        "w": 194,
+        "h": 295
+      },
+      {
+        "x": 1021,
+        "y": 188,
+        "w": 201,
+        "h": 295
+      },
+      {
+        "x": 1331,
+        "y": 188,
+        "w": 210,
+        "h": 295
+      }
+    ],
+    "sourceSHA256": "838f764dfa94afe6192b9224483b8bcc3d6c0f7beb435ea6a3ad1b277079c6f1"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "carryBat",
+    "source": "Steven Flowe/SW walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 45,
+        "y": 223,
+        "w": 282,
+        "h": 560
+      },
+      {
+        "x": 343,
+        "y": 223,
+        "w": 297,
+        "h": 556
+      },
+      {
+        "x": 674,
+        "y": 223,
+        "w": 275,
+        "h": 561
+      },
+      {
+        "x": 948,
+        "y": 223,
+        "w": 313,
+        "h": 563
+      },
+      {
+        "x": 1271,
+        "y": 223,
+        "w": 307,
+        "h": 560
+      }
+    ],
+    "sourceSHA256": "3c6e49b080d98e0a1a487a8e121d8986cfd45037cb50de7296fe59186a171b49"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "carryGuitar",
+    "source": "Steven Flowe/SW walking with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 273,
+        "w": 310,
+        "h": 556
+      },
+      {
+        "x": 357,
+        "y": 273,
+        "w": 281,
+        "h": 557
+      },
+      {
+        "x": 637,
+        "y": 273,
+        "w": 302,
+        "h": 557
+      },
+      {
+        "x": 962,
+        "y": 273,
+        "w": 286,
+        "h": 557
+      },
+      {
+        "x": 1264,
+        "y": 273,
+        "w": 305,
+        "h": 557
+      }
+    ],
+    "sourceSHA256": "740dd88e2d6c40bb1e9fa7383ad66af45356237473f7d6ab9371d205620f6bec"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "carryTrashcan",
+    "source": "Steven Flowe/SW trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 251,
+        "w": 305,
+        "h": 496
+      },
+      {
+        "x": 344,
+        "y": 251,
+        "w": 311,
+        "h": 498
+      },
+      {
+        "x": 661,
+        "y": 251,
+        "w": 301,
+        "h": 497
+      },
+      {
+        "x": 964,
+        "y": 251,
+        "w": 306,
+        "h": 499
+      },
+      {
+        "x": 1275,
+        "y": 251,
+        "w": 304,
+        "h": 499
+      }
+    ],
+    "sourceSHA256": "c874e86908b29c8ccde8d7b9c345f66d537311944a2e06e5e5ebeddc77c3364a"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "lift",
+    "source": "Steven Flowe/SW getting lifted up.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 449,
+        "w": 331,
+        "h": 397
+      },
+      {
+        "x": 368,
+        "y": 403,
+        "w": 288,
+        "h": 442
+      },
+      {
+        "x": 671,
+        "y": 313,
+        "w": 280,
+        "h": 532
+      },
+      {
+        "x": 998,
+        "y": 277,
+        "w": 251,
+        "h": 568
+      },
+      {
+        "x": 1308,
+        "y": 278,
+        "w": 251,
+        "h": 567
+      }
+    ],
+    "sourceSHA256": "6f075bc6a6724cc009cea74505bc10c8865ac50e372185df5ade3f2934b92aba"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "throw",
+    "source": "Steven Flowe/SW throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 427,
+        "w": 304,
+        "h": 429
+      },
+      {
+        "x": 370,
+        "y": 344,
+        "w": 276,
+        "h": 512
+      },
+      {
+        "x": 659,
+        "y": 218,
+        "w": 362,
+        "h": 588
+      },
+      {
+        "x": 935,
+        "y": 401,
+        "w": 351,
+        "h": 458
+      },
+      {
+        "x": 1295,
+        "y": 379,
+        "w": 278,
+        "h": 480
+      }
+    ],
+    "sourceSHA256": "a6b7c0d1a8d633cdfb81e15e2abe6de1cecfcdf529c7842266de417296fa4ed4"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "lifted",
+    "source": "Steven Flowe/SF getting lifted up.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 482,
+        "w": 228,
+        "h": 308
+      },
+      {
+        "x": 310,
+        "y": 357,
+        "w": 263,
+        "h": 344
+      },
+      {
+        "x": 589,
+        "y": 346,
+        "w": 296,
+        "h": 268
+      },
+      {
+        "x": 910,
+        "y": 346,
+        "w": 316,
+        "h": 200
+      },
+      {
+        "x": 1245,
+        "y": 346,
+        "w": 326,
+        "h": 201
+      }
+    ],
+    "sourceSHA256": "e6aafc5645196832bc97b4236d20406096a864fc7367401a59dfe0c79aec5c82"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "thrown",
+    "source": "Steven Flowe/SF being thrown.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 96,
+        "y": 354,
+        "w": 295,
+        "h": 455
+      },
+      {
+        "x": 455,
+        "y": 234,
+        "w": 313,
+        "h": 511
+      },
+      {
+        "x": 836,
+        "y": 311,
+        "w": 264,
+        "h": 403
+      },
+      {
+        "x": 1139,
+        "y": 643,
+        "w": 421,
+        "h": 167
+      }
+    ],
+    "sourceSHA256": "4ebd29362bab2ed445634faf8ebdf32967e27a5e06d40a4afc9741a56a75a4c6",
+    "note": "Printed ground shadows excluded."
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "hurt",
+    "source": "Steven Flowe/SF dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 79,
+        "y": 292,
+        "w": 295,
+        "h": 564
+      },
+      {
+        "x": 470,
+        "y": 299,
+        "w": 299,
+        "h": 557
+      },
+      {
+        "x": 857,
+        "y": 315,
+        "w": 270,
+        "h": 541
+      },
+      {
+        "x": 1228,
+        "y": 294,
+        "w": 293,
+        "h": 562
+      }
+    ],
+    "sourceSHA256": "a474f0a0e3a98559b445f85904f040a0d9aefc30329cb2a14fc34793d60147b0"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "fallBack",
+    "source": "Steven Flowe/SF falling backwards.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 106,
+        "y": 310,
+        "w": 275,
+        "h": 486
+      },
+      {
+        "x": 402,
+        "y": 341,
+        "w": 389,
+        "h": 391
+      },
+      {
+        "x": 797,
+        "y": 512,
+        "w": 336,
+        "h": 287
+      },
+      {
+        "x": 1110,
+        "y": 701,
+        "w": 428,
+        "h": 126
+      }
+    ],
+    "sourceSHA256": "41ab9c80b915075eb01d84bbf8025bd1fd4c4cdb5501e9c04eace48e426fe882"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "fallFront",
+    "source": "Steven Flowe/SF falling forward.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 305,
+        "w": 308,
+        "h": 403
+      },
+      {
+        "x": 263,
+        "y": 342,
+        "w": 415,
+        "h": 356
+      },
+      {
+        "x": 521,
+        "y": 487,
+        "w": 409,
+        "h": 224
+      },
+      {
+        "x": 897,
+        "y": 557,
+        "w": 323,
+        "h": 145
+      },
+      {
+        "x": 1229,
+        "y": 588,
+        "w": 347,
+        "h": 114
+      }
+    ],
+    "sourceSHA256": "07f247126249d9297c577a0941029d7e66859020efe0f27f9d628ef57a0e5959"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "down",
+    "source": "Steven Flowe/SF laying facedown and faceup.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 835,
+        "y": 334,
+        "w": 716,
+        "h": 161
+      },
+      {
+        "x": 855,
+        "y": 635,
+        "w": 696,
+        "h": 214
+      }
+    ],
+    "sourceSHA256": "2ceca4938b990766911ee06b0d13eb0162a3be3e50757ae0c43c76bc174d6e51"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "rise",
+    "source": "Steven Flowe/SF getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 652,
+        "w": 324,
+        "h": 93
+      },
+      {
+        "x": 352,
+        "y": 560,
+        "w": 269,
+        "h": 191
+      },
+      {
+        "x": 625,
+        "y": 497,
+        "w": 237,
+        "h": 248
+      },
+      {
+        "x": 874,
+        "y": 437,
+        "w": 229,
+        "h": 306
+      },
+      {
+        "x": 1126,
+        "y": 390,
+        "w": 209,
+        "h": 353
+      },
+      {
+        "x": 1365,
+        "y": 308,
+        "w": 208,
+        "h": 435
+      }
+    ],
+    "sourceSHA256": "157ebef21afd947d44484a5b6d7f1e20ea54b9a868cfd34e096500366c32cef4"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "taunt",
+    "source": "Steven Flowe/SW taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 269,
+        "w": 268,
+        "h": 559
+      },
+      {
+        "x": 318,
+        "y": 269,
+        "w": 280,
+        "h": 559
+      },
+      {
+        "x": 584,
+        "y": 269,
+        "w": 419,
+        "h": 559
+      },
+      {
+        "x": 985,
+        "y": 287,
+        "w": 284,
+        "h": 541
+      },
+      {
+        "x": 1269,
+        "y": 267,
+        "w": 316,
+        "h": 561
+      }
+    ],
+    "sourceSHA256": "96f019e85da706987263bf196006a2ec0effe13f59314ce158d64e7e04622d7d"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "victory",
+    "source": "Steven Flowe/SW victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 47,
+        "y": 226,
+        "w": 272,
+        "h": 619
+      },
+      {
+        "x": 374,
+        "y": 225,
+        "w": 267,
+        "h": 619
+      },
+      {
+        "x": 668,
+        "y": 300,
+        "w": 260,
+        "h": 544
+      },
+      {
+        "x": 951,
+        "y": 308,
+        "w": 303,
+        "h": 536
+      },
+      {
+        "x": 1291,
+        "y": 209,
+        "w": 268,
+        "h": 635
+      }
+    ],
+    "sourceSHA256": "04f351cbf678c61044d416e98f5146c8b25237ca1fc9bac2ff328fd60575ee13"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "defeat",
+    "source": "Steven Flowe/SF defeated.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1243,
+        "y": 338,
+        "w": 282,
+        "h": 456
+      }
+    ],
+    "sourceSHA256": "5253a149140bf2980982329e482981d43c0fcc489ca03f7d44da7be1344b6493"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "jump",
+    "source": "Steven Flowe/SF jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 60,
+        "y": 444,
+        "w": 287,
+        "h": 402
+      },
+      {
+        "x": 415,
+        "y": 343,
+        "w": 296,
+        "h": 477
+      },
+      {
+        "x": 782,
+        "y": 270,
+        "w": 377,
+        "h": 409
+      },
+      {
+        "x": 1254,
+        "y": 441,
+        "w": 311,
+        "h": 404
+      }
+    ],
+    "sourceSHA256": "4b97afa3edb3700a9d5f74ce8d6505c880dccbd42eb1213530f223db5400124a"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "pin",
+    "source": "Steven Flowe/SW pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 275,
+        "w": 317,
+        "h": 563
+      },
+      {
+        "x": 409,
+        "y": 337,
+        "w": 372,
+        "h": 501
+      },
+      {
+        "x": 777,
+        "y": 468,
+        "w": 380,
+        "h": 355
+      },
+      {
+        "x": 1156,
+        "y": 586,
+        "w": 412,
+        "h": 245
+      }
+    ],
+    "sourceSHA256": "38fa031c9d3a6592af853ebcbb63c26d20baf012cf28a33f404ee772e5a6b4b7"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "climb",
+    "source": "Steven Flowe/SF climbing on rope top corner.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 264,
+        "y": 472,
+        "w": 170,
+        "h": 322
+      },
+      {
+        "x": 495,
+        "y": 436,
+        "w": 170,
+        "h": 329
+      },
+      {
+        "x": 721,
+        "y": 392,
+        "w": 176,
+        "h": 312
+      },
+      {
+        "x": 942,
+        "y": 390,
+        "w": 180,
+        "h": 215
+      },
+      {
+        "x": 1148,
+        "y": 331,
+        "w": 207,
+        "h": 283
+      },
+      {
+        "x": 1385,
+        "y": 283,
+        "w": 179,
+        "h": 330
+      }
+    ],
+    "sourceSHA256": "aeb295614965c01b58233c0a356f280ddabf32a2e4a9653691dbcb163a07a449",
+    "note": "Six side-facing silhouettes; first back view is occluded by the printed post."
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "entry",
+    "source": "Steven Flowe/SF climbing through rope.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 11,
+        "y": 293,
+        "w": 302,
+        "h": 556
+      },
+      {
+        "x": 357,
+        "y": 330,
+        "w": 276,
+        "h": 479
+      },
+      {
+        "x": 660,
+        "y": 322,
+        "w": 293,
+        "h": 490
+      },
+      {
+        "x": 989,
+        "y": 293,
+        "w": 284,
+        "h": 521
+      },
+      {
+        "x": 1297,
+        "y": 293,
+        "w": 292,
+        "h": 533
+      }
+    ],
+    "sourceSHA256": "43309fceb4480de27aa4ecd0e29881fe1c23e9112ca90f402b58bd1cfebeae66"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "dive",
+    "source": "Steven Flowe/SF jumping off top ropes.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 586,
+        "y": 314,
+        "w": 440,
+        "h": 214
+      },
+      {
+        "x": 897,
+        "y": 496,
+        "w": 373,
+        "h": 173
+      }
+    ],
+    "sourceSHA256": "3c229d4c727c1863c7b48234ddb40fadb67dfe40dfe8cfb2467e61877b6e6e0f",
+    "note": "Two clean airborne body poses; printed takeoff/landing scenery excluded."
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "ropePose",
+    "source": "Steven Flowe/SF climbing rope.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1221,
+        "y": 280,
+        "w": 364,
+        "h": 550
+      }
+    ],
+    "sourceSHA256": "d9fb2a4580704dffdd8fa8293868528d787d875da6af7382a6e6210dc4139dbd"
+  },
+  {
+    "fighter": "steven-flowe",
+    "animation": "ko",
+    "source": "Steven Flowe/SW passed out.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1206,
+        "y": 311,
+        "w": 325,
+        "h": 509
+      }
+    ],
+    "sourceSHA256": "0b4845813c75e91eb3e02c98ac5195ac458a851beb16f567729e19d799927765",
+    "note": "One final resting pose; alternate directions are not cycled."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "idle",
+    "source": "EC3/EC3 standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1349,
+        "y": 280,
+        "w": 119,
+        "h": 583
+      }
+    ],
+    "sourceSHA256": "a71cffdb0d17284220a2f9eafd1380d65a04aa939f1daaf200bd0e5a21bea56a"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "walk",
+    "source": "EC3/EC3 walking.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 60,
+        "y": 535,
+        "w": 202,
+        "h": 302
+      },
+      {
+        "x": 389,
+        "y": 534,
+        "w": 193,
+        "h": 303
+      },
+      {
+        "x": 698,
+        "y": 536,
+        "w": 174,
+        "h": 304
+      },
+      {
+        "x": 1002,
+        "y": 535,
+        "w": 214,
+        "h": 305
+      },
+      {
+        "x": 1328,
+        "y": 536,
+        "w": 207,
+        "h": 303
+      }
+    ],
+    "sourceSHA256": "8cae6865d6de426a3bf84c0eb7e2a9b78b600370d6700e7fc1e658a527694643",
+    "note": "Five right-facing source poses; runtime mirrors for left movement."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "run",
+    "source": "EC3/EC3 running.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 568,
+        "w": 223,
+        "h": 282
+      },
+      {
+        "x": 291,
+        "y": 568,
+        "w": 223,
+        "h": 281
+      },
+      {
+        "x": 545,
+        "y": 568,
+        "w": 221,
+        "h": 282
+      },
+      {
+        "x": 811,
+        "y": 568,
+        "w": 218,
+        "h": 281
+      },
+      {
+        "x": 1069,
+        "y": 568,
+        "w": 243,
+        "h": 261
+      },
+      {
+        "x": 1338,
+        "y": 569,
+        "w": 231,
+        "h": 270
+      }
+    ],
+    "sourceSHA256": "20a405fecfb6db43a6a4bf8926104b30852d32d994e9d533ccb128a39fc4215d",
+    "note": "Six right-facing poses from the second row."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "chair",
+    "source": "EC3/EC3 attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 212,
+        "w": 255,
+        "h": 584
+      },
+      {
+        "x": 359,
+        "y": 205,
+        "w": 242,
+        "h": 592
+      },
+      {
+        "x": 625,
+        "y": 411,
+        "w": 386,
+        "h": 384
+      },
+      {
+        "x": 952,
+        "y": 411,
+        "w": 354,
+        "h": 384
+      },
+      {
+        "x": 1304,
+        "y": 358,
+        "w": 270,
+        "h": 439
+      }
+    ],
+    "sourceSHA256": "add8e490db3f3c096ec3faac62b4eab6d72bb830ef814619e667fb09dee6ab28"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "bat",
+    "source": "EC3/EC3 attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 324,
+        "w": 328,
+        "h": 507
+      },
+      {
+        "x": 339,
+        "y": 222,
+        "w": 294,
+        "h": 611
+      },
+      {
+        "x": 639,
+        "y": 333,
+        "w": 430,
+        "h": 504
+      },
+      {
+        "x": 970,
+        "y": 340,
+        "w": 385,
+        "h": 491
+      },
+      {
+        "x": 26,
+        "y": 324,
+        "w": 328,
+        "h": 507
+      }
+    ],
+    "sourceSHA256": "6fa5e32f443bd02254b7a94c7d9639324e433be16e7f25b121dade6442715a33",
+    "note": "Source contact touches neighboring recovery. Reviewed separate silhouettes; last frame repeats clean ready pose."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "guitar",
+    "source": "EC3/EC3 attack with guitar.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 333,
+        "w": 270,
+        "h": 456
+      },
+      {
+        "x": 353,
+        "y": 251,
+        "w": 266,
+        "h": 538
+      },
+      {
+        "x": 1289,
+        "y": 332,
+        "w": 265,
+        "h": 457
+      }
+    ],
+    "sourceSHA256": "4346918f79049ca23a2f0da2b91b5edd4e8acaaefff419213657aec51a229df5",
+    "note": "Overlapping contact replaced by forward throw pose with shared isolated guitar prop."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "trashcan",
+    "source": "EC3/EC3 attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 362,
+        "w": 279,
+        "h": 475
+      },
+      {
+        "x": 322,
+        "y": 363,
+        "w": 321,
+        "h": 474
+      },
+      {
+        "x": 646,
+        "y": 201,
+        "w": 269,
+        "h": 636
+      },
+      {
+        "x": 928,
+        "y": 383,
+        "w": 378,
+        "h": 454
+      },
+      {
+        "x": 1243,
+        "y": 385,
+        "w": 343,
+        "h": 452
+      }
+    ],
+    "sourceSHA256": "e2d2c76b622a082a6e57e284bb4dc3a6d6d7a6774e1db8f727dc2a5136dfa941"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "carryChair",
+    "source": "EC3/EC3 walking with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 81,
+        "y": 199,
+        "w": 192,
+        "h": 279
+      },
+      {
+        "x": 386,
+        "y": 199,
+        "w": 190,
+        "h": 279
+      },
+      {
+        "x": 692,
+        "y": 199,
+        "w": 196,
+        "h": 279
+      },
+      {
+        "x": 993,
+        "y": 199,
+        "w": 200,
+        "h": 279
+      },
+      {
+        "x": 1315,
+        "y": 199,
+        "w": 196,
+        "h": 279
+      }
+    ],
+    "sourceSHA256": "310512a16ac23129257809515434d455a304f3482bc1f6c2aad9108d3555bc11"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "carryBat",
+    "source": "EC3/EC3 walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 234,
+        "w": 299,
+        "h": 535
+      },
+      {
+        "x": 338,
+        "y": 234,
+        "w": 322,
+        "h": 532
+      },
+      {
+        "x": 672,
+        "y": 234,
+        "w": 296,
+        "h": 537
+      },
+      {
+        "x": 962,
+        "y": 234,
+        "w": 311,
+        "h": 541
+      },
+      {
+        "x": 1275,
+        "y": 234,
+        "w": 301,
+        "h": 537
+      }
+    ],
+    "sourceSHA256": "3387f6dca63890977759482e63108fbe5fb34486e475c6677ddeb73753b4f0aa"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "carryGuitar",
+    "source": "EC3/EC3 walking with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 274,
+        "w": 301,
+        "h": 568
+      },
+      {
+        "x": 371,
+        "y": 274,
+        "w": 270,
+        "h": 566
+      },
+      {
+        "x": 660,
+        "y": 274,
+        "w": 299,
+        "h": 567
+      },
+      {
+        "x": 992,
+        "y": 274,
+        "w": 274,
+        "h": 568
+      },
+      {
+        "x": 1287,
+        "y": 274,
+        "w": 280,
+        "h": 567
+      }
+    ],
+    "sourceSHA256": "98e10b68dd9531055dc6874aaa94b86f936eefa4eb096dc794d415100026f84a"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "carryTrashcan",
+    "source": "EC3/EC3 walking with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 284,
+        "w": 312,
+        "h": 464
+      },
+      {
+        "x": 359,
+        "y": 287,
+        "w": 294,
+        "h": 464
+      },
+      {
+        "x": 681,
+        "y": 285,
+        "w": 272,
+        "h": 467
+      },
+      {
+        "x": 972,
+        "y": 284,
+        "w": 283,
+        "h": 467
+      },
+      {
+        "x": 1289,
+        "y": 286,
+        "w": 284,
+        "h": 468
+      }
+    ],
+    "sourceSHA256": "b54f77f37af21f65153fa975ed8c948384027458252ae58dd9cc33ded02e1118"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "lift",
+    "source": "EC3/EC3 lifting overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 433,
+        "w": 323,
+        "h": 404
+      },
+      {
+        "x": 386,
+        "y": 394,
+        "w": 277,
+        "h": 443
+      },
+      {
+        "x": 688,
+        "y": 325,
+        "w": 269,
+        "h": 512
+      },
+      {
+        "x": 1009,
+        "y": 294,
+        "w": 247,
+        "h": 543
+      },
+      {
+        "x": 1316,
+        "y": 297,
+        "w": 245,
+        "h": 540
+      }
+    ],
+    "sourceSHA256": "9abc853c6396b9910695b0c329acdf7c08d63c2041a544a787afb8c49b88457f"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "throw",
+    "source": "EC3/EC3 throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 439,
+        "w": 316,
+        "h": 405
+      },
+      {
+        "x": 391,
+        "y": 352,
+        "w": 279,
+        "h": 492
+      },
+      {
+        "x": 682,
+        "y": 232,
+        "w": 354,
+        "h": 549
+      },
+      {
+        "x": 947,
+        "y": 411,
+        "w": 348,
+        "h": 433
+      },
+      {
+        "x": 1296,
+        "y": 386,
+        "w": 269,
+        "h": 459
+      }
+    ],
+    "sourceSHA256": "4d0ae5b2034d86b36fa05ce3ce12150dddea4a79e48dae60aecd34ca851d87e8"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "lifted",
+    "source": "EC3/EC3 getting lifted overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 43,
+        "y": 467,
+        "w": 217,
+        "h": 289
+      },
+      {
+        "x": 314,
+        "y": 363,
+        "w": 256,
+        "h": 303
+      },
+      {
+        "x": 584,
+        "y": 347,
+        "w": 286,
+        "h": 227
+      },
+      {
+        "x": 895,
+        "y": 340,
+        "w": 322,
+        "h": 211
+      },
+      {
+        "x": 1233,
+        "y": 340,
+        "w": 341,
+        "h": 215
+      }
+    ],
+    "sourceSHA256": "b99923cff8e7c91f0be29252522b519737422b58a88c59918e316252da35cc52"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "thrown",
+    "source": "EC3/EC3 being thrown.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 315,
+        "w": 291,
+        "h": 479
+      },
+      {
+        "x": 353,
+        "y": 277,
+        "w": 318,
+        "h": 434
+      },
+      {
+        "x": 691,
+        "y": 282,
+        "w": 272,
+        "h": 424
+      },
+      {
+        "x": 965,
+        "y": 311,
+        "w": 298,
+        "h": 410
+      },
+      {
+        "x": 1223,
+        "y": 587,
+        "w": 352,
+        "h": 227
+      }
+    ],
+    "sourceSHA256": "6013fba291ceaab6b79c4477b749e70092a7b5c9d64d314a68bd9f1a5f7f0373",
+    "note": "Printed ground shadows excluded."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "hurt",
+    "source": "EC3/EC3 dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 76,
+        "y": 287,
+        "w": 291,
+        "h": 566
+      },
+      {
+        "x": 469,
+        "y": 291,
+        "w": 293,
+        "h": 561
+      },
+      {
+        "x": 839,
+        "y": 285,
+        "w": 285,
+        "h": 567
+      },
+      {
+        "x": 1231,
+        "y": 287,
+        "w": 292,
+        "h": 565
+      }
+    ],
+    "sourceSHA256": "8ee2ee5cc1414a767564a58be25a98fb80b1c81074866fce0498baa7c8f83359"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "fallBack",
+    "source": "EC3/EC3 falling backwards.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 292,
+        "w": 291,
+        "h": 482
+      },
+      {
+        "x": 342,
+        "y": 320,
+        "w": 331,
+        "h": 421
+      },
+      {
+        "x": 696,
+        "y": 431,
+        "w": 341,
+        "h": 293
+      },
+      {
+        "x": 1084,
+        "y": 491,
+        "w": 475,
+        "h": 119
+      },
+      {
+        "x": 1055,
+        "y": 731,
+        "w": 504,
+        "h": 117
+      }
+    ],
+    "sourceSHA256": "4d6eacb5b53160201ec6281a095a359e19cee2acc962f96551a30f4e3b8debc9"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "fallFront",
+    "source": "EC3/EC3 falling farwards.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 364,
+        "w": 179,
+        "h": 358
+      },
+      {
+        "x": 282,
+        "y": 405,
+        "w": 216,
+        "h": 318
+      },
+      {
+        "x": 508,
+        "y": 448,
+        "w": 250,
+        "h": 276
+      },
+      {
+        "x": 753,
+        "y": 516,
+        "w": 232,
+        "h": 207
+      },
+      {
+        "x": 983,
+        "y": 591,
+        "w": 250,
+        "h": 137
+      },
+      {
+        "x": 1241,
+        "y": 635,
+        "w": 324,
+        "h": 89
+      }
+    ],
+    "sourceSHA256": "d56248f6c5cfd842fda093fa8d4ee5751f38d86fb28230f7f7d10d7a04bb7c04"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "down",
+    "source": "EC3/EC3 laying facedown and faceup.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 843,
+        "y": 334,
+        "w": 695,
+        "h": 169
+      },
+      {
+        "x": 855,
+        "y": 657,
+        "w": 690,
+        "h": 196
+      }
+    ],
+    "sourceSHA256": "41477b3a25ab6e0b84af21bb015fb51d15cb91d9ed8869d1356c90bf7f707804"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "rise",
+    "source": "EC3/EC3 getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 662,
+        "w": 306,
+        "h": 90
+      },
+      {
+        "x": 340,
+        "y": 566,
+        "w": 260,
+        "h": 189
+      },
+      {
+        "x": 606,
+        "y": 513,
+        "w": 232,
+        "h": 240
+      },
+      {
+        "x": 858,
+        "y": 438,
+        "w": 226,
+        "h": 313
+      },
+      {
+        "x": 1113,
+        "y": 382,
+        "w": 200,
+        "h": 373
+      },
+      {
+        "x": 1340,
+        "y": 328,
+        "w": 219,
+        "h": 424
+      }
+    ],
+    "sourceSHA256": "ab015b87a8bbb677682471d9349db01ccabe34cd9ce4849c737848639e486771"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "taunt",
+    "source": "EC3/EC3 taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 278,
+        "w": 292,
+        "h": 548
+      },
+      {
+        "x": 355,
+        "y": 316,
+        "w": 285,
+        "h": 511
+      },
+      {
+        "x": 656,
+        "y": 316,
+        "w": 277,
+        "h": 511
+      },
+      {
+        "x": 947,
+        "y": 311,
+        "w": 293,
+        "h": 516
+      },
+      {
+        "x": 1246,
+        "y": 278,
+        "w": 322,
+        "h": 549
+      }
+    ],
+    "sourceSHA256": "5ae9cbedb01476f9c2ceed4a0060e56e9c02b4e1042f3fb815339adb6e4e5d1f"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "victory",
+    "source": "EC3/EC3 victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 59,
+        "y": 224,
+        "w": 280,
+        "h": 616
+      },
+      {
+        "x": 384,
+        "y": 224,
+        "w": 268,
+        "h": 616
+      },
+      {
+        "x": 668,
+        "y": 299,
+        "w": 258,
+        "h": 541
+      },
+      {
+        "x": 958,
+        "y": 307,
+        "w": 299,
+        "h": 533
+      },
+      {
+        "x": 1292,
+        "y": 219,
+        "w": 273,
+        "h": 621
+      }
+    ],
+    "sourceSHA256": "1e1a1cef0b6fb45a04836e6e30f8beb0d79ca8f28570173f4710462b95281f86"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "defeat",
+    "source": "EC3/EC3 defeated.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1232,
+        "y": 315,
+        "w": 316,
+        "h": 492
+      }
+    ],
+    "sourceSHA256": "fa59cd90d70bba3b62f71a91decadaeafac1ef3d121f219d169182b815740383"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "jump",
+    "source": "EC3/EC3 jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 72,
+        "y": 488,
+        "w": 288,
+        "h": 363
+      },
+      {
+        "x": 430,
+        "y": 370,
+        "w": 335,
+        "h": 443
+      },
+      {
+        "x": 846,
+        "y": 279,
+        "w": 356,
+        "h": 442
+      },
+      {
+        "x": 1282,
+        "y": 488,
+        "w": 268,
+        "h": 363
+      }
+    ],
+    "sourceSHA256": "7385bb81ba785a933344cfd48d9444f826467619339a7b909bf810d12cceab65"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "pin",
+    "source": "EC3/EC3 pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 273,
+        "w": 305,
+        "h": 555
+      },
+      {
+        "x": 419,
+        "y": 370,
+        "w": 338,
+        "h": 457
+      },
+      {
+        "x": 787,
+        "y": 478,
+        "w": 371,
+        "h": 341
+      },
+      {
+        "x": 1166,
+        "y": 622,
+        "w": 400,
+        "h": 204
+      }
+    ],
+    "sourceSHA256": "fecdec0f83b919f52678faaadace384957c552e3601174ac82597fff198f6a08"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "climb",
+    "source": "EC3/EC3 climbing on top rope.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 267,
+        "y": 468,
+        "w": 172,
+        "h": 296
+      },
+      {
+        "x": 493,
+        "y": 454,
+        "w": 174,
+        "h": 308
+      },
+      {
+        "x": 716,
+        "y": 402,
+        "w": 167,
+        "h": 308
+      },
+      {
+        "x": 951,
+        "y": 381,
+        "w": 158,
+        "h": 198
+      },
+      {
+        "x": 1153,
+        "y": 320,
+        "w": 198,
+        "h": 272
+      },
+      {
+        "x": 1377,
+        "y": 285,
+        "w": 188,
+        "h": 306
+      }
+    ],
+    "sourceSHA256": "5448b602318c9f4dc6e51a6ed1a6c39d8ea645098b2f5c22f6900d7c817398fd",
+    "note": "Six side-facing silhouettes; first back view is occluded by the printed post."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "entry",
+    "source": "EC3/EC3 climbing through rope.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 313,
+        "w": 303,
+        "h": 478
+      },
+      {
+        "x": 353,
+        "y": 320,
+        "w": 280,
+        "h": 475
+      },
+      {
+        "x": 672,
+        "y": 313,
+        "w": 278,
+        "h": 493
+      },
+      {
+        "x": 986,
+        "y": 293,
+        "w": 280,
+        "h": 513
+      },
+      {
+        "x": 1290,
+        "y": 293,
+        "w": 300,
+        "h": 518
+      }
+    ],
+    "sourceSHA256": "bf31dbfd3dccf2a9dec279ba33a456446a0f6a6dd5b007308fe048986547bcea"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "dive",
+    "source": "EC3/EC3 Jumping off top ropes.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 570,
+        "y": 292,
+        "w": 413,
+        "h": 184
+      },
+      {
+        "x": 871,
+        "y": 451,
+        "w": 421,
+        "h": 134
+      }
+    ],
+    "sourceSHA256": "c488951243b9698d95868bd7153c28b5834623d0fb6afdbfa2ef665955778306",
+    "note": "Two clean airborne body poses; printed takeoff/landing scenery excluded."
+  },
+  {
+    "fighter": "ec3",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "ec3",
+    "animation": "ropePose",
+    "source": "EC3/EC3 climbing on rope.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1231,
+        "y": 280,
+        "w": 356,
+        "h": 569
+      }
+    ],
+    "sourceSHA256": "e88bb5d96716fdc661604e606c59a19cfa755f9eea03e9caf5edb1b6d64bd3b6"
+  },
+  {
+    "fighter": "ec3",
+    "animation": "ko",
+    "source": "EC3/EC3 passed out.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 271,
+        "y": 343,
+        "w": 1201,
+        "h": 516
+      }
+    ],
+    "sourceSHA256": "15b20e7686d14296eb9dd0fcfabd65372949757ef50586268a279d40ec86d0b6",
+    "note": "One final resting pose; alternate directions are not cycled."
+  },
+  {
+    "fighter": "krule",
+    "animation": "idle",
+    "source": "Krule/Krule standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1337,
+        "y": 282,
+        "w": 139,
+        "h": 579
+      }
+    ],
+    "sourceSHA256": "b7f1467ad570225c3e3c11a9a82d0c618a6f59443b6f9e34da749819ac2bf551"
+  },
+  {
+    "fighter": "krule",
+    "animation": "walk",
+    "source": "Krule/Krule walking.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 102,
+        "y": 557,
+        "w": 216,
+        "h": 287
+      },
+      {
+        "x": 408,
+        "y": 548,
+        "w": 176,
+        "h": 293
+      },
+      {
+        "x": 680,
+        "y": 548,
+        "w": 215,
+        "h": 296
+      },
+      {
+        "x": 1002,
+        "y": 545,
+        "w": 165,
+        "h": 296
+      },
+      {
+        "x": 1294,
+        "y": 545,
+        "w": 214,
+        "h": 299
+      }
+    ],
+    "sourceSHA256": "5cae3efc70477719d5ced3b29a223b965651ff76d16768931d28c73113fecac5"
+  },
+  {
+    "fighter": "krule",
+    "animation": "run",
+    "source": "Krule/Krule running.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 570,
+        "w": 210,
+        "h": 285
+      },
+      {
+        "x": 273,
+        "y": 567,
+        "w": 234,
+        "h": 285
+      },
+      {
+        "x": 557,
+        "y": 567,
+        "w": 191,
+        "h": 283
+      },
+      {
+        "x": 795,
+        "y": 565,
+        "w": 207,
+        "h": 287
+      },
+      {
+        "x": 1049,
+        "y": 564,
+        "w": 270,
+        "h": 286
+      },
+      {
+        "x": 1342,
+        "y": 563,
+        "w": 225,
+        "h": 280
+      }
+    ],
+    "note": "Six right-facing poses selected from the second row.",
+    "sourceSHA256": "55e286f6d510210dea2e97951b72ba0353c0db2592550d35b791fd8b46b8e2fd"
+  },
+  {
+    "fighter": "krule",
+    "animation": "chair",
+    "source": "Krule/Krule attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 207,
+        "w": 263,
+        "h": 603
+      },
+      {
+        "x": 325,
+        "y": 204,
+        "w": 252,
+        "h": 605
+      },
+      {
+        "x": 582,
+        "y": 421,
+        "w": 391,
+        "h": 389
+      },
+      {
+        "x": 904,
+        "y": 421,
+        "w": 397,
+        "h": 389
+      },
+      {
+        "x": 1304,
+        "y": 356,
+        "w": 262,
+        "h": 455
+      }
+    ],
+    "sourceSHA256": "0185ce3238aef9b20cb07dded641da3ae4baa91ea4afadb02ee4153ac4d02e67"
+  },
+  {
+    "fighter": "krule",
+    "animation": "bat",
+    "source": "Krule/Krule attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 29,
+        "y": 341,
+        "w": 313,
+        "h": 482
+      },
+      {
+        "x": 331,
+        "y": 218,
+        "w": 286,
+        "h": 609
+      },
+      {
+        "x": 631,
+        "y": 345,
+        "w": 420,
+        "h": 479
+      },
+      {
+        "x": 964,
+        "y": 350,
+        "w": 415,
+        "h": 473
+      },
+      {
+        "x": 29,
+        "y": 341,
+        "w": 313,
+        "h": 482
+      }
+    ],
+    "note": "Separate single-body contact poses. Jeeves repeats the clean ready pose for recovery because the two source recovery bats cross and overlap both bodies.",
+    "sourceSHA256": "d33d7fddfac70a09aab56dd881dfe1a0550bbfce4b5e9bfcc5c78cbdada401e7"
+  },
+  {
+    "fighter": "krule",
+    "animation": "guitar",
+    "source": "Krule/Krule attack with guitar.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 333,
+        "w": 284,
+        "h": 457
+      },
+      {
+        "x": 348,
+        "y": 236,
+        "w": 278,
+        "h": 553
+      },
+      {
+        "x": 1288,
+        "y": 332,
+        "w": 267,
+        "h": 458
+      }
+    ],
+    "note": "Clean ready, overhead and recovery poses. Forward contact uses the own throw pose with the existing isolated guitar prop.",
+    "sourceSHA256": "a79ba0696e27b5a16ad0b27d91c5a98ba99708d45309f983c9bafe6c4dd03b14"
+  },
+  {
+    "fighter": "krule",
+    "animation": "trashcan",
+    "source": "Krule/Krule attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 358,
+        "w": 287,
+        "h": 481
+      },
+      {
+        "x": 329,
+        "y": 356,
+        "w": 321,
+        "h": 483
+      },
+      {
+        "x": 641,
+        "y": 208,
+        "w": 274,
+        "h": 631
+      },
+      {
+        "x": 923,
+        "y": 391,
+        "w": 356,
+        "h": 448
+      },
+      {
+        "x": 1257,
+        "y": 365,
+        "w": 326,
+        "h": 474
+      }
+    ],
+    "sourceSHA256": "7e4603ebb177dfdb0cc860833a5ac1f1058944e67fe9d36c76bd9570f86cc565"
+  },
+  {
+    "fighter": "krule",
+    "animation": "carryChair",
+    "source": "Krule/Krule walk with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 64,
+        "y": 188,
+        "w": 197,
+        "h": 287
+      },
+      {
+        "x": 382,
+        "y": 188,
+        "w": 202,
+        "h": 287
+      },
+      {
+        "x": 706,
+        "y": 189,
+        "w": 168,
+        "h": 286
+      },
+      {
+        "x": 1011,
+        "y": 188,
+        "w": 199,
+        "h": 287
+      },
+      {
+        "x": 1324,
+        "y": 188,
+        "w": 199,
+        "h": 287
+      }
+    ],
+    "sourceSHA256": "49ac1a283829785d2806cc9003213d9ad33d2df364dff7e827fb2e0af289659c"
+  },
+  {
+    "fighter": "krule",
+    "animation": "carryBat",
+    "source": "Krule/Krule walking with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 43,
+        "y": 235,
+        "w": 300,
+        "h": 553
+      },
+      {
+        "x": 351,
+        "y": 235,
+        "w": 302,
+        "h": 552
+      },
+      {
+        "x": 667,
+        "y": 235,
+        "w": 291,
+        "h": 553
+      },
+      {
+        "x": 952,
+        "y": 235,
+        "w": 320,
+        "h": 554
+      },
+      {
+        "x": 1284,
+        "y": 235,
+        "w": 295,
+        "h": 552
+      }
+    ],
+    "sourceSHA256": "40d3cd34e206b1b0f462cb293aa26a31b8079de520095bcbd45153c861ec46e6"
+  },
+  {
+    "fighter": "krule",
+    "animation": "carryGuitar",
+    "source": "Krule/Krule walk with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 272,
+        "w": 295,
+        "h": 568
+      },
+      {
+        "x": 371,
+        "y": 273,
+        "w": 264,
+        "h": 568
+      },
+      {
+        "x": 679,
+        "y": 273,
+        "w": 214,
+        "h": 568
+      },
+      {
+        "x": 967,
+        "y": 275,
+        "w": 277,
+        "h": 571
+      },
+      {
+        "x": 1276,
+        "y": 273,
+        "w": 293,
+        "h": 572
+      }
+    ],
+    "sourceSHA256": "0feef5663141423bb133cc12c466ba7348eb2b8d632d9878bcdf5035d315e007"
+  },
+  {
+    "fighter": "krule",
+    "animation": "carryTrashcan",
+    "source": "Krule/Krule walk with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 255,
+        "w": 326,
+        "h": 512
+      },
+      {
+        "x": 370,
+        "y": 255,
+        "w": 290,
+        "h": 515
+      },
+      {
+        "x": 699,
+        "y": 253,
+        "w": 245,
+        "h": 517
+      },
+      {
+        "x": 960,
+        "y": 254,
+        "w": 298,
+        "h": 515
+      },
+      {
+        "x": 1266,
+        "y": 254,
+        "w": 303,
+        "h": 516
+      }
+    ],
+    "sourceSHA256": "9d50142b0d3069f771cd0c3fbf297989babadc060cdaa2fb747a1c33f795b224"
+  },
+  {
+    "fighter": "krule",
+    "animation": "lift",
+    "source": "Krule/Krule lifting overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 38,
+        "y": 443,
+        "w": 342,
+        "h": 417
+      },
+      {
+        "x": 379,
+        "y": 374,
+        "w": 280,
+        "h": 486
+      },
+      {
+        "x": 699,
+        "y": 328,
+        "w": 253,
+        "h": 532
+      },
+      {
+        "x": 1014,
+        "y": 285,
+        "w": 227,
+        "h": 575
+      },
+      {
+        "x": 1301,
+        "y": 285,
+        "w": 247,
+        "h": 575
+      }
+    ],
+    "sourceSHA256": "c9b061082069ee0b026b8bb56893671729b6cc51011d6190b20ed5a0c6f9b9dc"
+  },
+  {
+    "fighter": "krule",
+    "animation": "throw",
+    "source": "Krule/Krule throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 395,
+        "w": 319,
+        "h": 445
+      },
+      {
+        "x": 365,
+        "y": 349,
+        "w": 286,
+        "h": 493
+      },
+      {
+        "x": 680,
+        "y": 220,
+        "w": 279,
+        "h": 574
+      },
+      {
+        "x": 905,
+        "y": 366,
+        "w": 366,
+        "h": 477
+      },
+      {
+        "x": 1282,
+        "y": 359,
+        "w": 285,
+        "h": 483
+      }
+    ],
+    "sourceSHA256": "6f273b761957fb8f1ddf54554d074b14ee34ba751403e8665fbe5e6abe32c37c"
+  },
+  {
+    "fighter": "krule",
+    "animation": "lifted",
+    "source": "Krule/Krule getting lifted overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 435,
+        "w": 233,
+        "h": 303
+      },
+      {
+        "x": 315,
+        "y": 354,
+        "w": 257,
+        "h": 288
+      },
+      {
+        "x": 597,
+        "y": 352,
+        "w": 279,
+        "h": 220
+      },
+      {
+        "x": 904,
+        "y": 357,
+        "w": 302,
+        "h": 198
+      },
+      {
+        "x": 1228,
+        "y": 366,
+        "w": 346,
+        "h": 195
+      }
+    ],
+    "sourceSHA256": "3c90cde0a2eb114818c3af86160fd3bdcb8a439858d73faf66126726c8d1db4f"
+  },
+  {
+    "fighter": "krule",
+    "animation": "hurt",
+    "source": "Krule/Krule dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 82,
+        "y": 291,
+        "w": 288,
+        "h": 564
+      },
+      {
+        "x": 490,
+        "y": 336,
+        "w": 255,
+        "h": 519
+      },
+      {
+        "x": 847,
+        "y": 297,
+        "w": 292,
+        "h": 558
+      },
+      {
+        "x": 1219,
+        "y": 298,
+        "w": 319,
+        "h": 557
+      }
+    ],
+    "sourceSHA256": "9d7d778e088223f1638e21990a204fae54aae50531374fc84c98d2466dd663dc"
+  },
+  {
+    "fighter": "krule",
+    "animation": "fallBack",
+    "source": "Krule/Krule falling backwards.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 47,
+        "y": 340,
+        "w": 219,
+        "h": 426
+      },
+      {
+        "x": 271,
+        "y": 368,
+        "w": 358,
+        "h": 334
+      },
+      {
+        "x": 610,
+        "y": 481,
+        "w": 317,
+        "h": 283
+      },
+      {
+        "x": 907,
+        "y": 615,
+        "w": 302,
+        "h": 148
+      },
+      {
+        "x": 1216,
+        "y": 668,
+        "w": 359,
+        "h": 96
+      }
+    ],
+    "sourceSHA256": "6f8b0ef2935144ea5e253407e84e4c992e9d3f2c72a78f5952e78412ea875fa0"
+  },
+  {
+    "fighter": "krule",
+    "animation": "fallFront",
+    "source": "Krule/Krule falling forward.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 351,
+        "w": 303,
+        "h": 389
+      },
+      {
+        "x": 253,
+        "y": 426,
+        "w": 458,
+        "h": 249
+      },
+      {
+        "x": 562,
+        "y": 556,
+        "w": 344,
+        "h": 184
+      },
+      {
+        "x": 909,
+        "y": 604,
+        "w": 284,
+        "h": 129
+      },
+      {
+        "x": 1204,
+        "y": 645,
+        "w": 374,
+        "h": 95
+      }
+    ],
+    "sourceSHA256": "f05d0700e8ddf0954af522c52e969a85ed57385f8fbeabb23d26518c0800fb0e"
+  },
+  {
+    "fighter": "krule",
+    "animation": "down",
+    "source": "Krule/Krule laying down.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 818,
+        "y": 294,
+        "w": 726,
+        "h": 201
+      },
+      {
+        "x": 834,
+        "y": 611,
+        "w": 713,
+        "h": 250
+      }
+    ],
+    "sourceSHA256": "f637f9757e3e76c230cf8e9dafbfda9f5bc4b8c1119209f7af00e3f7e624fd8e"
+  },
+  {
+    "fighter": "krule",
+    "animation": "rise",
+    "source": "Krule/Krule getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 680,
+        "w": 305,
+        "h": 96
+      },
+      {
+        "x": 354,
+        "y": 608,
+        "w": 258,
+        "h": 168
+      },
+      {
+        "x": 621,
+        "y": 561,
+        "w": 221,
+        "h": 212
+      },
+      {
+        "x": 871,
+        "y": 508,
+        "w": 209,
+        "h": 262
+      },
+      {
+        "x": 1112,
+        "y": 436,
+        "w": 196,
+        "h": 338
+      },
+      {
+        "x": 1348,
+        "y": 352,
+        "w": 207,
+        "h": 422
+      }
+    ],
+    "sourceSHA256": "dafc6a6df4e021b410dab901a09d60d860164b1a3ca854dee33dcaad423d8aba"
+  },
+  {
+    "fighter": "krule",
+    "animation": "taunt",
+    "source": "Krule/Krule taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 284,
+        "w": 271,
+        "h": 550
+      },
+      {
+        "x": 307,
+        "y": 302,
+        "w": 295,
+        "h": 531
+      },
+      {
+        "x": 628,
+        "y": 244,
+        "w": 304,
+        "h": 591
+      },
+      {
+        "x": 924,
+        "y": 339,
+        "w": 289,
+        "h": 496
+      },
+      {
+        "x": 1175,
+        "y": 289,
+        "w": 404,
+        "h": 547
+      }
+    ],
+    "sourceSHA256": "291b2ae334e7d4dc966e6e7659515918cbf90168f67ba127b1d5090784bd9895"
+  },
+  {
+    "fighter": "krule",
+    "animation": "victory",
+    "source": "Krule/Krule victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 226,
+        "w": 272,
+        "h": 606
+      },
+      {
+        "x": 353,
+        "y": 224,
+        "w": 256,
+        "h": 613
+      },
+      {
+        "x": 648,
+        "y": 305,
+        "w": 199,
+        "h": 529
+      },
+      {
+        "x": 875,
+        "y": 308,
+        "w": 305,
+        "h": 524
+      },
+      {
+        "x": 1165,
+        "y": 305,
+        "w": 411,
+        "h": 527
+      }
+    ],
+    "sourceSHA256": "c73204334edd04b01d507fa294aeab3b597f9833caa22805a3b7b10ce60fecf8"
+  },
+  {
+    "fighter": "krule",
+    "animation": "defeat",
+    "source": "Krule/Krule defeated.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1250,
+        "y": 321,
+        "w": 304,
+        "h": 500
+      }
+    ],
+    "sourceSHA256": "d3d18215e71008bb1866af0d3c4ed3463187e568f73802bef17431afb023ef2a"
+  },
+  {
+    "fighter": "krule",
+    "animation": "jump",
+    "source": "Krule/Krule jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 60,
+        "y": 486,
+        "w": 305,
+        "h": 357
+      },
+      {
+        "x": 400,
+        "y": 350,
+        "w": 383,
+        "h": 493
+      },
+      {
+        "x": 797,
+        "y": 261,
+        "w": 414,
+        "h": 408
+      },
+      {
+        "x": 1237,
+        "y": 465,
+        "w": 339,
+        "h": 378
+      }
+    ],
+    "sourceSHA256": "360cd674004802ae146730eb302694e5fe49d3c4ec80a578865aa8cde5f23ac7"
+  },
+  {
+    "fighter": "krule",
+    "animation": "pin",
+    "source": "Krule/Krule pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 48,
+        "y": 282,
+        "w": 343,
+        "h": 523
+      },
+      {
+        "x": 442,
+        "y": 397,
+        "w": 342,
+        "h": 408
+      },
+      {
+        "x": 797,
+        "y": 477,
+        "w": 388,
+        "h": 323
+      },
+      {
+        "x": 1188,
+        "y": 607,
+        "w": 384,
+        "h": 193
+      }
+    ],
+    "sourceSHA256": "6e907cebc27596b8e8a26acf4b44effa3c174c49b262a0d2344dade62b55e546"
+  },
+  {
+    "fighter": "krule",
+    "animation": "climb",
+    "source": "Krule/Krule climb on top ropes.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 264,
+        "y": 466,
+        "w": 180,
+        "h": 327
+      },
+      {
+        "x": 493,
+        "y": 447,
+        "w": 172,
+        "h": 331
+      },
+      {
+        "x": 710,
+        "y": 409,
+        "w": 176,
+        "h": 316
+      },
+      {
+        "x": 942,
+        "y": 393,
+        "w": 181,
+        "h": 210
+      },
+      {
+        "x": 1150,
+        "y": 343,
+        "w": 209,
+        "h": 267
+      },
+      {
+        "x": 1378,
+        "y": 290,
+        "w": 195,
+        "h": 316
+      }
+    ],
+    "note": "Six side-facing poses; the back-facing first panel is occluded by its printed corner post.",
+    "sourceSHA256": "6e8560a1237ea39a6964da54e5b1e4e10ee456b9c8c601fa9dff01b851d8f002"
+  },
+  {
+    "fighter": "krule",
+    "animation": "entry",
+    "source": "Krule/Krule Climb through ropes.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 297,
+        "w": 296,
+        "h": 505
+      },
+      {
+        "x": 334,
+        "y": 305,
+        "w": 299,
+        "h": 497
+      },
+      {
+        "x": 652,
+        "y": 302,
+        "w": 299,
+        "h": 501
+      },
+      {
+        "x": 970,
+        "y": 282,
+        "w": 300,
+        "h": 521
+      },
+      {
+        "x": 1308,
+        "y": 282,
+        "w": 275,
+        "h": 522
+      }
+    ],
+    "sourceSHA256": "96e954290848c60058e84f5b74269193a67ff4eb4dd68cb06e3ca0a7a7063f68"
+  },
+  {
+    "fighter": "krule",
+    "animation": "dive",
+    "source": "Krule/Krule jumping off corner rope.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 581,
+        "y": 310,
+        "w": 423,
+        "h": 208
+      },
+      {
+        "x": 899,
+        "y": 448,
+        "w": 391,
+        "h": 228
+      }
+    ],
+    "note": "Two intact airborne poses; source scenery and printed landing dust are excluded.",
+    "sourceSHA256": "c0cb56e8d5f2c4d72e311de5f983b8ac256337af6a1754da75825c585141718d"
+  },
+  {
+    "fighter": "krule",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "krule",
+    "animation": "ropePose",
+    "source": "Krule/Krule climbing through rope.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1224,
+        "y": 283,
+        "w": 359,
+        "h": 533
+      }
+    ],
+    "sourceSHA256": "b26dd869227d7bd65afab1981f1ce25e803d965b23529810658a78bd1348acd3"
+  },
+  {
+    "fighter": "krule",
+    "animation": "ko",
+    "source": "Krule/Krule passed out (end frames).png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1265,
+        "y": 655,
+        "w": 318,
+        "h": 197
+      }
+    ],
+    "note": "One complete resting body, without cycling unrelated directions.",
+    "sourceSHA256": "be7593d843cfe5f08a989f5534dd9b1009ef411265f94184f4ee0e156e8245c9"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "idle",
+    "source": "Jeeves/Jeeves standing.png",
+    "detected": 4,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1346,
+        "y": 281,
+        "w": 119,
+        "h": 579
+      }
+    ],
+    "sourceSHA256": "76ec9183b3c343f8c43d4acdaa4629bd8808366e33b6093ac0be9bc37f20c1f7"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "walk",
+    "source": "Jeeves/Jeeves walking.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 531,
+        "w": 208,
+        "h": 294
+      },
+      {
+        "x": 386,
+        "y": 531,
+        "w": 200,
+        "h": 294
+      },
+      {
+        "x": 729,
+        "y": 531,
+        "w": 148,
+        "h": 293
+      },
+      {
+        "x": 1013,
+        "y": 531,
+        "w": 188,
+        "h": 294
+      },
+      {
+        "x": 1328,
+        "y": 531,
+        "w": 211,
+        "h": 293
+      }
+    ],
+    "sourceSHA256": "3021f2547474db1629450e7a05668a0d02a9a94c9a8213c8078fa73c39e3df98"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "run",
+    "source": "Jeeves/Jeeves running.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 575,
+        "w": 211,
+        "h": 285
+      },
+      {
+        "x": 277,
+        "y": 575,
+        "w": 224,
+        "h": 285
+      },
+      {
+        "x": 538,
+        "y": 572,
+        "w": 231,
+        "h": 288
+      },
+      {
+        "x": 813,
+        "y": 572,
+        "w": 226,
+        "h": 289
+      },
+      {
+        "x": 1083,
+        "y": 572,
+        "w": 215,
+        "h": 285
+      },
+      {
+        "x": 1325,
+        "y": 570,
+        "w": 236,
+        "h": 290
+      }
+    ],
+    "note": "Six right-facing poses selected from the second row.",
+    "sourceSHA256": "2d29ad5281e93f02cc462bdddd1333a49d0159ca2a5acec0a76697ffeda449b2"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "chair",
+    "source": "Jeeves/Jeeves attack with chair.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 204,
+        "w": 269,
+        "h": 595
+      },
+      {
+        "x": 341,
+        "y": 200,
+        "w": 260,
+        "h": 599
+      },
+      {
+        "x": 617,
+        "y": 385,
+        "w": 396,
+        "h": 414
+      },
+      {
+        "x": 945,
+        "y": 390,
+        "w": 370,
+        "h": 409
+      },
+      {
+        "x": 1326,
+        "y": 332,
+        "w": 248,
+        "h": 472
+      }
+    ],
+    "sourceSHA256": "d47c54a9e82fcd6457b8c9356e202cb5a058082240a574c4b038479ed9391101"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "bat",
+    "source": "Jeeves/Jeeves attack with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 335,
+        "w": 325,
+        "h": 506
+      },
+      {
+        "x": 348,
+        "y": 243,
+        "w": 299,
+        "h": 598
+      },
+      {
+        "x": 657,
+        "y": 344,
+        "w": 420,
+        "h": 497
+      },
+      {
+        "x": 31,
+        "y": 335,
+        "w": 325,
+        "h": 506
+      },
+      {
+        "x": 31,
+        "y": 335,
+        "w": 325,
+        "h": 506
+      }
+    ],
+    "note": "Separate single-body contact poses. Jeeves repeats the clean ready pose for recovery because the two source recovery bats cross and overlap both bodies.",
+    "sourceSHA256": "428ee2a1efbf45f5fe075c5829f406ad34215e1e6383c813ec2593885a83e23d"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "guitar",
+    "source": "Jeeves/Jeeves attack with guitar.png",
+    "detected": 3,
+    "count": 3,
+    "bounds": [
+      {
+        "x": 44,
+        "y": 317,
+        "w": 277,
+        "h": 468
+      },
+      {
+        "x": 348,
+        "y": 254,
+        "w": 275,
+        "h": 530
+      },
+      {
+        "x": 1288,
+        "y": 317,
+        "w": 271,
+        "h": 467
+      }
+    ],
+    "note": "Clean ready, overhead and recovery poses. Forward contact uses the own throw pose with the existing isolated guitar prop.",
+    "sourceSHA256": "bac25a645c9339406ec2cf53672abbc0245426fe9838849530b849dd1dda55e6"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "trashcan",
+    "source": "Jeeves/Jeeves attack with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 333,
+        "w": 284,
+        "h": 510
+      },
+      {
+        "x": 317,
+        "y": 340,
+        "w": 326,
+        "h": 503
+      },
+      {
+        "x": 624,
+        "y": 202,
+        "w": 282,
+        "h": 641
+      },
+      {
+        "x": 906,
+        "y": 359,
+        "w": 380,
+        "h": 483
+      },
+      {
+        "x": 1217,
+        "y": 365,
+        "w": 380,
+        "h": 478
+      }
+    ],
+    "sourceSHA256": "0caabca751629a76539c2ca0ebdf17ffaae012b7da0176b17d94652d40caebe8"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "carryChair",
+    "source": "Jeeves/Jeeves walk with chair.png",
+    "detected": 10,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 50,
+        "y": 198,
+        "w": 228,
+        "h": 289
+      },
+      {
+        "x": 368,
+        "y": 198,
+        "w": 209,
+        "h": 289
+      },
+      {
+        "x": 673,
+        "y": 198,
+        "w": 198,
+        "h": 289
+      },
+      {
+        "x": 989,
+        "y": 198,
+        "w": 226,
+        "h": 289
+      },
+      {
+        "x": 1306,
+        "y": 198,
+        "w": 221,
+        "h": 289
+      }
+    ],
+    "sourceSHA256": "116484f8c9d10241cd012cc9e7b1a7017e6cd7d812ee06422c5a9f4563844005"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "carryBat",
+    "source": "Jeeves/Jeeevs walk with bat.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 59,
+        "y": 222,
+        "w": 280,
+        "h": 553
+      },
+      {
+        "x": 355,
+        "y": 223,
+        "w": 296,
+        "h": 551
+      },
+      {
+        "x": 673,
+        "y": 223,
+        "w": 276,
+        "h": 554
+      },
+      {
+        "x": 977,
+        "y": 223,
+        "w": 284,
+        "h": 554
+      },
+      {
+        "x": 1268,
+        "y": 223,
+        "w": 300,
+        "h": 551
+      }
+    ],
+    "sourceSHA256": "9ec8dca5c4204f204da367716cd7d516aaa75ddc78eeef01c282388094607b2d"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "carryGuitar",
+    "source": "Jeeves/Jeeevs walk with guitar.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 270,
+        "w": 316,
+        "h": 571
+      },
+      {
+        "x": 368,
+        "y": 270,
+        "w": 252,
+        "h": 571
+      },
+      {
+        "x": 677,
+        "y": 270,
+        "w": 227,
+        "h": 571
+      },
+      {
+        "x": 944,
+        "y": 270,
+        "w": 310,
+        "h": 571
+      },
+      {
+        "x": 1268,
+        "y": 270,
+        "w": 309,
+        "h": 571
+      }
+    ],
+    "sourceSHA256": "aee14855d1f58bb6d20c3af2d899de8a0d01db3d0c9c4c20c74bbf24705acb60"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "carryTrashcan",
+    "source": "Jeeves/Jeeevs walk with trashcan.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 262,
+        "w": 302,
+        "h": 497
+      },
+      {
+        "x": 356,
+        "y": 263,
+        "w": 290,
+        "h": 495
+      },
+      {
+        "x": 681,
+        "y": 262,
+        "w": 259,
+        "h": 497
+      },
+      {
+        "x": 952,
+        "y": 263,
+        "w": 302,
+        "h": 496
+      },
+      {
+        "x": 1265,
+        "y": 263,
+        "w": 302,
+        "h": 496
+      }
+    ],
+    "sourceSHA256": "34a8ec95f15fc8087b1e2d6dffc7ff28dc471ed71e57b0986ceb03d84dbedcd8"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "lift",
+    "source": "Jeeves/Jeeves lifting overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 428,
+        "w": 262,
+        "h": 349
+      },
+      {
+        "x": 326,
+        "y": 334,
+        "w": 266,
+        "h": 436
+      },
+      {
+        "x": 637,
+        "y": 296,
+        "w": 250,
+        "h": 481
+      },
+      {
+        "x": 958,
+        "y": 264,
+        "w": 268,
+        "h": 513
+      },
+      {
+        "x": 1291,
+        "y": 242,
+        "w": 265,
+        "h": 535
+      }
+    ],
+    "sourceSHA256": "06a34faa252ba9521c829bdae4d13eb8ef04fd474dd6e19debd86d61ea4fd3b9"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "throw",
+    "source": "Jeeves/Jeeevs throwing.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 29,
+        "y": 373,
+        "w": 296,
+        "h": 456
+      },
+      {
+        "x": 353,
+        "y": 325,
+        "w": 296,
+        "h": 504
+      },
+      {
+        "x": 651,
+        "y": 224,
+        "w": 286,
+        "h": 570
+      },
+      {
+        "x": 904,
+        "y": 362,
+        "w": 355,
+        "h": 466
+      },
+      {
+        "x": 1281,
+        "y": 356,
+        "w": 285,
+        "h": 473
+      }
+    ],
+    "sourceSHA256": "6001d680adf74e7813fad7dee8716f4ee8e6a52275f97f0b7309b95b380dd97b"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "lifted",
+    "source": "Jeeves/Jeeves getting lifted overhead.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 38,
+        "y": 455,
+        "w": 214,
+        "h": 320
+      },
+      {
+        "x": 290,
+        "y": 378,
+        "w": 265,
+        "h": 308
+      },
+      {
+        "x": 565,
+        "y": 362,
+        "w": 305,
+        "h": 256
+      },
+      {
+        "x": 895,
+        "y": 346,
+        "w": 317,
+        "h": 220
+      },
+      {
+        "x": 1235,
+        "y": 350,
+        "w": 333,
+        "h": 211
+      }
+    ],
+    "sourceSHA256": "6ae5bccee5119cbbf253185ae26cd3f76b6009da5a9c4a54e9a2927f98c39988"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "thrown",
+    "source": "Jeeves/Jeeves being thrown.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 93,
+        "y": 397,
+        "w": 294,
+        "h": 414
+      },
+      {
+        "x": 464,
+        "y": 237,
+        "w": 297,
+        "h": 508
+      },
+      {
+        "x": 844,
+        "y": 303,
+        "w": 257,
+        "h": 392
+      },
+      {
+        "x": 1139,
+        "y": 645,
+        "w": 424,
+        "h": 166
+      }
+    ],
+    "sourceSHA256": "9840ac5a15b633101137f519e428e33405a958b150263c6438141f39d6e5df24"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "hurt",
+    "source": "Jeeves/Jeeves dazed.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 53,
+        "y": 285,
+        "w": 312,
+        "h": 572
+      },
+      {
+        "x": 465,
+        "y": 283,
+        "w": 288,
+        "h": 575
+      },
+      {
+        "x": 846,
+        "y": 304,
+        "w": 296,
+        "h": 554
+      },
+      {
+        "x": 1234,
+        "y": 288,
+        "w": 310,
+        "h": 570
+      }
+    ],
+    "sourceSHA256": "7873d1257f6d11a07e794463f0f7f51dd115afc7c54ebf1e95ef843fc310cdfd"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "fallBack",
+    "source": "Jeeves/Jeeves falling backwards.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 296,
+        "w": 282,
+        "h": 478
+      },
+      {
+        "x": 300,
+        "y": 321,
+        "w": 341,
+        "h": 427
+      },
+      {
+        "x": 624,
+        "y": 444,
+        "w": 361,
+        "h": 291
+      },
+      {
+        "x": 990,
+        "y": 581,
+        "w": 570,
+        "h": 135
+      }
+    ],
+    "sourceSHA256": "e5496d469ce8f707e400cfcb0552296157eb0bcb6c72ae13019c4467bd1bbd92"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "fallFront",
+    "source": "Jeeves/Jeeves falling forward.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 310,
+        "w": 203,
+        "h": 420
+      },
+      {
+        "x": 250,
+        "y": 369,
+        "w": 250,
+        "h": 361
+      },
+      {
+        "x": 474,
+        "y": 437,
+        "w": 272,
+        "h": 297
+      },
+      {
+        "x": 721,
+        "y": 510,
+        "w": 253,
+        "h": 224
+      },
+      {
+        "x": 981,
+        "y": 585,
+        "w": 249,
+        "h": 157
+      },
+      {
+        "x": 1228,
+        "y": 646,
+        "w": 356,
+        "h": 239
+      }
+    ],
+    "sourceSHA256": "95c1f75c17777ff341fe788d198c9b1ffbcf2692dd4a8cb16eaac5564dd55245"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "down",
+    "source": "Jeeves/Jeeves laying facedown and faceup.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 827,
+        "y": 332,
+        "w": 716,
+        "h": 157
+      },
+      {
+        "x": 826,
+        "y": 648,
+        "w": 708,
+        "h": 208
+      }
+    ],
+    "sourceSHA256": "b4153d1f4c59e3486562be89292194c56b11117ba721793b9868443906f07ef7"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "rise",
+    "source": "Jeeves/Jeeves getting up from facedown.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 677,
+        "w": 318,
+        "h": 104
+      },
+      {
+        "x": 349,
+        "y": 591,
+        "w": 263,
+        "h": 194
+      },
+      {
+        "x": 617,
+        "y": 527,
+        "w": 229,
+        "h": 255
+      },
+      {
+        "x": 862,
+        "y": 459,
+        "w": 226,
+        "h": 318
+      },
+      {
+        "x": 1107,
+        "y": 396,
+        "w": 221,
+        "h": 383
+      },
+      {
+        "x": 1346,
+        "y": 322,
+        "w": 221,
+        "h": 457
+      }
+    ],
+    "sourceSHA256": "59886ff1aeaebe7644717d947de1a7d2bba6c8cc237fabfee42dad9f78ffba76"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "taunt",
+    "source": "Jeeves/Jeeevs taunting.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 273,
+        "w": 262,
+        "h": 554
+      },
+      {
+        "x": 304,
+        "y": 280,
+        "w": 298,
+        "h": 549
+      },
+      {
+        "x": 562,
+        "y": 274,
+        "w": 431,
+        "h": 556
+      },
+      {
+        "x": 965,
+        "y": 280,
+        "w": 292,
+        "h": 550
+      },
+      {
+        "x": 1248,
+        "y": 275,
+        "w": 333,
+        "h": 553
+      }
+    ],
+    "sourceSHA256": "1272aa15a4dcd5998d7c1cea79971659e2b15d0cd6a8f6845046f215aea8909e"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "victory",
+    "source": "Jeeves/Jeeves victory.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 64,
+        "y": 221,
+        "w": 260,
+        "h": 606
+      },
+      {
+        "x": 389,
+        "y": 219,
+        "w": 260,
+        "h": 618
+      },
+      {
+        "x": 708,
+        "y": 288,
+        "w": 188,
+        "h": 546
+      },
+      {
+        "x": 965,
+        "y": 290,
+        "w": 288,
+        "h": 547
+      },
+      {
+        "x": 1284,
+        "y": 221,
+        "w": 258,
+        "h": 606
+      }
+    ],
+    "sourceSHA256": "1ca1e7ddef20ea2d3b2d305d47d3ff8e52867e928c68b5553f22289173ef1833"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "defeat",
+    "source": "Jeeves/Jeeves defeated.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1230,
+        "y": 328,
+        "w": 284,
+        "h": 483
+      }
+    ],
+    "sourceSHA256": "abb1b0d0b95f7c45b95562d1d33323ce19340fd836e4f538afb38629ec19f365"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "jump",
+    "source": "Jeeves/Jeeves Jumping.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 53,
+        "y": 468,
+        "w": 276,
+        "h": 386
+      },
+      {
+        "x": 433,
+        "y": 365,
+        "w": 331,
+        "h": 457
+      },
+      {
+        "x": 826,
+        "y": 283,
+        "w": 371,
+        "h": 430
+      },
+      {
+        "x": 1291,
+        "y": 473,
+        "w": 254,
+        "h": 381
+      }
+    ],
+    "sourceSHA256": "6652f080b9a40f65db1c85eeeec8a78520655241b14e3a1ed886a704f75daf7d"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "pin",
+    "source": "Jeeves/Jeeves pinning.png",
+    "detected": 4,
+    "count": 4,
+    "bounds": [
+      {
+        "x": 44,
+        "y": 272,
+        "w": 314,
+        "h": 566
+      },
+      {
+        "x": 414,
+        "y": 334,
+        "w": 342,
+        "h": 493
+      },
+      {
+        "x": 759,
+        "y": 463,
+        "w": 401,
+        "h": 364
+      },
+      {
+        "x": 1176,
+        "y": 592,
+        "w": 390,
+        "h": 246
+      }
+    ],
+    "sourceSHA256": "3195f87d5b725ea1880f2f9199f2c7ff2acb57112c88f55a64b989fdd9ac199b"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "climb",
+    "source": "Jeeves/Jeeves climbing on top corner rope.png",
+    "detected": 6,
+    "count": 6,
+    "bounds": [
+      {
+        "x": 262,
+        "y": 451,
+        "w": 184,
+        "h": 352
+      },
+      {
+        "x": 488,
+        "y": 440,
+        "w": 181,
+        "h": 349
+      },
+      {
+        "x": 713,
+        "y": 393,
+        "w": 177,
+        "h": 316
+      },
+      {
+        "x": 940,
+        "y": 388,
+        "w": 187,
+        "h": 223
+      },
+      {
+        "x": 1153,
+        "y": 315,
+        "w": 202,
+        "h": 310
+      },
+      {
+        "x": 1375,
+        "y": 284,
+        "w": 192,
+        "h": 337
+      }
+    ],
+    "note": "Six side-facing poses; the back-facing first panel is occluded by its printed corner post.",
+    "sourceSHA256": "2fecb367737e8435f30bd92c737703c9765ced8e96324475544c78ad9fb843a7"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "entry",
+    "source": "Jeeves/Jeeves climbing through ropes.png",
+    "detected": 5,
+    "count": 5,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 320,
+        "w": 303,
+        "h": 488
+      },
+      {
+        "x": 331,
+        "y": 338,
+        "w": 302,
+        "h": 474
+      },
+      {
+        "x": 650,
+        "y": 331,
+        "w": 300,
+        "h": 490
+      },
+      {
+        "x": 970,
+        "y": 298,
+        "w": 298,
+        "h": 520
+      },
+      {
+        "x": 1290,
+        "y": 286,
+        "w": 269,
+        "h": 545
+      }
+    ],
+    "sourceSHA256": "b88fa1f0f7c6c40fa039efad4d71c31e4410bf7c3a3e239bf13e81c5fc108c62"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "dive",
+    "source": "Jeeves/Jeeves jumping from corner rope.png",
+    "detected": 2,
+    "count": 2,
+    "bounds": [
+      {
+        "x": 562,
+        "y": 265,
+        "w": 427,
+        "h": 240
+      },
+      {
+        "x": 911,
+        "y": 407,
+        "w": 363,
+        "h": 225
+      }
+    ],
+    "note": "Two intact airborne poses; source scenery and printed landing dust are excluded.",
+    "sourceSHA256": "19a870da0f5a46b41311f9cb8fe00bbee7c70220f401082fed234816e3daa877"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "propGuitar",
+    "source": "prepared:matt-cross.png#propGuitar",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 2312,
+        "w": 49,
+        "h": 145
+      }
+    ]
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "ropePose",
+    "source": "Jeeves/Jeeves climbing on rope.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1223,
+        "y": 282,
+        "w": 358,
+        "h": 571
+      }
+    ],
+    "sourceSHA256": "a781f50c2e2316f16f92abe4ee7f8594290398e5404b0a022c3cf10dd26bb0bd"
+  },
+  {
+    "fighter": "jeeves",
+    "animation": "ko",
+    "source": "Jeeves/Jeeevs passed out.png",
+    "detected": 1,
+    "count": 1,
+    "bounds": [
+      {
+        "x": 168,
+        "y": 377,
+        "w": 1254,
+        "h": 431
+      }
+    ],
+    "note": "One complete resting body, without cycling unrelated directions.",
+    "sourceSHA256": "49320b0871c207cf7ad7deadb17c13ea54115b25e301fec18d16e05f17d72c87"
   }
 ]
