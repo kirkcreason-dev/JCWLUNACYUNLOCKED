@@ -1,4 +1,60 @@
+# v0.8.1 — Phone roster and setup — September 13, 2026
+
+- Added clearly counted roster pages: six fighters on portrait phones, eight on smaller landscape/tablet screens, twelve on desktop. The direct native picker contains all 24 names.
+- Split phone selection and setup into explicit FIGHTERS / MATCH SETUP panels; preserved selection when browsing pages or rotating the phone.
+- Replaced clipped/nested selection scrolling with normal page flow and removed reliance on :has for selection height. Restored phone stat bars, added 16px select text and smaller-screen card sizes, and constrained portrait ring width by available height.
+- Released inactive fighter and arena image references only after the next match loads. The previous match remains drawable during loading; online preparation uses the same policy.
+- Added fresh roster requests and versioned entry/style URLs. Updated static asset checks to include references with URL queries.
+- All 142 tests pass. New tests cover every fighter through pages/direct selection, rotation, opponent preservation, and cache retention through an arcade run. Asset/module checks and HTML nesting pass. Browser/physical-device layout and performance remain unverified.
+- ZIP delivery only; no repository push or deployment.
+
+---
+
+# v0.8.0 — Gameplay refinement — September 13, 2026
+
+- Added confirmed HIT → HIT → HEAVY chains with a three-hit limit, reduced follow-up damage, readable combo counts, and counter-hit feedback. Whiffs, blocks, heavy swings, and finishers keep recovery commitments.
+- Smoothed acceleration into running and reset run buildup after attacks, guard, knockdowns, and holds. Fixed airborne attack recovery poses and first-legal-frame defense/wakeup input.
+- Made simultaneous grab attempts break immediately; expanded the manual throw-break window to 0.28 seconds and added a device-specific cue. Prevented grabs during hitstun.
+- Delayed guard regeneration after contact and made dives correctly break depleted guard.
+- Made pins wait for the landing pose, retained buffered submission modifiers, added rope breaks, and added manual hold release with matching phone labels.
+- Improved CPU spacing and intentional repeat attacks. Updated online room/protocol versions and guest feedback for the refined rules.
+- Retained the exact 24-fighter roster, website stats, and all 73 existing asset files. Added GAMEPLAY.md and a reproducible native rendering review tool.
+- Validation: 136 tests pass, including 72 complete CPU matches across all fighters/difficulties. Static asset/module checks pass. Six native-canvas gameplay scenarios reviewed. Interactive browser preview was blocked; no fresh live Firebase or physical-device claim. ZIP release only.
+
+---
+
 # Changelog
+
+## 0.7.2 — Hokane
+
+- Add Hokane as fighter 24, retaining all previous fighter IDs. Use the website’s 8 / 6 / 6 / 8 ratings (Power / Speed / Technique / Toughness), checked September 13, 2026. Its blank finisher field retains the generic Lunacy Finisher.
+- Map all 31 supplied sheets: ten walking poses, six consistently facing running poses, all four weapons and carries, lifting and being lifted, throwing and being thrown, pins, recovery, both front-fall variants, back falls, taunts, victory, defeat, and KO.
+- Add six usable corner-climb poses, a separate rope setup, five entrance poses, four jump poses, and two dives. Exclude the first back-view climb pose because a printed post occludes it.
+- Separate touching attack bodies, printed shadows, scenery, and headings. Use Hokane’s forward throw pose for unarmed contact and guitar contact, with a guitar isolated from Hokane’s own sheet. Use the clean bat ready pose for the last recovery frame where crossed weapons obscure the source figure.
+- Advance rooms to `LU72-`, protocol `lunacy-2d-v7`; both clients need v0.7.2. All 23 prior fighter definitions, stats, and prepared assets are preserved.
+
+Validation: 114 automated tests pass; static checks cover 24 fighters, 2,418 animation entries, six arenas, and both music choices. Actual Match/Renderer output and detailed prepared sprites were visually reviewed. Hokane’s host/join and snapshot cases pass the in-memory Firebase-shaped transport tests. No fresh interactive browser or live Firebase test; no GitHub deployment.
+
+## 0.7.1 — Father Bronson
+
+- Add Father Bronson as fighter 23 with his exact website ratings (Power 8, Speed 6, Technique 7, Toughness 8) and The Red Bloom finisher label. Arcade Run now has 22 opponents.
+- Map 35 supplied sheets to 32 used sources and three explicitly reviewed alternates. Preserve walking/running, elbows, kicks, jumps, four weapons/carrying cycles, lifts/throws, pins, recovery, taunts/victory, exhaustion, entry, and corner climbs/dives.
+- Isolate the kicker from a printed opponent, separate touching bat/throw bodies, remove floor lines and captions, and preserve the alternate back-fall art for left-facing fighters. The paired grapple sheet is replaced by intact tie-up preparation from the second lift source.
+- Adapt the missing chair attack with Bronson's own lift/throw poses and his supplied chair. Repair overlapping guitar contact with his throw pose and the existing isolated guitar prop, with a character-specific grip alignment.
+- Preserve all prior 22 fighter definitions and prepared assets byte-for-byte. Update online rooms to `LU71-` and protocol `lunacy-2d-v6`; both clients need v0.7.1.
+
+Validation: 110 automated tests pass; static checks validate 23 fighters and 2,264 animation entries. Actual-engine sprite reviews completed. Father Bronson hosts/joins through the Firebase-shaped test transport. No fresh live-service or interactive phone-browser check; no GitHub deployment.
+
+## 0.7.0 — Kongo Kong and website ratings
+
+- Add Kongo Kong as fighter 22 with a 21-opponent arcade ladder. Map all 29 supplied files; the second guitar sheet is a byte-identical duplicate, explicitly recorded in the audit.
+- Integrate elbows, kicks, all four weapons and carrying cycles, lift/throw, pins, taunts, directional falls, recovery, seven corner-climb poses, five entry poses, and two airborne dive poses. Use running for ordinary unarmed walking and a rotated intact body when lifted/thrown, because separate sheets were not supplied.
+- Correct touching bat panels, a false falling-header crop, elbow facing, and printed impact sparks. Keep Kongo's original intact guitar contact.
+- Show exact Power, Speed, Technique, and Toughness ratings from jcwlunacy.net, retrieved September 13, 2026. Apply ratings to gameplay for 21 matched fighters. Preserve Violent J's prior balance because he has no entry in the website stats table. Use listed finisher names; unlabeled moves retain a generic Lunacy Finisher.
+- Increase grapple damage with Technique; Power, Speed, and Toughness control damage, movement, and resistance. Document the game's rating conversion separately from the website data.
+- Use rooms `LU7-`, protocol `lunacy-2d-v5`; both players need v0.7.0. Retain all existing fighter IDs and artwork.
+
+Validation: 106 tests and static checks pass. Kongo was visually reviewed in actual-engine renders; online host/guest transport passes. Interactive preview access was rejected, so no new phone-browser or live Firebase test is claimed. Complete ZIP only; no GitHub deployment.
 
 ## 0.6.0 — Expanded roster, combat artwork, and console startup
 

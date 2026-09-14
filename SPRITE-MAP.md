@@ -2,7 +2,7 @@
 
 The seven new sets are Able, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, and Caleb Konley. They use their own supplied artwork. The existing nine unrelated wrestlers stay in the roster. Re-running `prepare_new_assets.py` replaces matching IDs rather than creating duplicate characters.
 
-All **340 supplied image sheets** are referenced in `tools/new-asset-audit.json`. The table below explains how their action families become playable. This does **not** mean every alternate view, duplicate pose, illustration label, or clipped figure is played in sequence: a side-view fighter needs consistent facing, complete bodies, and contact poses matched to the damage window.
+All **435 supplied image files** are referenced in `tools/new-asset-audit.json`. The table below explains how their action families become playable. This does **not** mean every alternate view, duplicate pose, illustration label, or clipped figure is played in sequence: a side-view fighter needs consistent facing, complete bodies, and contact poses matched to the damage window.
 
 | Supplied action family | In-game trigger / use |
 |---|---|
@@ -476,3 +476,141 @@ Every unique fighter source file is mapped below. Raw coordinates are in `tools/
 | Ruffo walking with chair.jpg | carryChair |
 | Ruffo walking with guitar.jpg | carryGuitar |
 | Ruffo walking with trashcan.jpg | carryTrashcan |
+
+
+### Kongo Kong — 29 files (28 unique sheets)
+
+Kongo is roster ID 21. He uses his authored elbows, kicks, four weapon attacks, carrying cycles, lifting/throwing, pinning, grappling, taunting/victory, jumps, falls, floor poses, recovery, kneeling, defeat, corner climb, entry, and dive. Running supplies slower unarmed walking. The dazed cycle supplies exhaustion; there is no separate exhausted sheet. A selected opponent uses its own lifted/thrown sheet where available; Kongo's intact idle body rotates when he is the defender because this archive has no dedicated defender sheets.
+
+The top kick row faces right; the bottom run row faces right. The first elbow stance faces left in the source and is mirrored. Down uses the two resting poses, facedown then faceup. The backward fall excludes a final facedown variant. Defeat uses the right-facing kneeling view instead of cycling four directions. All seven corner poses and five entry poses are extracted using Kongo-specific silhouettes; the two clean airborne dive figures exclude the ring.
+
+Bat contact artwork touches the following body, requiring individual outlines. Guitar contact is complete and uses its original five-frame sequence without the shared guitar-prop replacement. Printed hit sparks and the fall sheet header are excluded. The alternate guitar filename is an exact duplicate and adds no gameplay frames.
+
+| Source file | Gameplay use |
+| --- | --- |
+| KK attack with bat.png | bat |
+| KK attack with chair.png | chair |
+| KK attack with guitar.png | guitar |
+| KK attack with trrashcan.png | trashcan |
+| KK climbing on top ropes corner.png | climb |
+| KK climbing through ropes.png | entry |
+| KK dazed.png | hurt |
+| KK defeated.png | defeat |
+| KK elbow attack.png | elbow |
+| KK falling backwards.png | fallBack |
+| KK falling forwards.png | fallFront |
+| KK getting up from facedown.png | rise |
+| KK grappling.png | grapple |
+| KK jumping off top rope.png | dive |
+| KK jumping.png | jump |
+| KK kicking.png | kick |
+| KK laying facedown and faceup.png | down |
+| KK lifting up overhead.png | lift |
+| KK pinning.png | pin |
+| KK running.png | run |
+| KK throwing.png | throw |
+| KK tuanting.png | taunt, victory |
+| KK walk with guitar.png | carryGuitar |
+| KK walk with trashcan.png | carryTrashcan |
+| KK walking with bat.png | carryBat |
+| KK walking with chair.png | carryChair |
+| Kongo Kong attack with guitar.png | Duplicate of KK attack with guitar.png |
+| Kongo Kong standing.png | idle |
+| kk kneeling.png | kneel |
+
+
+### Father Bronson — 35 sheets
+
+Father Bronson is ID 22. His sheet headings sometimes reverse the direction labels, so facing follows the actual body: stance uses the third figure, walk/run use the right-facing top rows, and the leftward guitar carry is mirrored. Backward falls use separate supplied directional sequences; the opposite-facing source is normalized during preparation and selected by the renderer. Down keeps one resting facedown and one resting faceup pose. Defeat/exhaustion use a side view, not a rotating sequence of four directions.
+
+There is no chair-attack sheet. The prepared chair attack combines his own carrying-chair prop with his lift wind-up and forward throwing body. Guitar contact overlaps the next figure; it uses his intact throw pose and the existing prepared guitar prop. His actual kick is separated from the printed second Bronson; opponents in the match always come from the chosen opponent definition. No separate lifted/thrown defender sprites were supplied, so his own intact body rotates through those states.
+
+The seven-frame corner sheet supplies climbing; the six-frame variant supplies the initial rope-grip pose. Five entry poses are retained. Flying apex and descent supply the dive; the printed ring is removed. The paired grapple sheet, alternate simple backward fall ending facedown, and front-facing guitar carry are reviewed alternatives rather than forced into unrelated actions. The second overhead-lift source supplies clean grapple preparation. The audit explicitly records these three exceptions instead of claiming every illustrated panel is a playable frame.
+
+| Source file | Gameplay use / review |
+| --- | --- |
+| Father Bronson 4 way stance.png | idle |
+| Father Bronson Climbing rops on top.jpg | climb |
+| Father Bronson Elbow Attack.png | elbow |
+| Father Bronson Grapple.png | Paired, occluded bodies; replaced by intact tie-up preparation from the second lift sheet. |
+| Father Bronson Jumping & landing.png | jump |
+| Father Bronson Kick.png | kick |
+| Father Bronson Lying down-up.png | down |
+| Father Bronson Running.png | run |
+| Father Bronson Walking.png | walk |
+| Father Bronson atk w trashcan.jpg | trashcan |
+| Father Bronson atk with bat.jpeg | bat |
+| Father Bronson atk with guitar.jpg | guitar |
+| Father Bronson climbing ropes.jpg | ropePose |
+| Father Bronson dazed.jpg | hurt |
+| Father Bronson fall backward.jpg | Alternate backward sequence ends facedown; dedicated directional back-fall sheets provide consistent landings. |
+| Father Bronson fall forward.jpeg | fallFront |
+| Father Bronson falling left.png | fallBack |
+| Father Bronson falling right.jpg | fallBackReverse |
+| Father Bronson getting up.jpg | rise |
+| Father Bronson lift overhead.jpg | lift |
+| Father Bronson lose pose 2.jpg | defeat |
+| Father Bronson lose pose.jpg | kneel |
+| Father Bronson passed out.jpg | exhausted |
+| Father Bronson pinning.jpg | pin |
+| Father Bronson taunt.jpg | taunt |
+| Father Bronson throwing.png | throw |
+| Father Bronson top rope jump.jpg | dive |
+| Father Bronson victory.jpg | victory |
+| Father Bronson walk left w guitar.jpg | carryGuitar |
+| Father Bronson walk w trashcan.jpeg | carryTrashcan |
+| Father Bronson walk with bat.jpg | carryBat |
+| Father Bronson walk with chair.png | carryChair |
+| Father Bronson walking through ropes.jpg | entry |
+| Father Bronsons lift overhead 2.jpg | grapple |
+| Father Bronsons walk right w guitar.jpg | Alternate front-facing carry; the side-facing left carry is normalized and mirrored for both directions. |
+
+## Hokane — v0.7.2
+
+All 31 sheets in `Hokane Sprite Set.zip` have a mapped use. The first nine original fighters and the preceding fourteen expanded fighters remain unchanged.
+
+- Ten unarmed walking poses are successive frames. The running sheet mixes directions within each labeled row; six actual right-facing frames are selected and mirrored by the renderer as needed.
+- Source standing/defeat/rope setup sheets contain viewing directions, not an animation cycle. Use a front portrait and right-facing gameplay poses.
+- The source has no separate punch or kick sheet. Unarmed attacks use the intact forward-hand throw pose with the existing contact timing. The overhead throw wind-up is never the light-attack contact.
+- Chair, bat, guitar, and trashcan attacks/carries use supplied artwork. Guitar contact is adapted with Hokane’s own throw body and a guitar isolated from the first guitar sheet pose. Crossed bats obscure the last recovery body, so the clean ready pose is reused there.
+- Six clean corner-climb frames follow the separate rope setup. The first back-view climb panel is post-occluded and excluded. Five rope entrance poses and two airborne dive poses exclude the printed ring and neighboring bodies.
+- The five-frame and six-frame front falls are used for opposing facings. Dedicated back falls, lying poses, recovery, defeat, and passed-out KO art are mapped separately. Raised/lifted and thrown poses depict only Hokane, so any roster opponent can perform the grapple.
+- Printed captions, floor lines, large paper holes, and shadows are removed. Source hand/rope occlusion can leave small edge remnants; no original fully occluded body part is invented.
+- Supplied finisher name is blank on the website. “Lunacy Finisher” names the existing generic mechanic; no new signature choreography is claimed.
+
+Rebuild: `python tools/prepare_new_assets.py /path/to/extracted/folders hokane`.
+
+| Action | Source sheet | Prepared poses |
+| --- | --- | ---: |
+| idle | Hokane standing.jpg | 1 |
+| walk | Hokane walking.jpg | 10 |
+| run | Hokane running.jpg | 6 |
+| chair | Hokane attack with chair.jpg | 5 |
+| bat | Hokane attack with bat.jpg | 5 |
+| guitar | Hokane attack with guitar.jpg | 3 |
+| trashcan | Hokane attack with trashcan.jpg | 5 |
+| carryChair | Hokane walking with chair.jpg | 5 |
+| carryBat | Hokane walk with bat.jpg | 5 |
+| carryGuitar | Hokane walk with guitar.jpg | 5 |
+| carryTrashcan | Hokane walking with trashcan.jpg | 5 |
+| lift | Hokane lifting up overhead.jpg | 5 |
+| throw | Hokane throwing.jpg | 5 |
+| lifted | Hokane getting lifted overhead.jpg | 5 |
+| thrown | Hokane being thrown.jpg | 5 |
+| hurt | Hokane dazed.jpg | 4 |
+| fallBack | Hokane falling backwards.jpg | 5 |
+| fallFront | Hokane falling forwards.jpg | 5 |
+| down | Hokane laying facedown and faceup.jpg | 2 |
+| rise | Hokane getting up from facedown.jpg | 6 |
+| taunt | Hokane taunting.jpg | 5 |
+| victory | Hokane victory.jpg | 5 |
+| defeat | Hokane defeated.png | 1 |
+| jump | Hokane jumping.jpg | 4 |
+| pin | Hokane pinning.jpg | 4 |
+| climb | Hokane climbing on top ropes.jpg | 6 |
+| entry | Hokane climbing through ropes.jpg | 5 |
+| dive | Hokane jumping off corner ropes.jpg | 2 |
+| propGuitar | Hokane attack with guitar.jpg | 1 |
+| ropePose | Hokane climbing on ropes.jpg | 1 |
+| ko | Hokane passed out.jpg | 1 |
+| fallFrontReverse | Hokane falling forward.jpg | 6 |

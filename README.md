@@ -1,8 +1,25 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.6.0**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.8.2**.
 
-The skippable 4.4-second startup flashes the supplied Creaso·Norse emblem, Creaso·Norse wordmark, JCW hatchet artwork, and Psychopathic Records header. It then reveals the new neon title screen. The title screen uses the supplied Lunacy graffiti logo and starts your music on PRESS START. This update adds Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, and Ruffo, bringing the roster to 21. It includes the supplied announcement artwork, animated combat effects, and a playable submission hold. Able’s re-upload matches his existing artwork exactly. Arrow-key PC movement, phone controls, the previous roster, and original Firebase multiplayer are retained. See [SPRITE-MAP.md](SPRITE-MAP.md), [MULTIPLAYER.md](MULTIPLAYER.md), and [CHANGELOG.md](CHANGELOG.md).
+The gameplay refinement adds confirmed strike chains, gradual run acceleration, fair simultaneous grab breaks, more responsive recovery, rope breaks, manual hold release, and smarter CPU attack spacing. All 24 wrestlers and their existing website ratings remain intact. The supplied startup logos, title artwork, arenas, effects, and music are included. See [GAMEPLAY.md](GAMEPLAY.md) for the updated fight rules and [TESTING.md](TESTING.md) for validation and limitations.
+
+## Phone fighter selection
+
+This package contains **24 fighters**. On a portrait phone, use **MORE / BACK** to browse four pages of six fighters, or use **PICK ANY FIGHTER** to select any name directly. **USE FIGHTER** opens match setup. The **FIGHTERS** button takes you back; rotation preserves your chosen wrestler. Website stats are visible in the phone setup panel.
+
+If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.8.2 package has not been deployed to either repository.
+
+## Phone match optimization (v0.8.2)
+
+- The ring and thumb controls fit the visible phone screen, including browser toolbar changes, notches, and the home indicator. Portrait keeps controls below the ring; landscape uses narrower side controls and a larger HUD.
+- A closer combat camera pulls back for airborne wrestlers so jumps and lifts have room below the HUD.
+- Rotation clears held inputs and pauses offline matches. Online play keeps running and sends neutral input until you press again.
+- Automatic display mode sizes the canvas for the screen and caps rendering at 60 fps, including on 90/120 Hz displays. **CONTROLS → DISPLAY → SAVE BATTERY** reduces rendering to 30 fps. Combat simulation and input sampling stay at 60 Hz in either mode.
+- Phone rendering limits decorative particles and glow effects. Static menus and paused matches do not continuously repaint the canvas; hidden tabs do not draw it.
+- Only the visible roster page requests its portraits. Optional banners and combat effects load after the start button is ready, with text/impact fallbacks if a download fails. All supplied artwork remains in the package.
+
+The automated and native-canvas checks are documented in TESTING.md. Physical-device touch response, thermal behavior, and browser FPS still need device testing.
 
 ## Play locally
 
@@ -22,21 +39,21 @@ python -m http.server 8080 --directory dist
 
 ## Included
 
-- Twenty-one playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Yabo, Able, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, and Ruffo.
+- Twenty-four playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Yabo, Able, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, Ruffo, Kongo Kong, Father Bronson, and Hokane.
 - Online multiplayer through the original JCW Firebase project: private room codes and Quick Match.
-- VS CPU with three difficulty levels; local two-player versus; a twenty-opponent arcade run.
+- VS CPU with three difficulty levels; local two-player versus; a twenty-three-opponent arcade run.
 - Six arenas: Bloodymania, Hell’s Pit, Madhouse, Rusted Warehouse, Funhouse, and Lunacy Outdoors. The last two are recovered from the legacy ZIP.
 - The recovered JCW theme and the existing Genesis-style Fight Club track; choose either in CONTROLS. The supplied JCW theme starts when you press PRESS START. You can mute it or choose the alternate track.
 - Practice mode: a passive opponent, unlimited time, full finisher meter, and automatic reset after a KO, pinfall, or tap-out.
 - Phone controls with a sliding D-pad, simultaneous movement and attacks, optional hold-to-repeat HIT, a repeated-tap escape button, finisher charge display, and context-sensitive GRAB / PIN / BREAK / CLIMB / DIVE labels, plus separate WEAPON and TAUNT buttons.
 - Movement, running, jump, strike, unarmed heavy, block and guard break, overhead grapple throw, directional falls, recovery, pin and kick-out, submission and hold escape, and a meter-powered finisher.
-- The twelve expanded-roster wrestlers can cycle between bare hands, chair, bat, guitar, and trashcan; taunt for meter; climb either corner; and dive onto standing or downed opponents. The original nine retain their authored chair move set.
+- The fifteen expanded-roster wrestlers can cycle between bare hands, chair, bat, guitar, and trashcan; taunt for meter; climb either corner; and dive onto standing or downed opponents. The original nine retain their authored chair move set.
 - Best-of-three rounds, 99-second timer, KO, pinfall, and submission victories, match results, rematch, pause, and character selection.
 - Keyboard, touch controls, and standard-mapped gamepads. Two controllers can play together locally.
 - Supplied PINFALLED, KICK OUT, TAP OUT, YOU WIN, and LUNACY announcement graphics; animated hit debris, impact smoke, guard puffs, and ground dust. Effects respect reduced-motion preferences.
 - Fixed 60 Hz simulation, attack startup / active / recovery windows, input buffering, fair simultaneous hits, one damage application per move, impact feedback, and synthesized hit sounds.
 
-The start screen lets you choose a fighter, opponent, mode, difficulty, and arena. Choose **FIGHT** for offline modes. For online play, select **ONLINE MULTIPLAYER**, then **CREATE ROOM**, **JOIN ROOM**, or **QUICK MATCH**. The host chooses the arena, and the match starts after both clients load their wrestlers. Online matches continue while menus are open; after a result, return to the online lobby for another room. PRESS START plays a short original arcade chime and starts the selected track (JCW THEME by default); an explicit mute choice is remembered. **CONTROLS** also contains music, touch-control visibility, touch strike repeat, and vibration preferences. These choices are saved on this device when browser storage is available.
+The start screen lets you choose a fighter, opponent, mode, difficulty, and arena. Choose **FIGHT** for offline modes. For online play, select **ONLINE MULTIPLAYER**, then **CREATE ROOM**, **JOIN ROOM**, or **QUICK MATCH**. The host chooses the arena, and the match starts after both clients load their wrestlers. Online matches continue while menus are open; after a result, return to the online lobby for another room. PRESS START plays a short original arcade chime and starts the selected track (JCW THEME by default); an explicit mute choice is remembered. **CONTROLS** also contains music, display/battery mode, touch-control visibility, touch strike repeat, and vibration preferences. These choices are saved on this device when browser storage is available.
 
 ## Controls
 
@@ -59,7 +76,7 @@ In solo modes, WASD remains a movement alias for Player 1. In local versus, WASD
 
 **Phone:** slide your left thumb across the cross-shaped D-pad; diagonals support moving and jumping. The middle rests neutral. Lift your thumb or slide outside the pad to stop. Use another finger on the action buttons while moving. Hold HIT for repeated ordinary strikes, or turn that option off in CONTROLS. Heavy, grapple, finisher, and escape actions require fresh presses. GRAB becomes PIN beside a downed opponent and BREAK during an enemy grapple. When downed or pinned, a large GET UP / KICK OUT button replaces the action cluster. Tap it repeatedly; the input adapter supplies alternating strike/heavy presses to the existing escape rules. Holding it does not escape automatically.
 
-**Phone view:** landscape places controls in side rails outside the ring. Portrait uses a 4:3 canvas with a closer camera and larger HUD. Portrait mode is playable without rotating the phone. Pausing and opening CONTROLS hides the touch deck, and losing focus clears input. Use CONTROLS → TOUCH CONTROLS → ALWAYS SHOW if your device does not identify itself as a touch screen. Vibration only runs on supporting devices.
+**Phone view:** landscape places controls in side rails outside the ring. Portrait uses a 4:3 canvas with a closer camera and larger HUD. The match layout follows the visible screen as browser bars change. Turning the phone pauses an offline match and clears held input. Portrait mode is playable without rotating the phone. Pausing and opening CONTROLS hides the touch deck, and losing focus clears input. Use CONTROLS → TOUCH CONTROLS → ALWAYS SHOW if your device does not identify itself as a touch screen. Vibration only runs on supporting devices.
 
 **Run:** keep moving in one direction for about half a second to accelerate. Shift starts the run immediately; touch players simply hold the D-pad. Releasing direction stops movement.
 
@@ -69,13 +86,13 @@ In solo modes, WASD remains a movement alias for Player 1. In local versus, WASD
 
 **Corners:** approach either corner with the opponent more than 135 game units away, then press GRAB when it says CLIMB. On top, press GRAB, jump, or an attack to DIVE; use FINISH with full meter for a stronger dive. Down safely dismounts, and waiting three seconds also dismounts. A dive can hit a downed opponent, followed by a pin. Blocking counters it; missing causes a vulnerable landing and a small health penalty. A nearby opponent takes grapple/pin priority over climbing.
 
-**Grapple:** get close and press grapple. The attacker lifts and throws the actual selected opponent. Grapples bypass block. A missed grapple has recovery. Tap grapple within the first 0.22 seconds of being grabbed to break the throw. Corner throws send the opponent back toward the ring without teleporting the attacker.
+**Grapple:** get close and press grapple. The attacker lifts and throws the actual selected opponent. Grapples bypass block. A missed grapple has recovery. Tap grapple within the first 0.28 seconds of being grabbed to break the throw. Corner throws send the opponent back toward the ring without teleporting the attacker.
 
 **Pin:** press grapple beside a downed opponent. The referee counts three. A pinned player alternates strike and heavy to escape; holding a button does not repeatedly count, and pressing strike and heavy together does not count as alternating. Healthy opponents are harder to pin, and CPU resistance depends on damage and difficulty.
 
 **Submission:** hold Down and press GRAB next to a downed opponent. The ground hold resolves after 3.6 seconds if the defender cannot escape. Alternate strike/heavy on keyboard or gamepad, or tap ESCAPE on phone. Healthy opponents naturally resist. A successful hold awards a fall by TAP OUT; a normal GRAB still starts a three-count pin.
 
-**Finisher:** fill the LUNACY meter by giving and taking damage. Use the finisher at close range when the meter is full. Missing still spends the meter. The legacy build supplies finisher names for Violent J, 2 Tuff Tony, Willie Mack, Kerry Morton, Moshpit Mike, and Cokane. These names appear in selection and during activation. Ground finishers use shared charged knockdown rules with the selected weapon or unarmed pose. The twelve expanded-roster wrestlers can also spend full meter on a corner dive. Finisher names are presentation labels; separate signature holds, flips, and move-specific choreography have not been recreated.
+**Finisher:** fill the LUNACY meter by giving and taking damage. Use the finisher at close range when the meter is full. Missing still spends the meter. The legacy build supplies finisher names for Violent J, 2 Tuff Tony, Willie Mack, Kerry Morton, Moshpit Mike, and Cokane. These names appear in selection and during activation. Ground finishers use shared charged knockdown rules with the selected weapon or unarmed pose. The fifteen expanded-roster wrestlers can also spend full meter on a corner dive. Finisher names are presentation labels; separate signature holds, flips, and move-specific choreography have not been recreated.
 
 **Responsiveness:** button taps are retained even if pressed and released between simulation ticks. Actions entered up to 0.16 seconds before recovery ends can execute when the fighter is ready. Keyboard and gamepad attack holds do not auto-repeat. Touch HIT optionally repeats at a controlled interval of 0.46 seconds; it still uses the same startup, recovery, range, and damage rules.
 
@@ -108,6 +125,10 @@ index.html          Root launcher for branch-based GitHub Pages
 .github/workflows/   CI and manual GitHub Pages deployment
 dist/index.html     Game menus and canvas
 dist/style.css      Responsive presentation
+dist/phone.css      Fitted phone match layout
+dist/src/phone-layout.js Viewport geometry, camera, canvas sizing
+dist/src/frame-pacer.js Presentation pacing and idle redraw control
+dist/src/optional-artwork.js Nonblocking decorative artwork loading
 dist/src/engine.js  Pure deterministic match simulation
 dist/src/render.js  Arena, sprite animation, HUD, and impact rendering
 dist/src/input.js   Keyboard, touch, and gamepad input
@@ -135,7 +156,7 @@ The original uploads are labeled JPEG/PNG sheets rather than runtime-ready unifo
 
 The game uses source artwork without the sheet headings, borders, or neighboring poses. Walking direction is corrected where source sheets face the other way. The source folder named `Yahoo` is presented as **Yabo**. Atlas frames carry foot anchors so a swinging chair does not move the whole wrestler sideways. Lifted opponents rotate as a single intact sprite around their body center, with a smooth lift and landing. The runtime does not bake a second wrestler into the attacker sprite: it synchronizes two independently selected characters, avoiding baked-in duplicate opponents.
 
-Some poses are adapted from other supplied actions: ordinary strikes use authored elbows or selected forward-hand throw poses with recoil, and 2 Tuff Tony's pin uses a kneeling recovery pose. New dedicated lifted/thrown poses are used where supplied; otherwise the intact selected opponent rotates through the throw. All 340 sheets in the twelve unique fighter archives appear in `tools/new-asset-audit.json`. Duplicate viewing directions, clipped figures, scenery, and labels are excluded from runtime sequences. Matt Cross, Vincenzo, Caleb Konley, and the five v0.6 additions use their intact bodies with the prepared guitar prop where original contact artwork overlaps or clips. Rope scenery is removed with reviewed regions and narrow background repairs; tiny illustrated edge remnants may remain. See `SPRITE-MAP.md`. Ring exits, story dialogue, persistent unlocks, and unique signature choreography remain outside this build. All twenty-one wrestlers are available immediately.
+Some poses are adapted from other supplied actions: ordinary strikes use authored elbows or selected forward-hand throw poses with recoil, and 2 Tuff Tony's pin uses a kneeling recovery pose. New dedicated lifted/thrown poses are used where supplied; otherwise the intact selected opponent rotates through the throw. All 435 image files in the fifteen fighter archives appear in `tools/new-asset-audit.json`. Duplicate viewing directions, clipped figures, scenery, and labels are excluded from runtime sequences. Matt Cross, Vincenzo, Caleb Konley, Father Bronson, Hokane, and the five v0.6 additions use their intact bodies with the prepared guitar prop where original contact artwork overlaps or clips. Rope scenery is removed with reviewed regions and narrow background repairs; tiny illustrated edge remnants may remain. See `SPRITE-MAP.md`. Ring exits, story dialogue, persistent unlocks, and unique signature choreography remain outside this build. All twenty-four wrestlers are available immediately.
 
 To rebuild the artwork, keep the extracted original folders outside the repository and run:
 
@@ -144,12 +165,12 @@ python -m pip install Pillow numpy scipy
 python tools/prepare_assets.py /absolute/path/to/extracted/asset-folders
 ```
 
-The original preparation command recreates the first nine wrestlers. For the remaining twelve, extract their ZIPs into sibling folders with the character names used in `tools/prepare_new_assets.py`, then run:
+The original preparation command recreates the first nine wrestlers. For the remaining fifteen, extract their ZIPs into sibling folders with the character folder names used in `tools/prepare_new_assets.py` (Hokane’s folder is `Hokane Sprite Set`), then run:
 
 ```sh
 python tools/prepare_new_assets.py /path/to/extracted/folders
 # Optional targeted update, preserving other fighters:
-python tools/prepare_new_assets.py /path/to/extracted/folders sally-boy big-vito bruce-wayans alice-crowley ruffo
+python tools/prepare_new_assets.py /path/to/extracted/folders hokane
 python tools/prepare_banners.py /path/to/banner/uploads
 python tools/prepare_combat_fx.py /path/to/effect/uploads
 ```
@@ -158,6 +179,6 @@ Preparation needs Pillow, numpy, and scipy; playing the prepared game needs none
 
 ## Validation and release status
 
-**100 automated tests pass.** The checker validates 21 fighters, 1,970 animation entries, six arenas, both music choices, module syntax, and UI references. Coverage includes all supplied weapon sets, submissions and escapes, online roster/snapshot transport, effect lifetime and reduced motion, and renderer crop bounds. The prior 16 fighter definitions and image bytes are unchanged.
+See [TESTING.md](TESTING.md) for the current v0.8.1 checks. This release adds targeted regressions for chains, grab clashes, recovery input, guard damage, dives, pins, CPU spacing, and online messages. Both online players need v0.8.0. The complete 24-fighter roster, website stats, and asset bytes are retained from v0.7.2.
 
-All five added fighters were visually reviewed in the actual renderer across attacks, weapons, lifting, throws, pins, climbs, dives, and falls. Live Alice Crowley/Ruffo browser clients connected through Firebase; guest attacks, synchronized damage/meter, and room closure were observed. Desktop and phone browser checks are recorded in [TESTING.md](TESTING.md). Both online players need v0.6.0. Physical phones, hardware controllers, and real-world network latency still need device testing. This ZIP has not been deployed to GitHub.
+The local browser preview was blocked, so this pass uses automated simulation and native canvas renders of the actual Match/Renderer. No new live Firebase or physical phone/controller test was performed. This ZIP has not been deployed.

@@ -1,3 +1,84 @@
+# v0.8.2 phone optimization — September 14, 2026
+
+**152 automated tests pass.** `npm run check` passes JavaScript syntax, HTML references, 24 fighters, 2,418 animation records, six arenas, and both music tracks. HTML nesting passes. All 73 existing assets, including the roster and website ratings, are byte-identical to v0.8.1.
+
+Ten added regressions cover viewport geometry and minimum button sizes across 14 phone/safe-area configurations with online/offline layouts; backing-resolution bounds and aspect ratio; unchanged-canvas resize notifications; camera framing during airborne poses; 30/60 fps presentation on simulated 60/90/120 Hz displays; idle and hidden-tab drawing; identical 60 Hz Match outcomes with either presentation rate; partial/failed optional artwork loading; world/HUD canvas transforms; and bounded phone effects with combat cues preserved.
+
+The real engine and renderer were drawn with native canvas at portrait and landscape phone sizes using `node tools/review_phone.mjs`. The resulting review combines actual game images with schematic control rectangles from the layout function. It is not a browser screenshot. It confirmed readable larger landscape names, closer portrait combat, correctly scaled canvas output, and separate ring/control areas. The shortest landscape layouts put WEAPON and TAUNT in the top bar to preserve thumb space.
+
+The earlier local-browser access restriction still applies. This pass does **not** claim physical-phone testing, fresh browser interaction, measured device FPS/temperature/battery savings, or a live Firebase retest. Geometry and timing assertions are programmatic; real Safari/Chrome rendering and multi-touch feel remain device checks. Automatic rendering is capped at 60 fps; SAVE BATTERY uses 30 fps presentation while the unchanged simulation and input sampling retain 60 Hz timing. Performance improvements are code changes, not device benchmark results.
+
+Reproduce with `npm test` and `npm run check`. Native image review additionally needs optional `@napi-rs/canvas`; the game itself needs no package installation. This complete 24-fighter ZIP has not been deployed to the user's phone link.
+
+---
+
+# v0.8.1 phone selector — September 13, 2026
+
+**142 tests pass.** The module/asset checker passes 24 fighters, 2,418 animation entries, six arenas, both music tracks, and HTML references including versioned URLs. HTML nesting was checked after restructuring selection.
+
+Six new regressions cover:
+
+- Every one of the 24 names appears exactly once across phone, landscape, and desktop page sets.
+- Every direct-picker selection resolves to the correct actual Match fighter without changing the opponent.
+- Page browsing preserves the chosen fighter; invalid choices are rejected.
+- Hokane remains selected and visible after portrait/landscape/desktop page-size changes.
+- A 23-opponent arcade traversal retains only active atlas/arena references and removes obsolete resolved-cache entries.
+- Mirror matches share one atlas; evicted fighters can be reloaded.
+
+All 73 existing asset files, including roster data and website ratings, are byte-identical to v0.8.0. The mobile selection layout now uses explicit pages and normal document flow; its CSS was reviewed in source. The existing local-browser restriction remains, so this pass does not claim a fresh browser rendering check, a physical-phone test, or measured mobile memory/FPS improvements. The cache check establishes released JavaScript references; actual browser image/GPU cache reclamation is browser-dependent.
+
+The connected GitHub source was inspected to diagnose the nine-fighter report: Lunacyunlocked2 contains nine; JCWLUNACYUNLOCKED/main contains 21 at v0.6.0. The user's exact phone URL has not yet been identified. This 24-fighter ZIP has not been deployed.
+
+---
+
+# v0.8.0 gameplay refinement — September 13, 2026
+
+**136 automated tests pass.** `npm run check` passes: 24 fighters, 2,418 animation entries, six arenas, both music tracks, valid JavaScript and UI references.
+
+- Baseline: all 114 v0.7.2 tests passed before editing.
+- Added 22 targeted tests covering three-hit chains and scaling in both directions, limits on repeated jabs, blocked/whiffed recovery, simultaneous grabs, hitstun grab prevention, first-frame blocking/wakeup input, run reset, airborne recovery, delayed guard regeneration, dive guard breaks, buffered submissions, both rope boundaries, manual release, CPU attack spacing, online compatibility, delayed guest inputs, all-roster jab chains, and readable combo counters.
+- The three CPU roster tests complete **72 matches**: all 24 CPU fighters on easy, normal, and hard, against passive opponents. These establish complete match flow and numerical stability, not human difficulty or competitive balance.
+- Existing transport tests verify host/guest readiness, Quick Match, room cleanup, ordered presses, snapshots, and result delivery through the in-memory Firebase-shaped adapter. Version 0.8.0 uses the separate LU80 room/queue namespace and v8 protocol so older clients cannot join incompatible matches.
+- Byte comparison against the v0.7.2 ZIP confirmed every existing asset file is unchanged: 73 files including the complete roster/website data, atlases, portraits, arenas, music, logos, and effects.
+- Ran `node tools/review_gameplay.mjs` and visually inspected six actual Match/Renderer scenarios: three-hit chain, startup counter, grab-break window, rope break, dive guard break, and portrait grab cue. Corrected overlapping combo counts after the first render and inspected the updated image. These are native canvas renders, not browser screenshots.
+- Attempted the provided local browser QA fixture. The browser returned `net::ERR_BLOCKED_BY_CLIENT`; no alternate browser route was used. No fresh interactive desktop/mobile-browser, physical phone/controller, or live Firebase test was completed. Existing historical live-service checks below do not establish current device behavior.
+
+Reproduce gameplay checks with `npm test` and `npm run check`. Native visual review additionally needs the optional `@napi-rs/canvas` development package. The playable build itself still needs no install/build step; run `npm start` and open http://localhost:8080.
+
+This full ZIP has not been pushed or deployed.
+
+---
+
+# v0.7.1 release checks — September 13, 2026
+
+**110 automated tests pass.** Static validation covers 23 fighters, 2,264 animation entries, six arenas, both music choices, module syntax, and UI asset references.
+
+- Restored the complete v0.7.0 ZIP and verified its SHA-256 before editing. All 22 prior fighter definitions, gameplay stats, atlases, portraits, music, effects, and arena bytes remain unchanged.
+- Retrieved Father Bronson's current website stats: Power 8, Speed 6, Technique 7, Toughness 8; finisher The Red Bloom. Added those exact fields to the dated source snapshot and derived gameplay multipliers.
+- Reviewed all 35 supplied sheets and prepared transparent frames. Fixed a joined throw/recovery body, running captions touching heads, the drawn floor line hiding two jump poses, a printed opponent touching the kick, and stray neighboring coat artwork in the dive.
+- Native canvas review uses actual Match transitions and Renderer output for strike, heavy, chair, bat, guitar, trash can, lift, throw, pin, climb, dive, and fall. Detailed contact sheets cover the complete animation set. Checked chair/guitar placement after adapting the missing/overlapping contact artwork.
+- Tests assert complete jump/throw counts, one body per attack crop, all reviewed source uses/exceptions, exact website fields, and selection of the reverse back-fall texture when facing left. Existing all-roster weapon, CPU, input, touch, pin/submission, audio, and renderer checks include Bronson.
+- Online host and guest tests cover Father Bronson, artwork readiness, correct roster definition, snapshots, out-of-range IDs, and cleanup through the in-memory Firebase-shaped transport. These tests do not claim a new live Firebase connection.
+
+No fresh interactive browser test was performed. The prior local-preview access rejection remains respected; no alternate browser route was used. Physical phones/controllers and real-world network latency remain outside this pass. Historical checks below are retained for context. This ZIP has not been deployed to GitHub.
+
+---
+
+# v0.7.0 release checks — September 13, 2026
+
+**106 automated tests pass.** Static checks validate 22 fighters, 2,116 animation entries, six arenas, both music tracks, module syntax, and UI references.
+
+- Verified all 21 previous IDs, animation definitions, atlases, and portraits against the complete v0.6.0 ZIP. Existing artwork is byte-identical.
+- Reviewed all Kongo frames and twelve actual Match/Renderer scenarios: strike, heavy, chair, bat, guitar, trash can, lift, throw, pin, climb, dive, and forward fall. Corrected a merged three-body bat contact and a header mistakenly detected as a fall frame. Removed printed elbow/kick sparks and corrected the first elbow pose's facing.
+- Accounted for all 29 Kongo source files. The two guitar sheets match by SHA-256; one supplies gameplay and the duplicate is explicitly recorded with zero additional frames.
+- Verified website ratings against the site's `STATS` table, which labels the four fields Power, Speed, Technique, and Toughness. The bundled snapshot contains exact values for 21 matched roster entries. Violent J is unlisted. Tests verify actual damage, speed, resistance, and grapple behavior.
+- Extended online host/guest tests to Kongo, including correct definitions and snapshot application, roster bounds, old-protocol rejection, and cleanup through the in-memory Firebase-shaped transport. All existing movement, touch escape, weapon, CPU, submission, audio, and renderer tests pass.
+- Updated the four-rating profile layout and retained arrow-key/D-pad controls and mobile touch behavior. **A fresh browser preview was denied by the browser access review.** No new interactive desktop/phone or live Firebase check was completed in this pass. No alternate browser route was attempted.
+
+The native canvas renders exercise the actual engine and renderer; they are not screenshots of a phone browser. Physical devices, controller hardware, and adverse network latency remain untested. Earlier browser and live-service checks below are historical and do not imply a fresh v0.7 check. This ZIP has not been deployed to GitHub.
+
+---
+
 # v0.6.0 release checks — September 12, 2026
 
 **100 automated tests pass.** Static checks cover 21 fighters, 1,970 animation entries, six arenas, both music tracks, module syntax, and UI asset references. The 340 unique fighter sheets all appear in the audit. The five announcement textures and four effect textures decode with transparency; the effects contain 36 animation frames. Four supplied startup logos are included with their original pixels.
@@ -89,6 +170,16 @@ See [MULTIPLAYER.md](MULTIPLAYER.md) for controls and the retained Firebase arch
 ---
 
 # Previous v0.3.1 testing — September 10, 2026
+
+## v0.7.2 — Hokane
+
+- `node --test --test-reporter=dot tests/*.test.mjs`: **114 passing tests**.
+- `node tools/check.mjs`: **24 fighters, 2,418 animation entries, six arenas, both music choices**, valid modules, UI references, assets, dimensions, and anchors.
+- Hokane’s four ratings exactly match the website’s September 13, 2026 stats table. The unlisted finisher remains generic. Tests check forward contact poses, no printed shadow frames, source coverage, directional fall selection, and the KO state.
+- Hokane selects and starts as host or guest, survives snapshot serialization, and rejects out-of-range roster indices through the in-memory Firebase-shaped transport. This does not establish live Firebase connectivity.
+- All 31 source sheets were inspected; prepared animation sheets and twelve actual Match/Renderer scenarios were reviewed. Corrections include mixed directions in the running sheet, touching weapon figures, printed ropes, shadow-only detections, dive neighbors, and background voids.
+- Previous 23 fighter definitions and all existing prepared artwork, music, arenas, and effects are unchanged from v0.7.1.
+- No fresh interactive desktop/phone browser or live-service test was performed. Earlier checks and limitations remain below. ZIP delivery only; not deployed to GitHub.
 
 ## Automated checks
 

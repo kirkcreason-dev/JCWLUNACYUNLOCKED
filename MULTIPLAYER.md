@@ -20,7 +20,7 @@ This uses the Firebase project and web configuration from `LUNACY_REBUILT_CLEAN(
 
 The old code was tied to a different engine. The adapter now synchronizes this build’s wrestler IDs, arena, position, animation, health, guard, meter, grapples, pins, rounds, timer, effects, and result. Version 0.5 also synchronizes selected weapon, attack style, move timing, fall direction, exhaustion, and climb/perch/dive states; weapon and taunt taps use the ordered input stream, and run is a held input. Input and snapshot writes are capped at approximately 20 per second each while a match is running, with only one write in flight per stream. Button press groups retain their order, so delayed packets do not collapse alternating kick-out taps into one simultaneous press. Old or duplicated packets are ignored.
 
-New rooms use `rooms/LU6-ABCD`, with a `lunacy-2d-v4` protocol marker. Quick Match uses `rooms/LU6-queue`. Both players must use v0.6.0. These paths keep incompatible v0.5.x, v0.4, and legacy clients out of new matches. The old `quickQueue` and old unprefixed room codes are not modified.
+New rooms use `rooms/LU80-ABCD`, with a `lunacy-2d-v8` protocol marker. Quick Match uses `rooms/LU80-queue`. Both players must use v0.8.0. These paths keep incompatible v0.7.2, v0.7.1, v0.7.0, v0.6.0, v0.5.x, v0.4, and legacy clients out of new matches. The old `quickQueue` and old unprefixed room codes are not modified.
 
 Room creation and guest-seat claims use transactions. Both sides confirm artwork readiness before the host starts. The host registers removal of its room on disconnect; the guest registers an offline marker. Leaving removes listeners and clears only the caller’s own queue claim or room. Stalled connections and failed loads show a recovery message.
 
@@ -32,10 +32,14 @@ The supplied project accepted live create/join, matchmaking, input, snapshot, an
 
 To put this version on GitHub Pages, upload the extracted project contents, including the updated root `index.html` and the complete `dist` folder. Replacing only the HTML would leave the new network modules missing. The game keeps its relative URLs, so the repository subpath continues to work. The delivered ZIP itself has not been deployed.
 
-Roster IDs 16–20 are Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, and Ruffo. The v0.6 namespace separates clients that lack these atlases, submission state, and the new presentation assets. Submission holds and hold-escape events synchronize through host snapshots; both clients render impact and announcement artwork from the same events.
+Roster IDs 16–20 are Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, and Ruffo. Kongo Kong is ID 21 and Father Bronson is ID 22. Hokane is ID 23. The v0.7.2 namespace separates clients that lack the full 24-fighter roster. Host/join tests include Hokane and preserve the correct definition and snapshots. Submission holds and hold-escape events synchronize through host snapshots; both clients render impact and announcement artwork from the same events.
 
 ## Testing and maintenance
 
 Run `npm test` and `npm run check`. `tests/online.test.mjs` covers protocol/lifecycle behavior with an in-memory Firebase-shaped transport. The shipped game always uses the real Firebase service. For a local two-client browser check, run `npm run dev`, open `/__qa__`, and choose **Second player 390 × 844**. The QA fixture is not included in `dist` and is served only with the local QA flag.
 
 See [TESTING.md](TESTING.md) for the live two-client observations and device/latency limits. The implementation follows Firebase’s documented [transaction behavior](https://firebase.google.com/docs/database/web/read-and-write#save_data_as_transactions) and [connection/disconnect handling](https://firebase.google.com/docs/database/web/offline-capabilities).
+
+## v0.8.0 gameplay synchronization
+
+The new namespace separates the refined combat rules from older clients. Host snapshots carry confirmed strikes and chain position, and replay rope-break, hold-release, grab, and swing feedback on the guest. Ordered guest taps can break grabs and trigger the same chain rules as local input. Live Firebase connectivity was not retested; the in-memory Firebase-shaped room lifecycle and host/guest transport tests were run.
