@@ -1,0 +1,45 @@
+/* Match geometry is fitted to the visible viewport by phone-layout.js.
+   These scoped resets also take precedence over the older fullscreen layouts. */
+#cabinet{--safe-top:env(safe-area-inset-top,0px);--safe-right:env(safe-area-inset-right,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px)}
+body.phone-match{overflow:hidden;overscroll-behavior:none}
+#cabinet.playing-touch[data-phone-layout]{position:fixed;right:auto;bottom:auto;max-width:none;min-height:0!important;padding:0!important;margin:0;display:block!important;overflow:hidden;background:#0b090f}
+#cabinet[data-phone-layout] .topbar,
+#cabinet[data-phone-layout] #stage-wrap,
+#cabinet[data-phone-layout] #network-banner,
+#cabinet[data-phone-layout] .dpad,
+#cabinet[data-phone-layout] .action-pad,
+#cabinet[data-phone-layout] .utility-pad button,
+#cabinet[data-phone-layout] #touch-hint{position:absolute!important;right:auto!important;bottom:auto!important;margin:0!important;transform:none!important;max-height:none!important;min-height:0}
+#cabinet[data-phone-layout] .topbar{display:flex!important;gap:6px;padding:0;z-index:3}
+#cabinet[data-phone-layout] .wordmark{gap:6px}
+#cabinet[data-phone-layout] .wordmark>b{font-size:1.5rem;padding:1px 9px 2px 4px}
+#cabinet[data-phone-layout] .wordmark>span{font-size:.65rem}
+#cabinet[data-phone-layout] .wordmark i{font-size:.48rem;letter-spacing:.13em}
+#cabinet[data-phone-layout] .top-actions{gap:2px}
+#cabinet[data-phone-layout] .top-actions button{width:44px;height:44px;min-height:44px;padding:0}
+#cabinet[data-phone-layout] #sound,#cabinet[data-phone-layout] #controls{font-size:0}
+#cabinet[data-phone-layout] #sound::after{content:'♪';font-size:22px}
+#cabinet[data-phone-layout] #sound[aria-pressed=false]::after{content:'♫';opacity:.5}
+#cabinet[data-phone-layout] #controls::after{content:'?';font-size:20px}
+#cabinet[data-phone-layout] #stage-wrap{flex:none;min-width:0;box-shadow:0 8px 24px #0008}
+#cabinet[data-phone-layout].modal-open #stage-wrap{z-index:10}
+#cabinet[data-phone-layout=landscape].phone-online .wordmark{visibility:hidden}
+#cabinet[data-phone-layout=landscape].phone-online #network-banner{z-index:4;pointer-events:none}
+#cabinet[data-phone-layout].phone-short .wordmark{visibility:hidden}
+#cabinet[data-phone-layout].phone-short .utility-pad button{z-index:4;flex-direction:column;gap:3px}
+#cabinet[data-phone-layout] canvas{width:100%;height:100%;touch-action:none}
+#cabinet[data-phone-layout] #touch-controls{position:absolute!important;inset:0!important;padding:0!important;display:block;pointer-events:none}
+#cabinet[data-phone-layout] .dpad,#cabinet[data-phone-layout] .action-pad,#cabinet[data-phone-layout] .utility-pad button{pointer-events:auto}
+#cabinet[data-phone-layout] .dpad{filter:none}
+#cabinet[data-phone-layout] .action-pad{gap:8px}
+#cabinet[data-phone-layout] .action-pad button{border-radius:14px;gap:4px}
+#cabinet[data-phone-layout] .action-pad b{font-size:.8125rem}
+#cabinet[data-phone-layout] .action-pad small{font-size:.625rem}
+#cabinet[data-phone-layout] .utility-pad{position:static!important;display:contents;pointer-events:none}
+#cabinet[data-phone-layout] #touch-hint{display:grid;place-items:center;font-size:.75rem;line-height:1.2;padding:0 2px;text-align:center;color:#d3c6dd}
+#cabinet[data-phone-layout] #network-banner{padding:2px 6px;font-size:.6875rem;line-height:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cabinet[data-phone-layout] footer,#cabinet[data-phone-layout] .rotate-tip{display:none}
+#cabinet[data-phone-layout] #touch-controls.inactive{visibility:hidden}
+#cabinet[data-phone-layout] .modal{position:fixed;inset:0;padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));backdrop-filter:none;touch-action:pan-y}
+#cabinet[data-phone-layout] .modal-panel{max-height:calc(var(--phone-height,100dvh) - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overscroll-behavior:contain}
+#cabinet[data-phone-layout] .help-panel select{font-size:16px;min-height:44px}
