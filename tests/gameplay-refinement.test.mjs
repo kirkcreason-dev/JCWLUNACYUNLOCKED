@@ -123,7 +123,7 @@ test('coalesced guest input can break a fresh grab and preserves equal simultane
 });
 
 const fullRoster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
-test('all 24 fighters can land the reduced-damage second jab from either side',()=>{
+test('all 28 fighters can land the reduced-damage second jab from either side',()=>{
  for(let id=0;id<fullRoster.length;id++)for(const side of [0,1]){
   const m=new Match(fullRoster,id,(id+1)%fullRoster.length,{mode:'local'});m.phase='fight';m.fighters[0].x=500;m.fighters[1].x=580;
   hitChain(m,['light','light'],side);

@@ -9,13 +9,13 @@ test('phone, landscape and desktop pages expose every fighter exactly once',()=>
  for(const size of [6,8,12]){
   const picker=new RosterSelection(roster.length,size),seen=[];
   for(let page=0;page<picker.pages;page++){seen.push(...picker.visible);picker.turn(1);}
-  assert.equal(seen.length,24);assert.equal(new Set(seen).size,24);
+  assert.equal(seen.length,28);assert.equal(new Set(seen).size,28);
   assert.deepEqual(seen.map(i=>roster[i].name),roster.map(f=>f.name));
  }
 });
-test('the direct picker reaches all 24 real match fighters without changing the opponent',()=>{
+test('the direct picker reaches all 28 real match fighters without changing the opponent',()=>{
  const picker=new RosterSelection(roster.length,6);
- for(let index=0;index<24;index++){
+ for(let index=0;index<roster.length;index++){
   assert.equal(picker.choose(index),true);assert.ok(picker.visible.includes(index));
   const match=new Match(roster,picker.selected,4,{mode:'local'});
   assert.equal(match.fighters[0].definition.name,roster[index].name);
@@ -32,4 +32,10 @@ test('rotating the phone keeps Hokane selected and reveals his new page',()=>{
  const picker=new RosterSelection(roster.length,6);picker.choose(23);
  assert.deepEqual(picker.visible.map(i=>roster[i].name),['Bruce Wayans','Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane']);
  for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,23);assert.ok(picker.visible.includes(23));}
+});
+
+test('the final portrait page contains all four recent additions, and rotation preserves Jeeves',()=>{
+ const p=new RosterSelection(roster.length,6);p.choose(27);
+ assert.equal(p.pages,5);assert.equal(p.page,4);assert.deepEqual(p.visible,[24,25,26,27]);
+ for(const size of [8,12,6]){p.resize(size);assert.equal(p.selected,27);assert.ok(p.visible.includes(27));}
 });
