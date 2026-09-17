@@ -24,7 +24,7 @@ async function pair(t){
   return {db,a,b,code};
 }
 test('online room joins load both chosen wrestlers and host arena before starting once',async t=>{
-  const {db,a,b,code}=await pair(t),meta=db.get(`rooms/LU120-${code}/meta`);
+  const {db,a,b,code}=await pair(t),meta=db.get(`rooms/LU140-${code}/meta`);
   assert.equal(meta.host.fighter,0);assert.equal(meta.guest.fighter,2);assert.equal(meta.arena,4);assert.equal(meta.state,'playing');
   assert.equal(a.session.role,'host');assert.equal(b.session.role,'guest');
   assert.equal(a.log.started,1);assert.equal(b.log.started,1);assert.equal(a.log.prepared,1);assert.equal(b.log.prepared,1);
@@ -37,10 +37,10 @@ test('Caleb, Kongo, and Father Bronson join and host with the full roster; incom
   try{
    const code=await a.session.begin('create',hostCaleb?caleb:0,4);
    await b.session.begin('join',hostCaleb?0:caleb,0,code);await settle();
-   const meta=db.get(`rooms/LU120-${code}/meta`);
+   const meta=db.get(`rooms/LU140-${code}/meta`);
    assert.equal(meta.state,'playing');assert.equal(a.log.started,1);assert.equal(b.log.started,1);
    assert.ok(validRoom(meta));
-   assert.equal(validRoom({...meta,protocol:'lunacy-2d-v11'}),false);
+   assert.equal(validRoom({...meta,protocol:'lunacy-2d-v13'}),false);
    assert.equal(validRoom({...meta,host:{...meta.host,fighter:roster.length}}),false);
    assert.equal(validRoom({...meta,guest:{...meta.guest,fighter:roster.length}}),false);
    const host=new Match(roster,meta.host.fighter,meta.guest.fighter,{mode:'online'}),guest=new Match(roster,...host.ids,{mode:'online'});
@@ -54,25 +54,25 @@ test('two simultaneous joiners cannot claim the same guest seat',async t=>{
   const db=new MemoryFirebase(),a=client(db),b=client(db),c=client(db);t.after(async()=>{for(const x of [a,b,c])await x.session.leave();});
   const code=await a.session.begin('create',0,0);
   const results=await Promise.allSettled([b.session.begin('join',1,0,code),c.session.begin('join',2,0,code)]);await settle();
-  assert.equal(results.filter(r=>r.status==='fulfilled').length,1);assert.ok(db.get(`rooms/LU120-${code}`));assert.equal(a.log.started,1);
+  assert.equal(results.filter(r=>r.status==='fulfilled').length,1);assert.ok(db.get(`rooms/LU140-${code}`));assert.equal(a.log.started,1);
 });
 test('invalid room input never changes another room',async t=>{
   const {db,a,code}=await pair(t),c=client(db);t.after(()=>c.session.leave());
   await assert.rejects(c.session.begin('join',4,0,'../'),/four-letter/);
   await assert.rejects(c.session.begin('join',4,0,code),/full|playing/);
-  assert.equal(db.get(`rooms/LU120-${code}/meta/host/id`),a.session.ctx.id);
-  assert.equal(roomCode(' lu120-abcd '),'ABCD');
+  assert.equal(db.get(`rooms/LU140-${code}/meta/host/id`),a.session.ctx.id);
+  assert.equal(roomCode(' lu140-abcd '),'ABCD');
 });
 test('quick match atomically pairs searchers without touching the legacy queue',async t=>{
   const db=new MemoryFirebase();await db.ref('quickQueue').set({code:'OLDX',t:1});const a=client(db),b=client(db);t.after(async()=>{await a.session.leave();await b.session.leave();});
   await Promise.all([a.session.begin('quick',0,5),b.session.begin('quick',8,3)]);await settle();
   assert.equal(a.log.started,1);assert.equal(b.log.started,1);assert.equal(a.session.code,b.session.code);assert.notEqual(a.session.role,b.session.role);
-  assert.deepEqual(db.get('quickQueue'),{code:'OLDX',t:1});assert.equal(db.get('rooms/LU120-queue'),null);
+  assert.deepEqual(db.get('quickQueue'),{code:'OLDX',t:1});assert.equal(db.get('rooms/LU140-queue'),null);
 });
 test('cancelling quick match removes only its own room and queue claim',async()=>{
   const db=new MemoryFirebase(),a=client(db);await a.session.begin('quick',0,0);const code=a.session.code;
-  await db.ref('rooms/LU120-queue').set({code:'ZZZZ',owner:'someone-else',at:Date.now()});await a.session.leave();
-  assert.equal(db.get(`rooms/LU120-${code}`),null);assert.equal(db.get('rooms/LU120-queue/owner'),'someone-else');assert.equal(db.listeners.size,0);
+  await db.ref('rooms/LU140-queue').set({code:'ZZZZ',owner:'someone-else',at:Date.now()});await a.session.leave();
+  assert.equal(db.get(`rooms/LU140-${code}`),null);assert.equal(db.get('rooms/LU140-queue/owner'),'someone-else');assert.equal(db.listeners.size,0);
 });
 test('cancelling while Firebase connects cannot create a late room',async()=>{
   const db=new MemoryFirebase();let resolve;const a=client(db,{connect:()=>new Promise(r=>{resolve=r;})});
@@ -86,10 +86,10 @@ test('leaving a live room ends the other client and removes listeners',async t=>
 });
 test('host disconnect cleanup removes the room and notifies the guest',async t=>{
   const {db,b,code}=await pair(t);
-  const cleanup=[...db.disconnects].find(item=>item.ref.path===`rooms/LU120-${code}`);
+  const cleanup=[...db.disconnects].find(item=>item.ref.path===`rooms/LU140-${code}`);
   assert.ok(cleanup);assert.equal(cleanup.value,null);
   db.write(cleanup.ref.path,cleanup.value);await settle();
-  assert.equal(db.get(`rooms/LU120-${code}`),null);assert.equal(b.log.ended.length,1);
+  assert.equal(db.get(`rooms/LU140-${code}`),null);assert.equal(b.log.ended.length,1);
 });
 test('coalesced input keeps press order and duplicate packets cannot replay actions',()=>{
   const sender=new InputPackets(),receiver=new RemoteInput();

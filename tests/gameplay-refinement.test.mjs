@@ -54,7 +54,7 @@ test('hitstun cannot be converted into an unbreakable instant grab',()=>{
  tick(m,{grapple:true});assert.equal(m.grapple,null);assert.equal(m.fighters[1].hp,100);
 });
 test('holding block becomes effective on the exact tick stun ends',()=>{
- const m=make(),a=m.fighters[0],b=m.fighters[1];a.state='hurt';a.stun=STEP;
+ const m=make(),a=m.fighters[0],b=m.fighters[1];a.state='hurt';a.stun=STEP*2;tick(m,{block:true});
  b.move='light';b.state='light';b.t=MOVES.light.startup-STEP;
  tick(m,{block:true});assert.equal(a.state,'block');assert.equal(a.hp,100);assert.ok(a.guard<100);
 });
@@ -73,7 +73,7 @@ test('airborne attack recovery keeps the jump pose until landing',()=>{
  tick(m);assert.equal(a.move,null);assert.equal(a.state,'jump');assert.ok(a.z>0);
 });
 test('guard recovery waits after contact, then recovers faster with guard released',()=>{
- const m=make(),b=m.fighters[1];tick(m,{light:true},{block:true});for(let i=0;i<20&&b.guard===100;i++)tick(m,{}, {block:true});assert.ok(b.guard<100);
+ const m=make(),b=m.fighters[1];run(m,12,{}, {block:true});tick(m,{light:true},{block:true});for(let i=0;i<20&&b.guard===100;i++)tick(m,{}, {block:true});assert.ok(b.guard<100);
  const guard=b.guard;run(m,20,{}, {block:true});assert.equal(b.guard,guard);
  run(m,60);assert.ok(b.guard>guard);
 });
