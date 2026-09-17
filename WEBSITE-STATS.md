@@ -1,4 +1,6 @@
-# Website ratings
+# Ratings and supplied approval record
+
+The September 17 user-supplied table is recorded in [ROSTER-APPROVALS.md](ROSTER-APPROVALS.md) and `roster-approvals.json`. Its 32 playable entries match the existing ratings and finisher names below and in the dated snapshot. The release check enforces the three NO exclusions. The approval table also includes three YES fighters awaiting character integration, and assigns no status to four existing unlisted fighters.
 
 Source: [JCW Lunacy roster](https://jcwlunacy.net/), retrieved **September 13, 2026**. The site's `STATS` table supplies four ratings out of 10 in this order: **Power, Speed, Technique, Toughness**, followed by an optional finisher. The game's dated snapshot is `dist/assets/website-stats.json`; it requires no live website connection while playing.
 
@@ -44,7 +46,7 @@ For example, Kongo's 10 / 5 / 7 / 9 gives multipliers 1.20 / 0.95 / 1.05 / 1.15.
 
 Listed finishers replace the old invented labels. An empty site field uses the generic “Lunacy Finisher.” Site names marked “(Tag)” are retained as labels; this is a two-fighter game, and those labels do not add tag partners or unique signature choreography.
 
-To reapply the reviewed snapshot after an asset-only edit, run `python3 tools/apply_website_stats.py`. The expanded-roster preparation script also reapplies it automatically. Both online clients must use v0.7.2 so their roster and damage rules match.
+To reapply the reviewed snapshot after an asset-only edit, run `python3 tools/apply_website_stats.py`. The expanded-roster preparation script also reapplies it automatically. Both online clients must use v0.14.0 so their roster and damage rules match.
 
 
 ## September 16, 2026 additions

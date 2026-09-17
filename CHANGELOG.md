@@ -1,3 +1,22 @@
+# v0.14.0 — Reversals and comeback moments
+
+- Add timed strike reversals using the existing block control: 0.12-second timing, 1.2-second attempt cooldown, 20 guard minimum, 0.32-second attacker stagger and 12 Lunacy reward.
+- Retain ordinary held guard, recovery commitments, and existing finisher/grapple/dive counters.
+- Add Second Wind once per fighter per round: opponent damage leaving 1–30 health grants 25 Lunacy and 20 guard, with caps and no healing or interruption of hit reactions. KO and missed-dive self-damage grant no boost.
+- Show readable player-specific notices below the HUD in all three layouts, plus short sound cues and optional phone vibration.
+- Preserve fresh block input edges across keyboard, touch, gamepad and online play; synchronize new state/events with v14 / LU140 rooms and updated module URLs.
+- Retain 36 fighters, roster approval exclusions, all 98 asset files, the faster pace and running attacks, steady HUD rails and phone performance changes.
+
+# v0.13.0 — Faster matches and roster approval record
+
+- Increase travel speed by 12% and shorten run buildup to 0.38 seconds; keep movement animation cadence aligned.
+- Shorten attack startup/recovery by 10%, retain active contact windows and damage, and align touch HIT repeat with the new recovery.
+- Add a running HEAVY lunge using existing controls, with normal damage, full recovery on a miss/block, and a localized RUNNING HIT cue.
+- Shorten the post-round result pause from 3.0 to 2.4 seconds. Keep the match clock, opening countdown, throw breaks and pin escape timing.
+- Record the user's complete 38-entry approval table and add a release check for NO exclusions and supplied ratings/finishers. HollyHood Haley J, Luigi Primo and Sophia Rose remain excluded; none was in the baseline. Keep 36 existing fighters, without marking unlisted fighters newly approved.
+- Isolate the new gameplay with v13 / LU130 online rooms and refresh module URLs to prevent stale engine imports.
+- Preserve all character artwork, the steady HUD rails, reduced shake, phone layouts and performance fixes.
+
 # v0.12.1 — Screen flicker correction
 
 - Use synchronized canvas presentation and repaint without an intermediate clear.

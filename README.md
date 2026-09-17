@@ -1,16 +1,38 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.12.1**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.14.0**.
 
 The gameplay refinement adds confirmed strike chains, gradual run acceleration, fair simultaneous grab breaks, more responsive recovery, rope breaks, manual hold release, and smarter CPU attack spacing. The original 33 wrestlers remain intact; three additions bring the roster to 36. The supplied startup logos, title artwork, arenas, effects, and music are included. See [GAMEPLAY.md](GAMEPLAY.md) for the updated fight rules and [TESTING.md](TESTING.md) for validation and limitations.
 
+## Reversals and Second Wind (v0.14.0)
+
+Press **block just before a normal strike connects**, keep guarding through impact, then release and counterattack. A successful reversal staggers the attacker for 0.32 seconds and earns 12 Lunacy. The timing window is 0.12 seconds, each attempt has a 1.2-second cooldown, and at least 20 guard is required. Holding block still works normally. Finishers, grabs and dives retain their existing counters. Use Down on keyboard/phone or LB on gamepad; no new buttons are needed.
+
+**Second Wind** triggers once per round when opponent damage leaves you alive at 30 health or less: gain 25 Lunacy and 20 guard, capped at 100. It can put a comeback finisher within reach, but does not heal, cancel hitstun or rescue a KO. Missing a dive does not earn the boost. Both players and the CPU use the same rules.
+
+New cues appear below the HUD in desktop, phone portrait and phone landscape, with distinct short sounds and optional touch vibration. Existing steady HUD rails, reduced shake and bounded effects remain. All 36 fighters, approval exclusions and supplied assets are retained.
+
+Both online players must load **v0.14.0**, using v14 / LU140 rooms. This ZIP has not been deployed.
+
+## Faster gameplay and running attacks (v0.13.0)
+
+Movement is 12% faster, with run buildup shortened from 0.42 to 0.38 seconds. Attack wind-up and recovery are 10% shorter, while active contact windows, damage, match clock, throw breaks and pin escapes retain their timing. Walking/running animation cadence and touch HIT repeat follow the new pace.
+
+Build into a run toward your opponent, then tap HEAVY for a short lunge. It closes about 45 ring units without extra damage; a miss or block still leaves the attacker committed to recovery. A RUNNING HIT cue confirms a landed attack. No extra button is needed on phone, keyboard or gamepad. The pause after a round is shortened from 3.0 to 2.4 seconds. The screen flicker fixes and phone render limits remain in place.
+
+Reload after uploading; the version under FIGHT should read v0.14.0.
+
+## Roster approvals
+
+[ROSTER-APPROVALS.md](ROSTER-APPROVALS.md) records the supplied table and [roster-approvals.json](roster-approvals.json) supports the release check. HollyHood Haley J, Luigi Primo and Sophia Rose are excluded. They were absent from the baseline, so the roster remains **36**. All 32 table-listed playable fighters already match the supplied ratings and finisher names. The four existing fighters absent from the table are retained without assigning a new YES approval. Josh Bishop, Ring Rat and The Green Phantom are recorded as approved but await character integration.
+
 ## Steadier screen (v0.12.1)
 
-Gameplay now uses synchronized drawing and an opaque repaint to avoid showing partly drawn frames. The top and bottom HUD panels remain opaque and stationary during hit shake, the whole-screen finisher flash is removed, and shake is reduced. Phone viewport changes are applied in the same animation callback as the repaint. All 36 fighters, character effects, gameplay rules and v12 / LU120 multiplayer compatibility remain intact. Reload the page after installing this build; the version under FIGHT should read v0.12.1.
+Gameplay now uses synchronized drawing and an opaque repaint to avoid showing partly drawn frames. The top and bottom HUD panels remain opaque and stationary during hit shake, the whole-screen finisher flash is removed, and shake is reduced. Phone viewport changes are applied in the same animation callback as the repaint. The current release retains these presentation fixes while updating gameplay and online compatibility as described above.
 
 ## DJ Clay, Jeff Lane and Shane Mercer (v0.12.0)
 
-The roster now contains 36 fighters. DJ Clay has his supplied six-frame Bass Blast finisher animation, synchronized to the existing meter and damage rules. Jeff Lane and Shane Mercer have movement, weapon, grapple, recovery and rope animations from their supplied packs. Six portrait pages expose every fighter. Shane Mercer uses published JCW ratings; DJ Clay and Jeff Lane use game balance values without claiming website ratings. Both online players need v0.12.0 / LU120 rooms.
+The roster now contains 36 fighters. DJ Clay has his supplied six-frame Bass Blast finisher animation, synchronized to the existing meter and damage rules. Jeff Lane and Shane Mercer have movement, weapon, grapple, recovery and rope animations from their supplied packs. Six portrait pages expose every fighter. Shane Mercer uses published JCW ratings; DJ Clay and Jeff Lane use game balance values without claiming website ratings. Current online play requires v0.14.0 / LU140 rooms.
 
 ## Five new fighters (v0.11.0)
 
@@ -22,23 +44,23 @@ Optional announcement and combat-effect images now load on demand, so a phone do
 
 ## Krule and Jeeves (v0.10.0)
 
-Krule and Jeeves join as fighters 27 and 28. Their supplied portraits and animation sets cover movement, four weapons, grapples, pins, recoveries, and rope moves. Both use ratings from jcwlunacy.net; Krule's finisher remains marked as unlisted there. Current online play uses v12 / LU120 rooms; both players should use v0.12.0.
+Krule and Jeeves join as fighters 27 and 28. Their supplied portraits and animation sets cover movement, four weapons, grapples, pins, recoveries, and rope moves. Both use ratings from jcwlunacy.net; Krule's finisher remains marked as unlisted there. Current online play uses v14 / LU140 rooms; both players should use v0.14.0.
 
 ## Steven Flowe and EC3 (v0.9.0)
 
-Steven Flowe and EC3 join as fighters 25 and 26, with their supplied animation sets, four weapons, rope moves, and ratings/finishers from jcwlunacy.net. The first 24 roster slots are unchanged. Phone paging and direct selection include both new fighters. The v0.9.0 release introduced LU90 rooms; the current release uses LU120.
+Steven Flowe and EC3 join as fighters 25 and 26, with their supplied animation sets, four weapons, rope moves, and ratings/finishers from jcwlunacy.net. The first 24 roster slots are unchanged. Phone paging and direct selection include both new fighters. The v0.9.0 release introduced LU90 rooms; the current release uses LU140.
 
 ## Supplied UNLOCKED branding (v0.8.3)
 
 The supplied neon UNLOCKED artwork replaces the text treatment in the header, opening screen, and fighter selection. The same PNG appears over all five existing UNLOCKED signs, mat, and apron wordmarks across Bloodymania, Hell’s Pit, and Rusted Warehouse. Other arenas have no existing UNLOCKED wordmarks to replace. The opening background now uses the same branded canvas as gameplay.
 
-The original PNG is included byte-for-byte as `dist/assets/banners/unlocked.png`; CSS frames its empty margins and blends the black background into the interface. Arena placement is handled by the renderer, preserving the original arena images and the foreground rope over the mat graphic. Text remains in page titles and accessibility labels so the game is still named correctly for browser tabs and screen readers. Phone layouts, existing fighters, and gameplay rules are retained. Multiplayer uses protocol v12 for the 36-fighter roster.
+The original PNG is included byte-for-byte as `dist/assets/banners/unlocked.png`; CSS frames its empty margins and blends the black background into the interface. Arena placement is handled by the renderer, preserving the original arena images and the foreground rope over the mat graphic. Text remains in page titles and accessibility labels so the game is still named correctly for browser tabs and screen readers. Phone layouts, existing fighters, and gameplay rules are retained. Multiplayer uses protocol v14 for the current gameplay rules.
 
 ## Phone fighter selection
 
 This package contains **36 fighters**. On a portrait phone, use **MORE / BACK** to browse six pages (six fighters per page), or use **PICK ANY FIGHTER** to select any name directly. **USE FIGHTER** opens match setup. The **FIGHTERS** button takes you back; rotation preserves your chosen wrestler. Website stats are visible in the phone setup panel.
 
-If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.12.1 package has not been deployed to either repository.
+If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.14.0 package has not been deployed to either repository.
 
 ## Phone match optimization (v0.8.2)
 
@@ -69,15 +91,15 @@ python -m http.server 8080 --directory dist
 
 ## Included
 
-- Twenty-four playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Yabo, Able, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, Ruffo, Kongo Kong, Father Bronson, and Hokane.
+- Thirty-six playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Yabo, Able, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, Ruffo, Kongo Kong, Father Bronson, Hokane, Steven Flowe, EC3, Krule, Jeeves, Atiba, JP Grayson, Tommy, Shaggy 2 Dope, Jacksyn, DJ Clay, Jeff Lane, Shane Mercer.
 - Online multiplayer through the original JCW Firebase project: private room codes and Quick Match.
-- VS CPU with three difficulty levels; local two-player versus; a twenty-three-opponent arcade run.
+- VS CPU with three difficulty levels; local two-player versus; a thirty-five-opponent arcade run.
 - Six arenas: Bloodymania, Hell’s Pit, Madhouse, Rusted Warehouse, Funhouse, and Lunacy Outdoors. The last two are recovered from the legacy ZIP.
 - The recovered JCW theme and the existing Genesis-style Fight Club track; choose either in CONTROLS. The supplied JCW theme starts when you press PRESS START. You can mute it or choose the alternate track.
 - Practice mode: a passive opponent, unlimited time, full finisher meter, and automatic reset after a KO, pinfall, or tap-out.
 - Phone controls with a sliding D-pad, simultaneous movement and attacks, optional hold-to-repeat HIT, a repeated-tap escape button, finisher charge display, and context-sensitive GRAB / PIN / BREAK / CLIMB / DIVE labels, plus separate WEAPON and TAUNT buttons.
 - Movement, running, jump, strike, unarmed heavy, block and guard break, overhead grapple throw, directional falls, recovery, pin and kick-out, submission and hold escape, and a meter-powered finisher.
-- The fifteen expanded-roster wrestlers can cycle between bare hands, chair, bat, guitar, and trashcan; taunt for meter; climb either corner; and dive onto standing or downed opponents. The original nine retain their authored chair move set.
+- The twenty-seven expanded-roster wrestlers can cycle between bare hands, chair, bat, guitar, and trashcan; taunt for meter; climb either corner; and dive onto standing or downed opponents. The original nine retain their authored chair move set.
 - Best-of-three rounds, 99-second timer, KO, pinfall, and submission victories, match results, rematch, pause, and character selection.
 - Keyboard, touch controls, and standard-mapped gamepads. Two controllers can play together locally.
 - Supplied PINFALLED, KICK OUT, TAP OUT, YOU WIN, and LUNACY announcement graphics; animated hit debris, impact smoke, guard puffs, and ground dust. Effects respect reduced-motion preferences.
@@ -108,7 +130,7 @@ In solo modes, WASD remains a movement alias for Player 1. In local versus, WASD
 
 **Phone view:** landscape places controls in side rails outside the ring. Portrait uses a 4:3 canvas with a closer camera and larger HUD. The match layout follows the visible screen as browser bars change. Turning the phone pauses an offline match and clears held input. Portrait mode is playable without rotating the phone. Pausing and opening CONTROLS hides the touch deck, and losing focus clears input. Use CONTROLS → TOUCH CONTROLS → ALWAYS SHOW if your device does not identify itself as a touch screen. Vibration only runs on supporting devices.
 
-**Run:** keep moving in one direction for about half a second to accelerate. Shift starts the run immediately; touch players simply hold the D-pad. Releasing direction stops movement.
+**Run:** keep moving in one direction for about 0.38 seconds to accelerate. Shift starts the run immediately; touch players simply hold the D-pad. Releasing direction stops movement.
 
 **Weapons:** tap WEAPON (Q) to cycle bare hands → chair → bat → guitar → trashcan → bare hands. HEAVY uses the selected weapon and the corresponding wind-up, contact, and recovery art. A guitar breaks after two landed attacks. Blocking and misses do not count toward its durability. Changing weapon has a short recovery; grappling or climbing puts it away. New wrestlers without a kick sheet use an intact forward strike for unarmed heavy.
 
@@ -122,11 +144,11 @@ In solo modes, WASD remains a movement alias for Player 1. In local versus, WASD
 
 **Submission:** hold Down and press GRAB next to a downed opponent. The ground hold resolves after 3.6 seconds if the defender cannot escape. Alternate strike/heavy on keyboard or gamepad, or tap ESCAPE on phone. Healthy opponents naturally resist. A successful hold awards a fall by TAP OUT; a normal GRAB still starts a three-count pin.
 
-**Finisher:** fill the LUNACY meter by giving and taking damage. Use the finisher at close range when the meter is full. Missing still spends the meter. The legacy build supplies finisher names for Violent J, 2 Tuff Tony, Willie Mack, Kerry Morton, Moshpit Mike, and Cokane. These names appear in selection and during activation. Ground finishers use shared charged knockdown rules with the selected weapon or unarmed pose. The fifteen expanded-roster wrestlers can also spend full meter on a corner dive. Finisher names are presentation labels; separate signature holds, flips, and move-specific choreography have not been recreated.
+**Finisher:** fill the LUNACY meter by giving and taking damage. Use the finisher at close range when the meter is full. Missing still spends the meter. The legacy build supplies finisher names for Violent J, 2 Tuff Tony, Willie Mack, Kerry Morton, Moshpit Mike, and Cokane. These names appear in selection and during activation. Ground finishers use shared charged knockdown rules with the selected weapon or unarmed pose. The twenty-seven expanded-roster wrestlers can also spend full meter on a corner dive. Finisher names are presentation labels; separate signature holds, flips, and move-specific choreography have not been recreated.
 
-**Responsiveness:** button taps are retained even if pressed and released between simulation ticks. Actions entered up to 0.16 seconds before recovery ends can execute when the fighter is ready. Keyboard and gamepad attack holds do not auto-repeat. Touch HIT optionally repeats at a controlled interval of 0.46 seconds; it still uses the same startup, recovery, range, and damage rules.
+**Responsiveness:** button taps are retained even if pressed and released between simulation ticks. Actions entered up to 0.16 seconds before recovery ends can execute when the fighter is ready. Keyboard and gamepad attack holds do not auto-repeat. Touch HIT optionally repeats at roughly 0.43-second intervals; it still uses the same startup, recovery, range, and damage rules.
 
-**Block:** stops incoming strikes while guard remains. Heavy pressure can break the guard. Throws counter blocking. Aerial attacks can miss depending on the fighters' relative height.
+**Block:** stops incoming strikes while guard remains. A fresh, correctly timed block reverses a normal strike; release block and strike back during the attacker’s short stagger. Heavy pressure can break the guard. Throws counter blocking. Aerial attacks can miss depending on the fighters' relative height.
 
 ## Put the project in GitHub
 

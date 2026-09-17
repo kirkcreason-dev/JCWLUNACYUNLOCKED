@@ -1,0 +1,454 @@
+{
+  "source": "User-supplied roster approval table",
+  "recorded": "2026-09-17",
+  "scale": 10,
+  "entries": [
+    {
+      "id": "alice-crowley",
+      "name": "“Big Al” Alice Crowley",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 6,
+        "technique": 8,
+        "toughness": 9
+      },
+      "finisher": "Uni-Lariat"
+    },
+    {
+      "id": "josh-bishop",
+      "name": "“Big Money” Josh Bishop",
+      "approved": true,
+      "ratings": {
+        "power": 10,
+        "speed": 6,
+        "technique": 7,
+        "toughness": 9
+      },
+      "finisher": "Exit 187"
+    },
+    {
+      "id": "dani-mo",
+      "name": "“Dino-Myte” Dani Mo",
+      "approved": true,
+      "ratings": {
+        "power": 6,
+        "speed": 8,
+        "technique": 8,
+        "toughness": 8
+      },
+      "finisher": "Moon Mist Twist"
+    },
+    {
+      "id": "kerry-morton",
+      "name": "“Mr. JCW” Kerry Morton",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 8,
+        "technique": 10,
+        "toughness": 7
+      },
+      "finisher": "Kiss It Goodbye"
+    },
+    {
+      "id": "caleb-konley",
+      "name": "“The Chosen One” Caleb Konley",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 8,
+        "technique": 9,
+        "toughness": 8
+      },
+      "finisher": "Burning Hammer"
+    },
+    {
+      "id": "2-tuff-tony",
+      "name": "2 Tuff Tony",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 5,
+        "technique": 6,
+        "toughness": 10
+      },
+      "finisher": "The Meteorite"
+    },
+    {
+      "id": "able",
+      "name": "Abel",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 6,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": "As Above So Below (Tag)"
+    },
+    {
+      "id": "atiba",
+      "name": "Atiba",
+      "approved": true,
+      "ratings": {
+        "power": 6,
+        "speed": 8,
+        "technique": 8,
+        "toughness": 7
+      },
+      "finisher": "Sucka Busta (Tag)"
+    },
+    {
+      "id": "big-vito",
+      "name": "Big Vito",
+      "approved": true,
+      "ratings": {
+        "power": 9,
+        "speed": 5,
+        "technique": 6,
+        "toughness": 10
+      },
+      "finisher": "Implant DDT"
+    },
+    {
+      "id": "bruce-wayans",
+      "name": "Bruce Wayans",
+      "approved": true,
+      "ratings": {
+        "power": 9,
+        "speed": 5,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": "Sucka Busta (Tag)"
+    },
+    {
+      "id": "cokane",
+      "name": "Cokane",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 8,
+        "technique": 10,
+        "toughness": 7
+      },
+      "finisher": "Coke Slam"
+    },
+    {
+      "id": "ec3",
+      "name": "EC3",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 6,
+        "technique": 8,
+        "toughness": 8
+      },
+      "finisher": "One Percenter"
+    },
+    {
+      "id": "facade",
+      "name": "FACADE",
+      "approved": true,
+      "ratings": {
+        "power": 5,
+        "speed": 10,
+        "technique": 8,
+        "toughness": 7
+      },
+      "finisher": null
+    },
+    {
+      "id": "father-bronson",
+      "name": "Father Bronson",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 6,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": "The Red Bloom"
+    },
+    {
+      "id": "hokane",
+      "name": "Hokane",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 6,
+        "technique": 6,
+        "toughness": 8
+      },
+      "finisher": null
+    },
+    {
+      "id": "haley-j",
+      "name": "HollyHood Haley J",
+      "approved": false,
+      "ratings": null,
+      "finisher": null,
+      "aliases": [
+        "HollyHood Haley J",
+        "Hollyhood Haley J",
+        "Haley J",
+        "hollyhood-haley-j"
+      ]
+    },
+    {
+      "id": "j-rod",
+      "name": "J-Rod",
+      "approved": true,
+      "ratings": {
+        "power": 9,
+        "speed": 6,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": null
+    },
+    {
+      "id": "jacksyn",
+      "name": "Jacksyn",
+      "approved": true,
+      "ratings": {
+        "power": 6,
+        "speed": 7,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": "As Above So Below (Tag)"
+    },
+    {
+      "id": "jeeves",
+      "name": "Jeeves",
+      "approved": true,
+      "ratings": {
+        "power": 5,
+        "speed": 7,
+        "technique": 7,
+        "toughness": 6
+      },
+      "finisher": "Heads Bangers Balls"
+    },
+    {
+      "id": "jp-grayson",
+      "name": "JP Grayson",
+      "approved": true,
+      "ratings": {
+        "power": 5,
+        "speed": 9,
+        "technique": 8,
+        "toughness": 7
+      },
+      "finisher": "T-Gimmick (Tag)"
+    },
+    {
+      "id": "kongo-kong",
+      "name": "Kongo Kong",
+      "approved": true,
+      "ratings": {
+        "power": 10,
+        "speed": 5,
+        "technique": 7,
+        "toughness": 9
+      },
+      "finisher": null
+    },
+    {
+      "id": "krule",
+      "name": "Krule",
+      "approved": true,
+      "ratings": {
+        "power": 10,
+        "speed": 5,
+        "technique": 6,
+        "toughness": 9
+      },
+      "finisher": null
+    },
+    {
+      "id": "luigi-primo",
+      "name": "Luigi Primo",
+      "approved": false,
+      "ratings": null,
+      "finisher": null
+    },
+    {
+      "id": "matt-cross",
+      "name": "Matt Cross",
+      "approved": true,
+      "ratings": {
+        "power": 6,
+        "speed": 10,
+        "technique": 9,
+        "toughness": 6
+      },
+      "finisher": "Shooting Star Press"
+    },
+    {
+      "id": "mickie-knuckles",
+      "name": "Mickie Knuckles",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 5,
+        "technique": 6,
+        "toughness": 9
+      },
+      "finisher": null
+    },
+    {
+      "id": "moshpit-mike",
+      "name": "Mosh Pit Mike",
+      "approved": true,
+      "ratings": {
+        "power": 6,
+        "speed": 6,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": "Snapmare Powerbomb"
+    },
+    {
+      "id": "mr-happy",
+      "name": "Mr. Happy",
+      "approved": true,
+      "ratings": {
+        "power": 10,
+        "speed": 4,
+        "technique": 6,
+        "toughness": 8
+      },
+      "finisher": null
+    },
+    {
+      "id": "ring-rat",
+      "name": "Ring Rat",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 5,
+        "technique": 5,
+        "toughness": 7
+      },
+      "finisher": "Stunner"
+    },
+    {
+      "id": "ruffo",
+      "name": "Ruffo the Clown",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 7,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": null
+    },
+    {
+      "id": "sally-boy",
+      "name": "Sally Boy",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 8,
+        "technique": 5,
+        "toughness": 7
+      },
+      "finisher": "Hook Kick"
+    },
+    {
+      "id": "shane-mercer",
+      "name": "“Iron Demon” Shane Mercer",
+      "approved": true,
+      "ratings": {
+        "power": 10,
+        "speed": 6,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": "MoonSault and Battery"
+    },
+    {
+      "id": "sophia-rose",
+      "name": "Sophia Rose",
+      "approved": false,
+      "ratings": null,
+      "finisher": null
+    },
+    {
+      "id": "steven-flowe",
+      "name": "Steven Flowe",
+      "approved": true,
+      "ratings": {
+        "power": 6,
+        "speed": 10,
+        "technique": 8,
+        "toughness": 7
+      },
+      "finisher": "Steven Flowesion"
+    },
+    {
+      "id": "green-phantom",
+      "name": "The Green Phantom",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 6,
+        "technique": 6,
+        "toughness": 6
+      },
+      "finisher": null
+    },
+    {
+      "id": "tommy",
+      "name": "Tommy Grayson",
+      "approved": true,
+      "ratings": {
+        "power": 5,
+        "speed": 9,
+        "technique": 8,
+        "toughness": 7
+      },
+      "finisher": "T-Gimmick (Tag)"
+    },
+    {
+      "id": "vincenzo",
+      "name": "Vincenzo",
+      "approved": true,
+      "ratings": {
+        "power": 8,
+        "speed": 5,
+        "technique": 6,
+        "toughness": 7
+      },
+      "finisher": null
+    },
+    {
+      "id": "willie-mack",
+      "name": "Willie Mack",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 7,
+        "technique": 9,
+        "toughness": 8
+      },
+      "finisher": "Stunner"
+    },
+    {
+      "id": "yabo",
+      "name": "Yabo the Clown",
+      "approved": true,
+      "ratings": {
+        "power": 7,
+        "speed": 8,
+        "technique": 7,
+        "toughness": 8
+      },
+      "finisher": null
+    }
+  ]
+}

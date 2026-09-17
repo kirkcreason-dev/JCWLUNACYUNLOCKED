@@ -1,3 +1,32 @@
+# v0.14.0 — Reversals and Second Wind
+
+201 automated tests pass. `npm run check` passes: 36 unique fighters, 4,076 animation entries, six arenas, both music tracks and the supplied approval record.
+
+- Reversals are tested through actual attack timing from both player slots and both ring orientations, across jab, heavy, bat, guitar and trashcan. A counter jab lands during the earned opening. Holding/spamming block, low guard, early release and hitstun do not bypass the timing/cooldown rules.
+- Finisher blocks, grapple/throw breaks and dive defenses retain their existing rules. Normal held-guard and first-recovery-frame guard tests are separate from fresh-block reversal tests.
+- Second Wind is tested at the 30-health boundary, once per round, for both players and for strikes, throws, dives and finishers. Resource caps, no healing or cancelled hitstun, lethal hits and missed-dive self-damage are covered.
+- Keyboard, phone touch and gamepad inputs produce the same reversal. Online packets preserve a fresh block re-press even between sends, transfer new state and events once, and reject older v13 snapshots. Online room lifecycle tests pass under v14 / LU140.
+- Existing tests cover all 108 seeded CPU matches (36 fighters at three difficulties), combos, running attacks, damage rules, phone input and identical simulation at 30/60 fps presentation.
+- Native desktop, portrait and landscape review of actual reversal/comeback events found an initially clipped landscape cue. Both notices now draw in screen coordinates below the HUD. Updated renders were visually checked in all three layouts.
+- Native HUD-rail pixel checks pass with zero changed pixels in desktop, portrait and landscape across all six arenas while hit shake changes. Cues add no whole-screen flash or additional particle systems.
+- All 98 asset files, including roster and ratings data, remain byte-identical to v0.13.0. The 36-fighter roster and supplied NO exclusions remain intact.
+
+Reproduce with `npm test` and `npm run check`. Optional native rendering tools: `node tools/review_reversals.mjs` and `node tools/review_flicker.mjs`, requiring `@napi-rs/canvas`. The shipped game has no new runtime dependency. No new interactive-browser, physical-device or live Firebase test was performed. This ZIP has not been deployed; both online players must load v0.14.0.
+
+# v0.13.0 — Gameplay pace, running attacks and roster approvals
+
+189 automated tests pass. `npm run check` passes for 36 unique fighters, 4,076 animation entries, six arenas and both music tracks.
+
+- Travel tests measure a 12% speed increase while the round clock remains unchanged. Actual simulated attacks recover earlier and can still connect during their late active frames with unchanged damage.
+- Running heavies close a small gap from both sides with bare hands, chair, bat, guitar and trashcan. Misses/blocks keep recovery; standing, airborne and retreating heavies do not grant a forward lunge. Online snapshots deliver movement and running-hit feedback.
+- Touch HIT repeat follows the shorter recovery and stops cleanly on release. Existing attack-pose, combo-limit, guard, throw-break, pin/escape and 30/60 fps simulation tests pass.
+- All 108 seeded full CPU matches finish: 36 fighters on each of three difficulties. Existing online lifecycle/input tests pass with v13 / LU130, including rejection of v12 clients.
+- The supplied approval record contains 35 YES and 3 NO entries. All 32 listed playable fighters match its ratings and finisher names. The release validator rejects NO entries even under an alternate imported ID. Four unlisted existing fighters are retained without inferring a new approval.
+- All 98 asset files, including the roster and website snapshot, are byte-identical to v0.12.1. No art or audio was added for this gameplay change.
+- Native pixel regression still reports zero changed HUD-rail pixels across all six arenas in desktop, portrait and landscape layouts while hit shake varies. The earlier synchronized presentation, opaque rails and reduced shake remain intact.
+
+Reproduce with `npm test`, `npm run check`, and optionally `node tools/review_flicker.mjs` with `@napi-rs/canvas`. Validation uses deterministic simulation, the in-memory online adapter, and native canvas. No new physical-device, interactive browser or live Firebase test was performed. This full ZIP has not been deployed; both online players must reload v0.13.0.
+
 # v0.12.1 — Screen flicker correction
 
 180 automated tests pass. `npm run check` passes: 36 unique fighters, 4,076 animation entries, six arenas and both music tracks.

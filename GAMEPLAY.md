@@ -1,4 +1,24 @@
-# Lunacy Unlocked — gameplay guide, v0.8.0
+# Lunacy Unlocked — gameplay guide, v0.14.0
+
+## Timed reversals
+
+Press **Down** on keyboard/phone, or **LB** on a gamepad, just before a normal strike lands. Stay blocking through contact. The first **0.12 seconds** of a fresh guard can reverse the attack, provided at least **20 guard** remains. Each attempt starts a **1.2-second cooldown**. Holding guard or repeatedly tapping during cooldown does not renew the window.
+
+A reversal costs no health or guard, gives **12 Lunacy**, and staggers the attacker for **0.32 seconds**. Release block and tap HIT to punish. The counterattack uses its normal range and damage. You cannot reverse while still attacking or stunned; a held block resumes ordinary defense on recovery. Finishers, grabs and dives use their existing defenses and cannot be reversed by this mechanic.
+
+## Second Wind
+
+Once per round, opponent damage that leaves you alive at **30 health or less** grants **25 Lunacy** and **20 guard**, capped at 100. The cue identifies which player received it. Spend a ready finisher wisely or defend and build the remaining meter for a comeback.
+
+Health, hitstun and knockdowns remain unchanged. A knockout stays a knockout. Missed-dive self-damage does not award Second Wind. The opportunity resets for each new round; both players and CPU fighters get the same benefit.
+
+## Pace and running attacks
+
+Walking, running, air steering and horizontal dive travel are 12% faster. Attack wind-up and recovery are 10% shorter; the active contact windows, base damage, hit-stop, match timer, throw-break and pin/submission escape rules stay the same. The same simulation runs on every device. Touch HOLD HIT repeats in step with the shorter strike recovery.
+
+Run toward the other wrestler, then tap **HEAVY** for a short lunge. Hold direction to build into a run automatically, or use the existing run control with at least 0.2 seconds of forward movement. The lunge carries you about 45 ring units and works with every heavy weapon. It deals normal damage, can be interrupted or blocked, and keeps its full recovery. A backward run, airborne attack, combo follow-up, or standing Shift + HEAVY does not trigger the lunge. A landed hit displays **RUNNING HIT** unless combo/counter feedback takes priority.
+
+Between rounds, the result pause is now 2.4 seconds rather than 3 seconds. The opening countdown still gives both players time to get ready.
 
 ## Strike chains
 
@@ -10,7 +30,7 @@ The game accepts a follow-up during hit-stop and starts it after the jab's activ
 
 ## Movement and defense
 
-Holding a direction accelerates smoothly into a run over roughly 0.42 seconds. Shift or the controller's left-stick click still runs immediately. Attacks, guarding, knockdowns, and holds reset run buildup. Releasing a direction stops movement input; impact knockback still settles normally.
+Holding a direction accelerates smoothly into a run over roughly 0.38 seconds. Shift or the controller's left-stick click still runs immediately. Attacks, guarding, knockdowns, and holds reset run buildup. Releasing a direction stops movement input; impact knockback still settles normally.
 
 Hold Down to block on the first legal frame after hitstun or standing up. An attack buffered near the end of recovery starts as soon as recovery finishes. Attacking gives up any remaining wakeup invulnerability.
 
@@ -30,9 +50,9 @@ While pinned, alternate HIT and HEAVY on keyboard/gamepad or tap the large phone
 
 The CPU approaches within useful striking range, avoids choosing short jabs from too far away, can deliberately repeat attacks, avoids futile rope-side pins, and saves finishers while an opponent is down or getting up. Difficulty continues to control decision timing, blocking, throw breaks, and pin escape assistance.
 
-Both online players must use compatible **v0.8.x** builds. The host applies these same rules to both players. The guest receives chain counts, confirmed-hit hints, grab cues, and hold/rope-break events. See MULTIPLAYER.md for the transport details and TESTING.md for what was verified.
+Both online players must use compatible **v0.14.0** builds. The host applies these same rules to both players. The guest receives chain counts, confirmed-hit hints, grab cues, and hold/rope-break events. See MULTIPLAYER.md for the transport details and TESTING.md for what was verified.
 
-All 24 existing fighters, website ratings, animation atlases, arenas, startup artwork, and music are retained. Practice mode still provides full meter and a passive opponent for learning the timing.
+All 36 existing fighters, supplied ratings, animation atlases, arenas, startup artwork, and music are retained. Practice mode still provides full meter and a passive opponent for learning the timing.
 
 ## v0.8.1 phone selector
 
