@@ -1,9 +1,9 @@
-import {emptyInput} from './engine.js?v=0.14.0';
-export const PROTOCOL='lunacy-2d-v14';
+import {emptyInput} from './engine.js?v=0.16.0';
+export const PROTOCOL='lunacy-2d-v16';
 export const ACTIONS=['jump','light','heavy','grapple','special','weapon','taunt','block'];
 const KEYS=Object.keys(emptyInput());
 const STATES=new Set(['idle','walk','jump','block','light','heavy','special','hurt','down','pinned','rise','grapple','grabbed','lifted','thrown','throw','pin','defeat','victory','run','equip','taunt','climb','perch','dive']);
-const FIELDS=['x','z','vz','vx','facing','hp','meter','guard','t','invincible','downTime','combo','walkDirection','fallDuration','divePower','chain','reversalWindow','reversalCooldown'];
+const FIELDS=['x','z','vz','vx','facing','hp','meter','guard','t','invincible','downTime','combo','walkDirection','fallDuration','divePower','chain','reversalWindow','reversalCooldown','reboundTime','reboundDirection'];
 const finite=(n,min,max)=>Number.isFinite(n)&&n>=min&&n<=max;
 const clone=value=>JSON.parse(JSON.stringify(value));
 
@@ -56,7 +56,7 @@ export function validSnapshot(s,ids){
   if(s.pin&&(![0,1].includes(s.pin.attacker)||!finite(s.pin.time,0,10)||!finite(s.pin.count,0,3)||!finite(s.pin.escape,0,100)||![undefined,'pin','submission'].includes(s.pin.kind)))return false;
   return true;
 }
-const EVENT_TYPES=new Set(['round','fight','hit','slam','block','special','notReady','throwBreak','holdBreak','kickout','guardBreak','count','roundEnd','matchEnd','jump','land','whiff','throw','pin','weapon','weaponBreak','taunt','tauntStart','climb','dive','ropeBreak','pinRelease','grapple','swing','reversal','secondWind']);
+const EVENT_TYPES=new Set(['round','fight','hit','slam','block','special','notReady','throwBreak','holdBreak','kickout','guardBreak','count','roundEnd','matchEnd','jump','land','whiff','throw','pin','weapon','weaponBreak','taunt','tauntStart','climb','dive','ropeBreak','pinRelease','grapple','swing','reversal','secondWind','ropeRebound']);
 export class SnapshotBuffer{
   constructor(ids){this.ids=ids;this.prev=null;this.next=null;this.at=0;this.eventSeq=0;this.events=[];}
   receive(packet,now){

@@ -1,4 +1,4 @@
-import {emptyInput,STEP,MOVES} from './engine.js?v=0.14.0';
+import {emptyInput,STEP,MOVES} from './engine.js?v=0.16.0';
 const REPEAT_HIT_INTERVAL=MOVES.light.startup+MOVES.light.active+MOVES.light.recovery+.03;
 export const KEYMAPS=[
   {ArrowLeft:'left',ArrowRight:'right',ArrowUp:'jump',ArrowDown:'block',KeyZ:'light',KeyX:'heavy',KeyC:'grapple',KeyV:'special',KeyJ:'light',KeyK:'heavy',KeyL:'grapple',KeyU:'special',KeyQ:'weapon',KeyE:'taunt',ShiftLeft:'run'},

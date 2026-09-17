@@ -7,6 +7,8 @@ function releaseImage(image){
 }
 export function retainMatchArtwork(atlases,arenas,promises,fighterIds,arena){
   const keep=new Set(fighterIds);
+  // In-flight decodes must be evicted too, before they can repopulate a stale cache.
+  for(const key of promises.keys())if(typeof key==='number'?!keep.has(key):key.startsWith('arena-')&&key!==`arena-${arena}`)promises.delete(key);
   for(const key of Object.keys(atlases))if(!keep.has(Number(key))){releaseImage(atlases[key]);delete atlases[key];promises.delete(Number(key));}
   for(const key of Object.keys(arenas))if(Number(key)!==arena){releaseImage(arenas[key]);delete arenas[key];promises.delete(`arena-${key}`);}
 }

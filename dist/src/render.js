@@ -1,8 +1,8 @@
-import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget,MOVEMENT_PACE} from './engine.js?v=0.14.0';
-import {ARENAS} from './arenas.js?v=0.14.0';
-import {attackPose} from './attack-animation.js?v=0.14.0';
-import {phoneCamera} from './phone-layout.js?v=0.14.0';
-import {drawArenaWordmarks} from './branding.js?v=0.14.0';
+import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget,MOVEMENT_PACE} from './engine.js?v=0.16.0';
+import {ARENAS} from './arenas.js?v=0.16.0';
+import {attackPose} from './attack-animation.js?v=0.16.0';
+import {phoneCamera} from './phone-layout.js?v=0.16.0';
+import {drawArenaWordmarks} from './branding.js?v=0.16.0';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
@@ -33,6 +33,7 @@ export class Renderer {
     }
     if(e.type==='special'){this.graphic={key:'lunacy',life:.8};if(e.name)this.popups.push({text:e.name,x:640,y:245,life:1,color:'#b0ff20'});}
     if(e.type==='round')this.reset();
+    if(e.type==='ropeRebound')this.popups.push({text:'REBOUND',x:e.x<640?300:980,y:445,life:.4,color:'#b0ff20'});
     if(e.type==='throwBreak')this.popups.push({text:'THROW BREAK',x:640,y:300,life:.9,color:'#8ee7ff'});
     if(e.type==='notReady')this.popups.push({text:'BUILD YOUR LUNACY METER',x:640,y:225,life:.7,color:'#e8dfea'});
     if(e.type==='kickout')this.graphic={key:'kickout',life:1};
@@ -43,8 +44,8 @@ export class Renderer {
     if(e.type==='weaponBreak')this.popups.push({text:'GUITAR BROKEN',x:640,y:300,life:.8,color:'#ffe197'});
     if(e.type==='taunt')this.popups.push({text:'+12 LUNACY',x:640,y:300,life:.8,color:'#b0ff20'});
     if(e.type==='guardBreak')this.popups.push({text:'GUARD BREAK',x:640,y:340,life:.85,color:'#fa2484'});
-    if(e.type==='reversal')this.popups.push({screen:true,text:`P${e.index+1} · REVERSAL! +12 LUNACY`,life:.9,color:'#8ee7ff'});
-    if(e.type==='secondWind')this.popups.push({screen:true,text:`P${e.index+1} · SECOND WIND! +25 LUNACY`,life:1.25,color:'#ffe197'});
+    if(e.type==='reversal')this.popups.push({screen:true,art:'reversal',label:`P${e.index+1} · +12 LUNACY`,text:`P${e.index+1} · REVERSAL! +12 LUNACY`,life:.9,color:'#8ee7ff'});
+    if(e.type==='secondWind')this.popups.push({screen:true,art:'secondWind',label:`P${e.index+1} · +25 LUNACY`,text:`P${e.index+1} · SECOND WIND! +25 LUNACY`,life:1.25,color:'#ffe197'});
     // A disconnected peer or a very long arcade session must not turn event
     // bursts into an ever-growing presentation queue.
     if(this.popups.length>48)this.popups.splice(0,this.popups.length-48);
@@ -85,6 +86,17 @@ export class Renderer {
     let notice;for(let i=this.popups.length-1;i>=0;i--)if(this.popups[i].screen){notice=this.popups[i];break;}if(!notice)return;
     // Screen coordinates keep the cue clear of every phone camera and HUD rail.
     const c=this.ctx,phone=this.portrait||this.compact,y=phone?250:185;
+    const art=this.bannerArt[notice.art];
+    if(art){
+      // Draw the supplied artwork unchanged, framing its lettering in the HUD gap.
+      // Screen blending suppresses the black backdrop without editing source pixels.
+      const sy=art.height*.18,sh=art.height*.64,width=phone?520:460,height=width*sh/art.width,top=phone?224:151;
+      c.save();c.globalAlpha=fit(notice.life*3,0,1);
+      c.fillStyle='#100a19eb';c.fillRect(640-width/2-14,top-3,width+28,height+34);
+      c.globalCompositeOperation='screen';
+      c.drawImage(art,0,sy,art.width,sh,640-width/2,top,width,height);c.restore();
+      c.save();c.globalAlpha=fit(notice.life*3,0,1);this.text(notice.label,640,top+height+22,phone?25:21,notice.color,'center',true);c.restore();return;
+    }
     c.save();c.globalAlpha=fit(notice.life*3,0,1);c.fillStyle='#100a19ed';c.fillRect(200,y-34,880,49);
     this.text(notice.text,640,y,phone?36:25,notice.color,'center',true);c.restore();
   }
@@ -105,7 +117,7 @@ export class Renderer {
       case 'light':case 'heavy':case 'special':{
         const pose=attackPose(def,f.move||f.state,f.t,f.attackStyle);attackFrame=pose.frame;offsetX=pose.offsetX;propGuitar=pose.propGuitar;break;
       }
-      case 'hurt':anim=f.exhausted&&animations.exhausted?'exhausted':'hurt';break;
+      case 'hurt':if(!this.reduced&&f.t<.10){scaleX=1.035;scaleY=.97;offsetX=-5;}anim=f.exhausted&&animations.exhausted?'exhausted':'hurt';break;
       case 'down':{
         const fall=f.fallFace==='front'?'fallFront':'fallBack';
         if(animations[fall]&&f.t<(f.fallDuration||0)){anim=fall;progress=fit(f.t/f.fallDuration,0,.999);}
@@ -190,9 +202,9 @@ export class Renderer {
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)).padStart(2,'0'),640,77,57,m.remaining<15?'#ff5671':'#f6f1e3','center',true);
     this.text(m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`,640,102,13,'#b0ff20','center');
     c.fillStyle='#0c0716dd';c.fillRect(38,666,1204,31);this.text(ARENAS[arena]?.name||'',54,687,12,'#d4c5dd');
-    const help=this.scheme==='gamepad'?'X STRIKE  /  Y HEAVY  /  B GRAPPLE  /  RB FINISHER':this.scheme==='touch'?'HIT  /  HEAVY  /  GRAB TO THROW OR PIN  /  FINISH':'← → MOVE  /  ↑ JUMP  /  ↓ BLOCK  /  Z HIT  /  X HEAVY  /  C GRAB  /  V FINISH';
+    const help=this.coachText|| (this.scheme==='gamepad'?'X STRIKE  /  Y HEAVY  /  B GRAPPLE  /  RB FINISHER':this.scheme==='touch'?'HIT  /  HEAVY  /  GRAB TO THROW OR PIN  /  FINISH':'← → MOVE  /  ↑ JUMP  /  ↓ BLOCK  /  Z HIT  /  X HEAVY  /  C GRAB  /  V FINISH');
     this.text(m.pin?(this.scheme==='touch'&&m.pin.attacker===1-(this.localIndex||0)?'TAP KICK OUT REPEATEDLY':`P${2-m.pin.attacker}: ALTERNATE STRIKE + HEAVY TO ESCAPE`):help,640,687,12,m.pin?'#b0ff20':'#d4c5dd','center');
-    this.text(m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.options.mode==='practice'?'PRACTICE':'BEST OF 3',1224,687,12,'#d4c5dd','right');
+    this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.options.mode==='practice'?'PRACTICE':'BEST OF 3',1224,687,12,'#d4c5dd','right');
     if(m.pin){
       const p=m.pin,b=m.fighters[1-p.attacker],need=escapeTarget(b.hp);
       c.fillStyle='#0e0819e8';c.fillRect(460,180,360,72);this.text(p.kind==='submission'?'SUBMISSION':`PIN COUNT  ${p.count||'—'}`,640,209,24,'#fff7e4','center',true);c.fillStyle='#39213f';c.fillRect(488,225,304,8);c.fillStyle='#b0ff20';c.fillRect(488,225,304*fit(p.escape/need,0,1),8);
@@ -216,7 +228,7 @@ export class Renderer {
     }
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)),640,93,82,m.remaining<15?'#ff5671':'#fff5e7','center',true);
     this.text(m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`,640,140,25,'#b0ff20','center');
-    const footerY=this.portrait?909:669;c.fillStyle='#100a19';c.fillRect(0,footerY,1280,51);this.text(ARENAS[arena]?.name||'',640,footerY+35,27,'#e5dce9','center');
+    const footerY=this.portrait?909:669;c.fillStyle='#100a19';c.fillRect(0,footerY,1280,51);this.text(m.options.mode==='championship'?m.options.championshipLabel:this.coachText||ARENAS[arena]?.name||'',640,footerY+35,this.coachText?19:27,'#e5dce9','center');
     if(m.pin){c.fillStyle='#100a19dc';c.fillRect(420,230,440,74);this.text(m.pin.kind==='submission'?'SUBMISSION':`PIN COUNT ${m.pin.count||'—'}`,640,280,42,'#b0ff20','center',true);}
   }
   banners(m){
@@ -228,6 +240,7 @@ export class Renderer {
       this.text(`P${defender+1} · TAP ${key} TO BREAK`,640,y,this.portrait||this.compact?32:25,'#8ee7ff','center',true);
     }
     if(m.phase==='intro'){title=m.phaseTime<1.55?m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`:'FIGHT!';sub=m.phaseTime<1.55?(m.options.mode==='practice'?'FULL METER · PASSIVE OPPONENT':'FIRST TO TWO FALLS'):'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
+    if(m.phase==='roundEnd'&&m.phaseTime<1.25&&m.method==='TIME LIMIT'&&this.bannerArt.timeout){this.graphicImage('timeout',640,315,750);return;}
     if(m.phase==='roundEnd'&&m.phaseTime<1.25&&['PINFALL','TAP OUT'].includes(m.method)&&this.bannerArt[m.method==='PINFALL'?'pinfall':'tapout']){this.graphicImage(m.method==='PINFALL'?'pinfall':'tapout',640,315,750);return;}
     if(m.phase==='roundEnd'){title=m.roundWinner===null?'DRAW':`${m.fighters[m.roundWinner].definition.name.toUpperCase()} WINS`;sub=m.options.mode==='practice'?'PRACTICE · RESETTING':m.method;}
     if(title){c.save();c.fillStyle='#0a071ac4';c.fillRect(0,280,1280,119);c.shadowColor='#000';c.shadowBlur=this.lowPower?0:18;this.text(title,640,343,title.length>20?48:66,color,'center',true);this.text(sub,640,377,17,'#d4c6df','center');c.restore();}

@@ -1,3 +1,4 @@
+import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.16.0';
 // Pure fixed-step match simulation. Rendering and input devices never change the rules.
 export const STEP = 1 / 60;
 export const FLOOR = 593;
@@ -33,7 +34,7 @@ export class Match {
     this.newRound();
   }
   newRound(){
-    this.fighters=this.ids.map((id,i)=>({id,definition:this.roster[id],x:i?870:410,z:0,vz:0,vx:0,facing:i?-1:1,hp:100,meter:0,guard:100,guardDelay:0,reversalWindow:0,reversalCooldown:0,secondWindUsed:false,state:'idle',t:0,move:null,hit:false,confirmed:false,chain:0,stun:0,invincible:0,downTime:0,combo:0,comboTime:0,buffer:null,weapon:this.roster[id].weapons?'none':'chair',attackStyle:'chair',weaponUses:0,runTime:0,runDirection:0,fallFace:'back',fallDuration:0,exhausted:false,divePower:1,diveHit:false,tauntCooldown:0,last:emptyInput()}));
+    this.fighters=this.ids.map((id,i)=>({id,definition:this.roster[id],x:i?870:410,z:0,vz:0,vx:0,facing:i?-1:1,hp:100,meter:0,guard:100,guardDelay:0,reversalWindow:0,reversalCooldown:0,secondWindUsed:false,reboundTime:0,reboundDirection:0,state:'idle',t:0,move:null,hit:false,confirmed:false,chain:0,stun:0,invincible:0,downTime:0,combo:0,comboTime:0,buffer:null,weapon:this.roster[id].weapons?'none':'chair',attackStyle:'chair',weaponUses:0,runTime:0,runDirection:0,fallFace:'back',fallDuration:0,exhausted:false,divePower:1,diveHit:false,tauntCooldown:0,last:emptyInput()}));
     if(this.options.mode==='practice')this.fighters[0].meter=100;
     this.phase='intro';this.phaseTime=0;this.remaining=99;this.grapple=null;this.pin=null;this.hitStop=0;this.shake=0;this.totalTime=0;this.aiTimer=0;this.aiInput=emptyInput();this.roundWinner=null;this.method='';
     this.emit('round',{round:this.round});
@@ -98,6 +99,8 @@ export class Match {
   remember(inputs){this.fighters.forEach((f,i)=>f.last={...(inputs[i]||emptyInput())});}
   updateFighter(f,enemy,input,dt,index){
     if(!input.block)f.reversalWindow=0;
+    f.reboundTime=Math.max(0,(f.reboundTime||0)-dt);
+    if(input.block){f.reboundTime=0;f.reboundDirection=0;}
     if(!['idle','walk','run'].includes(f.state)||input.block){f.runTime=0;f.runDirection=0;}
     if(Math.abs(f.vx)>.1){f.x=clamp(f.x+f.vx*dt,LEFT,RIGHT);f.vx*=Math.exp(-14*dt);}else f.vx=0;
     if(!['climb','perch'].includes(f.state)&&(f.z>0||f.vz>0)){f.z+=f.vz*dt;f.vz-=1250*dt;if(f.z<=0){f.z=0;f.vz=0;this.emit('land',{index});}}
@@ -149,13 +152,18 @@ export class Match {
     if(command==='jump'&&f.z===0&&!input.block){f.buffer=null;f.vz=615;f.state='jump';f.t=0;this.emit('jump',{index});return;}
     if(input.block&&f.z===0){
       if(tap(input,f.last,'block')&&f.reversalCooldown===0&&f.guard>=20){f.reversalWindow=REVERSAL_WINDOW;f.reversalCooldown=REVERSAL_COOLDOWN;}
-      if(f.state!=='block'){f.t=0;f.state='block';}if(!f.guardDelay)f.guard=Math.min(100,f.guard+dt*7);return;
+      if(f.state!=='block'){f.t=0;f.state='block';}if(!f.guardDelay)f.guard=Math.min(100,f.guard+dt*7*(f.definition.technique||1));return;
     }
-    if(!f.guardDelay)f.guard=Math.min(100,f.guard+dt*18);
-    const movement=Number(input.right)-Number(input.left);
+    if(!f.guardDelay)f.guard=Math.min(100,f.guard+dt*18*(f.definition.technique||1));
+    let movement=Number(input.right)-Number(input.left);
+    if(f.reboundTime>0)movement=f.reboundDirection;
     if(movement){
       f.runTime=f.runDirection===movement?f.runTime+dt:0;f.runDirection=movement;f.walkDirection=movement;
-      const running=input.run||f.runTime>RUN_BUILDUP,pace=input.run?1.48:1+.48*smooth(f.runTime/RUN_BUILDUP);
+      const running=f.reboundTime>0||input.run||f.runTime>RUN_BUILDUP,pace=f.reboundTime>0?1.62:input.run?1.48:1+.48*smooth(f.runTime/RUN_BUILDUP);
+      if(running&&f.z===0&&f.runTime>=.20&&f.reboundTime===0&&((movement<0&&f.x<=LEFT)||(movement>0&&f.x>=RIGHT))){
+        f.reboundTime=.30;f.reboundDirection=-movement;movement=-movement;f.runDirection=movement;f.walkDirection=movement;
+        this.emit('ropeRebound',{index,x:f.x});
+      }
       f.x=clamp(f.x+movement*245*MOVEMENT_PACE*f.definition.speed*(f.z>0?.84:pace)*dt,LEFT,RIGHT);
       const state=running?'run':'walk';if(f.z===0&&f.state!==state){f.state=state;f.t=0;}
     }else{f.runTime=0;f.runDirection=0;if(f.z===0&&f.state!=='idle'){f.state='idle';f.t=0;}}
@@ -165,7 +173,7 @@ export class Match {
     // Require a real run toward the opponent; no instant dash from idle/backpedal.
     const running=key==='heavy'&&!chained&&f.z===0&&f.state==='run'&&f.runTime>=.20&&f.runDirection===f.facing;
     f.runningAttack=running;if(running)f.vx=f.facing*560;
-    f.buffer=null;f.invincible=0;f.runTime=0;f.runDirection=0;f.chain=chained?f.chain+1:0;
+    f.reboundTime=0;f.buffer=null;f.invincible=0;f.runTime=0;f.runDirection=0;f.chain=chained?f.chain+1:0;
     if(key==='special'){f.meter=0;this.emit('special',{index,name:f.definition.finisher||'LUNACY FINISHER'});}
     f.attackStyle=key==='light'?'light':f.weapon==='none'?(f.definition.animations?.kick?'kick':'light'):f.weapon;
     f.state=key;f.move=key==='heavy'&&['bat','guitar','trashcan'].includes(f.weapon)?f.weapon:key;
@@ -174,13 +182,13 @@ export class Match {
   }
   contact(index){
     const f=this.fighters[index],e=this.fighters[1-index];if(!f.move||f.hit)return;
-    const m=MOVES[f.move];if(f.t<m.startup||f.t>m.startup+m.active)return;
+    const m=f.move==='special'?finisherMove(f.definition,MOVES.special):MOVES[f.move];if(f.t<m.startup||f.t>m.startup+m.active)return;
     if(e.state==='down'||e.state==='rise'||e.invincible>0)return;
     const dx=e.x-f.x;if(Math.abs(dx)>m.reach||dx*f.facing<0||Math.abs(f.z-e.z)>105)return;
     return {index,move:f.move,facing:f.facing,blocked:e.state==='block'&&e.facing===-f.facing&&e.z===0,combo:e.stun>0,chain:f.chain,counter:Boolean(e.move&&e.t<MOVES[e.move].startup),running:Boolean(f.runningAttack)};
   }
   resolveAttack({index,move,facing,blocked,combo,chain=0,counter=false,running=false}){
-    const f=this.fighters[index],e=this.fighters[1-index],m=MOVES[move];
+    const f=this.fighters[index],e=this.fighters[1-index],m=move==='special'?finisherMove(f.definition,MOVES.special):MOVES[move];
     f.hit=true;
     if(blocked){
       // A fresh, well-timed guard turns a normal strike aside. Finishers,
@@ -199,9 +207,9 @@ export class Match {
     const scale=chain===0?1:chain===1?.85:.70;
     const damage=m.damage*scale*f.definition.power/e.definition.toughness;
     e.hp=Math.max(0,e.hp-damage);e.meter=clamp(e.meter+damage*.8,0,100);f.meter=clamp(f.meter+m.meter,0,100);
-    e.move=null;e.buffer=null;e.confirmed=false;e.chain=0;e.exhausted=blocked;e.stun=Math.max(e.stun,m.stun);e.state='hurt';e.t=0;f.confirmed=true;
+    e.reboundTime=0;e.move=null;e.buffer=null;e.confirmed=false;e.chain=0;e.exhausted=blocked;e.stun=Math.max(e.stun,m.stun);e.state='hurt';e.t=0;f.confirmed=true;
     e.vx=facing*m.knock*14;f.combo=combo?f.combo+1:1;f.comboTime=1.2;
-    this.hitStop=Math.max(this.hitStop,move==='light'?.045:.085);this.shake=Math.max(this.shake,move==='light'?3:8);
+    this.hitStop=Math.max(this.hitStop,move==='special'?.10:counter?.065:move==='light'?.045:.075);this.shake=Math.max(this.shake,move==='light'?3:8);
     this.emit('hit',{index:1-index,attacker:index,move,x:e.x-facing*25,z:e.z,damage,combo:f.combo,counter,running});
     this.secondWind(1-index);
     if(f.weapon==='guitar'&&move!=='light'){f.weaponUses++;if(f.weaponUses>=2){f.weapon='none';this.emit('weaponBreak',{index});}}
@@ -218,7 +226,7 @@ export class Match {
     const a=this.fighters[index],b=this.fighters[1-index];
     a.weapon=a.definition.weapons?'none':a.weapon;b.weapon=b.definition.weapons?'none':b.weapon;
     this.grapple={attacker:index,time:0,released:false,startX:b.x,fromX:a.x,throwDir:a.x<LEFT+180?1:a.x>RIGHT-180?-1:a.facing};
-    a.state='grapple';a.t=0;a.move=null;a.vx=0;a.buffer=null;a.invincible=0;a.runTime=0;a.runDirection=0;b.state='grabbed';b.move=null;b.vx=0;b.t=0;b.stun=0;this.emit('grapple',{index});
+    a.reboundTime=0;b.reboundTime=0;a.state='grapple';a.t=0;a.move=null;a.vx=0;a.buffer=null;a.invincible=0;a.runTime=0;a.runDirection=0;b.state='grabbed';b.move=null;b.vx=0;b.t=0;b.stun=0;this.emit('grapple',{index});
   }
   updateGrapple(dt){
     const g=this.grapple,a=this.fighters[g.attacker],b=this.fighters[1-g.attacker];g.time+=dt;
@@ -226,7 +234,7 @@ export class Match {
     if(t<=THROW_BREAK_WINDOW&&b.buffer?.action==='grapple'){this.breakGrapple();return;}
     if(t<.32){b.x=g.startX+(clamp(a.x+a.facing*62,LEFT,RIGHT)-g.startX)*smooth(t/.32);b.z=0;}
     else if(t<.84){
-      const lift=smooth((t-.32)/.52);b.z=110+135*lift;
+      const lift=smooth((t-.32)/.52);b.z=245*lift;
       const beside=clamp(a.x+a.facing*62,LEFT,RIGHT);b.x=beside+(a.x+a.facing*12-beside)*lift;b.state='lifted';
     }
     else{
@@ -246,7 +254,7 @@ export class Match {
     this.grapple=null;this.emit('throwBreak');
   }
   knockDown(f,face='back',duration=.38,downTime=2.5){
-    f.state='down';f.t=0;f.fallFace=face;f.fallDuration=duration;f.downTime=downTime;f.stun=0;f.z=0;f.vz=0;f.move=null;f.buffer=null;f.confirmed=false;f.chain=0;f.runTime=0;f.runDirection=0;
+    f.reboundTime=0;f.state='down';f.t=0;f.fallFace=face;f.fallDuration=duration;f.downTime=downTime;f.stun=0;f.z=0;f.vz=0;f.move=null;f.buffer=null;f.confirmed=false;f.chain=0;f.runTime=0;f.runDirection=0;
   }
   updateRopes(f,enemy,input,dt,index){
     if(f.state==='climb'){
@@ -316,6 +324,7 @@ export class Match {
   }
   cpu(dt){
     const me=this.fighters[1],enemy=this.fighters[0],diff=this.options.difficulty;
+    const profile=fighterProfile(me.definition);
     const rate=diff==='hard'?.13:diff==='easy'?.34:.22;
     this.aiTimer-=dt;
     if(this.aiTimer>0)return this.aiInput;
@@ -326,21 +335,21 @@ export class Match {
     if(me.state==='down'){v[this.random()<.5?'light':'heavy']=true;this.aiInput=v;return v;}
     if(distance>92)v[toward]=true;
     if(me.state==='perch'){v.jump=true;this.aiInput=v;return v;}
-    if(me.definition.weapons&&me.weapon==='none'&&distance>260&&this.random()<.22)v.weapon=true;
-    if(me.definition.animations?.climb&&distance>300&&(me.x<LEFT+65||me.x>RIGHT-65)&&this.random()<.18)v.grapple=true;
+    if(me.definition.weapons&&me.weapon==='none'&&distance>260&&this.random()<profile.weapon)v.weapon=true;
+    if(me.definition.animations?.climb&&distance>300&&(me.x<LEFT+65||me.x>RIGHT-65)&&this.random()<profile.climb)v.grapple=true;
     if(distance>420&&me.meter<85&&me.tauntCooldown===0&&this.random()<.08)v.taunt=true;
     if(enemy.move&&distance<165&&this.random()<(diff==='easy'?.28:diff==='hard'?.85:.6))v.block=true;
     else if(distance<155){
       const r=this.random();
-      if(canPin(me,enemy)&&!nearRopes(enemy)){v.grapple=true;v.block=enemy.hp<35&&this.random()<.35;}
+      if(canPin(me,enemy)&&!nearRopes(enemy)){v.grapple=true;v.block=enemy.hp<35&&this.random()<(profile.id==='technician'?.75:.20);}
       else if(enemy.state==='down'||enemy.state==='rise'){v[toward]=false;if(distance<120)v[away]=true;}
       else if(me.meter>=100&&r<.6)v.special=true;
-      else if(distance<100&&enemy.stun===0&&r<.20)v.grapple=true;
-      else if(distance<105&&r<.54)v.light=true;
-      else if(distance<MOVES[['bat','guitar','trashcan'].includes(me.weapon)?me.weapon:'heavy'].reach-8&&r<.9)v.heavy=true;
+      else if(distance<100&&enemy.stun===0&&r<profile.grab)v.grapple=true;
+      else if(distance<105&&r<(profile.id==='powerhouse'?.40:.64))v.light=true;
+      else if(distance<MOVES[['bat','guitar','trashcan'].includes(me.weapon)?me.weapon:'heavy'].reach-8&&r<Math.min(.97,profile.heavy+.20))v.heavy=true;
       else if(distance<92){v[toward]=false;v[away]=true;}
     }
-    if(distance>155&&distance<320&&this.random()<.10)v.jump=true;
+    if(distance>155&&distance<320&&this.random()<profile.jump)v.jump=true;
     // A fresh decision can repeat the same attack. Store only held state so the
     // press is consumed once, including when the next step is hit-stop.
     this.aiInput={...v};

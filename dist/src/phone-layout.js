@@ -33,7 +33,7 @@ export function phoneLayout({width,height,safe={},online=false}){
 
 export function canvasSize({cssWidth=1280,portrait=false,touch=false,dpr=1,quality='auto'}={}){
   const ratio=quality==='battery'?1.5:2;
-  const width=touch?clamp(Math.ceil(cssWidth*Math.min(dpr,ratio)/32)*32,640,1280):1280;
+  const width=touch?clamp(Math.ceil(cssWidth*Math.min(dpr,ratio)/32)*32,640,1280):(quality==='battery'?960:1280);
   return {width,height:width*(portrait?3/4:9/16)};
 }
 
