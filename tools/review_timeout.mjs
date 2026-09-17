@@ -13,16 +13,12 @@ const roster=JSON.parse(await readFile(new URL('roster.json',assets),'utf8')),at
 for(const id of [33,34])atlases[id]=await loadImage(new URL(`${roster[id].id}.png`,assets).pathname);
 const arenas=[await loadImage(new URL('arena-0.jpg',assets).pathname)];
 const banners={unlocked:await loadImage(new URL('banners/unlocked.png',assets).pathname)};
-for(const key of ['reversal','secondWind'])banners[key]=await loadImage(new URL(`banners/${key}.png`,assets).pathname);
-const sheet=createCanvas(1280,1560),c=sheet.getContext('2d');c.fillStyle='#100a19';c.fillRect(0,0,1280,1560);
-for(const [row,mode] of ['desktop','portrait','landscape'].entries())for(const [column,event] of ['reversal','secondWind'].entries()){
+for(const key of ['timeout'])banners[key]=await loadImage(new URL(`banners/${key}.png`,assets).pathname);
+const sheet=createCanvas(640,1560),c=sheet.getContext('2d');c.fillStyle='#100a19';c.fillRect(0,0,640,1560);
+for(const [row,mode] of ['desktop','portrait','landscape'].entries())for(const [column,event] of ['timeout'].entries()){
   const m=new Match(roster,33,34,{mode:'local'});m.phase='fight';m.fighters[0].x=590;m.fighters[1].x=680;
-  const tick=(a={},b={})=>m.step([{...emptyInput(),...a},{...emptyInput(),...b}]);
-  if(event==='secondWind'){m.fighters[1].hp=35;m.fighters[1].meter=45;}
-  m.drainEvents();tick({light:true});
-  while(m.fighters[0].t<MOVES.light.startup-STEP)tick();
-  tick({},event==='reversal'?{block:true}:{});
-  const events=m.drainEvents();assert.ok(events.some(e=>e.type===event));
+  m.remaining=0;m.drainEvents();m.step([emptyInput(),emptyInput()]);
+  const events=m.drainEvents();assert.ok(events.some(e=>e.type==='roundEnd'&&e.method==='TIME LIMIT'));
   const canvas=createCanvas(1280,mode==='portrait'?960:720),r=new Renderer(canvas,roster,atlases,arenas,banners);
   r.portrait=mode==='portrait';r.compact=mode==='landscape';r.lowPower=mode!=='desktop';r.reduced=true;r.scheme=mode==='desktop'?'keyboard':'touch';
   r.receive(events,m);r.draw(m,0,0);
@@ -30,5 +26,5 @@ for(const [row,mode] of ['desktop','portrait','landscape'].entries())for(const [
   const x=column*640,y=row*520;c.fillStyle='#b0ff20';c.font='bold 18px sans-serif';c.fillText(`${mode.toUpperCase()} / ${event.toUpperCase()}`,x+16,y+26);
   c.drawImage(canvas,x,y+36,640,mode==='portrait'?480:360);
 }
-await writeFile(new URL('reversals-review.png',out),sheet.toBuffer('image/png'));
-console.log('Actual reversal and second-wind moments rendered in desktop, portrait and landscape.');
+await writeFile(new URL('timeout-review.png',out),sheet.toBuffer('image/png'));
+console.log('Actual time-limit endings rendered in desktop, portrait and landscape.');

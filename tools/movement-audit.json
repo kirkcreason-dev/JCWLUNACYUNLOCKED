@@ -1,0 +1,703 @@
+{
+  "version": "0.15.1",
+  "fighters": [
+    {
+      "id": "violent-j",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.5,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "2-tuff-tony",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down",
+        "fallBack",
+        "fallFront",
+        "ko",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.95,
+        "run": 2.92
+      }
+    },
+    {
+      "id": "willie-mack",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 2.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "mickie-knuckles",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.5,
+        "run": 0.5
+      }
+    },
+    {
+      "id": "kerry-morton",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "mr-happy",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.9,
+        "run": 6.0
+      }
+    },
+    {
+      "id": "moshpit-mike",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.8,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "cokane",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.5,
+        "run": 3.5
+      }
+    },
+    {
+      "id": "yabo",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "down",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 3.8,
+        "run": 2.4
+      }
+    },
+    {
+      "id": "able",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 2.5,
+        "run": 6.0
+      }
+    },
+    {
+      "id": "dani-mo",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.53,
+        "run": 3.5
+      }
+    },
+    {
+      "id": "facade",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "jump",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "j-rod",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.23,
+        "run": 4.57
+      }
+    },
+    {
+      "id": "matt-cross",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "kick",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "vincenzo",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "caleb-konley",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "sally-boy",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "big-vito",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "jump",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.0,
+        "run": 6.0
+      }
+    },
+    {
+      "id": "bruce-wayans",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 1.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "alice-crowley",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 2.0,
+        "run": 7.03
+      }
+    },
+    {
+      "id": "ruffo",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryGuitar",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 2.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "kongo-kong",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "father-bronson",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "dive",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "hokane",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 11.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "steven-flowe",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "ko",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 7.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "ec3",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 3.6,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "krule",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 8.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "jeeves",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "atiba",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "fallFront",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 6.5,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "jp-grayson",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 8.67,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "tommy",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "fallFront",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 5.4,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "shaggy-2-dope",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 7.5,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "jacksyn",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "fallFront",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 7.45,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "dj-clay",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryBat",
+        "carryTrashcan",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "jeff-lane",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryBat",
+        "carryTrashcan",
+        "run"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 3.52,
+        "run": 0.0
+      }
+    },
+    {
+      "id": "shane-mercer",
+      "reviewed": [
+        "movement",
+        "attacks",
+        "falls",
+        "recovery",
+        "supplementary frames",
+        "portrait file"
+      ],
+      "changed_animations": [
+        "carryBat",
+        "carryGuitar",
+        "run",
+        "walk"
+      ],
+      "torso_offset_spread_px": {
+        "walk": 0.0,
+        "run": 0.0
+      }
+    }
+  ],
+  "unchanged_asset_files": 97,
+  "limitations": [
+    "Native sprite review and automated tests; no new interactive-browser or physical-device test.",
+    "DJ Clay selection-screen report not reproduced; current portrait file is intact and remains unchanged."
+  ]
+}
