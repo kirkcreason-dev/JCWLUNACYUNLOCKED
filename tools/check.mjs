@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
 import {ARENAS} from '../dist/src/arenas.js';
+import {checkRosterApprovals} from './roster-approval.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));const dist=path.join(root,'dist');
 for(const file of await readdir(path.join(dist,'src')))if(file.endsWith('.js'))execFileSync(process.execPath,['--check',path.join(dist,'src',file)]);
 const html=await readFile(path.join(dist,'index.html'),'utf8');
@@ -11,6 +12,7 @@ for(const match of html.matchAll(/(?:src|href)="(\.\/[^"#?]+)(?:[?#][^"]*)?"/g))
 const ids=Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML ids');
 const main=await readFile(path.join(dist,'src/main.js'),'utf8');for(const match of main.matchAll(/\$\('([^']+)'\)/g))assert.ok(ids.includes(match[1]),`Missing UI element ${match[1]}`);
 const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,36);assert.equal(new Set(roster.map(f=>f.id )).size,36);
+checkRosterApprovals(roster,JSON.parse(await readFile(path.join(root,'roster-approvals.json'),'utf8')));
 let count=0;
 for(const f of roster){
   for(const key of ['power','speed','technique','toughness'])assert.ok(Number.isFinite(f[key])&&f[key]>0,`${f.name}: invalid ${key}`);
