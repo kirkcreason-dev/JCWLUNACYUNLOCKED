@@ -1,22 +1,24 @@
 import {Match,STEP,emptyInput} from './engine.js';
-import {Renderer} from './render.js?v=0.10.0';
+import {Renderer} from './render.js?v=0.12.0';
 import {Input} from './input.js';
 import {Sound} from './audio.js';
 import {ARENAS} from './arenas.js';
 import {touchContext} from './touch-ui.js';
-import {OnlineSession} from './online.js?v=0.10.0';
+import {OnlineSession} from './online.js?v=0.12.0';
 import {connectFirebase} from './firebase-online.js';
-import {SnapshotBuffer} from './online-protocol.js?v=0.10.0';
+import {SnapshotBuffer} from './online-protocol.js?v=0.12.0';
 import {RosterSelection} from './roster-selection.js';
 import {retainMatchArtwork} from './artwork-cache.js';
 import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js';
 import {FramePacer} from './frame-pacer.js';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.10.0';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.12.0';
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help');
 let roster=[],atlases={},arenas=[],renderer,match=null,chosen=0,arena=0,paused=false,helpWasPaused=false,arcadeOpponents=[],arcadeIndex=0,session=0,loading=false,returnFocus=null;
 let onlineBusy=false,onlineStarted=false,onlineFailed=false,localIndex=0,snapshotBuffer=null;
 let rosterSelection=null;
+let artworkState=null;
+let runtimeFault=null;
 const net=new OnlineSession({connect:connectFirebase,prepare:prepareOnline,start:startOnline,
   snapshot:packet=>snapshotBuffer?.receive(packet,performance.now()),status:onlineStatus,ended:onlineEnded});
 const imagePromises=new Map();
@@ -29,6 +31,15 @@ try{const saved=JSON.parse(localStorage.getItem('lunacy-controls-v3')||'null');i
 function savePreferences(){try{localStorage.setItem('lunacy-controls-v3',JSON.stringify(preferences));}catch{}}
 const input=new Input(force=>togglePause(force));
 const loadingImage=url=>new Promise((resolve,reject)=>{const image=new Image();image.decoding='async';image.onload=()=>resolve(image);image.onerror=()=>reject(new Error(`Could not load ${url}`));image.src=url;});
+function requestArtwork(bannerKeys=[],effectKeys=[]){
+  if(!artworkState)return;
+  void loadOptionalArtwork({
+    banners:artworkState.banners,combatFx:artworkState.combatFx,state:artworkState,bannerKeys,effectKeys,
+    loadImage:loadingImage,
+    loadManifest:async()=>{const response=await fetch('./assets/fx/manifest.json');if(!response.ok)throw new Error('Effects unavailable');return response.json();},
+    onChange:()=>framePacer.invalidate()
+  });
+}
 function status(text){$('announcement').textContent=text;}
 function modalState(){const active=[helpScreen,resultScreen,pauseScreen].find(el=>!el.hidden);$('cabinet').classList.toggle('selecting',!selection.hidden);$('cabinet').classList.toggle('modal-open',Boolean(active));selection.inert=Boolean(active)||loading;for(const el of [helpScreen,resultScreen,pauseScreen])el.inert=Boolean(active&&el!==active);updateTouch();return active;}
 function showModal(element,button){returnFocus=document.activeElement;element.hidden=false;modalState();button?.focus();}
@@ -151,18 +162,36 @@ function buildRoster(){
 }
 async function loadFighter(index){
   if(atlases[index])return;
-  if(!imagePromises.has(index))imagePromises.set(index,loadingImage(roster[index].atlas).then(image=>{atlases[index]=image;}).catch(error=>{imagePromises.delete(index);throw error;}));
+  if(!imagePromises.has(index)){
+    let pending;
+    pending=loadingImage(roster[index].atlas).then(image=>{
+      // A match can be changed while an image is decoding. Do not let a stale
+      // completion repopulate the cache after retainMatchArtwork evicted it.
+      if(imagePromises.get(index)===pending)atlases[index]=image;
+      else if(typeof image.src==='string'){try{image.src='';}catch{}}
+      return image;
+    }).catch(error=>{if(imagePromises.get(index)===pending)imagePromises.delete(index);throw error;});
+    imagePromises.set(index,pending);
+  }
   await imagePromises.get(index);
 }
 async function loadArena(index){
   if(arenas[index])return;
   const key=`arena-${index}`;
-  if(!imagePromises.has(key))imagePromises.set(key,loadingImage(ARENAS[index].src).then(image=>{arenas[index]=image;}).catch(error=>{imagePromises.delete(key);throw error;}));
+  if(!imagePromises.has(key)){
+    let pending;
+    pending=loadingImage(ARENAS[index].src).then(image=>{
+      if(imagePromises.get(key)===pending)arenas[index]=image;
+      else if(typeof image.src==='string'){try{image.src='';}catch{}}
+      return image;
+    }).catch(error=>{if(imagePromises.get(key)===pending)imagePromises.delete(key);throw error;});
+    imagePromises.set(key,pending);
+  }
   await imagePromises.get(key);
 }
 async function startMatch(nextArcade=false){
   if($('mode').value==='online'||net.active||onlineBusy)return;
-  if(loading)return;loading=true;modalState();const thisSession=++session;$('fight').disabled=true;$('fight').textContent='ENTERING THE RING…';
+  if(loading)return;loading=true;runtimeFault=null;modalState();const thisSession=++session;$('fight').disabled=true;$('fight').textContent='ENTERING THE RING…';
   try{
     const mode=$('mode').value;arena=Number($('arena').value);
     if(mode==='arcade'&&!nextArcade){arcadeOpponents=roster.map((_,i)=>i).filter(i=>i!==chosen); // Fisher-Yates keeps an unbiased, complete roster run.
@@ -193,7 +222,7 @@ function togglePause(force){
   $('pause-title').textContent='MATCH PAUSED';$('pause-detail').hidden=true;$('restart').hidden=false;$('resume').hidden=false;
   paused=force===true?true:!paused;input.clear();match.clearInputs();if(paused){showModal(pauseScreen,$('resume'));sound.suspend();}else{pauseScreen.hidden=true;modalState();sound.resume();document.activeElement?.blur();}updateTouch();
 }
-function quit(){session++;net.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;localIndex=0;renderer.localIndex=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';($('mode').value==='online'?$('online-quick'):$('fight')).focus();}
+function quit(){session++;runtimeFault=null;net.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;localIndex=0;renderer.localIndex=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';($('mode').value==='online'?$('online-quick'):$('fight')).focus();}
 function finishMatch(){
   input.active=false;input.clear();$('pause-button').hidden=true;
   const won=match.winner===localIndex,arcade=match.options.mode==='arcade',champion=arcade&&won&&arcadeIndex===arcadeOpponents.length-1;
@@ -252,9 +281,34 @@ function onlineEnded(message){
   $('resume').hidden=true;$('restart').hidden=true;showModal(pauseScreen,$('quit'));sound.suspend();
 }
 function matchEvents(events){
+  const banners=new Set(),effects=new Set();
+  for(const e of events){
+    if(e.type==='special')banners.add('lunacy');
+    if(e.type==='kickout')banners.add('kickout');
+    if(e.type==='roundEnd'){
+      if(e.method==='PINFALL')banners.add('pinfall');
+      if(e.method==='TAP OUT')banners.add('tapout');
+    }
+    if(e.type==='block')effects.add('guard');
+    if(e.type==='slam'||e.type==='land')effects.add('ground');
+    if(e.type==='hit')effects.add(e.move==='light'?'chips':'impact');
+  }
+  requestArtwork([...banners],[...effects]);
   renderer.receive(events,match);sound.play(events);
   if(input.scheme==='touch'&&preferences.haptics&&events.some(e=>(e.type==='hit'||e.type==='slam')&&e.index===localIndex))navigator.vibrate?.(18);
   for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);}
+}
+function recoverRuntime(error){
+  if(runtimeFault)return;
+  runtimeFault=error instanceof Error?error:new Error(String(error));
+  console.error('Recoverable game runtime error',runtimeFault);
+  paused=true;input.active=false;input.clear();match?.clearInputs?.();sound.suspend();
+  if(net.active){onlineFailed=true;net.leave().catch(()=>{});}
+  $('pause-title').textContent='MATCH PAUSED';
+  $('pause-detail').textContent='A device graphics hiccup paused the match. Restart to keep playing.';
+  $('pause-detail').hidden=false;$('resume').hidden=true;$('restart').hidden=false;
+  $('footer-status').textContent='MATCH PAUSED AFTER A RECOVERABLE DEVICE ERROR.';
+  try{showModal(pauseScreen,$('restart'));}catch{pauseScreen.hidden=false;}
 }
 $('online-quick').onclick=()=>beginOnline('quick');$('online-create').onclick=()=>beginOnline('create');$('online-join').onclick=()=>beginOnline('join');
 $('join-code').addEventListener('input',()=>{$('join-code').value=$('join-code').value.toUpperCase().replace(/[^A-Z-]/g,'');});
@@ -309,35 +363,38 @@ addEventListener('keydown',e=>{
 });
 let last=performance.now(),accumulator=0;
 function loop(now){
-  const delta=Math.min((now-last)/1000,.10);last=now;
-  if(match?.options.mode==='online'&&onlineStarted&&!onlineFailed){
-    if(match.phase!=='done'){
-      accumulator+=delta;
-      while(accumulator>=STEP){
-        const raw=input.read(),mine=!pauseScreen.hidden||!helpScreen.hidden?emptyInput():raw[0];
-        if(net.role==='guest')net.capture(mine);
-        else if(net.role==='host'){
-          match.step([mine,net.readRemote()||emptyInput()],STEP);
-          const events=match.drainEvents();matchEvents(events);net.sendSnapshot(match,events);
+  try{
+    if(runtimeFault){requestAnimationFrame(loop);return;}
+    const delta=Math.min((now-last)/1000,.10);last=now;
+    if(match?.options.mode==='online'&&onlineStarted&&!onlineFailed){
+      if(match.phase!=='done'){
+        accumulator+=delta;
+        while(accumulator>=STEP){
+          const raw=input.read(),mine=!pauseScreen.hidden||!helpScreen.hidden?emptyInput():raw[0];
+          if(net.role==='guest')net.capture(mine);
+          else if(net.role==='host'){
+            match.step([mine,net.readRemote()||emptyInput()],STEP);
+            const events=match.drainEvents();matchEvents(events);net.sendSnapshot(match,events);
+          }
+          accumulator-=STEP;
         }
-        accumulator-=STEP;
       }
+      if(net.role==='guest'){
+        net.sendInput();snapshotBuffer?.apply(match,now);matchEvents(snapshotBuffer?.drainEvents()||[]);
+      }else if(net.role==='host')net.sendSnapshot(match,[],match.phase==='done');
+      if(match.phase==='done'&&resultScreen.hidden)finishMatch();
+    }else if(match&&match.options.mode!=='online'&&!paused&&match.phase!=='done'){
+      accumulator+=delta;
+      while(accumulator>=STEP){const controls=input.read();if(paused){accumulator=0;break;}match.step(controls,STEP);accumulator-=STEP;
+        const events=match.drainEvents();matchEvents(events);if(match.phase==='done')finishMatch();
+      }
+    }else{accumulator=0;if(match)input.read();}
+    if(renderer){
+      const menu=!selection.hidden||!$('opening').hidden;
+      const drawDelta=framePacer.frame(now,{animated:Boolean(match&&!paused&&match.phase!=='done'&&!menu),hidden:document.hidden,fps:preferences.quality==='battery'?30:60});
+      if(drawDelta!==null){updateTouchContext();renderer.scheme=input.scheme;renderer.draw(match,arena,drawDelta,menu);}
     }
-    if(net.role==='guest'){
-      net.sendInput();snapshotBuffer?.apply(match,now);matchEvents(snapshotBuffer?.drainEvents()||[]);
-    }else if(net.role==='host')net.sendSnapshot(match,[],match.phase==='done');
-    if(match.phase==='done'&&resultScreen.hidden)finishMatch();
-  }else if(match&&match.options.mode!=='online'&&!paused&&match.phase!=='done'){
-    accumulator+=delta;
-    while(accumulator>=STEP){const controls=input.read();if(paused){accumulator=0;break;}match.step(controls,STEP);accumulator-=STEP;
-      const events=match.drainEvents();matchEvents(events);if(match.phase==='done')finishMatch();
-    }
-  }else{accumulator=0;if(match)input.read();}
-  if(renderer){
-    const menu=!selection.hidden||!$('opening').hidden;
-    const drawDelta=framePacer.frame(now,{animated:Boolean(match&&!paused&&match.phase!=='done'&&!menu),hidden:document.hidden,fps:preferences.quality==='battery'?30:60});
-    if(drawDelta!==null){updateTouchContext();renderer.scheme=input.scheme;renderer.draw(match,arena,drawDelta,menu);}
-  }
+  }catch(error){recoverRuntime(error);}
   requestAnimationFrame(loop);
 }
 async function init(){
@@ -345,9 +402,11 @@ async function init(){
     const response=await fetch('./assets/roster.json',{cache:'no-store'});if(!response.ok)throw new Error('Roster unavailable');roster=await response.json();buildRoster();
     ARENAS.forEach((a,i)=>{const option=document.createElement('option');option.value=i;option.textContent=a.name;$('arena').append(option);});
     await loadArena(0);
-    const banners={},combatFx={};
-    renderer=new Renderer($('game'),roster,atlases,arenas,banners,combatFx);updateTouch();$('fight').disabled=false;$('fight').textContent='FIGHT';$('enter-game').disabled=false;$('enter-game').textContent='ENTER THE LUNACY';$('boot-start').disabled=false;$('boot-start').textContent='PRESS START';$('boot-start').focus();requestAnimationFrame(loop);
-    void loadOptionalArtwork({banners,combatFx,loadImage:loadingImage,loadManifest:async()=>{const response=await fetch('./assets/fx/manifest.json');if(!response.ok)throw new Error('Effects unavailable');return response.json();},onChange:()=>framePacer.invalidate()});
+    const banners={},combatFx={};artworkState={banners,combatFx,pending:new Map()};
+    renderer=new Renderer($('game'),roster,atlases,arenas,banners,combatFx,{onContextLost:()=>recoverRuntime(new Error('The graphics surface was reset.'))});updateTouch();$('fight').disabled=false;$('fight').textContent='FIGHT';$('enter-game').disabled=false;$('enter-game').textContent='ENTER THE LUNACY';$('boot-start').disabled=false;$('boot-start').textContent='PRESS START';$('boot-start').focus();requestAnimationFrame(loop);
+    // The logo is tiny compared with the optional effects. Load it for branding,
+    // then fetch announcements/effects only when a match actually needs them.
+    requestArtwork(['unlocked'],[]);
   }catch(error){$('boot-start').textContent='RELOAD GAME';$('boot-start').disabled=false;$('boot-start').onclick=()=>location.reload();$('enter-game').textContent='RELOAD GAME';$('enter-game').disabled=false;$('enter-game').onclick=()=>location.reload();$('fight').textContent='RELOAD GAME';$('fight').disabled=false;$('fight').onclick=()=>location.reload();$('footer-status').textContent='GAME FILES COULD NOT LOAD. USE THE INCLUDED LOCAL SERVER OR GITHUB PAGES.';console.error(error);}
 }
 init();

@@ -1,18 +1,27 @@
 import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget} from './engine.js';
 import {ARENAS} from './arenas.js';
-import {attackPose} from './attack-animation.js';
+import {attackPose} from './attack-animation.js?v=0.12.0';
 import {phoneCamera} from './phone-layout.js';
 import {drawArenaWordmarks} from './branding.js';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
-  constructor(canvas,roster,atlases,arenas,banners={},combatFx={}){this.bannerArt=banners;this.combatFx=combatFx;this.canvas=canvas;this.ctx=canvas.getContext('2d');this.roster=roster;this.atlases=atlases;this.arenas=arenas;this.reduced=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;this.scheme='keyboard';this.reset();}
+  constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
+    this.bannerArt=banners;this.combatFx=combatFx;this.canvas=canvas;this.onContextLost=options.onContextLost||(()=>{});
+    this.ctx=canvas.getContext?.('2d',{alpha:false,desynchronized:true})||canvas.getContext?.('2d');
+    if(!this.ctx)throw new Error('2D canvas unavailable');
+    this.contextLost=false;this.shade=null;this.shadeHeight=0;
+    canvas.addEventListener?.('contextlost',event=>{event.preventDefault?.();this.contextLost=true;this.onContextLost();});
+    canvas.addEventListener?.('contextrestored',()=>{this.contextLost=false;this.shade=null;this.reset();});
+    this.roster=roster;this.atlases=atlases;this.arenas=arenas;this.reduced=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;this.scheme='keyboard';this.reset();
+  }
   reset(){this.particles=[];this.popups=[];this.spriteFx=[];this.flash=0;this.healthTrail=[100,100];this.healthWait=[0,0];this.lastHealth=[100,100];this.lastMeter=[0,0];this.shakeOffset=[0,0];this.clock=0;this.graphic=null;}
   receive(events,match=null){for(const e of events){
     this.combatEffect(e,match);
     if(['hit','slam','block'].includes(e.type)){
       const color=e.type==='block'?'#7bd6ff':e.type==='slam'?'#fa258c':'#c1ff32';const y=e.type==='slam'?FLOOR-10:FLOOR-135-(e.z||0);
       if(!this.reduced)for(let i=0;i<(this.lowPower?6:14);i++){const a=Math.random()*Math.PI*2,s=50+Math.random()*300;this.particles.push({x:e.x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.20+Math.random()*.24,max:.45,color,size:2+Math.random()*5});}
-      if(this.lowPower&&this.particles.length>48)this.particles.splice(0,this.particles.length-48);
+      const particleCap=this.lowPower?48:128;
+      if(this.particles.length>particleCap)this.particles.splice(0,this.particles.length-particleCap);
       if(e.type==='hit'&&e.combo>1){
         this.popups=this.popups.filter(p=>p.kind!=='combo'||p.attacker!==e.attacker);
         this.popups.push({kind:'combo',attacker:e.attacker,text:`${e.combo} HIT`,x:e.x,y:y-90,life:.65,color:'#c1ff32'});
@@ -31,9 +40,18 @@ export class Renderer {
     if(e.type==='weaponBreak')this.popups.push({text:'GUITAR BROKEN',x:640,y:300,life:.8,color:'#ffe197'});
     if(e.type==='taunt')this.popups.push({text:'+12 LUNACY',x:640,y:300,life:.8,color:'#b0ff20'});
     if(e.type==='guardBreak')this.popups.push({text:'GUARD BREAK',x:640,y:340,life:.85,color:'#fa2484'});
+    // A disconnected peer or a very long arcade session must not turn event
+    // bursts into an ever-growing presentation queue.
+    if(this.popups.length>48)this.popups.splice(0,this.popups.length-48);
   }}
   text(text,x,y,size=24,color='#f5f0e6',align='left',italic=false){const c=this.ctx;c.font=`${italic?'italic ':''}900 ${size}px Arial, sans-serif`;c.textAlign=align;c.fillStyle=color;c.fillText(text,x,y);}
+  hudShade(height){
+    if(this.shade&&this.shadeHeight===height)return this.shade;
+    const shade=this.ctx.createLinearGradient(0,0,0,210);shade.addColorStop(0,'#08060cf5');shade.addColorStop(.65,'#08060caa');shade.addColorStop(1,'#08060c00');
+    this.shade=shade;this.shadeHeight=height;return shade;
+  }
   draw(match,arena=0,dt=1/60,menu=false){
+    if(this.contextLost||!this.ctx)return false;
     const c=this.ctx,height=this.portrait?960:720;
     c.save();c.scale((this.canvas.width||1280)/1280,(this.canvas.height||height)/height);
     c.save();c.clearRect(0,0,1280,height);c.fillStyle='#130b18';c.fillRect(0,0,1280,height);
@@ -45,7 +63,7 @@ export class Renderer {
     c.translate(...this.shakeOffset);
     if(bg){const crop=ARENAS[arena]?.crop;if(crop)c.drawImage(bg,...crop,0,0,1280,720);else{c.drawImage(bg,0,0,1280,720);drawArenaWordmarks(c,bg,arena,this.bannerArt.unlocked);}}
     // Keep the supplied ring and arena visible; tint only the upper HUD area.
-    const shade=c.createLinearGradient(0,0,0,210);shade.addColorStop(0,'#08060cf5');shade.addColorStop(.65,'#08060caa');shade.addColorStop(1,'#08060c00');c.fillStyle=shade;c.fillRect(0,0,1280,210);
+    c.fillStyle=this.hudShade(height);c.fillRect(0,0,1280,210);
     if(match&&!menu){
       // Downed opponent is below the attacker during a pin; neither sheet contains an extra wrestler.
       if(match.fighters.some(f=>f.definition.animations.climb))this.corners();
@@ -102,6 +120,7 @@ export class Renderer {
     let fi=progress===null?Math.floor(f.t*(anim==='run'?13*f.definition.speed:anim==='walk'||anim.startsWith('carry')?10*f.definition.speed:anim==='hurt'?7:4))%fs.length:Math.min(fs.length-1,Math.floor(progress*fs.length));
     if((anim==='walk'||anim==='run'||anim.startsWith('carry'))&&f.walkDirection*f.facing<0)fi=fs.length-1-fi;
     const entry=attackFrame||fs[fi];
+    if(!entry)return;
     if(f.state==='idle'&&!this.reduced){const breath=Math.sin(f.t*3.4+index)*.005;scaleY=1+breath;scaleX=1-breath*.4;}
     // Shadows anchor feet to the canvas floor, independently of animation crop bounds.
     c.save();c.globalAlpha=.35*(1-fit(f.z/400,0,.8));c.fillStyle='#050305';c.beginPath();c.ellipse(f.x,FLOOR+3,f.state==='down'||f.state==='pinned'?88:45,10,0,0,Math.PI*2);c.fill();c.restore();
@@ -209,12 +228,14 @@ export class Renderer {
   }
   effects(dt){
     const c=this.ctx;
+    const active=[];
     for(const fx of this.spriteFx){
-      const a=this.combatFx[fx.key],frame=Math.floor(fx.age*a.fps);fx.age+=dt;if(frame>=a.frames)continue;
+      const a=this.combatFx[fx.key];if(!a?.image||!Number.isFinite(a.fps)||!Number.isFinite(a.frames))continue;
+      const frame=Math.floor(fx.age*a.fps);fx.age+=dt;if(frame>=a.frames)continue;active.push(fx);
       c.save();c.translate(fx.x,fx.y);c.scale(fx.facing,1);
       c.drawImage(a.image,(frame%a.columns)*a.cell,Math.floor(frame/a.columns)*a.cell,a.cell,a.cell,-fx.size/2,-fx.size*a.anchorY/a.cell,fx.size,fx.size);c.restore();
     }
-    this.spriteFx=this.spriteFx.filter(fx=>fx.age<this.combatFx[fx.key].frames/this.combatFx[fx.key].fps);
+    this.spriteFx=active.filter(fx=>fx.age<this.combatFx[fx.key].frames/this.combatFx[fx.key].fps);
 
     for(const p of this.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=380*dt;c.globalAlpha=fit(p.life/p.max,0,1);c.fillStyle=p.color;c.fillRect(p.x,p.y,p.size,p.size);}c.globalAlpha=1;this.particles=this.particles.filter(p=>p.life>0);
     for(const p of this.popups){p.life-=dt;p.y-=dt*30;c.globalAlpha=fit(p.life*3,0,1);this.text(p.text,p.x,p.y,30,p.color,'center',true);}c.globalAlpha=1;this.popups=this.popups.filter(p=>p.life>0);

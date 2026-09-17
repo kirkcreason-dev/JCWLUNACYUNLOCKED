@@ -6,6 +6,16 @@ const smooth=n=>{n=clamp(n);return n*n*(3-2*n);};
 // Explicit phases keep contact art aligned with the simulation's active window,
 // even when one wrestler has four chair frames and another has five.
 export function attackPose(definition,move,time,style){
+  if(move==='special'&&definition.animations.special?.length===6){
+    const timing=MOVES.special,frames=definition.animations.special;
+    // The supplied Bass Blast charges before contact; sound waves appear only
+    // in the active window. Recovery returns to the intact standing pose.
+    const activeEnd=timing.startup+timing.active;
+    const index=time<timing.startup?Math.min(2,Math.floor(clamp(time/timing.startup)*3))
+      :time<activeEnd?3+Math.min(1,Math.floor((time-timing.startup)/timing.active*2))
+      :time<activeEnd+timing.recovery*.35?5:0;
+    return {frame:frames[index],offsetX:0,propGuitar:false};
+  }
   const timing=MOVES[move]||MOVES.heavy,animations=definition.animations,frames=animations[style]||animations[move==='light'?'light':'heavy'];
   const light=style==='light'||(!style&&move==='light');
   // A kick has a chamber and one extended contact frame. Weapon art has an
