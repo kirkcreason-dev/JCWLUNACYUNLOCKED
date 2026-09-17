@@ -200,3 +200,5 @@
  #roster .fighter-card img{height:calc(100% - 28px);bottom:25px}
  .roster-confirm{margin-top:8px;gap:6px}
 }
+
+#championship-panel{margin:14px 0;padding:14px;border:1px solid #b7ff20;background:#151020;border-radius:8px;text-align:left}#championship-panel strong{color:#e6cf79}#championship-panel p{font-size:14px;line-height:1.45;margin:8px 0}#championship-road{padding-left:22px;margin:12px 0;font-size:14px;line-height:1.8;overflow-wrap:anywhere}#championship-road [aria-current]{color:#b7ff20;font-weight:800}.title-belt{display:flex;align-items:center;justify-content:center;gap:10px;background:#171019;border-radius:16px;padding:12px;margin:16px auto;max-width:350px}.title-belt[hidden]{display:none}.title-belt strong,.title-belt i{background:linear-gradient(135deg,#76500a,#ffeeb0,#bb841c);border:3px solid #e9c767;box-shadow:inset 0 0 0 3px #634a1a;color:#291c08;text-align:center}.title-belt strong{padding:12px 24px;border-radius:40%;font-size:20px;line-height:1.2}.title-belt i{width:36px;height:48px;border-radius:8px;flex-shrink:0}

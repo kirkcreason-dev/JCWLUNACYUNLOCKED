@@ -23,3 +23,32 @@
 }
 #cabinet[data-phone-layout] .wordmark-name{width:60px;line-height:1}
 #cabinet[data-phone-layout] .wordmark-name .unlocked-art{margin-top:2px}
+
+/* Use the supplied select-screen ornament as a frame around the live controls.
+   Its mock fighter slots/buttons stay outside the border slices. */
+#selection{border:14px solid transparent;border-image:url('./assets/ui/fighter-selection.png') 28 stretch;background-color:#080709;background-image:linear-gradient(125deg,#061203f5,#120516f5);padding:2% 3%}
+#selection .roster-side{border-left:3px solid var(--acid);padding-left:12px}
+#selection .match-side{border-right:3px solid var(--pink);padding-right:12px}
+#championship-belt.title-belt{display:block;width:100%;height:auto;max-width:440px;margin:12px auto;padding:0;border:0;border-radius:0;background:#050505;object-fit:contain}
+@media(max-width:650px){#selection{border-width:8px;padding:12px}#selection .roster-side{padding-left:6px}#selection .match-side{padding-right:6px}}
+
+/* Supplied pause artwork stays within the scrollable phone/desktop dialog. */
+#pause-art{display:block;width:100%;height:auto;max-height:130px;object-fit:contain;margin:0 auto 8px}
+@media(max-height:500px){#pause-art{max-height:72px;margin-bottom:4px}}
+
+/* Championship payoff and readable credits; no flashing or infinite animation. */
+.fighter-traits{font-size:.78rem;line-height:1.35;color:#e2d4ec;margin:6px 0 10px;max-width:36em}
+#result.champion-result .modal-panel{width:min(780px,100%);border:2px solid #bdff2a;background:radial-gradient(ellipse at top,#4b255a,#110c19 70%);box-shadow:0 0 32px #b0ff2020}
+#result.champion-result #result-title{color:#c1ff32}
+#credits .credits-panel{width:min(780px,100%);max-height:calc(100dvh - 32px);overflow-y:auto;text-align:center;border:2px solid #fb2999;background:radial-gradient(ellipse at top,#34203f,#110b19 66%);padding:26px clamp(16px,4vw,48px)}
+#credits-title{font-size:clamp(1.7rem,4vw,3rem);color:#b0ff20;margin:8px 0}
+.credits-wordmark{display:block;width:min(360px,100%);height:auto;margin:-8px auto}
+.credits-studio{font-weight:900;letter-spacing:.06em;color:#fff2d7;font-size:clamp(1rem,3vw,1.5rem)}
+.credits-names,.credits-thanks{list-style:none;padding:0;margin:12px 0 24px;display:grid;gap:8px;font-weight:800;font-size:1.05rem}
+.credits-thanks{grid-template-columns:repeat(2,minmax(0,1fr));color:#efb9de}
+.credits-fans{font-size:.9rem;line-height:1.5;color:#d7c9df}
+#credits button{min-height:44px}#credits .eyebrow{color:#fa62c6}
+.play-options input[type=range]{width:100%;accent-color:#b0ff20;min-height:36px}
+@media(max-width:400px){.credits-thanks{font-size:.9rem}}
+
+#credits .credits-panel{width:min(1120px,100%);padding:18px}#credits-art{display:block;width:100%;height:auto;border:1px solid #ffffff25;margin:12px 0 16px}.credits-victory{font-weight:800;font-size:.9rem;color:#f4e6f1}.credits-transcript{margin:10px auto 18px;max-width:620px}.credits-transcript summary{cursor:pointer;min-height:44px;padding:12px;color:#b0ff20;font-weight:800}.credits-transcript summary:focus-visible{outline:3px solid #b0ff20;outline-offset:2px}
