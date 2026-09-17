@@ -1,3 +1,35 @@
+# v0.12.0 — 36 fighters — September 17, 2026
+
+177 automated tests pass. `npm run check` passes: 36 unique fighters, 4,076 animation entries, six arenas and both music tracks.
+
+- Tests include all 36 fighters across easy, normal and hard CPU matches (108 completion matches), six-page selection and rotation, all three new online host/join slots and old-protocol rejection.
+- Bass Blast tests verify meter consumption, contact artwork during the real damage window, recovery and attacks in both directions.
+- All 92 source sheets are audited. The original 33 roster records and 90 existing asset files compare unchanged against v0.11.0.
+- Prepared sprite sheets, 12 native Match/Renderer scenarios per new fighter, Bass Blast phases and five phone viewport layouts were visually reviewed. These are native canvas renders with schematic control bounds, not interactive browser or physical-device tests.
+- Previous stability changes remain included. Crash rates and thermal/FPS behavior still require checks on the affected hardware. Live Firebase was not retested; this ZIP has not been deployed.
+
+Reproduce with `npm test` and `npm run check`. Optional native review requires `@napi-rs/canvas`: `node tools/render_review.mjs dj-clay` (or `jeff-lane`, `shane-mercer`) and `node tools/review_roster36.mjs`.
+
+# v0.11.0 — 33 fighters — September 16, 2026
+
+171 automated tests pass. `npm run check` passes: 33 unique fighters, 3,653 animation entries, six arenas and both music tracks.
+
+- Coverage includes all 33 fighters on three CPU difficulties (99 completion matches), six-page phone selection and rotation, new online host/join indices, v11 compatibility and all 148 source sheet hashes.
+- Original 28 roster records and 80 existing artwork/audio files compare unchanged against v0.10.1.
+- Prepared sprite sheets and native Match/Renderer output were reviewed. Missing or scenery-obscured poses use documented adaptations in SPRITE-MAP.md.
+- Prior lazy image loading, cache release, bounded effects and runtime recovery remain included. Automated/native-canvas checks do not establish physical-device crash rates or browser FPS; affected desktop and phone hardware still need testing.
+- This ZIP is not deployed. Both online players need v0.11.0 / LU110 rooms.
+
+Reproduce with `npm test` and `npm run check`.
+
+# v0.10.1 — Stability and performance — September 16, 2026
+
+164 automated tests pass. `npm run check` passes: 28 unique fighters, 2,986 animation entries, six arenas, both music tracks, valid JavaScript and UI references.
+
+- The suite covers lazy optional-art batches and in-flight deduplication, decoded-image release, bounded desktop/phone effects, all 28 fighters, all 84 CPU completion matches, online transport, and phone geometry.
+- The runtime now pauses on recoverable graphics errors and resets cleanly after a canvas context restore. Browser/device crash rates and thermal behavior still need testing on the affected hardware.
+- The supplied artwork and full 28-fighter roster remain included. This ZIP has not been pushed or deployed to GitHub Pages; online players should use v0.10.1.
+
 # v0.10.0 — Krule and Jeeves — September 14, 2026
 
 161 automated tests pass. `npm run check` passes: 28 unique fighters, 2,986 animation entries, six arenas, both music tracks, valid JavaScript and UI references.

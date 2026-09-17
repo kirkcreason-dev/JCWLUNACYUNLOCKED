@@ -614,3 +614,17 @@ Rebuild: `python tools/prepare_new_assets.py /path/to/extracted/folders hokane`.
 | ropePose | Hokane climbing on ropes.jpg | 1 |
 | ko | Hokane passed out.jpg | 1 |
 | fallFrontReverse | Hokane falling forward.jpg | 6 |
+
+
+## v0.11.0 additions
+
+`tools/expansion33.py` prepares the five packs; `expansion33-audit.json` records all 148 source sheets and hashes, with extraction bounds before final adaptations. Not every source pose is used.
+
+Atiba's missing dazed and defeated poses use his idle and pin poses. Tommy's missing throw uses his lift, kick and idle poses; victory uses his taunt. Jacksyn's missing being-thrown sequence uses his lifted, falling-back and down poses. Later front-fall poses joined by printed dust are replaced with each wrestler's own clean down pose for Atiba, Tommy and Jacksyn. Rope setup uses each wrestler's clean corner crouch; scenery-obscured climb poses are omitted. Guitar contact uses each wrestler's throw contact plus the existing isolated guitar prop. These are animation adaptations, not additional authored source sheets.
+
+
+## v0.12.0 additions
+
+`tools/expansion36.py` prepares DJ Clay, Jeff Lane and Shane Mercer. `tools/expansion36-audit.json` records all 92 supplied source sheets with hashes and extraction bounds. Bounds describe extraction before adaptations; not every authored pose is used.
+
+Jeff Lane's pack has no standalone standing or throwing sheet. His own taunt pose supplies idle/portrait, and his lift, kick and idle poses supply the throw animation. Each wrestler's clean standing pose replaces rope-entry art crossed by scenery; corner setup uses a clean top-rope pose. Only complete top-rope poses are retained. Guitar contact uses each wrestler's own forward throw/kick pose with the existing isolated guitar prop. DJ Clay's six-frame Bass Blast retains the supplied cyan sound-wave art. The animation uses existing finisher damage/reach and requires full meter; it does not introduce a projectile mechanic. White armor is retained for Clay while enclosed background around the others' raised arms is cleared.

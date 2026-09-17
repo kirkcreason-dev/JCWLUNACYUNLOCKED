@@ -1,3 +1,26 @@
+# v0.12.0 — 36 fighters — September 17, 2026
+
+- Added DJ Clay, Jeff Lane and Shane Mercer from 92 supplied sheets.
+- Added DJ Clay's Bass Blast art with charge, contact and recovery timing; existing finisher balance is retained.
+- Filled the sixth portrait page and expanded online bounds with v12 / LU120 compatibility.
+- Added Shane Mercer's published ratings; DJ Clay and Jeff Lane remain unlisted.
+- Preserved the original 33 roster entries, artwork, phone layouts and stability changes.
+
+# v0.11.0 — 33 fighters — September 16, 2026
+
+- Added Atiba, JP Grayson, Tommy, Shaggy 2 Dope, and Jacksyn from 148 supplied sprite sheets.
+- Added six-page phone selection, roster validation, and v11 / LU110 online compatibility.
+- Preserved prior stability fixes, branding, and the original 28 fighters.
+- Added four published ratings; Shaggy remains explicitly unlisted.
+
+# v0.10.1 — Stability and performance — September 16, 2026
+
+- Load announcement banners and combat effects on demand instead of decoding every optional PNG before the first match.
+- Release evicted fighter/arena image sources, ignore stale decode completions, and bound particle/popup queues during event bursts.
+- Catch recoverable simulation/render faults, pause safely with a restart action, and handle canvas context loss/restoration.
+- Cache the HUD gradient and preserve the complete 28-fighter roster, online protocol, and supplied artwork.
+- Validation: 164 automated tests pass; static checks pass. No physical-device or live-browser performance claim.
+
 # v0.10.0 — Krule and Jeeves
 
 - Expanded the roster to 28 with Krule and Jeeves, using all 59 supplied source sheets. Existing 26 roster slots and their assets are preserved.

@@ -45,3 +45,13 @@ For example, Kongo's 10 / 5 / 7 / 9 gives multipliers 1.20 / 0.95 / 1.05 / 1.15.
 Listed finishers replace the old invented labels. An empty site field uses the generic “Lunacy Finisher.” Site names marked “(Tag)” are retained as labels; this is a two-fighter game, and those labels do not add tag partners or unique signature choreography.
 
 To reapply the reviewed snapshot after an asset-only edit, run `python3 tools/apply_website_stats.py`. The expanded-roster preparation script also reapplies it automatically. Both online clients must use v0.7.2 so their roster and damage rules match.
+
+
+## September 16, 2026 additions
+
+From https://jcwlunacy.net/: Atiba 6/8/8/7 (Sucka Busta (Tag)); JP Grayson and Tommy Grayson 5/9/8/7 (T-Gimmick (Tag)); Jacksyn 6/7/7/8 (As Above So Below (Tag)). Order: power/speed/technique/toughness. Shaggy 2 Dope has no listed ratings in the retrieved data; game balance values are not presented as website ratings. Tag finisher names are labels; this release retains singles gameplay.
+
+
+## September 17, 2026 additions
+
+The JCW site's published data lists Shane Mercer at power 10, speed 6, technique 7 and toughness 8, with “MoonSault and Battery.” Source: https://jcwlunacy.net/ (retrieved September 17, 2026). DJ Clay and Jeff Lane have no listed ratings in that data; their game balance values remain separate. “Bass Blast” comes from the supplied DJ Clay sprite pack, not a website rating or finisher listing.
