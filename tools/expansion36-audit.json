@@ -1,0 +1,3044 @@
+[
+  {
+    "fighter": "dj-clay",
+    "animation": "idle",
+    "source": "DJ Clay/DJ Clay standing.png",
+    "sourceSHA256": "5c91e1440f4b9b3b051de83b3e05706c8d18160fe8a190ba5c7e54dfea07e732",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 175,
+        "w": 404,
+        "h": 812
+      },
+      {
+        "x": 416,
+        "y": 175,
+        "w": 395,
+        "h": 812
+      },
+      {
+        "x": 874,
+        "y": 179,
+        "w": 282,
+        "h": 812
+      },
+      {
+        "x": 1235,
+        "y": 178,
+        "w": 264,
+        "h": 813
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "walk",
+    "source": "DJ Clay/Clay walking.png",
+    "sourceSHA256": "e7b0650a22585a673d4305faad2ed5c1a4ecaf8b149316c6397e2fa55a7a51b2",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 503,
+        "w": 236,
+        "h": 331
+      },
+      {
+        "x": 383,
+        "y": 503,
+        "w": 218,
+        "h": 330
+      },
+      {
+        "x": 723,
+        "y": 500,
+        "w": 147,
+        "h": 335
+      },
+      {
+        "x": 979,
+        "y": 503,
+        "w": 258,
+        "h": 330
+      },
+      {
+        "x": 1308,
+        "y": 503,
+        "w": 240,
+        "h": 331
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "run",
+    "source": "DJ Clay/Clay running.png",
+    "sourceSHA256": "53bb3dede4c9ed15caa7ab90191e091e421655e529448c8be0dabaf970fee506",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 543,
+        "w": 252,
+        "h": 311
+      },
+      {
+        "x": 285,
+        "y": 542,
+        "w": 245,
+        "h": 312
+      },
+      {
+        "x": 548,
+        "y": 541,
+        "w": 219,
+        "h": 313
+      },
+      {
+        "x": 777,
+        "y": 541,
+        "w": 284,
+        "h": 313
+      },
+      {
+        "x": 1085,
+        "y": 541,
+        "w": 225,
+        "h": 313
+      },
+      {
+        "x": 1338,
+        "y": 542,
+        "w": 231,
+        "h": 312
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "chair",
+    "source": "DJ Clay/Clay attack with chair.png",
+    "sourceSHA256": "16716461fd20ba9484ae9a6828d590148448bf1c522b708bc0f3bd404ad6848c",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 298,
+        "w": 269,
+        "h": 515
+      },
+      {
+        "x": 314,
+        "y": 146,
+        "w": 282,
+        "h": 667
+      },
+      {
+        "x": 602,
+        "y": 342,
+        "w": 338,
+        "h": 469
+      },
+      {
+        "x": 924,
+        "y": 424,
+        "w": 365,
+        "h": 388
+      },
+      {
+        "x": 1303,
+        "y": 298,
+        "w": 281,
+        "h": 518
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "bat",
+    "source": "DJ Clay/Clay attack with bat.png",
+    "sourceSHA256": "5730e6500f41aaaa00e252b8de786a09743e5c0a8d1bc2075bcfa93b71774089",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 6,
+        "y": 233,
+        "w": 276,
+        "h": 554
+      },
+      {
+        "x": 291,
+        "y": 155,
+        "w": 324,
+        "h": 637
+      },
+      {
+        "x": 613,
+        "y": 267,
+        "w": 409,
+        "h": 525
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "guitar",
+    "source": "DJ Clay/Clay attack with guitar.png",
+    "sourceSHA256": "0bcd128277b93768aec7c9e8ebd8faa64a93c5742960beac9a66731f4f565a48",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 282,
+        "w": 276,
+        "h": 528
+      },
+      {
+        "x": 332,
+        "y": 158,
+        "w": 301,
+        "h": 651
+      },
+      {
+        "x": 1312,
+        "y": 282,
+        "w": 275,
+        "h": 529
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "trashcan",
+    "source": "DJ Clay/Clay attack with trashcan.png",
+    "sourceSHA256": "d94dbc6392b190a1a035d1d0c37de1350511472a3a8bf39381c2aa4ead188a72",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 6,
+        "y": 315,
+        "w": 310,
+        "h": 528
+      },
+      {
+        "x": 324,
+        "y": 306,
+        "w": 309,
+        "h": 539
+      },
+      {
+        "x": 633,
+        "y": 151,
+        "w": 310,
+        "h": 692
+      },
+      {
+        "x": 944,
+        "y": 345,
+        "w": 381,
+        "h": 506
+      },
+      {
+        "x": 1322,
+        "y": 371,
+        "w": 275,
+        "h": 480
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "carryChair",
+    "source": "DJ Clay/Clay walk with chair.png",
+    "sourceSHA256": "510fe8c54b2dae75f3e02de869e7ab8218eba2a642fce6f84e26115fca75ff1e",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 586,
+        "w": 297,
+        "h": 388
+      },
+      {
+        "x": 330,
+        "y": 586,
+        "w": 298,
+        "h": 388
+      },
+      {
+        "x": 659,
+        "y": 586,
+        "w": 235,
+        "h": 388
+      },
+      {
+        "x": 961,
+        "y": 586,
+        "w": 292,
+        "h": 388
+      },
+      {
+        "x": 1282,
+        "y": 587,
+        "w": 290,
+        "h": 386
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "carryBat",
+    "source": "DJ Clay/Clay walk with bat.png",
+    "sourceSHA256": "b5b8b22a2d7d57662e8baec0002283ee96a095b5433225cd683cfbb0daa00a9c",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 196,
+        "w": 309,
+        "h": 588
+      },
+      {
+        "x": 317,
+        "y": 196,
+        "w": 299,
+        "h": 584
+      },
+      {
+        "x": 630,
+        "y": 195,
+        "w": 296,
+        "h": 586
+      },
+      {
+        "x": 904,
+        "y": 195,
+        "w": 351,
+        "h": 585
+      },
+      {
+        "x": 1272,
+        "y": 196,
+        "w": 314,
+        "h": 588
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "carryGuitar",
+    "source": "DJ Clay/Clay walk with guitar.png",
+    "sourceSHA256": "dc987e64a01781dd64b4eb7d21ce615a01f660d021c05ea3e7c9d8dc6ceb07e2",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 225,
+        "w": 310,
+        "h": 626
+      },
+      {
+        "x": 358,
+        "y": 224,
+        "w": 281,
+        "h": 629
+      },
+      {
+        "x": 662,
+        "y": 224,
+        "w": 255,
+        "h": 625
+      },
+      {
+        "x": 941,
+        "y": 224,
+        "w": 300,
+        "h": 626
+      },
+      {
+        "x": 1254,
+        "y": 224,
+        "w": 334,
+        "h": 626
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "carryTrashcan",
+    "source": "DJ Clay/Clay walk with trashcan.png",
+    "sourceSHA256": "32fd11a8d1f5cefde49926769c7a2b991a5dc883c7cc9f81768bc1d27252c252",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 206,
+        "w": 322,
+        "h": 586
+      },
+      {
+        "x": 333,
+        "y": 206,
+        "w": 328,
+        "h": 587
+      },
+      {
+        "x": 656,
+        "y": 207,
+        "w": 254,
+        "h": 588
+      },
+      {
+        "x": 929,
+        "y": 207,
+        "w": 348,
+        "h": 588
+      },
+      {
+        "x": 1295,
+        "y": 206,
+        "w": 298,
+        "h": 591
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "lift",
+    "source": "DJ Clay/Clay lifting overhead.png",
+    "sourceSHA256": "44eee248d40ff929628198699e21c6585a625a7d0e13b8442d117066c0c1d40b",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 423,
+        "w": 311,
+        "h": 382
+      },
+      {
+        "x": 346,
+        "y": 324,
+        "w": 290,
+        "h": 482
+      },
+      {
+        "x": 660,
+        "y": 285,
+        "w": 281,
+        "h": 522
+      },
+      {
+        "x": 968,
+        "y": 208,
+        "w": 309,
+        "h": 599
+      },
+      {
+        "x": 1301,
+        "y": 153,
+        "w": 276,
+        "h": 655
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "throw",
+    "source": "DJ Clay/Clay throwing.png",
+    "sourceSHA256": "0654d7164278eec2cc77d56ec7ef027c54f108ff576f823877bc8016548b715a",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 360,
+        "w": 308,
+        "h": 486
+      },
+      {
+        "x": 306,
+        "y": 302,
+        "w": 357,
+        "h": 552
+      },
+      {
+        "x": 657,
+        "y": 156,
+        "w": 302,
+        "h": 636
+      },
+      {
+        "x": 895,
+        "y": 359,
+        "w": 427,
+        "h": 495
+      },
+      {
+        "x": 1313,
+        "y": 304,
+        "w": 280,
+        "h": 550
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "lifted",
+    "source": "DJ Clay/Clay getting lifted overhead.png",
+    "sourceSHA256": "3a6951ef19ffc97a89d52a451c4d29c462a5c48d10e78261d3ab93b51456c4d8",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 358,
+        "w": 241,
+        "h": 425
+      },
+      {
+        "x": 281,
+        "y": 274,
+        "w": 270,
+        "h": 447
+      },
+      {
+        "x": 510,
+        "y": 265,
+        "w": 318,
+        "h": 425
+      },
+      {
+        "x": 841,
+        "y": 295,
+        "w": 348,
+        "h": 301
+      },
+      {
+        "x": 1205,
+        "y": 317,
+        "w": 384,
+        "h": 282
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "thrown",
+    "source": "DJ Clay/Clay being thrown.png",
+    "sourceSHA256": "aca3a35398d098641c67365d472ee94d33a0d50989ed7c949ba5d5ae4aa1531e",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 273,
+        "w": 292,
+        "h": 536
+      },
+      {
+        "x": 284,
+        "y": 210,
+        "w": 438,
+        "h": 497
+      },
+      {
+        "x": 653,
+        "y": 274,
+        "w": 237,
+        "h": 438
+      },
+      {
+        "x": 906,
+        "y": 250,
+        "w": 357,
+        "h": 500
+      },
+      {
+        "x": 1240,
+        "y": 607,
+        "w": 352,
+        "h": 215
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "hurt",
+    "source": "DJ Clay/Clay dazed.png",
+    "sourceSHA256": "8c1009aa06ea40494e6926dea2384c8ffbb1ff197fee783e89bd260c50950a9c",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 15,
+        "y": 160,
+        "w": 397,
+        "h": 694
+      },
+      {
+        "x": 432,
+        "y": 243,
+        "w": 372,
+        "h": 611
+      },
+      {
+        "x": 811,
+        "y": 176,
+        "w": 379,
+        "h": 678
+      },
+      {
+        "x": 1213,
+        "y": 178,
+        "w": 376,
+        "h": 676
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "fallBack",
+    "source": "DJ Clay/Clay falling backward.png",
+    "sourceSHA256": "c96fc95a04a67dded9982cb3e46611a476599dbf2a68f1c8e6f88b49847f97c3",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 168,
+        "w": 279,
+        "h": 367
+      },
+      {
+        "x": 270,
+        "y": 190,
+        "w": 315,
+        "h": 331
+      },
+      {
+        "x": 582,
+        "y": 285,
+        "w": 311,
+        "h": 252
+      },
+      {
+        "x": 897,
+        "y": 388,
+        "w": 303,
+        "h": 155
+      },
+      {
+        "x": 1221,
+        "y": 418,
+        "w": 368,
+        "h": 122
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "fallFront",
+    "source": "DJ Clay/Clay falling forward.png",
+    "sourceSHA256": "e19d09c9f5620759c5c8ce45c55a154cd17acf59b53574556058e7ba30862f5a",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 68,
+        "y": 141,
+        "w": 352,
+        "h": 504
+      },
+      {
+        "x": 539,
+        "y": 191,
+        "w": 479,
+        "h": 459
+      },
+      {
+        "x": 1083,
+        "y": 271,
+        "w": 492,
+        "h": 378
+      },
+      {
+        "x": 15,
+        "y": 719,
+        "w": 588,
+        "h": 250
+      },
+      {
+        "x": 611,
+        "y": 745,
+        "w": 418,
+        "h": 260
+      },
+      {
+        "x": 1034,
+        "y": 828,
+        "w": 553,
+        "h": 171
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "down",
+    "source": "DJ Clay/Clay laying facedown and faceup.png",
+    "sourceSHA256": "cca0d0703790da185c33d8f9cdcff030342190affd8f195c7f934eb57acc9bdc",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 791,
+        "y": 266,
+        "w": 784,
+        "h": 222
+      },
+      {
+        "x": 801,
+        "y": 644,
+        "w": 783,
+        "h": 210
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "rise",
+    "source": "DJ Clay/Clay getting back up.png",
+    "sourceSHA256": "02ce50c117fb3f6c80d35a53c899f09e123edbb40a37525e8873cb9f4fe4aa9a",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 316,
+        "w": 570,
+        "h": 189
+      },
+      {
+        "x": 592,
+        "y": 228,
+        "w": 523,
+        "h": 278
+      },
+      {
+        "x": 1143,
+        "y": 188,
+        "w": 444,
+        "h": 312
+      },
+      {
+        "x": 83,
+        "y": 593,
+        "w": 450,
+        "h": 406
+      },
+      {
+        "x": 660,
+        "y": 559,
+        "w": 356,
+        "h": 450
+      },
+      {
+        "x": 1178,
+        "y": 507,
+        "w": 299,
+        "h": 505
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "taunt",
+    "source": "DJ Clay/Clay taunting.png",
+    "sourceSHA256": "431cf539aadc83341142442c9ad29f4dfdb661120f52110f0ec84f44b5524a78",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 9,
+        "y": 201,
+        "w": 294,
+        "h": 614
+      },
+      {
+        "x": 296,
+        "y": 201,
+        "w": 283,
+        "h": 614
+      },
+      {
+        "x": 553,
+        "y": 198,
+        "w": 416,
+        "h": 617
+      },
+      {
+        "x": 951,
+        "y": 201,
+        "w": 313,
+        "h": 614
+      },
+      {
+        "x": 1237,
+        "y": 201,
+        "w": 356,
+        "h": 614
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "victory",
+    "source": "DJ Clay/Clay victory.png",
+    "sourceSHA256": "465211d4645546b1b7c347d9b60cb7ba6f3fb19e61a8148fb8d4a65f8747f014",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 253,
+        "w": 315,
+        "h": 572
+      },
+      {
+        "x": 314,
+        "y": 162,
+        "w": 307,
+        "h": 666
+      },
+      {
+        "x": 602,
+        "y": 219,
+        "w": 352,
+        "h": 606
+      },
+      {
+        "x": 934,
+        "y": 186,
+        "w": 310,
+        "h": 642
+      },
+      {
+        "x": 1243,
+        "y": 266,
+        "w": 350,
+        "h": 560
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "defeat",
+    "source": "DJ Clay/Clay defeated.png",
+    "sourceSHA256": "03880ffe78752d5121fc1f8bd3ca90ca6f96606501479acde2170fb52d813b4c",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1217,
+        "y": 237,
+        "w": 348,
+        "h": 583
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "jump",
+    "source": "DJ Clay/Clay jumping.png",
+    "sourceSHA256": "2357a2dede01d5b045a372acd47cf71f81c4a5a12f2a74f5a37dea9050649351",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 384,
+        "w": 352,
+        "h": 462
+      },
+      {
+        "x": 366,
+        "y": 265,
+        "w": 398,
+        "h": 581
+      },
+      {
+        "x": 791,
+        "y": 160,
+        "w": 466,
+        "h": 515
+      },
+      {
+        "x": 1160,
+        "y": 408,
+        "w": 433,
+        "h": 438
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "pin",
+    "source": "DJ Clay/Clay pinning.png",
+    "sourceSHA256": "25f6145cfa4754e72a43326564aab621737d74da111532e2dde49d3e29c0eb4a",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 200,
+        "w": 364,
+        "h": 591
+      },
+      {
+        "x": 380,
+        "y": 298,
+        "w": 385,
+        "h": 505
+      },
+      {
+        "x": 767,
+        "y": 404,
+        "w": 423,
+        "h": 408
+      },
+      {
+        "x": 1165,
+        "y": 514,
+        "w": 426,
+        "h": 305
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "kick",
+    "source": "DJ Clay/Clay kicking.png",
+    "sourceSHA256": "315ee98fec372f5d73c8fceeb168d8a3fed3c98f9b89808960504441c87ba3d1",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 578,
+        "w": 255,
+        "h": 377
+      },
+      {
+        "x": 339,
+        "y": 578,
+        "w": 205,
+        "h": 377
+      },
+      {
+        "x": 615,
+        "y": 582,
+        "w": 361,
+        "h": 373
+      },
+      {
+        "x": 1022,
+        "y": 580,
+        "w": 209,
+        "h": 375
+      },
+      {
+        "x": 1313,
+        "y": 579,
+        "w": 264,
+        "h": 376
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "climb",
+    "source": "DJ Clay/Clay climb on top corner rope.png",
+    "sourceSHA256": "befd0e2ee9524320dc4bbd63a6ab42381d1b43728422f98d8885d006827294a9",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 940,
+        "y": 276,
+        "w": 194,
+        "h": 279
+      },
+      {
+        "x": 1151,
+        "y": 200,
+        "w": 231,
+        "h": 359
+      },
+      {
+        "x": 1388,
+        "y": 144,
+        "w": 197,
+        "h": 413
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "entry",
+    "source": "DJ Clay/Clay climb through rope.png",
+    "sourceSHA256": "f9b651911ed8215d471036357a44397f89b21135cd6377214bf90c94542fa6e9",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1293,
+        "y": 246,
+        "w": 297,
+        "h": 561
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "dive",
+    "source": "DJ Clay/Clay jumping off corner.png",
+    "sourceSHA256": "a6e60768b922004801b8f37108e91e5dcd8b8bea61956a531f1db05a75269d4e",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 611,
+        "y": 304,
+        "w": 432,
+        "h": 271
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "ropePose",
+    "source": "DJ Clay/Clay climb on rope.png",
+    "sourceSHA256": "b91108ee2ff11f495db45c679890177aaffda50d5187bd9a149498f3ab9499e0",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1293,
+        "y": 246,
+        "w": 297,
+        "h": 571
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "ko",
+    "source": "DJ Clay/Clay passed out.png",
+    "sourceSHA256": "0da6f2ea09cc78b5b5f95d4f5004e303e71d0289338b238fd001af1bc2f92ff4",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 93,
+        "y": 300,
+        "w": 1411,
+        "h": 518
+      }
+    ]
+  },
+  {
+    "fighter": "dj-clay",
+    "animation": "special",
+    "source": "DJ Clay/DJ Clay Bass Blast.png",
+    "sourceSHA256": "738766668ed37ee0b02dfe61d7d2deb46cbecfe434b31453805d23cfbe132197",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 141,
+        "y": 80,
+        "w": 250,
+        "h": 440
+      },
+      {
+        "x": 605,
+        "y": 105,
+        "w": 338,
+        "h": 415
+      },
+      {
+        "x": 1183,
+        "y": 96,
+        "w": 332,
+        "h": 424
+      },
+      {
+        "x": 74,
+        "y": 592,
+        "w": 447,
+        "h": 408
+      },
+      {
+        "x": 591,
+        "y": 561,
+        "w": 565,
+        "h": 439
+      },
+      {
+        "x": 1234,
+        "y": 553,
+        "w": 322,
+        "h": 447
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "walk",
+    "source": "Jeff Lane/JL walking.png",
+    "sourceSHA256": "b41f71d8b0c0ee95cde4414c50f6cfc94fb468e20790ee5e1b0d62cb19980a1c",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 43,
+        "y": 494,
+        "w": 260,
+        "h": 325
+      },
+      {
+        "x": 369,
+        "y": 494,
+        "w": 225,
+        "h": 322
+      },
+      {
+        "x": 723,
+        "y": 494,
+        "w": 140,
+        "h": 324
+      },
+      {
+        "x": 972,
+        "y": 494,
+        "w": 240,
+        "h": 321
+      },
+      {
+        "x": 1275,
+        "y": 494,
+        "w": 266,
+        "h": 327
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "run",
+    "source": "Jeff Lane/JL running.png",
+    "sourceSHA256": "474e3abbede5aaee6ab163d9bb79ac78e558b813f9bb4365f45d8b48956c9623",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 562,
+        "w": 249,
+        "h": 292
+      },
+      {
+        "x": 315,
+        "y": 566,
+        "w": 194,
+        "h": 288
+      },
+      {
+        "x": 530,
+        "y": 562,
+        "w": 250,
+        "h": 292
+      },
+      {
+        "x": 795,
+        "y": 562,
+        "w": 253,
+        "h": 291
+      },
+      {
+        "x": 1072,
+        "y": 562,
+        "w": 237,
+        "h": 292
+      },
+      {
+        "x": 1358,
+        "y": 562,
+        "w": 223,
+        "h": 292
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "chair",
+    "source": "Jeff Lane/JL attack with chair.png",
+    "sourceSHA256": "52ab346e2feee796ed168ed6909d62ab642455dd32cdb9bf7966273c135b415c",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 293,
+        "w": 281,
+        "h": 506
+      },
+      {
+        "x": 323,
+        "y": 146,
+        "w": 289,
+        "h": 654
+      },
+      {
+        "x": 604,
+        "y": 335,
+        "w": 442,
+        "h": 465
+      },
+      {
+        "x": 927,
+        "y": 416,
+        "w": 394,
+        "h": 386
+      },
+      {
+        "x": 1294,
+        "y": 288,
+        "w": 293,
+        "h": 513
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "bat",
+    "source": "Jeff Lane/JL attack with bat.png",
+    "sourceSHA256": "fc5e6b8c091453bfdfcd247d20f59081be61c3d5cb57f143bb65810253b8d574",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 294,
+        "w": 313,
+        "h": 511
+      },
+      {
+        "x": 296,
+        "y": 183,
+        "w": 322,
+        "h": 628
+      },
+      {
+        "x": 630,
+        "y": 292,
+        "w": 406,
+        "h": 521
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "guitar",
+    "source": "Jeff Lane/JL attack with guitar.png",
+    "sourceSHA256": "628ea5849e411e337c35e3a4b9d54913d55a2f71c54be959682e8b38c6b4a8ed",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 298,
+        "w": 295,
+        "h": 473
+      },
+      {
+        "x": 331,
+        "y": 197,
+        "w": 301,
+        "h": 577
+      },
+      {
+        "x": 1288,
+        "y": 298,
+        "w": 298,
+        "h": 475
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "trashcan",
+    "source": "Jeff Lane/JL attack with trashcan.png",
+    "sourceSHA256": "bd86a4fc4a6b14c041263da4b433540c1a9e3dff01645f366ef8c740df2b3a53",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 11,
+        "y": 334,
+        "w": 298,
+        "h": 508
+      },
+      {
+        "x": 320,
+        "y": 341,
+        "w": 332,
+        "h": 504
+      },
+      {
+        "x": 624,
+        "y": 174,
+        "w": 298,
+        "h": 671
+      },
+      {
+        "x": 931,
+        "y": 367,
+        "w": 369,
+        "h": 479
+      },
+      {
+        "x": 1263,
+        "y": 364,
+        "w": 330,
+        "h": 483
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "carryChair",
+    "source": "Jeff Lane/JL walk with chair.png",
+    "sourceSHA256": "87d1dc5f3affefbadafb1e4c55b8b8db46e0a917a34c55e1871df35fb4e274c5",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 48,
+        "y": 514,
+        "w": 239,
+        "h": 314
+      },
+      {
+        "x": 386,
+        "y": 524,
+        "w": 221,
+        "h": 304
+      },
+      {
+        "x": 718,
+        "y": 517,
+        "w": 170,
+        "h": 311
+      },
+      {
+        "x": 1005,
+        "y": 515,
+        "w": 223,
+        "h": 313
+      },
+      {
+        "x": 1331,
+        "y": 516,
+        "w": 236,
+        "h": 312
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "carryBat",
+    "source": "Jeff Lane/JL walking with bat.png",
+    "sourceSHA256": "6f14d028758e8850534e93d5e56b97f4b95ec52504cc765172dcd833e7b74479",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 214,
+        "w": 321,
+        "h": 575
+      },
+      {
+        "x": 334,
+        "y": 212,
+        "w": 304,
+        "h": 574
+      },
+      {
+        "x": 640,
+        "y": 212,
+        "w": 283,
+        "h": 577
+      },
+      {
+        "x": 949,
+        "y": 212,
+        "w": 312,
+        "h": 574
+      },
+      {
+        "x": 1279,
+        "y": 212,
+        "w": 313,
+        "h": 578
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "carryGuitar",
+    "source": "Jeff Lane/JL walking with guitar.png",
+    "sourceSHA256": "0db9db044625a1d9401db95cb58fb4ad25acec94631c2eb1ed0b29bb73a912f8",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 15,
+        "y": 210,
+        "w": 316,
+        "h": 629
+      },
+      {
+        "x": 359,
+        "y": 210,
+        "w": 287,
+        "h": 628
+      },
+      {
+        "x": 658,
+        "y": 210,
+        "w": 306,
+        "h": 629
+      },
+      {
+        "x": 980,
+        "y": 210,
+        "w": 295,
+        "h": 628
+      },
+      {
+        "x": 1286,
+        "y": 209,
+        "w": 303,
+        "h": 629
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "carryTrashcan",
+    "source": "Jeff Lane/JL walk with trashcan.png",
+    "sourceSHA256": "ceeb0a1ecef9b7339e82ec56e8edbf46d4b1fad25b47dd270695792d395cef87",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 226,
+        "w": 307,
+        "h": 534
+      },
+      {
+        "x": 347,
+        "y": 226,
+        "w": 286,
+        "h": 531
+      },
+      {
+        "x": 662,
+        "y": 226,
+        "w": 302,
+        "h": 531
+      },
+      {
+        "x": 989,
+        "y": 226,
+        "w": 267,
+        "h": 534
+      },
+      {
+        "x": 1293,
+        "y": 226,
+        "w": 299,
+        "h": 534
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "lift",
+    "source": "Jeff Lane/JL lifting overhead.png",
+    "sourceSHA256": "f43a7270c44534dc9dbbd358c2ca9328f6a18ab801734c24a0a3e1b935788252",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 386,
+        "w": 336,
+        "h": 449
+      },
+      {
+        "x": 366,
+        "y": 327,
+        "w": 298,
+        "h": 508
+      },
+      {
+        "x": 665,
+        "y": 280,
+        "w": 311,
+        "h": 555
+      },
+      {
+        "x": 988,
+        "y": 203,
+        "w": 303,
+        "h": 632
+      },
+      {
+        "x": 1299,
+        "y": 146,
+        "w": 293,
+        "h": 690
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "lifted",
+    "source": "Jeff Lane/JL being lifted up.png",
+    "sourceSHA256": "903dafc1149ed627d641ca9adb90dbf013990a29c8bf5a823ec4e39d479e6df3",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 441,
+        "w": 255,
+        "h": 342
+      },
+      {
+        "x": 292,
+        "y": 373,
+        "w": 267,
+        "h": 345
+      },
+      {
+        "x": 560,
+        "y": 368,
+        "w": 333,
+        "h": 280
+      },
+      {
+        "x": 929,
+        "y": 370,
+        "w": 381,
+        "h": 268
+      },
+      {
+        "x": 1309,
+        "y": 310,
+        "w": 274,
+        "h": 404
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "thrown",
+    "source": "Jeff Lane/JL being thrown.png",
+    "sourceSHA256": "f35cebb2b64e7721f2ea33de8cb8e83fa860e31a0b7b86da954dae6e8ad73c2f",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 268,
+        "w": 300,
+        "h": 529
+      },
+      {
+        "x": 309,
+        "y": 211,
+        "w": 404,
+        "h": 494
+      },
+      {
+        "x": 689,
+        "y": 245,
+        "w": 231,
+        "h": 452
+      },
+      {
+        "x": 942,
+        "y": 253,
+        "w": 289,
+        "h": 422
+      },
+      {
+        "x": 1188,
+        "y": 594,
+        "w": 402,
+        "h": 219
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "hurt",
+    "source": "Jeff Lane/JL dazed.png",
+    "sourceSHA256": "3593ef52fe89b8a2f29337d6113f1dd72eeab2569928bb1a01f9f302b596d5b6",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 210,
+        "w": 353,
+        "h": 631
+      },
+      {
+        "x": 407,
+        "y": 212,
+        "w": 359,
+        "h": 629
+      },
+      {
+        "x": 823,
+        "y": 217,
+        "w": 351,
+        "h": 624
+      },
+      {
+        "x": 1213,
+        "y": 211,
+        "w": 360,
+        "h": 630
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "fallBack",
+    "source": "Jeff Lane/JL falling backwards.png",
+    "sourceSHA256": "9262005cf5224f86ef606f2680b37a04030a0c8eebea5eeab858dd313fba4127",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 160,
+        "w": 257,
+        "h": 388
+      },
+      {
+        "x": 282,
+        "y": 172,
+        "w": 330,
+        "h": 375
+      },
+      {
+        "x": 595,
+        "y": 279,
+        "w": 302,
+        "h": 277
+      },
+      {
+        "x": 908,
+        "y": 397,
+        "w": 318,
+        "h": 154
+      },
+      {
+        "x": 1227,
+        "y": 427,
+        "w": 362,
+        "h": 123
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "fallFront",
+    "source": "Jeff Lane/JL falling forwards.png",
+    "sourceSHA256": "e111453286e5df066f41e07eac82aee5bc1c53bb33b9b3267daa8bda389df6f3",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 70,
+        "y": 151,
+        "w": 421,
+        "h": 461
+      },
+      {
+        "x": 588,
+        "y": 191,
+        "w": 427,
+        "h": 421
+      },
+      {
+        "x": 1097,
+        "y": 261,
+        "w": 464,
+        "h": 350
+      },
+      {
+        "x": 15,
+        "y": 679,
+        "w": 594,
+        "h": 280
+      },
+      {
+        "x": 599,
+        "y": 723,
+        "w": 435,
+        "h": 270
+      },
+      {
+        "x": 1053,
+        "y": 836,
+        "w": 530,
+        "h": 157
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "down",
+    "source": "Jeff Lane/JL laying facedown and faceup.png",
+    "sourceSHA256": "f90a0f9c24e8a210b1787001a3d5ecda6c8d0d008329e53e95626e6ad71dd922",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 791,
+        "y": 318,
+        "w": 769,
+        "h": 182
+      },
+      {
+        "x": 822,
+        "y": 668,
+        "w": 737,
+        "h": 186
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "rise",
+    "source": "Jeff Lane/JL getting back up.png",
+    "sourceSHA256": "e2c4172441378d73f41db9043f234d38822e4dfaa99507dacd111e4d63b8039c",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 315,
+        "w": 478,
+        "h": 170
+      },
+      {
+        "x": 546,
+        "y": 256,
+        "w": 500,
+        "h": 229
+      },
+      {
+        "x": 1121,
+        "y": 197,
+        "w": 455,
+        "h": 288
+      },
+      {
+        "x": 69,
+        "y": 613,
+        "w": 427,
+        "h": 388
+      },
+      {
+        "x": 629,
+        "y": 581,
+        "w": 342,
+        "h": 412
+      },
+      {
+        "x": 1160,
+        "y": 499,
+        "w": 332,
+        "h": 508
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "taunt",
+    "source": "Jeff Lane/JL taunting.png",
+    "sourceSHA256": "3b72fdc7d696cd4f9bf61c3ee3e045127c1140e03d6d7e2dba828e729c0dc582",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 196,
+        "w": 302,
+        "h": 600
+      },
+      {
+        "x": 310,
+        "y": 213,
+        "w": 296,
+        "h": 583
+      },
+      {
+        "x": 568,
+        "y": 210,
+        "w": 421,
+        "h": 586
+      },
+      {
+        "x": 955,
+        "y": 208,
+        "w": 316,
+        "h": 587
+      },
+      {
+        "x": 1255,
+        "y": 201,
+        "w": 338,
+        "h": 595
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "victory",
+    "source": "Jeff Lane/JL victory.png",
+    "sourceSHA256": "ab8b0087a180c3328ae63d32ebe349bd9816e528eaa069b3fc563a9ac96f2e33",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 260,
+        "w": 317,
+        "h": 562
+      },
+      {
+        "x": 320,
+        "y": 146,
+        "w": 306,
+        "h": 676
+      },
+      {
+        "x": 631,
+        "y": 196,
+        "w": 319,
+        "h": 626
+      },
+      {
+        "x": 963,
+        "y": 196,
+        "w": 305,
+        "h": 626
+      },
+      {
+        "x": 1261,
+        "y": 260,
+        "w": 332,
+        "h": 562
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "defeat",
+    "source": "Jeff Lane/JL defeated.png",
+    "sourceSHA256": "01219a13b788f98d745327e51f8fcc5cf4186cb1102b5fed9ee076edaaa659e6",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1234,
+        "y": 229,
+        "w": 343,
+        "h": 566
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "jump",
+    "source": "Jeff Lane/JL jumping.png",
+    "sourceSHA256": "06400dfbe073b486bfdddb82ac0d1f5f13f86be670d9eb33eb1c07e765342452",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 432,
+        "w": 356,
+        "h": 416
+      },
+      {
+        "x": 372,
+        "y": 235,
+        "w": 380,
+        "h": 610
+      },
+      {
+        "x": 789,
+        "y": 179,
+        "w": 425,
+        "h": 523
+      },
+      {
+        "x": 1166,
+        "y": 440,
+        "w": 427,
+        "h": 408
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "pin",
+    "source": "Jeff Lane/JL pinning.png",
+    "sourceSHA256": "b5749a54a8487a7333a326eb9495f8362a5b7bd390ba5cb4982db183d4bf5c69",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 267,
+        "w": 364,
+        "h": 510
+      },
+      {
+        "x": 379,
+        "y": 383,
+        "w": 389,
+        "h": 376
+      },
+      {
+        "x": 784,
+        "y": 415,
+        "w": 409,
+        "h": 368
+      },
+      {
+        "x": 1157,
+        "y": 565,
+        "w": 436,
+        "h": 225
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "kick",
+    "source": "Jeff Lane/JL kicking.png",
+    "sourceSHA256": "40eb37c3bb609ad70aadbbee50709f138ad05c4ba02eeeb368fa98a4c9ccc86d",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 11,
+        "y": 579,
+        "w": 280,
+        "h": 406
+      },
+      {
+        "x": 335,
+        "y": 579,
+        "w": 217,
+        "h": 404
+      },
+      {
+        "x": 613,
+        "y": 577,
+        "w": 368,
+        "h": 410
+      },
+      {
+        "x": 1010,
+        "y": 577,
+        "w": 221,
+        "h": 410
+      },
+      {
+        "x": 1301,
+        "y": 579,
+        "w": 278,
+        "h": 406
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "climb",
+    "source": "Jeff Lane/JL climbing top ropes.png",
+    "sourceSHA256": "642070c5e8a5ab88b9935395d5d0b195ad1dbc8c23fc76175881d3ff3383f22e",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 1139,
+        "y": 286,
+        "w": 220,
+        "h": 334
+      },
+      {
+        "x": 1371,
+        "y": 233,
+        "w": 212,
+        "h": 348
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "entry",
+    "source": "Jeff Lane/JL climb through ropes.png",
+    "sourceSHA256": "4cc3d2cf9a1249f28112a6faf6218444edd354a1b8245c5224224db261a69cf0",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1293,
+        "y": 251,
+        "w": 297,
+        "h": 571
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "dive",
+    "source": "Jeff Lane/JL jumping off corner rope.png",
+    "sourceSHA256": "8e899cddc72a33a785e2c44a89572661005314c0bd97bcf8a9ef6361657eabe9",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 587,
+        "y": 207,
+        "w": 461,
+        "h": 283
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "ropePose",
+    "source": "Jeff Lane/JL climb on ropes.png",
+    "sourceSHA256": "c9a855a497685b3cfb39fb6a48e236eb957b5b07b4981b2133c1c6447e462a58",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1293,
+        "y": 264,
+        "w": 297,
+        "h": 570
+      }
+    ]
+  },
+  {
+    "fighter": "jeff-lane",
+    "animation": "ko",
+    "source": "Jeff Lane/JL passed out.png",
+    "sourceSHA256": "f7a97d4c47c2fcb74f5c71bc23731ad2635f00ce4d5552a9f664c37e4b32e553",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 170,
+        "y": 256,
+        "w": 1331,
+        "h": 598
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "idle",
+    "source": "Shane Mercer/Shane Mercer standing.png",
+    "sourceSHA256": "239b6be34fed11de41187fa956d5e24acc114eae228693d50c07dfb465c78e7d",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 205,
+        "w": 363,
+        "h": 762
+      },
+      {
+        "x": 453,
+        "y": 206,
+        "w": 355,
+        "h": 760
+      },
+      {
+        "x": 909,
+        "y": 205,
+        "w": 212,
+        "h": 766
+      },
+      {
+        "x": 1262,
+        "y": 204,
+        "w": 212,
+        "h": 767
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "walk",
+    "source": "Shane Mercer/SM walking.png",
+    "sourceSHA256": "eecbef7dee88dd358bf41cf129e0ef577cf82e4153259d20fa1a246a34e80831",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 48,
+        "y": 505,
+        "w": 252,
+        "h": 316
+      },
+      {
+        "x": 378,
+        "y": 505,
+        "w": 212,
+        "h": 316
+      },
+      {
+        "x": 723,
+        "y": 505,
+        "w": 150,
+        "h": 316
+      },
+      {
+        "x": 969,
+        "y": 505,
+        "w": 253,
+        "h": 316
+      },
+      {
+        "x": 1327,
+        "y": 504,
+        "w": 194,
+        "h": 317
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "run",
+    "source": "Shane Mercer/SM running.png",
+    "sourceSHA256": "a736e14af922dd022fa5d862c14407935ba96aa5605ef13ebf652c0584da0fc3",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 549,
+        "w": 274,
+        "h": 305
+      },
+      {
+        "x": 311,
+        "y": 556,
+        "w": 210,
+        "h": 295
+      },
+      {
+        "x": 548,
+        "y": 544,
+        "w": 215,
+        "h": 305
+      },
+      {
+        "x": 824,
+        "y": 549,
+        "w": 189,
+        "h": 262
+      },
+      {
+        "x": 1048,
+        "y": 547,
+        "w": 278,
+        "h": 307
+      },
+      {
+        "x": 1378,
+        "y": 547,
+        "w": 195,
+        "h": 307
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "chair",
+    "source": "Shane Mercer/SM attack with chair.png",
+    "sourceSHA256": "5202082e8a16b9cab90732ab9b9b0ba6ebcf81ea0286b1c5d509299c9ccc77d4",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 180,
+        "w": 269,
+        "h": 630
+      },
+      {
+        "x": 333,
+        "y": 180,
+        "w": 272,
+        "h": 630
+      },
+      {
+        "x": 618,
+        "y": 384,
+        "w": 386,
+        "h": 426
+      },
+      {
+        "x": 927,
+        "y": 384,
+        "w": 372,
+        "h": 426
+      },
+      {
+        "x": 1292,
+        "y": 337,
+        "w": 298,
+        "h": 473
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "bat",
+    "source": "Shane Mercer/SM attack with bat.png",
+    "sourceSHA256": "696baa09d757286d58caca1ccbdd3a87fc591edd769bbf198e376713ab7f3e54",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 11,
+        "y": 340,
+        "w": 310,
+        "h": 465
+      },
+      {
+        "x": 325,
+        "y": 227,
+        "w": 292,
+        "h": 584
+      },
+      {
+        "x": 625,
+        "y": 341,
+        "w": 416,
+        "h": 472
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "guitar",
+    "source": "Shane Mercer/SM attack with guitar.png",
+    "sourceSHA256": "a4a0bcfa243fbedf1c8454bd09c16922d72dcd1866f8dd4f631feaaac619ddfe",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 246,
+        "w": 302,
+        "h": 570
+      },
+      {
+        "x": 341,
+        "y": 224,
+        "w": 287,
+        "h": 564
+      },
+      {
+        "x": 1301,
+        "y": 333,
+        "w": 273,
+        "h": 455
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "trashcan",
+    "source": "Shane Mercer/SM attack with trashcan.png",
+    "sourceSHA256": "7c6bf428c119be7a29e5f271881639e101882b5b1795c0cd83ad26ec1b8e91ef",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 340,
+        "w": 278,
+        "h": 503
+      },
+      {
+        "x": 324,
+        "y": 351,
+        "w": 327,
+        "h": 492
+      },
+      {
+        "x": 643,
+        "y": 178,
+        "w": 278,
+        "h": 665
+      },
+      {
+        "x": 935,
+        "y": 357,
+        "w": 358,
+        "h": 486
+      },
+      {
+        "x": 1260,
+        "y": 374,
+        "w": 333,
+        "h": 469
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "carryChair",
+    "source": "Shane Mercer/SM walk with chair.png",
+    "sourceSHA256": "be3b6380181a3b1a0ed0c5bd7746fb95370472a78fecccbaa627d71d52bc8887",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 498,
+        "w": 234,
+        "h": 313
+      },
+      {
+        "x": 362,
+        "y": 498,
+        "w": 221,
+        "h": 313
+      },
+      {
+        "x": 678,
+        "y": 498,
+        "w": 209,
+        "h": 313
+      },
+      {
+        "x": 995,
+        "y": 498,
+        "w": 224,
+        "h": 314
+      },
+      {
+        "x": 1308,
+        "y": 498,
+        "w": 238,
+        "h": 313
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "carryBat",
+    "source": "Shane Mercer/SM walk with bat.png",
+    "sourceSHA256": "87b4c8c764bbe9a28f831b30e5fef5f31938debe9c64d4ee93b57f348752fad2",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 207,
+        "w": 329,
+        "h": 583
+      },
+      {
+        "x": 336,
+        "y": 207,
+        "w": 341,
+        "h": 583
+      },
+      {
+        "x": 652,
+        "y": 207,
+        "w": 261,
+        "h": 585
+      },
+      {
+        "x": 945,
+        "y": 207,
+        "w": 332,
+        "h": 583
+      },
+      {
+        "x": 1269,
+        "y": 207,
+        "w": 295,
+        "h": 583
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "carryGuitar",
+    "source": "Shane Mercer/SM walk with guitar.png",
+    "sourceSHA256": "524bd77fad8b83f89515e08cc2f41d0f468e49e9f7904cf2682a72fc53129943",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 226,
+        "w": 345,
+        "h": 601
+      },
+      {
+        "x": 357,
+        "y": 224,
+        "w": 277,
+        "h": 601
+      },
+      {
+        "x": 660,
+        "y": 225,
+        "w": 238,
+        "h": 600
+      },
+      {
+        "x": 930,
+        "y": 226,
+        "w": 359,
+        "h": 605
+      },
+      {
+        "x": 1299,
+        "y": 225,
+        "w": 273,
+        "h": 603
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "carryTrashcan",
+    "source": "Shane Mercer/SM walk with trashcan.png",
+    "sourceSHA256": "c9a20092449ec044429e856ee70f4829907167424e391e4028493e36e55fae65",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 239,
+        "w": 327,
+        "h": 521
+      },
+      {
+        "x": 338,
+        "y": 239,
+        "w": 322,
+        "h": 520
+      },
+      {
+        "x": 686,
+        "y": 239,
+        "w": 267,
+        "h": 522
+      },
+      {
+        "x": 931,
+        "y": 239,
+        "w": 342,
+        "h": 521
+      },
+      {
+        "x": 1307,
+        "y": 239,
+        "w": 271,
+        "h": 522
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "lift",
+    "source": "Shane Mercer/SM lifting overhead.png",
+    "sourceSHA256": "7c56d831b3e47bca561ddedb0b244b20cb3b35e0c4cd33a59a27790db65a586a",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 452,
+        "w": 329,
+        "h": 398
+      },
+      {
+        "x": 364,
+        "y": 406,
+        "w": 283,
+        "h": 444
+      },
+      {
+        "x": 659,
+        "y": 354,
+        "w": 299,
+        "h": 496
+      },
+      {
+        "x": 995,
+        "y": 276,
+        "w": 271,
+        "h": 574
+      },
+      {
+        "x": 1321,
+        "y": 266,
+        "w": 257,
+        "h": 584
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "throw",
+    "source": "Shane Mercer/SM throwing.png",
+    "sourceSHA256": "9a9bdecc2d8fb8cc45d2628517afdb670b6fe2efbcc199ad67d6e6742232a1d6",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 11,
+        "y": 374,
+        "w": 315,
+        "h": 457
+      },
+      {
+        "x": 345,
+        "y": 324,
+        "w": 282,
+        "h": 508
+      },
+      {
+        "x": 632,
+        "y": 195,
+        "w": 305,
+        "h": 627
+      },
+      {
+        "x": 896,
+        "y": 367,
+        "w": 397,
+        "h": 464
+      },
+      {
+        "x": 1280,
+        "y": 346,
+        "w": 310,
+        "h": 487
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "lifted",
+    "source": "Shane Mercer/SM getting lifted up.png",
+    "sourceSHA256": "d02582a510b30a875e01d79d5fea189e0f844c04b442b681120d74a0d08e2e3a",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 15,
+        "y": 463,
+        "w": 240,
+        "h": 311
+      },
+      {
+        "x": 271,
+        "y": 363,
+        "w": 245,
+        "h": 347
+      },
+      {
+        "x": 530,
+        "y": 334,
+        "w": 298,
+        "h": 323
+      },
+      {
+        "x": 828,
+        "y": 383,
+        "w": 367,
+        "h": 241
+      },
+      {
+        "x": 1202,
+        "y": 366,
+        "w": 386,
+        "h": 244
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "thrown",
+    "source": "Shane Mercer/SM being thrown.png",
+    "sourceSHA256": "bb36a7730d3fc199ac2249b8251185e64ed3f638e539c5b440a8de3b2c4f42d5",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 294,
+        "w": 270,
+        "h": 497
+      },
+      {
+        "x": 280,
+        "y": 230,
+        "w": 406,
+        "h": 471
+      },
+      {
+        "x": 694,
+        "y": 269,
+        "w": 206,
+        "h": 404
+      },
+      {
+        "x": 955,
+        "y": 280,
+        "w": 291,
+        "h": 432
+      },
+      {
+        "x": 1223,
+        "y": 589,
+        "w": 365,
+        "h": 214
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "hurt",
+    "source": "Shane Mercer/SM dazed.png",
+    "sourceSHA256": "b0168c4a487a1f382823f27ffc8124afaee320b8f2c8a6b844e5c29d278fbe30",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 55,
+        "y": 287,
+        "w": 327,
+        "h": 563
+      },
+      {
+        "x": 449,
+        "y": 289,
+        "w": 315,
+        "h": 561
+      },
+      {
+        "x": 827,
+        "y": 289,
+        "w": 324,
+        "h": 561
+      },
+      {
+        "x": 1223,
+        "y": 289,
+        "w": 322,
+        "h": 561
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "fallBack",
+    "source": "Shane Mercer/SM falling backwards.png",
+    "sourceSHA256": "b8cde51007a70a9da4da595199a1cc49728a35bd2857f4f34022f99c42864f42",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 11,
+        "y": 290,
+        "w": 253,
+        "h": 410
+      },
+      {
+        "x": 274,
+        "y": 333,
+        "w": 359,
+        "h": 283
+      },
+      {
+        "x": 599,
+        "y": 402,
+        "w": 322,
+        "h": 293
+      },
+      {
+        "x": 898,
+        "y": 542,
+        "w": 328,
+        "h": 158
+      },
+      {
+        "x": 1218,
+        "y": 583,
+        "w": 369,
+        "h": 115
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "fallFront",
+    "source": "Shane Mercer/SM falling forward.png",
+    "sourceSHA256": "662811b75b8d65afa73f24e5b18426f2ea6c094a878a3409c7d5b41ec14bbc7a",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 304,
+        "w": 198,
+        "h": 409
+      },
+      {
+        "x": 236,
+        "y": 345,
+        "w": 220,
+        "h": 370
+      },
+      {
+        "x": 446,
+        "y": 402,
+        "w": 257,
+        "h": 313
+      },
+      {
+        "x": 687,
+        "y": 486,
+        "w": 267,
+        "h": 234
+      },
+      {
+        "x": 966,
+        "y": 571,
+        "w": 255,
+        "h": 157
+      },
+      {
+        "x": 1222,
+        "y": 632,
+        "w": 367,
+        "h": 96
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "down",
+    "source": "Shane Mercer/SM laying facedown and faceup.png",
+    "sourceSHA256": "6e260cd1de64fca7b0c5417e054633346c84e564b67559db7b0066c135f6e05b",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 804,
+        "y": 321,
+        "w": 771,
+        "h": 157
+      },
+      {
+        "x": 816,
+        "y": 667,
+        "w": 753,
+        "h": 187
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "rise",
+    "source": "Shane Mercer/SM getting back up.png",
+    "sourceSHA256": "c103c0d9714ea8b2855b9554ce8c4b252b940dd39f894ea774a58b29f1aa32fd",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 18,
+        "y": 630,
+        "w": 315,
+        "h": 118
+      },
+      {
+        "x": 334,
+        "y": 551,
+        "w": 289,
+        "h": 195
+      },
+      {
+        "x": 631,
+        "y": 482,
+        "w": 244,
+        "h": 263
+      },
+      {
+        "x": 883,
+        "y": 420,
+        "w": 222,
+        "h": 325
+      },
+      {
+        "x": 1126,
+        "y": 338,
+        "w": 209,
+        "h": 407
+      },
+      {
+        "x": 1353,
+        "y": 290,
+        "w": 225,
+        "h": 456
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "taunt",
+    "source": "Shane Mercer/SM taunting.png",
+    "sourceSHA256": "7fdea6ce4ac6834dc8f6d2ed5d5f2609b2cc2976dd0b3c8e966ac517dfafb839",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 8,
+        "y": 197,
+        "w": 285,
+        "h": 606
+      },
+      {
+        "x": 315,
+        "y": 204,
+        "w": 306,
+        "h": 599
+      },
+      {
+        "x": 623,
+        "y": 209,
+        "w": 328,
+        "h": 593
+      },
+      {
+        "x": 931,
+        "y": 206,
+        "w": 325,
+        "h": 596
+      },
+      {
+        "x": 1235,
+        "y": 199,
+        "w": 356,
+        "h": 603
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "victory",
+    "source": "Shane Mercer/SM victory.png",
+    "sourceSHA256": "f7d1a1c3064d5e60a297f899e14109b0fca90b9bad115300e3cc8f1de657f1dd",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 192,
+        "w": 307,
+        "h": 646
+      },
+      {
+        "x": 362,
+        "y": 198,
+        "w": 307,
+        "h": 640
+      },
+      {
+        "x": 660,
+        "y": 284,
+        "w": 289,
+        "h": 554
+      },
+      {
+        "x": 959,
+        "y": 292,
+        "w": 317,
+        "h": 546
+      },
+      {
+        "x": 1295,
+        "y": 186,
+        "w": 285,
+        "h": 652
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "defeat",
+    "source": "Shane Mercer/SM defeated.png",
+    "sourceSHA256": "c02bc67d8af4c3ada7a487ca9f37a2d929f3959cd617f7435e6e2c8bb081e3bd",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1205,
+        "y": 272,
+        "w": 334,
+        "h": 480
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "jump",
+    "source": "Shane Mercer/SM jumping.png",
+    "sourceSHA256": "7019ff8683006c5c86a57d7b673e41dc2fb2650e687b0b754453a6f72d09cca2",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 33,
+        "y": 438,
+        "w": 358,
+        "h": 397
+      },
+      {
+        "x": 386,
+        "y": 297,
+        "w": 427,
+        "h": 526
+      },
+      {
+        "x": 771,
+        "y": 193,
+        "w": 453,
+        "h": 448
+      },
+      {
+        "x": 1178,
+        "y": 438,
+        "w": 405,
+        "h": 397
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "pin",
+    "source": "Shane Mercer/SM pinning.png",
+    "sourceSHA256": "0e51c6d9f398c60b767f43edff3d6d5b90b8a03e8125a1bd6dda3e40e7f9009c",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 255,
+        "w": 327,
+        "h": 593
+      },
+      {
+        "x": 395,
+        "y": 360,
+        "w": 328,
+        "h": 486
+      },
+      {
+        "x": 768,
+        "y": 478,
+        "w": 388,
+        "h": 367
+      },
+      {
+        "x": 1170,
+        "y": 546,
+        "w": 422,
+        "h": 293
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "kick",
+    "source": "Shane Mercer/SM kicking.png",
+    "sourceSHA256": "1024733dce050aeacc12922039434bb526bc94a91c71a88c9b2c8a41f6b43b51",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 45,
+        "y": 568,
+        "w": 273,
+        "h": 367
+      },
+      {
+        "x": 482,
+        "y": 568,
+        "w": 183,
+        "h": 370
+      },
+      {
+        "x": 818,
+        "y": 568,
+        "w": 295,
+        "h": 369
+      },
+      {
+        "x": 1263,
+        "y": 568,
+        "w": 177,
+        "h": 369
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "climb",
+    "source": "Shane Mercer/SM climbing on top rope.png",
+    "sourceSHA256": "2f55a9e937c68711dbdd5ff9297a7f965efd99a17030cd6dd8d249117d05b8b3",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 1145,
+        "y": 313,
+        "w": 213,
+        "h": 305
+      },
+      {
+        "x": 1372,
+        "y": 259,
+        "w": 203,
+        "h": 326
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "entry",
+    "source": "Shane Mercer/SM climbing through rope.png",
+    "sourceSHA256": "7f6f30ec333d2c47226ad5a4c0a1b2a1fef602fa27c2734e58b435328e295598",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1293,
+        "y": 277,
+        "w": 297,
+        "h": 547
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "dive",
+    "source": "Shane Mercer/SM jumping off top rope.png",
+    "sourceSHA256": "26491f1cd3e35060d047b382708d8a44865e0e6796be290c01fe4f108d804212",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 598,
+        "y": 222,
+        "w": 419,
+        "h": 267
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "ropePose",
+    "source": "Shane Mercer/SM climbing on rope.png",
+    "sourceSHA256": "d4f771fa32e74295966969000721afa279cd6b469e467caff3cfb2f2fc07f71f",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1293,
+        "y": 265,
+        "w": 294,
+        "h": 569
+      }
+    ]
+  },
+  {
+    "fighter": "shane-mercer",
+    "animation": "ko",
+    "source": "Shane Mercer/SM passed out.png",
+    "sourceSHA256": "61793690e82ec8b69ce21dd1e7f517cf68ca07c15ee6792cf324a35b9994f71d",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 105,
+        "y": 349,
+        "w": 1441,
+        "h": 642
+      }
+    ]
+  }
+]

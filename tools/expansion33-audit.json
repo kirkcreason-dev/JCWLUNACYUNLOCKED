@@ -1,0 +1,4868 @@
+[
+  {
+    "fighter": "atiba",
+    "animation": "idle",
+    "source": "Atiba/Atiba standing.png",
+    "sourceSHA256": "8d0280dc311ee3e8be706a343fe0dd6c2d4f3e905fed9e15fe1f93111e01818e",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 85,
+        "y": 283,
+        "w": 271,
+        "h": 564
+      },
+      {
+        "x": 496,
+        "y": 283,
+        "w": 269,
+        "h": 564
+      },
+      {
+        "x": 971,
+        "y": 283,
+        "w": 138,
+        "h": 564
+      },
+      {
+        "x": 1340,
+        "y": 283,
+        "w": 136,
+        "h": 564
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "walk",
+    "source": "Atiba/Atiba walking.png",
+    "sourceSHA256": "dfdb664178a1baf4a7aa9e13186d050d93fd786f86ed25fc9e4b78b0c1965945",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 70,
+        "y": 518,
+        "w": 228,
+        "h": 305
+      },
+      {
+        "x": 398,
+        "y": 521,
+        "w": 192,
+        "h": 300
+      },
+      {
+        "x": 727,
+        "y": 518,
+        "w": 133,
+        "h": 302
+      },
+      {
+        "x": 1001,
+        "y": 518,
+        "w": 234,
+        "h": 304
+      },
+      {
+        "x": 1353,
+        "y": 518,
+        "w": 136,
+        "h": 304
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "run",
+    "source": "Atiba/Atiba running.png",
+    "sourceSHA256": "203f06b50629ab6fba12fa698b0834f08195be7b5bded8702cb1e5be7b094ecc",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 576,
+        "w": 226,
+        "h": 271
+      },
+      {
+        "x": 275,
+        "y": 576,
+        "w": 238,
+        "h": 271
+      },
+      {
+        "x": 537,
+        "y": 573,
+        "w": 240,
+        "h": 274
+      },
+      {
+        "x": 808,
+        "y": 573,
+        "w": 230,
+        "h": 274
+      },
+      {
+        "x": 1071,
+        "y": 573,
+        "w": 231,
+        "h": 274
+      },
+      {
+        "x": 1332,
+        "y": 573,
+        "w": 227,
+        "h": 274
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "chair",
+    "source": "Atiba/Atiba attack with chair.png",
+    "sourceSHA256": "85a939784221091ba2bdeb0dde6065d0a3482471a6f80b8848195ad95d62d70e",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 209,
+        "w": 261,
+        "h": 591
+      },
+      {
+        "x": 344,
+        "y": 200,
+        "w": 262,
+        "h": 600
+      },
+      {
+        "x": 642,
+        "y": 414,
+        "w": 332,
+        "h": 386
+      },
+      {
+        "x": 985,
+        "y": 410,
+        "w": 294,
+        "h": 388
+      },
+      {
+        "x": 1294,
+        "y": 370,
+        "w": 272,
+        "h": 430
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "bat",
+    "source": "Atiba/Atiba attack with bat.png",
+    "sourceSHA256": "d8768757e85609af88d329e8c1d6ade34a866f986827ea7c741b9404e04a406f",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 335,
+        "w": 296,
+        "h": 494
+      },
+      {
+        "x": 343,
+        "y": 229,
+        "w": 290,
+        "h": 600
+      },
+      {
+        "x": 640,
+        "y": 339,
+        "w": 425,
+        "h": 490
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "guitar",
+    "source": "Atiba/Atiba attack with guitar.png",
+    "sourceSHA256": "91bd21f557ad25f35267bdadea15531b70a80d2af2035fa28160944644653e5f",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 47,
+        "y": 343,
+        "w": 271,
+        "h": 443
+      },
+      {
+        "x": 346,
+        "y": 244,
+        "w": 281,
+        "h": 570
+      },
+      {
+        "x": 1300,
+        "y": 342,
+        "w": 260,
+        "h": 444
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "trashcan",
+    "source": "Atiba/Atiba attack with trashcan.png",
+    "sourceSHA256": "ec3eb4a8d116de9bbd1017bdb1c319f06f3f7e867109ec713a74cd179b8f7269",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 372,
+        "w": 274,
+        "h": 469
+      },
+      {
+        "x": 319,
+        "y": 371,
+        "w": 329,
+        "h": 470
+      },
+      {
+        "x": 632,
+        "y": 260,
+        "w": 287,
+        "h": 581
+      },
+      {
+        "x": 925,
+        "y": 382,
+        "w": 359,
+        "h": 459
+      },
+      {
+        "x": 1234,
+        "y": 388,
+        "w": 352,
+        "h": 453
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "carryChair",
+    "source": "Atiba/Atiba walk with chair.png",
+    "sourceSHA256": "8ecbc65bf9735d95d79e8652534b587c8ffba35d23bb3b2c4cfc45037f43637c",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 194,
+        "w": 211,
+        "h": 283
+      },
+      {
+        "x": 375,
+        "y": 193,
+        "w": 216,
+        "h": 284
+      },
+      {
+        "x": 679,
+        "y": 193,
+        "w": 215,
+        "h": 284
+      },
+      {
+        "x": 993,
+        "y": 193,
+        "w": 216,
+        "h": 284
+      },
+      {
+        "x": 1303,
+        "y": 192,
+        "w": 220,
+        "h": 285
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "carryBat",
+    "source": "Atiba/Atiba walk with bat.png",
+    "sourceSHA256": "2c177d48f3ca08bb3279267e5cf040118982fcc5d8a1f2bb285c6f2bbc227b69",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 234,
+        "w": 311,
+        "h": 543
+      },
+      {
+        "x": 337,
+        "y": 234,
+        "w": 329,
+        "h": 545
+      },
+      {
+        "x": 684,
+        "y": 235,
+        "w": 283,
+        "h": 543
+      },
+      {
+        "x": 951,
+        "y": 234,
+        "w": 323,
+        "h": 545
+      },
+      {
+        "x": 1267,
+        "y": 234,
+        "w": 307,
+        "h": 545
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "carryGuitar",
+    "source": "Atiba/Atiba walk with giutar.png",
+    "sourceSHA256": "2137883ea699aa4f4b02e97341888fd3527f546c3985b5ce484cfbff197595ee",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 33,
+        "y": 280,
+        "w": 303,
+        "h": 554
+      },
+      {
+        "x": 373,
+        "y": 279,
+        "w": 267,
+        "h": 553
+      },
+      {
+        "x": 676,
+        "y": 280,
+        "w": 261,
+        "h": 551
+      },
+      {
+        "x": 978,
+        "y": 279,
+        "w": 277,
+        "h": 553
+      },
+      {
+        "x": 1282,
+        "y": 280,
+        "w": 286,
+        "h": 552
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "carryTrashcan",
+    "source": "Atiba/Atiba walk with trashcan.png",
+    "sourceSHA256": "9d3921e88bc7ea6165c5c0b52b3178ba7cc28769dc14cc9287f62d031ea32de2",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 262,
+        "w": 298,
+        "h": 498
+      },
+      {
+        "x": 335,
+        "y": 262,
+        "w": 308,
+        "h": 494
+      },
+      {
+        "x": 641,
+        "y": 261,
+        "w": 303,
+        "h": 497
+      },
+      {
+        "x": 959,
+        "y": 261,
+        "w": 302,
+        "h": 498
+      },
+      {
+        "x": 1271,
+        "y": 260,
+        "w": 295,
+        "h": 500
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "lift",
+    "source": "Atiba/Atiba lifting overhead.png",
+    "sourceSHA256": "7fcc419886267b636213750ca4685c04549d286cf9a153199d452784f416c404",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 38,
+        "y": 432,
+        "w": 337,
+        "h": 412
+      },
+      {
+        "x": 378,
+        "y": 363,
+        "w": 282,
+        "h": 481
+      },
+      {
+        "x": 686,
+        "y": 312,
+        "w": 259,
+        "h": 532
+      },
+      {
+        "x": 990,
+        "y": 278,
+        "w": 263,
+        "h": 566
+      },
+      {
+        "x": 1307,
+        "y": 278,
+        "w": 255,
+        "h": 566
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "throw",
+    "source": "Atiba/Atiba throwing.png",
+    "sourceSHA256": "907c9f1519a187a65c9f09d36e5dc1cc033f9e929bb079c9b317d26766d63c7b",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 398,
+        "w": 365,
+        "h": 441
+      },
+      {
+        "x": 374,
+        "y": 361,
+        "w": 303,
+        "h": 477
+      },
+      {
+        "x": 668,
+        "y": 230,
+        "w": 358,
+        "h": 559
+      },
+      {
+        "x": 928,
+        "y": 395,
+        "w": 382,
+        "h": 445
+      },
+      {
+        "x": 1283,
+        "y": 393,
+        "w": 294,
+        "h": 447
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "lifted",
+    "source": "Atiba/Atiba being lifted up.png",
+    "sourceSHA256": "f5090dc55c4490c524d0e8f1f01da5100cff480583cc61864f360a8aa244182f",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 39,
+        "y": 494,
+        "w": 217,
+        "h": 294
+      },
+      {
+        "x": 302,
+        "y": 415,
+        "w": 260,
+        "h": 273
+      },
+      {
+        "x": 574,
+        "y": 378,
+        "w": 275,
+        "h": 229
+      },
+      {
+        "x": 888,
+        "y": 355,
+        "w": 298,
+        "h": 218
+      },
+      {
+        "x": 1223,
+        "y": 355,
+        "w": 350,
+        "h": 220
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "thrown",
+    "source": "Atiba/Atiba being thrown.png",
+    "sourceSHA256": "6e98d6c5e838ab464607ef47a607608ab3adeba1a2121f917f098d4456e3aa52",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 283,
+        "w": 281,
+        "h": 497
+      },
+      {
+        "x": 363,
+        "y": 265,
+        "w": 333,
+        "h": 439
+      },
+      {
+        "x": 703,
+        "y": 265,
+        "w": 204,
+        "h": 433
+      },
+      {
+        "x": 942,
+        "y": 292,
+        "w": 302,
+        "h": 410
+      },
+      {
+        "x": 1205,
+        "y": 560,
+        "w": 374,
+        "h": 220
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "fallBack",
+    "source": "Atiba/Atiba falling backwards.png",
+    "sourceSHA256": "2cdde7a59efff9f2b5e9a10567fbac2756b1f1a08f366a8196b09a197c77f3be",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 15,
+        "y": 327,
+        "w": 322,
+        "h": 452
+      },
+      {
+        "x": 298,
+        "y": 365,
+        "w": 336,
+        "h": 350
+      },
+      {
+        "x": 630,
+        "y": 448,
+        "w": 326,
+        "h": 320
+      },
+      {
+        "x": 904,
+        "y": 602,
+        "w": 296,
+        "h": 170
+      },
+      {
+        "x": 1202,
+        "y": 671,
+        "w": 382,
+        "h": 101
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "fallFront",
+    "source": "Atiba/Atiba falling forward.png",
+    "sourceSHA256": "a8b89242ce76b8767e4a84da574c3bf40c1d4931b7bbb509370ca3cc07318bfd",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 338,
+        "w": 191,
+        "h": 394
+      },
+      {
+        "x": 224,
+        "y": 387,
+        "w": 254,
+        "h": 345
+      },
+      {
+        "x": 466,
+        "y": 453,
+        "w": 262,
+        "h": 280
+      },
+      {
+        "x": 699,
+        "y": 543,
+        "w": 522,
+        "h": 194
+      },
+      {
+        "x": 1228,
+        "y": 652,
+        "w": 357,
+        "h": 85
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "down",
+    "source": "Atiba/Atiba laying down faceup and facedown.png",
+    "sourceSHA256": "52f31fcc2748f458563dfc260579b7bd630ee83603853a1aaea27f2303333457",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 830,
+        "y": 336,
+        "w": 716,
+        "h": 166
+      },
+      {
+        "x": 863,
+        "y": 672,
+        "w": 706,
+        "h": 175
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "rise",
+    "source": "Atiba/Atiba getting back up.png",
+    "sourceSHA256": "68a9f5bbbf73f585b52c17534e38fee9c031e2d19714da351c89e3e3fbd92f4d",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 647,
+        "w": 323,
+        "h": 99
+      },
+      {
+        "x": 348,
+        "y": 570,
+        "w": 283,
+        "h": 182
+      },
+      {
+        "x": 632,
+        "y": 505,
+        "w": 222,
+        "h": 247
+      },
+      {
+        "x": 872,
+        "y": 437,
+        "w": 232,
+        "h": 311
+      },
+      {
+        "x": 1124,
+        "y": 368,
+        "w": 214,
+        "h": 381
+      },
+      {
+        "x": 1354,
+        "y": 287,
+        "w": 224,
+        "h": 462
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "taunt",
+    "source": "Atiba/Atiba taunting.png",
+    "sourceSHA256": "bc580c6b935f31f908c4f1d2204729b4fe5f0b74c812fe99bf837b06cf9d6f7a",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 14,
+        "y": 275,
+        "w": 266,
+        "h": 539
+      },
+      {
+        "x": 288,
+        "y": 282,
+        "w": 322,
+        "h": 532
+      },
+      {
+        "x": 592,
+        "y": 273,
+        "w": 412,
+        "h": 541
+      },
+      {
+        "x": 996,
+        "y": 279,
+        "w": 335,
+        "h": 535
+      },
+      {
+        "x": 1327,
+        "y": 282,
+        "w": 263,
+        "h": 532
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "victory",
+    "source": "Atiba/Atiba victory.png",
+    "sourceSHA256": "b86c5045128f01d51d891f886bba2a1c0bde62e1c9ed5dcd1fa760b82b798979",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 260,
+        "w": 269,
+        "h": 582
+      },
+      {
+        "x": 337,
+        "y": 260,
+        "w": 278,
+        "h": 582
+      },
+      {
+        "x": 619,
+        "y": 324,
+        "w": 255,
+        "h": 518
+      },
+      {
+        "x": 864,
+        "y": 325,
+        "w": 318,
+        "h": 517
+      },
+      {
+        "x": 1158,
+        "y": 310,
+        "w": 432,
+        "h": 532
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "jump",
+    "source": "Atiba/Atiba jumping.png",
+    "sourceSHA256": "51062d6b3f8ed2182e5e7099853f219090c7cdf25a6e823a50922cbf00bb31d7",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 476,
+        "w": 306,
+        "h": 370
+      },
+      {
+        "x": 405,
+        "y": 349,
+        "w": 305,
+        "h": 493
+      },
+      {
+        "x": 796,
+        "y": 280,
+        "w": 404,
+        "h": 388
+      },
+      {
+        "x": 1228,
+        "y": 479,
+        "w": 345,
+        "h": 367
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "pin",
+    "source": "Atiba/Atiba pinning.png",
+    "sourceSHA256": "5301a1c79c9df8cd0a7b52ee51f56aa544711d37744c1707d5d9b06c273fee63",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 287,
+        "w": 317,
+        "h": 527
+      },
+      {
+        "x": 382,
+        "y": 394,
+        "w": 369,
+        "h": 396
+      },
+      {
+        "x": 770,
+        "y": 528,
+        "w": 384,
+        "h": 275
+      },
+      {
+        "x": 1146,
+        "y": 610,
+        "w": 417,
+        "h": 191
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "climb",
+    "source": "Atiba/Atiba climbing on top rope.png",
+    "sourceSHA256": "3c17d803bdb73106cf50542225ed6c5ca9753ba6c847047012af80049f8e0112",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 947,
+        "y": 388,
+        "w": 176,
+        "h": 205
+      },
+      {
+        "x": 1148,
+        "y": 326,
+        "w": 201,
+        "h": 290
+      },
+      {
+        "x": 1373,
+        "y": 280,
+        "w": 197,
+        "h": 322
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "entry",
+    "source": "Atiba/Atiba climbing through ropes.png",
+    "sourceSHA256": "a67c712527acfad72dfa78306baf9aa76ea49b1e415e61f4dc2e141c51347b27",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1315,
+        "y": 283,
+        "w": 246,
+        "h": 533
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "dive",
+    "source": "Atiba/Atiba jumping off rope.png",
+    "sourceSHA256": "1055b025d3f09c7ad67f585e957df9ae0d966598295ecd8b515b5b9b35bc1466",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 577,
+        "y": 310,
+        "w": 444,
+        "h": 245
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "ropePose",
+    "source": "Atiba/Atiba climbing on rope.png",
+    "sourceSHA256": "c2e08ec42018492608174124e266c7d66721220448cc61bd972c2640c5c5083f",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1285,
+        "y": 246,
+        "w": 299,
+        "h": 585
+      }
+    ]
+  },
+  {
+    "fighter": "atiba",
+    "animation": "ko",
+    "source": "Atiba/Atiba passed out.png",
+    "sourceSHA256": "1c075d4825cba58557e1e8d5c9f1d07423d25584489ccd88bf925f110088753b",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 259,
+        "y": 289,
+        "w": 1173,
+        "h": 539
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "idle",
+    "source": "JP Grayson/JP Grayson standing.png",
+    "sourceSHA256": "f3d51a38ec80a6a636e66e99813550bf31096f005acbf1360868aa98af5f3439",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 86,
+        "y": 281,
+        "w": 269,
+        "h": 566
+      },
+      {
+        "x": 497,
+        "y": 281,
+        "w": 267,
+        "h": 566
+      },
+      {
+        "x": 978,
+        "y": 282,
+        "w": 127,
+        "h": 565
+      },
+      {
+        "x": 1338,
+        "y": 282,
+        "w": 126,
+        "h": 565
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "walk",
+    "source": "JP Grayson/JP walking.png",
+    "sourceSHA256": "1003463d687e58b04d37ed9508ccc04cd36fc76f8000bded402f5385c0849edc",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 114,
+        "y": 604,
+        "w": 252,
+        "h": 370
+      },
+      {
+        "x": 414,
+        "y": 603,
+        "w": 207,
+        "h": 369
+      },
+      {
+        "x": 731,
+        "y": 603,
+        "w": 144,
+        "h": 372
+      },
+      {
+        "x": 973,
+        "y": 603,
+        "w": 247,
+        "h": 372
+      },
+      {
+        "x": 1289,
+        "y": 603,
+        "w": 220,
+        "h": 371
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "run",
+    "source": "JP Grayson/JP running.png",
+    "sourceSHA256": "01679fa18988ea8632a46cfd09c8b02181a56050f58c448909401d41f07ed895",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 566,
+        "w": 209,
+        "h": 281
+      },
+      {
+        "x": 276,
+        "y": 564,
+        "w": 233,
+        "h": 283
+      },
+      {
+        "x": 548,
+        "y": 562,
+        "w": 233,
+        "h": 285
+      },
+      {
+        "x": 808,
+        "y": 561,
+        "w": 231,
+        "h": 286
+      },
+      {
+        "x": 1077,
+        "y": 562,
+        "w": 225,
+        "h": 285
+      },
+      {
+        "x": 1334,
+        "y": 562,
+        "w": 235,
+        "h": 285
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "chair",
+    "source": "JP Grayson/JP attack with chair.png",
+    "sourceSHA256": "e59b7c3882df14e4c36c9276cd664e4e11fde8684e03ad39d9a7ff5a37267845",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 220,
+        "w": 273,
+        "h": 583
+      },
+      {
+        "x": 346,
+        "y": 205,
+        "w": 268,
+        "h": 600
+      },
+      {
+        "x": 642,
+        "y": 405,
+        "w": 332,
+        "h": 400
+      },
+      {
+        "x": 985,
+        "y": 394,
+        "w": 294,
+        "h": 409
+      },
+      {
+        "x": 1311,
+        "y": 347,
+        "w": 252,
+        "h": 461
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "bat",
+    "source": "JP Grayson/JP attack with bat.png",
+    "sourceSHA256": "7e799224430fb46655943ad9a0410702f5f938169e3dcad7cb30d3093d42b741",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 311,
+        "w": 280,
+        "h": 496
+      },
+      {
+        "x": 332,
+        "y": 220,
+        "w": 301,
+        "h": 587
+      },
+      {
+        "x": 643,
+        "y": 316,
+        "w": 422,
+        "h": 491
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "guitar",
+    "source": "JP Grayson/JP attack with guitar.png",
+    "sourceSHA256": "831a744a48588408e7b21524543d2f0a776756c2c775e17cdaa1f558cbfd61c4",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 329,
+        "w": 277,
+        "h": 457
+      },
+      {
+        "x": 358,
+        "y": 232,
+        "w": 266,
+        "h": 554
+      },
+      {
+        "x": 1300,
+        "y": 331,
+        "w": 260,
+        "h": 454
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "trashcan",
+    "source": "JP Grayson/JP attack with trashcan.png",
+    "sourceSHA256": "28d1394ee139d44a68c7c683a3e4235cfcae50dd5e02fc2a36eff8c093af727f",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 15,
+        "y": 357,
+        "w": 280,
+        "h": 484
+      },
+      {
+        "x": 313,
+        "y": 357,
+        "w": 323,
+        "h": 484
+      },
+      {
+        "x": 625,
+        "y": 260,
+        "w": 281,
+        "h": 581
+      },
+      {
+        "x": 917,
+        "y": 383,
+        "w": 371,
+        "h": 458
+      },
+      {
+        "x": 1235,
+        "y": 388,
+        "w": 352,
+        "h": 453
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "carryChair",
+    "source": "JP Grayson/JP walk with chair.png",
+    "sourceSHA256": "a623f9340ea9739a276ccde69a56241c9fb0a3dacae61bbbfa83da0a9aff9c15",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 195,
+        "w": 213,
+        "h": 293
+      },
+      {
+        "x": 382,
+        "y": 194,
+        "w": 200,
+        "h": 293
+      },
+      {
+        "x": 694,
+        "y": 195,
+        "w": 211,
+        "h": 293
+      },
+      {
+        "x": 1007,
+        "y": 195,
+        "w": 205,
+        "h": 293
+      },
+      {
+        "x": 1312,
+        "y": 195,
+        "w": 215,
+        "h": 292
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "carryBat",
+    "source": "JP Grayson/JP walk with bat.png",
+    "sourceSHA256": "725887d63d61ef544a39f53bab555435af76fbcdd53336ea02a467593c412f3f",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 231,
+        "w": 320,
+        "h": 538
+      },
+      {
+        "x": 381,
+        "y": 231,
+        "w": 283,
+        "h": 537
+      },
+      {
+        "x": 681,
+        "y": 231,
+        "w": 272,
+        "h": 539
+      },
+      {
+        "x": 928,
+        "y": 234,
+        "w": 339,
+        "h": 536
+      },
+      {
+        "x": 1266,
+        "y": 232,
+        "w": 306,
+        "h": 538
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "carryGuitar",
+    "source": "JP Grayson/JP walk with guitar.png",
+    "sourceSHA256": "1ad81dd804992718ce77369790c0603e3d492206903fbcf1c5b222853f6b01f2",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 262,
+        "w": 328,
+        "h": 562
+      },
+      {
+        "x": 357,
+        "y": 262,
+        "w": 303,
+        "h": 562
+      },
+      {
+        "x": 678,
+        "y": 262,
+        "w": 190,
+        "h": 566
+      },
+      {
+        "x": 945,
+        "y": 262,
+        "w": 300,
+        "h": 562
+      },
+      {
+        "x": 1246,
+        "y": 262,
+        "w": 326,
+        "h": 562
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "carryTrashcan",
+    "source": "JP Grayson/JP walk with trashcan.png",
+    "sourceSHA256": "a74e8c945b45c029fed1910218004ab46b25c64aa9b0178a70ccb03f8d6c5882",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 260,
+        "w": 309,
+        "h": 483
+      },
+      {
+        "x": 373,
+        "y": 264,
+        "w": 281,
+        "h": 479
+      },
+      {
+        "x": 702,
+        "y": 262,
+        "w": 237,
+        "h": 487
+      },
+      {
+        "x": 958,
+        "y": 261,
+        "w": 296,
+        "h": 484
+      },
+      {
+        "x": 1283,
+        "y": 260,
+        "w": 289,
+        "h": 488
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "lift",
+    "source": "JP Grayson/JP lifting overhead.png",
+    "sourceSHA256": "59b0975e193119f045eca28e0da8b9764ba090082412f778ae3a8f70bdbc31f9",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 40,
+        "y": 460,
+        "w": 311,
+        "h": 387
+      },
+      {
+        "x": 359,
+        "y": 424,
+        "w": 274,
+        "h": 423
+      },
+      {
+        "x": 662,
+        "y": 393,
+        "w": 275,
+        "h": 454
+      },
+      {
+        "x": 957,
+        "y": 360,
+        "w": 294,
+        "h": 487
+      },
+      {
+        "x": 1296,
+        "y": 284,
+        "w": 261,
+        "h": 563
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "throw",
+    "source": "JP Grayson/JP throwing.png",
+    "sourceSHA256": "d415e8c2599d45db690be193292fd1a0874f6b4fe809f6f829228a0be70a2d69",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 420,
+        "w": 314,
+        "h": 422
+      },
+      {
+        "x": 366,
+        "y": 353,
+        "w": 303,
+        "h": 489
+      },
+      {
+        "x": 677,
+        "y": 228,
+        "w": 296,
+        "h": 556
+      },
+      {
+        "x": 922,
+        "y": 386,
+        "w": 375,
+        "h": 456
+      },
+      {
+        "x": 1309,
+        "y": 343,
+        "w": 262,
+        "h": 504
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "lifted",
+    "source": "JP Grayson/JP getting lifted overhead.png",
+    "sourceSHA256": "253da7cedacb824c960b67a3894ccc4a1985999a375d568be9e5c5003ec93049",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 471,
+        "w": 228,
+        "h": 306
+      },
+      {
+        "x": 300,
+        "y": 374,
+        "w": 258,
+        "h": 292
+      },
+      {
+        "x": 560,
+        "y": 351,
+        "w": 291,
+        "h": 226
+      },
+      {
+        "x": 882,
+        "y": 352,
+        "w": 312,
+        "h": 204
+      },
+      {
+        "x": 1215,
+        "y": 352,
+        "w": 349,
+        "h": 199
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "thrown",
+    "source": "JP Grayson/JP being thrown.png",
+    "sourceSHA256": "b84574ecd899df3101eeea4adc8bf9e2aa69c6414e217c2840d43bd72784df73",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 93,
+        "y": 372,
+        "w": 295,
+        "h": 438
+      },
+      {
+        "x": 453,
+        "y": 260,
+        "w": 312,
+        "h": 485
+      },
+      {
+        "x": 835,
+        "y": 311,
+        "w": 259,
+        "h": 402
+      },
+      {
+        "x": 1140,
+        "y": 645,
+        "w": 402,
+        "h": 166
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "hurt",
+    "source": "JP Grayson/JP dazed.png",
+    "sourceSHA256": "6709d680014a88b8b3999d5904ca36b4cde966a6859ae4656b853f1997ac256c",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 65,
+        "y": 290,
+        "w": 300,
+        "h": 557
+      },
+      {
+        "x": 461,
+        "y": 295,
+        "w": 295,
+        "h": 552
+      },
+      {
+        "x": 846,
+        "y": 324,
+        "w": 302,
+        "h": 523
+      },
+      {
+        "x": 1238,
+        "y": 287,
+        "w": 302,
+        "h": 560
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "fallBack",
+    "source": "JP Grayson/JP falling backwards.png",
+    "sourceSHA256": "e869c2ef753345552014014f062714af05a370d0c258eefb14d08c7e3b32afd9",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 319,
+        "w": 267,
+        "h": 436
+      },
+      {
+        "x": 285,
+        "y": 378,
+        "w": 369,
+        "h": 320
+      },
+      {
+        "x": 619,
+        "y": 477,
+        "w": 323,
+        "h": 274
+      },
+      {
+        "x": 898,
+        "y": 613,
+        "w": 321,
+        "h": 141
+      },
+      {
+        "x": 1228,
+        "y": 657,
+        "w": 358,
+        "h": 100
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "fallFront",
+    "source": "JP Grayson/JP falling forward.png",
+    "sourceSHA256": "e0029cb6613724642263b9513d2b3642e7f30f92ef9080051c6992a9200e1a73",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 333,
+        "w": 196,
+        "h": 403
+      },
+      {
+        "x": 246,
+        "y": 376,
+        "w": 216,
+        "h": 360
+      },
+      {
+        "x": 468,
+        "y": 428,
+        "w": 244,
+        "h": 308
+      },
+      {
+        "x": 699,
+        "y": 510,
+        "w": 248,
+        "h": 226
+      },
+      {
+        "x": 949,
+        "y": 580,
+        "w": 249,
+        "h": 163
+      },
+      {
+        "x": 1202,
+        "y": 644,
+        "w": 371,
+        "h": 102
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "down",
+    "source": "JP Grayson/JP laying facedown and faceup.png",
+    "sourceSHA256": "34f0b96b4b73117e385954e2d46ac75f52c1725f5ef8ab6845a111ef7bd9ab3f",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 834,
+        "y": 329,
+        "w": 728,
+        "h": 157
+      },
+      {
+        "x": 808,
+        "y": 646,
+        "w": 738,
+        "h": 201
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "rise",
+    "source": "JP Grayson/JP getting backup.png",
+    "sourceSHA256": "58c1f8c6d915122dbfa41ae80340e262b0b1d6cf53d6743c5bb496d3ac337f38",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 678,
+        "w": 324,
+        "h": 104
+      },
+      {
+        "x": 351,
+        "y": 568,
+        "w": 268,
+        "h": 215
+      },
+      {
+        "x": 622,
+        "y": 508,
+        "w": 235,
+        "h": 275
+      },
+      {
+        "x": 864,
+        "y": 439,
+        "w": 241,
+        "h": 339
+      },
+      {
+        "x": 1127,
+        "y": 375,
+        "w": 211,
+        "h": 405
+      },
+      {
+        "x": 1368,
+        "y": 314,
+        "w": 205,
+        "h": 467
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "taunt",
+    "source": "JP Grayson/JP taunting.png",
+    "sourceSHA256": "53ff7a4b534575446610e3042a87dd8c804d9c1cecc28a28b8ff45181cf19650",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 274,
+        "w": 276,
+        "h": 573
+      },
+      {
+        "x": 311,
+        "y": 286,
+        "w": 286,
+        "h": 561
+      },
+      {
+        "x": 558,
+        "y": 274,
+        "w": 427,
+        "h": 573
+      },
+      {
+        "x": 938,
+        "y": 306,
+        "w": 311,
+        "h": 541
+      },
+      {
+        "x": 1250,
+        "y": 284,
+        "w": 329,
+        "h": 563
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "victory",
+    "source": "JP Grayson/JP victory.png",
+    "sourceSHA256": "a5c96e8448a88c062d9409d58904191a3f28ee1a690c8db6f8f94599f80d7d3a",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 54,
+        "y": 260,
+        "w": 250,
+        "h": 572
+      },
+      {
+        "x": 359,
+        "y": 260,
+        "w": 265,
+        "h": 572
+      },
+      {
+        "x": 651,
+        "y": 304,
+        "w": 256,
+        "h": 528
+      },
+      {
+        "x": 918,
+        "y": 313,
+        "w": 281,
+        "h": 519
+      },
+      {
+        "x": 1180,
+        "y": 309,
+        "w": 405,
+        "h": 523
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "defeat",
+    "source": "JP Grayson/JP defeated.png",
+    "sourceSHA256": "2c82a3d484c9d5b8fa9caa4681ab6fccfe94966984b0914f4d5035ca959d50f2",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1211,
+        "y": 316,
+        "w": 303,
+        "h": 500
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "jump",
+    "source": "JP Grayson/JP jumping.png",
+    "sourceSHA256": "e328d2fa8fe3963b10c7f69ae2786b04e405b7406674c16d6d1b3553f56da097",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 48,
+        "y": 465,
+        "w": 277,
+        "h": 375
+      },
+      {
+        "x": 414,
+        "y": 349,
+        "w": 291,
+        "h": 491
+      },
+      {
+        "x": 822,
+        "y": 302,
+        "w": 359,
+        "h": 383
+      },
+      {
+        "x": 1232,
+        "y": 461,
+        "w": 333,
+        "h": 379
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "pin",
+    "source": "JP Grayson/JP pinning.png",
+    "sourceSHA256": "cfe6765f16e67ee93a8ea3964fca7bda2cc19dc1ab196efd5d45a86cf31e5d28",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 267,
+        "w": 339,
+        "h": 529
+      },
+      {
+        "x": 404,
+        "y": 352,
+        "w": 384,
+        "h": 438
+      },
+      {
+        "x": 797,
+        "y": 449,
+        "w": 358,
+        "h": 343
+      },
+      {
+        "x": 1168,
+        "y": 587,
+        "w": 392,
+        "h": 216
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "kick",
+    "source": "JP Grayson/JP kicking.png",
+    "sourceSHA256": "ec2ee229656de9795028877bbcbf9003c3d73960ea4e9b853d81ace1041536ae",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 110,
+        "y": 622,
+        "w": 206,
+        "h": 354
+      },
+      {
+        "x": 434,
+        "y": 621,
+        "w": 168,
+        "h": 355
+      },
+      {
+        "x": 730,
+        "y": 625,
+        "w": 288,
+        "h": 351
+      },
+      {
+        "x": 1076,
+        "y": 621,
+        "w": 165,
+        "h": 355
+      },
+      {
+        "x": 1330,
+        "y": 622,
+        "w": 202,
+        "h": 354
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "climb",
+    "source": "JP Grayson/JP climbing on corner rope.png",
+    "sourceSHA256": "159b5275375e7008545d814a6e96971bc4e18a89019be0ea212c986b990d8a61",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 953,
+        "y": 381,
+        "w": 171,
+        "h": 210
+      },
+      {
+        "x": 1152,
+        "y": 325,
+        "w": 197,
+        "h": 273
+      },
+      {
+        "x": 1391,
+        "y": 280,
+        "w": 168,
+        "h": 318
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "entry",
+    "source": "JP Grayson/JP climbing through rope.png",
+    "sourceSHA256": "b8c357fccd88fc901e38b5f2d7821d6acf4c850a04b0b0d2dcae74a17de05b7f",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1292,
+        "y": 282,
+        "w": 293,
+        "h": 531
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "dive",
+    "source": "JP Grayson/JP jumping off corner rope.png",
+    "sourceSHA256": "2ddc6c4063b991d29bd072acae64cd0328167181792f2ce107e2131614917d44",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 534,
+        "y": 303,
+        "w": 507,
+        "h": 241
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "ropePose",
+    "source": "JP Grayson/JP climb on rope.png",
+    "sourceSHA256": "1a480440b66133e58ecc57c64570d38553379862d16a6c77c3ffb1740686f26c",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1225,
+        "y": 270,
+        "w": 356,
+        "h": 530
+      }
+    ]
+  },
+  {
+    "fighter": "jp-grayson",
+    "animation": "ko",
+    "source": "JP Grayson/JP passed out.png",
+    "sourceSHA256": "8a0d20c80c5021b5a1846ad1bb412b6f0da18ebc5cdc98dd554ec52d81e5a7b9",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 191,
+        "y": 318,
+        "w": 1285,
+        "h": 529
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "idle",
+    "source": "Tommy/Tommy standing.png",
+    "sourceSHA256": "0d249290c246d1fa416a58a6485dce0ece36e0067b3fde9ee090ef987f1b71f1",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 86,
+        "y": 283,
+        "w": 274,
+        "h": 564
+      },
+      {
+        "x": 497,
+        "y": 283,
+        "w": 271,
+        "h": 564
+      },
+      {
+        "x": 963,
+        "y": 283,
+        "w": 136,
+        "h": 564
+      },
+      {
+        "x": 1343,
+        "y": 283,
+        "w": 134,
+        "h": 564
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "walk",
+    "source": "Tommy/Tommy walking.png",
+    "sourceSHA256": "5529bcfca149b448487962be1307c5c6606f6d449a4ae6ac3df27472c072512b",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 38,
+        "y": 600,
+        "w": 241,
+        "h": 380
+      },
+      {
+        "x": 355,
+        "y": 600,
+        "w": 250,
+        "h": 380
+      },
+      {
+        "x": 712,
+        "y": 600,
+        "w": 185,
+        "h": 380
+      },
+      {
+        "x": 980,
+        "y": 600,
+        "w": 249,
+        "h": 380
+      },
+      {
+        "x": 1300,
+        "y": 600,
+        "w": 245,
+        "h": 380
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "run",
+    "source": "Tommy/Tommy running.png",
+    "sourceSHA256": "e375ffbd8fd4100c894d84afbe0f13f2cc0c8a10cfdbd3231be7ad7b8395bc12",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 566,
+        "w": 272,
+        "h": 281
+      },
+      {
+        "x": 324,
+        "y": 567,
+        "w": 197,
+        "h": 280
+      },
+      {
+        "x": 590,
+        "y": 558,
+        "w": 176,
+        "h": 289
+      },
+      {
+        "x": 789,
+        "y": 560,
+        "w": 269,
+        "h": 287
+      },
+      {
+        "x": 1103,
+        "y": 560,
+        "w": 185,
+        "h": 287
+      },
+      {
+        "x": 1306,
+        "y": 555,
+        "w": 284,
+        "h": 292
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "chair",
+    "source": "Tommy/Tommy attack with chair.png",
+    "sourceSHA256": "9a3f5512dc7551ff70cfdfcdfac44ca2bea9230bb86c320bfe195a17c299b4dc",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 211,
+        "w": 259,
+        "h": 587
+      },
+      {
+        "x": 342,
+        "y": 208,
+        "w": 259,
+        "h": 590
+      },
+      {
+        "x": 642,
+        "y": 402,
+        "w": 332,
+        "h": 396
+      },
+      {
+        "x": 985,
+        "y": 407,
+        "w": 294,
+        "h": 391
+      },
+      {
+        "x": 1318,
+        "y": 330,
+        "w": 253,
+        "h": 468
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "bat",
+    "source": "Tommy/Tommy attack with bat.png",
+    "sourceSHA256": "dfc389c8b11a465cffc4187f4919472a8e8850b72fc271b060036b91f3efd567",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 20,
+        "y": 326,
+        "w": 301,
+        "h": 477
+      },
+      {
+        "x": 339,
+        "y": 218,
+        "w": 294,
+        "h": 590
+      },
+      {
+        "x": 642,
+        "y": 334,
+        "w": 416,
+        "h": 473
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "guitar",
+    "source": "Tommy/Tommy attack with guitar.png",
+    "sourceSHA256": "f804b87a91c2602d53bb31dd2843c0184efea4f001046daafeff7cbbf233ca05",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 36,
+        "y": 324,
+        "w": 282,
+        "h": 458
+      },
+      {
+        "x": 339,
+        "y": 201,
+        "w": 288,
+        "h": 581
+      },
+      {
+        "x": 1300,
+        "y": 320,
+        "w": 272,
+        "h": 465
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "trashcan",
+    "source": "Tommy/Tommy attack with trashcan.png",
+    "sourceSHA256": "775ef55fd99c23fc1e78b8429648eb7f48b6fe69a1c86c6c3bc53293593a72f1",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 30,
+        "y": 349,
+        "w": 288,
+        "h": 471
+      },
+      {
+        "x": 325,
+        "y": 352,
+        "w": 306,
+        "h": 468
+      },
+      {
+        "x": 628,
+        "y": 260,
+        "w": 282,
+        "h": 560
+      },
+      {
+        "x": 918,
+        "y": 376,
+        "w": 370,
+        "h": 444
+      },
+      {
+        "x": 1224,
+        "y": 389,
+        "w": 355,
+        "h": 434
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "carryChair",
+    "source": "Tommy/Tommy walk with chair.png",
+    "sourceSHA256": "8d941d9f175deb90a29e65bddc132c3f5f97bfcea79e3fc14c937af9381fc36a",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 49,
+        "y": 186,
+        "w": 237,
+        "h": 283
+      },
+      {
+        "x": 377,
+        "y": 187,
+        "w": 192,
+        "h": 281
+      },
+      {
+        "x": 694,
+        "y": 184,
+        "w": 161,
+        "h": 285
+      },
+      {
+        "x": 1006,
+        "y": 186,
+        "w": 222,
+        "h": 283
+      },
+      {
+        "x": 1329,
+        "y": 184,
+        "w": 156,
+        "h": 286
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "carryBat",
+    "source": "Tommy/Tommy walk with bat.png",
+    "sourceSHA256": "71ab069a2449b6456eb14eb9a6210d52482143845cbe84c789cd44d0dc9aec8e",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 227,
+        "w": 337,
+        "h": 536
+      },
+      {
+        "x": 374,
+        "y": 227,
+        "w": 293,
+        "h": 536
+      },
+      {
+        "x": 678,
+        "y": 227,
+        "w": 276,
+        "h": 537
+      },
+      {
+        "x": 931,
+        "y": 227,
+        "w": 362,
+        "h": 543
+      },
+      {
+        "x": 1308,
+        "y": 227,
+        "w": 265,
+        "h": 536
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "carryGuitar",
+    "source": "Tommy/Tommy walk with guitar.png",
+    "sourceSHA256": "f8a87dca16b66c0f41519474546b0d1e698f9e00f6da574d065bf6068f6b6b5e",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 262,
+        "w": 321,
+        "h": 570
+      },
+      {
+        "x": 371,
+        "y": 260,
+        "w": 282,
+        "h": 573
+      },
+      {
+        "x": 691,
+        "y": 260,
+        "w": 221,
+        "h": 573
+      },
+      {
+        "x": 932,
+        "y": 262,
+        "w": 360,
+        "h": 570
+      },
+      {
+        "x": 1326,
+        "y": 260,
+        "w": 229,
+        "h": 572
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "carryTrashcan",
+    "source": "Tommy/Tommy walk with trashcan.png",
+    "sourceSHA256": "33d9bf97e8654df9c21f27863a144014305e9f12e322a2267cc3126e35ebbbdd",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 33,
+        "y": 260,
+        "w": 311,
+        "h": 498
+      },
+      {
+        "x": 359,
+        "y": 260,
+        "w": 293,
+        "h": 498
+      },
+      {
+        "x": 709,
+        "y": 260,
+        "w": 232,
+        "h": 498
+      },
+      {
+        "x": 947,
+        "y": 260,
+        "w": 316,
+        "h": 498
+      },
+      {
+        "x": 1325,
+        "y": 260,
+        "w": 240,
+        "h": 498
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "lift",
+    "source": "Tommy/Tommy lifting overhead.png",
+    "sourceSHA256": "2fe7052d4247cfc8561b430f4d4f93209ac73a0c6ad682200669b63891fdfaed",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 432,
+        "w": 327,
+        "h": 409
+      },
+      {
+        "x": 369,
+        "y": 372,
+        "w": 285,
+        "h": 469
+      },
+      {
+        "x": 675,
+        "y": 312,
+        "w": 269,
+        "h": 529
+      },
+      {
+        "x": 987,
+        "y": 282,
+        "w": 251,
+        "h": 559
+      },
+      {
+        "x": 1300,
+        "y": 285,
+        "w": 258,
+        "h": 556
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "lifted",
+    "source": "Tommy/Tommy being lifted overhead.png",
+    "sourceSHA256": "68adb62e706ad530968225c42b249fa018bc073daee27d24eeddc04d6ee97bb0",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 41,
+        "y": 477,
+        "w": 223,
+        "h": 259
+      },
+      {
+        "x": 303,
+        "y": 442,
+        "w": 250,
+        "h": 230
+      },
+      {
+        "x": 581,
+        "y": 426,
+        "w": 292,
+        "h": 210
+      },
+      {
+        "x": 908,
+        "y": 439,
+        "w": 301,
+        "h": 212
+      },
+      {
+        "x": 1232,
+        "y": 413,
+        "w": 337,
+        "h": 217
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "thrown",
+    "source": "Tommy/Tommy being thrown.png",
+    "sourceSHA256": "edb3fb78d46e9c907597d8d357cd7c03c39a77a9bdb8965b88b9f8dbbe3967dc",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 315,
+        "w": 305,
+        "h": 469
+      },
+      {
+        "x": 341,
+        "y": 260,
+        "w": 331,
+        "h": 461
+      },
+      {
+        "x": 696,
+        "y": 269,
+        "w": 206,
+        "h": 430
+      },
+      {
+        "x": 928,
+        "y": 302,
+        "w": 311,
+        "h": 404
+      },
+      {
+        "x": 1210,
+        "y": 597,
+        "w": 360,
+        "h": 203
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "hurt",
+    "source": "Tommy/Tommy dazed.png",
+    "sourceSHA256": "012c9c9d6cee895fbb9944ab37ed83990c308080dfef271be7acaa9624480bdd",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 289,
+        "w": 280,
+        "h": 556
+      },
+      {
+        "x": 464,
+        "y": 300,
+        "w": 275,
+        "h": 546
+      },
+      {
+        "x": 864,
+        "y": 315,
+        "w": 271,
+        "h": 530
+      },
+      {
+        "x": 1262,
+        "y": 293,
+        "w": 266,
+        "h": 552
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "fallBack",
+    "source": "Tommy/Tommy falling backward.png",
+    "sourceSHA256": "55c75ebcd8f625dd9d421ac18b3d766378efabed370fcc4c6635faf0b55003b3",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 33,
+        "y": 235,
+        "w": 234,
+        "h": 350
+      },
+      {
+        "x": 289,
+        "y": 275,
+        "w": 332,
+        "h": 282
+      },
+      {
+        "x": 623,
+        "y": 333,
+        "w": 293,
+        "h": 255
+      },
+      {
+        "x": 917,
+        "y": 439,
+        "w": 296,
+        "h": 147
+      },
+      {
+        "x": 1223,
+        "y": 490,
+        "w": 360,
+        "h": 98
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "fallFront",
+    "source": "Tommy/Tommy falling forward.png",
+    "sourceSHA256": "6d4569e4b5c99dcb72c1573dba231bb1a80d967af5186e261845d8ad9c9d6ab0",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 301,
+        "w": 284,
+        "h": 370
+      },
+      {
+        "x": 248,
+        "y": 346,
+        "w": 468,
+        "h": 216
+      },
+      {
+        "x": 570,
+        "y": 488,
+        "w": 362,
+        "h": 191
+      },
+      {
+        "x": 939,
+        "y": 553,
+        "w": 301,
+        "h": 129
+      },
+      {
+        "x": 1254,
+        "y": 594,
+        "w": 325,
+        "h": 86
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "down",
+    "source": "Tommy/Tommy laying facedown and faceup.png",
+    "sourceSHA256": "4754c1ab96ca79c1fabb1982d5362bd7d2e8c22958b20cbc6a675c52601a2e1f",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 841,
+        "y": 322,
+        "w": 678,
+        "h": 156
+      },
+      {
+        "x": 853,
+        "y": 619,
+        "w": 692,
+        "h": 226
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "rise",
+    "source": "Tommy/Tommy getting up.png",
+    "sourceSHA256": "60ccc0c6c08d574e28850b477d3cf26ba0b74f582f65320759e6257b1efe5763",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 622,
+        "w": 323,
+        "h": 104
+      },
+      {
+        "x": 353,
+        "y": 537,
+        "w": 272,
+        "h": 191
+      },
+      {
+        "x": 626,
+        "y": 492,
+        "w": 223,
+        "h": 234
+      },
+      {
+        "x": 873,
+        "y": 411,
+        "w": 225,
+        "h": 313
+      },
+      {
+        "x": 1118,
+        "y": 353,
+        "w": 204,
+        "h": 373
+      },
+      {
+        "x": 1371,
+        "y": 293,
+        "w": 204,
+        "h": 433
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "taunt",
+    "source": "Tommy/Tommy taunting.png",
+    "sourceSHA256": "59444905070dd6a1e3e7789f10fcd864e206b703c57c995c96bb6c18bdc2dad4",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 271,
+        "w": 290,
+        "h": 560
+      },
+      {
+        "x": 330,
+        "y": 300,
+        "w": 312,
+        "h": 531
+      },
+      {
+        "x": 638,
+        "y": 291,
+        "w": 291,
+        "h": 540
+      },
+      {
+        "x": 940,
+        "y": 298,
+        "w": 313,
+        "h": 533
+      },
+      {
+        "x": 1246,
+        "y": 271,
+        "w": 339,
+        "h": 560
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "defeat",
+    "source": "Tommy/Tommy defeated.png",
+    "sourceSHA256": "394189a7baf3c15de339bb57bc79f3aa7dbec4c6d49b7ee398202cf3d5fe01e9",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1224,
+        "y": 341,
+        "w": 317,
+        "h": 460
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "jump",
+    "source": "Tommy/Tommy jumping.png",
+    "sourceSHA256": "f2286718593c88eab825194aa2caa78a573a6fcf7ca47cc6b693197328dc7d29",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 56,
+        "y": 478,
+        "w": 300,
+        "h": 335
+      },
+      {
+        "x": 416,
+        "y": 364,
+        "w": 321,
+        "h": 444
+      },
+      {
+        "x": 798,
+        "y": 286,
+        "w": 398,
+        "h": 396
+      },
+      {
+        "x": 1185,
+        "y": 456,
+        "w": 360,
+        "h": 355
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "pin",
+    "source": "Tommy/Tommy pinning.png",
+    "sourceSHA256": "d56a03a8cfa1f6fbfae9211b8cf755a337e96221ea0a0653b205c22656c233f4",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 279,
+        "w": 324,
+        "h": 497
+      },
+      {
+        "x": 408,
+        "y": 355,
+        "w": 348,
+        "h": 422
+      },
+      {
+        "x": 781,
+        "y": 455,
+        "w": 383,
+        "h": 310
+      },
+      {
+        "x": 1169,
+        "y": 562,
+        "w": 399,
+        "h": 203
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "kick",
+    "source": "Tommy/Tommy kicking.png",
+    "sourceSHA256": "f84271472f613a63380b563d96149aa9b72ce21e3e08af4628e5ce51c5ed71a9",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 51,
+        "y": 622,
+        "w": 232,
+        "h": 357
+      },
+      {
+        "x": 381,
+        "y": 621,
+        "w": 170,
+        "h": 359
+      },
+      {
+        "x": 655,
+        "y": 622,
+        "w": 317,
+        "h": 358
+      },
+      {
+        "x": 1048,
+        "y": 621,
+        "w": 173,
+        "h": 359
+      },
+      {
+        "x": 1313,
+        "y": 621,
+        "w": 236,
+        "h": 359
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "climb",
+    "source": "Tommy/Tommy climbing on corner rope.png",
+    "sourceSHA256": "df4f3a4ef4f6605ce600e0e795a51dac855a2b1192b28cfb5b659bb27773e076",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 960,
+        "y": 373,
+        "w": 166,
+        "h": 220
+      },
+      {
+        "x": 1151,
+        "y": 339,
+        "w": 196,
+        "h": 263
+      },
+      {
+        "x": 1390,
+        "y": 286,
+        "w": 169,
+        "h": 315
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "entry",
+    "source": "Tommy/Tommy walking through ropes.png",
+    "sourceSHA256": "d8f62f3249db979b494f653380c1ea9bd1a466b6d47e63dae1f118851cfda15d",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1292,
+        "y": 281,
+        "w": 290,
+        "h": 534
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "dive",
+    "source": "Tommy/Tommy jumping off corner rope.png",
+    "sourceSHA256": "b40b0b62cf5a27ead0ff413b13110d52d28c86229b03b468aa688bd2aabfc2af",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 566,
+        "y": 286,
+        "w": 425,
+        "h": 195
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "ropePose",
+    "source": "Tommy/Tommy climbing on ropes.png",
+    "sourceSHA256": "d3d7028a716c97317f400a804b10597447d8c2fa5edea9177f84e7365589914c",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1226,
+        "y": 246,
+        "w": 356,
+        "h": 585
+      }
+    ]
+  },
+  {
+    "fighter": "tommy",
+    "animation": "ko",
+    "source": "Tommy/Tommy passed out.png",
+    "sourceSHA256": "8ec480f8c3d80977211cf2ffc6c199b631400a8e5c83ad69aa594010cd558cfb",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 214,
+        "y": 296,
+        "w": 1299,
+        "h": 551
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "idle",
+    "source": "Shaggy 2 Dope/Shaggy standing.png",
+    "sourceSHA256": "5fab0d6288b16768a2ee221651b0bc153a276012806d15064779ad04990fd21c",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 48,
+        "y": 195,
+        "w": 352,
+        "h": 800
+      },
+      {
+        "x": 464,
+        "y": 195,
+        "w": 349,
+        "h": 797
+      },
+      {
+        "x": 922,
+        "y": 195,
+        "w": 194,
+        "h": 800
+      },
+      {
+        "x": 1265,
+        "y": 195,
+        "w": 186,
+        "h": 801
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "walk",
+    "source": "Shaggy 2 Dope/Shaggy walking.png",
+    "sourceSHA256": "89da1dbd3caeb6af1d1326ce03b51752e496458ab62cf54071c2504469f85c36",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 46,
+        "y": 602,
+        "w": 310,
+        "h": 399
+      },
+      {
+        "x": 395,
+        "y": 602,
+        "w": 201,
+        "h": 399
+      },
+      {
+        "x": 718,
+        "y": 601,
+        "w": 137,
+        "h": 403
+      },
+      {
+        "x": 930,
+        "y": 600,
+        "w": 302,
+        "h": 402
+      },
+      {
+        "x": 1288,
+        "y": 601,
+        "w": 213,
+        "h": 399
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "run",
+    "source": "Shaggy 2 Dope/Shaggy running.png",
+    "sourceSHA256": "70070e3bcf242e85449d6547e5266b8f07bd79cdd790c8d30be266b0a1861a9b",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 15,
+        "y": 551,
+        "w": 243,
+        "h": 296
+      },
+      {
+        "x": 290,
+        "y": 549,
+        "w": 218,
+        "h": 298
+      },
+      {
+        "x": 528,
+        "y": 551,
+        "w": 248,
+        "h": 288
+      },
+      {
+        "x": 797,
+        "y": 549,
+        "w": 257,
+        "h": 298
+      },
+      {
+        "x": 1077,
+        "y": 549,
+        "w": 210,
+        "h": 298
+      },
+      {
+        "x": 1322,
+        "y": 551,
+        "w": 253,
+        "h": 283
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "chair",
+    "source": "Shaggy 2 Dope/Shaggy attack with chair.png",
+    "sourceSHA256": "954211b41e19dc1696988c9d0a6a64347f0c4415542643b3cb52c6d7b94f4a31",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 141,
+        "w": 285,
+        "h": 679
+      },
+      {
+        "x": 326,
+        "y": 186,
+        "w": 283,
+        "h": 631
+      },
+      {
+        "x": 642,
+        "y": 371,
+        "w": 332,
+        "h": 443
+      },
+      {
+        "x": 985,
+        "y": 372,
+        "w": 294,
+        "h": 439
+      },
+      {
+        "x": 1289,
+        "y": 321,
+        "w": 298,
+        "h": 497
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "bat",
+    "source": "Shaggy 2 Dope/Shaggy attack with bat.png",
+    "sourceSHA256": "3ee75c3b4aad7f33e6654e3d63f9331e51cbb8df19da951f76a04c5f7db2b448",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 16,
+        "y": 238,
+        "w": 293,
+        "h": 569
+      },
+      {
+        "x": 322,
+        "y": 186,
+        "w": 294,
+        "h": 609
+      },
+      {
+        "x": 646,
+        "y": 261,
+        "w": 297,
+        "h": 549
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "guitar",
+    "source": "Shaggy 2 Dope/Shaggy attack with guitar.png",
+    "sourceSHA256": "4657ac7fb4b711ea3c281e88dc37af7a5e905b7330bf80ada1451bd2cd1f6c0e",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 328,
+        "w": 278,
+        "h": 480
+      },
+      {
+        "x": 337,
+        "y": 223,
+        "w": 290,
+        "h": 587
+      },
+      {
+        "x": 1300,
+        "y": 325,
+        "w": 273,
+        "h": 486
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "trashcan",
+    "source": "Shaggy 2 Dope/Shaggy attack with trashcan.png",
+    "sourceSHA256": "eb6d4a99c010552a1d94318cf5d0b790009ec9f25589f99f07d440e05b1ec0eb",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 333,
+        "w": 581,
+        "h": 480
+      },
+      {
+        "x": 590,
+        "y": 170,
+        "w": 279,
+        "h": 643
+      },
+      {
+        "x": 881,
+        "y": 358,
+        "w": 370,
+        "h": 457
+      },
+      {
+        "x": 1208,
+        "y": 369,
+        "w": 382,
+        "h": 444
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "carryChair",
+    "source": "Shaggy 2 Dope/Shaggy walk with chair.png",
+    "sourceSHA256": "f9e350775525e693ef5b8f9c5c64804908386bfe18979587c65d9dc9c7d0b50c",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 45,
+        "y": 125,
+        "w": 256,
+        "h": 332
+      },
+      {
+        "x": 371,
+        "y": 126,
+        "w": 219,
+        "h": 331
+      },
+      {
+        "x": 682,
+        "y": 126,
+        "w": 200,
+        "h": 331
+      },
+      {
+        "x": 987,
+        "y": 127,
+        "w": 257,
+        "h": 330
+      },
+      {
+        "x": 1315,
+        "y": 124,
+        "w": 261,
+        "h": 333
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "carryBat",
+    "source": "Shaggy 2 Dope/Shagy walk with bat.png",
+    "sourceSHA256": "088fa61ad8a1ac97b2b7e8fba7cddaa0226867d2175fa9ad49e01b5a6ef83f35",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 25,
+        "y": 202,
+        "w": 336,
+        "h": 588
+      },
+      {
+        "x": 352,
+        "y": 204,
+        "w": 303,
+        "h": 588
+      },
+      {
+        "x": 668,
+        "y": 205,
+        "w": 289,
+        "h": 590
+      },
+      {
+        "x": 934,
+        "y": 204,
+        "w": 340,
+        "h": 588
+      },
+      {
+        "x": 1295,
+        "y": 203,
+        "w": 284,
+        "h": 589
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "carryGuitar",
+    "source": "Shaggy 2 Dope/Shaggy walk with guitar.png",
+    "sourceSHA256": "e40162cc6519d4d853aab6606e46a0f55dc46d75ae07d3e6296cc60f2c39ba54",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 17,
+        "y": 208,
+        "w": 339,
+        "h": 572
+      },
+      {
+        "x": 340,
+        "y": 208,
+        "w": 330,
+        "h": 579
+      },
+      {
+        "x": 658,
+        "y": 208,
+        "w": 223,
+        "h": 581
+      },
+      {
+        "x": 927,
+        "y": 208,
+        "w": 315,
+        "h": 574
+      },
+      {
+        "x": 1238,
+        "y": 208,
+        "w": 340,
+        "h": 577
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "carryTrashcan",
+    "source": "Shaggy 2 Dope/Shaggy walk with trashcan.png",
+    "sourceSHA256": "a76d8e2f3d1fc848b7412a251d7b5b7775b0991875fd3b3a00f9c3064f62fd00",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 210,
+        "w": 313,
+        "h": 580
+      },
+      {
+        "x": 332,
+        "y": 210,
+        "w": 309,
+        "h": 587
+      },
+      {
+        "x": 616,
+        "y": 213,
+        "w": 343,
+        "h": 585
+      },
+      {
+        "x": 918,
+        "y": 213,
+        "w": 363,
+        "h": 586
+      },
+      {
+        "x": 1286,
+        "y": 213,
+        "w": 304,
+        "h": 584
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "lift",
+    "source": "Shaggy 2 Dope/Shaggy lifting overhead.png",
+    "sourceSHA256": "9d2e9c021d6850c8cec49771bb7f5e75991474c441bd55ec6c4fd9d04a045a74",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 435,
+        "w": 335,
+        "h": 406
+      },
+      {
+        "x": 361,
+        "y": 372,
+        "w": 299,
+        "h": 470
+      },
+      {
+        "x": 677,
+        "y": 296,
+        "w": 280,
+        "h": 546
+      },
+      {
+        "x": 990,
+        "y": 243,
+        "w": 271,
+        "h": 598
+      },
+      {
+        "x": 1311,
+        "y": 243,
+        "w": 270,
+        "h": 598
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "throw",
+    "source": "Shaggy 2 Dope/Shaggy throwing.png",
+    "sourceSHA256": "bfc9752a4544f264eef2227dec7dd31f280b68dcc41496913dce7a3d0ff7abd7",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 366,
+        "w": 348,
+        "h": 460
+      },
+      {
+        "x": 360,
+        "y": 301,
+        "w": 296,
+        "h": 527
+      },
+      {
+        "x": 657,
+        "y": 207,
+        "w": 337,
+        "h": 575
+      },
+      {
+        "x": 904,
+        "y": 368,
+        "w": 376,
+        "h": 458
+      },
+      {
+        "x": 1284,
+        "y": 334,
+        "w": 306,
+        "h": 494
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "lifted",
+    "source": "Shaggy 2 Dope/Shaggy getting lifted up.png",
+    "sourceSHA256": "aeb87fda03dd0651eee90edfe2dba131f44048b70d0e119a66caa2952b3ecd4b",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 428,
+        "w": 238,
+        "h": 333
+      },
+      {
+        "x": 266,
+        "y": 360,
+        "w": 275,
+        "h": 395
+      },
+      {
+        "x": 516,
+        "y": 348,
+        "w": 320,
+        "h": 317
+      },
+      {
+        "x": 863,
+        "y": 342,
+        "w": 341,
+        "h": 249
+      },
+      {
+        "x": 1224,
+        "y": 331,
+        "w": 366,
+        "h": 234
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "thrown",
+    "source": "Shaggy 2 Dope/Shaggy being thrown.png",
+    "sourceSHA256": "9bc0457dd128ef95a7258fe838b762ff53572d62ef11f6cdd65587112e3b72b4",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 23,
+        "y": 296,
+        "w": 302,
+        "h": 494
+      },
+      {
+        "x": 336,
+        "y": 249,
+        "w": 381,
+        "h": 443
+      },
+      {
+        "x": 706,
+        "y": 301,
+        "w": 213,
+        "h": 385
+      },
+      {
+        "x": 943,
+        "y": 314,
+        "w": 314,
+        "h": 406
+      },
+      {
+        "x": 1217,
+        "y": 604,
+        "w": 372,
+        "h": 191
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "hurt",
+    "source": "Shaggy 2 Dope/Shaggy dazed.png",
+    "sourceSHA256": "3d88965e3425fa6b3e8eabbd69dc874000818517a77ffe54e9708f210acb06d2",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 55,
+        "y": 206,
+        "w": 320,
+        "h": 631
+      },
+      {
+        "x": 448,
+        "y": 224,
+        "w": 314,
+        "h": 613
+      },
+      {
+        "x": 835,
+        "y": 225,
+        "w": 329,
+        "h": 612
+      },
+      {
+        "x": 1230,
+        "y": 201,
+        "w": 319,
+        "h": 636
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "fallBack",
+    "source": "Shaggy 2 Dope/Shaggy falling backward.png",
+    "sourceSHA256": "66e31f937cd24d34ff54a09e27554f729f2dff9be9991714f2a030bfad67d3c0",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 15,
+        "y": 246,
+        "w": 248,
+        "h": 498
+      },
+      {
+        "x": 258,
+        "y": 328,
+        "w": 368,
+        "h": 363
+      },
+      {
+        "x": 589,
+        "y": 440,
+        "w": 342,
+        "h": 304
+      },
+      {
+        "x": 869,
+        "y": 580,
+        "w": 340,
+        "h": 166
+      },
+      {
+        "x": 1211,
+        "y": 643,
+        "w": 375,
+        "h": 102
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "fallFront",
+    "source": "Shaggy 2 Dope/Shaggy falling forward.png",
+    "sourceSHA256": "e8be03f7c1bcf193873cc7a2bef8ff09a88f6f0050eb2db57c4442707dd73503",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 193,
+        "w": 220,
+        "h": 491
+      },
+      {
+        "x": 247,
+        "y": 253,
+        "w": 228,
+        "h": 431
+      },
+      {
+        "x": 480,
+        "y": 355,
+        "w": 235,
+        "h": 329
+      },
+      {
+        "x": 686,
+        "y": 440,
+        "w": 278,
+        "h": 249
+      },
+      {
+        "x": 948,
+        "y": 504,
+        "w": 303,
+        "h": 183
+      },
+      {
+        "x": 1223,
+        "y": 571,
+        "w": 366,
+        "h": 113
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "down",
+    "source": "Shaggy 2 Dope/Shaggy laying facedown and faceup.png",
+    "sourceSHA256": "48182077b1f85a2d23f5b245e9716635731a35810ebf418b8293e29bb12a35fd",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 797,
+        "y": 318,
+        "w": 756,
+        "h": 168
+      },
+      {
+        "x": 859,
+        "y": 634,
+        "w": 717,
+        "h": 213
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "rise",
+    "source": "Shaggy 2 Dope/Shaggy getting up.png",
+    "sourceSHA256": "7a91c07825b2b47104acd146cb84cf3613cb2d2bf36b73a7720100b75a0e93f7",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 575,
+        "w": 340,
+        "h": 118
+      },
+      {
+        "x": 353,
+        "y": 489,
+        "w": 261,
+        "h": 209
+      },
+      {
+        "x": 623,
+        "y": 411,
+        "w": 229,
+        "h": 287
+      },
+      {
+        "x": 866,
+        "y": 342,
+        "w": 223,
+        "h": 356
+      },
+      {
+        "x": 1111,
+        "y": 254,
+        "w": 226,
+        "h": 447
+      },
+      {
+        "x": 1360,
+        "y": 194,
+        "w": 223,
+        "h": 500
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "taunt",
+    "source": "Shaggy 2 Dope/Shaggy taunting.png",
+    "sourceSHA256": "41e943178817174dc724f713faf7519e25e4a766e02d47b4f2874c847b11320e",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 202,
+        "w": 271,
+        "h": 586
+      },
+      {
+        "x": 313,
+        "y": 196,
+        "w": 268,
+        "h": 594
+      },
+      {
+        "x": 606,
+        "y": 266,
+        "w": 297,
+        "h": 525
+      },
+      {
+        "x": 854,
+        "y": 200,
+        "w": 434,
+        "h": 593
+      },
+      {
+        "x": 1273,
+        "y": 200,
+        "w": 317,
+        "h": 591
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "victory",
+    "source": "Shaggy 2 Dope/Shaggy victory.png",
+    "sourceSHA256": "b2e914a4db57331d6dd92a090183eca7c42710e8a40e2681f7570fd0cc4088cc",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 157,
+        "w": 299,
+        "h": 663
+      },
+      {
+        "x": 354,
+        "y": 146,
+        "w": 305,
+        "h": 673
+      },
+      {
+        "x": 663,
+        "y": 251,
+        "w": 268,
+        "h": 568
+      },
+      {
+        "x": 931,
+        "y": 251,
+        "w": 351,
+        "h": 570
+      },
+      {
+        "x": 1275,
+        "y": 146,
+        "w": 295,
+        "h": 675
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "defeat",
+    "source": "Shaggy 2 Dope/Shaggy defeated.png",
+    "sourceSHA256": "babc86934467d538484abf422d67ab7b4f5efb16e4beb1b57ce644062c839f1f",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1224,
+        "y": 269,
+        "w": 339,
+        "h": 518
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "jump",
+    "source": "Shaggy 2 Dope/Shaggy jumping.png",
+    "sourceSHA256": "c1886125465cc2e559e90b2e9207c373a41d4d5c090fe8822d3223d3ddc37b0c",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 19,
+        "y": 342,
+        "w": 368,
+        "h": 452
+      },
+      {
+        "x": 410,
+        "y": 269,
+        "w": 377,
+        "h": 516
+      },
+      {
+        "x": 787,
+        "y": 190,
+        "w": 459,
+        "h": 500
+      },
+      {
+        "x": 1216,
+        "y": 407,
+        "w": 366,
+        "h": 390
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "pin",
+    "source": "Shaggy 2 Dope/Shaggy pinning.png",
+    "sourceSHA256": "40134ed92efd002377ca1ea4dff4ad56f857aa599fbe1d99b8b057db5156cb21",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 10,
+        "y": 197,
+        "w": 372,
+        "h": 589
+      },
+      {
+        "x": 394,
+        "y": 330,
+        "w": 345,
+        "h": 457
+      },
+      {
+        "x": 760,
+        "y": 448,
+        "w": 432,
+        "h": 343
+      },
+      {
+        "x": 1176,
+        "y": 549,
+        "w": 414,
+        "h": 238
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "kick",
+    "source": "Shaggy 2 Dope/Shaggy kicking.png",
+    "sourceSHA256": "49cffc37d8e6c9ddd86587812a7595239e0c5234b539c3c492a8707db40a6ae7",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 594,
+        "w": 244,
+        "h": 383
+      },
+      {
+        "x": 364,
+        "y": 592,
+        "w": 188,
+        "h": 381
+      },
+      {
+        "x": 634,
+        "y": 594,
+        "w": 358,
+        "h": 379
+      },
+      {
+        "x": 1038,
+        "y": 596,
+        "w": 184,
+        "h": 377
+      },
+      {
+        "x": 1318,
+        "y": 591,
+        "w": 242,
+        "h": 385
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "climb",
+    "source": "Shaggy 2 Dope/Shaggy climbing on corner rope.png",
+    "sourceSHA256": "921bf2e4226596652e8edc3809d30c6ec289f2c9728bf9fd7074098174acfbaa",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 937,
+        "y": 377,
+        "w": 192,
+        "h": 216
+      },
+      {
+        "x": 1151,
+        "y": 329,
+        "w": 210,
+        "h": 283
+      },
+      {
+        "x": 1378,
+        "y": 274,
+        "w": 211,
+        "h": 340
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "entry",
+    "source": "Shaggy 2 Dope/Shaggy climbing through rope.png",
+    "sourceSHA256": "5d4e91af05eb4ca4e451fb83d936a4b95863d6d46dc5dbeb9c37304069a60d95",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1311,
+        "y": 263,
+        "w": 259,
+        "h": 565
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "dive",
+    "source": "Shaggy 2 Dope/Shaggy jumping off corner.png",
+    "sourceSHA256": "fd3ded8d30a022d2b940aae51123ae0d25e99ce52a455a2967bbc4c4874573aa",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 566,
+        "y": 321,
+        "w": 475,
+        "h": 224
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "ropePose",
+    "source": "Shaggy 2 Dope/Shaggy climbing on rope.png",
+    "sourceSHA256": "661752a6aa5536d22eb332cd2b26b23e60720882deca7bd7b33b046d28c27499",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1240,
+        "y": 246,
+        "w": 345,
+        "h": 552
+      }
+    ]
+  },
+  {
+    "fighter": "shaggy-2-dope",
+    "animation": "ko",
+    "source": "Shaggy 2 Dope/Shaggy passed out.png",
+    "sourceSHA256": "7133c078a6c0934c5662c6663572560151675880d056f6fb985d9cd6f8d158a4",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 50,
+        "y": 412,
+        "w": 1506,
+        "h": 451
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "idle",
+    "source": "Jacksyn/Jacksyn standing.png",
+    "sourceSHA256": "8393cf8d18cc70fe58fafc6ce19a9d05400efa7fa19c0c730c446cf9a15ad4f7",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 73,
+        "y": 284,
+        "w": 293,
+        "h": 563
+      },
+      {
+        "x": 483,
+        "y": 284,
+        "w": 292,
+        "h": 563
+      },
+      {
+        "x": 956,
+        "y": 284,
+        "w": 170,
+        "h": 563
+      },
+      {
+        "x": 1314,
+        "y": 284,
+        "w": 174,
+        "h": 563
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "walk",
+    "source": "Jacksyn/Jacksyn walking.png",
+    "sourceSHA256": "b993eab531ffdd1168c121330b4fb98c5d50506f68e51c71d4c63f330315655f",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 55,
+        "y": 533,
+        "w": 214,
+        "h": 295
+      },
+      {
+        "x": 387,
+        "y": 533,
+        "w": 196,
+        "h": 293
+      },
+      {
+        "x": 730,
+        "y": 533,
+        "w": 128,
+        "h": 293
+      },
+      {
+        "x": 1008,
+        "y": 533,
+        "w": 225,
+        "h": 295
+      },
+      {
+        "x": 1362,
+        "y": 533,
+        "w": 136,
+        "h": 293
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "run",
+    "source": "Jacksyn/Jacksyn running.png",
+    "sourceSHA256": "d4c794c5b2cadb21365e05bb480b2c437b1438d0fa157ad6bad58b1a4e5dcf20",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 27,
+        "y": 570,
+        "w": 233,
+        "h": 277
+      },
+      {
+        "x": 321,
+        "y": 570,
+        "w": 179,
+        "h": 277
+      },
+      {
+        "x": 579,
+        "y": 569,
+        "w": 167,
+        "h": 278
+      },
+      {
+        "x": 798,
+        "y": 569,
+        "w": 255,
+        "h": 278
+      },
+      {
+        "x": 1109,
+        "y": 566,
+        "w": 167,
+        "h": 281
+      },
+      {
+        "x": 1319,
+        "y": 566,
+        "w": 258,
+        "h": 281
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "chair",
+    "source": "Jacksyn/Jacksyn attack with chair.png",
+    "sourceSHA256": "c769cd06967655a231f6af8f5aa207b6d35b3afd1eed8896f099a677e85efb79",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 211,
+        "w": 256,
+        "h": 590
+      },
+      {
+        "x": 347,
+        "y": 207,
+        "w": 249,
+        "h": 594
+      },
+      {
+        "x": 642,
+        "y": 405,
+        "w": 332,
+        "h": 395
+      },
+      {
+        "x": 985,
+        "y": 428,
+        "w": 294,
+        "h": 370
+      },
+      {
+        "x": 1320,
+        "y": 358,
+        "w": 254,
+        "h": 442
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "bat",
+    "source": "Jacksyn/Jacksyn attack with bat.png",
+    "sourceSHA256": "ed109d3483ad6366691660960eb15e0b939c1ef91f86cb0ac1ef809d14d71041",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 330,
+        "w": 295,
+        "h": 499
+      },
+      {
+        "x": 346,
+        "y": 238,
+        "w": 277,
+        "h": 592
+      },
+      {
+        "x": 637,
+        "y": 331,
+        "w": 428,
+        "h": 499
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "guitar",
+    "source": "Jacksyn/Jacksyn attack with guitar.png",
+    "sourceSHA256": "38bf0c061c17a2c62f9a5cd0c2ec71d871472786ae55a745ff9f8c4b23eeec61",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 37,
+        "y": 321,
+        "w": 278,
+        "h": 469
+      },
+      {
+        "x": 349,
+        "y": 210,
+        "w": 278,
+        "h": 580
+      },
+      {
+        "x": 1300,
+        "y": 318,
+        "w": 264,
+        "h": 472
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "trashcan",
+    "source": "Jacksyn/Jacksyn attack with trashcan.png",
+    "sourceSHA256": "07f2ecfc4c3ffc16c38870a2907ca75e2919c7c7d068a0ff20935192a7fa0b82",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 370,
+        "w": 265,
+        "h": 470
+      },
+      {
+        "x": 312,
+        "y": 370,
+        "w": 290,
+        "h": 470
+      },
+      {
+        "x": 625,
+        "y": 260,
+        "w": 262,
+        "h": 580
+      },
+      {
+        "x": 900,
+        "y": 402,
+        "w": 362,
+        "h": 438
+      },
+      {
+        "x": 1229,
+        "y": 412,
+        "w": 355,
+        "h": 428
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "carryChair",
+    "source": "Jacksyn/Jacksyn walk with chair.png",
+    "sourceSHA256": "e03e318cc4330324be4c0dfd2527ee3b29f45ce3c6ade4f910b97ea190fcd99b",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 72,
+        "y": 183,
+        "w": 214,
+        "h": 296
+      },
+      {
+        "x": 386,
+        "y": 184,
+        "w": 169,
+        "h": 293
+      },
+      {
+        "x": 708,
+        "y": 182,
+        "w": 155,
+        "h": 296
+      },
+      {
+        "x": 1011,
+        "y": 182,
+        "w": 208,
+        "h": 298
+      },
+      {
+        "x": 1351,
+        "y": 182,
+        "w": 153,
+        "h": 297
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "carryBat",
+    "source": "Jacksyn/Jacksyn walk with bat.png",
+    "sourceSHA256": "18a59f80b62785de3f8d970a2c852cea05a22f63d70ca6f7e6aa6162e6531a1e",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 227,
+        "w": 344,
+        "h": 543
+      },
+      {
+        "x": 362,
+        "y": 227,
+        "w": 325,
+        "h": 540
+      },
+      {
+        "x": 701,
+        "y": 226,
+        "w": 264,
+        "h": 541
+      },
+      {
+        "x": 947,
+        "y": 228,
+        "w": 352,
+        "h": 540
+      },
+      {
+        "x": 1336,
+        "y": 227,
+        "w": 243,
+        "h": 544
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "carryGuitar",
+    "source": "Jacksyn/Jacksyn walk with guitar.png",
+    "sourceSHA256": "c62f7a59e5feb7c85271f18a6884b59f4eb60c5ade92bcdbefe6933050bd18f7",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 24,
+        "y": 260,
+        "w": 323,
+        "h": 572
+      },
+      {
+        "x": 383,
+        "y": 260,
+        "w": 258,
+        "h": 575
+      },
+      {
+        "x": 702,
+        "y": 260,
+        "w": 198,
+        "h": 575
+      },
+      {
+        "x": 946,
+        "y": 260,
+        "w": 342,
+        "h": 574
+      },
+      {
+        "x": 1335,
+        "y": 260,
+        "w": 202,
+        "h": 575
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "carryTrashcan",
+    "source": "Jacksyn/Jacksyn walk with trashcan.png",
+    "sourceSHA256": "dfd886f5efbf134e6e780662979fd8483e6cffe7b66d7d0bdf1bf3917a6e91b7",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 31,
+        "y": 260,
+        "w": 326,
+        "h": 505
+      },
+      {
+        "x": 379,
+        "y": 260,
+        "w": 289,
+        "h": 504
+      },
+      {
+        "x": 711,
+        "y": 260,
+        "w": 231,
+        "h": 505
+      },
+      {
+        "x": 953,
+        "y": 260,
+        "w": 318,
+        "h": 508
+      },
+      {
+        "x": 1332,
+        "y": 260,
+        "w": 234,
+        "h": 508
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "lift",
+    "source": "Jacksyn/Jacksyn getting lifted up.png",
+    "sourceSHA256": "b16a4368aa2bc1ea6f8109c2ceb9dcc4fba1d0d498b17b29fb58146e1de5a294",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 42,
+        "y": 440,
+        "w": 318,
+        "h": 403
+      },
+      {
+        "x": 379,
+        "y": 367,
+        "w": 273,
+        "h": 476
+      },
+      {
+        "x": 687,
+        "y": 320,
+        "w": 266,
+        "h": 522
+      },
+      {
+        "x": 998,
+        "y": 286,
+        "w": 260,
+        "h": 557
+      },
+      {
+        "x": 1308,
+        "y": 288,
+        "w": 256,
+        "h": 554
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "throw",
+    "source": "Jacksyn/Jacksyn throwing.png",
+    "sourceSHA256": "a3ccbcfce8e971ee533b4a7fd12825483548a1507fc0aa20463c7e5f10653b61",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 351,
+        "w": 330,
+        "h": 478
+      },
+      {
+        "x": 367,
+        "y": 319,
+        "w": 287,
+        "h": 510
+      },
+      {
+        "x": 668,
+        "y": 212,
+        "w": 324,
+        "h": 610
+      },
+      {
+        "x": 950,
+        "y": 353,
+        "w": 345,
+        "h": 477
+      },
+      {
+        "x": 1307,
+        "y": 329,
+        "w": 270,
+        "h": 502
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "lifted",
+    "source": "Jacksyn/Jacksyn being lifted up.png",
+    "sourceSHA256": "fda3b6f530d1631426516918a551d14d1a5ec493b6fea4c157ec099077e3b24a",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 28,
+        "y": 471,
+        "w": 216,
+        "h": 287
+      },
+      {
+        "x": 298,
+        "y": 416,
+        "w": 265,
+        "h": 246
+      },
+      {
+        "x": 583,
+        "y": 399,
+        "w": 304,
+        "h": 226
+      },
+      {
+        "x": 913,
+        "y": 390,
+        "w": 317,
+        "h": 218
+      },
+      {
+        "x": 1249,
+        "y": 391,
+        "w": 331,
+        "h": 215
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "hurt",
+    "source": "Jacksyn/Jacksyn dazed.png",
+    "sourceSHA256": "62083ae382c9609c1985a850bd775c61b0d3c06e871b6b6e335c7b27b6998835",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 72,
+        "y": 279,
+        "w": 287,
+        "h": 568
+      },
+      {
+        "x": 486,
+        "y": 297,
+        "w": 263,
+        "h": 550
+      },
+      {
+        "x": 849,
+        "y": 291,
+        "w": 299,
+        "h": 556
+      },
+      {
+        "x": 1250,
+        "y": 304,
+        "w": 262,
+        "h": 543
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "fallBack",
+    "source": "Jacksyn/Jacksyn falling backward.png",
+    "sourceSHA256": "6919586ae0be1c8a6ff4a1847df7f5fb220023954e778899540659186e2ba838",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 21,
+        "y": 297,
+        "w": 275,
+        "h": 484
+      },
+      {
+        "x": 276,
+        "y": 338,
+        "w": 392,
+        "h": 397
+      },
+      {
+        "x": 591,
+        "y": 467,
+        "w": 341,
+        "h": 301
+      },
+      {
+        "x": 891,
+        "y": 611,
+        "w": 325,
+        "h": 151
+      },
+      {
+        "x": 1216,
+        "y": 672,
+        "w": 357,
+        "h": 94
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "fallFront",
+    "source": "Jacksyn/Jacksyn falling forward.png",
+    "sourceSHA256": "b0d7b2e47fe16122f7cf769eb3ecf13616b10dbc2685ccc95be63035a59c9f13",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 12,
+        "y": 312,
+        "w": 329,
+        "h": 490
+      },
+      {
+        "x": 202,
+        "y": 408,
+        "w": 512,
+        "h": 260
+      },
+      {
+        "x": 497,
+        "y": 582,
+        "w": 685,
+        "h": 227
+      },
+      {
+        "x": 1191,
+        "y": 692,
+        "w": 397,
+        "h": 115
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "down",
+    "source": "Jacksyn/Jacksyn laying facedown and faceup.png",
+    "sourceSHA256": "9afabe08c1389199b42889ef8d4f4affd84589cdc735fea0ef3f0b6ef8d055ef",
+    "count": 2,
+    "bounds": [
+      {
+        "x": 844,
+        "y": 326,
+        "w": 718,
+        "h": 169
+      },
+      {
+        "x": 821,
+        "y": 632,
+        "w": 732,
+        "h": 215
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "rise",
+    "source": "Jacksyn/Jacksyn getting up from facedown.png",
+    "sourceSHA256": "29a4603f4e4f8e8b146b6686c6cfe90a803248e522a8ed258c876f36df8de80e",
+    "count": 6,
+    "bounds": [
+      {
+        "x": 26,
+        "y": 651,
+        "w": 324,
+        "h": 96
+      },
+      {
+        "x": 348,
+        "y": 548,
+        "w": 275,
+        "h": 199
+      },
+      {
+        "x": 624,
+        "y": 496,
+        "w": 221,
+        "h": 251
+      },
+      {
+        "x": 862,
+        "y": 427,
+        "w": 228,
+        "h": 315
+      },
+      {
+        "x": 1116,
+        "y": 359,
+        "w": 206,
+        "h": 383
+      },
+      {
+        "x": 1355,
+        "y": 305,
+        "w": 214,
+        "h": 437
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "taunt",
+    "source": "Jacksyn/Jacksyn taunting.png",
+    "sourceSHA256": "b72dfee43b017ba0ef984269a632f797cf0367cf619207c94aeb5de6a4235e00",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 35,
+        "y": 277,
+        "w": 271,
+        "h": 552
+      },
+      {
+        "x": 336,
+        "y": 328,
+        "w": 273,
+        "h": 504
+      },
+      {
+        "x": 573,
+        "y": 297,
+        "w": 412,
+        "h": 535
+      },
+      {
+        "x": 962,
+        "y": 343,
+        "w": 293,
+        "h": 487
+      },
+      {
+        "x": 1256,
+        "y": 260,
+        "w": 317,
+        "h": 570
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "victory",
+    "source": "Jacksyn/Jacksyn victory.png",
+    "sourceSHA256": "bdc39fd419de3eedd77b4f17ef3548bdae0df130726c24f6263f4db3ab1edf6f",
+    "count": 5,
+    "bounds": [
+      {
+        "x": 22,
+        "y": 260,
+        "w": 288,
+        "h": 587
+      },
+      {
+        "x": 342,
+        "y": 260,
+        "w": 276,
+        "h": 587
+      },
+      {
+        "x": 642,
+        "y": 313,
+        "w": 242,
+        "h": 534
+      },
+      {
+        "x": 897,
+        "y": 382,
+        "w": 327,
+        "h": 465
+      },
+      {
+        "x": 1224,
+        "y": 323,
+        "w": 366,
+        "h": 524
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "defeat",
+    "source": "Jacksyn/Jacksyn defeated.png",
+    "sourceSHA256": "5aba5db6f64969e2ca969b5a44cb90251571c75f07d4ba50df0e6be9367d2a54",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1213,
+        "y": 332,
+        "w": 316,
+        "h": 491
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "jump",
+    "source": "Jacksyn/Jacksyn jumping.png",
+    "sourceSHA256": "aa62b7e0a9999df109c7aa55581f521a986faa8e90e2e11f28c8a76fab6ede7c",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 34,
+        "y": 456,
+        "w": 328,
+        "h": 388
+      },
+      {
+        "x": 416,
+        "y": 355,
+        "w": 326,
+        "h": 482
+      },
+      {
+        "x": 777,
+        "y": 282,
+        "w": 434,
+        "h": 427
+      },
+      {
+        "x": 1245,
+        "y": 437,
+        "w": 319,
+        "h": 400
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "pin",
+    "source": "Jacksyn/Jacksyn pinning.png",
+    "sourceSHA256": "4b35033b8c8a00a58119d695a2417c4017b0a0ef6786f7b6612795c88d21dbc3",
+    "count": 4,
+    "bounds": [
+      {
+        "x": 33,
+        "y": 273,
+        "w": 357,
+        "h": 521
+      },
+      {
+        "x": 391,
+        "y": 374,
+        "w": 390,
+        "h": 420
+      },
+      {
+        "x": 783,
+        "y": 474,
+        "w": 394,
+        "h": 322
+      },
+      {
+        "x": 1180,
+        "y": 609,
+        "w": 393,
+        "h": 194
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "climb",
+    "source": "Jacksyn/Jacksyn climbing on top rope.png",
+    "sourceSHA256": "acc145b45416c83ee6a8ad234e5bacbb374c8f8a47c2215cdc52234c6ae505ed",
+    "count": 3,
+    "bounds": [
+      {
+        "x": 939,
+        "y": 376,
+        "w": 181,
+        "h": 218
+      },
+      {
+        "x": 1147,
+        "y": 329,
+        "w": 203,
+        "h": 275
+      },
+      {
+        "x": 1369,
+        "y": 284,
+        "w": 201,
+        "h": 323
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "entry",
+    "source": "Jacksyn/Jacksyn climbing through rope.png",
+    "sourceSHA256": "dbbdd3d71d8e38b17ebba94b6a74a79cb979e9b5d0011d58859520a0ec6ca8df",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1292,
+        "y": 270,
+        "w": 293,
+        "h": 536
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "dive",
+    "source": "Jacksyn/Jacksyn jumping off top rope.png",
+    "sourceSHA256": "c16827eb08388ee8eec788013fd849ba824f1a5a11b1d2f3c36f4082ea1875fe",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 571,
+        "y": 317,
+        "w": 483,
+        "h": 171
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "ropePose",
+    "source": "Jacksyn/Jacksyn climbing on rope.png",
+    "sourceSHA256": "6d2a57f126d369cf67a6983110028713545a583a7061d2e8e3d9975ec061a3de",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 1224,
+        "y": 270,
+        "w": 361,
+        "h": 550
+      }
+    ]
+  },
+  {
+    "fighter": "jacksyn",
+    "animation": "ko",
+    "source": "Jacksyn/Jacksyn passed out.png",
+    "sourceSHA256": "0f8d961a5093d4296354738f626e97b5df34d97e5309860039dcc46fc4289b62",
+    "count": 1,
+    "bounds": [
+      {
+        "x": 66,
+        "y": 326,
+        "w": 1426,
+        "h": 521
+      }
+    ]
+  }
+]
