@@ -122,3 +122,30 @@ test('desktop effect bursts stay bounded during a dropped-frame event spike',()=
  for(let i=0;i<30;i++)r.receive([{type:'hit',index:1,attacker:0,x:550,combo:2}],m);
  assert.ok(r.particles.length<=128);assert.ok(r.popups.length<=48);
 });
+
+test('renderer requests synchronized presentation and never clears a visible frame',()=>{
+ const {r,ctx}=renderer(),requests=[];
+ const canvas={getContext:(kind,options)=>{requests.push([kind,options]);return ctx;}};
+ const stable=new Renderer(canvas,roster,r.atlases,r.arenas);
+ assert.equal(requests[0][1].desynchronized,false);assert.equal(requests[0][1].alpha,false);
+ ctx.clearRect=()=>assert.fail('Clearing the visible buffer can show an empty frame');
+ const m=new Match(roster,33,34,{mode:'local'});m.phase='fight';
+ for(const mode of ['desktop','portrait','compact']){stable.portrait=mode==='portrait';stable.compact=mode==='compact';stable.draw(m);}
+});
+
+test('finishers retain their feedback without a screen-sized flash',()=>{
+ const {r,ctx}=renderer(),m=new Match(roster,33,34,{mode:'local'});r.reduced=false;
+ r.receive([{type:'special',index:0,name:'BASS BLAST'}],m);
+ assert.equal(r.graphic.key,'lunacy');assert.ok(r.popups.some(p=>p.text==='BASS BLAST'));
+ ctx.fillRect=(_x,_y,w,h)=>assert.ok(w<1280||h<720,'Effects cannot repaint the whole scene');
+ for(let frame=0;frame<15;frame++)r.effects(1/60);
+});
+
+test('hit shake is bounded for phones and desktops and disabled for reduced motion',()=>{
+ const {r}=renderer(),m=new Match(roster,33,34,{mode:'local'});m.phase='fight';m.shake=100;
+ for(const lowPower of [false,true]){
+  r.lowPower=lowPower;r.reduced=false;const limit=lowPower?2:4;
+  for(let i=0;i<20;i++){r.draw(m);assert.ok(Math.abs(r.shakeOffset[0])<=limit);assert.ok(Math.abs(r.shakeOffset[1])<=limit*.55);}
+ }
+ r.reduced=true;r.draw(m);assert.deepEqual(r.shakeOffset,[0,0]);
+});
