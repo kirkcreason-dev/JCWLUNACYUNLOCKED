@@ -1,17 +1,17 @@
 import {Match,STEP,emptyInput} from './engine.js';
-import {Renderer} from './render.js?v=0.12.0';
+import {Renderer} from './render.js?v=0.12.1';
 import {Input} from './input.js';
 import {Sound} from './audio.js';
 import {ARENAS} from './arenas.js';
 import {touchContext} from './touch-ui.js';
-import {OnlineSession} from './online.js?v=0.12.0';
+import {OnlineSession} from './online.js?v=0.12.1';
 import {connectFirebase} from './firebase-online.js';
-import {SnapshotBuffer} from './online-protocol.js?v=0.12.0';
+import {SnapshotBuffer} from './online-protocol.js?v=0.12.1';
 import {RosterSelection} from './roster-selection.js';
 import {retainMatchArtwork} from './artwork-cache.js';
 import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js';
 import {FramePacer} from './frame-pacer.js';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.12.0';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.12.1';
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help');
 let roster=[],atlases={},arenas=[],renderer,match=null,chosen=0,arena=0,paused=false,helpWasPaused=false,arcadeOpponents=[],arcadeIndex=0,session=0,loading=false,returnFocus=null;
@@ -26,7 +26,7 @@ const sound=new Sound($('theme-audio'));
 const coarse=matchMedia('(any-pointer:coarse)');
 let preferences={muted:false,music:'theme',touch:'auto',repeat:true,haptics:true,quality:'auto'},touchSignature='',touchEscapeMode=false;
 const framePacer=new FramePacer();
-let viewportFrame=0,lastPhoneOrientation=null,lastControlGeometry='';
+let viewportPending=false,lastPhoneOrientation=null,lastControlGeometry='';
 try{const saved=JSON.parse(localStorage.getItem('lunacy-controls-v3')||'null');if(saved&&typeof saved==='object')preferences={...preferences,...saved};}catch{}
 function savePreferences(){try{localStorage.setItem('lunacy-controls-v3',JSON.stringify(preferences));}catch{}}
 const input=new Input(force=>togglePause(force));
@@ -86,7 +86,7 @@ function updatePhoneLayout(showing){
     resizeCanvas(renderer.canvas,canvasSize({cssWidth,portrait:renderer.portrait,touch:showing,dpr:devicePixelRatio||1,quality:preferences.quality}));
   }
 }
-function scheduleViewport(){if(viewportFrame)return;viewportFrame=requestAnimationFrame(()=>{viewportFrame=0;updateTouch();resizeRoster();});}
+function scheduleViewport(){viewportPending=true;}
 function updateTouchContext(){
   if(!match||$('touch-controls').hidden)return;
   const context=touchContext(match,localIndex),signature=JSON.stringify(context);if(signature===touchSignature)return;touchSignature=signature;
@@ -365,6 +365,9 @@ let last=performance.now(),accumulator=0;
 function loop(now){
   try{
     if(runtimeFault){requestAnimationFrame(loop);return;}
+    // Resize and repaint in this same frame. A separate resize callback can
+    // otherwise clear a just-drawn canvas until the following browser frame.
+    if(viewportPending){viewportPending=false;updateTouch();resizeRoster();}
     const delta=Math.min((now-last)/1000,.10);last=now;
     if(match?.options.mode==='online'&&onlineStarted&&!onlineFailed){
       if(match.phase!=='done'){

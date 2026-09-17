@@ -1,20 +1,22 @@
 import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget} from './engine.js';
 import {ARENAS} from './arenas.js';
-import {attackPose} from './attack-animation.js?v=0.12.0';
+import {attackPose} from './attack-animation.js?v=0.12.1';
 import {phoneCamera} from './phone-layout.js';
 import {drawArenaWordmarks} from './branding.js';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
     this.bannerArt=banners;this.combatFx=combatFx;this.canvas=canvas;this.onContextLost=options.onContextLost||(()=>{});
-    this.ctx=canvas.getContext?.('2d',{alpha:false,desynchronized:true})||canvas.getContext?.('2d');
+    // Present complete frames. Desynchronized drawing can expose the clear or
+    // partly painted HUD while the browser scans out the canvas.
+    this.ctx=canvas.getContext?.('2d',{alpha:false,desynchronized:false})||canvas.getContext?.('2d');
     if(!this.ctx)throw new Error('2D canvas unavailable');
     this.contextLost=false;this.shade=null;this.shadeHeight=0;
     canvas.addEventListener?.('contextlost',event=>{event.preventDefault?.();this.contextLost=true;this.onContextLost();});
     canvas.addEventListener?.('contextrestored',()=>{this.contextLost=false;this.shade=null;this.reset();});
     this.roster=roster;this.atlases=atlases;this.arenas=arenas;this.reduced=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;this.scheme='keyboard';this.reset();
   }
-  reset(){this.particles=[];this.popups=[];this.spriteFx=[];this.flash=0;this.healthTrail=[100,100];this.healthWait=[0,0];this.lastHealth=[100,100];this.lastMeter=[0,0];this.shakeOffset=[0,0];this.clock=0;this.graphic=null;}
+  reset(){this.particles=[];this.popups=[];this.spriteFx=[];this.healthTrail=[100,100];this.healthWait=[0,0];this.lastHealth=[100,100];this.lastMeter=[0,0];this.shakeOffset=[0,0];this.clock=0;this.graphic=null;}
   receive(events,match=null){for(const e of events){
     this.combatEffect(e,match);
     if(['hit','slam','block'].includes(e.type)){
@@ -28,7 +30,7 @@ export class Renderer {
       }
       else if(e.type==='hit'&&e.counter)this.popups.push({text:'COUNTER',x:e.x,y:y-90,life:.65,color:'#ffe197'});
     }
-    if(e.type==='special'){this.graphic={key:'lunacy',life:.8};this.flash=.18;if(e.name)this.popups.push({text:e.name,x:640,y:245,life:1,color:'#b0ff20'});}
+    if(e.type==='special'){this.graphic={key:'lunacy',life:.8};if(e.name)this.popups.push({text:e.name,x:640,y:245,life:1,color:'#b0ff20'});}
     if(e.type==='round')this.reset();
     if(e.type==='throwBreak')this.popups.push({text:'THROW BREAK',x:640,y:300,life:.9,color:'#8ee7ff'});
     if(e.type==='notReady')this.popups.push({text:'BUILD YOUR LUNACY METER',x:640,y:225,life:.7,color:'#e8dfea'});
@@ -54,22 +56,24 @@ export class Renderer {
     if(this.contextLost||!this.ctx)return false;
     const c=this.ctx,height=this.portrait?960:720;
     c.save();c.scale((this.canvas.width||1280)/1280,(this.canvas.height||height)/height);
-    c.save();c.clearRect(0,0,1280,height);c.fillStyle='#130b18';c.fillRect(0,0,1280,height);
+    // An opaque repaint replaces the old frame without a cleared intermediate.
+    c.save();c.fillStyle='#130b18';c.fillRect(0,0,1280,height);
     const bg=this.arenas[arena]||this.arenas[0];
     if(this.portrait&&bg){c.drawImage(bg,0,0,1280,height);drawArenaWordmarks(c,bg,arena,this.bannerArt.unlocked,1280,height);}
     if((this.portrait||this.compact)&&match&&!menu){const camera=phoneCamera(match.fighters,{portrait:this.portrait,floor:FLOOR});c.translate(camera.x,camera.y);c.scale(camera.zoom,camera.zoom);}
     this.clock+=dt;
-    if(dt>0)this.shakeOffset=match?.shake&&!this.reduced&&!menu?[(Math.random()-.5)*match.shake,(Math.random()-.5)*match.shake*.55]:[0,0];
+    if(dt>0){const shake=!this.reduced&&!menu?Math.min(match?.shake||0,this.lowPower?4:8):0;this.shakeOffset=shake?[(Math.random()-.5)*shake,(Math.random()-.5)*shake*.55]:[0,0];}
     c.translate(...this.shakeOffset);
     if(bg){const crop=ARENAS[arena]?.crop;if(crop)c.drawImage(bg,...crop,0,0,1280,720);else{c.drawImage(bg,0,0,1280,720);drawArenaWordmarks(c,bg,arena,this.bannerArt.unlocked);}}
-    // Keep the supplied ring and arena visible; tint only the upper HUD area.
-    c.fillStyle=this.hudShade(height);c.fillRect(0,0,1280,210);
     if(match&&!menu){
       // Downed opponent is below the attacker during a pin; neither sheet contains an extra wrestler.
       if(match.fighters.some(f=>f.definition.animations.climb))this.corners();
       const order=match.pin?[1-match.pin.attacker,match.pin.attacker]:match.grapple?[match.grapple.attacker,1-match.grapple.attacker]:match.fighters[0].move&&!match.fighters[1].move?[1,0]:[0,1];
       for(const i of order)this.fighter(match.fighters[i],i,match);
-      this.effects(dt);c.restore();c.save();this.hud(match,arena,dt);this.banners(match);this.announcements(dt);
+      this.effects(dt);c.restore();c.save();
+      // Shade is created in screen coordinates, independent of the phone camera.
+      c.fillStyle=this.hudShade(height);c.fillRect(0,0,1280,210);
+      this.hud(match,arena,dt);this.banners(match);this.announcements(dt);
     }
     c.restore();c.restore();
   }
@@ -151,6 +155,8 @@ export class Renderer {
   hud(m,arena,dt=1/60){
     const c=this.ctx,[a,b]=m.fighters;
     if(this.portrait||this.compact){this.phoneHud(m,arena);return;}
+    // Opaque, stationary rails prevent bright scenery flickering through them.
+    c.fillStyle='#100d17';c.fillRect(0,0,1280,142);c.fillRect(0,660,1280,60);
     for(let i=0;i<2;i++){
       const f=i?b:a,x=i?738:44,w=498,color=i?'#fa268b':'#b0ff20';
       if(f.hp<this.lastHealth[i])this.healthWait[i]=.3;
@@ -183,7 +189,7 @@ export class Renderer {
   }
   phoneHud(m,arena){
     const c=this.ctx;
-    c.fillStyle='#100a19f2';c.fillRect(0,0,1280,204);
+    c.fillStyle='#100a19';c.fillRect(0,0,1280,204);
     for(let i=0;i<2;i++){
       const f=m.fighters[i],x=i?758:30,w=492,color=i?'#fa268b':'#b0ff20';
       const name=f.definition.name.toUpperCase();
@@ -199,7 +205,7 @@ export class Renderer {
     }
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)),640,93,82,m.remaining<15?'#ff5671':'#fff5e7','center',true);
     this.text(m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`,640,140,25,'#b0ff20','center');
-    const footerY=this.portrait?909:669;c.fillStyle='#100a19d9';c.fillRect(0,footerY,1280,51);this.text(ARENAS[arena]?.name||'',640,footerY+35,27,'#e5dce9','center');
+    const footerY=this.portrait?909:669;c.fillStyle='#100a19';c.fillRect(0,footerY,1280,51);this.text(ARENAS[arena]?.name||'',640,footerY+35,27,'#e5dce9','center');
     if(m.pin){c.fillStyle='#100a19dc';c.fillRect(420,230,440,74);this.text(m.pin.kind==='submission'?'SUBMISSION':`PIN COUNT ${m.pin.count||'—'}`,640,280,42,'#b0ff20','center',true);}
   }
   banners(m){
@@ -239,6 +245,5 @@ export class Renderer {
 
     for(const p of this.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=380*dt;c.globalAlpha=fit(p.life/p.max,0,1);c.fillStyle=p.color;c.fillRect(p.x,p.y,p.size,p.size);}c.globalAlpha=1;this.particles=this.particles.filter(p=>p.life>0);
     for(const p of this.popups){p.life-=dt;p.y-=dt*30;c.globalAlpha=fit(p.life*3,0,1);this.text(p.text,p.x,p.y,30,p.color,'center',true);}c.globalAlpha=1;this.popups=this.popups.filter(p=>p.life>0);
-    if(this.flash>0){this.flash-=dt;if(!this.reduced){c.fillStyle=`rgba(180,255,35,${this.flash*.5})`;c.fillRect(0,0,1280,720);}}
   }
 }
