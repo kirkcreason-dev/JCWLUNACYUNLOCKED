@@ -7,6 +7,7 @@ const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',impo
 
 test('every fighter holds the contact pose throughout the actual damage window',()=>{
   for(const fighter of roster)for(const move of ['light','heavy','special']){
+    if(move==='special'&&fighter.animations.special)continue; // Dedicated sequence is checked against real hits below.
     const timing=MOVES[move],expected=fighter.animations[move==='light'?'light':'heavy'][move==='light'?1:2];
     for(const time of [timing.startup,timing.startup+timing.active/2,timing.startup+timing.active-1e-6]){
       assert.equal(attackPose(fighter,move,time).frame,expected,`${fighter.name} ${move} impact`);

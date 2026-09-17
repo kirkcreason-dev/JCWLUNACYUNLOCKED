@@ -94,3 +94,17 @@ test('failed optional banner and effects downloads keep successful artwork and d
   assert.equal(updates,6);assert.equal(result.filter(r=>r.status==='rejected').length,1);
   await assert.doesNotReject(loadOptionalArtwork({banners:{},combatFx:{},loadImage:async()=>{throw new Error('Offline');},loadManifest:async()=>{throw new Error('Offline');}}));
 });
+test('optional artwork can be requested in small batches and deduplicates in-flight downloads',async()=>{
+  const banners={},combatFx={},state={},requests=[];let manifests=0;
+  const options={banners,combatFx,state,
+    loadImage:async url=>{requests.push(url);return {url};},
+    loadManifest:async()=>{manifests++;return {impact:{frames:8,cell:256,columns:4,anchorY:128,fps:24},guard:{frames:8,cell:256,columns:4,anchorY:128,fps:24}};}
+  };
+  await Promise.all([
+    loadOptionalArtwork({...options,bannerKeys:['unlocked'],effectKeys:[]}),
+    loadOptionalArtwork({...options,bannerKeys:['unlocked'],effectKeys:[]})
+  ]);
+  assert.equal(requests.filter(url=>url.includes('/unlocked.')).length,1);
+  await loadOptionalArtwork({...options,bannerKeys:[],effectKeys:['impact']});
+  assert.equal(manifests,1);assert.ok(combatFx.impact.image);assert.equal(requests.filter(url=>url.includes('/impact.')).length,1);
+});

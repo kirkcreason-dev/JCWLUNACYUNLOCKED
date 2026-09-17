@@ -115,5 +115,10 @@ test('phone effects remain bounded while combo and escape cues are retained',()=
  assert.equal(r.particles.length,48);assert.equal(r.popups.filter(p=>p.kind==='combo').length,1);
  r.receive([{type:'throwBreak'},{type:'kickout'}],m);
  assert.ok(r.popups.some(p=>p.text==='THROW BREAK'));assert.equal(r.graphic.key,'kickout');
- r.compact=true;r.draw(m);r.reduced=true;const count=r.particles.length;r.receive([{type:'hit',x:550}],m);assert.equal(r.particles.length,count);
+  r.compact=true;r.draw(m);r.reduced=true;const count=r.particles.length;r.receive([{type:'hit',x:550}],m);assert.equal(r.particles.length,count);
+});
+test('desktop effect bursts stay bounded during a dropped-frame event spike',()=>{
+ const {r}=renderer(),m=new Match(roster,0,1,{mode:'local'});r.lowPower=false;
+ for(let i=0;i<30;i++)r.receive([{type:'hit',index:1,attacker:0,x:550,combo:2}],m);
+ assert.ok(r.particles.length<=128);assert.ok(r.popups.length<=48);
 });

@@ -9,11 +9,11 @@ test('phone, landscape and desktop pages expose every fighter exactly once',()=>
  for(const size of [6,8,12]){
   const picker=new RosterSelection(roster.length,size),seen=[];
   for(let page=0;page<picker.pages;page++){seen.push(...picker.visible);picker.turn(1);}
-  assert.equal(seen.length,28);assert.equal(new Set(seen).size,28);
+  assert.equal(seen.length,36);assert.equal(new Set(seen).size,36);
   assert.deepEqual(seen.map(i=>roster[i].name),roster.map(f=>f.name));
  }
 });
-test('the direct picker reaches all 28 real match fighters without changing the opponent',()=>{
+test('the direct picker reaches all 36 real match fighters without changing the opponent',()=>{
  const picker=new RosterSelection(roster.length,6);
  for(let index=0;index<roster.length;index++){
   assert.equal(picker.choose(index),true);assert.ok(picker.visible.includes(index));
@@ -34,8 +34,8 @@ test('rotating the phone keeps Hokane selected and reveals his new page',()=>{
  for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,23);assert.ok(picker.visible.includes(23));}
 });
 
-test('the final portrait page contains all four recent additions, and rotation preserves Jeeves',()=>{
+test('expanded portrait pages preserve Jeeves while exposing the final newcomers',()=>{
  const p=new RosterSelection(roster.length,6);p.choose(27);
- assert.equal(p.pages,5);assert.equal(p.page,4);assert.deepEqual(p.visible,[24,25,26,27]);
+ assert.equal(p.pages,6);assert.equal(p.page,4);assert.deepEqual(p.visible,[24,25,26,27,28,29]);
  for(const size of [8,12,6]){p.resize(size);assert.equal(p.selected,27);assert.ok(p.visible.includes(27));}
 });

@@ -17,5 +17,11 @@ test('mirror matches keep their shared image and evicted fighters can be loaded 
  const atlases={0:{},23:{}},arenas={0:{}},promises=new Map([[0,Promise.resolve()],[23,Promise.resolve()]]);
  retainMatchArtwork(atlases,arenas,promises,[23,23],0);assert.deepEqual(Object.keys(atlases),['23']);assert.equal(promises.has(0),false);
  const reloaded={fresh:true};atlases[0]=reloaded;promises.set(0,Promise.resolve());
- retainMatchArtwork(atlases,arenas,promises,[0,23],0);assert.equal(atlases[0],reloaded);assert.equal(Object.keys(atlases).length,2);
+  retainMatchArtwork(atlases,arenas,promises,[0,23],0);assert.equal(atlases[0],reloaded);assert.equal(Object.keys(atlases).length,2);
+});
+test('evicted browser images release their decoded source',()=>{
+  const stale={src:'./assets/old-atlas.png',onload:()=>{},onerror:()=>{}};
+  const atlases={0:stale,1:{}};const arenas={0:{}};const promises=new Map([[0,Promise.resolve()],[1,Promise.resolve()]]);
+  retainMatchArtwork(atlases,arenas,promises,[1],0);
+  assert.equal(stale.src,'');assert.equal(stale.onload,null);assert.equal(stale.onerror,null);assert.equal(atlases[0],undefined);
 });
