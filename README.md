@@ -1,8 +1,45 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.14.0**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.16.0**.
 
 The gameplay refinement adds confirmed strike chains, gradual run acceleration, fair simultaneous grab breaks, more responsive recovery, rope breaks, manual hold release, and smarter CPU attack spacing. The original 33 wrestlers remain intact; three additions bring the roster to 36. The supplied startup logos, title artwork, arenas, effects, and music are included. See [GAMEPLAY.md](GAMEPLAY.md) for the updated fight rules and [TESTING.md](TESTING.md) for validation and limitations.
+
+## Gameplay and stability update (v0.16.0)
+
+- Run into the ropes to rebound, then use HEAVY to attack on the way back. Down cancels into guard. Grapple lifts now rise smoothly instead of jumping upward at the start of the lift.
+- Ratings determine CPU fighting styles: flyers prefer aerial attacks, technicians favor throws/submissions, powerhouses favor heavy attacks, and brawlers mix their options. Finishers trade reach against damage and knockback by style. Technique improves guard recovery. Approved ratings and finisher names remain unchanged.
+- Original synthesized arcade punches, slams, rope sounds, bell, referee mat slaps and crowd reactions. Separate music/effect volume controls. These are procedural sounds, not recordings or character voices.
+- Win the five-match championship and your supplied credits artwork opens automatically. Read Credits offers the names as accessible text; Defend Your Title continues the saved run. Successful defenses show the belt result without replaying completion credits automatically.
+- Contextual first-match tips explain approach, strikes, combos, reversals, pins, escapes and finishers. Tips remember completed lessons, can be disabled, and can be reset in Controls.
+- Decoded match artwork is evicted before the next match loads; old arena requests cannot repopulate the cache. Image requests time out, failed optional art backs off, and sound nodes are capped and explicitly released. Automatic display reduces rendering cost after sustained expensive draws; combat still simulates at 60 Hz.
+
+**Online:** both players need v0.16.0. New games use v16 / LU160 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
+
+Validation: 227 automated tests; 108 full simulated matches across 36 fighters and three difficulties; DOM-model championship/credits transitions; native canvas desktop/phone event renders. Physical-device playtesting remains necessary. See TESTING.md for exact limits and the short manual checklist.
+
+## Pause and time-limit artwork (v0.15.3)
+
+The supplied PAUSED image appears on the offline pause menu, including graphics-recovery pauses. Online menus and disconnect notices retain accurate text without PAUSED artwork. TIME OUT! appears briefly when a round ends at the time limit, followed by the normal round winner or draw. Text remains available if optional banner artwork has not loaded. Both PNGs are included unchanged.
+
+## Supplied artwork (v0.15.2)
+
+Your championship belt now appears when you win or defend the title. REVERSAL! and SECOND WIND! use the supplied artwork with player/meter labels below the HUD in desktop and phone layouts. Optional artwork loads asynchronously, with text cues available if loading fails. The selection-screen artwork provides the ornamental border around the live roster and setup controls; its pictured placeholder grid and buttons are not displayed as interactive controls. All four original PNGs are included unchanged.
+
+## Fighter animation repairs (v0.15.1)
+
+Reviewed movement, combat, fall/recovery and supplementary frames for all 36 fighters. Corrected mixed-facing walk/run and weapon-carry poses, and aligned jittery locomotion to the body instead of the alternating lowest foot. Tony now settles flat after falling. Big Vito uses clean full-size airborne poses, Steven Flowe holds a flat KO pose, and Atiba/Tommy/Jacksyn finish front falls face-down without a size jump. Bronson launches his dive before extending into flight. Matt Cross uses his intact unarmed strike instead of the source kick panel that clips his head; heavy-attack timing and damage are retained.
+
+All supplied image/audio files, fighter ratings, finishers and Championship mode remain included. The DJ Clay selection-screen report has not been reproduced: the shipped portrait is an intact side view. A screenshot is needed to identify the reported display problem. This is a full replacement ZIP, not a live deployment. See TESTING.md and tools/movement-audit.json for scope and limitations.
+
+## Championship mode (v0.15.0)
+
+Choose **CHAMPIONSHIP**, your wrestler and difficulty, then **START CHAMPIONSHIP**. Win five best-of-three matches: opening bout, quarterfinal, contender match, semifinal and title match. Each run draws five distinct opponents and places the strongest of that draw in the title match, using normal roster stats. Arenas rotate automatically from your starting arena.
+
+Win the title to receive the Lunacy championship belt, then select **DEFEND YOUR TITLE** for a fresh challenger. Consecutive challengers do not repeat. The game tracks title wins, defenses this reign and your best defense streak. A loss during the five-match road retries that same opponent; a lost defense starts a new five-match chase while retaining title-win and best-streak records.
+
+Progress saves on this browser after each match, separately for each fighter and difficulty. Return to the same fighter/difficulty and choose **CONTINUE CHAMPIONSHIP** or **DEFEND YOUR TITLE**. Quitting or reloading mid-match restarts that match, not the whole run. Records are local to this browser, not synced across devices; clearing browser data removes them. When browser storage is blocked, the game displays that progress lasts only for the session.
+
+This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. This mode was introduced in v0.15.0; current combat and online rules are described above. The full ZIP is not deployed automatically.
 
 ## Reversals and Second Wind (v0.14.0)
 
@@ -12,7 +49,7 @@ Press **block just before a normal strike connects**, keep guarding through impa
 
 New cues appear below the HUD in desktop, phone portrait and phone landscape, with distinct short sounds and optional touch vibration. Existing steady HUD rails, reduced shake and bounded effects remain. All 36 fighters, approval exclusions and supplied assets are retained.
 
-Both online players must load **v0.14.0**, using v14 / LU140 rooms. This ZIP has not been deployed.
+Both online players must load **v0.16.0**, using v16 / LU160 rooms. This ZIP has not been deployed.
 
 ## Faster gameplay and running attacks (v0.13.0)
 
@@ -20,7 +57,7 @@ Movement is 12% faster, with run buildup shortened from 0.42 to 0.38 seconds. At
 
 Build into a run toward your opponent, then tap HEAVY for a short lunge. It closes about 45 ring units without extra damage; a miss or block still leaves the attacker committed to recovery. A RUNNING HIT cue confirms a landed attack. No extra button is needed on phone, keyboard or gamepad. The pause after a round is shortened from 3.0 to 2.4 seconds. The screen flicker fixes and phone render limits remain in place.
 
-Reload after uploading; the version under FIGHT should read v0.14.0.
+Reload after uploading; the version under FIGHT should read v0.16.0.
 
 ## Roster approvals
 
@@ -32,7 +69,7 @@ Gameplay now uses synchronized drawing and an opaque repaint to avoid showing pa
 
 ## DJ Clay, Jeff Lane and Shane Mercer (v0.12.0)
 
-The roster now contains 36 fighters. DJ Clay has his supplied six-frame Bass Blast finisher animation, synchronized to the existing meter and damage rules. Jeff Lane and Shane Mercer have movement, weapon, grapple, recovery and rope animations from their supplied packs. Six portrait pages expose every fighter. Shane Mercer uses published JCW ratings; DJ Clay and Jeff Lane use game balance values without claiming website ratings. Current online play requires v0.14.0 / LU140 rooms.
+The roster now contains 36 fighters. DJ Clay has his supplied six-frame Bass Blast finisher animation, synchronized to the existing meter and damage rules. Jeff Lane and Shane Mercer have movement, weapon, grapple, recovery and rope animations from their supplied packs. Six portrait pages expose every fighter. Shane Mercer uses published JCW ratings; DJ Clay and Jeff Lane use game balance values without claiming website ratings. Current online play requires v0.16.0 / LU160 rooms.
 
 ## Five new fighters (v0.11.0)
 
@@ -44,23 +81,23 @@ Optional announcement and combat-effect images now load on demand, so a phone do
 
 ## Krule and Jeeves (v0.10.0)
 
-Krule and Jeeves join as fighters 27 and 28. Their supplied portraits and animation sets cover movement, four weapons, grapples, pins, recoveries, and rope moves. Both use ratings from jcwlunacy.net; Krule's finisher remains marked as unlisted there. Current online play uses v14 / LU140 rooms; both players should use v0.14.0.
+Krule and Jeeves join as fighters 27 and 28. Their supplied portraits and animation sets cover movement, four weapons, grapples, pins, recoveries, and rope moves. Both use ratings from jcwlunacy.net; Krule's finisher remains marked as unlisted there. Current online play uses v16 / LU160 rooms; both players should use v0.16.0.
 
 ## Steven Flowe and EC3 (v0.9.0)
 
-Steven Flowe and EC3 join as fighters 25 and 26, with their supplied animation sets, four weapons, rope moves, and ratings/finishers from jcwlunacy.net. The first 24 roster slots are unchanged. Phone paging and direct selection include both new fighters. The v0.9.0 release introduced LU90 rooms; the current release uses LU140.
+Steven Flowe and EC3 join as fighters 25 and 26, with their supplied animation sets, four weapons, rope moves, and ratings/finishers from jcwlunacy.net. The first 24 roster slots are unchanged. Phone paging and direct selection include both new fighters. The v0.9.0 release introduced LU90 rooms; the current release uses LU160.
 
 ## Supplied UNLOCKED branding (v0.8.3)
 
 The supplied neon UNLOCKED artwork replaces the text treatment in the header, opening screen, and fighter selection. The same PNG appears over all five existing UNLOCKED signs, mat, and apron wordmarks across Bloodymania, Hell’s Pit, and Rusted Warehouse. Other arenas have no existing UNLOCKED wordmarks to replace. The opening background now uses the same branded canvas as gameplay.
 
-The original PNG is included byte-for-byte as `dist/assets/banners/unlocked.png`; CSS frames its empty margins and blends the black background into the interface. Arena placement is handled by the renderer, preserving the original arena images and the foreground rope over the mat graphic. Text remains in page titles and accessibility labels so the game is still named correctly for browser tabs and screen readers. Phone layouts, existing fighters, and gameplay rules are retained. Multiplayer uses protocol v14 for the current gameplay rules.
+The original PNG is included byte-for-byte as `dist/assets/banners/unlocked.png`; CSS frames its empty margins and blends the black background into the interface. Arena placement is handled by the renderer, preserving the original arena images and the foreground rope over the mat graphic. Text remains in page titles and accessibility labels so the game is still named correctly for browser tabs and screen readers. Phone layouts, existing fighters, and gameplay rules are retained. Multiplayer uses protocol v16 for the current gameplay rules.
 
 ## Phone fighter selection
 
 This package contains **36 fighters**. On a portrait phone, use **MORE / BACK** to browse six pages (six fighters per page), or use **PICK ANY FIGHTER** to select any name directly. **USE FIGHTER** opens match setup. The **FIGHTERS** button takes you back; rotation preserves your chosen wrestler. Website stats are visible in the phone setup panel.
 
-If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.14.0 package has not been deployed to either repository.
+If an older game link has exactly nine wrestlers, it is a different build. At the time of this fix, the GitHub `Lunacyunlocked2` source contained nine, while the `JCWLUNACYUNLOCKED` main source contained 21 (v0.6.0). This v0.16.0 package has not been deployed to either repository.
 
 ## Phone match optimization (v0.8.2)
 

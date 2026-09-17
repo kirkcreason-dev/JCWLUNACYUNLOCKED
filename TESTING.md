@@ -1,3 +1,65 @@
+# v0.16.0 — Verification and device handoff
+
+## Completed here
+
+- `npm test`: 227 passing tests, including rebound cancellation/network state, smooth lift landing, style/finisher tradeoffs, coaching, image timeouts/retry backoff, render-budget hysteresis, and audio lifecycle bounds.
+- `npm run check`: all JavaScript parses, HTML references resolve, 36 approved fighters, 4,076 animation entries, six arenas and both music tracks validated.
+- `node tools/soak.mjs`: 108 full matches completed across all 36 fighters and easy/normal/hard. 450,685 fixed simulation steps; finite positions and health, ring bounds and valid network snapshots throughout. This measures correctness, not browser frame rate.
+- Optional `tools/review_flow.mjs` with linkedom 0.18.12: startup, 36 roster options, pause/help/resume, arena eviction, five championship wins, automatic supplied credits, transcript names, focus target, belt result, defense continuation, and online menu wording. Uses a DOM model without a browser engine, network or CSS layout.
+- Native canvas desktop, portrait and landscape combat-event renders reviewed. Existing render tests still cover all fighters' animation crops and facing directions.
+- Supplied credits PNG preserved byte for byte, alongside the prior six UI images. Roster ratings, names, finishers and prior animation metadata unchanged from v0.15.3.
+
+## Remaining real-device checks
+
+Interactive browser access was previously denied, so this pass uses unit tests, a DOM model and native canvas rendering. No new browser or physical-device QA was performed. These results do not prove the reported device-specific lag or crashes are gone.
+
+On an iPhone/Safari, Android/Chrome and a desktop browser:
+
+1. Play ten consecutive matches with different fighters and arenas; rematch, return to select, and revisit a fighter. Watch for page reloads, missing sprites, lag or stuck loading.
+2. Rotate the phone, background it, resume, mute/unmute and change the music/effects volumes. Confirm no stuck buttons, ongoing paused audio or flashing HUD.
+3. Run into each rope, block out of a rebound, land a running heavy, throw, pin and escape. Compare a flyer, technician and powerhouse.
+4. Finish the championship. Confirm the credits appear, every control is reachable in both orientations, Read Credits is legible, and Defend Your Title starts the defense. Reload between matches to check saved progress.
+5. Connect two v0.16.0 clients using LU160 rooms; confirm old-version rooms stay separate and disconnections remain clear.
+
+# v0.15.3 — Pause and time-limit artwork
+
+- 215 automated tests pass; validation passes for 36 fighters and 4,076 animation entries.
+- Native canvas review renders a real time-limit round ending in desktop, portrait and landscape layouts.
+- PAUSED is restricted to offline pause and graphics-recovery dialogs; online continuing/disconnected states hide the image. Responsive CSS limits image height on short screens.
+- Both supplied PNGs are included byte for byte. No new browser or physical-device testing, and no live deployment.
+
+# v0.15.2 — Supplied game artwork
+
+- 215 automated tests pass; asset validation passes for 36 fighters and 4,076 animation entries.
+- Native canvas renders reviewed for reversal and Second Wind events in desktop, portrait, and landscape layouts.
+- The four copied PNGs match the uploads byte for byte.
+- Selection uses only the outer ornamental border, excluding pictured placeholder controls. Belt visibility retains the existing crowned/defended result path.
+- No new interactive browser or physical-device testing, and no live deployment.
+
+# v0.15.1 — All-fighter animation review
+
+215 automated tests pass; static checks pass for 36 fighters, 4,076 animation entries, six arenas, both music tracks and roster approvals. The suite includes the existing 108 seeded CPU match cases.
+
+Native contact sheets were visually reviewed for all 36 fighters: idle/walk/run, strikes, weapon attacks/carrying, falls, grounded/recovery states, jumps, climbs, dives, grapple/throw poses and celebrations. All portrait files were reviewed together; DJ Clay's portrait is intact, but his reported selection-screen problem has not been reproduced.
+
+New tests exercise every walk/run/carry frame in both facing directions and during backpedaling; verify render crops and transforms; check grounded and KO states after front/back falls; and cover Tony's fall transitions, Big Vito's clean jump poses, repaired front-fall landings and Matt Cross's intact heavy-strike fallback. Offline alpha-band measurements put the torso-offset spread within each walk/run loop at 11 pixels or less, compared with jumps exceeding 100 pixels in several original loops. This measures alignment, not animation quality or device performance.
+
+All 97 non-roster asset files are byte-identical to v0.15.0. Ratings, finishers, roster membership and combat-engine code are preserved. No new runtime image processing or animation system was added. The source PNGs remain untouched; repairs use frame metadata and existing poses.
+
+No new interactive-browser, physical-phone or live-online test was performed. Browser preview access was previously denied by the browser permission check. Native rendering and unit tests do not establish that every visual issue on every device is resolved. This ZIP has not been deployed.
+
+Reproduce with `npm test`, `npm run check`, and optionally `node tools/review_all_fighters.mjs` with @napi-rs/canvas. The shipped browser game has no new dependency. The repair scripts need Python, Pillow and NumPy; they are optional maintenance tools. See tools/movement-audit.json for the per-fighter record.
+
+# v0.15.0 — Championship mode
+
+209 automated tests pass. Static checks pass for UI references, JavaScript, 36 fighters, 4,076 animation entries, six arenas, both music tracks and roster approvals.
+
+New tests cover unique title paths for every fighter, five wins to a title, consecutive defenses, belt loss and retained records, retrying a road loss, reloading the current bout, separate fighter/difficulty saves, corrupt saves, storage quota failure, duplicate/stale results across tabs, and real best-of-three CPU combat in championship mode. The previous 201 gameplay, rendering, input and online tests still pass.
+
+The new mode changes no fighter art, roster data, ratings, combat engine or online protocol. Browser preview access to the local server was denied by the browser permission check. Live DOM flow, rendered belt/setup layout and physical-phone testing were not verified this turn. No deployment was performed.
+
+Run `npm test` and `npm run check` to reproduce the automated checks. Manual acceptance: choose Championship on phone/desktop, finish five matches, view the belt, defend it, lose it, return to selection, reload and resume, then switch fighter/difficulty and verify separate progress. Leave mid-match and confirm the same opponent restarts. Test storage-blocked/private browsing for the session-only message.
+
 # v0.14.0 — Reversals and Second Wind
 
 201 automated tests pass. `npm run check` passes: 36 unique fighters, 4,076 animation entries, six arenas, both music tracks and the supplied approval record.

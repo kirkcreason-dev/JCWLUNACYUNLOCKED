@@ -20,7 +20,7 @@ This uses the Firebase project and web configuration from `LUNACY_REBUILT_CLEAN(
 
 The old code was tied to a different engine. The adapter now synchronizes this build’s wrestler IDs, arena, position, animation, health, guard, meter, grapples, pins, rounds, timer, effects, and result. Version 0.5 also synchronizes selected weapon, attack style, move timing, fall direction, exhaustion, and climb/perch/dive states; weapon and taunt taps use the ordered input stream, and run is a held input. Input and snapshot writes are capped at approximately 20 per second each while a match is running, with only one write in flight per stream. Button press groups retain their order, so delayed packets do not collapse alternating kick-out taps into one simultaneous press. Old or duplicated packets are ignored.
 
-New rooms use `rooms/LU140-ABCD`, with a `lunacy-2d-v14` protocol marker. Quick Match uses `rooms/LU140-queue`. Both players must use v0.14.0 with all 36 fighters. Incompatible older clients are isolated by the new namespace. The old `quickQueue` and old unprefixed rooms are not modified.
+New rooms use `rooms/LU160-ABCD`, with a `lunacy-2d-v16` protocol marker. Quick Match uses `rooms/LU160-queue`. Both players must use v0.16.0 with all 36 fighters. Incompatible older clients are isolated by the new namespace. The old `quickQueue` and old unprefixed rooms are not modified.
 
 Room creation and guest-seat claims use transactions. Both sides confirm artwork readiness before the host starts. The host registers removal of its room on disconnect; the guest registers an offline marker. Leaving removes listeners and clears only the caller’s own queue claim or room. Stalled connections and failed loads show a recovery message.
 
@@ -44,4 +44,6 @@ See [TESTING.md](TESTING.md) for the live two-client observations and device/lat
 
 The new namespace separates the refined combat rules from older clients. Host snapshots carry confirmed strikes and chain position, and replay rope-break, hold-release, grab, and swing feedback on the guest. Ordered guest taps can break grabs and trigger the same chain rules as local input. Live Firebase connectivity was not retested; the in-memory Firebase-shaped room lifecycle and host/guest transport tests were run.
 
-The v14 protocol carries fresh block presses, reversal cooldowns, Second Wind state and both feedback events. The host awards every reversal and comeback boost; guests receive the same authoritative health, guard and meter values. Older clients use separate rooms.
+The v16 protocol carries fresh block presses, reversal cooldowns, Second Wind state and both feedback events. The host awards every reversal and comeback boost; guests receive the same authoritative health, guard and meter values. Older clients use separate rooms.
+
+The v16 protocol also carries rope-rebound state and events. Finisher profiles use the authoritative host simulation.

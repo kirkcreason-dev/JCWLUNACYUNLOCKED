@@ -628,3 +628,11 @@ Atiba's missing dazed and defeated poses use his idle and pin poses. Tommy's mis
 `tools/expansion36.py` prepares DJ Clay, Jeff Lane and Shane Mercer. `tools/expansion36-audit.json` records all 92 supplied source sheets with hashes and extraction bounds. Bounds describe extraction before adaptations; not every authored pose is used.
 
 Jeff Lane's pack has no standalone standing or throwing sheet. His own taunt pose supplies idle/portrait, and his lift, kick and idle poses supply the throw animation. Each wrestler's clean standing pose replaces rope-entry art crossed by scenery; corner setup uses a clean top-rope pose. Only complete top-rope poses are retained. Guitar contact uses each wrestler's own forward throw/kick pose with the existing isolated guitar prop. DJ Clay's six-frame Bass Blast retains the supplied cyan sound-wave art. The animation uses existing finisher damage/reach and requires full meter; it does not introduce a projectile mechanic. White armor is retained for Clay while enclosed background around the others' raised arms is cleared.
+
+
+## Fighter animation repairs (v0.15.1)
+
+Reviewed movement, combat, fall/recovery and supplementary frames for all 36 fighters. Corrected mixed-facing walk/run and weapon-carry poses, and aligned jittery locomotion to the body instead of the alternating lowest foot. Tony now settles flat after falling. Big Vito uses clean full-size airborne poses, Steven Flowe holds a flat KO pose, and Atiba/Tommy/Jacksyn finish front falls face-down without a size jump. Bronson launches his dive before extending into flight. Matt Cross uses his intact unarmed strike instead of the source kick panel that clips his head; heavy-attack timing and damage are retained.
+
+All supplied image/audio files, fighter ratings, finishers and Championship mode remain included. The DJ Clay selection-screen report has not been reproduced: the shipped portrait is an intact side view. A screenshot is needed to identify the reported display problem. This is a full replacement ZIP, not a live deployment. See TESTING.md and tools/movement-audit.json for scope and limitations.
+

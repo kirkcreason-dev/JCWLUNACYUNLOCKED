@@ -1,3 +1,43 @@
+# v0.16.0 — Combat, stability and championship payoff
+
+- Rope rebounds, smoother grapple lifts, tuned impact stops and hurt reactions.
+- Rating-based CPU fighting styles and finisher reach/damage tradeoffs; technique-based guard recovery. Approved roster data is preserved.
+- Procedural impact, mat, rope, bell, referee-count and crowd effects; separate audio mix controls with bounded, disposable audio voices.
+- Automatic supplied championship credits after the title win, accessible credit transcript, celebration cue and continued title defenses.
+- Contextual first-match guidance with persistent completed lessons and reset/disable controls.
+- Earlier artwork eviction, stale decode cleanup, image timeouts, optional-art retry backoff, and sustained-render-load adjustment.
+- Online v16 / LU160 rooms isolate the changed gameplay rules. Championship saves remain compatible.
+
+# v0.15.3 — Pause and time-limit artwork
+
+- Added supplied PAUSED artwork to offline pause menus, sized for desktop and phones.
+- Added supplied TIME OUT! artwork to rounds ending at the time limit.
+- Preserved online menu/disconnect messages, all 36 fighters, and existing gameplay.
+
+# v0.15.2 — Supplied game artwork
+
+- Added the supplied championship belt to title wins and successful defenses.
+- Added REVERSAL! and SECOND WIND! event banners, with readable backing and player/meter labels below the HUD.
+- Added the selection artwork as an ornamental frame around the working roster and controls.
+- Preserved all 36 fighters and animation repairs. Original supplied PNGs are unchanged.
+
+# v0.15.1 — Full-roster animation audit
+
+- Review all 36 fighters and correct backward-facing poses, run jitter and weapon-carry facing.
+- Fix Tony fall/rest states, Big Vito jump poses, Flowe KO, Bronson dive order and front-fall landings for Atiba, Tommy and Jacksyn.
+- Match older fighters’ front knockdown poses to their face-down recovery.
+- Use Matt Cross’s intact strike for unarmed heavy instead of clipped kick artwork.
+- Preserve ratings, move damage/timing, supplied art/audio and Championship mode.
+- DJ Clay selection-screen issue remains unconfirmed pending a screenshot.
+
+# v0.15.0 — Championship mode
+
+- Add a five-match solo title chase, unique opponents, rotating arenas, a belt presentation and repeatable title defenses.
+- Save separate campaigns and title/best-defense records for each fighter and difficulty on this browser. Resume the current match after leaving; retry road losses and begin a fresh chase after losing the belt.
+- Validate saved data, preserve session progress when storage fails, and reject duplicate or superseded match results.
+- Add setup progress, match labels, contextual result actions and controls instructions.
+- Keep all 36 fighters, approvals, supplied assets, combat rules and online v14 / LU140 compatibility.
+
 # v0.14.0 — Reversals and comeback moments
 
 - Add timed strike reversals using the existing block control: 0.12-second timing, 1.2-second attempt cooldown, 20 guard minimum, 0.32-second attacker stagger and 12 Lunacy reward.

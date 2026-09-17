@@ -1,4 +1,20 @@
-# Lunacy Unlocked — gameplay guide, v0.14.0
+# v0.16.0 play additions
+
+Run into either rope to rebound. Press HEAVY on the return for a running attack; Down cancels into guard. Fighter ratings now also select distinct CPU tactics and finisher tradeoffs, while technique improves guard recovery.
+
+The title win opens the supplied championship credits automatically. Defend Your Title continues the saved campaign. Controls contains separate audio mix sliders, first-match tips and a tip reset.
+
+# Lunacy Unlocked — gameplay guide, v0.15.0
+
+## Championship mode (v0.15.0)
+
+Choose **CHAMPIONSHIP**, your wrestler and difficulty, then **START CHAMPIONSHIP**. Win five best-of-three matches: opening bout, quarterfinal, contender match, semifinal and title match. Each run draws five distinct opponents and places the strongest of that draw in the title match, using normal roster stats. Arenas rotate automatically from your starting arena.
+
+Win the title to receive the Lunacy championship belt, then select **DEFEND YOUR TITLE** for a fresh challenger. Consecutive challengers do not repeat. The game tracks title wins, defenses this reign and your best defense streak. A loss during the five-match road retries that same opponent; a lost defense starts a new five-match chase while retaining title-win and best-streak records.
+
+Progress saves on this browser after each match, separately for each fighter and difficulty. Return to the same fighter/difficulty and choose **CONTINUE CHAMPIONSHIP** or **DEFEND YOUR TITLE**. Quitting or reloading mid-match restarts that match, not the whole run. Records are local to this browser, not synced across devices; clearing browser data removes them. When browser storage is blocked, the game displays that progress lasts only for the session.
+
+This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v16 / LU160. The full ZIP is not deployed automatically.
 
 ## Timed reversals
 
