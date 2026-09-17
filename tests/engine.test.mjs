@@ -7,7 +7,7 @@ function run(m,seconds,a={},b={}){for(let i=0;i<Math.ceil(seconds/STEP);i++)m.st
 function close(m,distance=85){m.fighters[0].x=550;m.fighters[1].x=550+distance;}
 
 test('the opening countdown prevents movement and damage',()=>{const m=new Match(roster,0,1,{mode:'local'});run(m,1,{right:true,heavy:true});assert.equal(m.fighters[0].x,410);assert.equal(m.fighters[1].hp,100);assert.equal(m.phase,'intro');run(m,1.5);assert.equal(m.phase,'fight');});
-test('movement stays inside the ring and opponents face each other',()=>{const m=setup();run(m,4,{left:true},{right:true});assert.equal(m.fighters[0].x,LEFT);assert.equal(m.fighters[1].x,RIGHT);assert.equal(m.fighters[0].facing,1);assert.equal(m.fighters[1].facing,-1);});
+test('movement stays inside the ring and opponents face each other',()=>{const m=setup();run(m,4,{left:true},{right:true});assert.ok(m.fighters.every(f=>f.x>=LEFT&&f.x<=RIGHT));assert.ok(m.drainEvents().some(e=>e.type==='ropeRebound'));assert.equal(m.fighters[0].facing,1);assert.equal(m.fighters[1].facing,-1);});
 test('a strike has startup, one hit, and cannot repeat from a held button',()=>{const m=setup();close(m);run(m,.09,{light:true});assert.equal(m.fighters[1].hp,100);run(m,.15,{light:true});assert.equal(m.fighters[1].hp,94);run(m,1,{light:true});assert.equal(m.fighters[1].hp,94);});
 test('out-of-range attacks do no damage',()=>{const m=setup();run(m,1,{heavy:true});assert.equal(m.fighters[1].hp,100);});
 test('holding block absorbs a strike and consumes guard',()=>{const m=setup();close(m);run(m,.2,{}, {block:true});run(m,.3,{light:true},{block:true});assert.equal(m.fighters[1].hp,100);assert.ok(m.fighters[1].guard<100);assert.ok(m.drainEvents().some(e=>e.type==='block'));});
