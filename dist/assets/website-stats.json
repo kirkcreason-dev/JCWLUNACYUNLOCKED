@@ -218,6 +218,51 @@
       "technique": 7,
       "toughness": 6,
       "finisher": "Heads Bangers Balls"
+    },
+    "atiba": {
+      "websiteName": "Atiba",
+      "power": 6,
+      "speed": 8,
+      "technique": 8,
+      "toughness": 7,
+      "finisher": "Sucka Busta (Tag)",
+      "retrieved": "2026-09-16"
+    },
+    "jp-grayson": {
+      "websiteName": "JP Grayson",
+      "power": 5,
+      "speed": 9,
+      "technique": 8,
+      "toughness": 7,
+      "finisher": "T-Gimmick (Tag)",
+      "retrieved": "2026-09-16"
+    },
+    "tommy": {
+      "websiteName": "Tommy Grayson",
+      "power": 5,
+      "speed": 9,
+      "technique": 8,
+      "toughness": 7,
+      "finisher": "T-Gimmick (Tag)",
+      "retrieved": "2026-09-16"
+    },
+    "jacksyn": {
+      "websiteName": "Jacksyn",
+      "power": 6,
+      "speed": 7,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": "As Above So Below (Tag)",
+      "retrieved": "2026-09-16"
+    },
+    "shane-mercer": {
+      "websiteName": "Shane Mercer",
+      "power": 10,
+      "speed": 6,
+      "technique": 7,
+      "toughness": 8,
+      "finisher": "MoonSault and Battery",
+      "retrieved": "2026-09-17"
     }
   },
   "unlisted": [
