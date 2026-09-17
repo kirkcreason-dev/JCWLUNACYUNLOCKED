@@ -1,3 +1,11 @@
+# v0.12.1 — Screen flicker correction
+
+- Use synchronized canvas presentation and repaint without an intermediate clear.
+- Keep opaque HUD rails fixed at the top and bottom in desktop, portrait and landscape layouts.
+- Remove the whole-screen finisher flash and limit hit shake; retain character animations and local impact effects.
+- Apply phone viewport resizing and repainting in the same animation callback.
+- Keep all 36 fighters and v12 / LU120 multiplayer compatibility.
+
 # v0.12.0 — 36 fighters — September 17, 2026
 
 - Added DJ Clay, Jeff Lane and Shane Mercer from 92 supplied sheets.

@@ -1,3 +1,16 @@
+# v0.12.1 — Screen flicker correction
+
+180 automated tests pass. `npm run check` passes: 36 unique fighters, 4,076 animation entries, six arenas and both music tracks.
+
+- New regressions check synchronized context creation, no visible-buffer clear, no whole-screen special flash, and bounded phone/desktop hit shake.
+- `node tools/review_flicker.mjs` checks actual native-canvas pixels in the stationary top and bottom HUD rails while hit shake changes. All six arenas pass in desktop, portrait and landscape layouts, with zero changed rail pixels. The same checks against v0.12.0 detected over one million changed pixels per layout across the six arenas. Scores and timers were held fixed to isolate background leakage.
+- Native desktop and portrait output was visually reviewed. These tests do not reproduce browser/GPU scanout or establish the outcome on the reporting player's hardware. Reload after installing v0.12.1, since canvas context settings are fixed on creation.
+- Phone resize handling now runs before the same-frame draw. Gameplay, roster/artwork and online protocol remain unchanged; v12 / LU120 rooms remain compatible. This ZIP is not deployed.
+
+The browser risk is documented in [Chrome's canvas guidance](https://developer.chrome.com/blog/desynchronized#avoiding_flicker): desynchronized drawing combined with clearing the visible canvas can flicker. Removing that mode addresses this risk; the native regression separately verifies the reproduced HUD/background flicker.
+
+Reproduce with `npm test`, `npm run check`, and (with optional `@napi-rs/canvas`) `node tools/review_flicker.mjs`.
+
 # v0.12.0 — 36 fighters — September 17, 2026
 
 177 automated tests pass. `npm run check` passes: 36 unique fighters, 4,076 animation entries, six arenas and both music tracks.
