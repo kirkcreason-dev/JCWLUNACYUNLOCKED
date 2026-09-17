@@ -1,8 +1,8 @@
-import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget} from './engine.js';
-import {ARENAS} from './arenas.js';
-import {attackPose} from './attack-animation.js?v=0.12.1';
-import {phoneCamera} from './phone-layout.js';
-import {drawArenaWordmarks} from './branding.js';
+import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget,MOVEMENT_PACE} from './engine.js?v=0.14.0';
+import {ARENAS} from './arenas.js?v=0.14.0';
+import {attackPose} from './attack-animation.js?v=0.14.0';
+import {phoneCamera} from './phone-layout.js?v=0.14.0';
+import {drawArenaWordmarks} from './branding.js?v=0.14.0';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
@@ -29,6 +29,7 @@ export class Renderer {
         this.popups.push({kind:'combo',attacker:e.attacker,text:`${e.combo} HIT`,x:e.x,y:y-90,life:.65,color:'#c1ff32'});
       }
       else if(e.type==='hit'&&e.counter)this.popups.push({text:'COUNTER',x:e.x,y:y-90,life:.65,color:'#ffe197'});
+      else if(e.type==='hit'&&e.running)this.popups.push({text:'RUNNING HIT',x:e.x,y:y-90,life:.65,color:'#c1ff32'});
     }
     if(e.type==='special'){this.graphic={key:'lunacy',life:.8};if(e.name)this.popups.push({text:e.name,x:640,y:245,life:1,color:'#b0ff20'});}
     if(e.type==='round')this.reset();
@@ -42,6 +43,8 @@ export class Renderer {
     if(e.type==='weaponBreak')this.popups.push({text:'GUITAR BROKEN',x:640,y:300,life:.8,color:'#ffe197'});
     if(e.type==='taunt')this.popups.push({text:'+12 LUNACY',x:640,y:300,life:.8,color:'#b0ff20'});
     if(e.type==='guardBreak')this.popups.push({text:'GUARD BREAK',x:640,y:340,life:.85,color:'#fa2484'});
+    if(e.type==='reversal')this.popups.push({screen:true,text:`P${e.index+1} · REVERSAL! +12 LUNACY`,life:.9,color:'#8ee7ff'});
+    if(e.type==='secondWind')this.popups.push({screen:true,text:`P${e.index+1} · SECOND WIND! +25 LUNACY`,life:1.25,color:'#ffe197'});
     // A disconnected peer or a very long arcade session must not turn event
     // bursts into an ever-growing presentation queue.
     if(this.popups.length>48)this.popups.splice(0,this.popups.length-48);
@@ -73,9 +76,17 @@ export class Renderer {
       this.effects(dt);c.restore();c.save();
       // Shade is created in screen coordinates, independent of the phone camera.
       c.fillStyle=this.hudShade(height);c.fillRect(0,0,1280,210);
-      this.hud(match,arena,dt);this.banners(match);this.announcements(dt);
+      this.hud(match,arena,dt);this.combatNotices(match);this.banners(match);this.announcements(dt);
     }
     c.restore();c.restore();
+  }
+  combatNotices(match){
+    if(match.phase!=='fight'||match.pin||match.grapple)return;
+    let notice;for(let i=this.popups.length-1;i>=0;i--)if(this.popups[i].screen){notice=this.popups[i];break;}if(!notice)return;
+    // Screen coordinates keep the cue clear of every phone camera and HUD rail.
+    const c=this.ctx,phone=this.portrait||this.compact,y=phone?250:185;
+    c.save();c.globalAlpha=fit(notice.life*3,0,1);c.fillStyle='#100a19ed';c.fillRect(200,y-34,880,49);
+    this.text(notice.text,640,y,phone?36:25,notice.color,'center',true);c.restore();
   }
   fighter(f,index,match){
     const c=this.ctx,def=f.definition,atlas=this.atlases[f.id],animations=def.animations;
@@ -121,7 +132,7 @@ export class Renderer {
     if(match.phase==='roundEnd'&&f.state==='down'&&animations.kneel&&f.hp>0&&match.phaseTime>1.5){anim='kneel';progress=fit((match.phaseTime-1.5)/.8,0,.999);}
     if(f.facing===-1&&animations[anim+'Reverse'])anim+='Reverse';
     const fs=animations[anim]?.length?animations[anim]:animations.idle;
-    let fi=progress===null?Math.floor(f.t*(anim==='run'?13*f.definition.speed:anim==='walk'||anim.startsWith('carry')?10*f.definition.speed:anim==='hurt'?7:4))%fs.length:Math.min(fs.length-1,Math.floor(progress*fs.length));
+    let fi=progress===null?Math.floor(f.t*(anim.startsWith('run')?13*f.definition.speed*MOVEMENT_PACE:anim.startsWith('walk')||anim.startsWith('carry')?10*f.definition.speed*MOVEMENT_PACE:anim==='hurt'?7:4))%fs.length:Math.min(fs.length-1,Math.floor(progress*fs.length));
     if((anim==='walk'||anim==='run'||anim.startsWith('carry'))&&f.walkDirection*f.facing<0)fi=fs.length-1-fi;
     const entry=attackFrame||fs[fi];
     if(!entry)return;
@@ -244,6 +255,6 @@ export class Renderer {
     this.spriteFx=active.filter(fx=>fx.age<this.combatFx[fx.key].frames/this.combatFx[fx.key].fps);
 
     for(const p of this.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=380*dt;c.globalAlpha=fit(p.life/p.max,0,1);c.fillStyle=p.color;c.fillRect(p.x,p.y,p.size,p.size);}c.globalAlpha=1;this.particles=this.particles.filter(p=>p.life>0);
-    for(const p of this.popups){p.life-=dt;p.y-=dt*30;c.globalAlpha=fit(p.life*3,0,1);this.text(p.text,p.x,p.y,30,p.color,'center',true);}c.globalAlpha=1;this.popups=this.popups.filter(p=>p.life>0);
+    for(const p of this.popups){p.life-=dt;if(p.screen)continue;p.y-=dt*30;c.globalAlpha=fit(p.life*3,0,1);this.text(p.text,p.x,p.y,30,p.color,'center',true);}c.globalAlpha=1;this.popups=this.popups.filter(p=>p.life>0);
   }
 }

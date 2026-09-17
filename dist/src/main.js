@@ -1,17 +1,17 @@
-import {Match,STEP,emptyInput} from './engine.js';
-import {Renderer} from './render.js?v=0.12.1';
-import {Input} from './input.js';
-import {Sound} from './audio.js';
-import {ARENAS} from './arenas.js';
-import {touchContext} from './touch-ui.js';
-import {OnlineSession} from './online.js?v=0.12.1';
-import {connectFirebase} from './firebase-online.js';
-import {SnapshotBuffer} from './online-protocol.js?v=0.12.1';
-import {RosterSelection} from './roster-selection.js';
-import {retainMatchArtwork} from './artwork-cache.js';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js';
-import {FramePacer} from './frame-pacer.js';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.12.1';
+import {Match,STEP,emptyInput} from './engine.js?v=0.14.0';
+import {Renderer} from './render.js?v=0.14.0';
+import {Input} from './input.js?v=0.14.0';
+import {Sound} from './audio.js?v=0.14.0';
+import {ARENAS} from './arenas.js?v=0.14.0';
+import {touchContext} from './touch-ui.js?v=0.14.0';
+import {OnlineSession} from './online.js?v=0.14.0';
+import {connectFirebase} from './firebase-online.js?v=0.14.0';
+import {SnapshotBuffer} from './online-protocol.js?v=0.14.0';
+import {RosterSelection} from './roster-selection.js?v=0.14.0';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.14.0';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.14.0';
+import {FramePacer} from './frame-pacer.js?v=0.14.0';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.14.0';
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help');
 let roster=[],atlases={},arenas=[],renderer,match=null,chosen=0,arena=0,paused=false,helpWasPaused=false,arcadeOpponents=[],arcadeIndex=0,session=0,loading=false,returnFocus=null;
@@ -295,8 +295,8 @@ function matchEvents(events){
   }
   requestArtwork([...banners],[...effects]);
   renderer.receive(events,match);sound.play(events);
-  if(input.scheme==='touch'&&preferences.haptics&&events.some(e=>(e.type==='hit'||e.type==='slam')&&e.index===localIndex))navigator.vibrate?.(18);
-  for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);}
+  if(input.scheme==='touch'&&preferences.haptics&&events.some(e=>(e.type==='hit'||e.type==='slam'||e.type==='reversal'||e.type==='secondWind')&&e.index===localIndex))navigator.vibrate?.(18);
+  for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='reversal')status(`Player ${e.index+1} reverses the strike. Counterattack!`);if(e.type==='secondWind')status(`Player ${e.index+1} gets a second wind: 25 Lunacy meter.`);if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);}
 }
 function recoverRuntime(error){
   if(runtimeFault)return;

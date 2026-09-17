@@ -1,9 +1,9 @@
-import {emptyInput} from './engine.js';
-export const PROTOCOL='lunacy-2d-v12';
-export const ACTIONS=['jump','light','heavy','grapple','special','weapon','taunt'];
+import {emptyInput} from './engine.js?v=0.14.0';
+export const PROTOCOL='lunacy-2d-v14';
+export const ACTIONS=['jump','light','heavy','grapple','special','weapon','taunt','block'];
 const KEYS=Object.keys(emptyInput());
 const STATES=new Set(['idle','walk','jump','block','light','heavy','special','hurt','down','pinned','rise','grapple','grabbed','lifted','thrown','throw','pin','defeat','victory','run','equip','taunt','climb','perch','dive']);
-const FIELDS=['x','z','vz','vx','facing','hp','meter','guard','t','invincible','downTime','combo','walkDirection','fallDuration','divePower','chain'];
+const FIELDS=['x','z','vz','vx','facing','hp','meter','guard','t','invincible','downTime','combo','walkDirection','fallDuration','divePower','chain','reversalWindow','reversalCooldown'];
 const finite=(n,min,max)=>Number.isFinite(n)&&n>=min&&n<=max;
 const clone=value=>JSON.parse(JSON.stringify(value));
 
@@ -42,7 +42,7 @@ export class RemoteInput{
 export function packSnapshot(match,seq,events=[]){
   return {protocol:PROTOCOL,seq,round:match.round,wins:[...match.wins],phase:match.phase,phaseTime:match.phaseTime,
     remaining:match.remaining,winner:match.winner,roundWinner:match.roundWinner,method:match.method,
-    fighters:match.fighters.map(f=>({id:f.id,state:f.state,weapon:f.weapon||'chair',attackStyle:f.attackStyle||'chair',move:f.move||null,fallFace:f.fallFace||'back',exhausted:Boolean(f.exhausted),confirmed:Boolean(f.confirmed),...Object.fromEntries(FIELDS.map(k=>[k,Number.isFinite(f[k])?f[k]:0]))})),
+    fighters:match.fighters.map(f=>({id:f.id,state:f.state,weapon:f.weapon||'chair',attackStyle:f.attackStyle||'chair',move:f.move||null,fallFace:f.fallFace||'back',exhausted:Boolean(f.exhausted),confirmed:Boolean(f.confirmed),secondWindUsed:Boolean(f.secondWindUsed),...Object.fromEntries(FIELDS.map(k=>[k,Number.isFinite(f[k])?f[k]:0]))})),
     grapple:match.grapple?clone(match.grapple):null,pin:match.pin?clone(match.pin):null,events:clone(events)};
 }
 export function validSnapshot(s,ids){
@@ -50,12 +50,13 @@ export function validSnapshot(s,ids){
   if(!finite(s.round,1,1000)||!finite(s.remaining,0,99)||!finite(s.phaseTime,0,100000)||!Array.isArray(s.wins)||s.wins.length!==2||!s.wins.every(n=>Number.isInteger(n)&&n>=0&&n<=2))return false;
   if(![null,0,1].includes(s.winner??null)||![null,0,1].includes(s.roundWinner??null)||typeof s.method!=='string'||s.method.length>80)return false;
   if(!Array.isArray(s.fighters)||s.fighters.length!==2)return false;
+  if(!s.fighters.every(f=>typeof f.secondWindUsed==='boolean'&&finite(f.reversalWindow,0,.12)&&finite(f.reversalCooldown,0,1.2)))return false;
   if(!s.fighters.every((f,i)=>f.id===ids[i]&&STATES.has(f.state)&&['none','chair','bat','guitar','trashcan'].includes(f.weapon)&&['light','chair','bat','guitar','trashcan','kick'].includes(f.attackStyle)&&[null,undefined,'light','heavy','special','bat','guitar','trashcan'].includes(f.move)&&['front','back'].includes(f.fallFace)&&typeof f.exhausted==='boolean'&&typeof f.confirmed==='boolean'&&Number.isInteger(f.chain)&&finite(f.chain,0,2)&&FIELDS.every(k=>finite(f[k],-100000,100000))&&finite(f.x,200,1080)&&finite(f.z,0,1000)&&finite(f.hp,0,100)&&finite(f.meter,0,100)&&finite(f.guard,-100,100)&&[-1,1].includes(f.facing)))return false;
   if(s.grapple&&(![0,1].includes(s.grapple.attacker)||!finite(s.grapple.time,0,10)))return false;
   if(s.pin&&(![0,1].includes(s.pin.attacker)||!finite(s.pin.time,0,10)||!finite(s.pin.count,0,3)||!finite(s.pin.escape,0,100)||![undefined,'pin','submission'].includes(s.pin.kind)))return false;
   return true;
 }
-const EVENT_TYPES=new Set(['round','fight','hit','slam','block','special','notReady','throwBreak','holdBreak','kickout','guardBreak','count','roundEnd','matchEnd','jump','land','whiff','throw','pin','weapon','weaponBreak','taunt','tauntStart','climb','dive','ropeBreak','pinRelease','grapple','swing']);
+const EVENT_TYPES=new Set(['round','fight','hit','slam','block','special','notReady','throwBreak','holdBreak','kickout','guardBreak','count','roundEnd','matchEnd','jump','land','whiff','throw','pin','weapon','weaponBreak','taunt','tauntStart','climb','dive','ropeBreak','pinRelease','grapple','swing','reversal','secondWind']);
 export class SnapshotBuffer{
   constructor(ids){this.ids=ids;this.prev=null;this.next=null;this.at=0;this.eventSeq=0;this.events=[];}
   receive(packet,now){

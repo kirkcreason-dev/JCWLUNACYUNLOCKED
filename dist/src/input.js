@@ -1,10 +1,11 @@
-import {emptyInput,STEP} from './engine.js';
+import {emptyInput,STEP,MOVES} from './engine.js?v=0.14.0';
+const REPEAT_HIT_INTERVAL=MOVES.light.startup+MOVES.light.active+MOVES.light.recovery+.03;
 export const KEYMAPS=[
   {ArrowLeft:'left',ArrowRight:'right',ArrowUp:'jump',ArrowDown:'block',KeyZ:'light',KeyX:'heavy',KeyC:'grapple',KeyV:'special',KeyJ:'light',KeyK:'heavy',KeyL:'grapple',KeyU:'special',KeyQ:'weapon',KeyE:'taunt',ShiftLeft:'run'},
   {KeyA:'left',KeyD:'right',KeyW:'jump',KeyS:'block',KeyF:'light',KeyG:'heavy',KeyH:'grapple',KeyR:'special',Digit1:'light',Digit2:'heavy',Digit3:'grapple',Digit0:'special',Numpad1:'light',Numpad2:'heavy',Numpad3:'grapple',Numpad0:'special',KeyT:'weapon',KeyY:'taunt',ShiftRight:'run'}
 ];
 const soloDirections={KeyA:'left',KeyD:'right',KeyW:'jump',KeyS:'block'};
-const actions=new Set(['jump','light','heavy','grapple','special','weapon','taunt']);
+const actions=new Set(['jump','light','heavy','grapple','special','weapon','taunt','block']);
 const pauseKeys=new Set(['Escape','KeyP']);
 // Normalized D-pad position. The central dead zone lets a thumb rest without walking.
 export function dpadDirections(x,y){
@@ -49,7 +50,7 @@ export class InputState {
   clearTouch(){this.pointers.clear();this.touch=emptyInput();this.pending[0].clear();this.repeatClock=0;this.escapeLast='heavy';}
   clear(){this.keys.clear();this.clearTouch();this.pending.forEach(set=>set.clear());}
   read(pads=[],dt=STEP){
-    if(this.repeatHit&&this.touch.light){this.repeatClock+=dt;if(this.repeatClock>=.46){this.pending[0].add('light');this.repeatClock=0;}}else this.repeatClock=0;
+    if(this.repeatHit&&this.touch.light){this.repeatClock+=dt;if(this.repeatClock>=REPEAT_HIT_INTERVAL){this.pending[0].add('light');this.repeatClock=0;}}else this.repeatClock=0;
     const result=this.keymaps().map((map,i)=>{const input=emptyInput();for(const code of this.keys)if(map[code])input[map[code]]=true;input.pressed=Object.fromEntries([...this.pending[i]].map(key=>[key,true]));this.pending[i].clear();return input;});
     for(const k in this.touch)result[0][k] ||= this.touch[k];
     const connected=Array.from(pads).filter(p=>p&&p.connected!==false);

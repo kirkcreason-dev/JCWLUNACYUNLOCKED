@@ -1,4 +1,4 @@
-import {THROW_BREAK_WINDOW,LEFT,RIGHT,canPin as pinInRange,nearRopes,escapeTarget} from './engine.js';
+import {THROW_BREAK_WINDOW,LEFT,RIGHT,canPin as pinInRange,nearRopes,escapeTarget} from './engine.js?v=0.14.0';
 // Context is derived from match state; the UI never grants damage or escape progress itself.
 export function touchContext(match,localIndex=0){
   const me=match.fighters[localIndex],other=match.fighters[1-localIndex],distance=Math.abs(me.x-other.x);
@@ -25,6 +25,8 @@ export function touchContext(match,localIndex=0){
   else if(me.state==='taunt')hint='Finish the taunt to earn Lunacy';
   else if(me.move==='light'&&me.confirmed&&me.chain<2)hint=me.chain===0?'Hit landed · Tap HIT or HEAVY to link':'Two hits · Tap HEAVY to finish the chain';
   else if(me.meter>=100)hint=distance<157?'Your finisher is ready!':'Finisher ready · Move closer';
+  else if(me.state==='run'&&me.walkDirection===me.facing)hint='Tap HEAVY while running to close the gap';
+  else if(distance<=175&&!me.move&&['idle','walk','block'].includes(me.state)&&me.reversalCooldown===0&&me.guard>=20)hint='Press Down just before a strike to REVERSE';
   else if(distance>150)hint='Move closer to land your attacks';
   return {escape,escapeLabel:pin?(match.pin.kind==='submission'?'ESCAPE':'KICK OUT'):'GET UP',escapeProgress:pin?Math.min(1,match.pin.escape/need):0,
     grabLabel:holding?'RELEASE':breaking?'BREAK':canPin?'PIN':perched?'DIVE':canClimb?'CLIMB':'GRAB',grabDetail:holding?'LET GO':breaking?'TAP NOW':canPin?'3 COUNT':perched?'TOP ROPE':canClimb?'TOP ROPE':distance<106?'THROW':'GET CLOSE',
