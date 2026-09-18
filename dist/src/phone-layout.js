@@ -13,7 +13,7 @@ export function phoneLayout({width,height,safe={},online=false}){
   if(portrait){
     const pad=clamp((innerWidth-16)/2,132,180);
     const controlsTop=bottom-(pad+88),stageRoom=controlsTop-contentTop-8;
-    const stageWidth=Math.min(innerWidth,Math.max(1,stageRoom)*4/3),stageHeight=stageWidth*3/4;
+    const stageWidth=Math.min(innerWidth,Math.max(1,stageRoom)*4/3),stageHeight=Math.min(Math.max(1,stageRoom),stageWidth*1.125);
     stage=rect((left+right-stageWidth)/2,contentTop+(stageRoom-stageHeight)/2,stageWidth,stageHeight);
     hint=rect(left,controlsTop,innerWidth,32);
     dpad=rect(left,controlsTop+38,pad,pad);actions=rect(right-pad,dpad.y,pad,pad);
@@ -31,10 +31,10 @@ export function phoneLayout({width,height,safe={},online=false}){
   return {mode:portrait?'portrait':'landscape',short,width,height,header,network,stage,dpad,actions,weapon,taunt,hint};
 }
 
-export function canvasSize({cssWidth=1280,portrait=false,touch=false,dpr=1,quality='auto'}={}){
+export function canvasSize({cssWidth=1280,portrait=false,touch=false,dpr=1,quality='auto',aspect}={}){
   const ratio=quality==='battery'?1.5:2;
   const width=touch?clamp(Math.ceil(cssWidth*Math.min(dpr,ratio)/32)*32,640,1280):(quality==='battery'?960:1280);
-  return {width,height:width*(portrait?3/4:9/16)};
+  return {width,height:Math.round(width/(aspect||(portrait?4/3:16/9)))};
 }
 
 export function resizeCanvas(canvas,size){
@@ -44,11 +44,14 @@ export function resizeCanvas(canvas,size){
   return changed;
 }
 
-export function phoneCamera(fighters,{portrait=false,floor=593}={}){
-  const [a,b]=fighters,feet=portrait?870:650;
-  // Leave room below the HUD for jump, dive and lifted poses before zooming in.
-  const top=Math.max(...fighters.map(f=>(f.z||0)+260));
-  const zoom=Math.min(portrait?2:1.4,1280/(Math.abs(a.x-b.x)+370),(feet-224)/top);
+export function phoneCamera(fighters,{portrait=false,floor=593,height=portrait?960:720,previous=null,dt=1/60}={}){
+  const [a,b]=fighters,feet=height-70;
+  // Reserve room for the full jump/throw envelope, even while standing.
+  // Normal jumps therefore do not shrink a wrestler or grow them on landing.
+  const top=Math.max(portrait?520:420,...fighters.map(f=>(f.z||0)+260));
+  const target=Math.min(portrait?2:1.25,1280/(Math.abs(a.x-b.x)+370),(feet-(portrait?224:180))/top);
+  // Widen immediately when safety requires it; ease back in over half a second.
+  const zoom=previous?Math.min(target,previous.zoom+(target-previous.zoom)*(1-Math.exp(-4*Math.min(dt,.1)))):target;
   const width=1280/zoom,center=zoom<=1?640:clamp((a.x+b.x)/2,width/2,1280-width/2);
   return {x:640-center*zoom,y:feet-floor*zoom,zoom};
 }

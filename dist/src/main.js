@@ -1,22 +1,26 @@
-import {RenderBudget} from './render-budget.js?v=0.16.0';
-import {Coach} from './coach.js?v=0.16.0';
-import {loadGameImage} from './image-loader.js?v=0.16.0';
-import {fighterProfile} from './fighter-profile.js?v=0.16.0';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.16.0';
-import {Match,STEP,emptyInput} from './engine.js?v=0.16.0';
-import {Renderer} from './render.js?v=0.16.0';
-import {Input} from './input.js?v=0.16.0';
-import {Sound} from './audio.js?v=0.16.0';
-import {ARENAS} from './arenas.js?v=0.16.0';
-import {touchContext} from './touch-ui.js?v=0.16.0';
-import {OnlineSession} from './online.js?v=0.16.0';
-import {connectFirebase} from './firebase-online.js?v=0.16.0';
-import {SnapshotBuffer} from './online-protocol.js?v=0.16.0';
-import {RosterSelection} from './roster-selection.js?v=0.16.0';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.16.0';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.16.0';
-import {FramePacer} from './frame-pacer.js?v=0.16.0';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.16.0';
+import {RenderBudget} from './render-budget.js?v=0.19.0';
+import {Coach} from './coach.js?v=0.19.0';
+import {loadGameImage} from './image-loader.js?v=0.19.0';
+import {fighterProfile} from './fighter-profile.js?v=0.19.0';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.19.0';
+import {Match,STEP,emptyInput} from './engine.js?v=0.19.0';
+import {Renderer} from './render.js?v=0.19.0';
+import {Input} from './input.js?v=0.19.0';
+import {Sound} from './audio.js?v=0.19.0';
+import {ARENAS} from './arenas.js?v=0.19.0';
+import {touchContext} from './touch-ui.js?v=0.19.0';
+import {OnlineSession} from './online.js?v=0.19.0';
+import {connectFirebase} from './firebase-online.js?v=0.19.0';
+import {SnapshotBuffer} from './online-protocol.js?v=0.19.0';
+import {RosterSelection} from './roster-selection.js?v=0.19.0';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.19.0';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.19.0';
+import {FramePacer} from './frame-pacer.js?v=0.19.0';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.19.0';
+import {Haptics} from './haptics.js?v=0.19.0';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.19.0';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.19.0';
+const haptics=new Haptics();let arcadeRewards=null;
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help'),creditsScreen=$('credits');
 let coach=null,creditsPending=false;
@@ -52,8 +56,10 @@ function status(text){$('announcement').textContent=text;}
 function modalState(){const active=[helpScreen,creditsScreen,resultScreen,pauseScreen].find(el=>!el.hidden);$('cabinet').classList.toggle('selecting',!selection.hidden);$('cabinet').classList.toggle('modal-open',Boolean(active));selection.inert=Boolean(active)||loading;for(const el of [helpScreen,creditsScreen,resultScreen,pauseScreen])el.inert=Boolean(active&&el!==active);updateTouch();return active;}
 function showModal(element,button){returnFocus=document.activeElement;element.hidden=false;modalState();button?.focus();}
 function hideModal(element){element.hidden=true;const active=modalState();if(active)active.querySelector('button')?.focus();else returnFocus?.focus?.();}
+let touchArtRequest=null;
 function updateTouch(){
   const showing=Boolean(match&&selection.hidden&&(coarse.matches||preferences.touch==='on'));
+  if(showing&&!touchArtRequest)touchArtRequest=loadingImage('./assets/ui/touch-control-sheet.png').then(()=>{$('touch-controls').classList.add('control-art');}).catch(()=>{});
   $('touch-controls').hidden=!showing;$('cabinet').classList.toggle('playing-touch',showing);
   $('cabinet').classList.toggle('in-match',Boolean(match&&selection.hidden));
   $('touch-controls').inert=paused||match?.phase==='done'||!helpScreen.hidden||!resultScreen.hidden||!pauseScreen.hidden||!creditsScreen.hidden;
@@ -65,7 +71,8 @@ function updatePhoneLayout(showing){
   const cabinet=$('cabinet'),viewport=globalThis.visualViewport;
   // Do not rearrange the interface while a user is pinch-zooming it.
   const unzoomed=!viewport||Math.abs(viewport.scale-1)<.01;
-  const width=unzoomed&&viewport?viewport.width:innerWidth,height=unzoomed&&viewport?viewport.height:innerHeight;
+  const nativeFull=Boolean(fullscreenElement(document));
+  const width=!nativeFull&&unzoomed&&viewport?viewport.width:innerWidth,height=!nativeFull&&unzoomed&&viewport?viewport.height:innerHeight;
   const enabled=showing&&width<=1024&&(width<=650||height<=600)&&height>=200;
   let layout=null;
   if(enabled){
@@ -76,7 +83,7 @@ function updatePhoneLayout(showing){
     cabinet.style.setProperty('--phone-height',`${height}px`);
     cabinet.classList.toggle('phone-online',!$('network-banner').hidden);
     const geometry=JSON.stringify([layout.dpad,layout.actions]);if(geometry!==lastControlGeometry){input.clearTouch();lastControlGeometry=geometry;}
-    Object.assign(cabinet.style,{width:`${width}px`,height:`${height}px`,left:`${unzoomed&&viewport?viewport.offsetLeft:0}px`,top:`${unzoomed&&viewport?viewport.offsetTop:0}px`});
+    Object.assign(cabinet.style,{width:`${width}px`,height:`${height}px`,left:`${!nativeFull&&unzoomed&&viewport?viewport.offsetLeft:0}px`,top:`${!nativeFull&&unzoomed&&viewport?viewport.offsetTop:0}px`});
     for(const [key,node] of Object.entries(phoneNodes)){
       const r=layout[key];Object.assign(node.style,{left:`${r.x}px`,top:`${r.y}px`,width:`${r.width}px`,height:`${r.height}px`});
     }
@@ -88,10 +95,10 @@ function updatePhoneLayout(showing){
   }
   document.body.classList.toggle('phone-match',enabled);
   if(renderer){
-    renderer.portrait=layout?.mode==='portrait';renderer.compact=layout?.mode==='landscape';
+    renderer.portrait=layout?.mode==='portrait';renderer.compact=layout?.mode==='landscape';renderer.logicalHeight=layout?1280*layout.stage.height/layout.stage.width:720;
     renderer.lowPower=showing||batteryDisplay();
     const cssWidth=layout?.stage.width||$('stage-wrap').getBoundingClientRect().width;
-    resizeCanvas(renderer.canvas,canvasSize({cssWidth,portrait:renderer.portrait,touch:showing,dpr:devicePixelRatio||1,quality:batteryDisplay()?'battery':'auto'}));
+    resizeCanvas(renderer.canvas,canvasSize({cssWidth,aspect:layout?layout.stage.width/layout.stage.height:undefined,portrait:renderer.portrait,touch:showing,dpr:devicePixelRatio||1,quality:batteryDisplay()?'battery':'auto'}));
   }
 }
 function scheduleViewport(){viewportPending=true;}
@@ -99,6 +106,7 @@ function updateTouchContext(){
   if(!match||$('touch-controls').hidden)return;
   const context=touchContext(match,localIndex),signature=JSON.stringify(context);if(signature===touchSignature)return;touchSignature=signature;
   if(context.escape!==touchEscapeMode){input.clearTouch();touchEscapeMode=context.escape;}
+  $('touch-grapple').dataset.state=context.grabLabel;$('touch-escape').dataset.state=context.escapeLabel;
   $('touch-hint').textContent=context.hint;$('grab-label').textContent=context.grabLabel;$('grab-detail').textContent=context.grabDetail;
   $('touch-grapple').setAttribute('aria-label',context.grabLabel==='RELEASE'?'Release hold':context.grabLabel==='PIN'?'Pin opponent':context.grabLabel==='BREAK'?'Break grapple':context.grabLabel==='CLIMB'?'Climb top rope':context.grabLabel==='DIVE'?'Top rope dive':'Grapple');
   $('heavy-detail').textContent=context.heavy;$('weapon-detail').textContent=context.weapon==='NONE'?'BARE HANDS':context.weapon;
@@ -136,7 +144,9 @@ function choose(index){if(!rosterSelection?.choose(index))return;chosen=index;co
       const score=document.createElement('b');score.textContent=`${value}/10`;stat.append(name,track,score);$('stats').append(stat);
     }
   }else{const note=document.createElement('p');note.className='stats-unlisted';note.textContent='Website ratings not listed. Original game balance.';$('stats').append(note);}
-  $('stats-source').textContent=f.websiteStats?'JCW WEBSITE RATINGS ↗':'JCW ROSTER ↗';
+  const approvedSource=f.websiteStats?.source==='User-supplied approval table';
+  $('stats-source').textContent=approvedSource?'USER-APPROVED RATINGS':f.websiteStats?'JCW WEBSITE RATINGS ↗':'JCW ROSTER ↗';
+  if(approvedSource)$('stats-source').removeAttribute('href');else $('stats-source').setAttribute('href','https://jcwlunacy.net/');
   updateOpponent();
 }
 function updateChampionship(){
@@ -151,13 +161,25 @@ function updateChampionship(){
   for(let i=0;i<5;i++){const item=document.createElement('li');const name=run?roster.find(f=>f.id===run.path[i]).name:'Opponent revealed when you start';item.textContent=`${run&&i<run.stage?'✓ ':''}${STAGES[i]} · ${name}`;if(run?.phase==='road'&&i===run.stage)item.setAttribute('aria-current','step');$('championship-road').append(item);}
   $('fight').textContent=run?.phase==='defend'?'DEFEND YOUR TITLE':run?.phase==='road'?'CONTINUE CHAMPIONSHIP':'START CHAMPIONSHIP';
 }
+function updateArcadeRewards(){
+  if(!arcadeRewards||!roster[chosen])return;
+  const id=roster[chosen].id,difficulty=$('difficulty').value;
+  $('arcade-rewards').hidden=$('mode').value!=='arcade';
+  $('arcade-medals').replaceChildren();
+  for(const [level,reward] of Object.entries(ARCADE_REWARDS)){
+    const earned=Boolean(arcadeRewards.get(id,level)),item=document.createElement('li');
+    item.dataset.medal=earned?reward.medal:'locked';item.textContent=`${earned?'✓ ':''}${level.toUpperCase()} · ${reward.medal.toUpperCase()} · ${reward.title}`;$('arcade-medals').append(item);
+  }
+  $('arcade-save').textContent=(arcadeRewards.triple(id)?'TRIPLE CROWN EARNED! ':`Beat all ${roster.length-1} opponents to earn this difficulty’s medal and portrait frame. `)+(arcadeRewards.saved?'Medals save on this browser.':'Saving unavailable: medals last for this session.');
+  $('portrait').dataset.arcadeMedal=arcadeRewards.triple(id)?'triple':arcadeRewards.get(id,difficulty)?ARCADE_REWARDS[difficulty].medal:'none';
+}
 function updateOpponent(){
   if(!roster.length)return;
   const mode=$('mode').value,opponent=roster[Number($('opponent').value)||0];
   $('versus-name').textContent=mode==='online'?'ROOM CODES + QUICK MATCH':mode==='championship'?'FIVE WINS TO THE BELT':mode==='arcade'?`${roster.length-1} OPPONENTS. ONE CHAMPION.`:`VS ${opponent.name.toUpperCase()}`;
   $('versus-avatar').hidden=['arcade','online','championship'].includes(mode);$('versus-avatar').src=`./assets/${opponent.id}-portrait.png`;
   $('versus-label').textContent=mode==='online'?'ONLINE MULTIPLAYER':mode==='championship'?'CHAMPIONSHIP':mode==='arcade'?'ARCADE RUN':mode==='local'?'PLAYER 2':mode==='practice'?'PRACTICE PARTNER':'CPU OPPONENT';
-  updateChampionship();
+  updateChampionship();updateArcadeRewards();
 }
 function buildRoster(){
   rosterSelection=new RosterSelection(roster.length,rosterPageSize());
@@ -175,7 +197,7 @@ function buildRoster(){
   $('show-roster').onclick=()=>setSelectionPanel('roster');$('show-setup').onclick=()=>setSelectionPanel('setup');
   $('confirm-fighter').onclick=()=>{setSelectionPanel('setup');$('mode').focus();};
   $('mode').onchange=()=>{const mode=$('mode').value;$('difficulty-label').hidden=['local','practice','online'].includes(mode);$('opponent').parentElement.hidden=['arcade','online','championship'].includes(mode);$('opponent-label').textContent=mode==='local'?'PLAYER 2':'OPPONENT';$('online-lobby').hidden=mode!=='online';$('fight').hidden=mode==='online';updateOpponent();};
-  $('opponent').onchange=updateOpponent;$('difficulty').onchange=updateChampionship;
+  $('opponent').onchange=updateOpponent;$('difficulty').onchange=()=>{updateChampionship();updateArcadeRewards();};
   $('roster').addEventListener('keydown',event=>{
     const columns=getComputedStyle($('roster')).gridTemplateColumns.split(' ').length,current=Array.from($('roster').children).indexOf(event.target);
     const delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-columns,ArrowDown:columns,PageUp:-rosterSelection.pageSize,PageDown:rosterSelection.pageSize}[event.key];
@@ -249,8 +271,9 @@ function togglePause(force){
   $('pause-art').hidden=false;$('pause-title').textContent='MATCH PAUSED';$('pause-detail').hidden=true;$('restart').hidden=false;$('resume').hidden=false;
   paused=force===true?true:!paused;input.clear();match.clearInputs();if(paused){showModal(pauseScreen,$('resume'));sound.suspend();}else{pauseScreen.hidden=true;modalState();sound.resume();document.activeElement?.blur();}updateTouch();
 }
-function quit(){creditsPending=false;creditsScreen.hidden=true;sound.stopEffects();retainMatchArtwork(atlases,arenas,imagePromises,[],arena);session++;runtimeFault=null;net.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;localIndex=0;renderer.localIndex=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';updateChampionship();($('mode').value==='online'?$('online-quick'):$('fight')).focus();}
+function quit(){creditsPending=false;creditsScreen.hidden=true;sound.stopEffects();retainMatchArtwork(atlases,arenas,imagePromises,[],arena);session++;runtimeFault=null;net.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;localIndex=0;renderer.localIndex=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';updateChampionship();updateArcadeRewards();($('mode').value==='online'?$('online-quick'):$('fight')).focus();}
 function finishMatch(){
+  if(match.resultShown)return;match.resultShown=true;
   input.active=false;input.clear();$('pause-button').hidden=true;
   const won=match.winner===localIndex,arcade=match.options.mode==='arcade',champion=arcade&&won&&arcadeIndex===arcadeOpponents.length-1;
   $('result-win-art').hidden=!(won||match.options.mode==='local');
@@ -273,6 +296,11 @@ function finishMatch(){
       $('rematch').textContent=outcome==='dethroned'?'CHASE THE BELT':run.phase==='defend'?'DEFEND YOUR TITLE':won?'NEXT CHAMPIONSHIP MATCH':'RETRY THIS MATCH';
           if(creditsPending)$('rematch').textContent='CELEBRATE · VIEW CREDITS';
     }else{$('result-detail').textContent+=' · This run changed in another window; continue from the saved match.';$('rematch').textContent='CONTINUE SAVED RUN';}
+  }
+  $('arcade-reward-result').hidden=true;
+  if(champion){
+    const reward=arcadeRewards.award({fighter:match.fighters[0].definition.id,difficulty:match.options.difficulty,defeated:arcadeOpponents.map(i=>roster[i].id),mode:match.options.mode,won});
+    if(reward){const box=$('arcade-reward-result');box.hidden=false;box.dataset.medal=arcadeRewards.triple(winner.id)?'triple':reward.medal;box.textContent=`${reward.medal.toUpperCase()} MEDAL · ${reward.title}${arcadeRewards.triple(winner.id)?' · TRIPLE CROWN!':''} · ${reward.fresh?'PORTRAIT FRAME EARNED':'MEDAL ALREADY EARNED'} · ${arcadeRewards.saved?'Saved on this browser.':'Session only — saving unavailable.'}`;sound.celebrate();updateArcadeRewards();}
   }
   showModal(resultScreen,$('rematch'));status($('result-title').textContent);
   if(creditsPending)openCredits();
@@ -340,8 +368,8 @@ function matchEvents(events){
     if(e.type==='hit')effects.add(e.move==='light'?'chips':'impact');
   }
   requestArtwork([...banners],[...effects]);
-  coach?.receive(events,localIndex);renderer.receive(events,match);sound.play(events);
-  if(input.scheme==='touch'&&preferences.haptics&&events.some(e=>(e.type==='hit'||e.type==='slam'||e.type==='reversal'||e.type==='secondWind')&&e.index===localIndex))navigator.vibrate?.(18);
+  coach?.receive(events,localIndex);renderer.receive(events,match);sound.play(events,match);
+  if(input.scheme==='touch'&&events.some(e=>['hit','slam','reversal','secondWind'].includes(e.type)&&(e.index===localIndex||e.attacker===localIndex)))haptics.pulse(events.some(e=>e.type==='slam')?50:32);
   for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='reversal')status(`Player ${e.index+1} reverses the strike. Counterattack!`);if(e.type==='secondWind')status(`Player ${e.index+1} gets a second wind: 25 Lunacy meter.`);if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);}
 }
 function recoverRuntime(error){
@@ -380,7 +408,7 @@ function finishBoot(){
 $('boot-start').onclick=()=>{
   if($('boot').classList.contains('boot-running'))return;
   $('boot').classList.add('boot-running');$('boot-start').disabled=true;$('boot-skip').hidden=false;$('boot-skip').focus();
-  if(!preferences.muted){sound.music.volume=.08;sound.start().then(soundLabel);sound.bootChime();}
+  if(!preferences.muted){sound.music.volume=.08;sound.start().then(()=>{soundLabel();sound.bootChime();});}
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduced)$('boot').dataset.slide='all';
   else for(const [slide,at] of [['emblem',0],['wordmark',1000],['hatchet',2100],['records',3200]]){if(at===0)$('boot').dataset.slide=slide;else bootTimers.push(setTimeout(()=>{$('boot').dataset.slide=slide;},at));}
@@ -392,9 +420,9 @@ $('enter-game').onclick=async()=>{
   $('opening').hidden=true;selection.hidden=false;$('cabinet').classList.remove('at-title');modalState();
   if(!preferences.muted)await sound.start();soundLabel();$('fight').focus();
 };
-$('fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if($('cabinet').requestFullscreen)await $('cabinet').requestFullscreen();else status('Fullscreen is not available in this browser.');}catch{status('Fullscreen is not available in this browser.');}};
+$('fullscreen').onclick=async()=>{const result=await toggleFullscreen($('cabinet'),document);if(result==='fitted')status('Game fitted to your screen. This browser does not offer native fullscreen.');updateTouch();scheduleViewport();};
 addEventListener('resize',scheduleViewport);globalThis.visualViewport?.addEventListener('resize',scheduleViewport);globalThis.visualViewport?.addEventListener('scroll',scheduleViewport);coarse.addEventListener('change',updateTouch);
-document.addEventListener('fullscreenchange',()=>{$('fullscreen').setAttribute('aria-label',document.fullscreenElement?'Exit fullscreen':'Enter fullscreen');updateTouch();});
+for(const event of ['fullscreenchange','webkitfullscreenchange'])document.addEventListener(event,()=>{$('fullscreen').setAttribute('aria-label',fullscreenElement(document)?'Exit fullscreen':'Enter fullscreen');input.clearTouch();updateTouch();scheduleViewport();});
 sound.setMix(preferences.musicVolume,preferences.effectsVolume);
 for(const [id,key] of [['music-volume','musicVolume'],['effects-volume','effectsVolume']]){$(id).value=Math.round((key==='musicVolume'?sound.musicVolume:sound.effectsVolume)*100);$(id).oninput=()=>{preferences[key]=Number($(id).value)/100;sound.setMix(preferences.musicVolume,preferences.effectsVolume);savePreferences();};}
 $('music').value=preferences.music==='fight-club'?'fight-club':'theme';sound.setTrack($('music').value);
@@ -403,8 +431,13 @@ $('touch-setting').value=preferences.touch==='on'?'on':'auto';
 $('touch-setting').onchange=()=>{preferences.touch=$('touch-setting').value;savePreferences();updateTouch();};
 $('repeat-hit').checked=preferences.repeat!==false;input.repeatHit=$('repeat-hit').checked;
 $('repeat-hit').onchange=()=>{input.repeatHit=$('repeat-hit').checked;preferences.repeat=input.repeatHit;savePreferences();};
-$('haptics').checked=preferences.haptics!==false;
-$('haptics').onchange=()=>{preferences.haptics=$('haptics').checked;savePreferences();};
+haptics.enabled=preferences.haptics!==false;
+$('haptics').checked=haptics.enabled;$('haptics').disabled=!haptics.supported;$('test-haptics').disabled=!haptics.supported;
+$('haptics-status').textContent=haptics.supported?'Tap TEST VIBRATION. Device settings can suppress vibration.':'This browser does not support vibration. Visual hit feedback stays available.';
+$('haptics').onchange=()=>{preferences.haptics=$('haptics').checked;haptics.enabled=preferences.haptics;haptics.activate();if(haptics.enabled)haptics.pulse(40,{test:true});else haptics.stop();savePreferences();};
+$('test-haptics').onclick=()=>{haptics.activate();$('haptics-status').textContent=haptics.pulse(100,{test:true})?'Vibration requested. If you felt nothing, check device vibration settings.':haptics.enabled?'This browser or device declined vibration.':'Turn on touch vibration to test it.';};
+document.addEventListener('pointerdown',e=>{haptics.activate();if(input.active&&e.pointerType==='touch'&&e.target.closest?.('#touch-controls'))haptics.pulse(12);},{passive:true});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)haptics.stop();});
 $('coach-enabled').checked=preferences.hints!==false;
 $('coach-enabled').onchange=()=>{preferences.hints=$('coach-enabled').checked;savePreferences();};
 $('reset-coach').onclick=()=>{coach?.reset();preferences.hints=true;$('coach-enabled').checked=true;savePreferences();status('First-match tips reset.');};
@@ -448,6 +481,7 @@ function loop(now){
         const events=match.drainEvents();matchEvents(events);if(match.phase==='done')finishMatch();
       }
     }else{accumulator=0;if(match)input.read();}
+    sound.updateMovement(match,paused||!selection.hidden);
     if(renderer){
       const menu=!selection.hidden||!$('opening').hidden;
       const drawDelta=framePacer.frame(now,{animated:Boolean(match&&!paused&&match.phase!=='done'&&!menu),hidden:document.hidden,fps:batteryDisplay()?30:60});
@@ -458,7 +492,7 @@ function loop(now){
 }
 async function init(){
   try{
-    const response=await fetch('./assets/roster.json',{cache:'no-store'});if(!response.ok)throw new Error('Roster unavailable');roster=await response.json();let campaignStorage=null;try{campaignStorage=globalThis.localStorage;}catch{}coach=new Coach(campaignStorage);championships=new Championship(roster,campaignStorage);buildRoster();
+    const response=await fetch('./assets/roster.json',{cache:'no-store'});if(!response.ok)throw new Error('Roster unavailable');roster=await response.json();let campaignStorage=null;try{campaignStorage=globalThis.localStorage;}catch{}coach=new Coach(campaignStorage);championships=new Championship(roster,campaignStorage);arcadeRewards=new ArcadeRewards(roster,campaignStorage);buildRoster();
     ARENAS.forEach((a,i)=>{const option=document.createElement('option');option.value=i;option.textContent=a.name;$('arena').append(option);});
     await loadArena(0);
     const banners={},combatFx={};artworkState={banners,combatFx,pending:new Map()};
