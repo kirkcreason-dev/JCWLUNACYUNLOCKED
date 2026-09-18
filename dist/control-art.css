@@ -1,0 +1,31 @@
+/* Display rectangles from the supplied sheet; the original PNG is unchanged.
+   All hit areas, accessible labels and input handling remain real HTML controls. */
+#touch-controls.control-art .dpad{position:relative;background:none}
+#touch-controls.control-art .dpad::before,#touch-controls.control-art .action-pad button::before{content:"";position:absolute;inset:0;background-image:url('./assets/ui/touch-control-sheet.png');background-repeat:no-repeat;pointer-events:none;z-index:0}
+#touch-controls.control-art .dpad button,#touch-controls.control-art .dpad-center{background:transparent;border:0;box-shadow:none;color:transparent;font-size:0}
+#touch-controls.control-art .dpad button small{visibility:hidden}
+#touch-controls.control-art .dpad button.pressed{background:#b0ff2038;outline:2px solid #d6ff88;transform:none}
+#touch-controls.control-art .action-pad button{position:relative;padding:0;border:0;background:transparent;box-shadow:none;border-radius:0;overflow:hidden}
+#touch-controls.control-art .action-pad button>b,#touch-controls.control-art .action-pad button>small{position:relative;z-index:1;visibility:hidden}
+#touch-controls.control-art .action-pad button.pressed{filter:brightness(1.28);transform:translateY(2px)}
+#touch-controls.control-art #heavy-detail,#touch-controls.control-art #finish-detail{visibility:visible;position:absolute;left:18%;right:18%;bottom:9%;height:14%;display:grid;place-items:center;font-size:clamp(7px,1.6vw,10px);line-height:1;background:#08070b;color:#fff;letter-spacing:0}
+#touch-controls.control-art #finish-detail{background:linear-gradient(90deg,#527d0b var(--charge,0%),#08070b var(--charge,0%))}
+#touch-controls.control-art #touch-special.ready{filter:drop-shadow(0 0 3px #b0ff20)}
+#touch-controls.control-art #touch-special.ready #finish-detail{color:#b0ff20;background:#111}
+#touch-controls.control-art #touch-escape{position:absolute;inset:0}
+#touch-controls.control-art #touch-escape::before{top:25%;bottom:25%}
+#touch-controls.control-art .escape-track{position:absolute;z-index:1;left:13%;width:74%;top:65%;height:7%;border-radius:2px;background:#100c17}
+#touch-controls.control-art button:focus-visible{outline:3px solid white;outline-offset:2px}
+#touch-controls.control-art .dpad::before{background-size:376.470588% 264.599483%;background-position:5.053191% 12.244898%;}
+#touch-controls.control-art [data-key=light]::before{background-size:629.508197% 494.685990%;background-position:40.866873% 6.364749%;}
+#touch-controls.control-art [data-key=heavy]::before{background-size:616.867470% 487.619048%;background-position:61.227661% 6.388206%;}
+#touch-controls.control-art [data-key=grapple]::before{background-size:626.938776% 494.685990%;background-position:40.898528% 33.292534%;}
+#touch-controls.control-art [data-key=special]::before{background-size:616.867470% 492.307692%;background-position:61.305361% 33.333333%;}
+#touch-controls.control-art [data-key=grapple][data-state=PIN]::before{background-size:602.352941% 514.572864%;background-position:5.854801% 66.666667%;}
+#touch-controls.control-art [data-key=grapple][data-state=BREAK]::before{background-size:600.000000% 514.572864%;background-position:27.968750% 66.666667%;}
+#touch-controls.control-art [data-key=grapple][data-state=CLIMB]::before{background-size:602.352941% 514.572864%;background-position:50.117096% 66.666667%;}
+#touch-controls.control-art [data-key=grapple][data-state=DIVE]::before{background-size:602.352941% 514.572864%;background-position:72.209212% 66.666667%;}
+#touch-controls.control-art [data-key=grapple][data-state=RELEASE]::before{background-size:600.000000% 514.572864%;background-position:94.375000% 66.666667%;}
+#touch-controls.control-art #touch-escape[data-state="GET UP"]::before{background-size:426.666667% 616.867470%;background-position:2.125850% 95.337995%;}
+#touch-controls.control-art #touch-escape[data-state="KICK OUT"]::before{background-size:420.821918% 616.867470%;background-position:34.415030% 95.337995%;}
+#touch-controls.control-art #touch-escape[data-state=ESCAPE]::before{background-size:420.821918% 616.867470%;background-position:66.695132% 95.337995%;}

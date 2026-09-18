@@ -202,3 +202,16 @@
 }
 
 #championship-panel{margin:14px 0;padding:14px;border:1px solid #b7ff20;background:#151020;border-radius:8px;text-align:left}#championship-panel strong{color:#e6cf79}#championship-panel p{font-size:14px;line-height:1.45;margin:8px 0}#championship-road{padding-left:22px;margin:12px 0;font-size:14px;line-height:1.8;overflow-wrap:anywhere}#championship-road [aria-current]{color:#b7ff20;font-weight:800}.title-belt{display:flex;align-items:center;justify-content:center;gap:10px;background:#171019;border-radius:16px;padding:12px;margin:16px auto;max-width:350px}.title-belt[hidden]{display:none}.title-belt strong,.title-belt i{background:linear-gradient(135deg,#76500a,#ffeeb0,#bb841c);border:3px solid #e9c767;box-shadow:inset 0 0 0 3px #634a1a;color:#291c08;text-align:center}.title-belt strong{padding:12px 24px;border-radius:40%;font-size:20px;line-height:1.2}.title-belt i{width:36px;height:48px;border-radius:8px;flex-shrink:0}
+
+/* Persistent arcade medals, earned separately for each fighter. */
+#arcade-rewards{padding:12px;margin:12px 0;border:1px solid #ad74c6;background:#110b1ccc}
+#arcade-rewards h3{margin:0 0 8px;font-size:.85rem;letter-spacing:.12em}
+#arcade-medals{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:.75rem}
+#arcade-save,#haptics-status{font-size:.8rem;color:#d6c9dc;line-height:1.5}
+[data-medal=locked]{color:#a194a8}
+[data-medal=bronze]{color:#e5b183}[data-medal=silver]{color:#d6e3f3}[data-medal=gold]{color:#ffe07f}[data-medal=triple]{color:#b0ff20}
+#arcade-reward-result{border:2px solid currentColor;padding:18px;line-height:1.6;background:#110b1c}
+#portrait[data-arcade-medal=bronze]{outline:2px solid #ca8b52;outline-offset:3px;filter:drop-shadow(0 0 5px #ca8b52)}
+#portrait[data-arcade-medal=silver]{outline:2px solid #c4d4e8;outline-offset:3px;filter:drop-shadow(0 0 5px #c4d4e8)}
+#portrait[data-arcade-medal=gold]{outline:2px solid #ffc940;outline-offset:3px;filter:drop-shadow(0 0 7px #ffc940)}
+#portrait[data-arcade-medal=triple]{outline:3px solid #b0ff20;outline-offset:3px;filter:drop-shadow(-4px 0 5px #fa268b) drop-shadow(4px 0 5px #b0ff20)}

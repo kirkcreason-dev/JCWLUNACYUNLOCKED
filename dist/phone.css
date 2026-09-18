@@ -43,3 +43,6 @@ body.phone-match{overflow:hidden;overscroll-behavior:none}
 #cabinet[data-phone-layout] .modal{position:fixed;inset:0;padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));backdrop-filter:none;touch-action:pan-y}
 #cabinet[data-phone-layout] .modal-panel{max-height:calc(var(--phone-height,100dvh) - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));overscroll-behavior:contain}
 #cabinet[data-phone-layout] .help-panel select{font-size:16px;min-height:44px}
+
+#cabinet[data-phone-layout] #stage-wrap{aspect-ratio:auto!important;min-height:0!important}
+#cabinet[data-phone-layout]:fullscreen,#cabinet[data-phone-layout]:-webkit-full-screen{left:0!important;top:0!important;border:0}
