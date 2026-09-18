@@ -19,7 +19,7 @@ test('selection data retains the website scale, names, finishers, and missing-ra
  const f=roster[kongo];assert.deepEqual([f.websiteStats.power,f.websiteStats.speed,f.websiteStats.technique,f.websiteStats.toughness],[10,5,7,9]);
  for(const f of roster){
   if(['violent-j','shaggy-2-dope','dj-clay','jeff-lane'].includes(f.id)){assert.equal(f.websiteStats,null);assert.ok(!site.ratings[f.id]);continue;}
-  assert.deepEqual(f.websiteStats,site.ratings[f.id]);
+  if(['josh-bishop','ring-rat','green-phantom'].includes(f.id)){assert.equal(f.websiteStats.source,'User-supplied approval table');assert.equal(site.ratings[f.id],undefined);}else assert.deepEqual(f.websiteStats,site.ratings[f.id]);
   for(const key of ['power','speed','technique','toughness'])assert.ok(Number.isInteger(f.websiteStats[key])&&f.websiteStats[key]>=1&&f.websiteStats[key]<=10);
   assert.equal(f.finisher,(f.websiteStats.finisher||'Lunacy Finisher').toUpperCase());
  }

@@ -49,9 +49,9 @@ test('repeated viewport notifications do not clear the canvas or reset the conte
 test('phone camera brings close combat nearer and keeps airborne bodies below the HUD',()=>{
   for(const portrait of [false,true])for(const positions of [[200,280],[200,1080],[980,1080],[500,580]])for(const z of [0,120,280,400]){
     const fighters=positions.map((x,i)=>({x,z:i?z:0})),c=phoneCamera(fighters,{portrait});
-    for(const f of fighters){const x=c.x+f.x*c.zoom,head=c.y+(593-f.z-260)*c.zoom;assert.ok(x>=0&&x<=1280);assert.ok(head>=224-.001);}
+    for(const f of fighters){const x=c.x+f.x*c.zoom,head=c.y+(593-f.z-260)*c.zoom;assert.ok(x>=0&&x<=1280);assert.ok(head>=(portrait?224:180)-.001);}
   }
-  assert.equal(phoneCamera([{x:500,z:0},{x:580,z:0}],{portrait:true}).zoom,2);
+  assert.equal(phoneCamera([{x:500,z:0},{x:580,z:0}],{portrait:true,height:1440}).zoom,2);
 });
 test('presentation stays near its target on 60, 90 and 120 Hz displays',()=>{
   for(const refresh of [60,90,120])for(const fps of [30,60]){

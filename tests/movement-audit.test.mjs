@@ -5,8 +5,8 @@ import {Match,MOVEMENT_PACE,MOVES} from '../dist/src/engine.js';
 import {Renderer} from '../dist/src/render.js';
 const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url)));
 function review(id){
- const draws=[];let scale=1,stack=[];
- const ctx=new Proxy({save(){stack.push(scale);},restore(){scale=stack.pop();},scale(x){scale*=x;},drawImage(img,x,y,w,h,...dest){assert.ok([x,y,w,h,...dest].every(Number.isFinite));assert.ok(x>=0&&y>=0&&x+w<=img.width&&y+h<=img.height);draws.push({x,y,w,h,scale});}},{get:(t,k)=>k in t?t[k]:()=>{}});
+ const draws=[];let scale=1,rotation=0,stack=[];
+ const ctx=new Proxy({save(){stack.push([scale,rotation]);},restore(){[scale,rotation]=stack.pop();},scale(x){scale*=x;},rotate(a){rotation+=a;},drawImage(img,x,y,w,h,...dest){assert.ok([x,y,w,h,...dest].every(Number.isFinite));assert.ok(x>=0&&y>=0&&x+w<=img.width&&y+h<=img.height);draws.push({x,y,w,h,scale,screenW:Math.abs(w*Math.cos(rotation))+Math.abs(h*Math.sin(rotation)),screenH:Math.abs(h*Math.cos(rotation))+Math.abs(w*Math.sin(rotation))});}},{get:(t,k)=>k in t?t[k]:()=>{}});
  const atlas={width:roster[id].atlasSize[0],height:roster[id].atlasSize[1]};
  const m=new Match(roster,id,(id+1)%roster.length,{mode:'local'});m.phase='fight';m.fighters[0].weapon='none';
  const r=new Renderer({getContext:()=>ctx},roster,{[id]:atlas},[]);r.reduced=true;
@@ -29,7 +29,7 @@ test('all locomotion frames render in both facings and backpedal reverses the se
 test('every fighter settles into a horizontal resting or KO pose after either fall',()=>{
  for(let id=0;id<roster.length;id++){
   const {f,render}=review(id);f.state='down';f.fallDuration=.4;f.t=1;
-  for(const face of ['front','back'])for(const hp of [0,10])for(const facing of [-1,1]){f.fallFace=face;f.hp=hp;f.facing=facing;const pose=render();assert.ok(pose.w>pose.h,`${f.definition.id} ${face} must not hold a standing/tumbling frame`);}
+  for(const face of ['front','back'])for(const hp of [0,10])for(const facing of [-1,1]){f.fallFace=face;f.hp=hp;f.facing=facing;const pose=render();assert.ok(pose.screenW>pose.screenH,`${f.definition.id} ${face} must not hold a standing/tumbling frame`);}
  }
 });
 test('Matt Cross unarmed heavy uses an intact strike when the source kick art is clipped',()=>{

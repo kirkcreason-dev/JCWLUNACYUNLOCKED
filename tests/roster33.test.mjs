@@ -18,6 +18,6 @@ test('all 148 new source sheets have a hashed audit record',async()=>{
 });
 test('the sixth phone page reaches Tommy, Shaggy and Jacksyn and survives rotation',()=>{
  const selection=new RosterSelection(roster.length,6);selection.choose(32);
- assert.equal(selection.pages,6);assert.deepEqual(selection.visible,[30,31,32,33,34,35]);
+ assert.equal(selection.pages,7);assert.deepEqual(selection.visible,[30,31,32,33,34,35]);
  for(const size of [8,12,6]){selection.resize(size);assert.equal(selection.selected,32);assert.ok(selection.visible.includes(32));}
 });

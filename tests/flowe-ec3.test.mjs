@@ -11,7 +11,7 @@ for(const [index,id,stats,finisher] of [[24,'steven-flowe',[6,10,8,7],'STEVEN FL
  });
  test(`${id} has complete single-body movement, throws and all four weapons`,()=>{
   const f=roster[index],a=f.animations;
-  for(const [key,n] of Object.entries({walk:5,run:6,bat:5,trashcan:5,throw:5,lifted:5,jump:4,climb:6,entry:5,dive:2,down:2,ko:1}))assert.equal(a[key].length,n,key);
+  for(const [key,n] of Object.entries({walk:5,run:6,bat:5,trashcan:5,throw:5,lifted:5,jump:4,climb:6,entry:5,dive:2,down:2,ko:id==='steven-flowe'?2:1}))assert.equal(a[key].length,n,key);
   assert.equal(a.thrown.length,id==='ec3'?5:4);
   assert.deepEqual(f.weapons,['chair','bat','guitar','trashcan']);
   for(const e of [...a.bat,...a.trashcan,...a.thrown])assert.ok(e.w<290&&e.h>25,'No merged neighboring wrestlers or printed shadow frames');

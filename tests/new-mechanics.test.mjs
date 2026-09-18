@@ -13,13 +13,13 @@ const advance=(m,n=1,p1={},p2={})=>{for(let i=0;i<n;i++)m.step([{...emptyInput()
 const tap=(m,action,index=0)=>{const inputs=[emptyInput(),emptyInput()];inputs[index][action]=true;m.step(inputs,STEP);};
 
 test('all fifteen supplied wrestlers are selectable and the new network version accepts them',()=>{
- assert.equal(roster.length,36);assert.deepEqual(roster.slice(9).map(f=>f.name),['Able','Dani Mo','Facade','J-Rod','Matt Cross','Vincenzo','Caleb Konley','Sally Boy','Big Vito','Bruce Wayans','Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane','Steven Flowe','EC3','Krule','Jeeves','Atiba','JP Grayson','Tommy','Shaggy 2 Dope','Jacksyn','DJ Clay','Jeff Lane','Shane Mercer']);
+ assert.equal(roster.length,39);assert.deepEqual(roster.slice(9).map(f=>f.name),['Abel','Dani Mo','Facade','J-Rod','Matt Cross','Vincenzo','Caleb Konley','Sally Boy','Big Vito','Bruce Wayans','Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane','Steven Flowe','EC3','Krule','Jeeves','Atiba','JP Grayson','Tommy','Shaggy 2 Dope','Jackson','DJ Clay','Jeff Lane','Shane Mercer','Josh Bishop','Ring Rat','The Green Phantom']);
  for(let i=9;i<roster.length;i++)assert.ok(validRoom({protocol:PROTOCOL,host:{id:'host',fighter:i,online:true},guest:{id:'guest',fighter:14,online:true},arena:0,state:'lobby',created:Date.now()}));
  assert.ok(!validRoom({protocol:'lunacy-2d-v1',host:{id:'host',fighter:0},arena:0,state:'lobby',created:Date.now()}));
 });
 test('sustained directional movement runs and release stops it; blocking prevents attacks',()=>{
  const m=create();advance(m,15,{right:true});assert.equal(m.fighters[0].state,'walk');advance(m,15,{right:true});assert.equal(m.fighters[0].state,'run');advance(m);assert.equal(m.fighters[0].state,'idle');assert.equal(m.fighters[0].runTime,0);
- tap(m,'weapon');advance(m,20);advance(m,20,{block:true,heavy:true});assert.equal(m.fighters[0].state,'block');assert.equal(m.fighters[1].hp,100);
+ tap(m,'weapon');advance(m,20);advance(m,20,{block:true,light:true});assert.equal(m.fighters[0].state,'block');assert.equal(m.fighters[1].hp,100);
 });
 test('weapon cycling selects real attacks with distinct timing and one contact per swing',()=>{
  for(let id=9;id<roster.length;id++)for(const [weapon,move] of [['chair','heavy'],['bat','bat'],['guitar','guitar'],['trashcan','trashcan']]){

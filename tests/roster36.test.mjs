@@ -20,7 +20,7 @@ test('all 92 supplied sheets have a hashed preparation audit',async()=>{
 test('the complete sixth phone page reaches each newcomer through rotation',()=>{
  const picker=new RosterSelection(roster.length,6);
  for(const id of [33,34,35]){
-  picker.choose(id);assert.equal(picker.pages,6);assert.deepEqual(picker.visible,[30,31,32,33,34,35]);
+  picker.choose(id);assert.equal(picker.pages,7);assert.deepEqual(picker.visible,[30,31,32,33,34,35]);
   for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,id);assert.ok(picker.visible.includes(id));}
  }
 });
