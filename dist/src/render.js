@@ -1,8 +1,8 @@
-import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget,MOVEMENT_PACE} from './engine.js?v=0.19.0';
-import {ARENAS} from './arenas.js?v=0.19.0';
-import {attackPose} from './attack-animation.js?v=0.19.0';
-import {phoneCamera} from './phone-layout.js?v=0.19.0';
-import {drawArenaWordmarks} from './branding.js?v=0.19.0';
+import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget,MOVEMENT_PACE} from './engine.js?v=0.19.1';
+import {ARENAS} from './arenas.js?v=0.19.1';
+import {attackPose} from './attack-animation.js?v=0.19.1';
+import {phoneCamera} from './phone-layout.js?v=0.19.1';
+import {drawArenaWordmarks} from './branding.js?v=0.19.1';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
