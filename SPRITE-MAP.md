@@ -1,3 +1,13 @@
+# v0.18.0 presentation adaptations
+
+The original character atlas PNGs remain byte-for-byte unchanged. Metadata adds the missing original-nine taunt/climb/dive sequences using each wrestler's own victory, rise, crouch and strike frames. Those fighters' bat/guitar/trash-can swings use intact unarmed poses with small canvas-drawn props; Tony's bottle is also a canvas prop. Chair swings use their existing chair frames; bare hands use their own strikes.
+
+Tony and Kerry's back falls/pins use their own narrow side-profile body rotated backward around a ground-aligned pivot. These are code-animated fallback poses, not new hand-drawn fall sheets. Front bumps retain the prone recovery art. The inverted Tony source frames are excluded. Matt Cross, Steven Flowe and Big Vito have consistent fall/rest/KO endpoints; selected locomotion/jump frames have explicit render scales. The phone camera also reserves a normal jump envelope rather than resizing fighters on every jump/landing.
+
+`tools/apply_tester_fixes.py` is the final metadata pass after source regeneration. `tools/review_testers.mjs` renders 39 fighters across 12 actions plus phone geometry/control-art previews using native canvas. It does not run a browser.
+
+`dist/assets/ui/touch-control-sheet.png` is the user's original 1536×1024 sheet, unchanged. CSS background regions and `touch-control-regions.json` select D-pad, attacks, contextual grabs and recovery. HTML retains real hit areas, accessible labels and input behavior. Dynamic heavy/finisher fields and the escape meter overlay the sheet's empty wells.
+
 # New artwork → playable actions
 
 The seven new sets are Able, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, and Caleb Konley. They use their own supplied artwork. The existing nine unrelated wrestlers stay in the roster. Re-running `prepare_new_assets.py` replaces matching IDs rather than creating duplicate characters.
@@ -636,3 +646,25 @@ Reviewed movement, combat, fall/recovery and supplementary frames for all 36 fig
 
 All supplied image/audio files, fighter ratings, finishers and Championship mode remain included. The DJ Clay selection-screen report has not been reproduced: the shipped portrait is an intact side view. A screenshot is needed to identify the reported display problem. This is a full replacement ZIP, not a live deployment. See TESTING.md and tools/movement-audit.json for scope and limitations.
 
+
+
+## v0.17.0 — Josh Bishop, Ring Rat and The Green Phantom
+
+| Fighter | Supplied sheets | Rating source | Finisher |
+| --- | ---: | --- | --- |
+| Josh Bishop | 27 | User-approved table: 10 / 6 / 7 / 9 | Exit 187 |
+| Ring Rat | 31 | User-approved table: 7 / 5 / 5 / 7 | Stunner |
+| The Green Phantom | 28 | User-approved table: 7 / 6 / 6 / 6 | Unspecified; generic Lunacy Finisher |
+
+`tools/expansion39.py` mechanically extracts the supplied artwork. `tools/expansion39-audit.json` records all 86 source names, SHA-256 hashes and selected bounds. Original source PNGs are not modified. The original 36 roster definitions and 104 asset files are unchanged.
+
+Source caveat: Josh Bishop's files and ZIP use his name, but every printed sheet heading says “Caleb Konley.” This build follows the supplied filenames; headings are excluded from portraits and animations. The artwork has not been independently identified as Josh Bishop.
+
+Reviewed adaptations:
+
+- Josh and Green Phantom have no separate unarmed walk sheet: their own run frames play at the game's slower walk cadence. Their absent carried-overhead poses use their own clean horizontal dive body; absent thrown poses use their own backward fall.
+- Ring Rat has no unarmed elbow sheet: her own forward throw supplies light-strike contact. Combat timing and damage still use the shared light-attack rules.
+- Rope-entry source sheets contain intersecting posts and ropes; clean standing poses supply entrance slides. Climbing uses isolated upper-corner bodies. Dives use complete airborne bodies, excluding the ring scenery.
+- Ring Rat and Green Phantom's bat recovery panels are crossed by the previous pose's bat. Recovery returns to their own clean ready pose. Each has a complete isolated contact pose. Ring Rat's guitar and Green Phantom's chair contact are separated from neighboring bodies with reviewed silhouettes.
+- Left-facing carry sequences and Green Phantom's reversed kick chamber are normalized. Torso anchors reduce gait jitter. Flat fall endpoints, resting poses and recovery starts share the same atlas entries.
+- Green Phantom's unknown finisher is not assigned a new name. Source labels and tag finisher names do not introduce new tag-match mechanics.

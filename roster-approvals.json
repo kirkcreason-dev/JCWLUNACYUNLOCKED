@@ -5,7 +5,7 @@
   "entries": [
     {
       "id": "alice-crowley",
-      "name": "“Big Al” Alice Crowley",
+      "name": "\u201cBig Al\u201d Alice Crowley",
       "approved": true,
       "ratings": {
         "power": 8,
@@ -17,7 +17,7 @@
     },
     {
       "id": "josh-bishop",
-      "name": "“Big Money” Josh Bishop",
+      "name": "\u201cBig Money\u201d Josh Bishop",
       "approved": true,
       "ratings": {
         "power": 10,
@@ -29,7 +29,7 @@
     },
     {
       "id": "dani-mo",
-      "name": "“Dino-Myte” Dani Mo",
+      "name": "\u201cDino-Myte\u201d Dani Mo",
       "approved": true,
       "ratings": {
         "power": 6,
@@ -41,7 +41,7 @@
     },
     {
       "id": "kerry-morton",
-      "name": "“Mr. JCW” Kerry Morton",
+      "name": "\u201cMr. JCW\u201d Kerry Morton",
       "approved": true,
       "ratings": {
         "power": 7,
@@ -53,7 +53,7 @@
     },
     {
       "id": "caleb-konley",
-      "name": "“The Chosen One” Caleb Konley",
+      "name": "\u201cThe Chosen One\u201d Caleb Konley",
       "approved": true,
       "ratings": {
         "power": 7,
@@ -210,7 +210,7 @@
     },
     {
       "id": "jacksyn",
-      "name": "Jacksyn",
+      "name": "Jackson",
       "approved": true,
       "ratings": {
         "power": 6,
@@ -218,7 +218,10 @@
         "technique": 7,
         "toughness": 8
       },
-      "finisher": "As Above So Below (Tag)"
+      "finisher": "As Above So Below (Tag)",
+      "aliases": [
+        "Jacksyn"
+      ]
     },
     {
       "id": "jeeves",
@@ -361,7 +364,7 @@
     },
     {
       "id": "shane-mercer",
-      "name": "“Iron Demon” Shane Mercer",
+      "name": "\u201cIron Demon\u201d Shane Mercer",
       "approved": true,
       "ratings": {
         "power": 10,

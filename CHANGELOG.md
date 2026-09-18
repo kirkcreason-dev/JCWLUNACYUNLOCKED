@@ -1,3 +1,34 @@
+# v0.19.0 — Wrestling sounds and DJ Clay bass attack
+
+- Add the supplied punches, kicks, weapon hits, slams, rope rebounds, landings, footsteps, bells and synthetic grunts. Impacts follow confirmed contact and the weapon used for that attack.
+- Synchronize DJ Clay's separate button/charge/blast samples to his existing finisher. Fire the bass on the active frame even on a miss; cancel charge when interrupted or paused. Retain existing attack speed and damage.
+- Load 49 samples with three background workers, timeouts, retry backoff and a 16 MiB decoded cache cap. Preserve all 53 original WAV files, including the unused preview and combined attacks.
+- Cap sample and procedural playback together at 24 voices, release nodes on completion/pause/mute and apply an effects compressor. Keep footsteps and grunts below primary impacts and retain procedural fallbacks.
+- Forward the active-frame cue once to online guests; use v19 / LU190 rooms. Existing saves, fighters, artwork, controls and music remain intact.
+- Full ZIP only. No push or deployment.
+
+# v0.18.0 — Tester fixes, shared moves, arcade rewards and touch artwork
+
+- All 39 fighters have bare hands, chair, bat, guitar and trash can; 2 Tuff Tony also has a bottle. The original nine now taunt, climb and dive using their own supplied poses.
+- Corrected display names: Abel and Jackson. Stable internal IDs preserve existing saves and source mappings.
+- Free movement faces travel. Attacks and blocks turn toward the opponent. Matt Cross/Steven Flowe locomotion and jump scales are adjusted; Vito uses full-size airborne poses. Matching fall/rest endpoints avoid size pops. Tony and Kerry use backward body rotation for face-up back bumps and pins, without the inverted fall frames.
+- Down + HEAVY commits to a guard counter. HEAVY in the air is an air strike. Both use the fighter's own strike/kick art. A confirmed HIT → HIT → HEAVY chain ends in a knockdown. Blocks and whiffs retain recovery; no infinite chain.
+- Arcade rewards per fighter: Easy bronze/Lunacy Survivor, Normal silver/Roster Wrecker, Hard gold/Lunacy Legend. Each medal adds a portrait frame; all three earn a Triple Crown frame. Achievements save locally. Arcade runs themselves remain single-session runs; championships retain their existing checkpoints.
+- Taller portrait ring, shorter landscape HUD, safe-area/fullscreen handling, and a stable camera envelope during normal jumps. Browser bars and rotation recompute the layout without repeated canvas clearing.
+- Stronger, throttled vibration on supported devices; gesture activation, a TEST VIBRATION button, and explicit unsupported/declined feedback. Unsupported browsers cannot be made to vibrate by game code. See [MDN Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate).
+- Supplied touch-control sheet used unchanged through CSS regions: D-pad, HIT/HEAVY/FINISH, contextual GRAB states and recovery. Weapon names, finisher charge and escape progress stay live. The original functional controls remain the fallback if this optional artwork fails to load.
+
+Full source plus playable `dist` are included. No push or deployment. If regenerating character atlases, run `python3 tools/apply_tester_fixes.py` after the older extraction/repair passes, then `npm test` and `npm run check`.
+
+# v0.17.0 — 39 fighters
+
+- Add Josh Bishop, Ring Rat and The Green Phantom from the three supplied packs, retaining all existing roster slots and assets.
+- Apply the approved ratings and finishers from the supplied roster table. Green Phantom retains the generic finisher because the table leaves it blank.
+- Remove sheet headers/scenery, isolate overlapping weapon poses, normalize facing, align locomotion to the torso, and keep fall/recovery endpoints consistent.
+- Add a seventh phone roster page. All three additions work as players/opponents, championship contenders and online host/guest selections.
+- Use v17 / LU170 online rooms to keep the expanded roster separate from older clients. Existing championship saves remain compatible.
+- Preserve faster gameplay, stability settings, supplied branding, audio and championship credits. Full ZIP delivery only; no deployment.
+
 # v0.16.0 — Combat, stability and championship payoff
 
 - Rope rebounds, smoother grapple lifts, tuned impact stops and hurt reactions.

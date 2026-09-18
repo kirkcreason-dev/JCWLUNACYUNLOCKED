@@ -1,19 +1,21 @@
+Display correction in v0.18.0: Able is shown as **Abel**, and Jacksyn as **Jackson**, per the tester notes. Internal IDs and approved ratings remain unchanged; Jacksyn is retained as a source/approval alias.
+
 # Roster approval record — September 17, 2026
 
 Source: the user's supplied ratings, finisher and approval table. YES and NO below reproduce those instructions. This is the game's roster approval record; no signatures or additional approvals have been inferred.
 
-HollyHood Haley J, Luigi Primo and Sophia Rose are excluded. None was present in the 36-fighter baseline, so the playable count stays at 36. Josh Bishop, Ring Rat and The Green Phantom are approved in the table but are not playable in this build; their character packs have not been integrated.
+HollyHood Haley J, Luigi Primo and Sophia Rose are excluded. The roster contains 39 playable fighters, including the supplied Josh Bishop, Ring Rat and The Green Phantom packs.
 
 Violent J, Shaggy 2 Dope, DJ Clay and Jeff Lane are absent from this table. Their existing playable slots are retained under the request to remove the entries marked NO; this table does not assign them a new YES approval.
 
-All 32 listed, playable fighters already match the supplied ratings and finisher names. Blank finisher cells remain unspecified and use the generic Lunacy Finisher in the game. Tag names remain labels in singles matches. Existing IDs/display aliases are retained: Able → Abel, Tommy → Tommy Grayson, Moshpit Mike → Mosh Pit Mike, Ruffo/Yabo → their 'the Clown' entries.
+All 35 listed, playable fighters match the supplied ratings and finisher names. Blank finisher cells remain unspecified and use the generic Lunacy Finisher in the game. Tag names remain labels in singles matches. Existing IDs/display aliases are retained: Able → Abel, Tommy → Tommy Grayson, Moshpit Mike → Mosh Pit Mike, Ruffo/Yabo → their 'the Clown' entries.
 
 `roster-approvals.json` is the structured record. `npm run check` rejects an excluded fighter and verifies listed playable fighters against these ratings and finisher names.
 
 | Wrestler | Power | Speed | Technique | Toughness | Finisher | Approval | In build |
 | --- | ---: | ---: | ---: | ---: | --- | --- | --- |
 | “Big Al” Alice Crowley | 8 | 6 | 8 | 9 | Uni-Lariat | YES | Playable |
-| “Big Money” Josh Bishop | 10 | 6 | 7 | 9 | Exit 187 | YES | Awaiting character pack |
+| “Big Money” Josh Bishop | 10 | 6 | 7 | 9 | Exit 187 | YES | Playable |
 | “Dino-Myte” Dani Mo | 6 | 8 | 8 | 8 | Moon Mist Twist | YES | Playable |
 | “Mr. JCW” Kerry Morton | 7 | 8 | 10 | 7 | Kiss It Goodbye | YES | Playable |
 | “The Chosen One” Caleb Konley | 7 | 8 | 9 | 8 | Burning Hammer | YES | Playable |
@@ -39,13 +41,13 @@ All 32 listed, playable fighters already match the supplied ratings and finisher
 | Mickie Knuckles | 8 | 5 | 6 | 9 | — | YES | Playable |
 | Mosh Pit Mike | 6 | 6 | 7 | 8 | Snapmare Powerbomb | YES | Playable |
 | Mr. Happy | 10 | 4 | 6 | 8 | — | YES | Playable |
-| Ring Rat | 7 | 5 | 5 | 7 | Stunner | YES | Awaiting character pack |
+| Ring Rat | 7 | 5 | 5 | 7 | Stunner | YES | Playable |
 | Ruffo the Clown | 8 | 7 | 7 | 8 | — | YES | Playable |
 | Sally Boy | 7 | 8 | 5 | 7 | Hook Kick | YES | Playable |
 | “Iron Demon” Shane Mercer | 10 | 6 | 7 | 8 | MoonSault and Battery | YES | Playable |
 | Sophia Rose | — | — | — | — | — | NO | Excluded |
 | Steven Flowe | 6 | 10 | 8 | 7 | Steven Flowesion | YES | Playable |
-| The Green Phantom | 7 | 6 | 6 | 6 | — | YES | Awaiting character pack |
+| The Green Phantom | 7 | 6 | 6 | 6 | — | YES | Playable |
 | Tommy Grayson | 5 | 9 | 8 | 7 | T-Gimmick (Tag) | YES | Playable |
 | Vincenzo | 8 | 5 | 6 | 7 | — | YES | Playable |
 | Willie Mack | 7 | 7 | 9 | 8 | Stunner | YES | Playable |

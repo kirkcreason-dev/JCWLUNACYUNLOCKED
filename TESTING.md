@@ -1,3 +1,43 @@
+# v0.19.0 — Sound integration verification
+
+- `npm test`: **260 passing tests**, including the prior gameplay suite and 13 sound-pack tests. New coverage checks source hashes, bounded/concurrent loading, timeouts, corrupt decoding, context changes, variant selection, weapon contact, DJ Clay firing on hits/blocks/misses, interrupted charges, online event deduplication, voice cleanup, mute/pause, footsteps and procedural fallbacks.
+- `npm run check`: JavaScript syntax, UI references, 39 fighters, 4,741 animation entries, six arenas, both music tracks and all 49 runtime samples pass.
+- `node tools/soak.mjs`: **117 complete simulated matches**, all 39 fighters on three difficulties; **476,774 simulation steps**, finite bounded state and valid network snapshots throughout.
+- All 53 supplied WAV files retain their original SHA-256 hashes. PCM/header inspection confirms mono 44.1 kHz, 16-bit audio, nonzero signal and peaks below full scale. Runtime samples require 6,039,936 decoded bytes at 44.1 kHz; actual decoding uses the browser's audio-context rate and stays subject to the cache cap.
+- Pre-existing artwork, music and the manual deployment workflow are compared byte for byte against v0.18.0 before packaging.
+
+Audio tests use a Web Audio model and PCM inspection. No browser, physical-device listening, loudness comparison or device frame-rate measurement was performed for this update. On the testers' phones and desktops, check the mix with music, DJ Clay's firing frame and interrupted charge, pause/resume, mute, background/restore and a long session. Two-client listening checks require v0.19.0 / LU190 on both sides. See [AUDIO.md](AUDIO.md). Nothing has been deployed.
+
+---
+
+# v0.18.0 — Tester feedback verification
+
+- `npm test`: 247 passing tests. New checks exercise every fighter's taunt, both-corner climb/dive, full weapon cycle and actual weapon contact, directional facing, blocked/landed guard counters and air strikes, three-hit knockdowns, online move snapshots, grounded pin/round-end behavior, stable normal-jump camera, safe haptics/fullscreen fallbacks, saved arcade medals and invalid award rejection.
+- `npm run check`: 39 approved fighters, 4,741 animation entries, six arenas, both music tracks, JavaScript syntax and UI/asset references pass.
+- `node tools/soak.mjs`: 117 complete best-of-three simulated matches on all three difficulties; 476,774 fixed simulation steps, finite bounded state and valid online snapshots throughout.
+- Optional linkedom DOM integration: startup, roster, pause/help, asset eviction, championship credits/defense, all 38-opponent arcade result flows on each of three difficulties, persisted Triple Crown display, unsupported haptics and optional touch artwork loading pass.
+- Native canvas: reviewed all 39 fighters in 12 poses/actions; inspected Tony/Kerry face-up ground poses and representative portrait/landscape/small-phone geometry with the supplied control artwork. All animation crops are validated in both facings by the render tests.
+- The supplied touch sheet and all pre-existing character PNGs are preserved unchanged. No new raster sprite generation was required.
+
+These checks use simulation, native canvas and a DOM model. They do not establish browser CSS correctness, physical vibration, fullscreen behavior or frame rate on a real phone. Device handoff should check this build on the testers' actual desktop/phone browsers, especially rotation/fullscreen, the TEST VIBRATION control, character size/facing and a full arcade reward. Online device checks require two v0.18.0 / LU180 clients. No deployment has been performed.
+
+---
+
+# v0.17.0 — 39-fighter release verification
+
+- `npm test`: 233 automated tests pass, including all new online host/guest selections, both-side strikes and weapon attacks, seventh-page phone selection, championship save/reload/defense, and source-pack coverage.
+- `npm run check`: 39 fighters, 4,486 animation entries, six arenas, both music tracks, valid asset references and approved roster ratings pass.
+- `node tools/soak.mjs`: 117 full simulated matches across all 39 fighters on easy/normal/hard; 471,541 fixed steps. All reached a best-of-three result with finite state, valid ring bounds and valid network snapshots. This is not a browser frame-rate benchmark.
+- `tools/review_flow.mjs` with optional linkedom: startup, all three new portraits/rating labels, pause/help, arena cache eviction, championship progression, automatic supplied credits, defense and online menu labeling pass in a DOM model.
+- Native canvas review: all three new fighters across 12 gameplay states; portrait and landscape phone canvas layouts. Source/extracted animation sheets and portraits were visually inspected. These are game-renderer images, not browser screenshots.
+- Compared with v0.16.0: the first 36 roster records, 104 existing asset files and manual deployment workflow remain unchanged.
+
+Source adaptations and the Josh/Caleb heading mismatch are documented in SPRITE-MAP.md. The full source and playable dist are packaged together. Nothing has been pushed or deployed.
+
+Device handoff: play several matches on an actual iPhone, Android phone and desktop browser, rotate during selection/play, background and restore a match, and check audio after first tap. Online testing here uses the in-memory transport; two real v0.17.0 / LU170 clients should be checked on the intended hosting service. Physical-device crash/lag behavior and browser CSS rendering have not been measured in this environment.
+
+---
+
 # v0.16.0 — Verification and device handoff
 
 ## Completed here

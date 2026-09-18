@@ -1,3 +1,17 @@
+# v0.19.0 sound update
+
+CONTROLS has separate music and effects volumes. Supplied wrestling effects follow contact and movement. DJ Clay's finisher now plays his button press, charge and bass blast; an interrupted wind-up stops the charge. Attack timing, damage and meter rules remain the same. Missing audio falls back to the procedural sounds while play continues.
+
+# v0.18.0 controls and rewards
+
+Every fighter starts with bare hands. WEAPON cycles chair, bat, guitar, trash can, then bare hands; Tony has a bottle before bare hands. A guitar breaks after two landed weapon attacks. Everyone can taunt for meter and climb at either corner when the opponent is far enough away.
+
+Move left/right to face your direction of travel. Guarding or attacking faces your opponent. Hold Down + HEAVY for a guard counter: it drops your guard and commits to an unarmed knockdown strike, so mistiming it can be punished. Jump, then HEAVY for an air strike. Land HIT, HIT, HEAVY for a three-hit knockdown chain. Follow-up damage is reduced. Finishers still require full meter.
+
+Clear the entire arcade roster to earn the selected difficulty's medal for that fighter: Easy bronze, Normal silver, Hard gold. Matching portrait frames are applied when that difficulty is selected. All three medals award a Triple Crown frame. Medals save on this browser; blocked storage keeps them for the session and displays that limitation. A loss, partial run, CPU exhibition or championship match never awards an arcade medal. Arcade runs must be completed in one session.
+
+The illustrated phone GRAB button changes to PIN, BREAK, CLIMB, DIVE or RELEASE. Recovery changes to GET UP, KICK OUT or ESCAPE. Weapon and finisher fields are live. Controls → TEST VIBRATION checks supported devices; it reports unavailable or declined vibration honestly. Device silent/DND settings can suppress a request accepted by the browser.
+
 # v0.16.0 play additions
 
 Run into either rope to rebound. Press HEAVY on the return for a running attack; Down cancels into guard. Fighter ratings now also select distinct CPU tactics and finisher tradeoffs, while technique improves guard recovery.
@@ -14,7 +28,7 @@ Win the title to receive the Lunacy championship belt, then select **DEFEND YOUR
 
 Progress saves on this browser after each match, separately for each fighter and difficulty. Return to the same fighter/difficulty and choose **CONTINUE CHAMPIONSHIP** or **DEFEND YOUR TITLE**. Quitting or reloading mid-match restarts that match, not the whole run. Records are local to this browser, not synced across devices; clearing browser data removes them. When browser storage is blocked, the game displays that progress lasts only for the session.
 
-This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v16 / LU160. The full ZIP is not deployed automatically.
+This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v19 / LU190. The full ZIP is not deployed automatically.
 
 ## Timed reversals
 
