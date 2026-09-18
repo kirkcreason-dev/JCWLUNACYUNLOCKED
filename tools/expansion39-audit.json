@@ -1,0 +1,2992 @@
+[
+  {
+    "fighter": "josh-bishop",
+    "animation": "idle",
+    "source": "Josh Bishop/Josh Bishop standing.png",
+    "sourceSHA256": "632f5e27781145dd4a4791934e24b9cb45edb751205b43c14b8ce42ec17c8f7a",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 81,
+        "y": 279,
+        "w": 281,
+        "h": 586
+      },
+      {
+        "x": 497,
+        "y": 281,
+        "w": 275,
+        "h": 584
+      },
+      {
+        "x": 979,
+        "y": 281,
+        "w": 126,
+        "h": 584
+      },
+      {
+        "x": 1348,
+        "y": 281,
+        "w": 128,
+        "h": 584
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "light",
+    "source": "Josh Bishop/JB elbow attack.png",
+    "sourceSHA256": "716c6709afa1bbf4fc4900fe9e23d70f6081046dd71c1b1d8d47395df597cc16",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 20,
+        "y": 373,
+        "w": 321,
+        "h": 493
+      },
+      {
+        "x": 371,
+        "y": 374,
+        "w": 330,
+        "h": 492
+      },
+      {
+        "x": 701,
+        "y": 374,
+        "w": 381,
+        "h": 492
+      },
+      {
+        "x": 1089,
+        "y": 373,
+        "w": 316,
+        "h": 492
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "kick",
+    "source": "Josh Bishop/JB kicking.png",
+    "sourceSHA256": "a27b3e9751ca03d0d9760b96f4d1661b3689e52cc9d1d6b33068df8ea0e41b0b",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 15,
+        "y": 410,
+        "w": 325,
+        "h": 504
+      },
+      {
+        "x": 433,
+        "y": 410,
+        "w": 265,
+        "h": 507
+      },
+      {
+        "x": 760,
+        "y": 410,
+        "w": 520,
+        "h": 507
+      },
+      {
+        "x": 1265,
+        "y": 410,
+        "w": 316,
+        "h": 504
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "run",
+    "source": "Josh Bishop/JB running.png",
+    "sourceSHA256": "96b175123abf3e5898a7111fe701d0cfde64fa22fe4e93e565dbc90e5761b5b9",
+    "count": 6,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 22,
+        "y": 724,
+        "w": 194,
+        "h": 283
+      },
+      {
+        "x": 230,
+        "y": 722,
+        "w": 227,
+        "h": 284
+      },
+      {
+        "x": 509,
+        "y": 728,
+        "w": 181,
+        "h": 280
+      },
+      {
+        "x": 690,
+        "y": 728,
+        "w": 248,
+        "h": 270
+      },
+      {
+        "x": 953,
+        "y": 724,
+        "w": 213,
+        "h": 282
+      },
+      {
+        "x": 1199,
+        "y": 724,
+        "w": 205,
+        "h": 283
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "jump",
+    "source": "Josh Bishop/JB jumping.png",
+    "sourceSHA256": "eadd8fd28019756d66825a08a44883cca1faafc2089edee431360ba7231a02e0",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 109,
+        "y": 506,
+        "w": 264,
+        "h": 354
+      },
+      {
+        "x": 404,
+        "y": 402,
+        "w": 348,
+        "h": 449
+      },
+      {
+        "x": 875,
+        "y": 299,
+        "w": 263,
+        "h": 382
+      },
+      {
+        "x": 1222,
+        "y": 496,
+        "w": 293,
+        "h": 364
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "chair",
+    "source": "Josh Bishop/JB attack with chair.png",
+    "sourceSHA256": "893438c4fddfc30af817999c132a799725e58f8b546bb76a7db89395ddff736f",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 19,
+        "y": 352,
+        "w": 230,
+        "h": 538
+      },
+      {
+        "x": 280,
+        "y": 354,
+        "w": 255,
+        "h": 536
+      },
+      {
+        "x": 547,
+        "y": 547,
+        "w": 322,
+        "h": 345
+      },
+      {
+        "x": 818,
+        "y": 542,
+        "w": 372,
+        "h": 349
+      },
+      {
+        "x": 1175,
+        "y": 509,
+        "w": 226,
+        "h": 383
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "bat",
+    "source": "Josh Bishop/JB attack with bat.png",
+    "sourceSHA256": "b157e63d3fb42b345f7571271942aec3dd36fc202819c43f619b78ed0fa5eb5d",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 18,
+        "y": 430,
+        "w": 267,
+        "h": 405
+      },
+      {
+        "x": 295,
+        "y": 317,
+        "w": 258,
+        "h": 520
+      },
+      {
+        "x": 553,
+        "y": 432,
+        "w": 359,
+        "h": 405
+      },
+      {
+        "x": 849,
+        "y": 432,
+        "w": 360,
+        "h": 404
+      },
+      {
+        "x": 1168,
+        "y": 425,
+        "w": 238,
+        "h": 413
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "guitar",
+    "source": "Josh Bishop/JB attack with guitar.png",
+    "sourceSHA256": "77d9060f4aa977420725f311cc16a0054fc5ff487ea52387ad22d912f676349d",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 22,
+        "y": 381,
+        "w": 258,
+        "h": 490
+      },
+      {
+        "x": 292,
+        "y": 229,
+        "w": 273,
+        "h": 639
+      },
+      {
+        "x": 575,
+        "y": 457,
+        "w": 274,
+        "h": 410
+      },
+      {
+        "x": 859,
+        "y": 499,
+        "w": 271,
+        "h": 388
+      },
+      {
+        "x": 1155,
+        "y": 375,
+        "w": 255,
+        "h": 499
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "trashcan",
+    "source": "Josh Bishop/JB attack with trashcan.png",
+    "sourceSHA256": "50a52c381f00b7852b788348a9102a5adfe783dd0041958af304a097ed3aa497",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 18,
+        "y": 467,
+        "w": 243,
+        "h": 424
+      },
+      {
+        "x": 272,
+        "y": 408,
+        "w": 278,
+        "h": 483
+      },
+      {
+        "x": 546,
+        "y": 246,
+        "w": 253,
+        "h": 645
+      },
+      {
+        "x": 801,
+        "y": 489,
+        "w": 318,
+        "h": 402
+      },
+      {
+        "x": 1069,
+        "y": 491,
+        "w": 338,
+        "h": 400
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "carryChair",
+    "source": "Josh Bishop/JB walking with chair.png",
+    "sourceSHA256": "e95dd6cfebe2f490518aa08d770c0efd42d13e525abc75a88b7c7e81ac870a98",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 54,
+        "y": 658,
+        "w": 230,
+        "h": 302
+      },
+      {
+        "x": 369,
+        "y": 658,
+        "w": 238,
+        "h": 302
+      },
+      {
+        "x": 686,
+        "y": 658,
+        "w": 238,
+        "h": 301
+      },
+      {
+        "x": 1003,
+        "y": 658,
+        "w": 238,
+        "h": 303
+      },
+      {
+        "x": 1319,
+        "y": 658,
+        "w": 238,
+        "h": 303
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "carryBat",
+    "source": "Josh Bishop/JB walk with bat.png",
+    "sourceSHA256": "bedf1cface07b15a6743122ecd901b2aa18b14dca82b612c7f20461a70412645",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 67,
+        "y": 656,
+        "w": 260,
+        "h": 309
+      },
+      {
+        "x": 370,
+        "y": 655,
+        "w": 254,
+        "h": 311
+      },
+      {
+        "x": 676,
+        "y": 655,
+        "w": 260,
+        "h": 309
+      },
+      {
+        "x": 984,
+        "y": 655,
+        "w": 255,
+        "h": 309
+      },
+      {
+        "x": 1325,
+        "y": 655,
+        "w": 251,
+        "h": 309
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "carryGuitar",
+    "source": "Josh Bishop/JB walking with guitar.png",
+    "sourceSHA256": "6a9ff12c479140384c9aa72638e827af6354af1fb1d8df0d0d005484408e9bfc",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 70,
+        "y": 556,
+        "w": 230,
+        "h": 313
+      },
+      {
+        "x": 393,
+        "y": 556,
+        "w": 216,
+        "h": 313
+      },
+      {
+        "x": 688,
+        "y": 556,
+        "w": 231,
+        "h": 313
+      },
+      {
+        "x": 997,
+        "y": 556,
+        "w": 228,
+        "h": 313
+      },
+      {
+        "x": 1303,
+        "y": 556,
+        "w": 227,
+        "h": 313
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "carryTrashcan",
+    "source": "Josh Bishop/JB walking with trashcan.png",
+    "sourceSHA256": "b868c3d63be007826d9b28754433ce1a568ed2e2f1577c83d37a9e0a51ab6b9d",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 18,
+        "y": 391,
+        "w": 305,
+        "h": 520
+      },
+      {
+        "x": 295,
+        "y": 391,
+        "w": 303,
+        "h": 519
+      },
+      {
+        "x": 576,
+        "y": 391,
+        "w": 283,
+        "h": 519
+      },
+      {
+        "x": 863,
+        "y": 393,
+        "w": 289,
+        "h": 515
+      },
+      {
+        "x": 1144,
+        "y": 392,
+        "w": 271,
+        "h": 517
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "lift",
+    "source": "Josh Bishop/JB lifting overhead.png",
+    "sourceSHA256": "ccbf2641ac87b69894f5a765c1653fd962bda1c41495a05e8a08ecd2741dab5e",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 28,
+        "y": 364,
+        "w": 326,
+        "h": 537
+      },
+      {
+        "x": 422,
+        "y": 434,
+        "w": 350,
+        "h": 467
+      },
+      {
+        "x": 839,
+        "y": 383,
+        "w": 335,
+        "h": 518
+      },
+      {
+        "x": 1258,
+        "y": 263,
+        "w": 319,
+        "h": 638
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "throw",
+    "source": "Josh Bishop/JB throwing wrestler.png",
+    "sourceSHA256": "aa164f5bce161f28edce0c430d4eff4b7e2ef8ea4992b236b257b2b64141fa68",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 9,
+        "y": 485,
+        "w": 302,
+        "h": 377
+      },
+      {
+        "x": 300,
+        "y": 460,
+        "w": 298,
+        "h": 403
+      },
+      {
+        "x": 590,
+        "y": 394,
+        "w": 232,
+        "h": 471
+      },
+      {
+        "x": 825,
+        "y": 502,
+        "w": 356,
+        "h": 360
+      },
+      {
+        "x": 1157,
+        "y": 457,
+        "w": 253,
+        "h": 409
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "grapple",
+    "source": "Josh Bishop/JB grappling.png",
+    "sourceSHA256": "6678e1070003d7b915fe94069347c4e120354860ebbba392444baee996b9b793",
+    "count": 3,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 91,
+        "y": 202,
+        "w": 453,
+        "h": 401
+      },
+      {
+        "x": 607,
+        "y": 235,
+        "w": 376,
+        "h": 369
+      },
+      {
+        "x": 1127,
+        "y": 230,
+        "w": 325,
+        "h": 374
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "hurt",
+    "source": "Josh Bishop/JB dazed.png",
+    "sourceSHA256": "90fd0d641ed471f518cb7430bc7d26429b1b64702ca05fb7f50f98ff23923474",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 31,
+        "y": 328,
+        "w": 287,
+        "h": 605
+      },
+      {
+        "x": 380,
+        "y": 357,
+        "w": 288,
+        "h": 575
+      },
+      {
+        "x": 754,
+        "y": 374,
+        "w": 277,
+        "h": 558
+      },
+      {
+        "x": 1116,
+        "y": 353,
+        "w": 279,
+        "h": 580
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "down",
+    "source": "Josh Bishop/JB laying facedown and faceup.png",
+    "sourceSHA256": "d3669f72a87b8bcb73dc9aa257eabe1c3f22f283d9ff0931aabacb7ed441f76d",
+    "count": 3,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 24,
+        "y": 584,
+        "w": 554,
+        "h": 147
+      },
+      {
+        "x": 621,
+        "y": 571,
+        "w": 483,
+        "h": 207
+      },
+      {
+        "x": 1131,
+        "y": 562,
+        "w": 444,
+        "h": 193
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "fallFront",
+    "source": "Josh Bishop/JB falling foward.png",
+    "sourceSHA256": "8c1fdae7b8763eb7759350c842312d83fbe7d9e8833614abac24c6f61df685ac",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 34,
+        "y": 393,
+        "w": 207,
+        "h": 442
+      },
+      {
+        "x": 262,
+        "y": 450,
+        "w": 256,
+        "h": 385
+      },
+      {
+        "x": 496,
+        "y": 520,
+        "w": 316,
+        "h": 309
+      },
+      {
+        "x": 734,
+        "y": 664,
+        "w": 663,
+        "h": 181
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "fallBack",
+    "source": "Josh Bishop/JB falling backwards.png",
+    "sourceSHA256": "712e1fd48c378363aa9c07789270bf7e436e88e60471c3c318248022298555f4",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 45,
+        "y": 412,
+        "w": 210,
+        "h": 406
+      },
+      {
+        "x": 267,
+        "y": 458,
+        "w": 268,
+        "h": 360
+      },
+      {
+        "x": 528,
+        "y": 622,
+        "w": 272,
+        "h": 201
+      },
+      {
+        "x": 790,
+        "y": 698,
+        "w": 287,
+        "h": 135
+      },
+      {
+        "x": 1089,
+        "y": 741,
+        "w": 311,
+        "h": 93
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "rise",
+    "source": "Josh Bishop/JB getting up from facedown.png",
+    "sourceSHA256": "8e6ba96af725e260222855d2dccfd15cd9691c914f80fbb3abfac6e90459366a",
+    "count": 6,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 22,
+        "y": 774,
+        "w": 333,
+        "h": 106
+      },
+      {
+        "x": 366,
+        "y": 710,
+        "w": 267,
+        "h": 170
+      },
+      {
+        "x": 642,
+        "y": 643,
+        "w": 225,
+        "h": 236
+      },
+      {
+        "x": 889,
+        "y": 583,
+        "w": 212,
+        "h": 289
+      },
+      {
+        "x": 1122,
+        "y": 519,
+        "w": 223,
+        "h": 356
+      },
+      {
+        "x": 1376,
+        "y": 439,
+        "w": 198,
+        "h": 436
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "kneel",
+    "source": "Josh Bishop/JB kneeling.png",
+    "sourceSHA256": "e69124786e1439375de6a48f7cd97ca1eca1f779dc2053095359e92e84fdbc82",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 42,
+        "y": 274,
+        "w": 308,
+        "h": 621
+      },
+      {
+        "x": 430,
+        "y": 376,
+        "w": 339,
+        "h": 517
+      },
+      {
+        "x": 827,
+        "y": 481,
+        "w": 343,
+        "h": 413
+      },
+      {
+        "x": 1245,
+        "y": 582,
+        "w": 314,
+        "h": 315
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "pin",
+    "source": "Josh Bishop/JB pinning.png",
+    "sourceSHA256": "14ba44bc5d11b82d3278edc06282555b255e4fb37018d4cc5f3392905587b13f",
+    "count": 4,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 21,
+        "y": 426,
+        "w": 296,
+        "h": 438
+      },
+      {
+        "x": 392,
+        "y": 536,
+        "w": 278,
+        "h": 325
+      },
+      {
+        "x": 698,
+        "y": 614,
+        "w": 331,
+        "h": 251
+      },
+      {
+        "x": 1034,
+        "y": 689,
+        "w": 368,
+        "h": 176
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "victory",
+    "source": "Josh Bishop/JB victory.png",
+    "sourceSHA256": "b7115eb5ed1499f961f4bb221ec5303a1d072cb3548e405f0797400ebbc53ec2",
+    "count": 5,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 18,
+        "y": 430,
+        "w": 242,
+        "h": 507
+      },
+      {
+        "x": 304,
+        "y": 440,
+        "w": 245,
+        "h": 497
+      },
+      {
+        "x": 593,
+        "y": 374,
+        "w": 235,
+        "h": 563
+      },
+      {
+        "x": 841,
+        "y": 440,
+        "w": 312,
+        "h": 497
+      },
+      {
+        "x": 1163,
+        "y": 430,
+        "w": 242,
+        "h": 507
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "climb",
+    "source": "Josh Bishop/JB climbing on top rope.png",
+    "sourceSHA256": "06a8e86dc91dcf87f07fd4681dd2590fc68bbd3a46a1ccff103fa7c5e3136a41",
+    "count": 2,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 1034,
+        "y": 488,
+        "w": 151,
+        "h": 286
+      },
+      {
+        "x": 1237,
+        "y": 343,
+        "w": 153,
+        "h": 336
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "entry",
+    "source": "Josh Bishop/JB climbing through ropes.png",
+    "sourceSHA256": "8be46a9fa318f7dd0209eaf1e925c0e8a3f08178eee2499b1126040f66d6103c",
+    "count": 1,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 1156,
+        "y": 284,
+        "w": 255,
+        "h": 304
+      }
+    ]
+  },
+  {
+    "fighter": "josh-bishop",
+    "animation": "dive",
+    "source": "Josh Bishop/JB jumping off corner.png",
+    "sourceSHA256": "aef42fbe42e6a6ecdde598534f94264d161215e3630d555f28cb73ceccf3d6fb",
+    "count": 2,
+    "notes": "All supplied Josh sheets print Caleb Konley; filename identity retained, labels excluded.",
+    "bounds": [
+      {
+        "x": 414,
+        "y": 316,
+        "w": 346,
+        "h": 318
+      },
+      {
+        "x": 793,
+        "y": 479,
+        "w": 504,
+        "h": 231
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "idle",
+    "source": "Ring Rat/Ring Rat standing.png",
+    "sourceSHA256": "5dca527adcde54c985111ac8f9e5c40332a329f4c386280f7de8b650352fee35",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 29,
+        "y": 150,
+        "w": 346,
+        "h": 827
+      },
+      {
+        "x": 432,
+        "y": 165,
+        "w": 350,
+        "h": 812
+      },
+      {
+        "x": 889,
+        "y": 165,
+        "w": 221,
+        "h": 819
+      },
+      {
+        "x": 1266,
+        "y": 151,
+        "w": 228,
+        "h": 833
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "walk",
+    "source": "Ring Rat/RR walking.png",
+    "sourceSHA256": "7057d5334e524f5658f6af4874bd8038bcde420f1258099076c13d9c52af20ae",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 74,
+        "y": 559,
+        "w": 278,
+        "h": 414
+      },
+      {
+        "x": 393,
+        "y": 558,
+        "w": 272,
+        "h": 415
+      },
+      {
+        "x": 686,
+        "y": 559,
+        "w": 244,
+        "h": 413
+      },
+      {
+        "x": 950,
+        "y": 559,
+        "w": 267,
+        "h": 414
+      },
+      {
+        "x": 1264,
+        "y": 559,
+        "w": 272,
+        "h": 414
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "kick",
+    "source": "Ring Rat/RR kicking.png",
+    "sourceSHA256": "8ec9249c81319ae8ab00c02d65b20bde2fa5a36e8ad1204e3155f09be6875781",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 41,
+        "y": 578,
+        "w": 247,
+        "h": 398
+      },
+      {
+        "x": 362,
+        "y": 578,
+        "w": 198,
+        "h": 397
+      },
+      {
+        "x": 657,
+        "y": 586,
+        "w": 358,
+        "h": 389
+      },
+      {
+        "x": 1047,
+        "y": 583,
+        "w": 200,
+        "h": 391
+      },
+      {
+        "x": 1310,
+        "y": 580,
+        "w": 257,
+        "h": 396
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "run",
+    "source": "Ring Rat/RR running.png",
+    "sourceSHA256": "4662389160d511ce81c98a62c1bf25a6001011623ed6d7a450043c1b0fcad75c",
+    "count": 6,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 24,
+        "y": 542,
+        "w": 248,
+        "h": 307
+      },
+      {
+        "x": 291,
+        "y": 544,
+        "w": 226,
+        "h": 311
+      },
+      {
+        "x": 531,
+        "y": 541,
+        "w": 258,
+        "h": 315
+      },
+      {
+        "x": 795,
+        "y": 538,
+        "w": 252,
+        "h": 315
+      },
+      {
+        "x": 1073,
+        "y": 540,
+        "w": 236,
+        "h": 314
+      },
+      {
+        "x": 1324,
+        "y": 541,
+        "w": 258,
+        "h": 306
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "jump",
+    "source": "Ring Rat/RR jumping.png",
+    "sourceSHA256": "f3332fdf6e9470e65ed85fb9f7984d077bc9257bfefc6b41b5920b971ac92e4f",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 33,
+        "y": 358,
+        "w": 333,
+        "h": 446
+      },
+      {
+        "x": 397,
+        "y": 219,
+        "w": 372,
+        "h": 578
+      },
+      {
+        "x": 796,
+        "y": 159,
+        "w": 362,
+        "h": 496
+      },
+      {
+        "x": 1187,
+        "y": 331,
+        "w": 384,
+        "h": 477
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "chair",
+    "source": "Ring Rat/RR attack with chair.png",
+    "sourceSHA256": "958eaa3ca169447f8daaccaf39b87a700205838494f43aa7442904e654dd1ec5",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 21,
+        "y": 109,
+        "w": 285,
+        "h": 706
+      },
+      {
+        "x": 329,
+        "y": 158,
+        "w": 279,
+        "h": 657
+      },
+      {
+        "x": 608,
+        "y": 333,
+        "w": 376,
+        "h": 482
+      },
+      {
+        "x": 921,
+        "y": 335,
+        "w": 384,
+        "h": 481
+      },
+      {
+        "x": 1293,
+        "y": 289,
+        "w": 293,
+        "h": 526
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "bat",
+    "source": "Ring Rat/RR attack with bat.png",
+    "sourceSHA256": "38369f16d5e1f999af79dc8ba496cbde767894db9771c4723dda172745681a33",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 4,
+        "y": 259,
+        "w": 299,
+        "h": 551
+      },
+      {
+        "x": 317,
+        "y": 166,
+        "w": 310,
+        "h": 643
+      },
+      {
+        "x": 630,
+        "y": 259,
+        "w": 388,
+        "h": 549
+      },
+      {
+        "x": 1310,
+        "y": 253,
+        "w": 287,
+        "h": 556
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "guitar",
+    "source": "Ring Rat/RR attack with guitar.png",
+    "sourceSHA256": "d9bd4f09a490cdcefdaea9df1ea10fd4ca92f411a169c4e2273c8bcb24c60f2f",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 23,
+        "y": 289,
+        "w": 306,
+        "h": 526
+      },
+      {
+        "x": 314,
+        "y": 168,
+        "w": 312,
+        "h": 646
+      },
+      {
+        "x": 622,
+        "y": 342,
+        "w": 451,
+        "h": 470
+      },
+      {
+        "x": 1273,
+        "y": 287,
+        "w": 311,
+        "h": 528
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "trashcan",
+    "source": "Ring Rat/RR attack with trashcan.png",
+    "sourceSHA256": "dbf211251073b0ed38783acdddb33e33d6fa846276eb2039f32a6557a795cc22",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 10,
+        "y": 306,
+        "w": 289,
+        "h": 518
+      },
+      {
+        "x": 312,
+        "y": 306,
+        "w": 334,
+        "h": 518
+      },
+      {
+        "x": 637,
+        "y": 121,
+        "w": 296,
+        "h": 703
+      },
+      {
+        "x": 940,
+        "y": 311,
+        "w": 367,
+        "h": 513
+      },
+      {
+        "x": 1269,
+        "y": 309,
+        "w": 328,
+        "h": 515
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "carryChair",
+    "source": "Ring Rat/RR walk with chair.png",
+    "sourceSHA256": "3f05f876c6b81d43c2ceb63fdd335b5ca7de41bd0929cd83ab39ee6c052f1473",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 32,
+        "y": 502,
+        "w": 239,
+        "h": 328
+      },
+      {
+        "x": 378,
+        "y": 501,
+        "w": 225,
+        "h": 329
+      },
+      {
+        "x": 725,
+        "y": 502,
+        "w": 147,
+        "h": 328
+      },
+      {
+        "x": 976,
+        "y": 502,
+        "w": 234,
+        "h": 328
+      },
+      {
+        "x": 1313,
+        "y": 501,
+        "w": 247,
+        "h": 329
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "carryBat",
+    "source": "Ring Rat/RR walk with bat.png",
+    "sourceSHA256": "8e645955a8e7b421be0f4f9c9701e90355c664c0aa556eddb375818d5882396d",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 13,
+        "y": 191,
+        "w": 324,
+        "h": 596
+      },
+      {
+        "x": 334,
+        "y": 191,
+        "w": 302,
+        "h": 592
+      },
+      {
+        "x": 652,
+        "y": 191,
+        "w": 258,
+        "h": 591
+      },
+      {
+        "x": 936,
+        "y": 191,
+        "w": 357,
+        "h": 594
+      },
+      {
+        "x": 1284,
+        "y": 191,
+        "w": 291,
+        "h": 592
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "carryGuitar",
+    "source": "Ring Rat/RR walk with guitar.png",
+    "sourceSHA256": "e4bf410aa2889c2066d7c2961bdc48efaeab01bc0af3e890576d13a2c0bbdba7",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 14,
+        "y": 219,
+        "w": 301,
+        "h": 609
+      },
+      {
+        "x": 336,
+        "y": 219,
+        "w": 299,
+        "h": 609
+      },
+      {
+        "x": 650,
+        "y": 216,
+        "w": 301,
+        "h": 612
+      },
+      {
+        "x": 948,
+        "y": 216,
+        "w": 318,
+        "h": 612
+      },
+      {
+        "x": 1259,
+        "y": 212,
+        "w": 330,
+        "h": 619
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "carryTrashcan",
+    "source": "Ring Rat/RR walk with trashcan.png",
+    "sourceSHA256": "8ea82c9f3a7029df14f1813063a6f577a1ca988c52604fc852f49db344da6f6c",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 16,
+        "y": 217,
+        "w": 310,
+        "h": 543
+      },
+      {
+        "x": 340,
+        "y": 217,
+        "w": 303,
+        "h": 547
+      },
+      {
+        "x": 678,
+        "y": 218,
+        "w": 279,
+        "h": 551
+      },
+      {
+        "x": 934,
+        "y": 220,
+        "w": 345,
+        "h": 543
+      },
+      {
+        "x": 1294,
+        "y": 217,
+        "w": 294,
+        "h": 550
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "lift",
+    "source": "Ring Rat/RR lifting overhead.png",
+    "sourceSHA256": "eca665c8e21c50de608e9dcc85c4bc3862fe58e71cd7034820da76c190ee1f0c",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 32,
+        "y": 377,
+        "w": 302,
+        "h": 401
+      },
+      {
+        "x": 367,
+        "y": 319,
+        "w": 284,
+        "h": 460
+      },
+      {
+        "x": 674,
+        "y": 241,
+        "w": 290,
+        "h": 537
+      },
+      {
+        "x": 994,
+        "y": 167,
+        "w": 274,
+        "h": 612
+      },
+      {
+        "x": 1314,
+        "y": 128,
+        "w": 269,
+        "h": 650
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "lifted",
+    "source": "Ring Rat/RR getting lifted up.png",
+    "sourceSHA256": "4bf12e862e57286afcb7e30d92b21832763cfdebd9a4c1a129690b855a2eb325",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 16,
+        "y": 366,
+        "w": 239,
+        "h": 399
+      },
+      {
+        "x": 278,
+        "y": 350,
+        "w": 250,
+        "h": 381
+      },
+      {
+        "x": 543,
+        "y": 333,
+        "w": 259,
+        "h": 317
+      },
+      {
+        "x": 824,
+        "y": 333,
+        "w": 337,
+        "h": 241
+      },
+      {
+        "x": 1171,
+        "y": 342,
+        "w": 417,
+        "h": 241
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "throw",
+    "source": "Ring Rat/RR throwing.png",
+    "sourceSHA256": "b4d34b20c61afbea11e4f403ed1c7b1639af53be46227dad3576f972491a55df",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 14,
+        "y": 350,
+        "w": 345,
+        "h": 491
+      },
+      {
+        "x": 366,
+        "y": 287,
+        "w": 315,
+        "h": 554
+      },
+      {
+        "x": 661,
+        "y": 184,
+        "w": 341,
+        "h": 610
+      },
+      {
+        "x": 936,
+        "y": 328,
+        "w": 365,
+        "h": 514
+      },
+      {
+        "x": 1294,
+        "y": 307,
+        "w": 291,
+        "h": 535
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "thrown",
+    "source": "Ring Rat/RR being thrown.png",
+    "sourceSHA256": "1fa31c605842413a5f4fe316d4ee3b0edff9ab7506ac378dbc05ea9e68b67a11",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 19,
+        "y": 178,
+        "w": 255,
+        "h": 583
+      },
+      {
+        "x": 282,
+        "y": 196,
+        "w": 327,
+        "h": 501
+      },
+      {
+        "x": 626,
+        "y": 214,
+        "w": 294,
+        "h": 552
+      },
+      {
+        "x": 873,
+        "y": 324,
+        "w": 362,
+        "h": 403
+      },
+      {
+        "x": 1219,
+        "y": 523,
+        "w": 367,
+        "h": 294
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "hurt",
+    "source": "Ring Rat/RR dazed.png",
+    "sourceSHA256": "73b1375ae13852dc0e5d42242b7160b1e46761f599a14fa0514f7806da28bcc1",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 27,
+        "y": 194,
+        "w": 351,
+        "h": 778
+      },
+      {
+        "x": 426,
+        "y": 198,
+        "w": 348,
+        "h": 774
+      },
+      {
+        "x": 825,
+        "y": 210,
+        "w": 343,
+        "h": 762
+      },
+      {
+        "x": 1222,
+        "y": 198,
+        "w": 345,
+        "h": 774
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "down",
+    "source": "Ring Rat/RR laying facedown and faceup.png",
+    "sourceSHA256": "1766d4810cd70bb927c1b640ce6c0013ecfefd7c22d6edfdf40878c1a183fb4d",
+    "count": 2,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 807,
+        "y": 291,
+        "w": 778,
+        "h": 171
+      },
+      {
+        "x": 810,
+        "y": 600,
+        "w": 772,
+        "h": 224
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "fallFront",
+    "source": "Ring Rat/RR falling farward.png",
+    "sourceSHA256": "095df408decf540d07f9c3e15a7f04303f853ac8a62d7903b17df2fccab95482",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 17,
+        "y": 90,
+        "w": 209,
+        "h": 424
+      },
+      {
+        "x": 233,
+        "y": 133,
+        "w": 235,
+        "h": 380
+      },
+      {
+        "x": 450,
+        "y": 187,
+        "w": 244,
+        "h": 326
+      },
+      {
+        "x": 667,
+        "y": 261,
+        "w": 263,
+        "h": 244
+      },
+      {
+        "x": 940,
+        "y": 322,
+        "w": 647,
+        "h": 194
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "fallBack",
+    "source": "Ring Rat/RR falling backwards.png",
+    "sourceSHA256": "99ef593b077bfbd261d4f08e850e9488533d9a8b1ea7a2a246f0f4521afa9960",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 11,
+        "y": 293,
+        "w": 280,
+        "h": 442
+      },
+      {
+        "x": 271,
+        "y": 324,
+        "w": 377,
+        "h": 394
+      },
+      {
+        "x": 610,
+        "y": 446,
+        "w": 353,
+        "h": 279
+      },
+      {
+        "x": 922,
+        "y": 562,
+        "w": 322,
+        "h": 154
+      },
+      {
+        "x": 1252,
+        "y": 604,
+        "w": 333,
+        "h": 101
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "rise",
+    "source": "Ring Rat/RR getting back up.png",
+    "sourceSHA256": "5123f0b5d6012e718d05ee524cef02a90e81633f4d42e1a02667e1481fb54080",
+    "count": 6,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 11,
+        "y": 451,
+        "w": 328,
+        "h": 116
+      },
+      {
+        "x": 345,
+        "y": 341,
+        "w": 269,
+        "h": 226
+      },
+      {
+        "x": 627,
+        "y": 290,
+        "w": 227,
+        "h": 274
+      },
+      {
+        "x": 875,
+        "y": 232,
+        "w": 211,
+        "h": 332
+      },
+      {
+        "x": 1129,
+        "y": 194,
+        "w": 204,
+        "h": 373
+      },
+      {
+        "x": 1378,
+        "y": 134,
+        "w": 201,
+        "h": 435
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "pin",
+    "source": "Ring Rat/RR pinning.png",
+    "sourceSHA256": "9e05740bced22a2bb2c3203134fc33551584c29d20e0e932e98f2b908ccc95ca",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 18,
+        "y": 244,
+        "w": 322,
+        "h": 596
+      },
+      {
+        "x": 383,
+        "y": 319,
+        "w": 344,
+        "h": 521
+      },
+      {
+        "x": 774,
+        "y": 442,
+        "w": 380,
+        "h": 398
+      },
+      {
+        "x": 1163,
+        "y": 566,
+        "w": 425,
+        "h": 271
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "victory",
+    "source": "Ring Rat/RR victory.png",
+    "sourceSHA256": "b6a730f1d57f14230c0e35c9ad02f1a30f1d2927f4dc5b8b10aeafd0c3f2e54e",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 24,
+        "y": 192,
+        "w": 283,
+        "h": 650
+      },
+      {
+        "x": 341,
+        "y": 192,
+        "w": 293,
+        "h": 650
+      },
+      {
+        "x": 663,
+        "y": 267,
+        "w": 272,
+        "h": 575
+      },
+      {
+        "x": 971,
+        "y": 272,
+        "w": 302,
+        "h": 570
+      },
+      {
+        "x": 1294,
+        "y": 185,
+        "w": 284,
+        "h": 657
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "defeat",
+    "source": "Ring Rat/RR defeated.png",
+    "sourceSHA256": "e47bf7bbeda58af2092ae81cbb9e50c2ff313692c873479458f2b59f30d3794d",
+    "count": 1,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 1228,
+        "y": 243,
+        "w": 328,
+        "h": 550
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "ko",
+    "source": "Ring Rat/RR passed out.png",
+    "sourceSHA256": "e283c72fea2117f25def331aad0a96ad3059f67cf7096c6b7ad781bb88694f8b",
+    "count": 1,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 47,
+        "y": 279,
+        "w": 1493,
+        "h": 590
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "taunt",
+    "source": "Ring Rat/RR taunting.png",
+    "sourceSHA256": "8759e971918b173705809df9aee72ee8bc22ad867cdd09341fdf434a286d97f7",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 9,
+        "y": 177,
+        "w": 289,
+        "h": 636
+      },
+      {
+        "x": 308,
+        "y": 184,
+        "w": 293,
+        "h": 630
+      },
+      {
+        "x": 606,
+        "y": 183,
+        "w": 303,
+        "h": 630
+      },
+      {
+        "x": 861,
+        "y": 186,
+        "w": 444,
+        "h": 627
+      },
+      {
+        "x": 1257,
+        "y": 180,
+        "w": 340,
+        "h": 633
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "climb",
+    "source": "Ring Rat/RR climbing on corner rope.png",
+    "sourceSHA256": "8873ef949fcd366ac824e35edf1bf2676366a850656324bb6e87dfb4680140b5",
+    "count": 2,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 1143,
+        "y": 222,
+        "w": 222,
+        "h": 366
+      },
+      {
+        "x": 1384,
+        "y": 164,
+        "w": 198,
+        "h": 413
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "entry",
+    "source": "Ring Rat/RR climbing through rope.png",
+    "sourceSHA256": "0196d3a941320564b4fc41edaf0b3561645b1109f155b648a74cac4ffa557767",
+    "count": 1,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 1300,
+        "y": 268,
+        "w": 294,
+        "h": 566
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "ropePose",
+    "source": "Ring Rat/RR climbing on rope.png",
+    "sourceSHA256": "b0a106f5e71cb217dd00c4dfc314ee4b3f4b109d13ccfb2166602ef9234594a6",
+    "count": 1,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 1300,
+        "y": 240,
+        "w": 293,
+        "h": 555
+      }
+    ]
+  },
+  {
+    "fighter": "ring-rat",
+    "animation": "dive",
+    "source": "Ring Rat/RR jumping off top rope.png",
+    "sourceSHA256": "865baf6d8b055bd516e189cb96ad72b3564428be86cfc209675776080e938b1e",
+    "count": 2,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 594,
+        "y": 240,
+        "w": 491,
+        "h": 275
+      },
+      {
+        "x": 857,
+        "y": 450,
+        "w": 395,
+        "h": 216
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "idle",
+    "source": "The Green Phantom/The Green Phantom standing.png",
+    "sourceSHA256": "a7297d8bf786c328780adefd7493bd2daad004f820bfe1fc8a3b67721f5c58c8",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 87,
+        "y": 310,
+        "w": 288,
+        "h": 543
+      },
+      {
+        "x": 503,
+        "y": 309,
+        "w": 269,
+        "h": 544
+      },
+      {
+        "x": 984,
+        "y": 308,
+        "w": 153,
+        "h": 545
+      },
+      {
+        "x": 1302,
+        "y": 309,
+        "w": 153,
+        "h": 545
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "light",
+    "source": "The Green Phantom/TGP elbow attack.png",
+    "sourceSHA256": "22eb45af2738fff8f613d05f10e1416db2dee17b43424b6c29d9774351383957",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 33,
+        "y": 300,
+        "w": 339,
+        "h": 512
+      },
+      {
+        "x": 396,
+        "y": 300,
+        "w": 385,
+        "h": 512
+      },
+      {
+        "x": 795,
+        "y": 303,
+        "w": 416,
+        "h": 509
+      },
+      {
+        "x": 1227,
+        "y": 300,
+        "w": 341,
+        "h": 512
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "kick",
+    "source": "The Green Phantom/TGP kick.png",
+    "sourceSHA256": "6093c872fb2506fc0f391a2a52c3c19f0dc2640b70abc4385ad8348e209c4348",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 48,
+        "y": 659,
+        "w": 234,
+        "h": 330
+      },
+      {
+        "x": 364,
+        "y": 659,
+        "w": 247,
+        "h": 330
+      },
+      {
+        "x": 670,
+        "y": 664,
+        "w": 409,
+        "h": 325
+      },
+      {
+        "x": 1151,
+        "y": 659,
+        "w": 240,
+        "h": 330
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "run",
+    "source": "The Green Phantom/TGP running.png",
+    "sourceSHA256": "35cc50d0d62fff6ae68a0a7be7712c6cfeb1363199957bd73f43d48e650adca7",
+    "count": 6,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 18,
+        "y": 680,
+        "w": 203,
+        "h": 298
+      },
+      {
+        "x": 218,
+        "y": 681,
+        "w": 240,
+        "h": 299
+      },
+      {
+        "x": 459,
+        "y": 681,
+        "w": 233,
+        "h": 298
+      },
+      {
+        "x": 692,
+        "y": 681,
+        "w": 223,
+        "h": 298
+      },
+      {
+        "x": 923,
+        "y": 680,
+        "w": 227,
+        "h": 300
+      },
+      {
+        "x": 1153,
+        "y": 680,
+        "w": 245,
+        "h": 292
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "jump",
+    "source": "The Green Phantom/TGP jumping.png",
+    "sourceSHA256": "eda56e8a2d539dab609425605c4a644c77bb1c8f4d887eb7ca51269c4a6a2ca7",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 25,
+        "y": 496,
+        "w": 340,
+        "h": 356
+      },
+      {
+        "x": 425,
+        "y": 368,
+        "w": 346,
+        "h": 388
+      },
+      {
+        "x": 824,
+        "y": 294,
+        "w": 326,
+        "h": 422
+      },
+      {
+        "x": 1247,
+        "y": 496,
+        "w": 326,
+        "h": 363
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "chair",
+    "source": "The Green Phantom/TGP attack with chair.png",
+    "sourceSHA256": "bfb588de1befbb19385d116095f730120d48a453870ab5f04166be604e223d8d",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 47,
+        "y": 237,
+        "w": 259,
+        "h": 576
+      },
+      {
+        "x": 341,
+        "y": 209,
+        "w": 263,
+        "h": 604
+      },
+      {
+        "x": 640,
+        "y": 415,
+        "w": 389,
+        "h": 398
+      },
+      {
+        "x": 1279,
+        "y": 371,
+        "w": 281,
+        "h": 441
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "bat",
+    "source": "The Green Phantom/TGP attack with bat.png",
+    "sourceSHA256": "3ad1303ad04713e82bc64656d9a1a17af516a289da15cf8b5700967de26a4781",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 24,
+        "y": 335,
+        "w": 294,
+        "h": 472
+      },
+      {
+        "x": 334,
+        "y": 242,
+        "w": 291,
+        "h": 568
+      },
+      {
+        "x": 635,
+        "y": 373,
+        "w": 427,
+        "h": 435
+      },
+      {
+        "x": 1308,
+        "y": 364,
+        "w": 272,
+        "h": 444
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "guitar",
+    "source": "The Green Phantom/TGP attack with guitar.png",
+    "sourceSHA256": "8d10c4afc97d20b169a918aef8d3e0044785ec62c5bdcf9b05483e06f9b9741c",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 22,
+        "y": 325,
+        "w": 289,
+        "h": 453
+      },
+      {
+        "x": 334,
+        "y": 225,
+        "w": 288,
+        "h": 551
+      },
+      {
+        "x": 647,
+        "y": 389,
+        "w": 312,
+        "h": 383
+      },
+      {
+        "x": 972,
+        "y": 420,
+        "w": 275,
+        "h": 368
+      },
+      {
+        "x": 1299,
+        "y": 325,
+        "w": 282,
+        "h": 453
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "trashcan",
+    "source": "The Green Phantom/TGP attack with trashcan.png",
+    "sourceSHA256": "8694fc37a281020e0f70b8cb8c9b36458ec431057b3f898e45507d9fd66114a9",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 16,
+        "y": 363,
+        "w": 288,
+        "h": 462
+      },
+      {
+        "x": 324,
+        "y": 356,
+        "w": 316,
+        "h": 469
+      },
+      {
+        "x": 613,
+        "y": 204,
+        "w": 317,
+        "h": 621
+      },
+      {
+        "x": 930,
+        "y": 366,
+        "w": 372,
+        "h": 459
+      },
+      {
+        "x": 1266,
+        "y": 369,
+        "w": 322,
+        "h": 456
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "carryChair",
+    "source": "The Green Phantom/TGP walking with chair.png",
+    "sourceSHA256": "ca56bf81c964c21d8405082b4b1814abc31fe9bb53b4131aa949bc631484042d",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 47,
+        "y": 168,
+        "w": 241,
+        "h": 278
+      },
+      {
+        "x": 361,
+        "y": 170,
+        "w": 244,
+        "h": 276
+      },
+      {
+        "x": 672,
+        "y": 171,
+        "w": 249,
+        "h": 275
+      },
+      {
+        "x": 992,
+        "y": 170,
+        "w": 245,
+        "h": 276
+      },
+      {
+        "x": 1301,
+        "y": 168,
+        "w": 239,
+        "h": 278
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "carryBat",
+    "source": "The Green Phantom/TGP walking with bat.png",
+    "sourceSHA256": "17d8100406c476e8ac960fc4c1f8f0b25314b01a60e1438c2e0c40d0dfa0998c",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 13,
+        "y": 322,
+        "w": 325,
+        "h": 508
+      },
+      {
+        "x": 334,
+        "y": 321,
+        "w": 325,
+        "h": 510
+      },
+      {
+        "x": 655,
+        "y": 320,
+        "w": 327,
+        "h": 511
+      },
+      {
+        "x": 974,
+        "y": 320,
+        "w": 324,
+        "h": 511
+      },
+      {
+        "x": 1298,
+        "y": 320,
+        "w": 292,
+        "h": 511
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "carryGuitar",
+    "source": "The Green Phantom/TGP walking with guitar.png",
+    "sourceSHA256": "790f964ecbf11a649582607359e5b2db2595b71d6d2f0d645e44c6a7ce166dc5",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 32,
+        "y": 341,
+        "w": 328,
+        "h": 555
+      },
+      {
+        "x": 372,
+        "y": 341,
+        "w": 287,
+        "h": 555
+      },
+      {
+        "x": 664,
+        "y": 341,
+        "w": 322,
+        "h": 555
+      },
+      {
+        "x": 999,
+        "y": 341,
+        "w": 285,
+        "h": 555
+      },
+      {
+        "x": 1314,
+        "y": 340,
+        "w": 259,
+        "h": 555
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "carryTrashcan",
+    "source": "The Green Phantom/TGP walking with trashcan.png",
+    "sourceSHA256": "75f6d9516cad0ba31c47c979fc5808407e55b1a4e79dbf008457ee1aff86905f",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 30,
+        "y": 329,
+        "w": 290,
+        "h": 533
+      },
+      {
+        "x": 314,
+        "y": 329,
+        "w": 318,
+        "h": 528
+      },
+      {
+        "x": 631,
+        "y": 329,
+        "w": 323,
+        "h": 532
+      },
+      {
+        "x": 954,
+        "y": 329,
+        "w": 318,
+        "h": 532
+      },
+      {
+        "x": 1277,
+        "y": 327,
+        "w": 298,
+        "h": 534
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "lift",
+    "source": "The Green Phantom/TGP lifting overhead.png",
+    "sourceSHA256": "247f71215f4e3d8789ba32be9d7a8856caef88c6c820e777c484a729a0b11f50",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 19,
+        "y": 322,
+        "w": 280,
+        "h": 477
+      },
+      {
+        "x": 341,
+        "y": 325,
+        "w": 303,
+        "h": 475
+      },
+      {
+        "x": 665,
+        "y": 274,
+        "w": 274,
+        "h": 525
+      },
+      {
+        "x": 984,
+        "y": 233,
+        "w": 276,
+        "h": 566
+      },
+      {
+        "x": 1295,
+        "y": 233,
+        "w": 271,
+        "h": 566
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "throw",
+    "source": "The Green Phantom/TGP throwing.png",
+    "sourceSHA256": "9494f5642415227bf30e33d8ccdee4890b6357b17690feee984958e9cc543b47",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 26,
+        "y": 456,
+        "w": 325,
+        "h": 430
+      },
+      {
+        "x": 355,
+        "y": 358,
+        "w": 273,
+        "h": 528
+      },
+      {
+        "x": 644,
+        "y": 284,
+        "w": 371,
+        "h": 558
+      },
+      {
+        "x": 936,
+        "y": 419,
+        "w": 330,
+        "h": 467
+      },
+      {
+        "x": 1275,
+        "y": 436,
+        "w": 295,
+        "h": 450
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "grapple",
+    "source": "The Green Phantom/TGP grappling.png",
+    "sourceSHA256": "c45d04a03f770fb4e42de8334d483c714d552c9452b86575e2a39b2e6e043649",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 33,
+        "y": 314,
+        "w": 366,
+        "h": 487
+      },
+      {
+        "x": 436,
+        "y": 319,
+        "w": 332,
+        "h": 482
+      },
+      {
+        "x": 819,
+        "y": 320,
+        "w": 386,
+        "h": 481
+      },
+      {
+        "x": 1237,
+        "y": 327,
+        "w": 344,
+        "h": 476
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "hurt",
+    "source": "The Green Phantom/TGP dazed.png",
+    "sourceSHA256": "6ba8319fffca67ffc831248b99687ce23b40d1ffcb4c0cad1ff2b55351aaee5d",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 41,
+        "y": 305,
+        "w": 328,
+        "h": 538
+      },
+      {
+        "x": 447,
+        "y": 305,
+        "w": 331,
+        "h": 538
+      },
+      {
+        "x": 832,
+        "y": 317,
+        "w": 332,
+        "h": 526
+      },
+      {
+        "x": 1229,
+        "y": 302,
+        "w": 330,
+        "h": 541
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "down",
+    "source": "The Green Phantom/TGP laying facedown and faceup.png",
+    "sourceSHA256": "d09c5bed0be2be7d9c75d71f8c2a6f7ba7e21856857684da17e369c3dee3d1de",
+    "count": 2,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 857,
+        "y": 379,
+        "w": 650,
+        "h": 159
+      },
+      {
+        "x": 840,
+        "y": 735,
+        "w": 703,
+        "h": 208
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "fallFront",
+    "source": "The Green Phantom/TGP falling forwards.png",
+    "sourceSHA256": "594ceb6c8b821ebcf30745000f2e03010cfc04ec6dfd8bc4388bf4b7b3c04889",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 21,
+        "y": 303,
+        "w": 210,
+        "h": 453
+      },
+      {
+        "x": 251,
+        "y": 361,
+        "w": 269,
+        "h": 395
+      },
+      {
+        "x": 524,
+        "y": 425,
+        "w": 310,
+        "h": 331
+      },
+      {
+        "x": 791,
+        "y": 572,
+        "w": 345,
+        "h": 191
+      },
+      {
+        "x": 1160,
+        "y": 653,
+        "w": 419,
+        "h": 113
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "fallBack",
+    "source": "The Green Phantom/TGP falling backwards.png",
+    "sourceSHA256": "32a605baf42a40fc92b33f0d80aa6b0151ff77f0f28c36218b8d63f4f3bb2fd4",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 10,
+        "y": 346,
+        "w": 263,
+        "h": 436
+      },
+      {
+        "x": 257,
+        "y": 357,
+        "w": 339,
+        "h": 413
+      },
+      {
+        "x": 625,
+        "y": 475,
+        "w": 351,
+        "h": 262
+      },
+      {
+        "x": 1003,
+        "y": 549,
+        "w": 453,
+        "h": 154
+      },
+      {
+        "x": 1030,
+        "y": 726,
+        "w": 550,
+        "h": 118
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "rise",
+    "source": "The Green Phantom/TGP getting back up from facedown.png",
+    "sourceSHA256": "1ecccb0951d2abea49bb9758bdebc7f6f8525f792220dccc3cfa4385fc0e4ccc",
+    "count": 6,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 18,
+        "y": 647,
+        "w": 318,
+        "h": 103
+      },
+      {
+        "x": 347,
+        "y": 581,
+        "w": 262,
+        "h": 178
+      },
+      {
+        "x": 620,
+        "y": 519,
+        "w": 221,
+        "h": 240
+      },
+      {
+        "x": 865,
+        "y": 462,
+        "w": 214,
+        "h": 287
+      },
+      {
+        "x": 1105,
+        "y": 396,
+        "w": 212,
+        "h": 357
+      },
+      {
+        "x": 1345,
+        "y": 331,
+        "w": 222,
+        "h": 422
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "kneel",
+    "source": "The Green Phantom/TGP Kneeling.png",
+    "sourceSHA256": "34da8904a4a6df16a220b7f002781ab2ffc006581e48bb9589c8bb2e5a4fe0de",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 40,
+        "y": 309,
+        "w": 314,
+        "h": 521
+      },
+      {
+        "x": 406,
+        "y": 439,
+        "w": 361,
+        "h": 388
+      },
+      {
+        "x": 800,
+        "y": 484,
+        "w": 376,
+        "h": 343
+      },
+      {
+        "x": 1207,
+        "y": 536,
+        "w": 360,
+        "h": 291
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "pin",
+    "source": "The Green Phantom/TGP pinning.png",
+    "sourceSHA256": "21dc19729d69b0848cacadcf58393b4ab23d1f823c69292178de5ee70b0fc323",
+    "count": 4,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 26,
+        "y": 344,
+        "w": 335,
+        "h": 522
+      },
+      {
+        "x": 403,
+        "y": 433,
+        "w": 386,
+        "h": 432
+      },
+      {
+        "x": 806,
+        "y": 515,
+        "w": 346,
+        "h": 352
+      },
+      {
+        "x": 1180,
+        "y": 601,
+        "w": 396,
+        "h": 269
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "victory",
+    "source": "The Green Phantom/TGP victory.png",
+    "sourceSHA256": "6969bb53860e063de647653107b8b5cde733aa2735ba9ec51c36ef3b85d436ae",
+    "count": 5,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 13,
+        "y": 305,
+        "w": 298,
+        "h": 545
+      },
+      {
+        "x": 336,
+        "y": 317,
+        "w": 293,
+        "h": 533
+      },
+      {
+        "x": 646,
+        "y": 250,
+        "w": 312,
+        "h": 600
+      },
+      {
+        "x": 971,
+        "y": 315,
+        "w": 300,
+        "h": 535
+      },
+      {
+        "x": 1290,
+        "y": 304,
+        "w": 297,
+        "h": 546
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "defeat",
+    "source": "The Green Phantom/TGP defeated pose.png",
+    "sourceSHA256": "75f73e39d3372a72ae8fd3887ce10e71f0e7ee89ade7f9029c9402a5f6594766",
+    "count": 1,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 1206,
+        "y": 381,
+        "w": 349,
+        "h": 438
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "climb",
+    "source": "The Green Phantom/TGP climb on top rope corner.png",
+    "sourceSHA256": "5319219e453f82b74f0df422268da6332a336551b9999ab2e0371b70d6eaf996",
+    "count": 2,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 1174,
+        "y": 210,
+        "w": 157,
+        "h": 174
+      },
+      {
+        "x": 1399,
+        "y": 188,
+        "w": 148,
+        "h": 223
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "entry",
+    "source": "The Green Phantom/TGP climbing through ropes.png",
+    "sourceSHA256": "5f719d449ddcaf1d4a74fa38b234cd4e2e0092755922db089a1555dbd8220c94",
+    "count": 1,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 1300,
+        "y": 283,
+        "w": 293,
+        "h": 551
+      }
+    ]
+  },
+  {
+    "fighter": "green-phantom",
+    "animation": "dive",
+    "source": "The Green Phantom/TGP jumping off top rope.png",
+    "sourceSHA256": "a644401545b7f0d4e1a74fbb5f297aabe5ecc18b5e68adf1cb91b296c8e2c58e",
+    "count": 2,
+    "notes": "",
+    "bounds": [
+      {
+        "x": 424,
+        "y": 297,
+        "w": 271,
+        "h": 253
+      },
+      {
+        "x": 710,
+        "y": 405,
+        "w": 415,
+        "h": 141
+      }
+    ]
+  }
+]

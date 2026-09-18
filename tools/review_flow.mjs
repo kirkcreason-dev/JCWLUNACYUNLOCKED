@@ -20,10 +20,12 @@ globalThis.fetch=async url=>({ok:true,json:async()=>JSON.parse(await readFile(ne
 globalThis.Image=class{set src(value){this._src=value;this.width=4096;this.height=4096;if(value)queueMicrotask(()=>this.onload?.());}get src(){return this._src;}};
 const temp=new URL('src/.review-flow-main.mjs',root),$=id=>document.getElementById(id);
 try{
- const source=await readFile(new URL('src/main.js',root),'utf8');await writeFile(temp,source+'\nexport {startMatch,finishMatch,togglePause,closeHelp,quit};export const inspect=()=>({match,championships,paused,atlases,arenas});');
+ const source=await readFile(new URL('src/main.js',root),'utf8');await writeFile(temp,source+'\nexport {startMatch,finishMatch,togglePause,closeHelp,quit};export const inspect=()=>({match,championships,arcadeRewards,paused,atlases,arenas});');
  const app=await import(temp.href);
  for(let i=0;i<100&&$('fight').disabled;i++)await new Promise(resolve=>setTimeout(resolve,5));
- assert.equal($('fight').disabled,false);assert.equal($('roster').children.length,36);await $('enter-game').onclick();
+ assert.equal($('fight').disabled,false);assert.equal($('roster').children.length,39);await $('enter-game').onclick();
+ for(const [i,id] of ['josh-bishop','ring-rat','green-phantom'].entries()){$('roster-select').value=String(36+i);$('roster-select').onchange();assert.equal($('portrait').getAttribute('src'),`./assets/${id}-portrait.png`);assert.equal($('stats-source').textContent,'USER-APPROVED RATINGS');assert.equal($('stats-source').hasAttribute('href'),false);assert.equal($('stats').children.length,4);}
+ $('roster-select').value='0';$('roster-select').onchange();assert.equal($('stats-source').getAttribute('href'),'https://jcwlunacy.net/');
  $('mode').value='cpu';await app.startMatch();app.togglePause(true);assert.equal($('pause').hidden,false);assert.equal($('pause-art').hidden,false);app.togglePause();assert.equal(app.inspect().paused,false);
  $('controls').onclick();assert.equal(app.inspect().paused,true);app.closeHelp();assert.equal(app.inspect().paused,false);
  app.quit();assert.equal(Object.keys(app.inspect().atlases).length,0);
@@ -40,6 +42,20 @@ try{
  await $('credits-defend').onclick();assert.equal($('credits').hidden,true);assert.equal(app.inspect().match.championshipBout.phase,'defend');
  // Defenses go to the result rather than replaying the completion screen.
  {const {match}=app.inspect();match.phase='done';match.winner=0;match.wins=[2,1];app.finishMatch();assert.equal($('credits').hidden,true);assert.equal($('result-title').textContent,'TITLE DEFENDED!');}
- app.quit();$('mode').value='cpu';await app.startMatch();app.inspect().match.options.mode='online';app.togglePause();assert.equal($('pause-art').hidden,true);assert.equal($('pause-title').textContent,'ONLINE MATCH CONTINUES');
- console.log('PASS: DOM-model startup, roster, pause/help, arena eviction, championship progression, automatic supplied credits, title defense and online-menu labeling. No browser/device rendering claim.');
+ app.quit();
+ assert.equal($('haptics').disabled,true);assert.match($('haptics-status').textContent,/does not support/);
+ $('touch-setting').value='on';$('touch-setting').onchange();
+ for(const difficulty of ['easy','normal','hard']){
+  $('mode').value='arcade';$('mode').onchange();$('difficulty').value=difficulty;$('difficulty').onchange();
+  await app.startMatch();await new Promise(resolve=>setTimeout(resolve,0));assert.ok($('touch-controls').classList.contains('control-art'));
+  for(let bout=0;bout<38;bout++){
+   const {match}=app.inspect();match.phase='done';match.winner=0;match.wins=[2,0];app.finishMatch();
+   assert.equal($('arcade-reward-result').hidden,bout!==37);
+   if(bout<37){$('rematch').onclick();for(let i=0;i<100&&app.inspect().match===match;i++)await new Promise(resolve=>setTimeout(resolve,1));assert.notEqual(app.inspect().match,match);}
+  }
+  assert.ok(app.inspect().arcadeRewards.get('violent-j',difficulty));assert.match($('arcade-reward-result').textContent,/Saved on this browser/);app.quit();
+ }
+ assert.equal($('portrait').dataset.arcadeMedal,'triple');assert.match($('arcade-save').textContent,/TRIPLE CROWN/);
+ $('mode').value='cpu';await app.startMatch();app.inspect().match.options.mode='online';app.togglePause();assert.equal($('pause-art').hidden,true);assert.equal($('pause-title').textContent,'ONLINE MATCH CONTINUES');
+ console.log('PASS: DOM-model startup, roster, pause/help, arena eviction, championship progression, automatic supplied credits, title defense online-menu labeling, all three full arcade reward flows and touch artwork loading. No browser/device rendering claim.');
 }finally{await unlink(temp).catch(()=>{});}

@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
 import assert from 'node:assert/strict';
+import {SAMPLE_FILES} from '../dist/src/sample-bank.js';
 import {ARENAS} from '../dist/src/arenas.js';
 import {checkRosterApprovals} from './roster-approval.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));const dist=path.join(root,'dist');
@@ -11,8 +12,9 @@ const html=await readFile(path.join(dist,'index.html'),'utf8');
 for(const match of html.matchAll(/(?:src|href)="(\.\/[^"#?]+)(?:[?#][^"]*)?"/g))await access(path.join(dist,match[1]));
 const ids=Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML ids');
 const main=await readFile(path.join(dist,'src/main.js'),'utf8');for(const match of main.matchAll(/\$\('([^']+)'\)/g))assert.ok(ids.includes(match[1]),`Missing UI element ${match[1]}`);
-const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,36);assert.equal(new Set(roster.map(f=>f.id )).size,36);
+const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,39);assert.equal(new Set(roster.map(f=>f.id )).size,39);
 checkRosterApprovals(roster,JSON.parse(await readFile(path.join(root,'roster-approvals.json'),'utf8')));
+for(const src of SAMPLE_FILES)await access(path.join(dist,src));
 let count=0;
 for(const f of roster){
   for(const key of ['power','speed','technique','toughness'])assert.ok(Number.isFinite(f[key])&&f[key]>0,`${f.name}: invalid ${key}`);
@@ -26,4 +28,4 @@ for(const f of roster){
   }
 }
 for(const arena of ARENAS){await access(path.join(dist,arena.src));if(arena.crop)assert.ok(arena.crop.every(Number.isFinite));}await access(path.join(dist,'assets/jcw-theme.mp3'));await access(path.join(dist,'assets/fight-club.ogg'));await access(path.join(dist,'assets/fight-club.mp3'));
-console.log(`PASS: JavaScript syntax, UI references, ${roster.length} wrestlers, ${count} animation frames, ${ARENAS.length} arenas, both music tracks.`);
+console.log(`PASS: JavaScript syntax, UI references, ${roster.length} wrestlers, ${count} animation frames, ${ARENAS.length} arenas, both music tracks and ${SAMPLE_FILES.length} runtime sound samples.`);

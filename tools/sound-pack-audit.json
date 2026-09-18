@@ -1,0 +1,482 @@
+{
+  "runtimeDecodedBytes44100": 6039936,
+  "files": [
+    {
+      "file": "dist/assets/sfx/jcw/punch_hit_02.wav",
+      "seconds": 0.36,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.532,
+      "rms": 0.1131,
+      "sha256": "a79f05c1cad1852f824dc764e90385fbeed14759b718eb236ffefe64fcf23a2c"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/body_slam_ring_01.wav",
+      "seconds": 1.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.796,
+      "rms": 0.0798,
+      "sha256": "094a795d2d00f0ac24504a39c8f0838ed533bafc987c4395c56b04bd38711777"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/male_oof_synthetic_01.wav",
+      "seconds": 0.42,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0948,
+      "sha256": "cf79e4b41bb1342920f4407a7f8c68ce707b35e830424df65776b97a0d007527"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/punch_hit_03.wav",
+      "seconds": 0.36,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.523,
+      "rms": 0.0987,
+      "sha256": "85039b076a9a40abe266f163b0f45442fcdf11f70c2479497c599caf46428952"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/punch_hit_01.wav",
+      "seconds": 0.36,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1472,
+      "sha256": "16f3372aa64d17c560c4b36c360a32ee974d20916bf68808c7c7078899c29444"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/body_slam_ring_02.wav",
+      "seconds": 1.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0765,
+      "sha256": "0953c8e211aad432667b99f219d6ed01ba711504c6d690eb8c291dde4e547043"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/male_oof_synthetic_03.wav",
+      "seconds": 0.42,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1018,
+      "sha256": "e4ed178f5da4def1adbb324e08bd8153c72d7b989d887e19aea95ba9814343ca"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/male_oof_synthetic_02.wav",
+      "seconds": 0.42,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1005,
+      "sha256": "bb24c7db23c2e7c97701cf36bbb80d79a3914544c2b2ce5fe64884d702c4974d"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/body_slam_ring_03.wav",
+      "seconds": 1.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.741,
+      "rms": 0.082,
+      "sha256": "5faedf403fc9113ac4c33a08c3610b1f8a1de273f91a29fa6f54cf70bbf91633"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/chair_hit_01.wav",
+      "seconds": 0.85,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0868,
+      "sha256": "9aaf893d94c4bbbda83296fc3cf34d0421c19add64610fae6b7cc18b36147f8b"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/chair_hit_02.wav",
+      "seconds": 0.85,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0997,
+      "sha256": "a9fa915e97aa39e4d5e66adc80ca4c935e217657b80dcda96e09cda8256d826d"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/body_slam_ring_04.wav",
+      "seconds": 1.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.783,
+      "rms": 0.0917,
+      "sha256": "8dccb192409d8f13a8e2f0eec6d7bc700c3f385c39cca63bd4bbd54d7ce5b48f"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/chair_hit_03.wav",
+      "seconds": 0.85,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1083,
+      "sha256": "8d0e8f5b55bd87f152870e98a2b46e0b9784f10e0afb5be1717223c2a5c3f9ed"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/ring_footstep_04.wav",
+      "seconds": 0.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.741,
+      "rms": 0.1762,
+      "sha256": "fbd945b7b43eddb1af51b8698718ca331766a6686e845536e42eb17c531712f3"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/guitar_smash_02.wav",
+      "seconds": 0.9,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0578,
+      "sha256": "482e77a10a5dbd67bebc8597e0a539bbf3bbbe5417dae0fba8cbdc9877c7b7ed"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/guitar_smash_03.wav",
+      "seconds": 0.9,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0558,
+      "sha256": "578bb324c14bf81e93d736ba6d2ed1e2abb50126d16ae5284a9c514ee04c035d"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/PREVIEW.wav",
+      "seconds": 17.43,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0871,
+      "sha256": "aa8cefd38738ca8644137cbce6dc37310f96f8971ebaa36ea25ea8b4b9802445"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/guitar_smash_01.wav",
+      "seconds": 0.9,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.755,
+      "rms": 0.0608,
+      "sha256": "3251f2345c5a31a037dcf9be9ee03057aa4dc53f76cd03d76434c6b7d8721e7b"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/ring_footstep_02.wav",
+      "seconds": 0.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1611,
+      "sha256": "a4c097a5998cecd6597d86a99063a98e274d752d6ba6957b75977183d3ea67ea"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/rope_bounce_01.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.791,
+      "rms": 0.1856,
+      "sha256": "f8fec578af0851e1e5c65d09e9da804f7f906723aa1b497f9f7eadc3ca5cbef4"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/jump_landing_03.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.647,
+      "rms": 0.1134,
+      "sha256": "d618c71f449fa54808722bdc477652041e43f1c1107dc0a5f2979660a75c4359"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/jump_landing_02.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1125,
+      "sha256": "224c1f35ab79ce2734fc5fb2622aabe32e7ae4440dd61d3104976256192d913a"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/ring_footstep_03.wav",
+      "seconds": 0.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.664,
+      "rms": 0.1728,
+      "sha256": "b4478464ff6cb1438be0c452f990966752d6f23a8bcfdf76e4d10a754dc694ba"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/ring_footstep_01.wav",
+      "seconds": 0.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1822,
+      "sha256": "942bcc28b9afbd4948141d17f99d8858f3987c73302029f772ba538930a0f500"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/rope_bounce_02.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.794,
+      "rms": 0.1888,
+      "sha256": "86de13b81b7a21c6533062d40a870d1d0485e19f6f84f4d82c2278ed7d928b18"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/jump_landing_01.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.735,
+      "rms": 0.1191,
+      "sha256": "79184cf877ead07ad8dd46187a8847cf24d5a972bd15ee65e3ce34357fadb1a7"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/rope_bounce_03.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1827,
+      "sha256": "9b89810bf70d394982ab773aea245ad51e9608cdcbd6378644d85fdfd40c324e"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/trashcan_hit_03.wav",
+      "seconds": 0.85,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.791,
+      "rms": 0.0947,
+      "sha256": "57fe007925b51e39f6fe8a7b1ecf24f44a324a735e22f9f29b45a1052cc6edb3"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/kick_hit_01.wav",
+      "seconds": 0.36,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1347,
+      "sha256": "c1f42cdb43cc51ef885a031084bfd87a35293367604506f4572665e6d072637c"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/female_oof_synthetic_03.wav",
+      "seconds": 0.42,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1325,
+      "sha256": "14a54427f1ef3fdb1614be2d1b33ba1a87f3af4477dc5f35c98d6af231adcb5e"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/female_oof_synthetic_02.wav",
+      "seconds": 0.42,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1214,
+      "sha256": "930f713db9b4cd5a4449527e487a812b4fa4e940b83f15fc983927060e6dd8cd"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/trashcan_hit_02.wav",
+      "seconds": 0.85,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0886,
+      "sha256": "e28b03cdcdcb9258a624ace7bcea558e617de23da2ae6db58a65feb1f5d8d945"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/kick_hit_02.wav",
+      "seconds": 0.36,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.648,
+      "rms": 0.1316,
+      "sha256": "156c4d7c17f2dc49f06908d32c263268fd536839636d6faa0d6ba8c1fbaa7477"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/female_oof_synthetic_01.wav",
+      "seconds": 0.42,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.112,
+      "sha256": "34acba990bd112477085f9b1379706a9c264dbcb39666f43f304b6a92165d073"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/kick_hit_03.wav",
+      "seconds": 0.36,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.708,
+      "rms": 0.1213,
+      "sha256": "b5833b017d97e82ae041b79873453a199da92d5f062066a032fa9e48a79a78f0"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/weapon_swing_04.wav",
+      "seconds": 0.32,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1181,
+      "sha256": "bdfbdbe378cdf1d581c17afc058110b60e7a6792c644d024b49bf9299b3d3d70"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/trashcan_hit_01.wav",
+      "seconds": 0.85,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.093,
+      "sha256": "6d97d86c4d5e04d68a0e31d1bfdb095b12170e2314727a2dcdf60da7ed0ebcfd"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/bat_hit_01.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1095,
+      "sha256": "92e5ac78a10ca6657ca686fb1b283e987f8ba8729d0aaf01fc066ad8342cf623"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/weapon_swing_01.wav",
+      "seconds": 0.32,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1319,
+      "sha256": "e63efa1888f9f9823a81e9b5e4bd83b62404c1274e541377822bfd71228de3d3"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/weapon_swing_03.wav",
+      "seconds": 0.32,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.131,
+      "sha256": "0f149bb39bfebb825b29f3b25f493f81dad412a15e8cdada82b2067f972b7df2"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/bat_hit_02.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0904,
+      "sha256": "b3d1b7b7983609d807dec743b159472f65880b11cfed39419e6481ed15652a2e"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/bat_hit_03.wav",
+      "seconds": 0.55,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.0997,
+      "sha256": "363d0e8389050f163e6ec910803fa1df7f8522d2ea66c98e6a8d0fe5408995a6"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/weapon_swing_02.wav",
+      "seconds": 0.32,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1375,
+      "sha256": "a089478788d372cdc2346796575452fdb42bf0cc3fdfec89514e5a11a5f8a316"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/ring_bell_01.wav",
+      "seconds": 2.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1327,
+      "sha256": "719b443f57e5a01e68565a05621b7c9e1d3713c68d805bbbf6064bad23d25654"
+    },
+    {
+      "file": "dist/assets/sfx/jcw/ring_bell_02.wav",
+      "seconds": 2.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.8,
+      "rms": 0.1414,
+      "sha256": "1175d118d6473c7c6ebbf979bbf6b9816facf22af304a17a2ba09e00da998892"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/03_bass_blast_01.wav",
+      "seconds": 1.1,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.84,
+      "rms": 0.1982,
+      "sha256": "c4262df5917cabbb9955b9608852724b8a8463a347de700744961056898d00e4"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/03_bass_blast_03.wav",
+      "seconds": 2.2,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.84,
+      "rms": 0.1557,
+      "sha256": "07eaecec54ca33da2632e7dc9022a43ba9cd4b254764abc57d2cb73531e42f6e"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/03_bass_blast_02.wav",
+      "seconds": 1.6,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.84,
+      "rms": 0.1858,
+      "sha256": "936f3f9d36c796b00ceda30af926204a7b4bbe9996ba803138b8ba2f8beb5079"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/01_chest_button_press.wav",
+      "seconds": 0.15,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.391,
+      "rms": 0.0483,
+      "sha256": "225a3cf16717cdd460b72acbe8063999e95d72f43eefb443b4158cadfe335f41"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/02_speaker_charge.wav",
+      "seconds": 0.48,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.84,
+      "rms": 0.4308,
+      "sha256": "c0393cc0e84ce7369046d0395edf89534d6472dece192be3653d3467a2ec5cbe"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/04_full_attack_02.wav",
+      "seconds": 2.1,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.84,
+      "rms": 0.1672,
+      "sha256": "7742eae6e5ce5a5eee90a9c59dc4323e4128b62ff09efe393749d900529c5945"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/04_full_attack_03.wav",
+      "seconds": 2.7,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.84,
+      "rms": 0.1496,
+      "sha256": "730f87ed4ece75fa54bfc70d5563de1b91dd0ac904454ad28f4101ea10454096"
+    },
+    {
+      "file": "dist/assets/sfx/dj-clay/04_full_attack_01.wav",
+      "seconds": 1.6,
+      "channels": 1,
+      "hz": 44100,
+      "peak": 0.84,
+      "rms": 0.1684,
+      "sha256": "09755474e8540d8546715a83b70ad3f50928d1a00c5dd6edbe5030f3b04b00aa"
+    }
+  ]
+}
