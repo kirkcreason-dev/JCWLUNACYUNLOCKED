@@ -1,8 +1,12 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.19.0**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.19.1**.
 
 The gameplay refinement adds confirmed strike chains, gradual run acceleration, fair simultaneous grab breaks, more responsive recovery, rope breaks, manual hold release, and smarter CPU attack spacing. The original 36 wrestlers remain intact; Josh Bishop, Ring Rat and The Green Phantom bring the roster to 39. The supplied startup logos, title artwork, arenas, effects, and music are included. See [GAMEPLAY.md](GAMEPLAY.md) for the updated fight rules and [TESTING.md](TESTING.md) for validation and limitations.
+
+## Updated championship credits (v0.19.1)
+
+The supplied replacement credits artwork now appears after the championship win and through VIEW CREDITS. The readable credits replace Mark Ward with Nocturnal Deadhead; previously requested 3-Zee and Son of Man remain in the text list. Online compatibility stays on v19 / LU190.
 
 ## Supplied sound packs (v0.19.0)
 
@@ -36,7 +40,7 @@ Josh Bishop, Ring Rat and The Green Phantom are playable in all modes. Their 86 
 - Contextual first-match tips explain approach, strikes, combos, reversals, pins, escapes and finishers. Tips remember completed lessons, can be disabled, and can be reset in Controls.
 - Decoded match artwork is evicted before the next match loads; old arena requests cannot repopulate the cache. Image requests time out, failed optional art backs off, and sound nodes are capped and explicitly released. Automatic display reduces rendering cost after sustained expensive draws; combat still simulates at 60 Hz.
 
-**Online:** both players need v0.19.0. New games use v19 / LU190 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
+**Online:** both players need v0.19.0 or v0.19.1. New games use v19 / LU190 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
 
 Validation details and device handoff are in TESTING.md. Automated checks cover the full roster, online selection, championship saves and credits, phone pagination, and native canvas rendering. Physical-device playtesting remains necessary.
 

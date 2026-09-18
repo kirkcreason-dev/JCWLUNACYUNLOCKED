@@ -1,3 +1,11 @@
+# v0.19.1 — Replacement championship credits
+
+- Use the newly supplied championship credits PNG unchanged, including Nocturnal Deadhead in Special Thanks.
+- Update the readable credit name to Nocturnal Deadhead. Retain the previously requested 3-Zee and Son of Man in the text credits.
+- Version the image URL so an older cached credits screen is replaced. The automatic title-win credits and VIEW CREDITS use the same asset.
+- Gameplay, all 39 fighters and the v0.19.0 sound integration remain intact. Online rooms stay v19 / LU190.
+- Full ZIP only; no push or deployment.
+
 # v0.19.0 — Wrestling sounds and DJ Clay bass attack
 
 - Add the supplied punches, kicks, weapon hits, slams, rope rebounds, landings, footsteps, bells and synthetic grunts. Impacts follow confirmed contact and the weapon used for that attack.

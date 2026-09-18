@@ -1,3 +1,13 @@
+# v0.19.1 — Credits replacement verification
+
+- Replacement image verified byte for byte against the uploaded PNG, with its original 1672 × 941 dimensions.
+- Both automatic championship credits and VIEW CREDITS share the updated image. Its URL includes the new release version to refresh browser caches.
+- Readable credits and the existing DOM review expectation use Nocturnal Deadhead. Previously requested 3-Zee and Son of Man remain in the text list.
+- `npm test`: 260 passing tests. `npm run check`: syntax, UI references, 39 fighters, 4,741 animation entries, six arenas, both music tracks and 49 runtime sounds pass.
+- The supplied artwork was visually inspected. No new browser/device check or match soak was needed for this image/text update; the v0.19.0 results below describe the unchanged gameplay/audio baseline.
+
+---
+
 # v0.19.0 — Sound integration verification
 
 - `npm test`: **260 passing tests**, including the prior gameplay suite and 13 sound-pack tests. New coverage checks source hashes, bounded/concurrent loading, timeouts, corrupt decoding, context changes, variant selection, weapon contact, DJ Clay firing on hits/blocks/misses, interrupted charges, online event deduplication, voice cleanup, mute/pause, footsteps and procedural fallbacks.
