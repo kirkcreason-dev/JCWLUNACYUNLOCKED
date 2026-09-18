@@ -1,0 +1,222 @@
+[
+  {
+    "file": "weapon_swing_01.wav",
+    "category": "weapon_swing",
+    "seconds": 0.32
+  },
+  {
+    "file": "weapon_swing_02.wav",
+    "category": "weapon_swing",
+    "seconds": 0.32
+  },
+  {
+    "file": "weapon_swing_03.wav",
+    "category": "weapon_swing",
+    "seconds": 0.32
+  },
+  {
+    "file": "weapon_swing_04.wav",
+    "category": "weapon_swing",
+    "seconds": 0.32
+  },
+  {
+    "file": "punch_hit_01.wav",
+    "category": "punch_hit",
+    "seconds": 0.36
+  },
+  {
+    "file": "punch_hit_02.wav",
+    "category": "punch_hit",
+    "seconds": 0.36
+  },
+  {
+    "file": "punch_hit_03.wav",
+    "category": "punch_hit",
+    "seconds": 0.36
+  },
+  {
+    "file": "kick_hit_01.wav",
+    "category": "kick_hit",
+    "seconds": 0.36
+  },
+  {
+    "file": "kick_hit_02.wav",
+    "category": "kick_hit",
+    "seconds": 0.36
+  },
+  {
+    "file": "kick_hit_03.wav",
+    "category": "kick_hit",
+    "seconds": 0.36
+  },
+  {
+    "file": "body_slam_ring_01.wav",
+    "category": "body_slam_ring",
+    "seconds": 1.2
+  },
+  {
+    "file": "body_slam_ring_02.wav",
+    "category": "body_slam_ring",
+    "seconds": 1.2
+  },
+  {
+    "file": "body_slam_ring_03.wav",
+    "category": "body_slam_ring",
+    "seconds": 1.2
+  },
+  {
+    "file": "body_slam_ring_04.wav",
+    "category": "body_slam_ring",
+    "seconds": 1.2
+  },
+  {
+    "file": "chair_hit_01.wav",
+    "category": "chair_hit",
+    "seconds": 0.85
+  },
+  {
+    "file": "chair_hit_02.wav",
+    "category": "chair_hit",
+    "seconds": 0.85
+  },
+  {
+    "file": "chair_hit_03.wav",
+    "category": "chair_hit",
+    "seconds": 0.85
+  },
+  {
+    "file": "trashcan_hit_01.wav",
+    "category": "trashcan_hit",
+    "seconds": 0.85
+  },
+  {
+    "file": "trashcan_hit_02.wav",
+    "category": "trashcan_hit",
+    "seconds": 0.85
+  },
+  {
+    "file": "trashcan_hit_03.wav",
+    "category": "trashcan_hit",
+    "seconds": 0.85
+  },
+  {
+    "file": "bat_hit_01.wav",
+    "category": "bat_hit",
+    "seconds": 0.55
+  },
+  {
+    "file": "bat_hit_02.wav",
+    "category": "bat_hit",
+    "seconds": 0.55
+  },
+  {
+    "file": "bat_hit_03.wav",
+    "category": "bat_hit",
+    "seconds": 0.55
+  },
+  {
+    "file": "guitar_smash_01.wav",
+    "category": "guitar_smash",
+    "seconds": 0.9
+  },
+  {
+    "file": "guitar_smash_02.wav",
+    "category": "guitar_smash",
+    "seconds": 0.9
+  },
+  {
+    "file": "guitar_smash_03.wav",
+    "category": "guitar_smash",
+    "seconds": 0.9
+  },
+  {
+    "file": "ring_footstep_01.wav",
+    "category": "ring_footstep",
+    "seconds": 0.2
+  },
+  {
+    "file": "ring_footstep_02.wav",
+    "category": "ring_footstep",
+    "seconds": 0.2
+  },
+  {
+    "file": "ring_footstep_03.wav",
+    "category": "ring_footstep",
+    "seconds": 0.2
+  },
+  {
+    "file": "ring_footstep_04.wav",
+    "category": "ring_footstep",
+    "seconds": 0.2
+  },
+  {
+    "file": "rope_bounce_01.wav",
+    "category": "rope_bounce",
+    "seconds": 0.55
+  },
+  {
+    "file": "rope_bounce_02.wav",
+    "category": "rope_bounce",
+    "seconds": 0.55
+  },
+  {
+    "file": "rope_bounce_03.wav",
+    "category": "rope_bounce",
+    "seconds": 0.55
+  },
+  {
+    "file": "jump_landing_01.wav",
+    "category": "jump_landing",
+    "seconds": 0.55
+  },
+  {
+    "file": "jump_landing_02.wav",
+    "category": "jump_landing",
+    "seconds": 0.55
+  },
+  {
+    "file": "jump_landing_03.wav",
+    "category": "jump_landing",
+    "seconds": 0.55
+  },
+  {
+    "file": "ring_bell_01.wav",
+    "category": "ring_bell",
+    "seconds": 2.2
+  },
+  {
+    "file": "ring_bell_02.wav",
+    "category": "ring_bell",
+    "seconds": 2.2
+  },
+  {
+    "file": "male_oof_synthetic_01.wav",
+    "category": "male_oof_synthetic",
+    "seconds": 0.42
+  },
+  {
+    "file": "male_oof_synthetic_02.wav",
+    "category": "male_oof_synthetic",
+    "seconds": 0.42
+  },
+  {
+    "file": "male_oof_synthetic_03.wav",
+    "category": "male_oof_synthetic",
+    "seconds": 0.42
+  },
+  {
+    "file": "female_oof_synthetic_01.wav",
+    "category": "female_oof_synthetic",
+    "seconds": 0.42
+  },
+  {
+    "file": "female_oof_synthetic_02.wav",
+    "category": "female_oof_synthetic",
+    "seconds": 0.42
+  },
+  {
+    "file": "female_oof_synthetic_03.wav",
+    "category": "female_oof_synthetic",
+    "seconds": 0.42
+  }
+]
