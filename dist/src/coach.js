@@ -8,11 +8,12 @@ export class Coach {
   learn(key){if(this.learned.has(key))return;this.learned.add(key);try{this.storage?.setItem('lunacy-lessons-v1',JSON.stringify([...this.learned]));}catch{}}
   receive(events,index=0){for(const e of events){if(e.type==='hit'&&e.attacker===index){this.learn('strike');if(e.combo>1)this.learn('combo');}if(e.type==='reversal'&&e.index===index)this.learn('reversal');if(e.type==='special'&&e.index===index)this.learn('finisher');if(e.type==='pin'&&e.index===index)this.learn('pin');if(['kickout','holdBreak'].includes(e.type))this.learn('escape');}}
   text(match,scheme='keyboard',enabled=true){
-    if(!enabled||!match||match.options.mode==='online'||match.options.mode==='local'||match.phase!=='fight')return '';
+    if(!enabled||!match||match.options.mode==='online'||['local','pole-local'].includes(match.options.mode)||match.phase!=='fight')return '';
     const [me,other]=match.fighters,distance=Math.abs(me.x-other.x),pad=scheme==='gamepad',touch=scheme==='touch';
     const hit=pad?'X':touch?'HIT':'Z',heavy=pad?'Y':touch?'HEAVY':'X',grab=pad?'B':touch?'PIN':'C',finish=pad?'RB':touch?'FINISH':'V',block=pad?'LB':'Down';
     if(match.pin?.attacker===1)return touch?'Tap KICK OUT repeatedly':`Alternate ${hit} and ${heavy} to escape`;
     if(match.grapple?.attacker===0||match.pin?.attacker===0)return '';
+    if(match.pole&&!match.pole.claimed)return me.state==='perch'&&Math.abs(me.x-match.pole.x)<40?`Hold ${pad?'B':touch?'CLAIM':'C'} to retrieve the chair`:`Chair on the ${match.pole.x<640?'left':'right'} pole · Climb, then hold ${pad?'B':touch?'CLAIM':'C'}`;
     if(me.state==='down')return touch?'Tap GET UP to recover sooner':`Tap ${hit} or ${heavy} to get up sooner`;
     if(me.meter>=100&&!this.learned.has('finisher'))return `Move close + ${finish}: ${me.definition.finisher}`;
     if(other.state==='down'&&distance<125&&!this.learned.has('pin'))return `Tap ${grab} to pin · ${block} + ${grab} to submit`;

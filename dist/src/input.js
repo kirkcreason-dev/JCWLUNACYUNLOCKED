@@ -1,4 +1,4 @@
-import {emptyInput,STEP,MOVES} from './engine.js?v=0.19.1';
+import {emptyInput,STEP,MOVES} from './engine.js?v=0.20.2';
 const REPEAT_HIT_INTERVAL=MOVES.light.startup+MOVES.light.active+MOVES.light.recovery+.03;
 export const KEYMAPS=[
   {ArrowLeft:'left',ArrowRight:'right',ArrowUp:'jump',ArrowDown:'block',KeyZ:'light',KeyX:'heavy',KeyC:'grapple',KeyV:'special',KeyJ:'light',KeyK:'heavy',KeyL:'grapple',KeyU:'special',KeyQ:'weapon',KeyE:'taunt',ShiftLeft:'run'},
@@ -25,7 +25,7 @@ export class InputState {
     this.local=false;this.repeatHit=true;this.repeatClock=0;this.escapeLast='heavy';
   }
   keymaps(){return this.local?KEYMAPS:[{...KEYMAPS[0],...soloDirections},Object.fromEntries(Object.entries(KEYMAPS[1]).filter(([key])=>!soloDirections[key]))];}
-  setMode(mode){this.local=mode==='local';this.clear();}
+  setMode(mode){this.local=mode==='local'||mode==='pole-local';this.clear();}
   pressKey(code){
     const maps=this.keymaps();
     if(!this.keys.has(code))for(let i=0;i<2;i++){const action=maps[i][code];if(actions.has(action))this.pending[i].add(action);}

@@ -1,25 +1,26 @@
-import {RenderBudget} from './render-budget.js?v=0.19.1';
-import {Coach} from './coach.js?v=0.19.1';
-import {loadGameImage} from './image-loader.js?v=0.19.1';
-import {fighterProfile} from './fighter-profile.js?v=0.19.1';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.19.1';
-import {Match,STEP,emptyInput} from './engine.js?v=0.19.1';
-import {Renderer} from './render.js?v=0.19.1';
-import {Input} from './input.js?v=0.19.1';
-import {Sound} from './audio.js?v=0.19.1';
-import {ARENAS} from './arenas.js?v=0.19.1';
-import {touchContext} from './touch-ui.js?v=0.19.1';
-import {OnlineSession} from './online.js?v=0.19.1';
-import {connectFirebase} from './firebase-online.js?v=0.19.1';
-import {SnapshotBuffer} from './online-protocol.js?v=0.19.1';
-import {RosterSelection} from './roster-selection.js?v=0.19.1';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.19.1';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.19.1';
-import {FramePacer} from './frame-pacer.js?v=0.19.1';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.19.1';
-import {Haptics} from './haptics.js?v=0.19.1';
-import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.19.1';
-import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.19.1';
+import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.20.2';
+import {RenderBudget} from './render-budget.js?v=0.20.2';
+import {Coach} from './coach.js?v=0.20.2';
+import {loadGameImage} from './image-loader.js?v=0.20.2';
+import {fighterProfile} from './fighter-profile.js?v=0.20.2';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.20.2';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode} from './engine.js?v=0.20.2';
+import {Renderer} from './render.js?v=0.20.2';
+import {Input} from './input.js?v=0.20.2';
+import {Sound} from './audio.js?v=0.20.2';
+import {ARENAS} from './arenas.js?v=0.20.2';
+import {touchContext} from './touch-ui.js?v=0.20.2';
+import {OnlineSession} from './online.js?v=0.20.2';
+import {connectFirebase} from './firebase-online.js?v=0.20.2';
+import {SnapshotBuffer} from './online-protocol.js?v=0.20.2';
+import {RosterSelection} from './roster-selection.js?v=0.20.2';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.20.2';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.20.2';
+import {FramePacer} from './frame-pacer.js?v=0.20.2';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.20.2';
+import {Haptics} from './haptics.js?v=0.20.2';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.20.2';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.20.2';
 const haptics=new Haptics();let arcadeRewards=null;
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help'),creditsScreen=$('credits');
@@ -108,8 +109,8 @@ function updateTouchContext(){
   if(context.escape!==touchEscapeMode){input.clearTouch();touchEscapeMode=context.escape;}
   $('touch-grapple').dataset.state=context.grabLabel;$('touch-escape').dataset.state=context.escapeLabel;
   $('touch-hint').textContent=context.hint;$('grab-label').textContent=context.grabLabel;$('grab-detail').textContent=context.grabDetail;
-  $('touch-grapple').setAttribute('aria-label',context.grabLabel==='RELEASE'?'Release hold':context.grabLabel==='PIN'?'Pin opponent':context.grabLabel==='BREAK'?'Break grapple':context.grabLabel==='CLIMB'?'Climb top rope':context.grabLabel==='DIVE'?'Top rope dive':'Grapple');
-  $('heavy-detail').textContent=context.heavy;$('weapon-detail').textContent=context.weapon==='NONE'?'BARE HANDS':context.weapon;
+  $('touch-grapple').setAttribute('aria-label',context.grabLabel==='CLAIM'?'Hold to retrieve pole weapon':context.grabLabel==='SUPERPLEX'?'Throw opponent off top rope':context.grabLabel==='RELEASE'?'Release hold':context.grabLabel==='PIN'?'Pin opponent':context.grabLabel==='BREAK'?'Break grapple':context.grabLabel==='CLIMB'?'Climb top rope':context.grabLabel==='DIVE'?'Top rope dive':'Grapple');
+  $('heavy-detail').textContent=context.heavy;$('weapon-detail').textContent=context.weaponDetail;
   $('touch-special').classList.toggle('ready',context.ready);$('touch-special').style.setProperty('--charge',`${context.meter}%`);
   $('finish-detail').textContent=context.ready?'READY!':`${context.meter}%`;
   $('touch-special').setAttribute('aria-label',context.ready?'Finisher ready':`Finisher charging: ${context.meter} percent`);
@@ -131,7 +132,7 @@ function setSelectionPanel(panel){
 function resizeRoster(){if(rosterSelection){rosterSelection.resize(rosterPageSize());renderRosterPage();}}
 function choose(index){if(!rosterSelection?.choose(index))return;chosen=index;const f=roster[index];
   renderRosterPage();
-  $('portrait').src=`./assets/${f.id}-portrait.png`;$('portrait').alt=f.name;$('fighter-name').textContent=f.name;$('fighter-style').textContent=`${f.style.toUpperCase()} · ${fighterProfile(f).label}`;
+  $('portrait').src=fighterPortrait(f);$('portrait').alt=f.name;$('fighter-name').textContent=f.name;$('fighter-style').textContent=`${f.style.toUpperCase()} · ${fighterProfile(f).label}`;
   $('fighter-traits').textContent=fighterProfile(f).tip;
   $('finisher-name').textContent=f.websiteStats?.finisher||f.finisher;
   $('stats').replaceChildren();
@@ -177,8 +178,9 @@ function updateOpponent(){
   if(!roster.length)return;
   const mode=$('mode').value,opponent=roster[Number($('opponent').value)||0];
   $('versus-name').textContent=mode==='online'?'ROOM CODES + QUICK MATCH':mode==='championship'?'FIVE WINS TO THE BELT':mode==='arcade'?`${roster.length-1} OPPONENTS. ONE CHAMPION.`:`VS ${opponent.name.toUpperCase()}`;
-  $('versus-avatar').hidden=['arcade','online','championship'].includes(mode);$('versus-avatar').src=`./assets/${opponent.id}-portrait.png`;
-  $('versus-label').textContent=mode==='online'?'ONLINE MULTIPLAYER':mode==='championship'?'CHAMPIONSHIP':mode==='arcade'?'ARCADE RUN':mode==='local'?'PLAYER 2':mode==='practice'?'PRACTICE PARTNER':'CPU OPPONENT';
+  $('versus-avatar').hidden=['arcade','online','championship'].includes(mode);$('versus-avatar').src=fighterPortrait(opponent);
+  $('versus-label').textContent=mode==='online'?'ONLINE MULTIPLAYER':mode==='championship'?'CHAMPIONSHIP':mode==='arcade'?'ARCADE RUN':isLocalMode(mode)?'PLAYER 2':mode==='practice'?'PRACTICE PARTNER':'CPU OPPONENT';
+  $('pole-rules').hidden=!isPoleMode(mode);
   updateChampionship();updateArcadeRewards();
 }
 function buildRoster(){
@@ -187,7 +189,7 @@ function buildRoster(){
   $('show-roster').textContent=`FIGHTERS · ${roster.length}`;
   roster.forEach((f,i)=>{
     const b=document.createElement('button');b.className='fighter-card';b.style.setProperty('--fighter',f.color);b.setAttribute('aria-label',f.name);b.setAttribute('aria-pressed','false');
-    const img=document.createElement('img');img.dataset.src=`./assets/${f.id}-portrait.png`;img.alt='';img.decoding='async';const name=document.createElement('span');name.textContent=f.name.toUpperCase();b.append(img,name);b.onclick=()=>choose(i);$('roster').append(b);
+    const img=document.createElement('img');img.dataset.src=fighterPortrait(f);img.alt='';img.decoding='async';const name=document.createElement('span');name.textContent=f.name.toUpperCase();b.append(img,name);b.onclick=()=>choose(i);$('roster').append(b);
     const option=document.createElement('option');option.value=i;option.textContent=f.name.toUpperCase();$('opponent').append(option);
     $('roster-select').append(option.cloneNode(true));
   });$('opponent').value='1';choose(0);
@@ -196,7 +198,7 @@ function buildRoster(){
   $('roster-next').onclick=()=>{rosterSelection.turn(1);renderRosterPage();};
   $('show-roster').onclick=()=>setSelectionPanel('roster');$('show-setup').onclick=()=>setSelectionPanel('setup');
   $('confirm-fighter').onclick=()=>{setSelectionPanel('setup');$('mode').focus();};
-  $('mode').onchange=()=>{const mode=$('mode').value;$('difficulty-label').hidden=['local','practice','online'].includes(mode);$('opponent').parentElement.hidden=['arcade','online','championship'].includes(mode);$('opponent-label').textContent=mode==='local'?'PLAYER 2':'OPPONENT';$('online-lobby').hidden=mode!=='online';$('fight').hidden=mode==='online';updateOpponent();};
+  $('mode').onchange=()=>{const mode=$('mode').value;$('difficulty-label').hidden=['local','pole-local','practice','online'].includes(mode);$('opponent').parentElement.hidden=['arcade','online','championship'].includes(mode);$('opponent-label').textContent=isLocalMode(mode)?'PLAYER 2':'OPPONENT';$('online-lobby').hidden=mode!=='online';$('fight').hidden=mode==='online';updateOpponent();};
   $('opponent').onchange=updateOpponent;$('difficulty').onchange=()=>{updateChampionship();updateArcadeRewards();};
   $('roster').addEventListener('keydown',event=>{
     const columns=getComputedStyle($('roster')).gridTemplateColumns.split(' ').length,current=Array.from($('roster').children).indexOf(event.target);
@@ -208,7 +210,7 @@ async function loadFighter(index){
   if(atlases[index])return;
   if(!imagePromises.has(index)){
     let pending;
-    pending=loadingImage(roster[index].atlas).then(image=>{
+    pending=loadingImage(fighterAtlas(roster[index])).then(image=>{
       // A match can be changed while an image is decoding. Do not let a stale
       // completion repopulate the cache after retainMatchArtwork evicted it.
       if(imagePromises.get(index)===pending)atlases[index]=image;
@@ -253,7 +255,7 @@ async function startMatch(nextArcade=false){
     match.championshipBout=championshipBout;
     retainMatchArtwork(atlases,arenas,imagePromises,match.ids,arena);
     coach?.start();creditsPending=false;creditsScreen.hidden=true;paused=false;selection.hidden=true;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();input.active=true;input.setMode(mode);if(coarse.matches||preferences.touch==='on')input.scheme='touch';renderer.reset();touchSignature='';$('pause-button').hidden=false;updateTouch();sound.resume();
-    $('footer-status').textContent=championshipBout?championshipLabel(championshipBout):mode==='local'?'LOCAL VERSUS · TWO PLAYERS. ONE RING.':mode==='arcade'?`ARCADE RUN · OPPONENT ${arcadeIndex+1} OF ${roster.length-1}`:mode==='practice'?'PRACTICE · FULL METER · AUTO RESET':'VS CPU · BEST OF THREE';
+    $('footer-status').textContent=championshipBout?championshipLabel(championshipBout):isPoleMode(mode)?'WEAPON ON A POLE · CLAIM THE CHAIR, THEN WIN TWO FALLS':isLocalMode(mode)?'LOCAL VERSUS · TWO PLAYERS. ONE RING.':mode==='arcade'?`ARCADE RUN · OPPONENT ${arcadeIndex+1} OF ${roster.length-1}`:mode==='practice'?'PRACTICE · FULL METER · AUTO RESET':'VS CPU · BEST OF THREE';
     document.activeElement?.blur();status(`Round 1. ${roster[chosen].name} versus ${roster[opponent].name}.`);
   }catch(error){status('The match artwork could not load. Try again.');$('footer-status').textContent='COULD NOT LOAD MATCH ARTWORK. PRESS FIGHT TO RETRY.';console.error(error);}
   finally{loading=false;modalState();$('fight').disabled=false;$('fight').textContent='FIGHT';updateChampionship();}
@@ -276,11 +278,11 @@ function finishMatch(){
   if(match.resultShown)return;match.resultShown=true;
   input.active=false;input.clear();$('pause-button').hidden=true;
   const won=match.winner===localIndex,arcade=match.options.mode==='arcade',champion=arcade&&won&&arcadeIndex===arcadeOpponents.length-1;
-  $('result-win-art').hidden=!(won||match.options.mode==='local');
+  $('result-win-art').hidden=!(won||isLocalMode(match.options.mode));
   $('result-title').textContent=champion?'LUNACY CHAMPION':`${match.fighters[match.winner].definition.name.toUpperCase()} WINS`;
   $('result-method').textContent=champion?'ENTIRE ROSTER DEFEATED':match.method;
   $('result-detail').textContent=`${match.wins[0]} — ${match.wins[1]}${arcade?` · ${Math.min(arcadeOpponents.length,arcadeIndex+(won?1:0))} of ${arcadeOpponents.length} opponents defeated`:''}`;
-  const winner=match.fighters[match.winner].definition;$('winner-portrait').src=`./assets/${winner.id}-portrait.png`;$('winner-portrait').alt=winner.name;
+  const winner=match.fighters[match.winner].definition;$('winner-portrait').src=fighterPortrait(winner);$('winner-portrait').alt=winner.name;
   $('rematch').textContent=match.options.mode==='online'?'BACK TO ONLINE LOBBY':arcade&&won&&!champion?'NEXT OPPONENT':arcade?'NEW ARCADE RUN':'REMATCH';
   $('championship-belt').hidden=true;creditsPending=false;$('show-credits').hidden=true;resultScreen.classList.remove('champion-result');
   if(match.options.mode==='championship'){
