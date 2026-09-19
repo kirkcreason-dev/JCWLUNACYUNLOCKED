@@ -1,0 +1,19 @@
+{
+  "version": "0.20.2",
+  "fighter": "dj-clay",
+  "source": "DJ Clay(1).zip / DJ Clay/DJ Clay standing.png",
+  "sourceSHA256": "5c91e1440f4b9b3b051de83b3e05706c8d18160fe8a190ba5c7e54dfea07e732",
+  "pose": "FRONT",
+  "bounds": {
+    "x": 8,
+    "y": 175,
+    "w": 404,
+    "h": 812
+  },
+  "portraitSize": [
+    159,
+    320
+  ],
+  "portraitSHA256": "aaccf1de5d74d170158f005e6a2e5b412023d887985c96a3d25851209dcdc9f7",
+  "gameplayAtlasChanged": false
+}

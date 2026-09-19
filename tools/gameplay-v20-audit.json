@@ -1,0 +1,1900 @@
+{
+  "version": "0.20.0",
+  "automatedTestsPassed": 276,
+  "fighters": 39,
+  "animationEntries": 4741,
+  "arenas": 6,
+  "runtimeSamples": 49,
+  "soaks": [
+    {
+      "mode": "cpu",
+      "matches": 117,
+      "totalSteps": 429216,
+      "results": [
+        {
+          "fighter": "Violent J",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 37,
+          "events": 135
+        },
+        {
+          "fighter": "Violent J",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 44,
+          "events": 180
+        },
+        {
+          "fighter": "Violent J",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 95,
+          "events": 386
+        },
+        {
+          "fighter": "2 Tuff Tony",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 73,
+          "events": 246
+        },
+        {
+          "fighter": "2 Tuff Tony",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 56,
+          "events": 222
+        },
+        {
+          "fighter": "2 Tuff Tony",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 84,
+          "events": 334
+        },
+        {
+          "fighter": "Willie Mack",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 43,
+          "events": 166
+        },
+        {
+          "fighter": "Willie Mack",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 74,
+          "events": 306
+        },
+        {
+          "fighter": "Willie Mack",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 107,
+          "events": 442
+        },
+        {
+          "fighter": "Mickie Knuckles",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 40,
+          "events": 174
+        },
+        {
+          "fighter": "Mickie Knuckles",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 42,
+          "events": 183
+        },
+        {
+          "fighter": "Mickie Knuckles",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 53,
+          "events": 228
+        },
+        {
+          "fighter": "Kerry Morton",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 40,
+          "events": 167
+        },
+        {
+          "fighter": "Kerry Morton",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 50,
+          "events": 212
+        },
+        {
+          "fighter": "Kerry Morton",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 105,
+          "events": 422
+        },
+        {
+          "fighter": "Mr. Happy",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 37,
+          "events": 148
+        },
+        {
+          "fighter": "Mr. Happy",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 48,
+          "events": 204
+        },
+        {
+          "fighter": "Mr. Happy",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 110,
+          "events": 458
+        },
+        {
+          "fighter": "Moshpit Mike",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 185
+        },
+        {
+          "fighter": "Moshpit Mike",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 51,
+          "events": 229
+        },
+        {
+          "fighter": "Moshpit Mike",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 79,
+          "events": 326
+        },
+        {
+          "fighter": "Cokane",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 43,
+          "events": 165
+        },
+        {
+          "fighter": "Cokane",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 56,
+          "events": 233
+        },
+        {
+          "fighter": "Cokane",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 52,
+          "events": 202
+        },
+        {
+          "fighter": "Yabo",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 171
+        },
+        {
+          "fighter": "Yabo",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 47,
+          "events": 189
+        },
+        {
+          "fighter": "Yabo",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 56,
+          "events": 198
+        },
+        {
+          "fighter": "Abel",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 47,
+          "events": 214
+        },
+        {
+          "fighter": "Abel",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 73,
+          "events": 288
+        },
+        {
+          "fighter": "Abel",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 57,
+          "events": 256
+        },
+        {
+          "fighter": "Dani Mo",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 41,
+          "events": 133
+        },
+        {
+          "fighter": "Dani Mo",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 53,
+          "events": 222
+        },
+        {
+          "fighter": "Dani Mo",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 87,
+          "events": 393
+        },
+        {
+          "fighter": "Facade",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 53,
+          "events": 214
+        },
+        {
+          "fighter": "Facade",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 62,
+          "events": 244
+        },
+        {
+          "fighter": "Facade",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 118,
+          "events": 483
+        },
+        {
+          "fighter": "J-Rod",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 44,
+          "events": 156
+        },
+        {
+          "fighter": "J-Rod",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 54,
+          "events": 211
+        },
+        {
+          "fighter": "J-Rod",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 79,
+          "events": 327
+        },
+        {
+          "fighter": "Matt Cross",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 53,
+          "events": 198
+        },
+        {
+          "fighter": "Matt Cross",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 45,
+          "events": 164
+        },
+        {
+          "fighter": "Matt Cross",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 62,
+          "events": 245
+        },
+        {
+          "fighter": "Vincenzo",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 36,
+          "events": 140
+        },
+        {
+          "fighter": "Vincenzo",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 74,
+          "events": 248
+        },
+        {
+          "fighter": "Vincenzo",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 95,
+          "events": 366
+        },
+        {
+          "fighter": "Caleb Konley",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 39,
+          "events": 166
+        },
+        {
+          "fighter": "Caleb Konley",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 64,
+          "events": 233
+        },
+        {
+          "fighter": "Caleb Konley",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 51,
+          "events": 216
+        },
+        {
+          "fighter": "Sally Boy",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 43,
+          "events": 166
+        },
+        {
+          "fighter": "Sally Boy",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 55,
+          "events": 224
+        },
+        {
+          "fighter": "Sally Boy",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 83,
+          "events": 371
+        },
+        {
+          "fighter": "Big Vito",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 36,
+          "events": 141
+        },
+        {
+          "fighter": "Big Vito",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 43,
+          "events": 186
+        },
+        {
+          "fighter": "Big Vito",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 55,
+          "events": 244
+        },
+        {
+          "fighter": "Bruce Wayans",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 46,
+          "events": 173
+        },
+        {
+          "fighter": "Bruce Wayans",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 81,
+          "events": 292
+        },
+        {
+          "fighter": "Bruce Wayans",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 66,
+          "events": 240
+        },
+        {
+          "fighter": "Alice Crowley",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 75,
+          "events": 293
+        },
+        {
+          "fighter": "Alice Crowley",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 71,
+          "events": 291
+        },
+        {
+          "fighter": "Alice Crowley",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 60,
+          "events": 225
+        },
+        {
+          "fighter": "Ruffo",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 42,
+          "events": 179
+        },
+        {
+          "fighter": "Ruffo",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 42,
+          "events": 168
+        },
+        {
+          "fighter": "Ruffo",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 103,
+          "events": 430
+        },
+        {
+          "fighter": "Kongo Kong",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 32,
+          "events": 136
+        },
+        {
+          "fighter": "Kongo Kong",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 46,
+          "events": 161
+        },
+        {
+          "fighter": "Kongo Kong",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 79,
+          "events": 300
+        },
+        {
+          "fighter": "Father Bronson",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 39,
+          "events": 145
+        },
+        {
+          "fighter": "Father Bronson",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 53,
+          "events": 239
+        },
+        {
+          "fighter": "Father Bronson",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 55,
+          "events": 236
+        },
+        {
+          "fighter": "Hokane",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 41,
+          "events": 165
+        },
+        {
+          "fighter": "Hokane",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 51,
+          "events": 201
+        },
+        {
+          "fighter": "Hokane",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 79,
+          "events": 329
+        },
+        {
+          "fighter": "Steven Flowe",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 47,
+          "events": 204
+        },
+        {
+          "fighter": "Steven Flowe",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 47,
+          "events": 192
+        },
+        {
+          "fighter": "Steven Flowe",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 57,
+          "events": 241
+        },
+        {
+          "fighter": "EC3",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 36,
+          "events": 137
+        },
+        {
+          "fighter": "EC3",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 76,
+          "events": 321
+        },
+        {
+          "fighter": "EC3",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 126,
+          "events": 505
+        },
+        {
+          "fighter": "Krule",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 37,
+          "events": 130
+        },
+        {
+          "fighter": "Krule",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 51,
+          "events": 184
+        },
+        {
+          "fighter": "Krule",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 66,
+          "events": 299
+        },
+        {
+          "fighter": "Jeeves",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 68,
+          "events": 269
+        },
+        {
+          "fighter": "Jeeves",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 88,
+          "events": 310
+        },
+        {
+          "fighter": "Jeeves",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 51,
+          "events": 188
+        },
+        {
+          "fighter": "Atiba",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 33,
+          "events": 127
+        },
+        {
+          "fighter": "Atiba",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 72,
+          "events": 274
+        },
+        {
+          "fighter": "Atiba",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 81,
+          "events": 316
+        },
+        {
+          "fighter": "JP Grayson",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 165
+        },
+        {
+          "fighter": "JP Grayson",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 60,
+          "events": 234
+        },
+        {
+          "fighter": "JP Grayson",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 51,
+          "events": 190
+        },
+        {
+          "fighter": "Tommy",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 186
+        },
+        {
+          "fighter": "Tommy",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 81,
+          "events": 342
+        },
+        {
+          "fighter": "Tommy",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 94,
+          "events": 403
+        },
+        {
+          "fighter": "Shaggy 2 Dope",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 54,
+          "events": 213
+        },
+        {
+          "fighter": "Shaggy 2 Dope",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 45,
+          "events": 192
+        },
+        {
+          "fighter": "Shaggy 2 Dope",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 67,
+          "events": 271
+        },
+        {
+          "fighter": "Jackson",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 40,
+          "events": 159
+        },
+        {
+          "fighter": "Jackson",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 53,
+          "events": 202
+        },
+        {
+          "fighter": "Jackson",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 81,
+          "events": 352
+        },
+        {
+          "fighter": "DJ Clay",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 70,
+          "events": 273
+        },
+        {
+          "fighter": "DJ Clay",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 61,
+          "events": 228
+        },
+        {
+          "fighter": "DJ Clay",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 93,
+          "events": 369
+        },
+        {
+          "fighter": "Jeff Lane",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 52,
+          "events": 178
+        },
+        {
+          "fighter": "Jeff Lane",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 89,
+          "events": 365
+        },
+        {
+          "fighter": "Jeff Lane",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 125,
+          "events": 482
+        },
+        {
+          "fighter": "Shane Mercer",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 36,
+          "events": 129
+        },
+        {
+          "fighter": "Shane Mercer",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 63,
+          "events": 233
+        },
+        {
+          "fighter": "Shane Mercer",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 98,
+          "events": 411
+        },
+        {
+          "fighter": "Josh Bishop",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 39,
+          "events": 143
+        },
+        {
+          "fighter": "Josh Bishop",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 55,
+          "events": 194
+        },
+        {
+          "fighter": "Josh Bishop",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 67,
+          "events": 295
+        },
+        {
+          "fighter": "Ring Rat",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 45,
+          "events": 172
+        },
+        {
+          "fighter": "Ring Rat",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 52,
+          "events": 199
+        },
+        {
+          "fighter": "Ring Rat",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 98,
+          "events": 416
+        },
+        {
+          "fighter": "The Green Phantom",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 54,
+          "events": 207
+        },
+        {
+          "fighter": "The Green Phantom",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 52,
+          "events": 215
+        },
+        {
+          "fighter": "The Green Phantom",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 65,
+          "events": 267
+        }
+      ]
+    },
+    {
+      "mode": "pole",
+      "matches": 117,
+      "totalSteps": 515116,
+      "results": [
+        {
+          "fighter": "Violent J",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 54,
+          "events": 175
+        },
+        {
+          "fighter": "Violent J",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 79,
+          "events": 285
+        },
+        {
+          "fighter": "Violent J",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 71,
+          "events": 292
+        },
+        {
+          "fighter": "2 Tuff Tony",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 177
+        },
+        {
+          "fighter": "2 Tuff Tony",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 77,
+          "events": 313
+        },
+        {
+          "fighter": "2 Tuff Tony",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 117,
+          "events": 488
+        },
+        {
+          "fighter": "Willie Mack",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 46,
+          "events": 164
+        },
+        {
+          "fighter": "Willie Mack",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 65,
+          "events": 255
+        },
+        {
+          "fighter": "Willie Mack",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 62,
+          "events": 219
+        },
+        {
+          "fighter": "Mickie Knuckles",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 44,
+          "events": 169
+        },
+        {
+          "fighter": "Mickie Knuckles",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 82,
+          "events": 297
+        },
+        {
+          "fighter": "Mickie Knuckles",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 66,
+          "events": 295
+        },
+        {
+          "fighter": "Kerry Morton",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 58,
+          "events": 217
+        },
+        {
+          "fighter": "Kerry Morton",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 100,
+          "events": 389
+        },
+        {
+          "fighter": "Kerry Morton",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 71,
+          "events": 301
+        },
+        {
+          "fighter": "Mr. Happy",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 36,
+          "events": 147
+        },
+        {
+          "fighter": "Mr. Happy",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 58,
+          "events": 194
+        },
+        {
+          "fighter": "Mr. Happy",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 84,
+          "events": 366
+        },
+        {
+          "fighter": "Moshpit Mike",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 47,
+          "events": 177
+        },
+        {
+          "fighter": "Moshpit Mike",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 67,
+          "events": 298
+        },
+        {
+          "fighter": "Moshpit Mike",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 62,
+          "events": 218
+        },
+        {
+          "fighter": "Cokane",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 62,
+          "events": 193
+        },
+        {
+          "fighter": "Cokane",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 79,
+          "events": 306
+        },
+        {
+          "fighter": "Cokane",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 64,
+          "events": 245
+        },
+        {
+          "fighter": "Yabo",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 48,
+          "events": 186
+        },
+        {
+          "fighter": "Yabo",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 67,
+          "events": 230
+        },
+        {
+          "fighter": "Yabo",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 68,
+          "events": 256
+        },
+        {
+          "fighter": "Abel",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 168
+        },
+        {
+          "fighter": "Abel",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 72,
+          "events": 286
+        },
+        {
+          "fighter": "Abel",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 81,
+          "events": 339
+        },
+        {
+          "fighter": "Dani Mo",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 80,
+          "events": 303
+        },
+        {
+          "fighter": "Dani Mo",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 62,
+          "events": 215
+        },
+        {
+          "fighter": "Dani Mo",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 52,
+          "events": 211
+        },
+        {
+          "fighter": "Facade",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 56,
+          "events": 224
+        },
+        {
+          "fighter": "Facade",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 51,
+          "events": 220
+        },
+        {
+          "fighter": "Facade",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 128,
+          "events": 494
+        },
+        {
+          "fighter": "J-Rod",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 48,
+          "events": 166
+        },
+        {
+          "fighter": "J-Rod",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 75,
+          "events": 288
+        },
+        {
+          "fighter": "J-Rod",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 73,
+          "events": 294
+        },
+        {
+          "fighter": "Matt Cross",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 84,
+          "events": 296
+        },
+        {
+          "fighter": "Matt Cross",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 50,
+          "events": 212
+        },
+        {
+          "fighter": "Matt Cross",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 107,
+          "events": 430
+        },
+        {
+          "fighter": "Vincenzo",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 53,
+          "events": 204
+        },
+        {
+          "fighter": "Vincenzo",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 86,
+          "events": 314
+        },
+        {
+          "fighter": "Vincenzo",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 102,
+          "events": 381
+        },
+        {
+          "fighter": "Caleb Konley",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 37,
+          "events": 174
+        },
+        {
+          "fighter": "Caleb Konley",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 66,
+          "events": 246
+        },
+        {
+          "fighter": "Caleb Konley",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 69,
+          "events": 283
+        },
+        {
+          "fighter": "Sally Boy",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 69,
+          "events": 263
+        },
+        {
+          "fighter": "Sally Boy",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 92,
+          "events": 343
+        },
+        {
+          "fighter": "Sally Boy",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 113,
+          "events": 494
+        },
+        {
+          "fighter": "Big Vito",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 44,
+          "events": 155
+        },
+        {
+          "fighter": "Big Vito",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 61,
+          "events": 249
+        },
+        {
+          "fighter": "Big Vito",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 109,
+          "events": 445
+        },
+        {
+          "fighter": "Bruce Wayans",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 61,
+          "events": 213
+        },
+        {
+          "fighter": "Bruce Wayans",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 66,
+          "events": 293
+        },
+        {
+          "fighter": "Bruce Wayans",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 79,
+          "events": 336
+        },
+        {
+          "fighter": "Alice Crowley",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 99,
+          "events": 358
+        },
+        {
+          "fighter": "Alice Crowley",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 58,
+          "events": 200
+        },
+        {
+          "fighter": "Alice Crowley",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 110,
+          "events": 444
+        },
+        {
+          "fighter": "Ruffo",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 47,
+          "events": 176
+        },
+        {
+          "fighter": "Ruffo",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 51,
+          "events": 191
+        },
+        {
+          "fighter": "Ruffo",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 79,
+          "events": 326
+        },
+        {
+          "fighter": "Kongo Kong",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 65,
+          "events": 219
+        },
+        {
+          "fighter": "Kongo Kong",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 102,
+          "events": 382
+        },
+        {
+          "fighter": "Kongo Kong",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 102,
+          "events": 416
+        },
+        {
+          "fighter": "Father Bronson",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 168
+        },
+        {
+          "fighter": "Father Bronson",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 58,
+          "events": 241
+        },
+        {
+          "fighter": "Father Bronson",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 128,
+          "events": 530
+        },
+        {
+          "fighter": "Hokane",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 54,
+          "events": 199
+        },
+        {
+          "fighter": "Hokane",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 74,
+          "events": 277
+        },
+        {
+          "fighter": "Hokane",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 103,
+          "events": 442
+        },
+        {
+          "fighter": "Steven Flowe",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 78,
+          "events": 271
+        },
+        {
+          "fighter": "Steven Flowe",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 82,
+          "events": 284
+        },
+        {
+          "fighter": "Steven Flowe",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 87,
+          "events": 344
+        },
+        {
+          "fighter": "EC3",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 64,
+          "events": 240
+        },
+        {
+          "fighter": "EC3",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 65,
+          "events": 251
+        },
+        {
+          "fighter": "EC3",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 123,
+          "events": 477
+        },
+        {
+          "fighter": "Krule",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 58,
+          "events": 207
+        },
+        {
+          "fighter": "Krule",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 78,
+          "events": 294
+        },
+        {
+          "fighter": "Krule",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 48,
+          "events": 191
+        },
+        {
+          "fighter": "Jeeves",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 47,
+          "events": 196
+        },
+        {
+          "fighter": "Jeeves",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 63,
+          "events": 227
+        },
+        {
+          "fighter": "Jeeves",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 122,
+          "events": 469
+        },
+        {
+          "fighter": "Atiba",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 44,
+          "events": 189
+        },
+        {
+          "fighter": "Atiba",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 62,
+          "events": 285
+        },
+        {
+          "fighter": "Atiba",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 63,
+          "events": 256
+        },
+        {
+          "fighter": "JP Grayson",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 49,
+          "events": 203
+        },
+        {
+          "fighter": "JP Grayson",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 85,
+          "events": 329
+        },
+        {
+          "fighter": "JP Grayson",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 82,
+          "events": 291
+        },
+        {
+          "fighter": "Tommy",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 74,
+          "events": 256
+        },
+        {
+          "fighter": "Tommy",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 93,
+          "events": 396
+        },
+        {
+          "fighter": "Tommy",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 87,
+          "events": 401
+        },
+        {
+          "fighter": "Shaggy 2 Dope",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 31,
+          "events": 140
+        },
+        {
+          "fighter": "Shaggy 2 Dope",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 54,
+          "events": 211
+        },
+        {
+          "fighter": "Shaggy 2 Dope",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 112,
+          "events": 472
+        },
+        {
+          "fighter": "Jackson",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 46,
+          "events": 178
+        },
+        {
+          "fighter": "Jackson",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 62,
+          "events": 259
+        },
+        {
+          "fighter": "Jackson",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 75,
+          "events": 276
+        },
+        {
+          "fighter": "DJ Clay",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 60,
+          "events": 261
+        },
+        {
+          "fighter": "DJ Clay",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 111,
+          "events": 452
+        },
+        {
+          "fighter": "DJ Clay",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 92,
+          "events": 391
+        },
+        {
+          "fighter": "Jeff Lane",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 94,
+          "events": 308
+        },
+        {
+          "fighter": "Jeff Lane",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 95,
+          "events": 340
+        },
+        {
+          "fighter": "Jeff Lane",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 113,
+          "events": 500
+        },
+        {
+          "fighter": "Shane Mercer",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 78,
+          "events": 279
+        },
+        {
+          "fighter": "Shane Mercer",
+          "difficulty": "normal",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 103,
+          "events": 395
+        },
+        {
+          "fighter": "Shane Mercer",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 1,
+          "seconds": 116,
+          "events": 429
+        },
+        {
+          "fighter": "Josh Bishop",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 60,
+          "events": 204
+        },
+        {
+          "fighter": "Josh Bishop",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 70,
+          "events": 260
+        },
+        {
+          "fighter": "Josh Bishop",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 66,
+          "events": 234
+        },
+        {
+          "fighter": "Ring Rat",
+          "difficulty": "easy",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 71,
+          "events": 274
+        },
+        {
+          "fighter": "Ring Rat",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 66,
+          "events": 267
+        },
+        {
+          "fighter": "Ring Rat",
+          "difficulty": "hard",
+          "rounds": 3,
+          "winner": 0,
+          "seconds": 109,
+          "events": 414
+        },
+        {
+          "fighter": "The Green Phantom",
+          "difficulty": "easy",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 61,
+          "events": 246
+        },
+        {
+          "fighter": "The Green Phantom",
+          "difficulty": "normal",
+          "rounds": 2,
+          "winner": 0,
+          "seconds": 76,
+          "events": 281
+        },
+        {
+          "fighter": "The Green Phantom",
+          "difficulty": "hard",
+          "rounds": 2,
+          "winner": 1,
+          "seconds": 73,
+          "events": 288
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Pure simulation and native canvas review; no browser or physical-device QA.",
+    "Online validation uses the in-memory transport, not a live two-device session."
+  ]
+}

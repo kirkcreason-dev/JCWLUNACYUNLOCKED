@@ -1,13 +1,14 @@
 // Deterministic engine stress, not a substitute for browser/device playtesting.
 import assert from 'node:assert/strict';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
-import {Match,STEP,emptyInput,LEFT,RIGHT} from '../dist/src/engine.js';
+import {Match,STEP,emptyInput,LEFT,RIGHT,onTopRope,canCornerThrow} from '../dist/src/engine.js';
 import {packSnapshot,validSnapshot} from '../dist/src/online-protocol.js';
 const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
+const mode=process.argv.includes('--pole')?'pole':'cpu';
 const results=[];let totalSteps=0;
 for(let id=0;id<roster.length;id++)for(const difficulty of ['easy','normal','hard']){
  let seed=1+id*31+['easy','normal','hard'].indexOf(difficulty),steps=0,eventCount=0;const rng=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
- const m=new Match(roster,id,(id+7)%roster.length,{mode:'cpu',difficulty,random:rng});
+ const m=new Match(roster,id,(id+7)%roster.length,{mode,difficulty,random:rng});
  while(m.phase!=='done'&&steps<36000){
   const [a,b]=m.fighters,v=emptyInput(),d=Math.abs(a.x-b.x);steps++;
   if(m.phase==='fight'){
@@ -16,6 +17,12 @@ for(let id=0;id<roster.length;id++)for(const difficulty of ['easy','normal','har
     if(d>80)v[a.x<b.x?'right':'left']=true;
     if(steps%11===0){let key=a.meter>=100&&d<135?'special':b.state==='down'&&d<120?'grapple':d<100&&rng()<.2?'grapple':rng()<.58?'light':'heavy';if(d<180){v[key]=true;v.pressed={[key]:true};}}
     if(b.move&&rng()<.08)v.block=true;
+    if(canCornerThrow(a,b)&&steps%7===0){v.grapple=true;v.pressed={grapple:true};}
+    if(m.pole&&!m.pole.claimed){
+     if(onTopRope(a)&&Math.abs(a.x-m.pole.x)<40){Object.assign(v,emptyInput());v.grapple=true;}
+     else if(d>190){Object.assign(v,emptyInput());if(Math.abs(a.x-m.pole.x)<65){if(steps%11===0){v.grapple=true;v.pressed={grapple:true};}}else v[a.x<m.pole.x?'right':'left']=true;}
+    }else if(m.pole?.looseX!=null&&Math.abs(a.x-m.pole.looseX)<80&&steps%11===0){v.weapon=true;v.pressed={weapon:true};}
+    if(onTopRope(a)&&(!m.pole||m.pole.claimed)&&steps%11===0){v.jump=true;v.pressed={jump:true};}
    }
   }
   m.step([v,emptyInput()],STEP);eventCount+=m.drainEvents().length;
@@ -25,5 +32,5 @@ for(let id=0;id<roster.length;id++)for(const difficulty of ['easy','normal','har
  assert.equal(m.phase,'done',`${roster[id].name} ${difficulty}: stalled match`);assert.ok(m.wins.includes(2));totalSteps+=steps;
  results.push({fighter:roster[id].name,difficulty,rounds:m.round,winner:m.winner,seconds:Math.round(steps/60),events:eventCount});
 }
-await mkdir(new URL('../review/',import.meta.url),{recursive:true});await writeFile(new URL('../review/soak.json',import.meta.url),JSON.stringify({matches:results.length,totalSteps,results},null,2));
-console.log(`PASS: ${results.length} completed matches across all 39 fighters and three difficulties; ${totalSteps} simulation steps; finite bounded state and valid network snapshots.`);
+await mkdir(new URL('../review/',import.meta.url),{recursive:true});await writeFile(new URL(`../review/soak-${mode}.json`,import.meta.url),JSON.stringify({mode,matches:results.length,totalSteps,results},null,2));
+console.log(`PASS: ${results.length} ${mode} matches across all 39 fighters and three difficulties; ${totalSteps} simulation steps; finite bounded state and valid network snapshots.`);

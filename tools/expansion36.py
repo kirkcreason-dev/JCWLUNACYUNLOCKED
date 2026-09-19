@@ -111,12 +111,14 @@ def main(src):
         if id=='jeff-lane':
             parts['idle']=parts['taunt'][1:2]
             parts['throw']=[parts['lift'][0],parts['lift'][1],parts['lift'][-1],parts['kick'][2],parts['idle'][0]]
+        # Save the front portrait before narrowing DJ's gameplay idle to RIGHT.
+        portrait=parts['idle'][0]['image'].copy()
         if id=='dj-clay':
             parts['idle']=parts['idle'][-1:]
             parts['down'][1]['image']=ImageOps.mirror(parts['down'][1]['image'])
         # Normalize each authored sequence to the same 220 px standing scale.
         frames=[];A={};preview=[]
-        portrait=parts['idle'][0]['image'].copy();portrait.thumbnail((220,320));portrait.save(OUT/f'{id}-portrait.png')
+        portrait.thumbnail((220,320));portrait.save(OUT/f'{id}-portrait.png')
         for anim,items in parts.items():
             if anim=='idle':items=items[-1:]
             ref=max(v['h'] for v in items)
