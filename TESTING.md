@@ -1,3 +1,40 @@
+# v0.20.2 — DJ Clay portrait verification
+
+- Inspected the supplied phone screenshot and original four-direction standing sheet. The FRONT pose now produces a transparent 159 × 320 portrait, checked by complete PNG decoding and visual inspection.
+- `npm test`: 280 tests pass. `npm run check`: 39 fighters, 4,755 animation entries, six arenas, both music tracks, 49 runtime samples, syntax and UI references pass.
+- Compared against v0.20.1: all gameplay atlases, animation metadata, Alice’s replacement, other portraits and supplied audio are unchanged. Only DJ’s portrait and artwork-cache revision change at runtime, alongside release URL revisions.
+- The source importer now captures the UI portrait before narrowing gameplay idle to RIGHT. Rebuild just this portrait with `python3 tools/fix_dj_portrait.py`; the original standing sheet and source/hash audit are included.
+
+No browser or physical-device test was performed for this portrait-only fix. Full ZIP only; nothing pushed or deployed.
+
+---
+
+# v0.20.1 — Alice replacement verification
+
+- `npm test`: **280 passing tests**. New checks validate complete RGBA PNG scanlines/end markers, source ZIP identity, right-facing gait metadata, kick contact pose, matching fall/recovery endpoints, single weapon rendering and image revisions on selection/opponent/results surfaces.
+- `npm run check`: 39 fighters, **4,755 animation entries**, six arenas, both music tracks, 49 runtime sound samples, JavaScript syntax, approved ratings and UI references pass.
+- Native canvas review inspected Alice's new sprite extraction and in-game poses in both facings, including weapon contact, falls, pins, recovery, taunts, climb and aerial states. Desktop, portrait and landscape ring views use the replacement art. This check caught an incomplete initial PNG export; the importer now verifies complete encoded data and decodes the saved file before proceeding.
+- Packaging checks compare all other fighter records, all pre-existing media except Alice's two images and roster animation metadata, approval data and deployment workflow against v0.20.0. Alice retains all non-artwork identity/stats fields. The source ZIP is preserved byte for byte.
+
+No browser/physical-device or live online session was performed. The earlier 234-match v0.20.0 soak results below remain historical; they were not rerun for this artwork replacement. The current automated suite still exercises full matches and both-corner rope actions. Full ZIP only; no push or deployment.
+
+---
+
+# v0.20.0 — Weapons and pole-match verification
+
+- `npm test`: **276 passing tests**. New coverage exercises weapon-specific damage/timing, persistent wear and breakage, actual cloned atlas grips, all 39 fighters' top-rope taunts and superplexes in both corners, interrupted taunts/retrievals, both throw-break outcomes, fair simultaneous corner grabs, chair drops/pickups, CPU retrieval and local P2 input.
+- `npm run check`: JavaScript syntax and UI references pass for 39 fighters, 4,741 animation entries, six arenas, both music tracks and 49 runtime samples.
+- `node tools/soak.mjs`: **117 completed standard CPU matches**, all fighters on all three difficulties, **429,216 simulation steps**.
+- `node tools/soak.mjs --pole`: **117 completed pole matches**, all fighters on all three difficulties, **515,116 simulation steps**. Both soak runs maintain finite bounded state, finish best-of-three results and validate network snapshots. Results are in `tools/gameplay-v20-audit.json`.
+- Online tests cover new equipment/rope state, event deduplication and Firebase's omission of null/empty objects. Explicit zero-valued weapon wear keeps fresh snapshots valid. Changed combat is isolated in v20 / LU200 rooms.
+- Native canvas review inspected weapon wind-up/contact/recovery and measured the original nine fighters' hand locations. Pole retrieval was rendered in phone portrait and landscape; superplex lift, flight and landing were inspected. All roster animation crops, including the new rope-taunt state, pass in both directions.
+- The reported portrait duplication was traced to a stretched screen-space arena behind the camera-space arena. Only one arena is now drawn, and the 4:3 portrait stage keeps normal travel and jumps at one scale. Regression tests cover both corners, opposite corners, jumps and exactly one scene-sized background draw; native renders checked Shaggy/Tony at center, left, right and opposite corners. Foreground rope patches remain legitimate small draws.
+- All pre-existing assets, approved roster data, supplied sounds, replacement credits artwork and deployment workflow are checked byte for byte against v0.19.1 before packaging.
+
+No browser/device QA or live Firebase two-device session was performed. Simulation completion does not establish real-phone frame rate, touch comfort or CSS layout. Tester handoff: try the new pole mode on phone, check holding CLAIM and cancelling it, alternate attacks with different weapons, interrupt a rope taunt, escape a superplex, then finish a full match. The pole mode is CPU/local only. No push or deployment.
+
+---
+
 # v0.19.1 — Credits replacement verification
 
 - Replacement image verified byte for byte against the uploaded PNG, with its original 1672 × 941 dimensions.
