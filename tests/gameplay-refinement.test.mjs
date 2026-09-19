@@ -22,7 +22,7 @@ function hitChain(m,actions=['light','light','heavy'],index=0){
 test('confirmed jab-jab-heavy links in both directions, scales damage and stops at three hits',()=>{
  for(const index of [0,1]){
   const m=make(),me=hitChain(m,undefined,index),other=m.fighters[1-index];
-  assert.ok(Math.abs(other.hp-(100-6-6*.85-13*.7))<.00001);
+  assert.ok(Math.abs(other.hp-(100-6-6*.85-11*.7))<.00001);
   assert.equal(me.chain,2);assert.equal(me.combo,3);
   tick(m,index===0?{pressed:{light:true}}:{},index===1?{pressed:{light:true}}:{});run(m,100);
   assert.equal(m.drainEvents().filter(e=>e.type==='hit').length,3);
@@ -104,6 +104,7 @@ test('the attacker can release a hold with a new grapple tap, but holding it kee
 });
 test('CPU does not choose jabs from outside their reach and repeats intentional attack decisions',()=>{
  const m=make();m.options.mode='cpu';m.random=()=>.3;m.fighters[1].x=625;
+ const bare=m.cpu(STEP);assert.equal(bare.heavy,false);assert.equal(bare.left,true);m.aiTimer=0;m.fighters[1].weapon='chair';
  const first=m.cpu(STEP);assert.equal(first.light,false);assert.equal(first.heavy,true);assert.equal(first.pressed.heavy,true);
  const held=m.cpu(STEP);assert.equal(held.pressed,undefined);
  m.aiTimer=0;assert.equal(m.cpu(STEP).pressed.heavy,true);

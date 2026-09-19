@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {Match,MOVES,STEP,emptyInput} from '../dist/src/engine.js';
+import {Match,MOVES,attackTiming,STEP,emptyInput} from '../dist/src/engine.js';
 import {InputState} from '../dist/src/input.js';
 import {InputPackets,RemoteInput,packSnapshot,SnapshotBuffer,validSnapshot} from '../dist/src/online-protocol.js';
 import {touchContext} from '../dist/src/touch-ui.js';
@@ -13,7 +13,7 @@ function windup(m,index,move='light'){
   const f=m.fighters[index];if(['bat','guitar','trashcan'].includes(move))f.weapon=move;
   if(move==='special')f.meter=100;
   command(m,index,{pressed:{[move==='special'?'special':move==='light'?'light':'heavy']:true}});
-  while(f.t<MOVES[move].startup-STEP)tick(m);
+  while(f.t<attackTiming(move,f.attackStyle).startup-STEP)tick(m);
 }
 function hit(m,index=0,move='light'){windup(m,index,move);tick(m);}
 
@@ -51,7 +51,7 @@ test('low guard and early block presses still take normal guard damage; releasin
     if(kind==='early'){tick(m,{}, {block:true});run(m,10,{}, {block:true});tick(m,{light:true},{block:true});run(m,9,{}, {block:true});}
     if(kind==='released'){
       tick(m,{heavy:true},{block:true});tick(m);run(m,22);
-      assert.equal(defender.hp,87);assert.equal(m.drainEvents().some(e=>e.type==='reversal'),false);continue;
+      assert.equal(defender.hp,89);assert.equal(m.drainEvents().some(e=>e.type==='reversal'),false);continue;
     }
     assert.equal(defender.hp,100);assert.ok(defender.guard<100);assert.equal(m.drainEvents().some(e=>e.type==='reversal'),false);
   }

@@ -57,8 +57,8 @@ test('pins use a back pose and finishing the round never restarts a settled fall
   const ko=make(index),victim=ko.fighters[0];ko.knockDown(victim,'back',.38,5);victim.t=1.1;victim.hp=0;ko.endRound(1,'KNOCKOUT');assert.equal(victim.t,1.1);
  }
 });
-test('tall portrait phones gain ring area and normal jumps do not change camera zoom',()=>{
- const l=phoneLayout({width:390,height:844,safe:{top:47,bottom:34}});assert.ok(l.stage.height>l.stage.width);
+test('portrait phones use a fitted 4:3 arena and normal jumps do not change camera zoom',()=>{
+ const l=phoneLayout({width:390,height:844,safe:{top:47,bottom:34}});assert.ok(Math.abs(l.stage.width/l.stage.height-4/3)<1e-9);
  for(const portrait of [true,false])for(const height of [720,960,1440]){
   const base=phoneCamera([{x:500,z:0},{x:600,z:0}],{portrait,height});
   for(const z of portrait?[0,80,151,195,245,259]:[0,80,151])assert.equal(phoneCamera([{x:500,z},{x:600,z:0}],{portrait,height}).zoom,base.zoom);

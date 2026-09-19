@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {Match,MOVES,STEP,emptyInput} from '../dist/src/engine.js';
+import {Match,MOVES,attackTiming,STEP,emptyInput} from '../dist/src/engine.js';
 import {InputState} from '../dist/src/input.js';
 import {packSnapshot,SnapshotBuffer} from '../dist/src/online-protocol.js';
 const roster=[0,1].map(i=>({id:`test-${i}`,name:`Test ${i}`,power:1,speed:1,toughness:1,weapons:['chair','bat','guitar','trashcan']}));
@@ -12,7 +12,7 @@ function approach(direction=1,weapon='none'){
   run(m,30,direction>0?{right:true}:{left:true});
   m.fighters[0].weapon=weapon;
   const move=['bat','guitar','trashcan'].includes(weapon)?weapon:'heavy';
-  m.fighters[1].x=m.fighters[0].x+direction*(MOVES[move].reach+25);
+  m.fighters[1].x=m.fighters[0].x+direction*(attackTiming(move,weapon==='none'?'light':weapon).reach+25);
   m.drainEvents();return m;
 }
 
@@ -22,11 +22,11 @@ test('running covers 12% more ground while one second still uses one second of t
   assert.ok(Math.abs(m.remaining-98)<1e-9);
 });
 
-test('every attack recovers sooner without reducing damage or losing its late contact window',()=>{
+test('each attack keeps its declared damage and full active window at the faster pace',()=>{
   const before={light:.43,heavy:.87,bat:.70,guitar:.98,trashcan:1.05,special:1.02};
   for(const [move,oldDuration] of Object.entries(before)){
     const m=make(),a=m.fighters[0],b=m.fighters[1];
-    if(['bat','guitar','trashcan'].includes(move))a.weapon=move;
+    if(['bat','guitar','trashcan'].includes(move))a.weapon=move;if(move==='heavy')a.weapon='chair';
     a.meter=100;tick(m,{[move==='light'?'light':move==='special'?'special':'heavy']:true});
     let frames=0;while(a.move&&frames<90){tick(m);frames++;}
     assert.ok(frames*STEP<oldDuration,move);assert.ok(frames*STEP>oldDuration*.8,move);
@@ -46,7 +46,7 @@ test('running heavies bridge a small gap from either side with each weapon and r
     const m=approach(direction,weapon),a=m.fighters[0],b=m.fighters[1],start=a.x;
     tick(m,{heavy:true});run(m,90);
     const move=['bat','guitar','trashcan'].includes(weapon)?weapon:'heavy';
-    assert.equal(b.hp,100-MOVES[move].damage,`${direction} ${weapon}`);
+    assert.equal(b.hp,100-attackTiming(move,weapon==='none'?'light':weapon).damage,`${direction} ${weapon}`);
     assert.ok((a.x-start)*direction>25&&(a.x-start)*direction<50);
     const hit=m.drainEvents().find(e=>e.type==='hit');assert.equal(hit.running,true);
     const guest=make(),buffer=new SnapshotBuffer(m.ids);

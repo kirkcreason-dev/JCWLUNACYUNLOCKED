@@ -15,7 +15,7 @@ test('every roster animation and fighter facing uses a valid transparent atlas c
  const {r,count}=renderer();
  for(let i=0;i<roster.length;i++){
    const m=new Match(roster,i,(i+1)%roster.length,{mode:'local'});m.phase='fight';
-   for(const state of ['idle','walk','jump','block','light','heavy','special','hurt','down','pinned','rise','grapple','grabbed','lifted','thrown','throw','pin','victory','defeat','run','equip','taunt','climb','perch','dive']){
+   for(const state of ['idle','walk','jump','block','light','heavy','special','hurt','down','pinned','rise','grapple','grabbed','lifted','thrown','throw','pin','victory','defeat','run','equip','taunt','ropeTaunt','climb','perch','dive']){
      for(const facing of [-1,1])for(const t of [0,.11,.3,.7,1.1]){m.fighters[0].state=state;m.fighters[0].facing=facing;m.fighters[0].t=t;r.draw(m,i%4);}
    }
  }
@@ -148,4 +148,12 @@ test('hit shake is bounded for phones and desktops and disabled for reduced moti
   for(let i=0;i<20;i++){r.draw(m);assert.ok(Math.abs(r.shakeOffset[0])<=limit);assert.ok(Math.abs(r.shakeOffset[1])<=limit*.55);}
  }
  r.reduced=true;r.draw(m);assert.deepEqual(r.shakeOffset,[0,0]);
+});
+
+test('portrait gameplay draws one proportionate arena even with fighters in opposite corners',()=>{
+ const {r,ctx}=renderer(),m=new Match(roster,0,1,{mode:'local'});m.phase='fight';r.portrait=true;r.logicalHeight=960;
+ // Branding restores a thin foreground rope from the arena image; count only
+ // scene-sized draws, so that legitimate patch is not mistaken for a backdrop.
+ const calls=[];const original=ctx.drawImage;ctx.drawImage=(img,...args)=>{if(img===r.arenas[0]&&args.at(-2)>=1280)calls.push(args);original(img,...args);};
+ for(const positions of [[500,580],[200,1080],[200,280],[980,1080]]){m.fighters.forEach((f,i)=>f.x=positions[i]);calls.length=0;r.draw(m);assert.equal(calls.length,1);const args=calls[0];assert.deepEqual(args.slice(-4),[0,0,1280,720]);}
 });
