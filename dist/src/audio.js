@@ -1,6 +1,6 @@
-import {SampleBank} from './sample-bank.js?v=0.20.2';
-import {impactGroup,gruntGroup} from './sound-events.js?v=0.20.2';
-import {MOVES} from './engine.js?v=0.20.2';
+import {SampleBank} from './sample-bank.js?v=0.19.0';
+import {impactGroup,gruntGroup} from './sound-events.js?v=0.19.0';
+import {MOVES} from './engine.js?v=0.19.0';
 // Supplied synthesized samples, with procedural fallbacks for missing audio.
 export class Sound {
   constructor(music=new Audio(),{bank=new SampleBank()}={}){
@@ -106,8 +106,6 @@ export class Sound {
     case 'reversal':this.stopCharge(e.attacker);this.tone(620,.12,'triangle',.10,1020);this.noise(.12,.07,2400,'bandpass');break;
     case 'secondWind':this.tone(330,.35,'triangle',.12,880);this.crowd();break;
     case 'block':this.noise(.06,.08,2800,'bandpass');this.tone(480,.08,'triangle',.05,180);break;
-    case 'poleClaim':this.tone(440,.2,'triangle',.07,880);break;
-    case 'weaponBreak':this.noise(.13,.07,1600);break;
     case 'fight':this.bell();break;
     case 'count':this.noise(.09,.18,950);this.tone(180+e.count*70,.12,'triangle',.08,110);break;
     case 'special':{

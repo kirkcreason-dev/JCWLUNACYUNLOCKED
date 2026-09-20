@@ -1,9 +1,9 @@
-import {PROTOCOL,InputPackets,RemoteInput,packSnapshot} from './online-protocol.js?v=0.20.2';
+import {PROTOCOL,InputPackets,RemoteInput,packSnapshot} from './online-protocol.js?v=0.19.0';
 
-const QUEUE='rooms/LU200-queue';
+const QUEUE='rooms/LU190-queue';
 const noop=()=>{};
 export const randomId=(source=globalThis.crypto)=>source.randomUUID?.()||Array.from(source.getRandomValues(new Uint8Array(16)),n=>n.toString(16).padStart(2,'0')).join('');
-export function roomCode(value){return String(value||'').trim().toUpperCase().replace(/^LU200-/, '');}
+export function roomCode(value){return String(value||'').trim().toUpperCase().replace(/^LU190-/, '');}
 export function validRoom(meta,now=Date.now()){
   return meta?.protocol===PROTOCOL&&Number.isInteger(meta.host?.fighter)&&meta.host.fighter>=0&&meta.host.fighter<39
     &&typeof meta.host.id==='string'&&Number.isInteger(meta.arena)&&meta.arena>=0&&meta.arena<6
@@ -50,7 +50,7 @@ export class OnlineSession{
   async create(ctx,fighter,arena){
     ctx.role='host';
     for(let attempt=0;attempt<8;attempt++){
-      this.check(ctx);ctx.code=this.makeCode();ctx.ref=ctx.db.ref(`rooms/LU200-${ctx.code}`);
+      this.check(ctx);ctx.code=this.makeCode();ctx.ref=ctx.db.ref(`rooms/LU190-${ctx.code}`);
       const meta={protocol:PROTOCOL,created:this.now(),state:'lobby',arena,host:{id:ctx.id,fighter,online:false,ready:false}};
       const result=await timed(ctx.ref.child('meta').transaction(cur=>ctx.closed||cur?undefined:meta,undefined,false));
       if(!result.committed)continue;
@@ -61,7 +61,7 @@ export class OnlineSession{
   }
   async join(ctx,value,fighter){
     const code=roomCode(value);if(!/^[A-Z]{4}$/.test(code))throw new Error('Enter the four-letter room code.');
-    ctx.role='guest';ctx.code=code;ctx.ref=ctx.db.ref(`rooms/LU200-${code}`);
+    ctx.role='guest';ctx.code=code;ctx.ref=ctx.db.ref(`rooms/LU190-${code}`);
     // Check that the path can be read; transactions still have to handle a cold
     // null cache even after once() has returned the room.
     await timed(ctx.ref.child('meta').once('value'));this.check(ctx);

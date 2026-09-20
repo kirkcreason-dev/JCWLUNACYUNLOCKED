@@ -1,4 +1,4 @@
-import {MOVES,attackTiming} from './engine.js?v=0.20.2';
+import {MOVES} from './engine.js?v=0.19.0';
 
 const clamp=n=>Math.max(0,Math.min(1,n));
 const smooth=n=>{n=clamp(n);return n*n*(3-2*n);};
@@ -16,7 +16,7 @@ export function attackPose(definition,move,time,style){
       :time<activeEnd+timing.recovery*.35?5:0;
     return {frame:frames[index],offsetX:0,propGuitar:false};
   }
-  const timing=attackTiming(move,style)||MOVES.heavy,animations=definition.animations,frames=animations[style]||animations[move==='light'?'light':'heavy'];
+  const timing=MOVES[move]||MOVES.heavy,animations=definition.animations,frames=animations[style]||animations[move==='light'?'light':'heavy'];
   const light=style==='light'||definition.overlayWeapons?.includes(style)||(!style&&move==='light');
   // A kick has a chamber and one extended contact frame. Weapon art has an
   // explicit wind-up/contact/recovery order, independent of the move's speed.
