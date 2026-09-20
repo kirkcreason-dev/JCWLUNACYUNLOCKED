@@ -1,7 +1,3 @@
-# v0.20.0 weapons and corner combat
-
-See [WEAPONS-AND-POLE.md](WEAPONS-AND-POLE.md) for the current rules. Weapons now have distinct damage, reach, guard pressure and persistent wear. Top-rope TAUNT earns 20 meter if uninterrupted. GRAB near a perched opponent starts a superplex for extra damage, with a 0.38-second defender break window. The mode selector offers weapon-on-pole matches against CPU or a local second player.
-
 # v0.19.0 sound update
 
 CONTROLS has separate music and effects volumes. Supplied wrestling effects follow contact and movement. DJ Clay's finisher now plays his button press, charge and bass blast; an interrupted wind-up stops the charge. Attack timing, damage and meter rules remain the same. Missing audio falls back to the procedural sounds while play continues.
@@ -32,7 +28,7 @@ Win the title to receive the Lunacy championship belt, then select **DEFEND YOUR
 
 Progress saves on this browser after each match, separately for each fighter and difficulty. Return to the same fighter/difficulty and choose **CONTINUE CHAMPIONSHIP** or **DEFEND YOUR TITLE**. Quitting or reloading mid-match restarts that match, not the whole run. Records are local to this browser, not synced across devices; clearing browser data removes them. When browser storage is blocked, the game displays that progress lasts only for the session.
 
-This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v20 / LU200. The full ZIP is not deployed automatically.
+This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v19 / LU190. The full ZIP is not deployed automatically.
 
 ## Timed reversals
 

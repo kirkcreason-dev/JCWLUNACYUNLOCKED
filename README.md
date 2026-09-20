@@ -1,32 +1,8 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.20.2**.
-
-## DJ Clay portrait fix (v0.20.2)
-
-DJ Clay now faces forward on fighter selection, opponent previews and results. The original source FRONT pose replaces the side-view portrait, and a fighter-specific image revision refreshes cached copies. His gameplay atlas and all combat animations remain unchanged. The Alice replacement and previous phone/gameplay fixes are included.
-
-## Alice Crowley replacement (v0.20.1)
-
-Alice's portrait and complete runtime sprite atlas now use the supplied 26-sheet replacement pack. Her existing roster slot, approved ratings and Uni-Lariat remain. Movement faces the correct direction, bare-hand heavy uses her new kick, and falls/recovery use matching body-sized endpoints. Guitar and trash-can attacks adapt the new throw poses with measured weapon props; walking uses the supplied carried-weapon art.
-
-The phone corner/background fix, top-rope taunts, superplexes, pole matches, all 39 fighters, sounds, credits and saves from v0.20.0 remain included. Changed Alice images have their own cache revision. See [ALICE-REPLACEMENT.md](ALICE-REPLACEMENT.md) for source mappings and rebuild instructions. Full ZIP only; no deployment.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.19.0**.
 
 The gameplay refinement adds confirmed strike chains, gradual run acceleration, fair simultaneous grab breaks, more responsive recovery, rope breaks, manual hold release, and smarter CPU attack spacing. The original 36 wrestlers remain intact; Josh Bishop, Ring Rat and The Green Phantom bring the roster to 39. The supplied startup logos, title artwork, arenas, effects, and music are included. See [GAMEPLAY.md](GAMEPLAY.md) for the updated fight rules and [TESTING.md](TESTING.md) for validation and limitations.
-
-## Weapons, top-rope moves and pole matches (v0.20.0)
-
-- Distinct bare-hand and weapon attacks, stronger weapon impacts, persistent wear and remaining-hit labels. Added weapon props track the hands and actual attack phases.
-- TAUNT on the top rope earns 20 meter if completed safely. GRAB beside a perched opponent—or from the perch with an opponent close below—performs a higher-damage superplex. The defender gets a 0.38-second break window.
-- WEAPON ON A POLE is available against CPU or in local two-player mode. Climb the marked corner, hold CLAIM to take the chair, and win two falls. Knockdowns drop the chair for either player to pick up. A new chair appears each round.
-- Fixed the duplicated/stretched phone background at the corners. Portrait uses a fitted 4:3 stage with one arena, and normal corner travel and jumps keep the camera steady.
-- All 39 fighters, supplied media, previous fixes, championship progress and arcade medals remain included. Online uses v20 / LU200 rooms for the new combat rules; pole mode is offline.
-
-See [WEAPONS-AND-POLE.md](WEAPONS-AND-POLE.md) for controls, weapon values and rules.
-
-## Updated championship credits (v0.19.1)
-
-The supplied replacement credits artwork now appears after the championship win and through VIEW CREDITS. The readable credits replace Mark Ward with Nocturnal Deadhead; previously requested 3-Zee and Son of Man remain in the text list. Online compatibility stays on v19 / LU190.
 
 ## Supplied sound packs (v0.19.0)
 
@@ -60,7 +36,7 @@ Josh Bishop, Ring Rat and The Green Phantom are playable in all modes. Their 86 
 - Contextual first-match tips explain approach, strikes, combos, reversals, pins, escapes and finishers. Tips remember completed lessons, can be disabled, and can be reset in Controls.
 - Decoded match artwork is evicted before the next match loads; old arena requests cannot repopulate the cache. Image requests time out, failed optional art backs off, and sound nodes are capped and explicitly released. Automatic display reduces rendering cost after sustained expensive draws; combat still simulates at 60 Hz.
 
-**Online:** use v0.20.2 on both devices for matching artwork. New games use v20 / LU200 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
+**Online:** both players need v0.19.0. New games use v19 / LU190 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
 
 Validation details and device handoff are in TESTING.md. Automated checks cover the full roster, online selection, championship saves and credits, phone pagination, and native canvas rendering. Physical-device playtesting remains necessary.
 
@@ -76,7 +52,7 @@ Your championship belt now appears when you win or defend the title. REVERSAL! a
 
 Reviewed movement, combat, fall/recovery and supplementary frames for all 39 fighters. Corrected mixed-facing walk/run and weapon-carry poses, and aligned jittery locomotion to the body instead of the alternating lowest foot. Tony now settles flat after falling. Big Vito uses clean full-size airborne poses, Steven Flowe holds a flat KO pose, and Atiba/Tommy/Jacksyn finish front falls face-down without a size jump. Bronson launches his dive before extending into flight. Matt Cross uses his intact unarmed strike instead of the source kick panel that clips his head; heavy-attack timing and damage are retained.
 
-All supplied image/audio files, fighter ratings, finishers and Championship mode remain included. The DJ Clay selection-screen side-view issue is corrected in v0.20.2 using his original front-facing standing pose. This is a full replacement ZIP, not a live deployment. See TESTING.md and tools/movement-audit.json for scope and limitations.
+All supplied image/audio files, fighter ratings, finishers and Championship mode remain included. The DJ Clay selection-screen report has not been reproduced: the shipped portrait is an intact side view. A screenshot is needed to identify the reported display problem. This is a full replacement ZIP, not a live deployment. See TESTING.md and tools/movement-audit.json for scope and limitations.
 
 ## Championship mode (v0.15.0)
 
@@ -149,7 +125,7 @@ If an older game link has exactly nine wrestlers, it is a different build. At th
 ## Phone match optimization (v0.8.2)
 
 - The ring and thumb controls fit the visible phone screen, including browser toolbar changes, notches, and the home indicator. Portrait keeps controls below the ring; landscape uses narrower side controls and a larger HUD.
-- A steady full-ring camera keeps normal corner travel and jumps at the same scale, with extra headroom for unusually tall aerial moves.
+- A closer combat camera pulls back for airborne wrestlers so jumps and lifts have room below the HUD.
 - Rotation clears held inputs and pauses offline matches. Online play keeps running and sends neutral input until you press again.
 - Automatic display mode sizes the canvas for the screen and caps rendering at 60 fps, including on 90/120 Hz displays. **CONTROLS → DISPLAY → SAVE BATTERY** reduces rendering to 30 fps. Combat simulation and input sampling stay at 60 Hz in either mode.
 - Phone rendering limits decorative particles and glow effects. Static menus and paused matches do not continuously repaint the canvas; hidden tabs do not draw it.
@@ -212,15 +188,15 @@ In solo modes, WASD remains a movement alias for Player 1. In local versus, WASD
 
 **Phone:** slide your left thumb across the cross-shaped D-pad; diagonals support moving and jumping. The middle rests neutral. Lift your thumb or slide outside the pad to stop. Use another finger on the action buttons while moving. Hold HIT for repeated ordinary strikes, or turn that option off in CONTROLS. Heavy, grapple, finisher, and escape actions require fresh presses. GRAB becomes PIN beside a downed opponent and BREAK during an enemy grapple. When downed or pinned, a large GET UP / KICK OUT button replaces the action cluster. Tap it repeatedly; the input adapter supplies alternating strike/heavy presses to the existing escape rules. Holding it does not escape automatically.
 
-**Phone view:** landscape places controls in side rails outside the ring. Portrait uses a fitted 4:3 stage and larger HUD, with controls below. One proportional arena shares the fighters' steady camera; moving to a corner cannot reveal a second backdrop or change the normal scale. The match layout follows the visible screen as browser bars change. Turning the phone pauses an offline match and clears held input. Portrait mode is playable without rotating the phone. Pausing and opening CONTROLS hides the touch deck, and losing focus clears input. Use CONTROLS → TOUCH CONTROLS → ALWAYS SHOW if your device does not identify itself as a touch screen. Vibration only runs on supporting devices.
+**Phone view:** landscape places controls in side rails outside the ring. Portrait uses a taller ring view with a closer camera and larger HUD. The match layout follows the visible screen as browser bars change. Turning the phone pauses an offline match and clears held input. Portrait mode is playable without rotating the phone. Pausing and opening CONTROLS hides the touch deck, and losing focus clears input. Use CONTROLS → TOUCH CONTROLS → ALWAYS SHOW if your device does not identify itself as a touch screen. Vibration only runs on supporting devices.
 
 **Run:** keep moving in one direction for about 0.38 seconds to accelerate. Shift starts the run immediately; touch players simply hold the D-pad. Releasing direction stops movement.
 
-**Weapons:** tap WEAPON (Q) to cycle bare hands → chair → bat → guitar → trashcan → bare hands. HEAVY uses the selected weapon and the corresponding wind-up, contact, and recovery art. Weapons break after their hit allowance: chair 4, bat 6, guitar 2, trash can 3, Tony’s bottle 1. Switching preserves wear; a new round restores equipment. Blocking and misses do not spend durability. Changing weapon has a short recovery; grappling or climbing puts it away. New wrestlers without a kick sheet use an intact forward strike for unarmed heavy.
+**Weapons:** tap WEAPON (Q) to cycle bare hands → chair → bat → guitar → trashcan → bare hands. HEAVY uses the selected weapon and the corresponding wind-up, contact, and recovery art. A guitar breaks after two landed attacks. Blocking and misses do not count toward its durability. Changing weapon has a short recovery; grappling or climbing puts it away. New wrestlers without a kick sheet use an intact forward strike for unarmed heavy.
 
 **Taunt:** press TAUNT (E). Complete the one-second pose to earn 12 meter; an enemy hit interrupts the reward. A four-second cooldown prevents constant taunt rewards.
 
-**Corners:** approach either corner with the opponent more than 135 game units away, then press GRAB when it says CLIMB. On top, press GRAB, jump, or an attack to DIVE; use FINISH with full meter for a stronger dive. Down safely dismounts, and staying six seconds also dismounts. A dive can hit a downed opponent, followed by a pin. Blocking counters it; missing causes a vulnerable landing and a small health penalty. A nearby opponent takes grapple/pin priority over climbing.
+**Corners:** approach either corner with the opponent more than 135 game units away, then press GRAB when it says CLIMB. On top, press GRAB, jump, or an attack to DIVE; use FINISH with full meter for a stronger dive. Down safely dismounts, and waiting three seconds also dismounts. A dive can hit a downed opponent, followed by a pin. Blocking counters it; missing causes a vulnerable landing and a small health penalty. A nearby opponent takes grapple/pin priority over climbing.
 
 **Grapple:** get close and press grapple. The attacker lifts and throws the actual selected opponent. Grapples bypass block. A missed grapple has recovery. Tap grapple within the first 0.28 seconds of being grabbed to break the throw. Corner throws send the opponent back toward the ring without teleporting the attacker.
 
