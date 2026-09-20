@@ -29,7 +29,3 @@
 #touch-controls.control-art #touch-escape[data-state="GET UP"]::before{background-size:426.666667% 616.867470%;background-position:2.125850% 95.337995%;}
 #touch-controls.control-art #touch-escape[data-state="KICK OUT"]::before{background-size:420.821918% 616.867470%;background-position:34.415030% 95.337995%;}
 #touch-controls.control-art #touch-escape[data-state=ESCAPE]::before{background-size:420.821918% 616.867470%;background-position:66.695132% 95.337995%;}
-
-/* These new contexts need real labels over the existing generic grab tile. */
-#touch-controls.control-art #touch-grapple:is([data-state=CLAIM],[data-state=SUPERPLEX])>b{visibility:visible;position:absolute;left:13%;right:13%;top:34%;padding:4px 0;background:#17230a;color:#d7ff97;font-size:clamp(7px,1.4vw,10px);letter-spacing:0;line-height:1.2}
-#touch-controls.control-art #touch-grapple:is([data-state=CLAIM],[data-state=SUPERPLEX])>small{visibility:visible;position:absolute;left:12%;right:12%;bottom:13%;background:#08070b;color:#fff;font-size:clamp(6px,1.4vw,9px);letter-spacing:0}
