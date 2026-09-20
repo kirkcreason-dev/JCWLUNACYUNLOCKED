@@ -1,3 +1,36 @@
+# v0.20.2 — DJ Clay portrait facing
+
+- Replace the side-view selection portrait with the original FRONT standing pose. All portrait surfaces share the correction and image revision.
+- Fix the source importer so it saves the front portrait before selecting the side-facing gameplay stance. Preserve the original standing sheet and add a portrait-only rebuild tool.
+- Keep every gameplay atlas/animation, Alice’s replacement, the phone corner fix and all other content from v0.20.1. No push or deployment.
+
+# v0.20.1 — Alice Crowley replacement
+
+- Replace Alice's old portrait and atlas with the supplied 26-sheet pack, preserving her roster identity, approved ratings and Uni-Lariat.
+- Normalize directional movement, synchronize chair/bat contact poses, add the supplied bare-hand kick, and align fall/recovery endpoints. Adapt missing guitar/trash-can attack art using the new throw poses and measured props.
+- Avoid duplicated props on authored carry animations. Add fighter-specific image revisions to refresh Alice on all selection/results and gameplay surfaces.
+- Include the original source ZIP, reproducible importer and source audit. Decode-check complete PNGs before replacing playable assets.
+- Preserve v0.20.0 gameplay and phone corner/background fixes, the other 38 fighters, sounds, credits and saved progress. Full ZIP only; no deployment.
+
+# v0.20.0 — Weapons, top-rope taunts, superplexes and pole matches
+
+- Separate unarmed-heavy stats from chair attacks. Give weapons distinct damage, reach, guard pressure and knockdowns; track hit durability per weapon so cycling cannot reset it.
+- Replace the original nine fighters' fixed floating prop positions with measured pose grips and phase-aligned movement; add clearer weapon shapes and remaining-hit labels. Preserve original source sheets.
+- Add interruptible top-rope taunts for 20 Lunacy and a six-second perch limit.
+- Add superplexes from either corner, initiated below or above a nearby opponent, for 28 base damage versus normal throws' 17. Use a 0.38-second throw break, fair simultaneous grabs, a continuous lift/flight and a landing recovery.
+- Add CPU/local weapon-on-pole modes: continuous retrieval hold, one shared chair, drops/pickups with persistent wear, no free weapon cycling, normal best-of-three falls and alternating pole corners each round.
+- Update CPU decisions, contextual phone buttons, controls, HUD, sounds and authoritative online snapshots. New v20 / LU200 rooms isolate changed rules; pole mode is offline.
+- Fix the duplicated/stretched portrait arena shown when moving to a corner. Draw one proportional background with the fighters, fit the portrait stage to 4:3, and keep camera scale/centering steady during normal travel and jumps.
+- Preserve all 39 fighters, approved stats, supplied music/SFX, replacement credits, championship saves and arcade rewards. Full ZIP only; no deployment.
+
+# v0.19.1 — Replacement championship credits
+
+- Use the newly supplied championship credits PNG unchanged, including Nocturnal Deadhead in Special Thanks.
+- Update the readable credit name to Nocturnal Deadhead. Retain the previously requested 3-Zee and Son of Man in the text credits.
+- Version the image URL so an older cached credits screen is replaced. The automatic title-win credits and VIEW CREDITS use the same asset.
+- Gameplay, all 39 fighters and the v0.19.0 sound integration remain intact. Online rooms stay v19 / LU190.
+- Full ZIP only; no push or deployment.
+
 # v0.19.0 — Wrestling sounds and DJ Clay bass attack
 
 - Add the supplied punches, kicks, weapon hits, slams, rope rebounds, landings, footsteps, bells and synthetic grunts. Impacts follow confirmed contact and the weapon used for that attack.
