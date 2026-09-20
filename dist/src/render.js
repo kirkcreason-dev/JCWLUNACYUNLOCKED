@@ -1,8 +1,9 @@
-import {FLOOR,LEFT,RIGHT,THROW_BREAK_WINDOW,escapeTarget,MOVEMENT_PACE} from './engine.js?v=0.19.0';
-import {ARENAS} from './arenas.js?v=0.19.0';
-import {attackPose} from './attack-animation.js?v=0.19.0';
-import {phoneCamera} from './phone-layout.js?v=0.19.0';
-import {drawArenaWordmarks} from './branding.js?v=0.19.0';
+import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.20.2';
+import {ARENAS} from './arenas.js?v=0.20.2';
+import {weaponGrip} from './weapon-grips.js?v=0.20.2';
+import {attackPose} from './attack-animation.js?v=0.20.2';
+import {phoneCamera} from './phone-layout.js?v=0.20.2';
+import {drawArenaWordmarks} from './branding.js?v=0.20.2';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
@@ -42,8 +43,11 @@ export class Renderer {
     if(e.type==='ropeBreak')this.popups.push({text:'ROPE BREAK',x:640,y:320,life:1,color:'#8ee7ff'});
     if(e.type==='pinRelease')this.popups.push({text:'HOLD RELEASED',x:640,y:320,life:.7,color:'#e8dfea'});
     if(e.type==='weapon')this.popups.push({text:e.name==='none'?'BARE HANDS':e.name.toUpperCase(),x:640,y:300,life:.7,color:'#ffe197'});
-    if(e.type==='weaponBreak')this.popups.push({text:'GUITAR BROKEN',x:640,y:300,life:.8,color:'#ffe197'});
-    if(e.type==='taunt')this.popups.push({text:'+12 LUNACY',x:640,y:300,life:.8,color:'#b0ff20'});
+    if(e.type==='weaponBreak')this.popups.push({text:`${(e.name||'guitar').toUpperCase()} BROKEN`,x:640,y:300,life:.8,color:'#ffe197'});
+    if(e.type==='taunt')this.popups.push({text:`+${e.amount||12} LUNACY`,x:640,y:300,life:.8,color:'#b0ff20'});
+    if(e.type==='poleClaim')this.popups.push({text:`P${e.index+1} CLAIMED THE CHAIR`,x:640,y:275,life:1.1,color:'#ffe197'});
+    if(e.type==='poleHint')this.popups.push({text:'CLIMB THE MARKED CORNER · HOLD GRAB',x:640,y:275,life:.7,color:'#ffe197'});
+    if(e.type==='slam'&&e.superplex)this.popups.push({text:'SUPERPLEX!',x:e.x,y:370,life:1,color:'#ffe197'});
     if(e.type==='guardBreak')this.popups.push({text:'GUARD BREAK',x:640,y:340,life:.85,color:'#fa2484'});
     if(e.type==='reversal')this.popups.push({screen:true,art:'reversal',label:`P${e.index+1} · +12 LUNACY`,text:`P${e.index+1} · REVERSAL! +12 LUNACY`,life:.9,color:'#8ee7ff'});
     if(e.type==='secondWind')this.popups.push({screen:true,art:'secondWind',label:`P${e.index+1} · +25 LUNACY`,text:`P${e.index+1} · SECOND WIND! +25 LUNACY`,life:1.25,color:'#ffe197'});
@@ -64,7 +68,8 @@ export class Renderer {
     // An opaque repaint replaces the old frame without a cleared intermediate.
     c.save();c.fillStyle='#130b18';c.fillRect(0,0,1280,height);
     const bg=this.arenas[arena]||this.arenas[0];
-    if(this.portrait&&bg){c.drawImage(bg,0,0,1280,height);drawArenaWordmarks(c,bg,arena,this.bannerArt.unlocked,1280,height);}
+    // One arena, in the same camera space as the fighters. Never stretch a
+    // second backdrop into portrait margins: zooming out would expose both.
     if((this.portrait||this.compact)&&match&&!menu){const camera=phoneCamera(match.fighters,{portrait:this.portrait,floor:FLOOR,height,previous:this.camera,dt});this.camera=camera;c.translate(camera.x,camera.y);c.scale(camera.zoom,camera.zoom);}
     this.clock+=dt;
     if(dt>0){const shake=!this.reduced&&!menu?Math.min(match?.shake||0,this.lowPower?4:8):0;this.shakeOffset=shake?[(Math.random()-.5)*shake,(Math.random()-.5)*shake*.55]:[0,0];}
@@ -73,6 +78,7 @@ export class Renderer {
     if(match&&!menu){
       // Downed opponent is below the attacker during a pin; neither sheet contains an extra wrestler.
       if(match.fighters.some(f=>f.definition.animations.climb))this.corners();
+      if(match.pole)this.pole(match);
       const order=match.pin?[1-match.pin.attacker,match.pin.attacker]:match.grapple?[match.grapple.attacker,1-match.grapple.attacker]:match.fighters[0].move&&!match.fighters[1].move?[1,0]:[0,1];
       for(const i of order)this.fighter(match.fighters[i],i,match);
       this.effects(dt);c.restore();c.save();
@@ -109,7 +115,7 @@ export class Renderer {
       case 'walk':anim='walk';break;
       case 'run':anim='run';break;
       case 'equip':anim='idle';break;
-      case 'taunt':anim='taunt';progress=fit(f.t,0,.999);break;
+      case 'ropeTaunt':case 'taunt':anim='taunt';progress=fit(f.t,0,.999);break;
       case 'climb':anim=animations.ropePose&&f.t<.12?'ropePose':'climb';progress=fit((f.t-(animations.ropePose?.12:0))/(animations.ropePose?.68:.8),0,.999);break;
       case 'perch':anim='climb';progress=.999;break;
       case 'dive':anim='dive';progress=f.t<.18?0:.999;centered=true;break;
@@ -152,6 +158,8 @@ export class Renderer {
     if(f.state==='idle'&&!this.reduced){const breath=Math.sin(f.t*3.4+index)*.005;scaleY=1+breath;scaleX=1-breath*.4;}
     // Shadows anchor feet to the canvas floor, independently of animation crop bounds.
     c.save();c.globalAlpha=.35*(1-fit(f.z/400,0,.8));c.fillStyle='#050305';c.beginPath();c.ellipse(f.x,FLOOR+3,f.state==='down'||f.state==='pinned'?88:45,10,0,0,Math.PI*2);c.fill();c.restore();
+    const carrying=['idle','walk','run','equip'].includes(f.state),carryArt=animations['carry'+f.weapon?.[0]?.toUpperCase()+f.weapon?.slice(1)];
+    if((def.overlayWeapons?.includes(f.weapon)&&((carrying&&!carryArt?.length)||(['heavy','special'].includes(f.state)&&f.attackStyle===f.weapon)))||(def.overlayWeapons&&f.weapon==='chair'&&carrying&&!carryArt?.length))this.weaponProp(f,entry,offsetX);
     c.save();c.translate(f.x+offsetX*f.facing,FLOOR-f.z+offsetY);c.scale(f.facing*scaleX,scaleY);c.rotate(rotation);
     if(entry.flipX)c.scale(-1,1);
     if(entry.drawScale)c.scale(entry.drawScale,entry.drawScale);
@@ -167,22 +175,49 @@ export class Renderer {
       c.drawImage(atlas,prop.x,prop.y,prop.w,prop.h,-prop.w*.5,-20,prop.w,prop.h);c.restore();
     }
     c.restore();
-    if((def.overlayWeapons?.includes(f.weapon)&&(['idle','walk','run','equip'].includes(f.state)||(['heavy','special'].includes(f.state)&&f.attackStyle===f.weapon)))||(def.overlayWeapons&&f.weapon==='chair'&&['idle','walk','run','equip'].includes(f.state)))this.weaponProp(f);
+
     if(f.state==='block'){
       c.save();c.strokeStyle=f.guard<25?'#ff5072':'#85dfff';c.lineWidth=3;c.globalAlpha=.6;c.beginPath();c.ellipse(f.x+f.facing*45,FLOOR-118,24,90,0,-Math.PI/2,Math.PI/2,f.facing<0);c.stroke();c.restore();
     }
     if(match.phase==='intro'){this.text(index?'P2':'P1',f.x,FLOOR+28,18,index?'#fa6daf':'#b0ff20','center');}
   }
-  weaponProp(f){
-    const c=this.ctx,attacking=Boolean(f.move),active=attacking&&f.t>=.12&&f.t<.42;
-    c.save();c.translate(f.x+f.facing*(active?87:37),FLOOR-f.z-(active?143:117));c.scale(f.facing,1);c.rotate(active?1.35:-.25);c.lineWidth=3;c.strokeStyle='#24162b';
-    if(f.weapon==='chair'){c.fillStyle='#8e919f';c.fillRect(-18,-45,36,30);c.strokeRect(-18,-45,36,30);c.fillRect(-20,-7,40,9);c.strokeRect(-20,-7,40,9);c.strokeStyle='#cbd2da';c.lineWidth=5;for(const sign of [-1,1]){c.beginPath();c.moveTo(sign*14,-15);c.lineTo(sign*19,31);c.stroke();}}
-    if(f.weapon==='bottle'){c.fillStyle='#d1f599';c.fillRect(-6,-57,12,20);c.fillStyle='#4e9b48';c.fillRect(-13,-39,26,51);c.strokeRect(-13,-39,26,51);c.fillStyle='#fff0bd';c.fillRect(-11,-25,22,18);c.fillStyle='#d0b16b';c.fillRect(-7,-60,14,6);}
-    if(f.weapon==='bat'){c.fillStyle='#cfaa72';c.beginPath();c.moveTo(-4,15);c.lineTo(-10,-72);c.quadraticCurveTo(0,-88,10,-72);c.lineTo(4,15);c.closePath();c.fill();c.stroke();}
-    if(f.weapon==='guitar'){c.fillStyle='#ba463e';c.beginPath();c.ellipse(0,-51,24,34,0,0,Math.PI*2);c.fill();c.stroke();c.fillStyle='#efcc8b';c.fillRect(-5,-29,10,64);c.fillStyle='#29172b';c.beginPath();c.arc(0,-51,8,0,Math.PI*2);c.fill();}
-    if(f.weapon==='trashcan'){c.fillStyle='#aeb4b8';c.fillRect(-27,-62,54,74);c.strokeRect(-27,-62,54,74);c.fillStyle='#dce0e3';c.fillRect(-31,-67,62,9);c.strokeStyle='#69757d';for(let x=-18;x<=18;x+=12){c.beginPath();c.moveTo(x,-53);c.lineTo(x,5);c.stroke();}}
-    c.restore();
+  weaponProp(f,entry,offsetX=0){
+    const c=this.ctx,timing=f.move?attackTiming(f.move,f.attackStyle):null,grip=weaponGrip(f,entry,offsetX);
+    const active=timing&&f.t>=timing.startup&&f.t<timing.startup+timing.active;
+    // Art changes pose at the same phase boundary as the hand; the prop shares
+    // that exact grip and is painted behind the fist instead of floating above it.
+    const windup=timing&&f.t<timing.startup;
+    let angle=active?1.42:windup?-.38:2.7;
+    if(f.weapon==='bottle')angle=active?1.42+Math.PI:windup?Math.PI-.38:-.35;
+    if(f.weapon==='trashcan')angle=active?-1.42:windup?-.25:-.18;
+    c.save();c.translate(f.x+f.facing*grip.x,FLOOR-f.z-grip.y);c.scale(f.facing,1);c.rotate(angle);
+    if(f.weapon==='bottle')c.translate(0,48);
+    if(f.weapon==='trashcan')c.translate(0,55);
+    if(f.weapon==='bat')c.translate(0,-8);
+    if(f.weapon==='guitar')c.translate(0,-15);
+    this.weaponShape(f.weapon);c.restore();
   }
+  weaponShape(weapon){
+    const c=this.ctx;c.lineWidth=3;c.strokeStyle='#24162b';
+    if(weapon==='chair'){c.fillStyle='#8e919f';c.fillRect(-18,-45,36,30);c.strokeRect(-18,-45,36,30);c.fillRect(-20,-7,40,9);c.strokeRect(-20,-7,40,9);c.strokeStyle='#cbd2da';c.lineWidth=5;for(const sign of [-1,1]){c.beginPath();c.moveTo(sign*14,-15);c.lineTo(sign*19,31);c.stroke();}}
+    if(weapon==='bottle'){c.fillStyle='#d1f599';c.fillRect(-6,-57,12,20);c.fillStyle='#4e9b48';c.fillRect(-13,-39,26,51);c.strokeRect(-13,-39,26,51);c.fillStyle='#fff0bd';c.fillRect(-11,-25,22,18);c.fillStyle='#d0b16b';c.fillRect(-7,-60,14,6);}
+    if(weapon==='bat'){const grain=c.createLinearGradient(-10,0,10,0);grain.addColorStop(0,'#715039');grain.addColorStop(.4,'#edce96');grain.addColorStop(1,'#9a7447');c.fillStyle=grain;c.beginPath();c.moveTo(-4,15);c.lineTo(-10,-72);c.quadraticCurveTo(0,-88,10,-72);c.lineTo(4,15);c.closePath();c.fill();c.stroke();c.strokeStyle='#4e3830';c.lineWidth=2;for(let y=0;y<13;y+=4){c.beginPath();c.moveTo(-4,y);c.lineTo(4,y);c.stroke();}}
+    if(weapon==='guitar'){c.fillStyle='#efcc8b';c.fillRect(-5,-34,10,69);c.strokeRect(-5,-34,10,69);c.fillStyle='#743225';c.beginPath();c.moveTo(-6,-25);c.bezierCurveTo(-38,-29,-25,-56,-16,-57);c.bezierCurveTo(-31,-88,31,-88,16,-57);c.bezierCurveTo(25,-56,38,-29,6,-25);c.closePath();c.fill();c.stroke();c.strokeStyle='#e8b76e';c.lineWidth=2;c.stroke();c.fillStyle='#231c19';c.beginPath();c.arc(0,-48,8,0,Math.PI*2);c.fill();c.strokeStyle='#ead5b188';c.lineWidth=1;for(const x of [-2,0,2]){c.beginPath();c.moveTo(x,-55);c.lineTo(x,34);c.stroke();}c.fillStyle='#986842';c.fillRect(-7,30,14,14);}
+    if(weapon==='trashcan'){const metal=c.createLinearGradient(-27,0,27,0);metal.addColorStop(0,'#4c5861');metal.addColorStop(.4,'#d0d9db');metal.addColorStop(1,'#66737b');c.fillStyle=metal;c.fillRect(-27,-62,54,74);c.strokeRect(-27,-62,54,74);c.fillStyle='#dce0e3';c.fillRect(-31,-67,62,9);c.strokeStyle='#69757d';for(let x=-18;x<=18;x+=12){c.beginPath();c.moveTo(x,-53);c.lineTo(x,5);c.stroke();}}
+  }
+  pole(m){
+    const p=m.pole,c=this.ctx;
+    if(!p.claimed){
+      c.save();c.lineWidth=9;c.strokeStyle='#d6b45b';c.beginPath();c.moveTo(p.x,FLOOR-130);c.lineTo(p.x,FLOOR-369);c.lineTo(p.x+(p.x<640?62:-62),FLOOR-369);c.stroke();
+      c.translate(p.x+(p.x<640?62:-62),FLOOR-307);this.weaponShape('chair');c.restore();
+      this.text('HOLD GRAB',p.x<640?p.x+190:p.x-190,FLOOR-270,18,'#ffe197','center');
+      if(p.progress>0){c.fillStyle='#201626';c.fillRect(p.x+(p.x<640?140:-240),FLOOR-253,100,10);c.fillStyle='#b0ff20';c.fillRect(p.x+(p.x<640?140:-240),FLOOR-253,100*fit(p.progress/POLE_RETRIEVE_TIME,0,1),10);}
+    }else if(p.looseX!==null){
+      c.save();c.translate(p.looseX,FLOOR-12);c.rotate(Math.PI/2);c.scale(.85,.85);this.weaponShape('chair');c.restore();
+      this.text('WEAPON · PICK UP',p.looseX,FLOOR+29,16,'#ffe197','center');
+    }
+  }
+  poleStatus(m){const p=m.pole;return !p.claimed?`CHAIR ON ${p.x<640?'LEFT':'RIGHT'} POLE · CLIMB + HOLD GRAB`:p.broken?'CHAIR BROKEN · WIN THE FALL':p.holder!==null?`P${p.holder+1} HAS THE CHAIR · ${4-p.uses} HITS LEFT`:'CHAIR DROPPED · WEAPON TO PICK UP';}
   corners(){
     const c=this.ctx;c.save();
     for(const x of [LEFT+18,RIGHT-18]){
@@ -205,21 +240,22 @@ export class Renderer {
       this.lastMeter[i]=f.meter;
       c.fillStyle='#100d17ed';c.fillRect(x-10,22,w+20,109);
       this.text(f.definition.name.toUpperCase(),i?x+w:x,47,24,'#fff2e7',i?'right':'left',true);
-      this.text(m.options.mode==='online'?`${i===(this.localIndex||0)?'YOU':'ONLINE'} · P${i+1}`:i?(m.options.mode==='local'?'PLAYER 2':'CPU'):'PLAYER 1',i?x:x+w,44,12,color,i?'left':'right');
+      this.text(m.options.mode==='online'?`${i===(this.localIndex||0)?'YOU':'ONLINE'} · P${i+1}`:i?(isLocalMode(m.options.mode)?'PLAYER 2':'CPU'):'PLAYER 1',i?x:x+w,44,12,color,i?'left':'right');
       c.fillStyle='#3f2034';c.fillRect(x,59,w,22);c.fillStyle='#ffe6cc';const trail=w*this.healthTrail[i]/100;c.fillRect(i?x+w-trail:x,59,trail,22);c.fillStyle=color;const hp=w*f.hp/100;c.fillRect(i?x+w-hp:x,59,hp,22);
       c.fillStyle='#fff5';c.fillRect(i?x+w-hp:x,59,hp,3);
       c.fillStyle='#fff1';c.fillRect(x,87,w,3);c.fillStyle='#bceaff';const guard=w*f.guard/100;c.fillRect(i?x+w-guard:x,87,guard,3);
       c.fillStyle='#ffffff16';c.fillRect(x,101,w-143,8);c.fillStyle=f.meter>=100?'#fff8e3':color;c.fillRect(i?x+(w-143)*(1-f.meter/100):x,101,(w-143)*f.meter/100,8);
       this.text(f.meter>=100?'FINISHER READY':'LUNACY',x+w,111,14,f.meter>=100?'#f4f4d8':'#c3b5ca','right');
+      this.text(f.weapon==='none'?'BARE HANDS':`${f.weapon.toUpperCase()} · ${weaponRemaining(f)} HITS`,x+w/2,130,12,'#ffe197','center');
       for(let n=0;n<2;n++){c.fillStyle=m.wins[i]>n?color:'#ffffff22';c.beginPath();c.arc(i?x+w-n*19:x+n*19,124,5,0,Math.PI*2);c.fill();}
     }
     c.fillStyle='#100a19f5';c.fillRect(558,15,164,103);c.strokeStyle='#fff3';c.strokeRect(558,15,164,103);
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)).padStart(2,'0'),640,77,57,m.remaining<15?'#ff5671':'#f6f1e3','center',true);
     this.text(m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`,640,102,13,'#b0ff20','center');
     c.fillStyle='#0c0716dd';c.fillRect(38,666,1204,31);this.text(ARENAS[arena]?.name||'',54,687,12,'#d4c5dd');
-    const help=this.coachText|| (this.scheme==='gamepad'?'X STRIKE  /  Y HEAVY  /  B GRAPPLE  /  RB FINISHER':this.scheme==='touch'?'HIT  /  HEAVY  /  GRAB TO THROW OR PIN  /  FINISH':'← → MOVE  /  ↑ JUMP  /  ↓ BLOCK  /  Z HIT  /  X HEAVY  /  C GRAB  /  V FINISH');
+    const help=(m.pole?this.poleStatus(m):this.coachText)|| (this.scheme==='gamepad'?'X STRIKE  /  Y HEAVY  /  B GRAPPLE  /  RB FINISHER':this.scheme==='touch'?'HIT  /  HEAVY  /  GRAB TO THROW OR PIN  /  FINISH':'← → MOVE  /  ↑ JUMP  /  ↓ BLOCK  /  Z HIT  /  X HEAVY  /  C GRAB  /  V FINISH');
     this.text(m.pin?(this.scheme==='touch'&&m.pin.attacker===1-(this.localIndex||0)?'TAP KICK OUT REPEATEDLY':`P${2-m.pin.attacker}: ALTERNATE STRIKE + HEAVY TO ESCAPE`):help,640,687,12,m.pin?'#b0ff20':'#d4c5dd','center');
-    this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.options.mode==='practice'?'PRACTICE':'BEST OF 3',1224,687,12,'#d4c5dd','right');
+    this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.pole?'POLE MATCH':m.options.mode==='practice'?'PRACTICE':'BEST OF 3',1224,687,12,'#d4c5dd','right');
     if(m.pin){
       const p=m.pin,b=m.fighters[1-p.attacker],need=escapeTarget(b.hp);
       c.fillStyle='#0e0819e8';c.fillRect(460,180,360,72);this.text(p.kind==='submission'?'SUBMISSION':`PIN COUNT  ${p.count||'—'}`,640,209,24,'#fff7e4','center',true);c.fillStyle='#39213f';c.fillRect(488,225,304,8);c.fillStyle='#b0ff20';c.fillRect(488,225,304*fit(p.escape/need,0,1),8);
@@ -243,18 +279,18 @@ export class Renderer {
     }
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)),640,this.compact?78:93,this.compact?64:82,m.remaining<15?'#ff5671':'#fff5e7','center',true);
     this.text(m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`,640,this.compact?120:140,25,'#b0ff20','center');
-    const footerY=(this.logicalHeight||(this.portrait?960:720))-51;c.fillStyle='#100a19';c.fillRect(0,footerY,1280,51);this.text(m.options.mode==='championship'?m.options.championshipLabel:this.coachText||ARENAS[arena]?.name||'',640,footerY+35,this.coachText?19:27,'#e5dce9','center');
+    const footerY=(this.logicalHeight||(this.portrait?960:720))-51;c.fillStyle='#100a19';c.fillRect(0,footerY,1280,51);this.text(m.pole?this.poleStatus(m):m.options.mode==='championship'?m.options.championshipLabel:this.coachText||ARENAS[arena]?.name||'',640,footerY+35,m.pole?21:this.coachText?19:27,'#e5dce9','center');
     if(m.pin){c.fillStyle='#100a19dc';c.fillRect(420,230,440,74);this.text(m.pin.kind==='submission'?'SUBMISSION':`PIN COUNT ${m.pin.count||'—'}`,640,280,42,'#b0ff20','center',true);}
   }
   banners(m){
     const c=this.ctx;let title='',sub='',color='#f6efe5';
-    if(m.phase==='fight'&&m.grapple&&m.grapple.time<=THROW_BREAK_WINDOW){
-      const defender=1-m.grapple.attacker,key=this.scheme==='touch'?'BREAK':this.scheme==='gamepad'?'B':m.options.mode==='local'&&defender===1?'H':'C';
+    if(m.phase==='fight'&&m.grapple&&m.grapple.time<=throwBreakWindow(m.grapple)){
+      const defender=1-m.grapple.attacker,key=this.scheme==='touch'?'BREAK':this.scheme==='gamepad'?'B':isLocalMode(m.options.mode)&&defender===1?'H':'C';
       const y=this.portrait||this.compact?245:190;
       c.fillStyle='#100a19e8';c.fillRect(400,y-33,480,52);
       this.text(`P${defender+1} · TAP ${key} TO BREAK`,640,y,this.portrait||this.compact?32:25,'#8ee7ff','center',true);
     }
-    if(m.phase==='intro'){title=m.phaseTime<1.55?m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`:'FIGHT!';sub=m.phaseTime<1.55?(m.options.mode==='practice'?'FULL METER · PASSIVE OPPONENT':'FIRST TO TWO FALLS'):'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
+    if(m.phase==='intro'){title=m.phaseTime<1.55?m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`:'FIGHT!';sub=m.phaseTime<1.55?(m.options.mode==='practice'?'FULL METER · PASSIVE OPPONENT':m.pole?'CLIMB · CLAIM THE CHAIR · WIN TWO FALLS':'FIRST TO TWO FALLS'):'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
     if(m.phase==='roundEnd'&&m.phaseTime<1.25&&m.method==='TIME LIMIT'&&this.bannerArt.timeout){this.graphicImage('timeout',640,315,750);return;}
     if(m.phase==='roundEnd'&&m.phaseTime<1.25&&['PINFALL','TAP OUT'].includes(m.method)&&this.bannerArt[m.method==='PINFALL'?'pinfall':'tapout']){this.graphicImage(m.method==='PINFALL'?'pinfall':'tapout',640,315,750);return;}
     if(m.phase==='roundEnd'){title=m.roundWinner===null?'DRAW':`${m.fighters[m.roundWinner].definition.name.toUpperCase()} WINS`;sub=m.options.mode==='practice'?'PRACTICE · RESETTING':m.method;}
