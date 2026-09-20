@@ -52,7 +52,7 @@ test('contact style selects bare fists, kicks and each weapon independently of l
  const s=sound();s.play([{type:'block',index:1,move:'heavy',style:'chair'}]);assert.ok(!played(s).some(p=>p.includes('chair_hit')));
 });
 test('impact events retain committed weapon style after a guitar breaks',()=>{
- const m=make(0,1),a=m.fighters[0];a.weapon='guitar';a.weaponUses=1;a.weaponWear.guitar=1;m.startAttack(a,'heavy',0);for(let i=0;i<40&&m.fighters[1].hp===100;i++)step(m);
+ const m=make(0,1),a=m.fighters[0];a.weapon='guitar';a.weaponUses=1;m.startAttack(a,'heavy',0);for(let i=0;i<40&&m.fighters[1].hp===100;i++)step(m);
  const hit=m.drainEvents().find(e=>e.type==='hit');assert.equal(a.weapon,'none');assert.equal(hit.style,'guitar');assert.equal(impactGroup(hit,m),'guitar_smash');
 });
 test('DJ bass fires once on the active animation frame for a hit, a block or a miss',()=>{

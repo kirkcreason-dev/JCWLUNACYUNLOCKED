@@ -46,12 +46,12 @@ test('repeated viewport notifications do not clear the canvas or reset the conte
   assert.equal(resizeCanvas(canvas,{width:768,height:576}),true);assert.equal(resets,2);
   for(let n=0;n<60;n++)resizeCanvas(canvas,{width:768,height:576});assert.equal(resets,2);
 });
-test('phone camera keeps the full ring framed and airborne bodies below the HUD',()=>{
+test('phone camera brings close combat nearer and keeps airborne bodies below the HUD',()=>{
   for(const portrait of [false,true])for(const positions of [[200,280],[200,1080],[980,1080],[500,580]])for(const z of [0,120,280,400]){
     const fighters=positions.map((x,i)=>({x,z:i?z:0})),c=phoneCamera(fighters,{portrait});
     for(const f of fighters){const x=c.x+f.x*c.zoom,head=c.y+(593-f.z-260)*c.zoom;assert.ok(x>=0&&x<=1280);assert.ok(head>=(portrait?224:180)-.001);}
   }
-  assert.equal(phoneCamera([{x:500,z:0},{x:580,z:0}],{portrait:true,height:1440}).zoom,1280/1250);
+  assert.equal(phoneCamera([{x:500,z:0},{x:580,z:0}],{portrait:true,height:1440}).zoom,2);
 });
 test('presentation stays near its target on 60, 90 and 120 Hz displays',()=>{
   for(const refresh of [60,90,120])for(const fps of [30,60]){
@@ -107,13 +107,4 @@ test('optional artwork can be requested in small batches and deduplicates in-fli
   assert.equal(requests.filter(url=>url.includes('/unlocked.')).length,1);
   await loadOptionalArtwork({...options,bannerKeys:[],effectKeys:['impact']});
   assert.equal(manifests,1);assert.ok(combatFx.impact.image);assert.equal(requests.filter(url=>url.includes('/impact.')).length,1);
-});
-
-test('normal corner travel cannot change phone arena zoom or reveal a second scene',()=>{
- for(const portrait of [true,false])for(const height of [720,960]){
-  const baseline=phoneCamera([{x:500,z:0},{x:580,z:0}],{portrait,height});
-  for(const positions of [[200,280],[200,1080],[980,1080],[500,580]])for(const z of [0,140,151]){
-   const camera=phoneCamera(positions.map(x=>({x,z})),{portrait,height});assert.deepEqual(camera,baseline);
-  }
- }
 });
