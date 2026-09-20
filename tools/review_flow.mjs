@@ -36,8 +36,8 @@ try{
   await app.startMatch();const {match}=app.inspect();match.phase='done';match.winner=0;match.wins=[2,0];app.finishMatch();
   assert.equal($('credits').hidden,bout!==4,`credits on bout ${bout+1}`);
  }
- assert.equal($('result').hidden,true);assert.equal($('credits-art').getAttribute('src'),'./assets/ui/championship-credits.png');assert.equal(document.activeElement.id,'credits-defend');
- const transcript=$('credits').textContent;for(const name of ['Kirk Creason','Brandon Pein','Andy Montgomery','Eric Goldstein','Mark Ward','Jeff Lane','Kailyn Creason','Violent J','DJ Clay','3-Zee','Son of Man'])assert.ok(transcript.includes(name));
+ assert.equal($('result').hidden,true);assert.equal($('credits-art').getAttribute('src'),'./assets/ui/championship-credits.png?v=0.20.0');assert.equal(document.activeElement.id,'credits-defend');
+ const transcript=$('credits').textContent;for(const name of ['Kirk Creason','Brandon Pein','Andy Montgomery','Eric Goldstein','Nocturnal Deadhead','Jeff Lane','Kailyn Creason','Violent J','DJ Clay','3-Zee','Son of Man'])assert.ok(transcript.includes(name));
  assert.match($('credits-victory').textContent,/SAVED/);$('credits-back').onclick();assert.equal($('credits').hidden,true);assert.equal($('championship-belt').hidden,false);$('show-credits').onclick();assert.equal($('credits').hidden,false);
  await $('credits-defend').onclick();assert.equal($('credits').hidden,true);assert.equal(app.inspect().match.championshipBout.phase,'defend');
  // Defenses go to the result rather than replaying the completion screen.
