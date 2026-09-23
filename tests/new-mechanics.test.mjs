@@ -13,7 +13,7 @@ const advance=(m,n=1,p1={},p2={})=>{for(let i=0;i<n;i++)m.step([{...emptyInput()
 const tap=(m,action,index=0)=>{const inputs=[emptyInput(),emptyInput()];inputs[index][action]=true;m.step(inputs,STEP);};
 
 test('all fifteen supplied wrestlers are selectable and the new network version accepts them',()=>{
- assert.equal(roster.length,39);assert.deepEqual(roster.slice(9).map(f=>f.name),['Abel','Dani Mo','Facade','J-Rod','Matt Cross','Vincenzo','Caleb Konley','Sally Boy','Big Vito','Bruce Wayans','Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane','Steven Flowe','EC3','Krule','Jeeves','Atiba','JP Grayson','Tommy','Shaggy 2 Dope','Jackson','DJ Clay','Jeff Lane','Shane Mercer','Josh Bishop','Ring Rat','The Green Phantom']);
+ assert.equal(roster.length,40);assert.deepEqual(roster.slice(9).map(f=>f.name),['Abel','Dani Mo','Facade','J-Rod','Matt Cross','Vincenzo','Caleb Konley','Sally Boy','Big Vito','Bruce Wayans','Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane','Steven Flowe','EC3','Krule','Jeeves','Atiba','JP Grayson','Tommy','Shaggy 2 Dope','Jackson','DJ Clay','Jeff Lane','Shane Mercer','Josh Bishop','Ring Rat','The Green Phantom','Evil Dead']);
  for(let i=9;i<roster.length;i++)assert.ok(validRoom({protocol:PROTOCOL,host:{id:'host',fighter:i,online:true},guest:{id:'guest',fighter:14,online:true},arena:0,state:'lobby',created:Date.now()}));
  assert.ok(!validRoom({protocol:'lunacy-2d-v1',host:{id:'host',fighter:0},arena:0,state:'lobby',created:Date.now()}));
 });

@@ -11,7 +11,7 @@ const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',impo
 const tick=(m,a={},b={})=>m.step([{...emptyInput(),...a},{...emptyInput(),...b}]);
 const run=(m,n,a={},b={})=>{for(let i=0;i<n;i++)tick(m,a,b);};
 const make=(id=0)=>{const m=new Match(roster,id,(id+1)%roster.length,{mode:'local'});m.phase='fight';m.fighters[0].x=500;m.fighters[1].x=580;return m;};
-test('all 39 fighters can complete a taunt, climb either corner and dive',()=>{
+test('all 40 fighters can complete a taunt, climb either corner and dive',()=>{
  for(let id=0;id<roster.length;id++)for(const side of [LEFT,1080]){
   const m=make(id),a=m.fighters[0];a.x=side;m.fighters[1].x=640;
   tick(m,{taunt:true});assert.equal(a.state,'taunt',a.definition.id);run(m,62);assert.equal(a.meter,12);
@@ -81,7 +81,7 @@ const award=(r,id='violent-j',difficulty='easy',extra={})=>r.award({fighter:id,d
 test('arcade medals save by fighter and difficulty, survive renames/reorder and award a Triple Crown',()=>{
  const disk=storage(),r=new ArcadeRewards(roster,disk);for(const d of ['easy','normal','hard'])assert.equal(award(r,'able',d).fresh,true);
  assert.equal(r.triple('able'),true);assert.equal(r.get('violent-j','easy'),null);assert.equal(award(r,'able','easy').fresh,false);
- const reload=new ArcadeRewards([...roster].reverse(),disk);assert.equal(reload.triple('able'),true);assert.equal(reload.get('able','hard').opponents,38);
+ const reload=new ArcadeRewards([...roster].reverse(),disk);assert.equal(reload.triple('able'),true);assert.equal(reload.get('able','hard').opponents,roster.length-1);
 });
 test('arcade awards reject loss, partial runs, duplicates, unknown IDs, and other modes',()=>{
  const r=new ArcadeRewards(roster,storage());for(const patch of [{won:false},{mode:'cpu'},{difficulty:'extreme'},{fighter:'missing'},{defeated:['able']},{defeated:Array(38).fill('able')}])assert.equal(award(r,'violent-j','easy',patch),null);

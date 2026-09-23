@@ -10,7 +10,7 @@ test('the seventh phone page reaches all three additions and keeps selection thr
  const picker=new RosterSelection(roster.length,6);
  for(const [offset,id] of ids.entries()){
   picker.choose(36+offset);assert.equal(roster[picker.selected].id,id);
-  assert.equal(picker.pages,7);assert.deepEqual(picker.visible,[36,37,38]);
+  assert.equal(picker.pages,7);assert.deepEqual(picker.visible,[36,37,38,39]);
   for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,36+offset);assert.ok(picker.visible.includes(picker.selected));}
  }
 });
@@ -46,7 +46,7 @@ test('each added wrestler can win, reload and defend a championship with stable 
   result=mode.settle(mode.start(id,'normal',0),true);assert.equal(result.outcome,'defended');assert.equal(result.run.defenses,1);
  }
  const mode=new Championship(roster,null,()=>.999999);
- assert.equal(mode.challenger('violent-j','ring-rat'),'green-phantom');
- assert.equal(mode.challenger('violent-j','green-phantom'),'ring-rat');
- assert.equal(new Championship(roster,null,()=>.96).challenger('violent-j','ring-rat'),'josh-bishop');
+ assert.equal(mode.challenger('violent-j','ring-rat'),'evil-dead');
+ assert.equal(mode.challenger('violent-j','green-phantom'),'evil-dead');
+ assert.equal(new Championship(roster,null,()=>.96).challenger('violent-j','ring-rat'),'green-phantom');
 });

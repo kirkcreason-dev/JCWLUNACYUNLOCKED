@@ -9,11 +9,11 @@ test('phone, landscape and desktop pages expose every fighter exactly once',()=>
  for(const size of [6,8,12]){
   const picker=new RosterSelection(roster.length,size),seen=[];
   for(let page=0;page<picker.pages;page++){seen.push(...picker.visible);picker.turn(1);}
-  assert.equal(seen.length,39);assert.equal(new Set(seen).size,39);
+  assert.equal(seen.length,roster.length);assert.equal(new Set(seen).size,roster.length);
   assert.deepEqual(seen.map(i=>roster[i].name),roster.map(f=>f.name));
  }
 });
-test('the direct picker reaches all 39 real match fighters without changing the opponent',()=>{
+test('the direct picker reaches all 40 real match fighters without changing the opponent',()=>{
  const picker=new RosterSelection(roster.length,6);
  for(let index=0;index<roster.length;index++){
   assert.equal(picker.choose(index),true);assert.ok(picker.visible.includes(index));

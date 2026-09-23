@@ -11,14 +11,14 @@ const present=roster.filter(f=>SECRET_FIGHTERS.includes(f.id)).map(f=>f.id); // 
 const main=await readFile(new URL('../dist/src/main.js',import.meta.url),'utf8');
 const html=await readFile(new URL('../dist/index.html',import.meta.url),'utf8');
 
-test('the four shipped secrets are real roster fighters; Evil Dead is reserved for when he is added',()=>{
- assert.deepEqual([...present].sort(),['dj-clay','jeff-lane','shaggy-2-dope','violent-j']);
- assert.ok(SECRET_FIGHTERS.includes('evil-dead'));assert.ok(!roster.some(f=>f.id==='evil-dead'));
+test('all five secrets are real roster fighters, Evil Dead included',()=>{
+ assert.deepEqual([...present].sort(),['dj-clay','evil-dead','jeff-lane','shaggy-2-dope','violent-j']);
+ assert.ok(roster.some(f=>f.id==='evil-dead'));
 });
 test('secrets are hidden from the pick list until unlocked, then every fighter is playable',()=>{
  const s=new SecretFighters(roster,storage());
- assert.equal(s.unlocked(),false);assert.equal(s.present.length,4);
- const before=s.indices();assert.equal(before.length,roster.length-4);
+ assert.equal(s.unlocked(),false);assert.equal(s.present.length,5);
+ const before=s.indices();assert.equal(before.length,roster.length-5);
  for(const i of before)assert.ok(!s.isSecret(roster[i].id));
  for(const id of present)assert.equal(s.playable(id),false);
  const revealed=s.unlock('able');assert.deepEqual(revealed.map(f=>f.id),present);
@@ -53,7 +53,7 @@ test('winning the belt with a secret opponent on the road, or as a secret fighte
 test('the pick list pages over playable fighters only, and the page selection maps back to roster indices',()=>{
  const s=new SecretFighters(roster,storage()),playable=s.indices(),pages=new RosterSelection(playable.length,12);
  const seen=new Set();for(let p=0;p<pages.pages;p++){pages.turn(p-pages.page);for(const pos of pages.visible)seen.add(playable[pos]);}
- assert.equal(seen.size,roster.length-4);for(const id of present)assert.ok(!seen.has(roster.findIndex(f=>f.id===id)));
+ assert.equal(seen.size,roster.length-5);for(const id of present)assert.ok(!seen.has(roster.findIndex(f=>f.id===id)));
  assert.equal(pages.choose(playable.indexOf(roster.findIndex(f=>f.id==='violent-j'))),false,'a hidden secret cannot be chosen');
  assert.equal(pages.choose(playable.indexOf(roster.findIndex(f=>f.id==='able'))),true);
 });

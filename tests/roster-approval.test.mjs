@@ -9,7 +9,7 @@ test('the current roster matches the supplied approval table and does not grant 
   checkRosterApprovals(roster,record);
   assert.deepEqual(record.entries.filter(e=>!e.approved).map(e=>e.name),['HollyHood Haley J','Luigi Primo','Sophia Rose']);
   assert.equal(record.entries.filter(e=>e.approved).length,35);
-  assert.deepEqual(roster.filter(f=>!record.entries.some(e=>e.id===f.id)).map(f=>f.id),['violent-j','shaggy-2-dope','dj-clay','jeff-lane']);
+  assert.deepEqual(roster.filter(f=>!record.entries.some(e=>e.id===f.id)).map(f=>f.id),['violent-j','shaggy-2-dope','dj-clay','jeff-lane','evil-dead']);
 });
 test('the release check blocks excluded characters even if an importer gives them a different ID',()=>{
   for(const entry of record.entries.filter(e=>!e.approved)){
