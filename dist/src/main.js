@@ -1,26 +1,27 @@
-import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.20.2';
-import {RenderBudget} from './render-budget.js?v=0.20.2';
-import {Coach} from './coach.js?v=0.20.2';
-import {loadGameImage} from './image-loader.js?v=0.20.2';
-import {fighterProfile} from './fighter-profile.js?v=0.20.2';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.20.2';
-import {Match,STEP,emptyInput,isPoleMode,isLocalMode} from './engine.js?v=0.20.2';
-import {Renderer} from './render.js?v=0.20.2';
-import {Input} from './input.js?v=0.20.2';
-import {Sound} from './audio.js?v=0.20.2';
-import {ARENAS} from './arenas.js?v=0.20.2';
-import {touchContext} from './touch-ui.js?v=0.20.2';
-import {OnlineSession} from './online.js?v=0.20.2';
-import {connectFirebase} from './firebase-online.js?v=0.20.2';
-import {SnapshotBuffer} from './online-protocol.js?v=0.20.2';
-import {RosterSelection} from './roster-selection.js?v=0.20.2';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.20.2';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.20.2';
-import {FramePacer} from './frame-pacer.js?v=0.20.2';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.20.2';
-import {Haptics} from './haptics.js?v=0.20.2';
-import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.20.2';
-import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.20.2';
+import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.21.0';
+import {RenderBudget} from './render-budget.js?v=0.21.0';
+import {Coach} from './coach.js?v=0.21.0';
+import {loadGameImage} from './image-loader.js?v=0.21.0';
+import {fighterProfile} from './fighter-profile.js?v=0.21.0';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.21.0';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode} from './engine.js?v=0.21.0';
+import {Renderer} from './render.js?v=0.21.0';
+import {Input} from './input.js?v=0.21.0';
+import {Sound} from './audio.js?v=0.21.0';
+import {ARENAS} from './arenas.js?v=0.21.0';
+import {touchContext} from './touch-ui.js?v=0.21.0';
+import {OnlineSession} from './online.js?v=0.21.0';
+import {connectFirebase} from './firebase-online.js?v=0.21.0';
+import {SnapshotBuffer} from './online-protocol.js?v=0.21.0';
+import {RosterSelection} from './roster-selection.js?v=0.21.0';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.21.0';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.21.0';
+import {FramePacer} from './frame-pacer.js?v=0.21.0';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.21.0';
+import {Haptics} from './haptics.js?v=0.21.0';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.21.0';
+import {SecretFighters} from './secret-fighters.js?v=0.21.0';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.21.0';
 const haptics=new Haptics();let arcadeRewards=null;
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help'),creditsScreen=$('credits');
@@ -28,7 +29,7 @@ let coach=null,creditsPending=false;
 let championships=null,championshipBout=null;
 let roster=[],atlases={},arenas=[],renderer,match=null,chosen=0,arena=0,paused=false,helpWasPaused=false,arcadeOpponents=[],arcadeIndex=0,session=0,loading=false,returnFocus=null;
 let onlineBusy=false,onlineStarted=false,onlineFailed=false,localIndex=0,snapshotBuffer=null;
-let rosterSelection=null;
+let rosterSelection=null,secrets=null,playable=[];
 let artworkState=null;
 let runtimeFault=null;
 const net=new OnlineSession({connect:connectFirebase,prepare:prepareOnline,start:startOnline,
@@ -120,9 +121,9 @@ function updateTouchContext(){
 function rosterPageSize(){return matchMedia('(max-width:650px) and (orientation:portrait)').matches?6:matchMedia('(max-width:1000px), (max-height:600px)').matches?8:12;}
 function renderRosterPage(){
   if(!rosterSelection)return;
-  const visible=rosterSelection.visible,focus=visible.includes(chosen)?chosen:visible[0];
+  const positions=rosterSelection.visible,visible=positions.map(p=>playable[p]),focus=visible.includes(chosen)?chosen:visible[0];
   Array.from($('roster').children).forEach((b,i)=>{b.hidden=!visible.includes(i);if(!b.hidden){const img=b.querySelector('img');if(!img.getAttribute('src'))img.src=img.dataset.src;}b.setAttribute('aria-pressed',String(i===chosen));b.tabIndex=i===focus?0:-1;b.disabled=onlineBusy;});
-  $('roster-page').textContent=`${visible[0]+1}–${visible.at(-1)+1} OF ${roster.length} · PAGE ${rosterSelection.page+1}/${rosterSelection.pages}`;
+  $('roster-page').textContent=`${positions[0]+1}–${positions.at(-1)+1} OF ${playable.length} · PAGE ${rosterSelection.page+1}/${rosterSelection.pages}`;
   $('roster-prev').disabled=onlineBusy||rosterSelection.page===0;$('roster-next').disabled=onlineBusy||rosterSelection.page===rosterSelection.pages-1;
   $('roster-select').value=String(chosen);$('selected-fighter').textContent=roster[chosen].name.toUpperCase();
 }
@@ -130,7 +131,7 @@ function setSelectionPanel(panel){
   selection.dataset.panel=panel;$('show-roster').setAttribute('aria-pressed',String(panel==='roster'));$('show-setup').setAttribute('aria-pressed',String(panel==='setup'));
 }
 function resizeRoster(){if(rosterSelection){rosterSelection.resize(rosterPageSize());renderRosterPage();}}
-function choose(index){if(!rosterSelection?.choose(index))return;chosen=index;const f=roster[index];
+function choose(index){if(!rosterSelection?.choose(playable.indexOf(index)))return;chosen=index;const f=roster[index];
   renderRosterPage();
   $('portrait').src=fighterPortrait(f);$('portrait').alt=f.name;$('fighter-name').textContent=f.name;$('fighter-style').textContent=`${f.style.toUpperCase()} · ${fighterProfile(f).label}`;
   $('fighter-traits').textContent=fighterProfile(f).tip;
@@ -183,16 +184,25 @@ function updateOpponent(){
   $('pole-rules').hidden=!isPoleMode(mode);
   updateChampionship();updateArcadeRewards();
 }
+function refreshPlayable(){
+  // Secret fighters are hidden from the pick list until the belt has been won on this browser.
+  playable=secrets?secrets.indices():roster.map((_,i)=>i);
+  rosterSelection=new RosterSelection(playable.length,rosterPageSize());
+  $('roster-count').textContent=`${playable.length} FIGHTERS`;
+  $('show-roster').textContent=`FIGHTERS · ${playable.length}`;
+  $('roster-select').replaceChildren(...playable.map(i=>{const option=document.createElement('option');option.value=i;option.textContent=roster[i].name.toUpperCase();return option;}));
+  const hidden=secrets?secrets.present.filter(f=>!secrets.playable(f.id)):[];
+  $('secret-note').hidden=!hidden.length;
+  $('secret-note').textContent=hidden.length?`${hidden.length} SECRET FIGHTER${hidden.length===1?'':'S'} · WIN THE CHAMPIONSHIP BELT TO UNLOCK`:'';
+  Array.from($('roster').children).forEach((b,i)=>{b.dataset.secret=secrets?.isSecret(roster[i].id)?'true':'false';});
+  if(!playable.includes(chosen))chosen=playable[0]??0;
+}
 function buildRoster(){
-  rosterSelection=new RosterSelection(roster.length,rosterPageSize());
-  $('roster-count').textContent=`${roster.length} FIGHTERS`;
-  $('show-roster').textContent=`FIGHTERS · ${roster.length}`;
   roster.forEach((f,i)=>{
     const b=document.createElement('button');b.className='fighter-card';b.style.setProperty('--fighter',f.color);b.setAttribute('aria-label',f.name);b.setAttribute('aria-pressed','false');
     const img=document.createElement('img');img.dataset.src=fighterPortrait(f);img.alt='';img.decoding='async';const name=document.createElement('span');name.textContent=f.name.toUpperCase();b.append(img,name);b.onclick=()=>choose(i);$('roster').append(b);
     const option=document.createElement('option');option.value=i;option.textContent=f.name.toUpperCase();$('opponent').append(option);
-    $('roster-select').append(option.cloneNode(true));
-  });$('opponent').value='1';choose(0);
+  });refreshPlayable();$('opponent').value='1';choose(chosen);
   $('roster-select').onchange=()=>choose(Number($('roster-select').value));
   $('roster-prev').onclick=()=>{rosterSelection.turn(-1);renderRosterPage();};
   $('roster-next').onclick=()=>{rosterSelection.turn(1);renderRosterPage();};
@@ -202,8 +212,8 @@ function buildRoster(){
   $('opponent').onchange=updateOpponent;$('difficulty').onchange=()=>{updateChampionship();updateArcadeRewards();};
   $('roster').addEventListener('keydown',event=>{
     const columns=getComputedStyle($('roster')).gridTemplateColumns.split(' ').length,current=Array.from($('roster').children).indexOf(event.target);
-    const delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-columns,ArrowDown:columns,PageUp:-rosterSelection.pageSize,PageDown:rosterSelection.pageSize}[event.key];
-    if(current>=0&&(delta||event.key==='Home'||event.key==='End')){event.preventDefault();choose(event.key==='Home'?0:event.key==='End'?roster.length-1:(current+delta+roster.length)%roster.length);$('roster').children[chosen].focus();}
+    const delta={ArrowLeft:-1,ArrowRight:1,ArrowUp:-columns,ArrowDown:columns,PageUp:-rosterSelection.pageSize,PageDown:rosterSelection.pageSize}[event.key],position=playable.indexOf(current);
+    if(position>=0&&(delta||event.key==='Home'||event.key==='End')){event.preventDefault();choose(playable[event.key==='Home'?0:event.key==='End'?playable.length-1:(position+delta+playable.length)%playable.length]);$('roster').children[chosen].focus();}
   });
 }
 async function loadFighter(index){
@@ -242,6 +252,7 @@ async function startMatch(nextArcade=false){
     const mode=$('mode').value;arena=Number($('arena').value);
     if(mode==='arcade'&&!nextArcade){arcadeOpponents=roster.map((_,i)=>i).filter(i=>i!==chosen); // Fisher-Yates keeps an unbiased, complete roster run.
       for(let i=arcadeOpponents.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arcadeOpponents[i],arcadeOpponents[j]]=[arcadeOpponents[j],arcadeOpponents[i]];}arcadeIndex=0;}
+    if(secrets&&!secrets.playable(roster[chosen].id)){choose(playable[0]);}
     championshipBout=mode==='championship'?championships.start(roster[chosen].id,$('difficulty').value,arena):null;
     const opponent=championshipBout?roster.findIndex(f=>f.id===championshipBout.opponent):mode==='arcade'?arcadeOpponents[arcadeIndex]:Number($('opponent').value);
     if(championshipBout)arena=championshipArena(championshipBout);
@@ -284,7 +295,7 @@ function finishMatch(){
   $('result-detail').textContent=`${match.wins[0]} — ${match.wins[1]}${arcade?` · ${Math.min(arcadeOpponents.length,arcadeIndex+(won?1:0))} of ${arcadeOpponents.length} opponents defeated`:''}`;
   const winner=match.fighters[match.winner].definition;$('winner-portrait').src=fighterPortrait(winner);$('winner-portrait').alt=winner.name;
   $('rematch').textContent=match.options.mode==='online'?'BACK TO ONLINE LOBBY':arcade&&won&&!champion?'NEXT OPPONENT':arcade?'NEW ARCADE RUN':'REMATCH';
-  $('championship-belt').hidden=true;creditsPending=false;$('show-credits').hidden=true;resultScreen.classList.remove('champion-result');
+  $('championship-belt').hidden=true;creditsPending=false;$('show-credits').hidden=true;$('secret-unlock').hidden=true;resultScreen.classList.remove('champion-result');
   if(match.options.mode==='championship'){
     const result=championships.settle(match.championshipBout,won);
     if(result){
@@ -295,6 +306,9 @@ function finishMatch(){
       $('championship-belt').hidden=!['crowned','defended'].includes(outcome);
       if(['crowned','defended'].includes(outcome)){resultScreen.classList.add('champion-result');$('show-credits').hidden=false;sound.celebrate();}
       creditsPending=outcome==='crowned';
+      const revealed=outcome==='crowned'&&secrets?secrets.unlock(run.fighter):[];
+      $('secret-unlock').hidden=!revealed.length;
+      if(revealed.length){$('secret-unlock').textContent=`SECRET FIGHTERS UNLOCKED · ${revealed.map(f=>f.name.toUpperCase()).join(' · ')} · ${secrets.saved?'Saved on this browser.':'Session only — saving unavailable.'}`;refreshPlayable();choose(chosen);}
       $('rematch').textContent=outcome==='dethroned'?'CHASE THE BELT':run.phase==='defend'?'DEFEND YOUR TITLE':won?'NEXT CHAMPIONSHIP MATCH':'RETRY THIS MATCH';
           if(creditsPending)$('rematch').textContent='CELEBRATE · VIEW CREDITS';
     }else{$('result-detail').textContent+=' · This run changed in another window; continue from the saved match.';$('rematch').textContent='CONTINUE SAVED RUN';}
@@ -494,7 +508,7 @@ function loop(now){
 }
 async function init(){
   try{
-    const response=await fetch('./assets/roster.json',{cache:'no-store'});if(!response.ok)throw new Error('Roster unavailable');roster=await response.json();let campaignStorage=null;try{campaignStorage=globalThis.localStorage;}catch{}coach=new Coach(campaignStorage);championships=new Championship(roster,campaignStorage);arcadeRewards=new ArcadeRewards(roster,campaignStorage);buildRoster();
+    const response=await fetch('./assets/roster.json',{cache:'no-store'});if(!response.ok)throw new Error('Roster unavailable');roster=await response.json();let campaignStorage=null;try{campaignStorage=globalThis.localStorage;}catch{}coach=new Coach(campaignStorage);championships=new Championship(roster,campaignStorage);arcadeRewards=new ArcadeRewards(roster,campaignStorage);secrets=new SecretFighters(roster,campaignStorage);secrets.adopt(championships);buildRoster();
     ARENAS.forEach((a,i)=>{const option=document.createElement('option');option.value=i;option.textContent=a.name;$('arena').append(option);});
     await loadArena(0);
     const banners={},combatFx={};artworkState={banners,combatFx,pending:new Map()};

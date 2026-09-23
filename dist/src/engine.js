@@ -1,4 +1,4 @@
-import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.20.2';
+import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.21.0';
 // Pure fixed-step match simulation. Rendering and input devices never change the rules.
 export const STEP = 1 / 60;
 export const FLOOR = 593;
@@ -50,7 +50,7 @@ export class Match {
     this.newRound();
   }
   newRound(){
-    this.fighters=this.ids.map((id,i)=>({id,definition:this.roster[id],x:i?870:410,z:0,vz:0,vx:0,facing:i?-1:1,hp:100,meter:0,guard:100,guardDelay:0,reversalWindow:0,reversalCooldown:0,secondWindUsed:false,reboundTime:0,reboundDirection:0,state:'idle',t:0,move:null,hit:false,confirmed:false,chain:0,stun:0,invincible:0,downTime:0,combo:0,comboTime:0,buffer:null,weapon:this.roster[id].weapons?'none':'chair',attackStyle:'chair',weaponUses:0,weaponWear:{},ropeTime:0,runTime:0,runDirection:0,fallFace:'back',fallDuration:0,exhausted:false,divePower:1,diveHit:false,tauntCooldown:0,last:emptyInput()}));
+    this.fighters=this.ids.map((id,i)=>({id,definition:this.roster[id],x:i?870:410,z:0,vz:0,vx:0,facing:i?-1:1,hp:100,meter:0,guard:100,guardDelay:0,reversalWindow:0,reversalCooldown:0,secondWindUsed:false,reboundTime:0,reboundDirection:0,state:'idle',t:0,move:null,hit:false,confirmed:false,chain:0,stun:0,invincible:0,wakeUpProtected:false,downTime:0,combo:0,comboTime:0,buffer:null,weapon:this.roster[id].weapons?'none':'chair',attackStyle:'chair',weaponUses:0,weaponWear:{},ropeTime:0,runTime:0,runDirection:0,fallFace:'back',fallDuration:0,exhausted:false,divePower:1,diveHit:false,tauntCooldown:0,last:emptyInput()}));
     this.pole=isPoleMode(this.options.mode)?{x:this.round%2?LEFT+18:RIGHT-18,claimed:false,holder:null,looseX:null,progress:0,claimant:null,uses:0,broken:false}:null;
     if(this.pole)for(const f of this.fighters)f.weapon='none';
     if(this.options.mode==='practice')this.fighters[0].meter=100;
@@ -83,7 +83,7 @@ export class Match {
     if(this.hitStop>0){this.hitStop-=dt;this.remember(inputs);return;}
     if(this.options.mode!=='practice')this.remaining=Math.max(0,this.remaining-dt);
     if(this.remaining<=0&&!this.grapple&&!this.pin){this.timeLimit();return;}
-    for(const f of this.fighters){f.t+=dt;f.invincible=Math.max(0,f.invincible-dt);f.guardDelay=Math.max(0,f.guardDelay-dt);f.comboTime=Math.max(0,f.comboTime-dt);f.tauntCooldown=Math.max(0,f.tauntCooldown-dt);f.reversalWindow=Math.max(0,f.reversalWindow-dt);f.reversalCooldown=Math.max(0,f.reversalCooldown-dt);if(!f.comboTime)f.combo=0;}
+    for(const f of this.fighters){f.t+=dt;f.invincible=Math.max(0,f.invincible-dt);if(!f.invincible)f.wakeUpProtected=false;f.guardDelay=Math.max(0,f.guardDelay-dt);f.comboTime=Math.max(0,f.comboTime-dt);f.tauntCooldown=Math.max(0,f.tauntCooldown-dt);f.reversalWindow=Math.max(0,f.reversalWindow-dt);f.reversalCooldown=Math.max(0,f.reversalCooldown-dt);if(!f.comboTime)f.combo=0;}
     if(this.grapple){this.updateGrapple(dt);this.remember(inputs);if(!this.grapple&&this.remaining<=0)this.timeLimit();return;}
     if(this.pin){this.updatePin(inputs,dt);this.remember(inputs);if(!this.pin&&this.remaining<=0)this.timeLimit();return;}
     if(this.fighters.every(f=>f.buffer?.action==='grapple')&&canCornerThrow(this.fighters[0],this.fighters[1])){this.startSuperplex(0);this.breakGrapple();this.remember(inputs);return;}
@@ -129,7 +129,7 @@ export class Match {
     if(f.state==='down'){
       f.downTime-=dt;
       if(tap(input,f.last,'light')||tap(input,f.last,'heavy'))f.downTime-=.11;
-      if(f.downTime<=0){f.state='rise';f.t=0;f.invincible=.6;}return;
+      if(f.downTime<=0){f.state='rise';f.t=0;f.invincible=.6;f.wakeUpProtected=true;}return;
     }
     if(f.state==='rise'){if(f.t<.5)return;f.state='idle';f.t=0;}
     if(f.state==='taunt'){if(f.t>=1){f.meter=clamp(f.meter+12,0,100);f.state='idle';f.t=0;this.emit('taunt',{index});}else return;}
@@ -166,7 +166,7 @@ export class Match {
       if(f.definition.animations?.climb&&(f.x<LEFT+65||f.x>RIGHT-65)&&Math.abs(f.x-enemy.x)>135){
         this.dropPoleWeapon(index);f.state='climb';f.t=0;f.ropeTime=0;f.move=null;f.vx=0;f.weapon='none';f.x=f.x<640?LEFT+18:RIGHT-18;f.facing=f.x<640?1:-1;this.emit('climb',{index});return;
       }
-      f.attackStyle='light';f.move='light';f.state='light';f.t=0;f.hit=true;f.confirmed=false;f.chain=0;f.invincible=0;this.emit('whiff',{index});return;
+      f.attackStyle='light';f.move='light';f.state='light';f.t=0;f.hit=true;f.confirmed=false;f.chain=0;f.invincible=0;f.wakeUpProtected=false;this.emit('whiff',{index});return;
     }
     if(command==='heavy'&&f.buffer.low&&f.z===0){this.startAttack(f,'counter',index);return;}
     for(const key of ['special','heavy','light']){
@@ -200,7 +200,7 @@ export class Match {
     // Require a real run toward the opponent; no instant dash from idle/backpedal.
     const running=key==='heavy'&&!chained&&f.z===0&&f.state==='run'&&f.runTime>=.20&&f.runDirection===f.facing;
     f.runningAttack=running;if(running)f.vx=f.facing*560;
-    f.reboundTime=0;f.buffer=null;f.invincible=0;f.runTime=0;f.runDirection=0;f.chain=chained?f.chain+1:0;
+    f.reboundTime=0;f.buffer=null;f.invincible=0;f.wakeUpProtected=false;f.runTime=0;f.runDirection=0;f.chain=chained?f.chain+1:0;
     if(key==='special'){f.meter=0;this.emit('special',{index,name:f.definition.finisher||'LUNACY FINISHER',fighter:f.definition.id,kind:'strike'});}
     f.attackStyle=key==='light'?'light':['counter','aerial'].includes(key)?(f.definition.animations?.kick?'kick':'light'):f.weapon==='none'?(f.definition.animations?.kick?'kick':'light'):f.weapon;
     f.state=['counter','aerial'].includes(key)?'heavy':key;f.move=key==='heavy'&&['bat','guitar','trashcan','bottle'].includes(f.weapon)?f.weapon:key;
@@ -259,7 +259,7 @@ export class Match {
     const a=this.fighters[index],b=this.fighters[1-index];
     a.weapon=a.definition.weapons?'none':a.weapon;b.weapon=b.definition.weapons?'none':b.weapon;
     this.grapple={attacker:index,time:0,released:false,startX:b.x,fromX:a.x,throwDir:a.x<LEFT+180?1:a.x>RIGHT-180?-1:a.facing};
-    a.reboundTime=0;b.reboundTime=0;a.state='grapple';a.t=0;a.move=null;a.vx=0;a.buffer=null;a.invincible=0;a.runTime=0;a.runDirection=0;b.state='grabbed';b.move=null;b.vx=0;b.t=0;b.stun=0;this.emit('grapple',{index});
+    a.reboundTime=0;b.reboundTime=0;a.state='grapple';a.t=0;a.move=null;a.vx=0;a.buffer=null;a.invincible=0;a.wakeUpProtected=false;a.runTime=0;a.runDirection=0;b.state='grabbed';b.move=null;b.vx=0;b.t=0;b.stun=0;this.emit('grapple',{index});
   }
   updateGrapple(dt){
     const g=this.grapple,a=this.fighters[g.attacker],b=this.fighters[1-g.attacker];g.time+=dt;
@@ -285,14 +285,14 @@ export class Match {
   breakGrapple(){
     const g=this.grapple;
     if(g.kind==='superplex'){
-      for(let i=0;i<2;i++){const f=this.fighters[i],origin=g.origins[i];Object.assign(f,{x:origin.x,z:origin.z,vz:0,vx:0,state:origin.z>0?'perch':'hurt',t:0,stun:origin.z>0?0:.24,buffer:null,move:null,invincible:.3});}this.grapple=null;this.emit('throwBreak');return;
+      for(let i=0;i<2;i++){const f=this.fighters[i],origin=g.origins[i];Object.assign(f,{x:origin.x,z:origin.z,vz:0,vx:0,state:origin.z>0?'perch':'hurt',t:0,stun:origin.z>0?0:.24,buffer:null,move:null,invincible:.3,wakeUpProtected:false});}this.grapple=null;this.emit('throwBreak');return;
     }
-    for(let i=0;i<2;i++){const f=this.fighters[i];f.state='hurt';f.t=0;f.stun=.24;f.buffer=null;f.move=null;f.z=0;f.vz=0;f.vx=(i===g.attacker?-1:1)*this.fighters[g.attacker].facing*260;f.invincible=.3;}
+    for(let i=0;i<2;i++){const f=this.fighters[i];f.state='hurt';f.t=0;f.stun=.24;f.buffer=null;f.move=null;f.z=0;f.vz=0;f.vx=(i===g.attacker?-1:1)*this.fighters[g.attacker].facing*260;f.invincible=.3;f.wakeUpProtected=false;}
     this.grapple=null;this.emit('throwBreak');
   }
   knockDown(f,face='back',duration=.38,downTime=2.5){
     this.dropPoleWeapon(this.fighters.indexOf(f));
-    f.reboundTime=0;f.state='down';f.t=0;f.fallFace=face;f.fallDuration=duration;f.downTime=downTime;f.stun=0;f.z=0;f.vz=0;f.move=null;f.buffer=null;f.confirmed=false;f.chain=0;f.runTime=0;f.runDirection=0;
+    f.wakeUpProtected=false;f.reboundTime=0;f.state='down';f.t=0;f.fallFace=face;f.fallDuration=duration;f.downTime=downTime;f.stun=0;f.z=0;f.vz=0;f.move=null;f.buffer=null;f.confirmed=false;f.chain=0;f.runTime=0;f.runDirection=0;
   }
   updateRopes(f,enemy,input,dt,index){
     if(f.state==='climb'){
@@ -326,7 +326,11 @@ export class Match {
     if(f.state!=='dive')return false;
     f.x=clamp(f.x+f.facing*490*MOVEMENT_PACE*f.definition.speed*dt,LEFT,RIGHT);
     const grounded=f.z===0,close=Math.abs(f.x-enemy.x)<115,vertical=enemy.state==='down'?f.z<90:Math.abs(f.z-enemy.z)<150;
-    if(!f.diveHit&&close&&vertical&&enemy.invincible===0&&!['rise','pinned'].includes(enemy.state)){
+    // Getting up protects against grounded pressure, not a dive already landing on the body.
+    // Keep throw-break, kickout and other invulnerability intact. The flag lasts through
+    // the final standing recovery frames, so the animation boundary cannot create a miss.
+    const canHit=enemy.invincible===0||enemy.wakeUpProtected;
+    if(!f.diveHit&&close&&vertical&&canHit&&enemy.state!=='pinned'){
       f.diveHit=true;const blocked=enemy.state==='block';
       if(blocked){
         enemy.guard=Math.max(0,enemy.guard-35);enemy.guardDelay=.7;
@@ -334,11 +338,11 @@ export class Match {
         this.emit('guardBreak',{index:1-index});
       }
       const damage=23*f.divePower*f.definition.power/enemy.definition.toughness;enemy.hp=Math.max(0,enemy.hp-damage);enemy.meter=clamp(enemy.meter+damage*.8,0,100);f.meter=clamp(f.meter+16,0,100);
-      this.knockDown(enemy,'back',.20,3.1);enemy.vx=f.facing*350;this.shake=10;this.hitStop=.09;this.emit('slam',{index:1-index,x:enemy.x});
+      enemy.invincible=0;this.knockDown(enemy,'back',.20,3.1);enemy.vx=f.facing*350;this.shake=10;this.hitStop=.09;this.emit('slam',{index:1-index,x:enemy.x});
       this.secondWind(1-index);
     }
     if(grounded){
-      if(f.diveHit){f.state='rise';f.t=0;f.invincible=.25;}
+      if(f.diveHit){f.state='rise';f.t=0;f.invincible=.25;f.wakeUpProtected=false;}
       else{f.hp=Math.max(1,f.hp-4);this.knockDown(f,'front',.25,1.35);this.emit('slam',{index,x:f.x});}
     }return true;
   }
@@ -359,7 +363,7 @@ export class Match {
     const origins=this.fighters.map(f=>({x:f.x,z:f.z}));
     this.dropPoleWeapon(index);this.dropPoleWeapon(1-index);
     this.grapple={kind:'superplex',attacker:index,time:0,released:false,corner,throwDir:dir,origins};
-    for(const f of [a,b]){f.move=null;f.buffer=null;f.vx=0;f.vz=0;f.stun=0;f.reboundTime=0;f.runTime=0;f.t=0;f.invincible=0;f.weapon='none';}
+    for(const f of [a,b]){f.move=null;f.buffer=null;f.vx=0;f.vz=0;f.stun=0;f.reboundTime=0;f.runTime=0;f.t=0;f.invincible=0;f.wakeUpProtected=false;f.weapon='none';}
     a.facing=dir;b.facing=-dir;a.state='grapple';b.state='grabbed';this.emit('grapple',{index,kind:'superplex'});return true;
   }
   updateSuperplex(dt){
@@ -379,14 +383,14 @@ export class Match {
     if(b.z<=0){
       const damage=28*a.definition.power*(a.definition.technique||1)/b.definition.toughness;
       b.hp=Math.max(0,b.hp-damage);b.meter=clamp(b.meter+damage*.8,0,100);a.meter=clamp(a.meter+26,0,100);
-      this.knockDown(b,'back',.18,3.2);b.invincible=.1;a.z=0;a.vz=0;a.state='rise';a.t=0;a.invincible=.2;
+      this.knockDown(b,'back',.18,3.2);b.invincible=.1;a.z=0;a.vz=0;a.state='rise';a.t=0;a.invincible=.2;a.wakeUpProtected=false;
       this.grapple=null;this.hitStop=.12;this.shake=10;this.emit('slam',{index:1-g.attacker,x:b.x,damage,superplex:true});this.secondWind(1-g.attacker);
       if(b.hp<=0)this.endRound(g.attacker,'KNOCKOUT');
     }
   }
   startPin(index,kind='pin'){
     this.dropPoleWeapon(index);this.dropPoleWeapon(1-index);
-    const a=this.fighters[index],b=this.fighters[1-index];a.state='pin';a.t=0;a.buffer=null;a.vx=0;a.invincible=0;a.runTime=0;a.runDirection=0;b.vx=0;b.buffer=null;b.state='pinned';b.fallFace='back';b.fallDuration=0;b.t=0;this.pin={kind,attacker:index,time:0,count:0,escape:0,lastButton:null,startX:a.x,targetX:clamp(b.x-a.facing*23,LEFT,RIGHT)};this.emit('pin',{index,kind});
+    const a=this.fighters[index],b=this.fighters[1-index];a.state='pin';a.t=0;a.buffer=null;a.vx=0;a.invincible=0;a.wakeUpProtected=false;a.runTime=0;a.runDirection=0;b.vx=0;b.buffer=null;b.state='pinned';b.fallFace='back';b.fallDuration=0;b.t=0;this.pin={kind,attacker:index,time:0,count:0,escape:0,lastButton:null,startX:a.x,targetX:clamp(b.x-a.facing*23,LEFT,RIGHT)};this.emit('pin',{index,kind});
   }
   updatePin(inputs,dt){
     const p=this.pin,a=this.fighters[p.attacker],b=this.fighters[1-p.attacker],input=inputs[1-p.attacker]||emptyInput();p.time+=dt;
@@ -408,7 +412,7 @@ export class Match {
   }
   releasePin(type){
     const p=this.pin,a=this.fighters[p.attacker],b=this.fighters[1-p.attacker];
-    b.state='rise';b.t=0;b.buffer=null;b.invincible=.8;a.state='idle';a.t=0;a.buffer=null;a.vx=-a.facing*900;
+    b.state='rise';b.t=0;b.buffer=null;b.invincible=.8;b.wakeUpProtected=false;a.state='idle';a.t=0;a.buffer=null;a.vx=-a.facing*900;
     this.pin=null;this.emit(type);
   }
   endRound(winner,method){

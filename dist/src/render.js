@@ -1,9 +1,9 @@
-import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.20.2';
-import {ARENAS} from './arenas.js?v=0.20.2';
-import {weaponGrip} from './weapon-grips.js?v=0.20.2';
-import {attackPose} from './attack-animation.js?v=0.20.2';
-import {phoneCamera} from './phone-layout.js?v=0.20.2';
-import {drawArenaWordmarks} from './branding.js?v=0.20.2';
+import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.21.0';
+import {ARENAS} from './arenas.js?v=0.21.0';
+import {weaponGrip} from './weapon-grips.js?v=0.21.0';
+import {attackPose} from './attack-animation.js?v=0.21.0';
+import {phoneCamera} from './phone-layout.js?v=0.21.0';
+import {drawArenaWordmarks} from './branding.js?v=0.21.0';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
