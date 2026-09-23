@@ -32,6 +32,14 @@ let onlineBusy=false,onlineStarted=false,onlineFailed=false,localIndex=0,snapsho
 let rosterSelection=null,secrets=null,playable=[];
 let artworkState=null;
 let runtimeFault=null;
+/* ---- site bridge: tell jcwlunacy.net (the page that embeds this game) how
+   each match went, so the Juggalo Locker can count wins and hand out badges.
+   Presentation only: nothing here changes gameplay, saving or online play. */
+let tally=null,lastPinAttacker=null;
+const newTally=()=>({specials:0,reversals:0,kickouts:0,secondWinds:0,pins:0,taps:0,timeouts:0,weapons:0});
+function siteReport(report){
+  try{if(window.parent&&window.parent!==window)window.parent.postMessage(Object.assign({type:'jcw-game',game:'lunacy',v:1},report),'*');}catch(error){}
+}
 const net=new OnlineSession({connect:connectFirebase,prepare:prepareOnline,start:startOnline,
   snapshot:packet=>snapshotBuffer?.receive(packet,performance.now()),status:onlineStatus,ended:onlineEnded});
 const imagePromises=new Map();
@@ -263,7 +271,7 @@ async function startMatch(nextArcade=false){
     if(thisSession!==session)return;
     localIndex=0;renderer.localIndex=0;onlineStarted=false;onlineFailed=false;$('network-banner').hidden=true;$('pause-button').setAttribute('aria-label','Pause match');
     match=new Match(roster,chosen,opponent,{mode,difficulty:$('difficulty').value,arcadeIndex,championshipLabel:championshipBout?championshipLabel(championshipBout):null});
-    match.championshipBout=championshipBout;
+    match.championshipBout=championshipBout;tally=newTally();lastPinAttacker=null;
     retainMatchArtwork(atlases,arenas,imagePromises,match.ids,arena);
     coach?.start();creditsPending=false;creditsScreen.hidden=true;paused=false;selection.hidden=true;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();input.active=true;input.setMode(mode);if(coarse.matches||preferences.touch==='on')input.scheme='touch';renderer.reset();touchSignature='';$('pause-button').hidden=false;updateTouch();sound.resume();
     $('footer-status').textContent=championshipBout?championshipLabel(championshipBout):isPoleMode(mode)?'WEAPON ON A POLE · CLAIM THE CHAIR, THEN WIN TWO FALLS':isLocalMode(mode)?'LOCAL VERSUS · TWO PLAYERS. ONE RING.':mode==='arcade'?`ARCADE RUN · OPPONENT ${arcadeIndex+1} OF ${roster.length-1}`:mode==='practice'?'PRACTICE · FULL METER · AUTO RESET':'VS CPU · BEST OF THREE';
@@ -296,10 +304,11 @@ function finishMatch(){
   const winner=match.fighters[match.winner].definition;$('winner-portrait').src=fighterPortrait(winner);$('winner-portrait').alt=winner.name;
   $('rematch').textContent=match.options.mode==='online'?'BACK TO ONLINE LOBBY':arcade&&won&&!champion?'NEXT OPPONENT':arcade?'NEW ARCADE RUN':'REMATCH';
   $('championship-belt').hidden=true;creditsPending=false;$('show-credits').hidden=true;$('secret-unlock').hidden=true;resultScreen.classList.remove('champion-result');
+  let siteOutcome=null,siteRun=null,siteReward=null;
   if(match.options.mode==='championship'){
     const result=championships.settle(match.championshipBout,won);
     if(result){
-      const {run,outcome}=result;
+      const {run,outcome}=result;siteOutcome=outcome;siteRun={titles:run.titles,defenses:run.defenses,best:run.best};
       $('result-title').textContent=outcome==='crowned'?'LUNACY CHAMPION!':outcome==='defended'?'TITLE DEFENDED!':outcome==='dethroned'?'THE BELT CHANGES HANDS':won?'ONE STEP CLOSER':'YOUR RUN CONTINUES';
       $('result-method').textContent=`${championshipLabel(match.championshipBout)} · ${match.method}`;
       $('result-detail').textContent=`${match.wins[0]} — ${match.wins[1]} · ${run.titles} title wins · ${run.defenses} defenses · Best: ${run.best}. ${championships.saved?'Progress saved.':'Session only — browser saving unavailable.'}`;
@@ -316,9 +325,14 @@ function finishMatch(){
   $('arcade-reward-result').hidden=true;
   if(champion){
     const reward=arcadeRewards.award({fighter:match.fighters[0].definition.id,difficulty:match.options.difficulty,defeated:arcadeOpponents.map(i=>roster[i].id),mode:match.options.mode,won});
+    siteReward=reward?{medal:reward.medal,fresh:reward.fresh,triple:arcadeRewards.triple(winner.id)}:null;
     if(reward){const box=$('arcade-reward-result');box.hidden=false;box.dataset.medal=arcadeRewards.triple(winner.id)?'triple':reward.medal;box.textContent=`${reward.medal.toUpperCase()} MEDAL · ${reward.title}${arcadeRewards.triple(winner.id)?' · TRIPLE CROWN!':''} · ${reward.fresh?'PORTRAIT FRAME EARNED':'MEDAL ALREADY EARNED'} · ${arcadeRewards.saved?'Saved on this browser.':'Session only — saving unavailable.'}`;sound.celebrate();updateArcadeRewards();}
   }
   showModal(resultScreen,$('rematch'));status($('result-title').textContent);
+  try{const me=match.fighters[localIndex].definition,them=match.fighters[1-localIndex].definition,mode=match.options.mode;
+    siteReport({won,local:isLocalMode(mode),mode,pole:isPoleMode(mode),difficulty:match.options.difficulty,method:match.method,wins:match.wins.slice(),
+      fighter:me.id,fighterName:me.name,opponent:them.id,opponentName:them.name,rosterSize:roster.length,arena,arenaCount:ARENAS.length,
+      arcadeChampion:champion,medal:siteReward,championship:siteOutcome,run:siteRun,tally:tally||newTally()});}catch(error){}
   if(creditsPending)openCredits();
 }
 function setOnlineBusy(busy){
@@ -353,7 +367,7 @@ async function prepareOnline(meta,role){
 }
 function startOnline(meta,role){
   if(!match||!net.active)return;
-  onlineStarted=true;paused=false;onlineFailed=false;selection.hidden=true;pauseScreen.hidden=true;helpScreen.hidden=true;resultScreen.hidden=true;
+  onlineStarted=true;paused=false;onlineFailed=false;tally=newTally();lastPinAttacker=null;selection.hidden=true;pauseScreen.hidden=true;helpScreen.hidden=true;resultScreen.hidden=true;
   input.active=true;if(coarse.matches||preferences.touch==='on')input.scheme='touch';
   $('room-share').hidden=true;$('pause-button').hidden=false;$('pause-button').setAttribute('aria-label','Match menu');
   $('network-banner').hidden=false;$('network-banner').textContent=`ONLINE · YOU ARE P${localIndex+1} · ROOM ${net.code}`;
@@ -384,6 +398,15 @@ function matchEvents(events){
     if(e.type==='hit')effects.add(e.move==='light'?'chips':'impact');
   }
   requestArtwork([...banners],[...effects]);
+  if(tally){for(const e of events){
+    if(e.type==='special'&&e.index===localIndex)tally.specials++;
+    if(e.type==='reversal'&&e.index===localIndex)tally.reversals++;
+    if(e.type==='secondWind'&&e.index===localIndex)tally.secondWinds++;
+    if(e.type==='weapon'&&e.index===localIndex)tally.weapons++;
+    if(e.type==='pin')lastPinAttacker=e.index;
+    if(e.type==='kickout'&&lastPinAttacker!=null&&lastPinAttacker!==localIndex)tally.kickouts++;
+    if(e.type==='roundEnd'&&e.winner===localIndex){if(e.method==='PINFALL')tally.pins++;else if(e.method==='TAP OUT')tally.taps++;else if(e.method==='TIME LIMIT')tally.timeouts++;}
+  }}
   coach?.receive(events,localIndex);renderer.receive(events,match);sound.play(events,match);
   if(input.scheme==='touch'&&events.some(e=>['hit','slam','reversal','secondWind'].includes(e.type)&&(e.index===localIndex||e.attacker===localIndex)))haptics.pulse(events.some(e=>e.type==='slam')?50:32);
   for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='reversal')status(`Player ${e.index+1} reverses the strike. Counterattack!`);if(e.type==='secondWind')status(`Player ${e.index+1} gets a second wind: 25 Lunacy meter.`);if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);}
