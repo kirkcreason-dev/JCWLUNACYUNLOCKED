@@ -1,4 +1,4 @@
-import {MOVES,attackTiming} from './engine.js?v=0.21.0';
+import {MOVES,attackTiming} from './engine.js?v=0.21.1';
 
 const clamp=n=>Math.max(0,Math.min(1,n));
 const smooth=n=>{n=clamp(n);return n*n*(3-2*n);};

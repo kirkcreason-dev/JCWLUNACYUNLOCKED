@@ -1,4 +1,4 @@
-import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.21.0';
+import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.21.1';
 // Pure fixed-step match simulation. Rendering and input devices never change the rules.
 export const STEP = 1 / 60;
 export const FLOOR = 593;

@@ -1,4 +1,4 @@
-import {throwBreakWindow,onTopRope,canCornerThrow,weaponRemaining,POLE_RETRIEVE_TIME,LEFT,RIGHT,canPin as pinInRange,nearRopes,escapeTarget} from './engine.js?v=0.21.0';
+import {throwBreakWindow,onTopRope,canCornerThrow,weaponRemaining,POLE_RETRIEVE_TIME,LEFT,RIGHT,canPin as pinInRange,nearRopes,escapeTarget} from './engine.js?v=0.21.1';
 // Context is derived from match state; the UI never grants damage or escape progress itself.
 export function touchContext(match,localIndex=0){
   const me=match.fighters[localIndex],other=match.fighters[1-localIndex],distance=Math.abs(me.x-other.x);
