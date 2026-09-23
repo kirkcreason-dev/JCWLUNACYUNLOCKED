@@ -1,6 +1,16 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.20.2**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.20.3**.
+
+## Secret fighters (v0.21.0)
+
+Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are hidden from the fighter picker until the championship belt is won once on this browser. See CHANGELOG.md and GAMEPLAY.md. Use v0.21.0 on both devices for online play.
+
+## Top-rope dive recovery fix (v0.20.3)
+
+A dive now connects when its target starts getting up, including the brief protected frames after standing. A connecting dive no longer passes through the opponent and charges the diver missed-landing damage. Strong blocks still stop dives, guard breaks still connect, and genuine misses retain their normal penalty. Ordinary strikes/grabs and throw-break/kickout protection keep their existing rules.
+
+All 39 fighters, Alice’s replacement, DJ Clay’s corrected portrait, phone corner fixes, sounds and saved progress remain included. Full ZIP only; no deployment.
 
 ## DJ Clay portrait fix (v0.20.2)
 
@@ -60,7 +70,7 @@ Josh Bishop, Ring Rat and The Green Phantom are playable in all modes. Their 86 
 - Contextual first-match tips explain approach, strikes, combos, reversals, pins, escapes and finishers. Tips remember completed lessons, can be disabled, and can be reset in Controls.
 - Decoded match artwork is evicted before the next match loads; old arena requests cannot repopulate the cache. Image requests time out, failed optional art backs off, and sound nodes are capped and explicitly released. Automatic display reduces rendering cost after sustained expensive draws; combat still simulates at 60 Hz.
 
-**Online:** use v0.20.2 on both devices for matching artwork. New games use v20 / LU200 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
+**Online:** use v0.20.3 on both devices. The host runs the corrected dive collision; snapshot format and v20 / LU200 rooms remain compatible. New games use v20 / LU200 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
 
 Validation details and device handoff are in TESTING.md. Automated checks cover the full roster, online selection, championship saves and credits, phone pagination, and native canvas rendering. Physical-device playtesting remains necessary.
 

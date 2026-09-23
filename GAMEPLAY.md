@@ -1,3 +1,11 @@
+# v0.21.0 secret fighters
+
+Four fighters — Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope — stay off the pick list until you win the championship belt once on this browser (any fighter, any difficulty). They can still show up as opponents. Evil Dead joins the secret list when he is added.
+
+# v0.20.3 dive recovery collision
+
+Top-rope dives can hit a downed opponent as they get up and during the last standing recovery frames. A connecting dive scores once and avoids missed-landing self-damage. A strong block still stops it; leaving the dive’s path still causes a normal miss. Ordinary grounded attacks retain their existing get-up protection rules, as do throw breaks and kickouts.
+
 # v0.20.0 weapons and corner combat
 
 See [WEAPONS-AND-POLE.md](WEAPONS-AND-POLE.md) for the current rules. Weapons now have distinct damage, reach, guard pressure and persistent wear. Top-rope TAUNT earns 20 meter if uninterrupted. GRAB near a perched opponent starts a superplex for extra damage, with a 0.38-second defender break window. The mode selector offers weapon-on-pole matches against CPU or a local second player.

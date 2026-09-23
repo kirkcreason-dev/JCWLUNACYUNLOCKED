@@ -1,3 +1,16 @@
+# v0.20.3 — Dive/get-up collision verification
+
+- Reproduced the report on v0.20.2: an opponent starting to rise caused a visually overlapping dive to miss, leaving the defender at 100 HP and the diver at 96 HP. Six of the initial eight regression groups failed before the fix.
+- `npm test`: **290 passing tests**. Ten focused regression groups include 156 complete dives covering all 39 fighters, both corners and both player slots; 80 contact checks through down/rise/standing recovery boundaries; powered dives; exactly one impact; strong blocks and guard breaks; normal grounded recovery protection; genuine misses; unrelated invulnerability; low-health knockouts; protection expiry; and online host/guest snapshot agreement.
+- `npm run check`: all JavaScript syntax and UI references pass for 39 fighters, 4,755 animation entries, six arenas, both music tracks and 49 runtime sounds.
+- The change tags natural get-up protection separately and lets a connecting dive interrupt it. Damage, range, flight speed, blocks, miss penalties, throw-break/kickout protection and ordinary strike/grab rules retain their existing values.
+- Compared with the full v0.20.2 ZIP: every fighter record, atlas, portrait, supplied sound, source pack, approval file and deployment workflow is unchanged. Alice’s replacement and DJ Clay’s front-facing portrait remain included. Audit: `tools/dive-recovery-audit.json`.
+- No new network fields or inputs are required: the host runs collision for both players and guests display its snapshots. Protocol v20 / LU200 remains compatible; use v0.20.3 on both devices so either player can host the corrected build.
+
+No browser, physical-device or live two-device test was performed. To playtest: down an opponent within diving range, climb, and jump just as they begin to stand; repeat from the other corner and with a finisher. Contact should damage the opponent without the diver taking missed-landing damage. Also check a deliberate miss and a held block after recovery. Full ZIP only; nothing pushed or deployed.
+
+---
+
 # v0.20.2 — DJ Clay portrait verification
 
 - Inspected the supplied phone screenshot and original four-direction standing sheet. The FRONT pose now produces a transparent 159 × 320 portrait, checked by complete PNG decoding and visual inspection.

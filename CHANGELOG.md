@@ -1,3 +1,17 @@
+# v0.21.0 — Secret fighters
+
+- Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are now secret fighters. They are hidden from the fighter picker (grid, page counts and the direct picker) until the championship belt has been won once on this browser, with any fighter on any difficulty. Evil Dead is reserved on the same list and will be hidden automatically when his sheets are added.
+- The fighter picker shows "4 SECRET FIGHTERS · WIN THE CHAMPIONSHIP BELT TO UNLOCK" while they are locked. Winning the title shows "SECRET FIGHTERS UNLOCKED" on the result screen and reveals them in place immediately; the unlock is saved beside the championship record (`lunacy-secrets-v1`) and survives reloads.
+- A title won before this update unlocks them at boot. Secret fighters still appear as CPU opponents in VS, arcade and championship draws, so arcade medals (all 38 opponents) and championship paths are unchanged, and online rooms still use the full 39-fighter index.
+- New module `dist/src/secret-fighters.js`; nine new tests in `tests/secret-fighters.test.mjs` (299 total). Static checks pass.
+
+# v0.20.3 — Top-rope dive recovery collision
+
+- Fix dives passing through an opponent who starts getting up. Tag natural get-up protection separately so dives connect through the whole recovery transition and score one impact.
+- Clear the interrupted get-up protection on a successful dive. Preserve ordinary strike/grab recovery protection, blocks, guard breaks, throw breaks, kickouts and genuine missed-dive damage.
+- Add regression coverage for all 39 fighters, both corners/player slots, recovery frame boundaries, powered dives, low-health knockouts and authoritative online snapshots.
+- Refresh runtime cache URLs. All artwork, approved roster data, supplied audio, saves and earlier fixes remain included. Full ZIP only; nothing pushed or deployed.
+
 # v0.20.2 — DJ Clay portrait facing
 
 - Replace the side-view selection portrait with the original FRONT standing pose. All portrait surfaces share the correction and image revision.
