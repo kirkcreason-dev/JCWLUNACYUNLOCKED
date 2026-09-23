@@ -1,0 +1,38 @@
+{
+  "version": "0.20.3",
+  "baseline": "0.20.2",
+  "automatedTests": 290,
+  "testsPassed": 290,
+  "rosterCount": 39,
+  "animationEntries": 4755,
+  "regressions": "tests/dive-recovery.test.mjs",
+  "regressionGroups": 10,
+  "allFighterDiveCases": 156,
+  "recoveryFrameCases": 80,
+  "sourceChecks": {
+    "unchangedFiles": 296,
+    "modifiedFiles": [
+      "CHANGELOG.md",
+      "GAMEPLAY.md",
+      "README.md",
+      "TESTING.md",
+      "dist/index.html",
+      "dist/src/attack-animation.js",
+      "dist/src/audio.js",
+      "dist/src/engine.js",
+      "dist/src/firebase-online.js",
+      "dist/src/input.js",
+      "dist/src/main.js",
+      "dist/src/online-protocol.js",
+      "dist/src/online.js",
+      "dist/src/render.js",
+      "dist/src/touch-ui.js",
+      "package.json"
+    ],
+    "allBaselineFilesPresent": true,
+    "artworkRosterAudioSourcePacksApprovalWorkflowUnchanged": true
+  },
+  "browserTested": false,
+  "physicalDeviceTested": false,
+  "deployed": false
+}
