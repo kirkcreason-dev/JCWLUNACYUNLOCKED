@@ -33,4 +33,4 @@ for(let id=0;id<roster.length;id++)for(const difficulty of ['easy','normal','har
  results.push({fighter:roster[id].name,difficulty,rounds:m.round,winner:m.winner,seconds:Math.round(steps/60),events:eventCount});
 }
 await mkdir(new URL('../review/',import.meta.url),{recursive:true});await writeFile(new URL(`../review/soak-${mode}.json`,import.meta.url),JSON.stringify({mode,matches:results.length,totalSteps,results},null,2));
-console.log(`PASS: ${results.length} ${mode} matches across all 39 fighters and three difficulties; ${totalSteps} simulation steps; finite bounded state and valid network snapshots.`);
+console.log(`PASS: ${results.length} ${mode} matches across all ${roster.length} fighters and three difficulties; ${totalSteps} simulation steps; finite bounded state and valid network snapshots.`);

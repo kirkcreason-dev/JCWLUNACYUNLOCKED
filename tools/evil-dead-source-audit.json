@@ -1,0 +1,1032 @@
+{
+  "sourceSHA256": "fd5d678335ff695b2df3f98c20a61252bcc9c7a63bb3ce15c18694d2c389434b",
+  "sheets": [
+    {
+      "animation": "idle",
+      "source": "Evil Dead/ED standing.png",
+      "sha256": "7d63be54092a135e14f67aa334754761e184784faddcc462ef6e53ca87d38eb7",
+      "count": 4,
+      "bounds": [
+        {
+          "x": 19,
+          "y": 185,
+          "w": 384,
+          "h": 785
+        },
+        {
+          "x": 435,
+          "y": 193,
+          "w": 378,
+          "h": 774
+        },
+        {
+          "x": 901,
+          "y": 193,
+          "w": 213,
+          "h": 778
+        },
+        {
+          "x": 1277,
+          "y": 185,
+          "w": 214,
+          "h": 786
+        }
+      ]
+    },
+    {
+      "animation": "walk",
+      "source": "Evil Dead/ED walking.png",
+      "sha256": "d1ee30554af199860fcce9a7ce2ccb22889947e9d109003a8a7ffabff8bdc9e6",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 31,
+          "y": 558,
+          "w": 255,
+          "h": 389
+        },
+        {
+          "x": 363,
+          "y": 560,
+          "w": 227,
+          "h": 388
+        },
+        {
+          "x": 688,
+          "y": 557,
+          "w": 175,
+          "h": 390
+        },
+        {
+          "x": 976,
+          "y": 556,
+          "w": 238,
+          "h": 391
+        },
+        {
+          "x": 1302,
+          "y": 560,
+          "w": 264,
+          "h": 388
+        }
+      ]
+    },
+    {
+      "animation": "run",
+      "source": "Evil Dead/ED running.png",
+      "sha256": "437e6766c3609d21aaee79b16e3308553791d64e9286469fb62ad67c15a0487d",
+      "count": 6,
+      "bounds": [
+        {
+          "x": 17,
+          "y": 591,
+          "w": 269,
+          "h": 365
+        },
+        {
+          "x": 296,
+          "y": 591,
+          "w": 249,
+          "h": 361
+        },
+        {
+          "x": 547,
+          "y": 590,
+          "w": 263,
+          "h": 367
+        },
+        {
+          "x": 811,
+          "y": 590,
+          "w": 249,
+          "h": 338
+        },
+        {
+          "x": 1073,
+          "y": 591,
+          "w": 239,
+          "h": 365
+        },
+        {
+          "x": 1324,
+          "y": 591,
+          "w": 262,
+          "h": 365
+        }
+      ]
+    },
+    {
+      "animation": "jump",
+      "source": "Evil Dead/ED jumping.png",
+      "sha256": "e123cafe939d8b84c8a0c35f6a58c938a86d10f2a674046e59ccbfe04bc5c9fb",
+      "count": 4,
+      "bounds": [
+        {
+          "x": 26,
+          "y": 378,
+          "w": 376,
+          "h": 553
+        },
+        {
+          "x": 477,
+          "y": 191,
+          "w": 341,
+          "h": 694
+        },
+        {
+          "x": 819,
+          "y": 225,
+          "w": 337,
+          "h": 484
+        },
+        {
+          "x": 1211,
+          "y": 425,
+          "w": 365,
+          "h": 509
+        }
+      ]
+    },
+    {
+      "animation": "kick",
+      "source": "Evil Dead/ED kicking.png",
+      "sha256": "bdf650ac949c2efda846186b0318710f255535704f37a2b83096a7d9e186590e",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 94,
+          "y": 573,
+          "w": 244,
+          "h": 385
+        },
+        {
+          "x": 419,
+          "y": 573,
+          "w": 176,
+          "h": 385
+        },
+        {
+          "x": 673,
+          "y": 573,
+          "w": 310,
+          "h": 385
+        },
+        {
+          "x": 1054,
+          "y": 573,
+          "w": 174,
+          "h": 385
+        },
+        {
+          "x": 1300,
+          "y": 573,
+          "w": 241,
+          "h": 385
+        }
+      ]
+    },
+    {
+      "animation": "chair",
+      "source": "Evil Dead/ED attack with chair.png",
+      "sha256": "9da96483658c866c73548c3fa243202ac1f340cb13ac21a08fe51f34a3e3f642",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 17,
+          "y": 281,
+          "w": 256,
+          "h": 426
+        },
+        {
+          "x": 300,
+          "y": 192,
+          "w": 301,
+          "h": 515
+        },
+        {
+          "x": 613,
+          "y": 141,
+          "w": 264,
+          "h": 563
+        },
+        {
+          "x": 887,
+          "y": 318,
+          "w": 363,
+          "h": 389
+        },
+        {
+          "x": 1242,
+          "y": 371,
+          "w": 350,
+          "h": 336
+        }
+      ]
+    },
+    {
+      "animation": "bat",
+      "source": "Evil Dead/ED attack with bat.png",
+      "sha256": "16c0af1ad53c735b75565f72e48aa2e9879483f18763dc595ff09536dfe6c1b1",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 13,
+          "y": 231,
+          "w": 322,
+          "h": 470
+        },
+        {
+          "x": 327,
+          "y": 197,
+          "w": 281,
+          "h": 504
+        },
+        {
+          "x": 620,
+          "y": 159,
+          "w": 269,
+          "h": 542
+        },
+        {
+          "x": 897,
+          "y": 257,
+          "w": 442,
+          "h": 444
+        },
+        {
+          "x": 1234,
+          "y": 306,
+          "w": 353,
+          "h": 395
+        }
+      ]
+    },
+    {
+      "animation": "guitar",
+      "source": "Evil Dead/ED attack with guitar.png",
+      "sha256": "9a6a727e27609f08615669c90c739e8457985e300495dab34eb1765cfe4c29c1",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 11,
+          "y": 187,
+          "w": 270,
+          "h": 392
+        },
+        {
+          "x": 277,
+          "y": 80,
+          "w": 295,
+          "h": 499
+        },
+        {
+          "x": 579,
+          "y": 137,
+          "w": 293,
+          "h": 442
+        },
+        {
+          "x": 865,
+          "y": 221,
+          "w": 367,
+          "h": 358
+        },
+        {
+          "x": 1191,
+          "y": 267,
+          "w": 394,
+          "h": 312
+        }
+      ]
+    },
+    {
+      "animation": "trashcan",
+      "source": "Evil Dead/ED attack with trashcan.png",
+      "sha256": "12aa3d560ca5d873b3743aaf923d2adc200f40027b9eeab6b908cf23fb0a9142",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 21,
+          "y": 344,
+          "w": 297,
+          "h": 384
+        },
+        {
+          "x": 322,
+          "y": 268,
+          "w": 288,
+          "h": 460
+        },
+        {
+          "x": 614,
+          "y": 157,
+          "w": 256,
+          "h": 571
+        },
+        {
+          "x": 860,
+          "y": 307,
+          "w": 474,
+          "h": 421
+        },
+        {
+          "x": 1252,
+          "y": 378,
+          "w": 337,
+          "h": 352
+        }
+      ]
+    },
+    {
+      "animation": "carryChair",
+      "source": "Evil Dead/ED walk with chair.png",
+      "sha256": "749e71bf5d7d2b7affd017cb578f114fdbbe1657b3d265650ba2217494c23e30",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 28,
+          "y": 572,
+          "w": 285,
+          "h": 410
+        },
+        {
+          "x": 373,
+          "y": 571,
+          "w": 195,
+          "h": 410
+        },
+        {
+          "x": 608,
+          "y": 571,
+          "w": 276,
+          "h": 410
+        },
+        {
+          "x": 963,
+          "y": 571,
+          "w": 181,
+          "h": 408
+        },
+        {
+          "x": 1191,
+          "y": 571,
+          "w": 285,
+          "h": 410
+        }
+      ]
+    },
+    {
+      "animation": "carryBat",
+      "source": "Evil Dead/ED walk with bat.png",
+      "sha256": "b0019f842d5171c3154916d9b1bd94c4b70cafc6074f5237e628543d571e2895",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 17,
+          "y": 142,
+          "w": 304,
+          "h": 554
+        },
+        {
+          "x": 335,
+          "y": 147,
+          "w": 303,
+          "h": 550
+        },
+        {
+          "x": 649,
+          "y": 149,
+          "w": 274,
+          "h": 548
+        },
+        {
+          "x": 946,
+          "y": 146,
+          "w": 301,
+          "h": 551
+        },
+        {
+          "x": 1272,
+          "y": 142,
+          "w": 305,
+          "h": 554
+        }
+      ]
+    },
+    {
+      "animation": "carryGuitar",
+      "source": "Evil Dead/ED walk with guitar.png",
+      "sha256": "4218a8af004f79d5af2755a46998f85ead64b97a493a542ff8a0733a90aca5e8",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 12,
+          "y": 151,
+          "w": 335,
+          "h": 551
+        },
+        {
+          "x": 343,
+          "y": 151,
+          "w": 320,
+          "h": 551
+        },
+        {
+          "x": 696,
+          "y": 149,
+          "w": 260,
+          "h": 553
+        },
+        {
+          "x": 959,
+          "y": 151,
+          "w": 316,
+          "h": 550
+        },
+        {
+          "x": 1271,
+          "y": 149,
+          "w": 324,
+          "h": 553
+        }
+      ]
+    },
+    {
+      "animation": "carryTrashcan",
+      "source": "Evil Dead/ED walk with trashcan.png",
+      "sha256": "4492b7434c8dc45af9c86e0a6dd6052c805b5694440c74cf7e1a18312be1a63d",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 11,
+          "y": 166,
+          "w": 340,
+          "h": 534
+        },
+        {
+          "x": 347,
+          "y": 174,
+          "w": 262,
+          "h": 525
+        },
+        {
+          "x": 651,
+          "y": 166,
+          "w": 265,
+          "h": 527
+        },
+        {
+          "x": 939,
+          "y": 172,
+          "w": 339,
+          "h": 527
+        },
+        {
+          "x": 1265,
+          "y": 173,
+          "w": 325,
+          "h": 526
+        }
+      ]
+    },
+    {
+      "animation": "lift",
+      "source": "Evil Dead/ED lifting overhead.png",
+      "sha256": "fc6f246bf2c0b9bbfa6501d302d2c6a3e850dc853f105374acbd6d38e7c657a4",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 36,
+          "y": 406,
+          "w": 360,
+          "h": 468
+        },
+        {
+          "x": 400,
+          "y": 301,
+          "w": 284,
+          "h": 573
+        },
+        {
+          "x": 706,
+          "y": 270,
+          "w": 276,
+          "h": 601
+        },
+        {
+          "x": 1023,
+          "y": 188,
+          "w": 267,
+          "h": 687
+        },
+        {
+          "x": 1332,
+          "y": 167,
+          "w": 265,
+          "h": 708
+        }
+      ]
+    },
+    {
+      "animation": "throw",
+      "source": "Evil Dead/ED throwing.png",
+      "sha256": "a066730cbfb67cef11999c25fe60a829952f995f9f1b90a9693d4fb9cdda8f5f",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 11,
+          "y": 312,
+          "w": 300,
+          "h": 383
+        },
+        {
+          "x": 343,
+          "y": 212,
+          "w": 298,
+          "h": 482
+        },
+        {
+          "x": 698,
+          "y": 147,
+          "w": 202,
+          "h": 522
+        },
+        {
+          "x": 894,
+          "y": 292,
+          "w": 452,
+          "h": 406
+        },
+        {
+          "x": 1388,
+          "y": 195,
+          "w": 200,
+          "h": 503
+        }
+      ]
+    },
+    {
+      "animation": "lifted",
+      "source": "Evil Dead/ED getting lifted overhead.png",
+      "sha256": "1a9f916aed2036e79626ff0d2adb45d9104b73091e69fd1a314bf2e283fd1f2b",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 27,
+          "y": 230,
+          "w": 203,
+          "h": 413
+        },
+        {
+          "x": 249,
+          "y": 188,
+          "w": 238,
+          "h": 405
+        },
+        {
+          "x": 502,
+          "y": 188,
+          "w": 399,
+          "h": 262
+        },
+        {
+          "x": 927,
+          "y": 215,
+          "w": 215,
+          "h": 290
+        },
+        {
+          "x": 1175,
+          "y": 202,
+          "w": 408,
+          "h": 263
+        }
+      ]
+    },
+    {
+      "animation": "thrown",
+      "source": "Evil Dead/ED being thrown.png",
+      "sha256": "6eabb99a31505730dfeca75ea6c74961d5b4d76449cee67dc88974d7a45902b9",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 16,
+          "y": 260,
+          "w": 360,
+          "h": 290
+        },
+        {
+          "x": 382,
+          "y": 312,
+          "w": 239,
+          "h": 247
+        },
+        {
+          "x": 582,
+          "y": 185,
+          "w": 319,
+          "h": 427
+        },
+        {
+          "x": 858,
+          "y": 319,
+          "w": 395,
+          "h": 304
+        },
+        {
+          "x": 1151,
+          "y": 557,
+          "w": 443,
+          "h": 126
+        }
+      ]
+    },
+    {
+      "animation": "hurt",
+      "source": "Evil Dead/ED dazed.png",
+      "sha256": "449c060233c62a7b6c4f11a0bede9078b966dfc4d85fa77e1f858608ae1e582c",
+      "count": 4,
+      "bounds": [
+        {
+          "x": 35,
+          "y": 193,
+          "w": 357,
+          "h": 729
+        },
+        {
+          "x": 434,
+          "y": 217,
+          "w": 349,
+          "h": 705
+        },
+        {
+          "x": 818,
+          "y": 221,
+          "w": 355,
+          "h": 701
+        },
+        {
+          "x": 1213,
+          "y": 204,
+          "w": 348,
+          "h": 717
+        }
+      ]
+    },
+    {
+      "animation": "down",
+      "source": "Evil Dead/ED laying facedown and faceup.png",
+      "sha256": "79a0fb4a522ada96a2f356d509b91e94b1b3d26484b168c01a94777a37d3df24",
+      "count": 2,
+      "bounds": [
+        {
+          "x": 822,
+          "y": 278,
+          "w": 753,
+          "h": 184
+        },
+        {
+          "x": 16,
+          "y": 664,
+          "w": 759,
+          "h": 195
+        }
+      ]
+    },
+    {
+      "animation": "fallFront",
+      "source": "Evil Dead/ED falling forward.png",
+      "sha256": "249e503f28d801bd4f8547444991e15abfbcfd0fc75684754030f9b843e26a5b",
+      "count": 6,
+      "bounds": [
+        {
+          "x": 12,
+          "y": 128,
+          "w": 189,
+          "h": 387
+        },
+        {
+          "x": 188,
+          "y": 163,
+          "w": 239,
+          "h": 351
+        },
+        {
+          "x": 396,
+          "y": 203,
+          "w": 286,
+          "h": 309
+        },
+        {
+          "x": 634,
+          "y": 325,
+          "w": 402,
+          "h": 141
+        },
+        {
+          "x": 985,
+          "y": 342,
+          "w": 269,
+          "h": 177
+        },
+        {
+          "x": 1248,
+          "y": 418,
+          "w": 344,
+          "h": 95
+        }
+      ]
+    },
+    {
+      "animation": "fallBack",
+      "source": "Evil Dead/ED falling backwards.png",
+      "sha256": "5cbb66ca4e3d7d5ba3414794043826666570ac81e2b3e37a1b796e6616903a48",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 24,
+          "y": 130,
+          "w": 232,
+          "h": 435
+        },
+        {
+          "x": 272,
+          "y": 174,
+          "w": 252,
+          "h": 391
+        },
+        {
+          "x": 527,
+          "y": 208,
+          "w": 373,
+          "h": 276
+        },
+        {
+          "x": 830,
+          "y": 323,
+          "w": 381,
+          "h": 242
+        },
+        {
+          "x": 1155,
+          "y": 461,
+          "w": 434,
+          "h": 105
+        }
+      ]
+    },
+    {
+      "animation": "rise",
+      "source": "Evil Dead/ED getting up from facedown.png",
+      "sha256": "cf7039d5228a232ad1be3f39d37b9d455cc4f890000cecd068fd729ab4c3eb4d",
+      "count": 6,
+      "bounds": [
+        {
+          "x": 11,
+          "y": 403,
+          "w": 335,
+          "h": 106
+        },
+        {
+          "x": 351,
+          "y": 360,
+          "w": 275,
+          "h": 145
+        },
+        {
+          "x": 613,
+          "y": 300,
+          "w": 281,
+          "h": 205
+        },
+        {
+          "x": 908,
+          "y": 291,
+          "w": 240,
+          "h": 216
+        },
+        {
+          "x": 1164,
+          "y": 212,
+          "w": 229,
+          "h": 295
+        },
+        {
+          "x": 1424,
+          "y": 108,
+          "w": 162,
+          "h": 404
+        }
+      ]
+    },
+    {
+      "animation": "taunt",
+      "source": "Evil Dead/ED taunting.png",
+      "sha256": "fec6f926b10298afe8acdb62a13c3ac6c9bea3305e8f207cc24702a2a5c2f7bc",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 8,
+          "y": 140,
+          "w": 276,
+          "h": 548
+        },
+        {
+          "x": 304,
+          "y": 141,
+          "w": 292,
+          "h": 547
+        },
+        {
+          "x": 628,
+          "y": 143,
+          "w": 271,
+          "h": 546
+        },
+        {
+          "x": 845,
+          "y": 145,
+          "w": 495,
+          "h": 543
+        },
+        {
+          "x": 1311,
+          "y": 141,
+          "w": 275,
+          "h": 547
+        }
+      ]
+    },
+    {
+      "animation": "victory",
+      "source": "Evil Dead/ED victory.png",
+      "sha256": "04ad8b20a8533a8c2c1ae24fcf4708ec284cfda6146a7344b23ebd7c820a52af",
+      "count": 5,
+      "bounds": [
+        {
+          "x": 29,
+          "y": 135,
+          "w": 251,
+          "h": 488
+        },
+        {
+          "x": 324,
+          "y": 135,
+          "w": 236,
+          "h": 488
+        },
+        {
+          "x": 601,
+          "y": 112,
+          "w": 246,
+          "h": 511
+        },
+        {
+          "x": 883,
+          "y": 123,
+          "w": 244,
+          "h": 500
+        },
+        {
+          "x": 1146,
+          "y": 133,
+          "w": 447,
+          "h": 490
+        }
+      ]
+    },
+    {
+      "animation": "defeat",
+      "source": "Evil Dead/ED defeated.png",
+      "sha256": "134b3cfaf7550f1ebd202ee8e6606cebdb185142bbc6cd66cb51381e8cd559f4",
+      "count": 1,
+      "bounds": [
+        {
+          "x": 1213,
+          "y": 258,
+          "w": 335,
+          "h": 610
+        }
+      ]
+    },
+    {
+      "animation": "pin",
+      "source": "Evil Dead/ED pinning.png",
+      "sha256": "7a778ca9cce4caaaac395efd847047d4797f648b7a498140cbd943f140d0d4c9",
+      "count": 4,
+      "bounds": [
+        {
+          "x": 21,
+          "y": 256,
+          "w": 303,
+          "h": 572
+        },
+        {
+          "x": 388,
+          "y": 300,
+          "w": 311,
+          "h": 528
+        },
+        {
+          "x": 741,
+          "y": 413,
+          "w": 344,
+          "h": 415
+        },
+        {
+          "x": 1101,
+          "y": 601,
+          "w": 485,
+          "h": 222
+        }
+      ]
+    },
+    {
+      "animation": "climb",
+      "source": "Evil Dead/ED climbing on corner rope.png",
+      "sha256": "66be3aa09c7823955e3d8dcb0016939efddeaa70062fc26ecbf260669f2ee802",
+      "count": 3,
+      "bounds": [
+        {
+          "x": 858,
+          "y": 159,
+          "w": 224,
+          "h": 374
+        },
+        {
+          "x": 1275,
+          "y": 106,
+          "w": 222,
+          "h": 389
+        },
+        {
+          "x": 728,
+          "y": 581,
+          "w": 202,
+          "h": 251
+        }
+      ]
+    },
+    {
+      "animation": "entry",
+      "source": "Evil Dead/ED climbing through rope.png",
+      "sha256": "52d26beedc51c7c159ef3d95f6665d4a66ef68d66b60aec6f508ab5c0cabc146",
+      "count": 1,
+      "bounds": [
+        {
+          "x": 314,
+          "y": 201,
+          "w": 322,
+          "h": 496
+        }
+      ]
+    },
+    {
+      "animation": "dive",
+      "source": "Evil Dead/ED jumping off corner rope.png",
+      "sha256": "f9749e0b8329f0945ac3a1da93f2d54c649aeca56bac37e0e85b8bb1a295d190",
+      "count": 1,
+      "bounds": [
+        {
+          "x": 498,
+          "y": 342,
+          "w": 448,
+          "h": 174
+        }
+      ]
+    },
+    {
+      "animation": "ropePose",
+      "source": "Evil Dead/ED climbing on rope.png",
+      "sha256": "0f0eb5ce8b3cf327d1ace0b9cdad6b7d9d494137d85574affaca56854ca3aeab",
+      "count": 1,
+      "bounds": [
+        {
+          "x": 14,
+          "y": 179,
+          "w": 389,
+          "h": 721
+        }
+      ]
+    },
+    {
+      "animation": "ko",
+      "source": "Evil Dead/ED passed out.png",
+      "sha256": "a275150bcec4bfbbbe491ca645ac520694b3b34f38673cc14cf7b8f8dc409608",
+      "count": 1,
+      "bounds": [
+        {
+          "x": 52,
+          "y": 316,
+          "w": 1494,
+          "h": 619
+        }
+      ]
+    }
+  ],
+  "atlasSize": [
+    2048,
+    2538
+  ],
+  "frameCount": 126
+}
