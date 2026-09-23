@@ -1,3 +1,7 @@
+## v0.21.0 addition: Evil Dead
+
+The user supplied `Evil Dead.zip` for the game. Evil Dead is appended as fighter 40 with neutral game defaults and the generic Lunacy Finisher. He is not added to the historical approval table, and no YES approval, website rating or named finisher is inferred. All existing table entries and NO exclusions remain unchanged.
+
 Display correction in v0.18.0: Able is shown as **Abel**, and Jacksyn as **Jackson**, per the tester notes. Internal IDs and approved ratings remain unchanged; Jacksyn is retained as a source/approval alias.
 
 # Roster approval record — September 17, 2026

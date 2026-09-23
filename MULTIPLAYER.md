@@ -20,7 +20,7 @@ This uses the Firebase project and web configuration from `LUNACY_REBUILT_CLEAN(
 
 The old code was tied to a different engine. The adapter now synchronizes this build’s wrestler IDs, arena, position, animation, health, guard, meter, grapples, pins, rounds, timer, effects, and result. Version 0.5 also synchronizes selected weapon, attack style, move timing, fall direction, exhaustion, and climb/perch/dive states; weapon and taunt taps use the ordered input stream, and run is a held input. Input and snapshot writes are capped at approximately 20 per second each while a match is running, with only one write in flight per stream. Button press groups retain their order, so delayed packets do not collapse alternating kick-out taps into one simultaneous press. Old or duplicated packets are ignored.
 
-New rooms use `rooms/LU200-ABCD`, with a `lunacy-2d-v20` protocol marker. Quick Match uses `rooms/LU200-queue`. Both players must use v0.20.0 with all 39 fighters. Incompatible older clients are isolated by the new namespace. The old `quickQueue` and old unprefixed rooms are not modified.
+New rooms use `rooms/LU210-ABCD`, with a `lunacy-2d-v21` protocol marker. Quick Match uses `rooms/LU210-queue`. Both players must use v0.21.0 with all 40 fighters. Incompatible older clients are isolated by the new namespace. The old `quickQueue` and old unprefixed rooms are not modified.
 
 Room creation and guest-seat claims use transactions. Both sides confirm artwork readiness before the host starts. The host registers removal of its room on disconnect; the guest registers an offline marker. Leaving removes listeners and clears only the caller’s own queue claim or room. Stalled connections and failed loads show a recovery message.
 
@@ -54,4 +54,4 @@ The v19 protocol forwards the attack-active cue once to synchronize DJ Clay’s 
 
 ## v0.20.0 corner combat and equipment
 
-Online matches use the new weapon values and persistent wear, top-rope taunts and superplexes. Host snapshots carry remaining equipment use and the new rope pose; the host decides retrieval-independent damage, breaks and rewards. Weapon wear is serialized with explicit zero values so Firebase does not omit an empty equipment object. The new weapon-on-pole mode is available against CPU or locally on one device, not in online rooms. Both online players need v0.20.0 / LU200.
+Online matches use the new weapon values and persistent wear, top-rope taunts and superplexes. Host snapshots carry remaining equipment use and the new rope pose; the host decides retrieval-independent damage, breaks and rewards. Weapon wear is serialized with explicit zero values so Firebase does not omit an empty equipment object. The new weapon-on-pole mode is available against CPU or locally on one device, not in online rooms. Current online rooms require v0.21.0 / LU210 with Evil Dead at index 39.

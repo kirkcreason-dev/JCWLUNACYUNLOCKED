@@ -1,9 +1,17 @@
-# v0.21.0 — Secret fighters
+# v0.21.1 — Secret fighters
 
-- Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are now secret fighters. They are hidden from the fighter picker (grid, page counts and the direct picker) until the championship belt has been won once on this browser, with any fighter on any difficulty. Evil Dead is reserved on the same list and will be hidden automatically when his sheets are added.
-- The fighter picker shows "4 SECRET FIGHTERS · WIN THE CHAMPIONSHIP BELT TO UNLOCK" while they are locked. Winning the title shows "SECRET FIGHTERS UNLOCKED" on the result screen and reveals them in place immediately; the unlock is saved beside the championship record (`lunacy-secrets-v1`) and survives reloads.
-- A title won before this update unlocks them at boot. Secret fighters still appear as CPU opponents in VS, arcade and championship draws, so arcade medals (all 38 opponents) and championship paths are unchanged, and online rooms still use the full 39-fighter index.
-- New module `dist/src/secret-fighters.js`; nine new tests in `tests/secret-fighters.test.mjs` (299 total). Static checks pass.
+- Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are secret fighters. They are hidden from the fighter picker (grid, page counts and the direct picker) until the championship belt has been won once on this browser, with any fighter on any difficulty.
+- The picker shows "5 SECRET FIGHTERS · WIN THE CHAMPIONSHIP BELT TO UNLOCK" while they are locked. Winning the title shows "SECRET FIGHTERS UNLOCKED" on the result screen and reveals them in place; the unlock is saved beside the championship record (`lunacy-secrets-v1`) and survives reloads. A title won before this update unlocks them at boot.
+- Secret fighters still appear as CPU opponents in VS, arcade and championship draws, so arcade medals (all 39 opponents) and championship paths are unchanged, and online rooms still use the full 40-fighter index.
+- The date-of-birth gate added to the game page on September 20 and the jcwlunacy.net locker-badge match reporting added on September 22 are both retained. New module `dist/src/secret-fighters.js`; tests in `tests/secret-fighters.test.mjs`.
+
+# v0.21.0 — Evil Dead, 40 fighters
+
+- Add Evil Dead from all 31 supplied source sheets, with a transparent front portrait and atlas. Preserve the original source ZIP and reproducible import/audit tools.
+- Normalize left-facing weapon-carry art, retain right-facing walk/run cycles, isolate corner bodies from ropes, match body scale, synchronize weapon contact poses, and align fall/rest/recovery endpoints. Shared combos, bare hands, four common weapons, taunts and top-rope actions are available.
+- Use neutral gameplay multipliers and the generic Lunacy Finisher because no ratings or finisher name were supplied. Preserve the approval table and excluded names.
+- Expose the 40th fighter on all selection layouts and modes; use v21 / LU210 online rooms so clients without Evil Dead cannot join. Preserve existing saves, rewards and every prior fighter record/media file.
+- Retain v0.20.3 dive recovery collision, phone/corner fixes, Alice replacement and DJ Clay portrait. Full ZIP only; no deployment.
 
 # v0.20.3 — Top-rope dive recovery collision
 

@@ -1,10 +1,18 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.20.3**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.21.0**.
 
-## Secret fighters (v0.21.0)
+## Secret fighters (v0.21.1)
 
-Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are hidden from the fighter picker until the championship belt is won once on this browser. See CHANGELOG.md and GAMEPLAY.md. Use v0.21.0 on both devices for online play.
+Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are hidden from the fighter picker until the championship belt is won once on this browser. See CHANGELOG.md and GAMEPLAY.md. Use v0.21.1 on both devices for online play.
+
+## Evil Dead joins the roster (v0.21.0)
+
+**40 playable fighters.** Evil Dead uses your supplied 31-sheet pack: front-facing selection portrait, movement, jumps, kicks, weapon attacks/carrying, throws, falls, recovery, taunts, climbs and dives. He supports the shared combo/counter system, bare hands, all four common weapons, championship, arcade rewards, practice, local/CPU and online play.
+
+No ratings or named finisher were supplied, so he uses neutral gameplay multipliers (1.0 for Power, Speed, Technique and Toughness) and **Lunacy Finisher**. These are game defaults, not approved or website ratings. The existing approval table and its NO exclusions remain unchanged.
+
+All earlier content and fixes remain, including Alice’s replacement, DJ Clay’s portrait, phone corners and the dive/get-up collision fix. Existing championship checkpoints and arcade medals survive the roster addition. See [EVIL-DEAD.md](EVIL-DEAD.md) for source mappings and rebuild instructions. Full ZIP only; nothing pushed or deployed.
 
 ## Top-rope dive recovery fix (v0.20.3)
 
@@ -70,7 +78,7 @@ Josh Bishop, Ring Rat and The Green Phantom are playable in all modes. Their 86 
 - Contextual first-match tips explain approach, strikes, combos, reversals, pins, escapes and finishers. Tips remember completed lessons, can be disabled, and can be reset in Controls.
 - Decoded match artwork is evicted before the next match loads; old arena requests cannot repopulate the cache. Image requests time out, failed optional art backs off, and sound nodes are capped and explicitly released. Automatic display reduces rendering cost after sustained expensive draws; combat still simulates at 60 Hz.
 
-**Online:** use v0.20.3 on both devices. The host runs the corrected dive collision; snapshot format and v20 / LU200 rooms remain compatible. New games use v20 / LU200 rooms so older gameplay builds cannot join these matches. Existing championship saves remain compatible.
+**Online:** both players need v0.21.0. New v21 / LU210 rooms isolate clients without the 40th fighter. The host retains the corrected dive collision. Existing championship saves and arcade medals remain compatible.
 
 Validation details and device handoff are in TESTING.md. Automated checks cover the full roster, online selection, championship saves and credits, phone pagination, and native canvas rendering. Physical-device playtesting remains necessary.
 
@@ -118,7 +126,7 @@ Reload after uploading; the version under FIGHT should read v0.17.0.
 
 ## Roster approvals
 
-[ROSTER-APPROVALS.md](ROSTER-APPROVALS.md) records the supplied table and [roster-approvals.json](roster-approvals.json) supports the release check. HollyHood Haley J, Luigi Primo and Sophia Rose are excluded. They were absent from the baseline, so the roster remains **39**. All 35 table-listed playable fighters match the supplied ratings and finisher names. The four existing fighters absent from the table are retained without assigning a new YES approval. Josh Bishop, Ring Rat and The Green Phantom now use their supplied packs and table-approved ratings.
+[ROSTER-APPROVALS.md](ROSTER-APPROVALS.md) records the supplied table and [roster-approvals.json](roster-approvals.json) supports the release check. HollyHood Haley J, Luigi Primo and Sophia Rose are excluded. They remain excluded from the **40-fighter** roster. All 35 table-listed playable fighters match the supplied ratings and finisher names. The four previously unlisted fighters remain; Evil Dead is added from the newly supplied pack with neutral defaults. No YES entry or supplied rating is invented for these fighters. Josh Bishop, Ring Rat and The Green Phantom now use their supplied packs and table-approved ratings.
 
 ## Steadier screen (v0.12.1)
 

@@ -1,6 +1,10 @@
-# v0.21.0 secret fighters
+# v0.21.1 secret fighters
 
-Four fighters — Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope — stay off the pick list until you win the championship belt once on this browser (any fighter, any difficulty). They can still show up as opponents. Evil Dead joins the secret list when he is added.
+Five fighters — Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope — stay off the pick list until you win the championship belt once on this browser (any fighter, any difficulty). They can still show up as opponents.
+
+# v0.21.0 — Evil Dead
+
+Evil Dead is selectable in every mode, with shared combos, unarmed kicks, all four common weapons, taunts, rope climbs/dives and corner throws. His neutral multipliers and generic finisher are provisional game defaults. New arcade runs face 39 opponents; existing medals and championship checkpoints remain valid.
 
 # v0.20.3 dive recovery collision
 
@@ -40,7 +44,7 @@ Win the title to receive the Lunacy championship belt, then select **DEFEND YOUR
 
 Progress saves on this browser after each match, separately for each fighter and difficulty. Return to the same fighter/difficulty and choose **CONTINUE CHAMPIONSHIP** or **DEFEND YOUR TITLE**. Quitting or reloading mid-match restarts that match, not the whole run. Records are local to this browser, not synced across devices; clearing browser data removes them. When browser storage is blocked, the game displays that progress lasts only for the session.
 
-This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v20 / LU200. The full ZIP is not deployed automatically.
+This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v21 / LU210. The full ZIP is not deployed automatically.
 
 ## Timed reversals
 

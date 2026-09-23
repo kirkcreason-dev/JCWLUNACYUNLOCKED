@@ -1,3 +1,16 @@
+# v0.21.0 — Evil Dead integration verification
+
+- `npm test`: **295 passing tests**. Existing roster-wide checks now exercise 40 fighters: both-direction movement, common weapons/bare hands, confirmed combos, counters/aerial attacks, taunts, climbs, superplexes, dive/get-up contact, completed CPU matches, rendering and snapshots.
+- Added checks cover the 40th selection slot after phone rotation, all 31 source sheets and original ZIP hash, neutral defaults, weapon contact ordering, climb scale, fall/rest/recovery endpoint continuity, championship wins/defenses and arcade rewards on all difficulties. Old championship checkpoints and 38-opponent medals survive the addition.
+- Host/join tests include Evil Dead in either seat using the in-memory Firebase-shaped transport; old v20 clients and out-of-bounds roster IDs are rejected by v21 / LU210 rooms.
+- `npm run check`: syntax/UI references, 40 fighters, **4,894 animation entries**, six arenas, both music tracks and 49 runtime sounds pass.
+- Visual review inspected all 126 extracted poses, the front portrait, right-facing movement/carry rows, source-normalized body scale and transparent masks. This caught a subtitle touching the raised guitar, rope remnants and an oversized first climb pose; all were corrected before packaging. Native canvas review rendered twelve combat states and both portrait/landscape phone canvases.
+- Baseline comparison against v0.20.3 confirms all 39 earlier fighter records, existing media/source packs, approval JSON and deployment workflow are unchanged. The engine differs only in its release cache URL; the dive recovery fix remains intact.
+
+No browser, physical-phone or live online-session test was performed. The native phone renders verify the game canvas, not device CSS/touch comfort. Tester handoff: choose Evil Dead on the last phone page, try a complete match with bare hands and each weapon, jump/climb/dive from both corners, then win/reload a championship and check the portrait. His ratings and finisher name remain provisional defaults until supplied. Full ZIP only; nothing pushed or deployed.
+
+---
+
 # v0.20.3 — Dive/get-up collision verification
 
 - Reproduced the report on v0.20.2: an opponent starting to rise caused a visually overlapping dive to miss, leaving the defender at 100 HP and the diver at 96 HP. Six of the initial eight regression groups failed before the fix.
