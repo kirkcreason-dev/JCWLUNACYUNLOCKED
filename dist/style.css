@@ -215,3 +215,4 @@
 #portrait[data-arcade-medal=silver]{outline:2px solid #c4d4e8;outline-offset:3px;filter:drop-shadow(0 0 5px #c4d4e8)}
 #portrait[data-arcade-medal=gold]{outline:2px solid #ffc940;outline-offset:3px;filter:drop-shadow(0 0 7px #ffc940)}
 #portrait[data-arcade-medal=triple]{outline:3px solid #b0ff20;outline-offset:3px;filter:drop-shadow(-4px 0 5px #fa268b) drop-shadow(4px 0 5px #b0ff20)}
+.secret-note{margin:10px 0 0;font-size:.66rem;font-weight:800;letter-spacing:.12em;color:#a297a7;text-align:center}.secret-note:before{content:"🔒 "}.secret-unlock{font-weight:900;letter-spacing:.06em;color:var(--acid)!important;border:1px solid var(--acid);padding:10px;margin:14px 0 4px}
