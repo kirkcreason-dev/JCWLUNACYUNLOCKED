@@ -1,9 +1,9 @@
-import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.21.1';
-import {ARENAS} from './arenas.js?v=0.21.1';
-import {weaponGrip} from './weapon-grips.js?v=0.21.1';
-import {attackPose} from './attack-animation.js?v=0.21.1';
-import {phoneCamera} from './phone-layout.js?v=0.21.1';
-import {drawArenaWordmarks} from './branding.js?v=0.21.1';
+import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.21.2';
+import {ARENAS} from './arenas.js?v=0.21.2';
+import {weaponGrip} from './weapon-grips.js?v=0.21.2';
+import {attackPose} from './attack-animation.js?v=0.21.2';
+import {arenaCamera} from './phone-layout.js?v=0.21.2';
+import {drawArenaWordmarks} from './branding.js?v=0.21.2';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
@@ -68,9 +68,10 @@ export class Renderer {
     // An opaque repaint replaces the old frame without a cleared intermediate.
     c.save();c.fillStyle='#130b18';c.fillRect(0,0,1280,height);
     const bg=this.arenas[arena]||this.arenas[0];
-    // One arena, in the same camera space as the fighters. Never stretch a
-    // second backdrop into portrait margins: zooming out would expose both.
-    if((this.portrait||this.compact)&&match&&!menu){const camera=phoneCamera(match.fighters,{portrait:this.portrait,floor:FLOOR,height,previous:this.camera,dt});this.camera=camera;c.translate(camera.x,camera.y);c.scale(camera.zoom,camera.zoom);}
+    // One arena, in the same camera space as the fighters, on every layout.
+    // The camera sits a little closer than the full ring and pans with the
+    // pair; it never shows past the arena edges or a second backdrop.
+    if(match&&!menu){const camera=arenaCamera(match.fighters,{portrait:this.portrait,compact:this.compact,floor:FLOOR,height,previous:this.camera,dt});this.camera=camera;c.translate(camera.x,camera.y);c.scale(camera.zoom,camera.zoom);}
     this.clock+=dt;
     if(dt>0){const shake=!this.reduced&&!menu?Math.min(match?.shake||0,this.lowPower?4:8):0;this.shakeOffset=shake?[(Math.random()-.5)*shake,(Math.random()-.5)*shake*.55]:[0,0];}
     c.translate(...this.shakeOffset);
@@ -236,7 +237,7 @@ export class Renderer {
       this.lastHealth[i]=f.hp;this.healthWait[i]=Math.max(0,this.healthWait[i]-dt);
       if(this.healthWait[i]===0)this.healthTrail[i]=Math.max(f.hp,this.healthTrail[i]-dt*55);
       if(f.hp>this.healthTrail[i])this.healthTrail[i]=f.hp;
-      if(f.meter>=100&&this.lastMeter[i]<100)this.popups.push({text:`P${i+1} FINISHER READY`,x:i?990:290,y:170,life:1.2,color});
+      if(f.meter>=100&&this.lastMeter[i]<100)this.popups.push({text:`P${i+1} FINISHER READY`,x:i?990:290,y:215,life:1.2,color});
       this.lastMeter[i]=f.meter;
       c.fillStyle='#100d17ed';c.fillRect(x-10,22,w+20,109);
       this.text(f.definition.name.toUpperCase(),i?x+w:x,47,24,'#fff2e7',i?'right':'left',true);
@@ -319,6 +320,8 @@ export class Renderer {
     this.spriteFx=active.filter(fx=>fx.age<this.combatFx[fx.key].frames/this.combatFx[fx.key].fps);
 
     for(const p of this.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=380*dt;c.globalAlpha=fit(p.life/p.max,0,1);c.fillStyle=p.color;c.fillRect(p.x,p.y,p.size,p.size);}c.globalAlpha=1;this.particles=this.particles.filter(p=>p.life>0);
-    for(const p of this.popups){p.life-=dt;if(p.screen)continue;p.y-=dt*30;c.globalAlpha=fit(p.life*3,0,1);this.text(p.text,p.x,p.y,30,p.color,'center',true);}c.globalAlpha=1;this.popups=this.popups.filter(p=>p.life>0);
+    // Keep call-outs inside the panned view: the camera may be looking past x=640.
+    const cam=this.camera,viewLeft=cam?-cam.x/cam.zoom:0,viewWidth=cam?1280/cam.zoom:1280;
+    for(const p of this.popups){p.life-=dt;if(p.screen)continue;p.y-=dt*30;c.globalAlpha=fit(p.life*3,0,1);this.text(p.text,fit(p.x,viewLeft+170,viewLeft+viewWidth-170),p.y,30,p.color,'center',true);}c.globalAlpha=1;this.popups=this.popups.filter(p=>p.life>0);
   }
 }

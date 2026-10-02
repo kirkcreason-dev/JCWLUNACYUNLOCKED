@@ -1,4 +1,4 @@
-import {emptyInput} from './engine.js?v=0.21.1';
+import {emptyInput} from './engine.js?v=0.21.2';
 export const PROTOCOL='lunacy-2d-v21';
 export const ACTIONS=['jump','light','heavy','grapple','special','weapon','taunt','block'];
 const KEYS=Object.keys(emptyInput());

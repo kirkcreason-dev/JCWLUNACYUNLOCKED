@@ -1,6 +1,6 @@
-import {SampleBank} from './sample-bank.js?v=0.21.1';
-import {impactGroup,gruntGroup} from './sound-events.js?v=0.21.1';
-import {MOVES} from './engine.js?v=0.21.1';
+import {SampleBank} from './sample-bank.js?v=0.21.2';
+import {impactGroup,gruntGroup} from './sound-events.js?v=0.21.2';
+import {MOVES} from './engine.js?v=0.21.2';
 // Supplied synthesized samples, with procedural fallbacks for missing audio.
 export class Sound {
   constructor(music=new Audio(),{bank=new SampleBank()}={}){

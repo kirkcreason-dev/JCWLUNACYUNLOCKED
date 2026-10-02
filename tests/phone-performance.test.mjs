@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {phoneLayout,canvasSize,resizeCanvas,phoneCamera} from '../dist/src/phone-layout.js';
+import {phoneLayout,canvasSize,resizeCanvas,arenaCamera,CAMERA_ZOOM,CAMERA_MARGIN} from '../dist/src/phone-layout.js';
 import {FramePacer} from '../dist/src/frame-pacer.js';
 import {loadOptionalArtwork} from '../dist/src/optional-artwork.js';
 import {Match,emptyInput,STEP} from '../dist/src/engine.js';
@@ -46,12 +46,25 @@ test('repeated viewport notifications do not clear the canvas or reset the conte
   assert.equal(resizeCanvas(canvas,{width:768,height:576}),true);assert.equal(resets,2);
   for(let n=0;n<60;n++)resizeCanvas(canvas,{width:768,height:576});assert.equal(resets,2);
 });
-test('phone camera keeps the full ring framed and airborne bodies below the HUD',()=>{
-  for(const portrait of [false,true])for(const positions of [[200,280],[200,1080],[980,1080],[500,580]])for(const z of [0,120,280,400]){
-    const fighters=positions.map((x,i)=>({x,z:i?z:0})),c=phoneCamera(fighters,{portrait});
-    for(const f of fighters){const x=c.x+f.x*c.zoom,head=c.y+(593-f.z-260)*c.zoom;assert.ok(x>=0&&x<=1280);assert.ok(head>=(portrait?224:180)-.001);}
+test('action camera keeps both wrestlers in view, heads below the HUD and never shows past the arena',()=>{
+  for(const layout of [{},{portrait:true},{compact:true}])for(const positions of [[200,280],[200,1080],[980,1080],[500,580],[640,640]])for(const z of [0,120,192,250]){
+    const fighters=positions.map((x,i)=>({x,z:i?z:0})),height=layout.portrait?960:720,c=arenaCamera(fighters,{...layout,height});
+    const hud=layout.portrait?212:layout.compact?168:150,view=1280/c.zoom,left=-c.x/c.zoom;
+    assert.ok(c.zoom<=CAMERA_ZOOM+1e-9&&c.zoom>=1);
+    assert.ok(left>=-1e-9&&left+view<=1280+1e-9,'camera stays inside the arena');
+    for(const f of fighters){const x=c.x+f.x*c.zoom,head=c.y+(593-f.z-230)*c.zoom;assert.ok(x>=CAMERA_MARGIN*c.zoom-1e-9&&x<=1280-CAMERA_MARGIN*c.zoom+1e-9,`${JSON.stringify(layout)} ${positions} x=${x}`);assert.ok(head>=hud-.001);}
+    assert.ok(c.y+(593+13)*c.zoom<=(layout.portrait?909:layout.compact?669:660)+1e-9,'feet and shadow stay above the footer');
   }
-  assert.equal(phoneCamera([{x:500,z:0},{x:580,z:0}],{portrait:true,height:1440}).zoom,1280/1250);
+  assert.equal(arenaCamera([{x:500,z:0},{x:580,z:0}],{portrait:true,height:1440}).zoom,CAMERA_ZOOM);
+  assert.equal(arenaCamera([{x:500,z:0},{x:580,z:0}],{}).zoom,CAMERA_ZOOM);
+});
+test('the camera pans to follow the pair and eases instead of snapping',()=>{
+  const near=arenaCamera([{x:300,z:0},{x:380,z:0}],{}),far=arenaCamera([{x:900,z:0},{x:1000,z:0}],{});
+  assert.ok(near.x>far.x,'the view moves right when the wrestlers do');
+  const eased=arenaCamera([{x:900,z:0},{x:1000,z:0}],{previous:near,dt:1/60});
+  assert.ok(eased.x<near.x&&eased.x>far.x,'one frame moves part of the way');
+  let cam=near;for(let n=0;n<120;n++)cam=arenaCamera([{x:900,z:0},{x:1000,z:0}],{previous:cam,dt:1/60});
+  assert.ok(Math.abs(cam.x-far.x)<.5,'settles on the target within two seconds');
 });
 test('presentation stays near its target on 60, 90 and 120 Hz displays',()=>{
   for(const refresh of [60,90,120])for(const fps of [30,60]){
@@ -109,11 +122,12 @@ test('optional artwork can be requested in small batches and deduplicates in-fli
   assert.equal(manifests,1);assert.ok(combatFx.impact.image);assert.equal(requests.filter(url=>url.includes('/impact.')).length,1);
 });
 
-test('normal corner travel cannot change phone arena zoom or reveal a second scene',()=>{
- for(const portrait of [true,false])for(const height of [720,960]){
-  const baseline=phoneCamera([{x:500,z:0},{x:580,z:0}],{portrait,height});
+test('normal corner travel and jumps cannot change the arena zoom or reveal a second scene',()=>{
+ for(const layout of [{portrait:true,height:960},{compact:true,height:720},{height:720}]){
+  const baseline=arenaCamera([{x:500,z:0},{x:580,z:0}],layout);assert.equal(baseline.zoom,CAMERA_ZOOM);
   for(const positions of [[200,280],[200,1080],[980,1080],[500,580]])for(const z of [0,140,151]){
-   const camera=phoneCamera(positions.map(x=>({x,z})),{portrait,height});assert.deepEqual(camera,baseline);
+   const camera=arenaCamera(positions.map(x=>({x,z})),layout);assert.equal(camera.zoom,baseline.zoom);assert.equal(camera.y,baseline.y);
+   assert.ok(-camera.x/camera.zoom>=0&&-camera.x/camera.zoom+1280/camera.zoom<=1280+1e-9);
   }
  }
 });

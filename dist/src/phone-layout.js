@@ -44,17 +44,30 @@ export function resizeCanvas(canvas,size){
   return changed;
 }
 
-export function phoneCamera(fighters,{portrait=false,floor=593,height=portrait?960:720,previous=null,dt=1/60}={}){
-  const feet=height-70;
-  // Reserve room for the full jump/throw envelope, even while standing.
-  // Normal jumps therefore do not shrink a wrestler or grow them on landing.
-  const top=Math.max(portrait?520:420,...fighters.map(f=>(f.z||0)+260));
-  // Keep the full playable ring framed at one scale in either orientation.
-  // Moving to a corner must not shrink the whole scene. Tall aerial moves may
-  // still widen the view slightly when needed to keep heads below the HUD.
-  const target=Math.min(1280/(1080-200+370),(feet-(portrait?224:180))/top);
-  // Widen immediately when safety requires it; ease back in over half a second.
+// Action camera shared by desktop, portrait and landscape layouts.
+// A fixed, slightly closer zoom with the view panning to follow the pair.
+export const CAMERA_ZOOM=1.2;        // "a bit" closer than the full-ring view
+export const CAMERA_MARGIN=90;       // ring space kept beside the outer wrestler
+const BODY=230;                      // sprite envelope above the feet
+const JUMP=151;                      // normal jump apex (vz 615, g 1250)
+export function arenaCamera(fighters,{portrait=false,compact=false,floor=593,height=portrait?960:720,previous=null,dt=1/60}={}){
+  const phone=portrait||compact;
+  // Screen row where the mat sits, and the bottom of the top HUD rail.
+  const feet=phone?height-70:640,hud=portrait?212:compact?168:150;
+  // Reserve room for a normal jump even while standing, so ordinary jumps
+  // never change the zoom. Taller throws widen the view only as far as
+  // needed to keep heads below the HUD, then ease back in over half a second.
+  const top=Math.max(JUMP,...fighters.map(f=>f.z||0))+BODY;
+  const target=Math.max(1,Math.min(CAMERA_ZOOM,(feet-hud)/top));  // never past the arena edges
   const zoom=previous?Math.min(target,previous.zoom+(target-previous.zoom)*(1-Math.exp(-4*Math.min(dt,.1)))):target;
-  const center=640;
-  return {x:640-center*zoom,y:feet-floor*zoom,zoom};
+  // Follow the midpoint between the wrestlers, never past the arena edges.
+  const view=1280/zoom,xs=fighters.map(f=>f.x),lo=Math.min(...xs),hi=Math.max(...xs);
+  const edge=1280-view;let left=clamp((lo+hi)/2-view/2,0,edge);
+  if(previous){const was=-previous.x/previous.zoom;left=was+(left-was)*(1-Math.exp(-6*Math.min(dt,.1)));}
+  // Easing may lag a dash, but never pushes a wrestler off the screen.
+  const min=hi+CAMERA_MARGIN-view,max=lo-CAMERA_MARGIN;
+  if(min<=max)left=clamp(left,min,max);
+  left=clamp(left,0,edge);
+  return {x:-left*zoom,y:feet-floor*zoom,zoom};
 }
+export const phoneCamera=arenaCamera;

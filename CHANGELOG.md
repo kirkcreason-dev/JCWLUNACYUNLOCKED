@@ -1,3 +1,8 @@
+# v0.21.2 — Closer camera
+
+- The match camera now sits a little closer on every layout (desktop, portrait and landscape phones) so the wrestlers are easier to see: a fixed 1.2× zoom that pans to follow the pair. The view never shows past the arena edges, both wrestlers always stay on screen with ring space beside them, and normal corner travel and jumps still do not change the scale (tall throws and dives widen the view only as far as needed to keep heads below the HUD, then ease back). Replaces the phone-only full-ring camera; the desktop view was previously fixed.
+- Call-outs ("THROW BREAK", weapon names, finisher ready) stay inside the panned view. Cache URLs refreshed; the Lunatics Only lock, age gate and secret fighters are retained.
+
 # v0.21.1 — Secret fighters
 
 - Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are secret fighters. They are hidden from the fighter picker (grid, page counts and the direct picker) until the championship belt has been won once on this browser, with any fighter on any difficulty.

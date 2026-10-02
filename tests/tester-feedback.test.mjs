@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {Match,emptyInput,LEFT,MOVES} from '../dist/src/engine.js';
-import {phoneLayout,phoneCamera} from '../dist/src/phone-layout.js';
+import {phoneLayout,arenaCamera} from '../dist/src/phone-layout.js';
 import {Haptics} from '../dist/src/haptics.js';
 import {ArcadeRewards} from '../dist/src/arcade-rewards.js';
 import {toggleFullscreen,fullscreenElement} from '../dist/src/fullscreen.js';
@@ -59,9 +59,9 @@ test('pins use a back pose and finishing the round never restarts a settled fall
 });
 test('portrait phones use a fitted 4:3 arena and normal jumps do not change camera zoom',()=>{
  const l=phoneLayout({width:390,height:844,safe:{top:47,bottom:34}});assert.ok(Math.abs(l.stage.width/l.stage.height-4/3)<1e-9);
- for(const portrait of [true,false])for(const height of [720,960,1440]){
-  const base=phoneCamera([{x:500,z:0},{x:600,z:0}],{portrait,height});
-  for(const z of portrait?[0,80,151,195,245,259]:[0,80,151])assert.equal(phoneCamera([{x:500,z},{x:600,z:0}],{portrait,height}).zoom,base.zoom);
+ for(const layout of [{portrait:true,height:960},{portrait:true,height:1440},{compact:true,height:720},{height:720}]){
+  const base=arenaCamera([{x:500,z:0},{x:600,z:0}],layout);
+  for(const z of layout.portrait?[0,80,151,195,245,259]:[0,80,151])assert.equal(arenaCamera([{x:500,z},{x:600,z:0}],layout).zoom,base.zoom);
  }
 });
 test('vibration is gesture-gated, throttled and bounded; unsupported, refused and throwing APIs are safe',()=>{
