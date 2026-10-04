@@ -1,3 +1,8 @@
+# v0.21.3 — Yabo removed
+
+- Yabo is removed from the game: roster entry, sprite sheet and portrait, weapon-grip data and website rating. The roster is 39 fighters (Evil Dead remains the last slot); arcade runs are 38 opponents and the picker, counts and labels follow. Secret fighters are unchanged.
+- Online rooms move to protocol `lunacy-2d-v22` / `LU220-` so clients still carrying Yabo's roster position cannot pair with updated ones. A saved championship run whose five-opponent path included Yabo restarts from the opening bout; arcade medals and the secret-fighter unlock are unaffected. Cache URLs refreshed; the Lunatics Only lock and age gate are retained.
+
 # v0.21.2 — Closer camera
 
 - The match camera now sits a little closer on every layout (desktop, portrait and landscape phones) so the wrestlers are easier to see: a fixed 1.2× zoom that pans to follow the pair. The view never shows past the arena edges, both wrestlers always stay on screen with ring space beside them, and normal corner travel and jumps still do not change the scale (tall throws and dives widen the view only as far as needed to keep heads below the HUD, then ease back). Replaces the phone-only full-ring camera; the desktop view was previously fixed.

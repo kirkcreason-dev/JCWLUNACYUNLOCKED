@@ -5,8 +5,8 @@ import {attackPose} from '../dist/src/attack-animation.js';
 import {MOVES} from '../dist/src/engine.js';
 const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
 const f=roster.find(f=>f.id==='hokane');
-test('Hokane is fighter 24 with exact website ratings and an honest unlisted finisher',()=>{
- assert.equal(roster.indexOf(f),23);
+test('Hokane is fighter 23 with exact website ratings and an honest unlisted finisher',()=>{
+ assert.equal(roster.indexOf(f),22);
  assert.deepEqual([f.websiteStats.power,f.websiteStats.speed,f.websiteStats.technique,f.websiteStats.toughness],[8,6,6,8]);
  assert.equal(f.websiteStats.finisher,'');assert.equal(f.finisher,'LUNACY FINISHER');
  assert.deepEqual([f.power,f.speed,f.technique,f.toughness],[1.1,1,1,1.1]);

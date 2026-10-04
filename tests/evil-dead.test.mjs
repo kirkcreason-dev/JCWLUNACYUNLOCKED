@@ -11,14 +11,14 @@ const read=p=>readFileSync(new URL(p,import.meta.url));
 const roster=JSON.parse(read('../dist/assets/roster.json')),fighter=roster.at(-1);
 const disk=()=>{const data=new Map();return {getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)};};
 
-test('Evil Dead is the 40th selectable fighter on every phone/desktop layout with honest default balance',()=>{
-  assert.equal(roster.length,40);assert.equal(fighter.id,'evil-dead');assert.equal(fighter.name,'Evil Dead');
+test('Evil Dead is the last selectable fighter on every phone/desktop layout with honest default balance',()=>{
+  assert.equal(roster.length,39);assert.equal(fighter.id,'evil-dead');assert.equal(fighter.name,'Evil Dead');
   const picker=new RosterSelection(roster.length,6);
   for(const size of [6,8,12,6]){
-    picker.choose(39);picker.resize(size);assert.equal(picker.selected,39);assert.ok(picker.visible.includes(39));
+    picker.choose(38);picker.resize(size);assert.equal(picker.selected,38);assert.ok(picker.visible.includes(38));
   }
-  assert.deepEqual(picker.visible,[36,37,38,39]);
-  assert.match(read('../dist/index.html').toString(),/40 FIGHTERS/);
+  assert.deepEqual(picker.visible,[36,37,38]);
+  assert.match(read('../dist/index.html').toString(),/39 FIGHTERS/);
   for(const key of ['power','speed','technique','toughness'])assert.equal(fighter[key],1);
   assert.equal(fighter.websiteStats,null);assert.equal(fighter.finisher,'LUNACY FINISHER');
   assert.match(fighter.balanceSource,/not supplied/);
@@ -60,16 +60,16 @@ test('Evil Dead earns and reloads championship titles and arcade rewards on ever
     assert.equal(mode.settle(mode.start(fighter.id,difficulty,0),true).outcome,'defended');
     const rewards=new ArcadeRewards(roster,storage);
     assert.ok(rewards.award({fighter:fighter.id,difficulty,defeated:roster.slice(0,-1).map(f=>f.id),mode:'arcade',won:true}).fresh);
-    assert.equal(new ArcadeRewards(roster,storage).get(fighter.id,difficulty).opponents,39);
+    assert.equal(new ArcadeRewards(roster,storage).get(fighter.id,difficulty).opponents,38);
   }
   assert.equal(new ArcadeRewards(roster,storage).triple(fighter.id),true);
 });
 
-test('adding Evil Dead preserves championship checkpoints and previously earned 38-opponent medals',()=>{
-  const storage=disk(),previous=roster.slice(0,39),id='violent-j';
+test('adding Evil Dead preserves championship checkpoints and previously earned 37-opponent medals',()=>{
+  const storage=disk(),previous=roster.slice(0,38),id='violent-j';
   const before=new Championship(previous,storage,()=>.2);
   before.settle(before.start(id,'normal',0),true);const checkpoint=before.load(id,'normal');
   assert.deepEqual(new Championship(roster,storage).load(id,'normal'),checkpoint);
   new ArcadeRewards(previous,storage).award({fighter:id,difficulty:'hard',defeated:previous.slice(1).map(f=>f.id),mode:'arcade',won:true});
-  assert.equal(new ArcadeRewards(roster,storage).get(id,'hard').opponents,38);
+  assert.equal(new ArcadeRewards(roster,storage).get(id,'hard').opponents,37);
 });

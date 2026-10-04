@@ -1,5 +1,5 @@
-import {emptyInput} from './engine.js?v=0.21.2';
-export const PROTOCOL='lunacy-2d-v21';
+import {emptyInput} from './engine.js?v=0.21.3';
+export const PROTOCOL='lunacy-2d-v22';
 export const ACTIONS=['jump','light','heavy','grapple','special','weapon','taunt','block'];
 const KEYS=Object.keys(emptyInput());
 const STATES=new Set(['idle','walk','jump','block','light','heavy','special','hurt','down','pinned','rise','grapple','grabbed','lifted','thrown','throw','pin','defeat','victory','run','equip','taunt','climb','perch','ropeTaunt','dive']);

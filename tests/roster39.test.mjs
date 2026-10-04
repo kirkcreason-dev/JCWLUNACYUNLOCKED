@@ -9,9 +9,9 @@ const ids=['josh-bishop','ring-rat','green-phantom'];
 test('the seventh phone page reaches all three additions and keeps selection through rotation',()=>{
  const picker=new RosterSelection(roster.length,6);
  for(const [offset,id] of ids.entries()){
-  picker.choose(36+offset);assert.equal(roster[picker.selected].id,id);
-  assert.equal(picker.pages,7);assert.deepEqual(picker.visible,[36,37,38,39]);
-  for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,36+offset);assert.ok(picker.visible.includes(picker.selected));}
+  picker.choose(35+offset);assert.equal(roster[picker.selected].id,id);
+  assert.equal(picker.pages,7);assert.deepEqual(picker.visible,offset?[36,37,38]:[30,31,32,33,34,35]);
+  for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,35+offset);assert.ok(picker.visible.includes(picker.selected));}
  }
 });
 test('all 86 supplied sheets are accounted for and Josh’s source-label mismatch is recorded',async()=>{
@@ -22,7 +22,7 @@ test('all 86 supplied sheets are accounted for and Josh’s source-label mismatc
  for(const entry of audit.filter(a=>a.fighter==='josh-bishop'))assert.match(entry.notes,/Caleb Konley/);
 });
 for(const [offset,id] of ids.entries())test(`${id} lands unarmed, weapon and finisher attacks from both sides`,()=>{
- const index=36+offset;
+ const index=35+offset;
  for(const facing of [-1,1])for(const [action,weapon] of [['light','none'],['heavy','none'],['heavy','chair'],['heavy','bat'],['heavy','guitar'],['heavy','trashcan'],['special','none']]){
   const m=new Match(roster,index,0,{mode:'local'});m.phase='fight';
   const [a,b]=m.fighters;a.x=640;b.x=640+80*facing;a.weapon=weapon;a.meter=100;

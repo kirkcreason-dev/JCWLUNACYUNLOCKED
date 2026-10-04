@@ -55,4 +55,4 @@ All 35 listed, playable fighters match the supplied ratings and finisher names. 
 | Tommy Grayson | 5 | 9 | 8 | 7 | T-Gimmick (Tag) | YES | Playable |
 | Vincenzo | 8 | 5 | 6 | 7 | — | YES | Playable |
 | Willie Mack | 7 | 7 | 9 | 8 | Stunner | YES | Playable |
-| Yabo the Clown | 7 | 8 | 7 | 8 | — | YES | Playable |
+| Yabo the Clown | 7 | 8 | 7 | 8 | — | YES | Removed from the game in v0.21.3 |

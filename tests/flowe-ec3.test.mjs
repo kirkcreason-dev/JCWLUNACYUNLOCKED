@@ -5,7 +5,7 @@ import {attackPose} from '../dist/src/attack-animation.js';
 import {MOVES} from '../dist/src/engine.js';
 const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
 const audit=JSON.parse(await readFile(new URL('../tools/new-asset-audit.json',import.meta.url),'utf8'));
-for(const [index,id,stats,finisher] of [[24,'steven-flowe',[6,10,8,7],'STEVEN FLOWESION'],[25,'ec3',[8,6,8,8],'ONE PERCENTER']]){
+for(const [index,id,stats,finisher] of [[23,'steven-flowe',[6,10,8,7],'STEVEN FLOWESION'],[24,'ec3',[8,6,8,8],'ONE PERCENTER']]){
  test(`${id} occupies the new roster slot with exact JCW ratings`,()=>{
   const f=roster[index];assert.equal(f.id,id);assert.deepEqual(['power','speed','technique','toughness'].map(k=>f.websiteStats[k]),stats);assert.equal(f.finisher,finisher);
  });

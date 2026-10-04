@@ -9,7 +9,6 @@ const GRIPS={
  'mr-happy':{ready:[55,85],hit:[97,120],idle:[5,95],walk:[-5,88],run:[70,145]},
  'moshpit-mike':{ready:[66,100],hit:[98,123],idle:[4,91],walk:[-5,90],run:[70,139]},
  'cokane':{ready:[55,85],hit:[99,123],idle:[7,90],walk:[-3,86],run:[68,143]},
- 'yabo':{ready:[55,85],hit:[98,121],idle:[7,90],walk:[11,86],run:[72,137]},
 };
 export function weaponGrip(f,entry,offsetX=0){
  // Replacement packs can provide a grip measured on the exact source pose.

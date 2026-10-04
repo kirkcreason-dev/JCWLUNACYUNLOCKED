@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
 const f=roster.find(f=>f.id==='father-bronson');
 test('Father Bronson has exact website ratings and the listed Red Bloom finisher',()=>{
- assert.equal(roster.indexOf(f),22);
+ assert.equal(roster.indexOf(f),21);
  assert.deepEqual([f.websiteStats.power,f.websiteStats.speed,f.websiteStats.technique,f.websiteStats.toughness],[8,6,7,8]);
  assert.equal(f.websiteStats.finisher,'The Red Bloom');assert.equal(f.finisher,'THE RED BLOOM');
  assert.deepEqual([f.power,f.speed,f.technique,f.toughness],[1.1,1,1.05,1.1]);

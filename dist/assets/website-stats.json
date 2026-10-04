@@ -59,14 +59,6 @@
       "toughness": 7,
       "finisher": "Coke Slam"
     },
-    "yabo": {
-      "websiteName": "Yabo the Clown",
-      "power": 7,
-      "speed": 8,
-      "technique": 7,
-      "toughness": 8,
-      "finisher": null
-    },
     "able": {
       "websiteName": "Abel",
       "power": 7,

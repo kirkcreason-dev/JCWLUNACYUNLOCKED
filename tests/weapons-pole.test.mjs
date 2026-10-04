@@ -93,7 +93,7 @@ test('new rope states and weapon wear reach the guest once and malformed snapsho
 });
 
 test('overlay weapon grips follow the actual cloned contact crop and return to the resting hand',()=>{
- for(let i=0;i<9;i++)for(const weapon of roster[i].overlayWeapons){const m=make(i),f=m.fighters[0];f.weapon=weapon;m.startAttack(f,'heavy',0);const timing=attackTiming(f.move,f.attackStyle);
+ for(let i=0;i<8;i++)for(const weapon of roster[i].overlayWeapons){const m=make(i),f=m.fighters[0];f.weapon=weapon;m.startAttack(f,'heavy',0);const timing=attackTiming(f.move,f.attackStyle);
   f.t=timing.startup+.01;const pose=attackPose(f.definition,f.move,f.t,f.attackStyle),grip=weaponGrip(f,pose.frame,pose.offsetX);assert.ok(grip.x>=110&&grip.y>=110,`${f.definition.id} ${weapon}`);
   assert.deepEqual(weaponGrip(f,{...pose.frame},pose.offsetX),grip);
   f.t=timing.startup+timing.active+timing.recovery;const rest=attackPose(f.definition,f.move,f.t,f.attackStyle),restGrip=weaponGrip(f,rest.frame,rest.offsetX);assert.ok(restGrip.x<20&&restGrip.y<110);

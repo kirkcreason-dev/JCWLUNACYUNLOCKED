@@ -5,7 +5,7 @@ import {attackPose} from '../dist/src/attack-animation.js';
 import {MOVES} from '../dist/src/engine.js';
 const roster=JSON.parse(await readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
 const audit=JSON.parse(await readFile(new URL('../tools/new-asset-audit.json',import.meta.url),'utf8'));
-for(const [index,id,stats,finisher,sheets] of [[26,'krule',[10,5,6,9],'',29],[27,'jeeves',[5,7,7,6],'Heads Bangers Balls',30]]){
+for(const [index,id,stats,finisher,sheets] of [[25,'krule',[10,5,6,9],'',29],[26,'jeeves',[5,7,7,6],'Heads Bangers Balls',30]]){
  test(`${id} is selectable in the new slot with exact JCW website ratings`,()=>{
   const f=roster[index];assert.equal(f.id,id);
   assert.deepEqual(['power','speed','technique','toughness'].map(k=>f.websiteStats[k]),stats);

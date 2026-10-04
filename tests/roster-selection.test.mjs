@@ -29,13 +29,13 @@ test('browsing pages preserves the confirmed fighter and clamps at either end',(
  assert.equal(picker.choose(-1),false);assert.equal(picker.choose(24),false);assert.equal(picker.selected,7);
 });
 test('rotating the phone keeps Hokane selected and reveals his new page',()=>{
- const picker=new RosterSelection(roster.length,6);picker.choose(23);
- assert.deepEqual(picker.visible.map(i=>roster[i].name),['Bruce Wayans','Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane']);
- for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,23);assert.ok(picker.visible.includes(23));}
+ const picker=new RosterSelection(roster.length,6);picker.choose(22);
+ assert.deepEqual(picker.visible.map(i=>roster[i].name),['Alice Crowley','Ruffo','Kongo Kong','Father Bronson','Hokane','Steven Flowe']);
+ for(const size of [8,12,6]){picker.resize(size);assert.equal(picker.selected,22);assert.ok(picker.visible.includes(22));}
 });
 
 test('expanded portrait pages preserve Jeeves while exposing the final newcomers',()=>{
- const p=new RosterSelection(roster.length,6);p.choose(27);
+ const p=new RosterSelection(roster.length,6);p.choose(26);
  assert.equal(p.pages,7);assert.equal(p.page,4);assert.deepEqual(p.visible,[24,25,26,27,28,29]);
- for(const size of [8,12,6]){p.resize(size);assert.equal(p.selected,27);assert.ok(p.visible.includes(27));}
+ for(const size of [8,12,6]){p.resize(size);assert.equal(p.selected,26);assert.ok(p.visible.includes(26));}
 });
