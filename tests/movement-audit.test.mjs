@@ -38,5 +38,6 @@ test('Matt Cross unarmed heavy uses an intact strike when the source kick art is
 });
 test('Big Vito jump excludes the rope-panel crops and front falls finish at roster body scale',()=>{
  const vito=roster.find(f=>f.id==='big-vito');assert.ok(vito.animations.jump.every(e=>e.frame===50||e.frame===51));
- for(const id of ['atiba','tommy','jacksyn']){const a=roster.find(f=>f.id===id).animations;assert.deepEqual(a.fallFront.at(-1),a.down[0]);}
+ // v0.21.4 swapped the Atiba/Bruce Wayans and JP/Tommy Grayson art, so those packs now sit under the other id.
+ for(const id of ['bruce-wayans','jp-grayson','jacksyn']){const a=roster.find(f=>f.id===id).animations;assert.deepEqual(a.fallFront.at(-1),a.down[0]);}
 });

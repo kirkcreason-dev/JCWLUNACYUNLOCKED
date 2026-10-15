@@ -84,8 +84,9 @@ test('announcement artwork renders for the correct pinfall, tap-out and special 
  m.phase='roundEnd';m.roundWinner=0;for(const method of ['PINFALL','TAP OUT']){m.method=method;r.draw(m);}
  m.phase='fight';r.receive([{type:'kickout'}]);assert.equal(r.graphic.key,'kickout');r.draw(m);r.receive([{type:'special'}]);assert.equal(r.graphic.key,'lunacy');r.draw(m);
 });
-test('Ruffo uses the supplied back recovery and KO poses in their actual states',()=>{
- const {r,ctx}=renderer(),m=new Match(roster,19,15,{mode:'local'});m.phase='fight';const f=m.fighters[0];let last;ctx.drawImage=(_img,x,y)=>{last={x,y};};
+test('Alice Crowley uses the supplied back recovery and KO poses in their actual states',()=>{
+ // Ruffo carried this pack until v0.21.4, when his real (originally mislabeled "Yabo") sheet was restored.
+ const {r,ctx}=renderer(),m=new Match(roster,18,15,{mode:'local'});m.phase='fight';const f=m.fighters[0];let last;ctx.drawImage=(_img,x,y)=>{last={x,y};};
  for(const [state,hp,anim] of [['rise',40,'riseBack'],['down',0,'ko']]){Object.assign(f,{state,hp,fallFace:'back',fallDuration:0,t:.3});r.fighter(f,0,m);assert.ok(f.definition.animations[anim].some(e=>e.x===last.x&&e.y===last.y));}
 });
 

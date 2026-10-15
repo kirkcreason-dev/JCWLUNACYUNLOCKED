@@ -55,7 +55,7 @@ Sounds load in the background with bounded memory and simultaneous playback. Mis
 ## Tester update and illustrated controls (v0.18.0)
 
 - All 39 fighters have bare hands, chair, bat, guitar and trash can; 2 Tuff Tony also has a bottle. The original nine now taunt, climb and dive using their own supplied poses.
-- Corrected display names: Abel and Jackson. Stable internal IDs preserve existing saves and source mappings.
+- Corrected display names: Abel and Jackson (Jackson reverted to Jacksyn in v0.21.4). Stable internal IDs preserve existing saves and source mappings.
 - Free movement faces travel. Attacks and blocks turn toward the opponent. Matt Cross/Steven Flowe locomotion and jump scales are adjusted; Vito uses full-size airborne poses. Matching fall/rest endpoints avoid size pops. Tony and Kerry use backward body rotation for face-up back bumps and pins, without the inverted fall frames.
 - Down + HEAVY commits to a guard counter. HEAVY in the air is an air strike. Both use the fighter's own strike/kick art. A confirmed HIT → HIT → HEAVY chain ends in a knockdown. Blocks and whiffs retain recovery; no infinite chain.
 - Arcade rewards per fighter: Easy bronze/Lunacy Survivor, Normal silver/Roster Wrecker, Hard gold/Lunacy Legend. Each medal adds a portrait frame; all three earn a Triple Crown frame. Achievements save locally. Arcade runs themselves remain single-session runs; championships retain their existing checkpoints.
@@ -138,7 +138,7 @@ The roster now contains 39 fighters. DJ Clay has his supplied six-frame Bass Bla
 
 ## Five new fighters (v0.11.0)
 
-Atiba, JP Grayson, Tommy, Shaggy 2 Dope, and Jacksyn join as fighters 29–33. Portrait page six now contains Tommy, Shaggy, Jacksyn, DJ Clay, Jeff Lane and Shane Mercer. Their supplied sheets provide prepared animations and portraits; adaptations for missing or overlapping poses are documented in SPRITE-MAP.md. Four have published JCW ratings; Shaggy uses game balance values with no website rating claimed.
+Atiba, JP Grayson, Tommy Grayson, Shaggy 2 Dope, and Jacksyn join as fighters 29–33 (Atiba/Bruce Wayans and JP/Tommy Grayson artwork swapped back in v0.21.4). Portrait page six now contains Tommy, Shaggy, Jacksyn, DJ Clay, Jeff Lane and Shane Mercer. Their supplied sheets provide prepared animations and portraits; adaptations for missing or overlapping poses are documented in SPRITE-MAP.md. Four have published JCW ratings; Shaggy uses game balance values with no website rating claimed.
 
 ## Stability and rendering (v0.10.1)
 
@@ -193,7 +193,7 @@ python -m http.server 8080 --directory dist
 
 ## Included
 
-- Thirty-nine playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Abel, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, Ruffo, Kongo Kong, Father Bronson, Hokane, Steven Flowe, EC3, Krule, Jeeves, Atiba, JP Grayson, Tommy, Shaggy 2 Dope, Jackson, DJ Clay, Jeff Lane, Shane Mercer, Josh Bishop, Ring Rat, The Green Phantom, Evil Dead. (Yabo was removed in v0.21.3.)
+- Thirty-nine playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Abel, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, Ruffo, Kongo Kong, Father Bronson, Hokane, Steven Flowe, EC3, Krule, Jeeves, Atiba, JP Grayson, Tommy Grayson, Shaggy 2 Dope, Jacksyn, DJ Clay, Jeff Lane, Shane Mercer, Josh Bishop, Ring Rat, The Green Phantom, Evil Dead. (Yabo was removed in v0.21.3.)
 - Online multiplayer through the original JCW Firebase project: private room codes and Quick Match.
 - VS CPU with three difficulty levels; local two-player versus; a thirty-eight-opponent arcade run.
 - Six arenas: Bloodymania, Hell’s Pit, Madhouse, Rusted Warehouse, Funhouse, and Lunacy Outdoors. The last two are recovered from the legacy ZIP.
@@ -308,7 +308,7 @@ npm test
 
 The original uploads are labeled JPEG/PNG sheets rather than runtime-ready uniform grids. `tools/prepare_assets.py` extracts complete figures, removes connected paper backgrounds, preserves enclosed white costume details, normalizes size, and packs tight transparent atlases. `tools/asset-audit.json` records source filenames and crop bounds. `tools/asset-review.jpg` shows representative prepared poses.
 
-The game uses source artwork without the sheet headings, borders, or neighboring poses. Walking direction is corrected where source sheets face the other way. (The source folder named `Yahoo` was Yabo, removed from the game in v0.21.3.) Atlas frames carry foot anchors so a swinging chair does not move the whole wrestler sideways. Lifted opponents rotate as a single intact sprite around their body center, with a smooth lift and landing. The runtime does not bake a second wrestler into the attacker sprite: it synchronizes two independently selected characters, avoiding baked-in duplicate opponents.
+The game uses source artwork without the sheet headings, borders, or neighboring poses. Walking direction is corrected where source sheets face the other way. (The source folder named `Yahoo` shipped as Yabo until v0.21.3; per JCW it is actually Ruffo, and v0.21.4 restored it as Ruffo's artwork.) Atlas frames carry foot anchors so a swinging chair does not move the whole wrestler sideways. Lifted opponents rotate as a single intact sprite around their body center, with a smooth lift and landing. The runtime does not bake a second wrestler into the attacker sprite: it synchronizes two independently selected characters, avoiding baked-in duplicate opponents.
 
 Some poses are adapted from other supplied actions: ordinary strikes use authored elbows or selected forward-hand throw poses with recoil, and 2 Tuff Tony's pin uses a kneeling recovery pose. New dedicated lifted/thrown poses are used where supplied; otherwise the intact selected opponent rotates through the throw. All 435 image files in the fifteen fighter archives appear in `tools/new-asset-audit.json`. Duplicate viewing directions, clipped figures, scenery, and labels are excluded from runtime sequences. Matt Cross, Vincenzo, Caleb Konley, Father Bronson, Hokane, and the five v0.6 additions use their intact bodies with the prepared guitar prop where original contact artwork overlaps or clips. Rope scenery is removed with reviewed regions and narrow background repairs; tiny illustrated edge remnants may remain. See `SPRITE-MAP.md`. Ring exits, story dialogue, persistent unlocks, and unique signature choreography remain outside this build. All twenty-four wrestlers are available immediately.
 

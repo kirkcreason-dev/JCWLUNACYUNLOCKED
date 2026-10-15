@@ -1,4 +1,4 @@
-import {PROTOCOL,InputPackets,RemoteInput,packSnapshot} from './online-protocol.js?v=0.21.3';
+import {PROTOCOL,InputPackets,RemoteInput,packSnapshot} from './online-protocol.js?v=0.21.4';
 
 const QUEUE='rooms/LU220-queue';
 const noop=()=>{};

@@ -1,3 +1,10 @@
+# v0.21.4 — Roster corrections from Jeff Lane
+
+- JP Grayson and Tommy Grayson had each other's artwork; so did Atiba and Bruce Wayans. The sprite sheets, frame data and portraits are swapped back under the right names. Tommy is now shown as "Tommy Grayson" to match the website.
+- The sheet that shipped as "Yabo" was really Ruffo. Ruffo now uses that artwork (restored from v0.21.2) and his previous, Yabo-looking sheet is gone. Ruffo therefore uses the original-nine pose set (overlay weapons, no KO/back-recovery poses) like Violent J.
+- "Jackson" is spelled Jacksyn again, as on the website.
+- Internal IDs, ratings, finishers, saves and online fighter numbering are unchanged; the four swapped fighters and Ruffo carry an artwork revision so cached images refresh. Cache URLs refreshed; the Lunatics Only lock, age gate, secret fighters and closer camera are retained.
+
 # v0.21.3 — Yabo removed
 
 - Yabo is removed from the game: roster entry, sprite sheet and portrait, weapon-grip data and website rating. The roster is 39 fighters (Evil Dead remains the last slot); arcade runs are 38 opponents and the picker, counts and labels follow. Secret fighters are unchanged.
