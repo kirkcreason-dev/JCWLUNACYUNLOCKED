@@ -7,9 +7,9 @@ const record=JSON.parse(await readFile(new URL('../roster-approvals.json',import
 
 test('the current roster matches the supplied approval table and does not grant approval to unlisted fighters',()=>{
   checkRosterApprovals(roster,record);
-  assert.deepEqual(record.entries.filter(e=>!e.approved).map(e=>e.name),['HollyHood Haley J','Luigi Primo','Sophia Rose']);
-  assert.equal(record.entries.filter(e=>e.approved).length,35);
-  assert.deepEqual(roster.filter(f=>!record.entries.some(e=>e.id===f.id)).map(f=>f.id),['violent-j','shaggy-2-dope','dj-clay','jeff-lane','evil-dead']);
+  assert.deepEqual(record.entries.filter(e=>!e.approved).map(e=>e.name),['HollyHood Haley J','Luigi Primo','Sophia Rose','Yabo the Clown']);
+  assert.equal(record.entries.filter(e=>e.approved).length,34);
+  assert.deepEqual(roster.filter(f=>!record.entries.some(e=>e.id===f.id)).map(f=>f.id),['violent-j','bigfoot','shaggy-2-dope','dj-clay','jeff-lane','evil-dead']);
 });
 test('the release check blocks excluded characters even if an importer gives them a different ID',()=>{
   for(const entry of record.entries.filter(e=>!e.approved)){

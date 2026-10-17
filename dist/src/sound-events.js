@@ -1,9 +1,11 @@
 // These are synthetic game voice palettes, not recordings of the wrestlers.
 const HIGHER_VOICES=new Set(['mickie-knuckles','dani-mo','j-rod','alice-crowley','ring-rat']);
-export const gruntGroup=id=>HIGHER_VOICES.has(id)?'female_oof_synthetic':'male_oof_synthetic';
+export const gruntGroup=(id,heavy=false)=>id==='bigfoot'?(heavy?'bigfoot_hurt_heavy':'bigfoot_hurt'):HIGHER_VOICES.has(id)?'female_oof_synthetic':'male_oof_synthetic';
 export function impactGroup(event,match){
   const attacker=match?.fighters?.[event.attacker],style=event.style||attacker?.attackStyle;
-  if(event.move==='special'&&(event.fighter||attacker?.definition?.id)==='dj-clay')return null;
+  const id=event.fighter||attacker?.definition?.id;
+  if(event.move==='special'&&['dj-clay','bigfoot'].includes(id))return null;
+  if(id==='bigfoot'&&(event.move==='light'||['light','kick'].includes(style)))return 'bigfoot_hit';
   if(event.move==='light')return 'punch_hit';
   if(style==='kick')return 'kick_hit';
   const weapon=['chair','bat','guitar','trashcan','bottle'].includes(style)?style:['bat','guitar','trashcan','bottle'].includes(event.move)?event.move:null;

@@ -1,4 +1,5 @@
-import {MOVES,attackTiming} from './engine.js?v=0.21.4';
+import {MOVES,attackTiming} from './engine.js?v=0.23.1';
+import {finisherMove} from './fighter-profile.js?v=0.23.1';
 
 const clamp=n=>Math.max(0,Math.min(1,n));
 const smooth=n=>{n=clamp(n);return n*n*(3-2*n);};
@@ -7,6 +8,12 @@ const smooth=n=>{n=clamp(n);return n*n*(3-2*n);};
 // even when one wrestler has four chair frames and another has five.
 export function attackPose(definition,move,time,style){
   if(move==='special'&&definition.animations.special?.length===6){
+    if(definition.id==='bigfoot'){
+      const timing=finisherMove(definition,MOVES.special),frames=definition.animations.special;
+      const index=time<timing.startup?Math.min(3,Math.floor(clamp(time/timing.startup)*4))
+        :time<timing.startup+timing.active?4:5;
+      return {frame:frames[index],offsetX:0,propGuitar:false};
+    }
     const timing=MOVES.special,frames=definition.animations.special;
     // The supplied Bass Blast charges before contact; sound waves appear only
     // in the active window. Recovery returns to the intact standing pose.

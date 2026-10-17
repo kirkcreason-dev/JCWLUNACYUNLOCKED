@@ -1,28 +1,31 @@
-import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.21.4';
-import {RenderBudget} from './render-budget.js?v=0.21.4';
-import {Coach} from './coach.js?v=0.21.4';
-import {loadGameImage} from './image-loader.js?v=0.21.4';
-import {fighterProfile} from './fighter-profile.js?v=0.21.4';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.21.4';
-import {Match,STEP,emptyInput,isPoleMode,isLocalMode} from './engine.js?v=0.21.4';
-import {Renderer} from './render.js?v=0.21.4';
-import {Input} from './input.js?v=0.21.4';
-import {Sound} from './audio.js?v=0.21.4';
-import {ARENAS} from './arenas.js?v=0.21.4';
-import {touchContext} from './touch-ui.js?v=0.21.4';
-import {OnlineSession} from './online.js?v=0.21.4';
-import {connectFirebase} from './firebase-online.js?v=0.21.4';
-import {SnapshotBuffer} from './online-protocol.js?v=0.21.4';
-import {RosterSelection} from './roster-selection.js?v=0.21.4';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.21.4';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.21.4';
-import {FramePacer} from './frame-pacer.js?v=0.21.4';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.21.4';
-import {Haptics} from './haptics.js?v=0.21.4';
-import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.21.4';
-import {SecretFighters} from './secret-fighters.js?v=0.21.4';
-import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.21.4';
-const haptics=new Haptics();let arcadeRewards=null;
+import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.23.1';
+import {RenderBudget} from './render-budget.js?v=0.23.1';
+import {Coach} from './coach.js?v=0.23.1';
+import {loadGameImage} from './image-loader.js?v=0.23.1';
+import {fighterProfile} from './fighter-profile.js?v=0.23.1';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.23.1';
+import {SecretFighters} from './secret-fighters.js?v=0.23.1';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode} from './engine.js?v=0.23.1';
+import {Renderer} from './render.js?v=0.23.1';
+import {Input} from './input.js?v=0.23.1';
+import {Sound} from './audio.js?v=0.23.1';
+import {ARENAS} from './arenas.js?v=0.23.1';
+import {touchContext} from './touch-ui.js?v=0.23.1';
+import {OnlineSession} from './online.js?v=0.23.1';
+import {connectFirebase} from './firebase-online.js?v=0.23.1';
+import {SnapshotBuffer} from './online-protocol.js?v=0.23.1';
+import {RosterSelection} from './roster-selection.js?v=0.23.1';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.23.1';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.23.1';
+import {FramePacer} from './frame-pacer.js?v=0.23.1';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.23.1';
+import {Haptics} from './haptics.js?v=0.23.1';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.23.1';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.23.1';
+import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.23.1';
+import {MatchRecord} from './match-record.js?v=0.23.1';
+const haptics=new Haptics();let arcadeRewards=null,arcadeRuns=null,matchRecord=null;
+const loadingScreen=document.getElementById('match-loading');
 const $=id=>document.getElementById(id);
 const selection=$('selection'),pauseScreen=$('pause'),resultScreen=$('result'),helpScreen=$('help'),creditsScreen=$('credits');
 let coach=null,creditsPending=false;
@@ -31,7 +34,7 @@ let roster=[],atlases={},arenas=[],renderer,match=null,chosen=0,arena=0,paused=f
 let onlineBusy=false,onlineStarted=false,onlineFailed=false,localIndex=0,snapshotBuffer=null;
 let rosterSelection=null,secrets=null,playable=[];
 let artworkState=null;
-let runtimeFault=null;
+let runtimeFault=null,graphicsWaiting=false;
 /* ---- site bridge: tell jcwlunacy.net (the page that embeds this game) how
    each match went, so the Juggalo Locker can count wins and hand out badges.
    Presentation only: nothing here changes gameplay, saving or online play. */
@@ -63,7 +66,7 @@ function requestArtwork(bannerKeys=[],effectKeys=[]){
   });
 }
 function status(text){$('announcement').textContent=text;}
-function modalState(){const active=[helpScreen,creditsScreen,resultScreen,pauseScreen].find(el=>!el.hidden);$('cabinet').classList.toggle('selecting',!selection.hidden);$('cabinet').classList.toggle('modal-open',Boolean(active));selection.inert=Boolean(active)||loading;for(const el of [helpScreen,creditsScreen,resultScreen,pauseScreen])el.inert=Boolean(active&&el!==active);updateTouch();return active;}
+function modalState(){const active=[loadingScreen,helpScreen,creditsScreen,resultScreen,pauseScreen].find(el=>!el.hidden);$('cabinet').classList.toggle('selecting',!selection.hidden);$('cabinet').classList.toggle('modal-open',Boolean(active));selection.inert=Boolean(active)||loading;for(const el of [loadingScreen,helpScreen,creditsScreen,resultScreen,pauseScreen])el.inert=Boolean(active&&el!==active);updateTouch();return active;}
 function showModal(element,button){returnFocus=document.activeElement;element.hidden=false;modalState();button?.focus();}
 function hideModal(element){element.hidden=true;const active=modalState();if(active)active.querySelector('button')?.focus();else returnFocus?.focus?.();}
 let touchArtRequest=null;
@@ -72,7 +75,7 @@ function updateTouch(){
   if(showing&&!touchArtRequest)touchArtRequest=loadingImage('./assets/ui/touch-control-sheet.png').then(()=>{$('touch-controls').classList.add('control-art');}).catch(()=>{});
   $('touch-controls').hidden=!showing;$('cabinet').classList.toggle('playing-touch',showing);
   $('cabinet').classList.toggle('in-match',Boolean(match&&selection.hidden));
-  $('touch-controls').inert=paused||match?.phase==='done'||!helpScreen.hidden||!resultScreen.hidden||!pauseScreen.hidden||!creditsScreen.hidden;
+  $('touch-controls').inert=loading||paused||match?.phase==='done'||!helpScreen.hidden||!resultScreen.hidden||!pauseScreen.hidden||!creditsScreen.hidden;
   $('touch-controls').classList.toggle('inactive',$('touch-controls').inert);
   updatePhoneLayout(showing);framePacer.invalidate();
 }
@@ -168,8 +171,21 @@ function updateChampionship(){
   $('championship-record').textContent=run?`${run.titles} title wins · ${run.defenses} defenses this reign · Best: ${run.best}`:'Win five best-of-three matches, then defend your title.';
   $('championship-save').textContent=championships.saved?'Progress saves after each match on this browser. Each fighter and difficulty has its own run.':'Saving unavailable: progress lasts only for this session.';
   $('championship-road').replaceChildren();
-  for(let i=0;i<5;i++){const item=document.createElement('li');const name=run?roster.find(f=>f.id===run.path[i]).name:'Opponent revealed when you start';item.textContent=`${run&&i<run.stage?'✓ ':''}${STAGES[i]} · ${name}`;if(run?.phase==='road'&&i===run.stage)item.setAttribute('aria-current','step');$('championship-road').append(item);}
+  for(let i=0;i<5;i++){const item=document.createElement('li');const name=run?(roster.find(f=>f.id===run.path[i])?.name||'COMPLETED BOUT'):'Opponent revealed when you start';item.textContent=`${run&&i<run.stage?'✓ ':''}${STAGES[i]} · ${name}`;if(run?.phase==='road'&&i===run.stage)item.setAttribute('aria-current','step');$('championship-road').append(item);}
   $('fight').textContent=run?.phase==='defend'?'DEFEND YOUR TITLE':run?.phase==='road'?'CONTINUE CHAMPIONSHIP':'START CHAMPIONSHIP';
+}
+function refreshSavedArcade(){
+  // A saved run for a still-locked secret fighter stays hidden until the belt is won.
+  const latest=arcadeRuns?.latest(),run=latest&&(!secrets||secrets.playable(latest.fighter))?latest:null,button=$('resume-arcade');button.hidden=!run;
+  if(run){const fighter=roster.find(f=>f.id===run.fighter);button.textContent=`RESUME ARCADE · ${fighter.name.toUpperCase()} · ${run.difficulty.toUpperCase()} · ${run.index}/${run.opponents.length}`;}
+}
+function flushProgress(){matchRecord?.flush();arcadeRuns?.flush();arcadeRewards?.flush();championships?.flush();}
+function updateMatchRecord(){
+  if(!matchRecord)return;const record=matchRecord.load();
+  const label=`GAME WINS: ${record.wins} · LOSSES: ${record.losses}`;
+  $('game-record').textContent=label;
+  $('record-save').textContent=matchRecord.saved?'Complete solo and online matches · saved on this browser':'Saving unavailable: this record lasts for this session.';
+  $('result-record').textContent=label;
 }
 function updateArcadeRewards(){
   if(!arcadeRewards||!roster[chosen])return;
@@ -181,6 +197,11 @@ function updateArcadeRewards(){
     item.dataset.medal=earned?reward.medal:'locked';item.textContent=`${earned?'✓ ':''}${level.toUpperCase()} · ${reward.medal.toUpperCase()} · ${reward.title}`;$('arcade-medals').append(item);
   }
   $('arcade-save').textContent=(arcadeRewards.triple(id)?'TRIPLE CROWN EARNED! ':`Beat all ${roster.length-1} opponents to earn this difficulty’s medal and portrait frame. `)+(arcadeRewards.saved?'Medals save on this browser.':'Saving unavailable: medals last for this session.');
+  const run=arcadeRuns?.load(id,difficulty),continuing=run&&run.index<run.opponents.length;
+  $('arcade-progress').textContent=continuing?`SAVED RUN · ${run.index} / ${run.opponents.length} opponents defeated${run.checkpoint?` · Falls ${run.checkpoint.wins.join(' – ')}`:''}`:'Start a run and take on the full roster.';
+  $('arcade-new').hidden=!continuing;$('arcade-new').disabled=loading;
+  $('arcade-save').textContent+=' '+(arcadeRuns?.saved?'Completed opponents and falls save here. An interrupted round restarts.':'Run saving unavailable: keep this tab open.');
+  if($('mode').value==='arcade'&&!loading)$('fight').textContent=continuing?'CONTINUE ARCADE RUN':'START ARCADE RUN';
   $('portrait').dataset.arcadeMedal=arcadeRewards.triple(id)?'triple':arcadeRewards.get(id,difficulty)?ARCADE_REWARDS[difficulty].medal:'none';
 }
 function updateOpponent(){
@@ -245,7 +266,7 @@ async function loadArena(index){
   if(!imagePromises.has(key)){
     let pending;
     pending=loadingImage(ARENAS[index].src).then(image=>{
-      if(imagePromises.get(key)===pending)arenas[index]=image;
+      if(imagePromises.get(key)===pending){arenas[index]=image;framePacer.invalidate();}
       else if(typeof image.src==='string'){try{image.src='';}catch{}}
       return image;
     }).catch(error=>{if(imagePromises.get(key)===pending)imagePromises.delete(key);throw error;});
@@ -253,34 +274,40 @@ async function loadArena(index){
   }
   await imagePromises.get(key);
 }
-async function startMatch(nextArcade=false){
+async function startMatch(freshArcade=false){
   if($('mode').value==='online'||net.active||onlineBusy)return;
-  if(loading)return;loading=true;runtimeFault=null;sound.stopEffects();modalState();const thisSession=++session;$('fight').disabled=true;$('fight').textContent='ENTERING THE RING…';
+  if(loading)return;if(runtimeFault&&!renderer.contextLost)renderer.resetSurface();runtimeFault=null;loading=true;pauseScreen.hidden=true;loadingScreen.hidden=false;$('cancel-loading').focus();input.clear();match?.clearInputs();sound.stopEffects();modalState();const thisSession=++session;$('fight').disabled=true;$('fight').textContent='ENTERING THE RING…';
   try{
     const mode=$('mode').value;arena=Number($('arena').value);
-    if(mode==='arcade'&&!nextArcade){arcadeOpponents=roster.map((_,i)=>i).filter(i=>i!==chosen); // Fisher-Yates keeps an unbiased, complete roster run.
-      for(let i=arcadeOpponents.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arcadeOpponents[i],arcadeOpponents[j]]=[arcadeOpponents[j],arcadeOpponents[i]];}arcadeIndex=0;}
     if(secrets&&!secrets.playable(roster[chosen].id)){choose(playable[0]);}
+    const arcadeBout=mode==='arcade'?arcadeRuns.start(roster[chosen].id,$('difficulty').value,arena,{fresh:freshArcade}):null;
+    if(arcadeBout){arcadeOpponents=arcadeBout.opponents.map(id=>roster.findIndex(f=>f.id===id));arcadeIndex=arcadeBout.index;}
     championshipBout=mode==='championship'?championships.start(roster[chosen].id,$('difficulty').value,arena):null;
     const opponent=championshipBout?roster.findIndex(f=>f.id===championshipBout.opponent):mode==='arcade'?arcadeOpponents[arcadeIndex]:Number($('opponent').value);
     if(championshipBout)arena=championshipArena(championshipBout);
-    if(mode==='arcade')arena=(Number($('arena').value)+arcadeIndex)%ARENAS.length;
+    if(arcadeBout)arena=(arcadeBout.arena+arcadeIndex)%ARENAS.length;
     // The previous match is covered by the menu: free it before decoding the next pair.
     retainMatchArtwork(atlases,arenas,imagePromises,[chosen,opponent],arena);
-    await Promise.all([loadFighter(chosen),loadFighter(opponent),loadArena(arena)]);
+    const artwork=await Promise.allSettled([loadFighter(chosen),loadFighter(opponent),loadArena(arena)]);
+    const failed=artwork.find(r=>r.status==='rejected');if(failed)throw failed.reason;
     if(thisSession!==session)return;
+    if(renderer.contextLost)throw new Error('Graphics are still recovering. Try again or reload.');
+    if(runtimeFault)renderer.resetSurface();runtimeFault=null;graphicsWaiting=false;
+    last=performance.now();accumulator=0;framePacer.invalidate();
     localIndex=0;renderer.localIndex=0;onlineStarted=false;onlineFailed=false;$('network-banner').hidden=true;$('pause-button').setAttribute('aria-label','Pause match');
     match=new Match(roster,chosen,opponent,{mode,difficulty:$('difficulty').value,arcadeIndex,championshipLabel:championshipBout?championshipLabel(championshipBout):null});
-    match.championshipBout=championshipBout;tally=newTally();lastPinAttacker=null;
+    match.championshipBout=championshipBout;match.arcadeBout=arcadeBout;tally=newTally();lastPinAttacker=null;match.resultTicket=arcadeBout?.ticket||championshipBout?.ticket||resultTicket();
+    if(arcadeBout)arcadeRuns.restore(arcadeBout,match);
     retainMatchArtwork(atlases,arenas,imagePromises,match.ids,arena);
     coach?.start();creditsPending=false;creditsScreen.hidden=true;paused=false;selection.hidden=true;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();input.active=true;input.setMode(mode);if(coarse.matches||preferences.touch==='on')input.scheme='touch';renderer.reset();touchSignature='';$('pause-button').hidden=false;updateTouch();sound.resume();
     $('footer-status').textContent=championshipBout?championshipLabel(championshipBout):isPoleMode(mode)?'WEAPON ON A POLE · CLAIM THE CHAIR, THEN WIN TWO FALLS':isLocalMode(mode)?'LOCAL VERSUS · TWO PLAYERS. ONE RING.':mode==='arcade'?`ARCADE RUN · OPPONENT ${arcadeIndex+1} OF ${roster.length-1}`:mode==='practice'?'PRACTICE · FULL METER · AUTO RESET':'VS CPU · BEST OF THREE';
-    document.activeElement?.blur();status(`Round 1. ${roster[chosen].name} versus ${roster[opponent].name}.`);
-  }catch(error){status('The match artwork could not load. Try again.');$('footer-status').textContent='COULD NOT LOAD MATCH ARTWORK. PRESS FIGHT TO RETRY.';console.error(error);}
-  finally{loading=false;modalState();$('fight').disabled=false;$('fight').textContent='FIGHT';updateChampionship();}
+    document.activeElement?.blur();status(`Round ${match.round}. ${roster[chosen].name} versus ${roster[opponent].name}.`);
+    if(match.phase==='done')finishMatch();
+  }catch(error){if(thisSession===session)recoverRuntime(error,false,'The next match could not load. Retry when your connection is ready. Saved arcade opponents and falls are kept.');}
+  finally{if(thisSession===session){loading=false;loadingScreen.hidden=true;modalState();$('fight').disabled=false;updateChampionship();updateArcadeRewards();}}
 }
 function togglePause(force){
-  if(!match||match.phase==='done'||!selection.hidden||!helpScreen.hidden)return;
+  if(loading||runtimeFault||!match||match.phase==='done'||!selection.hidden||!helpScreen.hidden)return;
   if(match.options.mode==='online'){
     input.clear();net.capture(emptyInput());net.sendInput(true);
     if(force===true||onlineFailed)return;
@@ -289,12 +316,13 @@ function togglePause(force){
     if(pauseScreen.hidden)showModal(pauseScreen,$('resume'));else hideModal(pauseScreen);
     updateTouch();return;
   }
-  $('pause-art').hidden=false;$('pause-title').textContent='MATCH PAUSED';$('pause-detail').hidden=true;$('restart').hidden=false;$('resume').hidden=false;
+  $('reload-game').hidden=true;$('restart').textContent=match.options.mode==='arcade'?'RESTART ROUND':'RESTART MATCH';$('pause-art').hidden=false;$('pause-title').textContent='MATCH PAUSED';$('pause-detail').hidden=true;$('restart').hidden=false;$('resume').hidden=false;
   paused=force===true?true:!paused;input.clear();match.clearInputs();if(paused){showModal(pauseScreen,$('resume'));sound.suspend();}else{pauseScreen.hidden=true;modalState();sound.resume();document.activeElement?.blur();}updateTouch();
 }
-function quit(){creditsPending=false;creditsScreen.hidden=true;sound.stopEffects();retainMatchArtwork(atlases,arenas,imagePromises,[],arena);session++;runtimeFault=null;net.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;localIndex=0;renderer.localIndex=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';updateChampionship();updateArcadeRewards();($('mode').value==='online'?$('online-quick'):$('fight')).focus();}
+function quit(){flushProgress();if(runtimeFault&&!renderer.contextLost)renderer.resetSurface();loading=false;loadingScreen.hidden=true;graphicsWaiting=false;$('fight').disabled=false;creditsPending=false;creditsScreen.hidden=true;sound.stopEffects();retainMatchArtwork(atlases,arenas,imagePromises,[],arena);session++;runtimeFault=null;net.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;localIndex=0;renderer.localIndex=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';updateChampionship();updateArcadeRewards();updateMatchRecord();refreshSavedArcade();($('mode').value==='online'?$('online-quick'):$('fight')).focus();}
 function finishMatch(){
-  if(match.resultShown)return;match.resultShown=true;
+  if(match.resultShown)return;
+  matchRecord.record(match,localIndex);updateMatchRecord();
   input.active=false;input.clear();$('pause-button').hidden=true;
   const won=match.winner===localIndex,arcade=match.options.mode==='arcade',champion=arcade&&won&&arcadeIndex===arcadeOpponents.length-1;
   $('result-win-art').hidden=!(won||isLocalMode(match.options.mode));
@@ -302,22 +330,22 @@ function finishMatch(){
   $('result-method').textContent=champion?'ENTIRE ROSTER DEFEATED':match.method;
   $('result-detail').textContent=`${match.wins[0]} — ${match.wins[1]}${arcade?` · ${Math.min(arcadeOpponents.length,arcadeIndex+(won?1:0))} of ${arcadeOpponents.length} opponents defeated`:''}`;
   const winner=match.fighters[match.winner].definition;$('winner-portrait').src=fighterPortrait(winner);$('winner-portrait').alt=winner.name;
-  $('rematch').textContent=match.options.mode==='online'?'BACK TO ONLINE LOBBY':arcade&&won&&!champion?'NEXT OPPONENT':arcade?'NEW ARCADE RUN':'REMATCH';
+  $('rematch').textContent=match.options.mode==='online'?'BACK TO ONLINE LOBBY':arcade&&won&&!champion?'NEXT OPPONENT':arcade?(won?'NEW ARCADE RUN':'RETRY OPPONENT'):'REMATCH';
   $('championship-belt').hidden=true;creditsPending=false;$('show-credits').hidden=true;$('secret-unlock').hidden=true;resultScreen.classList.remove('champion-result');
   let siteOutcome=null,siteRun=null,siteReward=null;
   if(match.options.mode==='championship'){
     const result=championships.settle(match.championshipBout,won);
     if(result){
       const {run,outcome}=result;siteOutcome=outcome;siteRun={titles:run.titles,defenses:run.defenses,best:run.best};
+      const revealed=outcome==='crowned'&&secrets?secrets.unlock(run.fighter):[];
+      $('secret-unlock').hidden=!revealed.length;
+      if(revealed.length){$('secret-unlock').textContent=`SECRET FIGHTERS UNLOCKED · ${revealed.map(f=>f.name.toUpperCase()).join(' · ')} · ${secrets.saved?'Saved on this browser.':'Session only — saving unavailable.'}`;refreshPlayable();choose(chosen);}
       $('result-title').textContent=outcome==='crowned'?'LUNACY CHAMPION!':outcome==='defended'?'TITLE DEFENDED!':outcome==='dethroned'?'THE BELT CHANGES HANDS':won?'ONE STEP CLOSER':'YOUR RUN CONTINUES';
       $('result-method').textContent=`${championshipLabel(match.championshipBout)} · ${match.method}`;
       $('result-detail').textContent=`${match.wins[0]} — ${match.wins[1]} · ${run.titles} title wins · ${run.defenses} defenses · Best: ${run.best}. ${championships.saved?'Progress saved.':'Session only — browser saving unavailable.'}`;
       $('championship-belt').hidden=!['crowned','defended'].includes(outcome);
       if(['crowned','defended'].includes(outcome)){resultScreen.classList.add('champion-result');$('show-credits').hidden=false;sound.celebrate();}
       creditsPending=outcome==='crowned';
-      const revealed=outcome==='crowned'&&secrets?secrets.unlock(run.fighter):[];
-      $('secret-unlock').hidden=!revealed.length;
-      if(revealed.length){$('secret-unlock').textContent=`SECRET FIGHTERS UNLOCKED · ${revealed.map(f=>f.name.toUpperCase()).join(' · ')} · ${secrets.saved?'Saved on this browser.':'Session only — saving unavailable.'}`;refreshPlayable();choose(chosen);}
       $('rematch').textContent=outcome==='dethroned'?'CHASE THE BELT':run.phase==='defend'?'DEFEND YOUR TITLE':won?'NEXT CHAMPIONSHIP MATCH':'RETRY THIS MATCH';
           if(creditsPending)$('rematch').textContent='CELEBRATE · VIEW CREDITS';
     }else{$('result-detail').textContent+=' · This run changed in another window; continue from the saved match.';$('rematch').textContent='CONTINUE SAVED RUN';}
@@ -328,7 +356,11 @@ function finishMatch(){
     siteReward=reward?{medal:reward.medal,fresh:reward.fresh,triple:arcadeRewards.triple(winner.id)}:null;
     if(reward){const box=$('arcade-reward-result');box.hidden=false;box.dataset.medal=arcadeRewards.triple(winner.id)?'triple':reward.medal;box.textContent=`${reward.medal.toUpperCase()} MEDAL · ${reward.title}${arcadeRewards.triple(winner.id)?' · TRIPLE CROWN!':''} · ${reward.fresh?'PORTRAIT FRAME EARNED':'MEDAL ALREADY EARNED'} · ${arcadeRewards.saved?'Saved on this browser.':'Session only — saving unavailable.'}`;sound.celebrate();updateArcadeRewards();}
   }
-  showModal(resultScreen,$('rematch'));status($('result-title').textContent);
+  if(arcade){
+    const saved=arcadeRuns.settle(match.arcadeBout,won);
+    $('result-detail').textContent+=saved?(arcadeRuns.saved?' · Progress saved.':' · Session only — saving unavailable.'):' · Continue from the saved run.';
+  }
+  showModal(resultScreen,$('rematch'));status($('result-title').textContent);match.resultShown=true;
   try{const me=match.fighters[localIndex].definition,them=match.fighters[1-localIndex].definition,mode=match.options.mode;
     siteReport({won,local:isLocalMode(mode),mode,pole:isPoleMode(mode),difficulty:match.options.difficulty,method:match.method,wins:match.wins.slice(),
       fighter:me.id,fighterName:me.name,opponent:them.id,opponentName:them.name,rosterSize:roster.length,arena,arenaCount:ARENAS.length,
@@ -337,7 +369,7 @@ function finishMatch(){
 }
 function setOnlineBusy(busy){
   onlineBusy=busy;
-  for(const id of ['online-quick','online-create','online-join','join-code','mode','arena','roster-select','confirm-fighter','show-roster','show-setup'])$(id).disabled=busy;
+  for(const id of ['online-quick','online-create','online-join','join-code','mode','arena','roster-select','confirm-fighter','show-roster','show-setup','resume-arcade'])$(id).disabled=busy;
   document.querySelectorAll('.fighter-card').forEach(button=>button.disabled=busy);
   renderRosterPage();
   $('online-cancel').hidden=!busy;
@@ -360,7 +392,7 @@ async function prepareOnline(meta,role){
   await Promise.all([loadFighter(meta.host.fighter),loadFighter(meta.guest.fighter),loadArena(meta.arena)]);
   if(ticket!==session||!net.active)throw Object.assign(new Error('Cancelled'),{cancelled:true});
   arena=meta.arena;localIndex=role==='host'?0:1;renderer.localIndex=localIndex;
-  match=new Match(roster,meta.host.fighter,meta.guest.fighter,{mode:'online'});
+  match=new Match(roster,meta.host.fighter,meta.guest.fighter,{mode:'online'});match.resultTicket=resultTicket();
   retainMatchArtwork(atlases,arenas,imagePromises,match.ids,arena);
   snapshotBuffer=role==='guest'?new SnapshotBuffer(match.ids):null;
   renderer.reset();touchSignature='';input.setMode('online');input.clear();
@@ -383,6 +415,8 @@ function onlineEnded(message){
   $('resume').hidden=true;$('restart').hidden=true;showModal(pauseScreen,$('quit'));sound.suspend();
 }
 function matchEvents(events){
+  // Persist the fall before optional sound, effects or UI work can fail.
+  if(match?.arcadeBout&&events.some(e=>e.type==='roundEnd'))arcadeRuns.checkpoint(match.arcadeBout,match);
   const banners=new Set(),effects=new Set();
   for(const e of events){
     if(e.type==='special')banners.add('lunacy');
@@ -411,31 +445,47 @@ function matchEvents(events){
   if(input.scheme==='touch'&&events.some(e=>['hit','slam','reversal','secondWind'].includes(e.type)&&(e.index===localIndex||e.attacker===localIndex)))haptics.pulse(events.some(e=>e.type==='slam')?50:32);
   for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='reversal')status(`Player ${e.index+1} reverses the strike. Counterattack!`);if(e.type==='secondWind')status(`Player ${e.index+1} gets a second wind: 25 Lunacy meter.`);if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);}
 }
-function recoverRuntime(error){
+function recoverRuntime(error,graphics=false,detail=null){
+  if(graphics)graphicsWaiting=true;
   if(runtimeFault)return;
   runtimeFault=error instanceof Error?error:new Error(String(error));
   console.error('Recoverable game runtime error',runtimeFault);
-  paused=true;input.active=false;input.clear();match?.clearInputs?.();sound.suspend();
+  try{localStorage.setItem('lunacy-last-error-v1',JSON.stringify({date:new Date().toISOString(),message:runtimeFault.message,stack:runtimeFault.stack?.slice(0,2500),mode:match?.options.mode,round:match?.round,arcadeIndex,fighters:match?.ids}));}catch{}
+  paused=true;helpScreen.hidden=true;resultScreen.hidden=true;creditsScreen.hidden=true;helpWasPaused=true;input.active=false;input.clear();match?.clearInputs?.();sound.suspend();accumulator=0;
   if(net.active){onlineFailed=true;net.leave().catch(()=>{});}
-  $('pause-art').hidden=false;$('pause-title').textContent='MATCH PAUSED';
-  $('pause-detail').textContent='A device graphics hiccup paused the match. Restart to keep playing.';
-  $('pause-detail').hidden=false;$('resume').hidden=true;$('restart').hidden=false;
-  $('footer-status').textContent='MATCH PAUSED AFTER A RECOVERABLE DEVICE ERROR.';
-  try{showModal(pauseScreen,$('restart'));}catch{pauseScreen.hidden=false;}
+  $('pause-art').hidden=true;$('pause-title').textContent=graphics?'RESTORING THE RING':'MATCH PAUSED';
+  $('pause-detail').textContent=detail||(graphics?'Graphics were interrupted. Your match is paused while the screen recovers.':'The match stopped after an error. Retry to continue; saved arcade opponents and falls are kept.');
+  $('pause-detail').hidden=false;$('resume').hidden=true;$('restart').hidden=match?.options.mode==='online';$('restart').textContent='RETRY MATCH';$('reload-game').hidden=false;
+  $('footer-status').textContent='MATCH PAUSED · YOUR SAVED RUN IS KEPT.';
+  try{showModal(pauseScreen,$('restart').hidden?$('quit'):$('restart'));}catch{pauseScreen.hidden=false;}
+}
+function graphicsRestored(){
+  framePacer.invalidate();if(!graphicsWaiting)return;graphicsWaiting=false;runtimeFault=null;last=performance.now();accumulator=0;
+  if(loading)return;
+  if(match?.options.mode==='online'){onlineEnded('Graphics recovered. Return to the lobby to reconnect.');return;}
+  if(!match||!selection.hidden||match.phase==='done'){pauseScreen.hidden=true;modalState();if(match?.phase==='done'){if(match.resultShown)showModal(resultScreen,$('rematch'));else finishMatch();}return;}
+  paused=true;input.active=true;$('pause-title').textContent='RING RESTORED';$('pause-detail').textContent='Your match is ready. Resume when you are.';$('pause-detail').hidden=false;$('resume').hidden=false;$('reload-game').hidden=true;
+  showModal(pauseScreen,$('resume'));
 }
 $('online-quick').onclick=()=>beginOnline('quick');$('online-create').onclick=()=>beginOnline('create');$('online-join').onclick=()=>beginOnline('join');
 $('join-code').addEventListener('input',()=>{$('join-code').value=$('join-code').value.toUpperCase().replace(/[^A-Z-]/g,'');});
 $('join-code').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();beginOnline('join');}});
 $('online-cancel').onclick=()=>{session++;net.leave().catch(()=>{});setOnlineBusy(false);$('room-share').hidden=true;$('online-status').textContent='Room left. Create or join another match.';};
-addEventListener('pagehide',()=>{net.leave().catch(()=>{});});
-$('fight').onclick=()=>startMatch();$('pause-button').onclick=()=>togglePause();$('resume').onclick=()=>togglePause();$('restart').onclick=()=>startMatch(match?.options.mode==='arcade');$('quit').onclick=quit;$('result-quit').onclick=quit;
+addEventListener('pagehide',()=>{flushProgress();net.leave().catch(()=>{});});
+$('fight').onclick=()=>startMatch();$('pause-button').onclick=()=>togglePause();$('resume').onclick=()=>togglePause();$('restart').onclick=()=>startMatch();$('reload-game').onclick=()=>{flushProgress();location.reload();};$('cancel-loading').onclick=quit;$('arcade-new').onclick=()=>startMatch(true);$('quit').onclick=quit;$('result-quit').onclick=quit;
 function openCredits(){$('credits-victory').textContent=`${match.fighters[match.winner].definition.name.toUpperCase()} · ${match.wins[0]} — ${match.wins[1]} · ${championships.saved?'YOUR TITLE IS SAVED':'TITLE HELD FOR THIS SESSION'}`;creditsPending=false;resultScreen.hidden=true;showModal(creditsScreen,$('credits-defend'));status('Championship credits. Your title is saved.');}
 $('show-credits').onclick=openCredits;
 $('credits-back').onclick=()=>{creditsScreen.hidden=true;$('rematch').textContent='DEFEND YOUR TITLE';showModal(resultScreen,$('rematch'));};
 $('credits-defend').onclick=()=>startMatch();
-$('rematch').onclick=()=>{if(creditsPending){openCredits();return;}if(match.options.mode==='online'){quit();return;}if(match.options.mode==='arcade'&&match.winner===0&&arcadeIndex<arcadeOpponents.length-1){arcadeIndex++;startMatch(true);}else startMatch();};
+$('resume-arcade').onclick=()=>{
+  if(loading||onlineBusy||net.active)return;
+  const run=arcadeRuns?.latest();if(!run||(secrets&&!secrets.playable(run.fighter))){refreshSavedArcade();return;}
+  $('mode').value='arcade';$('difficulty').value=run.difficulty;$('arena').value=String(run.arena);
+  choose(roster.findIndex(f=>f.id===run.fighter));$('mode').onchange();setSelectionPanel('setup');return startMatch();
+};
+$('rematch').onclick=()=>{if(creditsPending){openCredits();return;}if(match.options.mode==='online'){quit();return;}startMatch();};
 $('arena').onchange=async()=>{arena=Number($('arena').value);const requested=arena;retainMatchArtwork(atlases,arenas,imagePromises,match?.ids||[],arena);try{await loadArena(requested);if(arena===requested)framePacer.invalidate();}catch{if(arena===requested)status('Arena could not load. Press FIGHT to retry.');}};
-$('controls').onclick=()=>{if(!helpScreen.hidden)return;helpWasPaused=paused;if(match){if(match.options.mode!=='online')paused=true;input.clear();match.clearInputs();net.capture(emptyInput());net.sendInput(true);}sound.suspend();showModal(helpScreen,$('close-help'));};
+$('controls').onclick=()=>{if(loading||runtimeFault||!helpScreen.hidden)return;helpWasPaused=paused;if(match){if(match.options.mode!=='online')paused=true;input.clear();match.clearInputs();net.capture(emptyInput());net.sendInput(true);}sound.suspend();showModal(helpScreen,$('close-help'));};
 function closeHelp(){paused=helpWasPaused;hideModal(helpScreen);input.clear();match?.clearInputs();if(!paused)sound.resume();updateTouch();}
 $('close-help').onclick=closeHelp;
 function soundLabel(){const on=sound.enabled;$('sound').textContent=on?'SOUND ON':'SOUND OFF';$('sound').setAttribute('aria-pressed',String(on));$('sound').setAttribute('aria-label',on?'Mute sound':'Enable sound');}
@@ -476,7 +526,7 @@ $('haptics-status').textContent=haptics.supported?'Tap TEST VIBRATION. Device se
 $('haptics').onchange=()=>{preferences.haptics=$('haptics').checked;haptics.enabled=preferences.haptics;haptics.activate();if(haptics.enabled)haptics.pulse(40,{test:true});else haptics.stop();savePreferences();};
 $('test-haptics').onclick=()=>{haptics.activate();$('haptics-status').textContent=haptics.pulse(100,{test:true})?'Vibration requested. If you felt nothing, check device vibration settings.':haptics.enabled?'This browser or device declined vibration.':'Turn on touch vibration to test it.';};
 document.addEventListener('pointerdown',e=>{haptics.activate();if(input.active&&e.pointerType==='touch'&&e.target.closest?.('#touch-controls'))haptics.pulse(12);},{passive:true});
-document.addEventListener('visibilitychange',()=>{if(document.hidden)haptics.stop();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){haptics.stop();flushProgress();}else if(!selection.hidden){updateMatchRecord();refreshSavedArcade();}});
 $('coach-enabled').checked=preferences.hints!==false;
 $('coach-enabled').onchange=()=>{preferences.hints=$('coach-enabled').checked;savePreferences();};
 $('reset-coach').onclick=()=>{coach?.reset();preferences.hints=true;$('coach-enabled').checked=true;savePreferences();status('First-match tips reset.');};
@@ -484,7 +534,7 @@ $('quality').value=preferences.quality==='battery'?'battery':'auto';
 $('quality').onchange=()=>{preferences.quality=$('quality').value;savePreferences();updateTouch();};
 // Trap focus within the active modal and restore it when the modal closes.
 addEventListener('keydown',e=>{
-  const modal=[helpScreen,creditsScreen,resultScreen,pauseScreen].find(el=>!el.hidden);if(!modal)return;
+  const modal=[loadingScreen,helpScreen,creditsScreen,resultScreen,pauseScreen].find(el=>!el.hidden);if(!modal)return;
   if(e.code==='Escape'&&!creditsScreen.hidden){e.preventDefault();$('credits-back').click();return;}
   if(e.code==='Escape'&&!helpScreen.hidden){e.preventDefault();closeHelp();return;}
   if(e.key==='Tab'){const buttons=Array.from(modal.querySelectorAll('button:not([disabled]),select:not([disabled]),input:not([disabled]),summary,a[href]')).filter(el=>!el.hidden),first=buttons[0],last=buttons.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}
@@ -492,7 +542,7 @@ addEventListener('keydown',e=>{
 let last=performance.now(),accumulator=0;
 function loop(now){
   try{
-    if(runtimeFault){requestAnimationFrame(loop);return;}
+    if(runtimeFault||loading||document.hidden){last=now;accumulator=0;return;}
     // Resize and repaint in this same frame. A separate resize callback can
     // otherwise clear a just-drawn canvas until the following browser frame.
     if(viewportPending){viewportPending=false;updateTouch();resizeRoster();}
@@ -527,15 +577,15 @@ function loop(now){
       if(drawDelta!==null){updateTouchContext();renderer.scheme=input.scheme;renderer.coachText=coach?.text(match,input.scheme,preferences.hints!==false)||'';const drawStart=performance.now();renderer.draw(match,arena,drawDelta,menu);if(match&&!menu&&!paused&&drawDelta>0&&renderBudget.observe(performance.now()-drawStart)){updateTouch();$('quality-note').textContent='Automatic display reduced rendering work for smoother play. Match timing stays the same.';}}
     }
   }catch(error){recoverRuntime(error);}
-  requestAnimationFrame(loop);
+  finally{requestAnimationFrame(loop);}
 }
 async function init(){
   try{
-    const response=await fetch('./assets/roster.json',{cache:'no-store'});if(!response.ok)throw new Error('Roster unavailable');roster=await response.json();let campaignStorage=null;try{campaignStorage=globalThis.localStorage;}catch{}coach=new Coach(campaignStorage);championships=new Championship(roster,campaignStorage);arcadeRewards=new ArcadeRewards(roster,campaignStorage);secrets=new SecretFighters(roster,campaignStorage);secrets.adopt(championships);buildRoster();
+    const response=await fetch('./assets/roster.json',{cache:'no-store'});if(!response.ok)throw new Error('Roster unavailable');roster=await response.json();let campaignStorage=null;try{campaignStorage=globalThis.localStorage;}catch{}coach=new Coach(campaignStorage);championships=new Championship(roster,campaignStorage);arcadeRewards=new ArcadeRewards(roster,campaignStorage);arcadeRuns=new ArcadeRun(roster,campaignStorage);matchRecord=new MatchRecord(campaignStorage);secrets=new SecretFighters(roster,campaignStorage);secrets.adopt(championships);buildRoster();updateMatchRecord();
     ARENAS.forEach((a,i)=>{const option=document.createElement('option');option.value=i;option.textContent=a.name;$('arena').append(option);});
     await loadArena(0);
     const banners={},combatFx={};artworkState={banners,combatFx,pending:new Map()};
-    renderer=new Renderer($('game'),roster,atlases,arenas,banners,combatFx,{onContextLost:()=>recoverRuntime(new Error('The graphics surface was reset.'))});updateTouch();$('fight').disabled=false;$('fight').textContent='FIGHT';$('enter-game').disabled=false;$('enter-game').textContent='ENTER THE LUNACY';$('boot-start').disabled=false;$('boot-start').textContent='PRESS START';$('boot-start').focus();requestAnimationFrame(loop);
+    renderer=new Renderer($('game'),roster,atlases,arenas,banners,combatFx,{onContextLost:()=>recoverRuntime(new Error('The graphics surface was reset.'),true),onContextRestored:graphicsRestored});updateTouch();$('fight').disabled=false;updateChampionship();updateArcadeRewards();refreshSavedArcade();$('enter-game').disabled=false;$('enter-game').textContent='ENTER THE LUNACY';$('boot-start').disabled=false;$('boot-start').textContent='PRESS START';$('boot-start').focus();requestAnimationFrame(loop);
     // The logo is tiny compared with the optional effects. Load it for branding,
     // then fetch announcements/effects only when a match actually needs them.
     requestArtwork(['unlocked','reversal','secondWind','timeout'],[]);

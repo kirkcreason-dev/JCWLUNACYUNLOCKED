@@ -1,3 +1,15 @@
+# v0.23.0 — Bigfoot verification
+
+- `npm test`: **327 passing tests**. Roster-wide movement, combos, weapons, taunts, climbs/dives, recovery, completed CPU matches on three difficulties, rendering and saved modes now include all 40 fighters.
+- New regression checks cover Bigfoot replacing Yabo at slot 8, original-pack hashes, 31 sheet mappings, 12 original mono 48 kHz WAVs, grounded chokeslam lift/drop and grab breaks, protected/airborne targets, blocks/misses/interruption, single contact/sound timing, weapon-wear preservation, both player slots/directions, championship and arcade rewards on all levels, old saves and online snapshots.
+- `npm run check`: **40 fighters, 4,961 animation entries, six arenas, both music tracks, 61 runtime sound samples**.
+- Native-canvas review covers twelve combat states and portrait/landscape game canvases. Extracted-pose review caught and removed neighboring chair/guitar fragments, baked-in ring geometry and running-floor marks. Jump scale was calibrated separately from bounding-box height.
+- Baseline: canonical v0.22.1 full ZIP. All 39 retained fighter records/media and original source packs remain identical. Yabo’s atlas/portrait are removed; his approval entry records the latest user removal instruction. Migration checks cover future/current/past Yabo bouts, completed runs, existing medals, corrupt saves and failed-write retries. The release audit lists changed/new files.
+
+No browser, physical-device or live online-session test was performed. Playtest Bigfoot on the second phone page; try bare hands/weapons, both corners, chokeslam versus guard and grab-break, and reload championship/arcade progress. See [BIGFOOT.md](BIGFOOT.md). Nothing pushed or deployed.
+
+---
+
 # v0.21.0 — Evil Dead integration verification
 
 - `npm test`: **295 passing tests**. Existing roster-wide checks now exercise 40 fighters: both-direction movement, common weapons/bare hands, confirmed combos, counters/aerial attacks, taunts, climbs, superplexes, dive/get-up contact, completed CPU matches, rendering and snapshots.

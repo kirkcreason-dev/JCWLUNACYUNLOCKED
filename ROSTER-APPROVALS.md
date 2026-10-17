@@ -1,18 +1,22 @@
+## v0.23.0: Bigfoot added; Yabo removed
+
+On October 17, 2026, the user supplied Bigfoot artwork/sounds and explicitly instructed that Yabo be removed, leaving exactly **40 fighters**. Bigfoot replaces the Yabo slot. The other 39 fighter records remain unchanged. Yabo is now excluded; his structured entry retains the original ratings and records the later removal override. Bigfoot uses neutral game defaults and the supplied Chokeslam name, without inventing website ratings or a table approval.
+
 ## v0.21.0 addition: Evil Dead
 
 The user supplied `Evil Dead.zip` for the game. Evil Dead is appended as fighter 40 with neutral game defaults and the generic Lunacy Finisher. He is not added to the historical approval table, and no YES approval, website rating or named finisher is inferred. All existing table entries and NO exclusions remain unchanged.
 
-Display correction in v0.18.0: Able is shown as **Abel**, and Jacksyn as **Jackson**, per the tester notes. v0.21.4 reverted Jackson to **Jacksyn** and shows Tommy as **Tommy Grayson** at JCW's (Jeff Lane's) request. Internal IDs and approved ratings remain unchanged.
+Display correction in v0.18.0: Able is shown as **Abel**, and Jacksyn as **Jackson**, per the tester notes. v0.21.4 reverted Jackson to **Jacksyn** and shows Tommy as **Tommy Grayson** at JCW's (Jeff Lane's) request; Ruffo uses the sheet that originally shipped as "Yabo". Internal IDs and approved ratings remain unchanged; Jacksyn is retained as a source/approval alias.
 
 # Roster approval record — September 17, 2026
 
-Source: the user's supplied ratings, finisher and approval table. YES and NO below reproduce those instructions. This is the game's roster approval record; no signatures or additional approvals have been inferred.
+Source: the user's supplied ratings, finisher and approval table. YES and NO below reproduce those instructions, with the later Yabo removal recorded. This is the game's roster approval record; no signatures or additional approvals have been inferred.
 
 HollyHood Haley J, Luigi Primo and Sophia Rose are excluded. The roster contains 39 playable fighters, including the supplied Josh Bishop, Ring Rat and The Green Phantom packs.
 
 Violent J, Shaggy 2 Dope, DJ Clay and Jeff Lane are absent from this table. Their existing playable slots are retained under the request to remove the entries marked NO; this table does not assign them a new YES approval.
 
-All 35 listed, playable fighters match the supplied ratings and finisher names. Blank finisher cells remain unspecified and use the generic Lunacy Finisher in the game. Tag names remain labels in singles matches. Existing IDs/display aliases are retained: Able → Abel, Tommy → Tommy Grayson, Moshpit Mike → Mosh Pit Mike, Ruffo/Yabo → their 'the Clown' entries.
+All 34 listed, playable fighters match the supplied ratings and finisher names. Blank finisher cells remain unspecified and use the generic Lunacy Finisher in the game. Tag names remain labels in singles matches. Existing IDs/display aliases are retained: Able → Abel, Tommy → Tommy Grayson, Moshpit Mike → Mosh Pit Mike, Ruffo/Yabo → their 'the Clown' entries.
 
 `roster-approvals.json` is the structured record. `npm run check` rejects an excluded fighter and verifies listed playable fighters against these ratings and finisher names.
 
@@ -55,4 +59,4 @@ All 35 listed, playable fighters match the supplied ratings and finisher names. 
 | Tommy Grayson | 5 | 9 | 8 | 7 | T-Gimmick (Tag) | YES | Playable |
 | Vincenzo | 8 | 5 | 6 | 7 | — | YES | Playable |
 | Willie Mack | 7 | 7 | 9 | 8 | Stunner | YES | Playable |
-| Yabo the Clown | 7 | 8 | 7 | 8 | — | YES | Removed from the game in v0.21.3 |
+| Yabo the Clown | 7 | 8 | 7 | 8 | — | NO (2026-10-17 override) | Removed |

@@ -444,14 +444,19 @@
     {
       "id": "yabo",
       "name": "Yabo the Clown",
-      "approved": true,
+      "approved": false,
       "ratings": {
         "power": 7,
         "speed": 8,
         "technique": 7,
         "toughness": 8
       },
-      "finisher": null
+      "finisher": null,
+      "override": {
+        "date": "2026-10-17",
+        "source": "User instruction: Yabo should be removed.",
+        "previouslyApproved": true
+      }
     }
   ]
 }

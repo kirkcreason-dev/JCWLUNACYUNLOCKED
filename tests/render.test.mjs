@@ -86,7 +86,7 @@ test('announcement artwork renders for the correct pinfall, tap-out and special 
 });
 test('Alice Crowley uses the supplied back recovery and KO poses in their actual states',()=>{
  // Ruffo carried this pack until v0.21.4, when his real (originally mislabeled "Yabo") sheet was restored.
- const {r,ctx}=renderer(),m=new Match(roster,18,15,{mode:'local'});m.phase='fight';const f=m.fighters[0];let last;ctx.drawImage=(_img,x,y)=>{last={x,y};};
+ const {r,ctx}=renderer(),m=new Match(roster,19,16,{mode:'local'});m.phase='fight';const f=m.fighters[0];let last;ctx.drawImage=(_img,x,y)=>{last={x,y};};
  for(const [state,hp,anim] of [['rise',40,'riseBack'],['down',0,'ko']]){Object.assign(f,{state,hp,fallFace:'back',fallDuration:0,t:.3});r.fighter(f,0,m);assert.ok(f.definition.animations[anim].some(e=>e.x===last.x&&e.y===last.y));}
 });
 

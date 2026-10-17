@@ -1,21 +1,26 @@
-import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.21.4';
-import {ARENAS} from './arenas.js?v=0.21.4';
-import {weaponGrip} from './weapon-grips.js?v=0.21.4';
-import {attackPose} from './attack-animation.js?v=0.21.4';
-import {arenaCamera} from './phone-layout.js?v=0.21.4';
-import {drawArenaWordmarks} from './branding.js?v=0.21.4';
+import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.23.1';
+import {ARENAS} from './arenas.js?v=0.23.1';
+import {weaponGrip} from './weapon-grips.js?v=0.23.1';
+import {attackPose} from './attack-animation.js?v=0.23.1';
+import {arenaCamera} from './phone-layout.js?v=0.23.1';
+import {drawArenaWordmarks} from './branding.js?v=0.23.1';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
-    this.bannerArt=banners;this.combatFx=combatFx;this.canvas=canvas;this.onContextLost=options.onContextLost||(()=>{});
+    this.bannerArt=banners;this.combatFx=combatFx;this.canvas=canvas;this.onContextLost=options.onContextLost||(()=>{});this.onContextRestored=options.onContextRestored||(()=>{});
     // Present complete frames. Desynchronized drawing can expose the clear or
     // partly painted HUD while the browser scans out the canvas.
     this.ctx=canvas.getContext?.('2d',{alpha:false,desynchronized:false})||canvas.getContext?.('2d');
     if(!this.ctx)throw new Error('2D canvas unavailable');
     this.contextLost=false;this.shade=null;this.shadeHeight=0;
     canvas.addEventListener?.('contextlost',event=>{event.preventDefault?.();this.contextLost=true;this.onContextLost();});
-    canvas.addEventListener?.('contextrestored',()=>{this.contextLost=false;this.shade=null;this.reset();});
+    canvas.addEventListener?.('contextrestored',()=>{this.contextLost=false;this.shade=null;this.reset();this.onContextRestored();});
     this.roster=roster;this.atlases=atlases;this.arenas=arenas;this.reduced=globalThis.matchMedia?.('(prefers-reduced-motion: reduce)').matches||false;this.scheme='keyboard';this.reset();
+  }
+  resetSurface(){
+    // An interrupted draw can leave nested canvas transforms on the save stack.
+    // Reset only on recovery, never on ordinary frames or viewport notifications.
+    this.canvas.width=this.canvas.width;this.ctx=this.canvas.getContext('2d');this.shade=null;this.reset();
   }
   reset(){this.camera=null;this.particles=[];this.popups=[];this.spriteFx=[];this.healthTrail=[100,100];this.healthWait=[0,0];this.lastHealth=[100,100];this.lastMeter=[0,0];this.shakeOffset=[0,0];this.clock=0;this.graphic=null;}
   receive(events,match=null){for(const e of events){

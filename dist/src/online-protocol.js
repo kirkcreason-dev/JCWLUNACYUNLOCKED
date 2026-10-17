@@ -1,4 +1,4 @@
-import {emptyInput} from './engine.js?v=0.21.4';
+import {emptyInput} from './engine.js?v=0.23.1';
 export const PROTOCOL='lunacy-2d-v22';
 export const ACTIONS=['jump','light','heavy','grapple','special','weapon','taunt','block'];
 const KEYS=Object.keys(emptyInput());
@@ -55,6 +55,7 @@ export function validSnapshot(s,ids){
   if(!s.fighters.every(f=>f.weaponWear&&typeof f.weaponWear==='object'&&!Array.isArray(f.weaponWear)&&Object.entries(f.weaponWear).every(([k,v])=>['chair','bat','guitar','trashcan','bottle'].includes(k)&&Number.isInteger(v)&&finite(v,0,6))))return false;
   if(s.pole&&(!finite(s.pole.x,200,1080)||typeof s.pole.claimed!=='boolean'||typeof s.pole.broken!=='boolean'||![null,0,1].includes(s.pole.holder??null)||![null,0,1].includes(s.pole.claimant??null)||!finite(s.pole.progress,0,1.05)||!finite(s.pole.uses,0,4)||(s.pole.looseX!=null&&!finite(s.pole.looseX,200,1080))))return false;
   if(s.grapple?.kind==='superplex'&&(!finite(s.grapple.corner,200,1080)||![-1,1].includes(s.grapple.throwDir)||!Array.isArray(s.grapple.origins)||s.grapple.origins.length!==2||!s.grapple.origins.every(o=>finite(o.x,200,1080)&&finite(o.z,0,140))))return false;
+  if(s.grapple?.kind==='chokeslam'&&!finite(s.grapple.startX,200,1080))return false;
   if(s.grapple&&(![0,1].includes(s.grapple.attacker)||!finite(s.grapple.time,0,10)))return false;
   if(s.pin&&(![0,1].includes(s.pin.attacker)||!finite(s.pin.time,0,10)||!finite(s.pin.count,0,3)||!finite(s.pin.escape,0,100)||![undefined,'pin','submission'].includes(s.pin.kind)))return false;
   return true;

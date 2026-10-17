@@ -1,26 +1,21 @@
-# v0.21.4 — Roster corrections from Jeff Lane
+# v0.23.1 — v0.23.0 plus the live-site fixes
 
-- JP Grayson and Tommy Grayson had each other's artwork; so did Atiba and Bruce Wayans. The sprite sheets, frame data and portraits are swapped back under the right names. Tommy is now shown as "Tommy Grayson" to match the website.
-- The sheet that shipped as "Yabo" was really Ruffo. Ruffo now uses that artwork (restored from v0.21.2) and his previous, Yabo-looking sheet is gone. Ruffo therefore uses the original-nine pose set (overlay weapons, no KO/back-recovery poses) like Violent J.
-- "Jackson" is spelled Jacksyn again, as on the website.
-- Internal IDs, ratings, finishers, saves and online fighter numbering are unchanged; the four swapped fighters and Ruffo carry an artwork revision so cached images refresh. Cache URLs refreshed; the Lunatics Only lock, age gate, secret fighters and closer camera are retained.
+- Built on the v0.23.0 archive (Bigfoot, v0.22 arcade-recovery/saved-run stability work) with every fix already live re-applied:
+  - Secret fighters: Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are hidden from the picker until the championship belt is won once on this browser (`lunacy-secrets-v1`; older titles unlock at boot). They remain CPU opponents. RESUME ARCADE is not offered for a still-locked fighter.
+  - Closer action camera (v0.21.2): fixed 1.2× zoom that pans with both wrestlers on desktop, portrait and landscape; call-outs stay inside the view.
+  - JCW roster corrections (v0.21.4): JP Grayson/Tommy Grayson and Atiba/Bruce Wayans artwork swapped back; Ruffo uses his real sheet (shipped as "Yabo" until v0.21.3) with weapon grips; Jacksyn and Tommy Grayson spelled as on jcwlunacy.net.
+  - Finished-match reports to jcwlunacy.net for Juggalo Locker badges; date-of-birth gate before the game loads; Lunatics Only lock (jcwlunacy.net, the JCW Lunacy app or a local server only).
+- Tests updated for the moved art and secret fighters; the boot tests load the secret-fighter module. Online rooms stay v22 / LU230.
 
-# v0.21.3 — Yabo removed
+# v0.23.0 — Bigfoot
 
-- Yabo is removed from the game: roster entry, sprite sheet and portrait, weapon-grip data and website rating. The roster is 39 fighters (Evil Dead remains the last slot); arcade runs are 38 opponents and the picker, counts and labels follow. Secret fighters are unchanged.
-- Online rooms move to protocol `lunacy-2d-v22` / `LU220-` so clients still carrying Yabo's roster position cannot pair with updated ones. A saved championship run whose five-opponent path included Yabo restarts from the opening bout; arcade medals and the secret-fighter unlock are unaffected. Cache URLs refreshed; the Lunatics Only lock and age gate are retained.
+- Replace Yabo with Bigfoot in the standard 40-fighter roster, using the supplied 31-sheet artwork and 12-effect sound packs.
+- Add synchronized close-range chokeslam lift/drop, normal throw breaks, weapon/bare-hand attacks and character-specific vocals/footsteps.
+- Keep the other 39 fighter records/media, recovery fixes, wins and earned medals. Record the user’s Yabo removal as an approval override. Migrate saved runs without replaying completed stages; new arcade runs face 39 opponents.
+- Update selection counts and online compatibility to v22 / LU230. Retain both complete source packs and reproducible importer/audits.
+- 327 automated tests and the release check pass. Full ZIP; no deployment.
 
-# v0.21.2 — Closer camera
-
-- The match camera now sits a little closer on every layout (desktop, portrait and landscape phones) so the wrestlers are easier to see: a fixed 1.2× zoom that pans to follow the pair. The view never shows past the arena edges, both wrestlers always stay on screen with ring space beside them, and normal corner travel and jumps still do not change the scale (tall throws and dives widen the view only as far as needed to keep heads below the HUD, then ease back). Replaces the phone-only full-ring camera; the desktop view was previously fixed.
-- Call-outs ("THROW BREAK", weapon names, finisher ready) stay inside the panned view. Cache URLs refreshed; the Lunatics Only lock, age gate and secret fighters are retained.
-
-# v0.21.1 — Secret fighters
-
-- Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are secret fighters. They are hidden from the fighter picker (grid, page counts and the direct picker) until the championship belt has been won once on this browser, with any fighter on any difficulty.
-- The picker shows "5 SECRET FIGHTERS · WIN THE CHAMPIONSHIP BELT TO UNLOCK" while they are locked. Winning the title shows "SECRET FIGHTERS UNLOCKED" on the result screen and reveals them in place; the unlock is saved beside the championship record (`lunacy-secrets-v1`) and survives reloads. A title won before this update unlocks them at boot.
-- Secret fighters still appear as CPU opponents in VS, arcade and championship draws, so arcade medals (all 39 opponents) and championship paths are unchanged, and online rooms still use the full 40-fighter index.
-- The date-of-birth gate added to the game page on September 20 and the jcwlunacy.net locker-badge match reporting added on September 22 are both retained. New module `dist/src/secret-fighters.js`; tests in `tests/secret-fighters.test.mjs`.
+---
 
 # v0.21.0 — Evil Dead, 40 fighters
 

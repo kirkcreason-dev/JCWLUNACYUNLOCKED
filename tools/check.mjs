@@ -12,7 +12,7 @@ const html=await readFile(path.join(dist,'index.html'),'utf8');
 for(const match of html.matchAll(/(?:src|href)="(\.\/[^"#?]+)(?:[?#][^"]*)?"/g))await access(path.join(dist,match[1]));
 const ids=Array.from(html.matchAll(/\bid="([^"]+)"/g),m=>m[1]);assert.equal(new Set(ids).size,ids.length,'Duplicate HTML ids');
 const main=await readFile(path.join(dist,'src/main.js'),'utf8');for(const match of main.matchAll(/\$\('([^']+)'\)/g))assert.ok(ids.includes(match[1]),`Missing UI element ${match[1]}`);
-const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,39);assert.equal(new Set(roster.map(f=>f.id )).size,39);
+const roster=JSON.parse(await readFile(path.join(dist,'assets/roster.json'),'utf8'));assert.equal(roster.length,40);assert.equal(new Set(roster.map(f=>f.id )).size,40);
 checkRosterApprovals(roster,JSON.parse(await readFile(path.join(root,'roster-approvals.json'),'utf8')));
 for(const src of SAMPLE_FILES)await access(path.join(dist,src));
 let count=0;

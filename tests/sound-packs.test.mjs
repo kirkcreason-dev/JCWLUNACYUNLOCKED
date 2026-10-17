@@ -23,19 +23,20 @@ function sound(){
 }
 const played=s=>s.context.starts.filter(x=>x.node.buffer?.path).map(x=>x.node.buffer.path);
 const flush=s=>{for(const v of [...s.voices])v.dispose();};
-test('all 53 supplied WAVs retain original bytes and runtime uses 49 short mono PCM sounds',async()=>{
- const audit=JSON.parse(await readFile(new URL('../tools/sound-pack-audit.json',import.meta.url)));assert.equal(audit.files.length,53);assert.equal(SAMPLE_FILES.length,49);
+test('all 53 supplied WAVs retain original bytes and runtime includes 61 short mono PCM sounds',async()=>{
+ const audit=JSON.parse(await readFile(new URL('../tools/sound-pack-audit.json',import.meta.url)));assert.equal(audit.files.length,53);assert.equal(SAMPLE_FILES.length,61);
  for(const row of audit.files){const data=await readFile(new URL('../'+row.file,import.meta.url));assert.equal(createHash('sha256').update(data).digest('hex'),row.sha256);assert.equal(data.toString('ascii',0,4),'RIFF');assert.equal(data.toString('ascii',8,12),'WAVE');assert.equal(row.channels,1);assert.equal(row.hz,44100);assert.ok(row.peak<=.841&&row.rms>0);}
- for(const path of SAMPLE_FILES){assert.ok(!path.includes('PREVIEW')&&!path.includes('04_full'));assert.ok(audit.files.some(row=>`./${row.file.replace('dist/','')}`===path));}
+ const extra=JSON.parse(await readFile(new URL('../tools/bigfoot-sound-audit.json',import.meta.url)));
+ for(const path of SAMPLE_FILES){assert.ok(!path.includes('PREVIEW')&&!path.includes('04_full'));assert.ok([...audit.files,...extra.files].some(row=>`./${row.file.replace('dist/','')}`===path));}
 });
 test('sample loading is deduplicated, uses at most three requests, and respects decoded memory budget',async()=>{
  let active=0,peak=0,requests=0;const bank=new SampleBank({fetcher:async()=>{requests++;active++;peak=Math.max(peak,active);await new Promise(resolve=>setTimeout(resolve,1));active--;return {ok:true,arrayBuffer:async()=>new ArrayBuffer(16)};}});
- const ctx={decodeAudioData:async()=>({length:100,numberOfChannels:1,duration:.1})};await Promise.all([bank.load(ctx),bank.load(ctx)]);assert.equal(requests,49);assert.equal(peak,3);assert.equal(bank.bytes,49*400);await bank.load(ctx);assert.equal(requests,49);
+ const ctx={decodeAudioData:async()=>({length:100,numberOfChannels:1,duration:.1})};await Promise.all([bank.load(ctx),bank.load(ctx)]);assert.equal(requests,SAMPLE_FILES.length);assert.equal(peak,3);assert.equal(bank.bytes,SAMPLE_FILES.length*400);await bank.load(ctx);assert.equal(requests,SAMPLE_FILES.length);
  const bounded=new SampleBank({maxBytes:800,fetcher:async()=>({ok:true,arrayBuffer:async()=>new ArrayBuffer(4)})});await bounded.load(ctx);assert.equal(bounded.bytes,800);assert.equal(bounded.buffers.size,2);
 });
 test('missing/corrupt audio backs off, timeouts do not hang startup, and context replacement rejects stale results',async()=>{
  let now=0,calls=0;const bank=new SampleBank({clock:()=>now,fetcher:async()=>{calls++;throw Error('offline');}}),ctx={decodeAudioData:async()=>({length:100,numberOfChannels:1,duration:.1})};
- await bank.load(ctx);assert.equal(calls,49);await bank.load(ctx);assert.equal(calls,49);now=30001;await bank.load(ctx);assert.equal(calls,98);
+ await bank.load(ctx);assert.equal(calls,SAMPLE_FILES.length);await bank.load(ctx);assert.equal(calls,SAMPLE_FILES.length);now=30001;await bank.load(ctx);assert.equal(calls,SAMPLE_FILES.length*2);
  const timeout=new SampleBank({timeout:2,fetcher:()=>new Promise(()=>{})});await timeout.load(ctx);assert.equal(timeout.buffers.size,0);assert.equal(timeout.controllers.size,0);
  const corrupt=new SampleBank({fetcher:async()=>({ok:true,arrayBuffer:async()=>new ArrayBuffer(4)})});await corrupt.load({decodeAudioData:async()=>{throw Error('bad WAV');}});assert.equal(corrupt.buffers.size,0);
  let resolve;const stale=new SampleBank({timeout:100,fetcher:()=>new Promise(r=>{resolve=r;})});stale.reset(ctx);const old=stale.loadOne(SAMPLE_FILES[0],ctx,stale.generation);stale.reset({});resolve({ok:true,arrayBuffer:async()=>new ArrayBuffer(4)});await old;assert.equal(stale.buffers.size,0);assert.equal(stale.bytes,0);

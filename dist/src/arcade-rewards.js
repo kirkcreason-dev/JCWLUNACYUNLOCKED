@@ -2,6 +2,11 @@ export const ARCADE_REWARDS=Object.freeze({easy:{medal:'bronze',title:'LUNACY SU
 // Stable IDs preserve achievements when names or roster order change.
 export class ArcadeRewards {
   constructor(roster,storage=null){this.roster=roster;this.storage=storage;this.memory=new Map();this.dirty=new Set();this.saved=Boolean(storage);}
+  flush(){
+    if(!this.storage){this.saved=false;return false;}
+    for(const key of this.dirty){try{this.storage.setItem(key,this.memory.get(key));this.dirty.delete(key);}catch{}}
+    this.saved=this.dirty.size===0;return this.saved;
+  }
   key(id,difficulty){return `lunacy-arcade-medal-v1:${id}:${difficulty}`;}
   get(id,difficulty){
     if(!ARCADE_REWARDS[difficulty]||!this.roster.some(f=>f.id===id))return null;

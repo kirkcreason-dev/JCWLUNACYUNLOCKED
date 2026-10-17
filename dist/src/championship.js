@@ -4,15 +4,29 @@ const copy=value=>JSON.parse(JSON.stringify(value));
 const integer=value=>Number.isSafeInteger(value)&&value>=0&&value<=1000000;
 export class Championship {
   constructor(roster,storage=null,random=Math.random){this.roster=roster;this.storage=storage;this.random=random;this.memory=new Map();this.dirty=new Set();this.saved=Boolean(storage);}
+  flush(){
+    if(!this.storage){this.saved=false;return false;}
+    for(const key of this.dirty){try{this.storage.setItem(key,this.memory.get(key));this.dirty.delete(key);}catch{}}
+    this.saved=this.dirty.size===0;return this.saved;
+  }
   key(fighter,difficulty){return `lunacy-championship-v1:${fighter}:${difficulty}`;}
-  valid(r,fighter,difficulty){
-    const ids=new Set(this.roster.map(f=>f.id));
-    return r&&r.version===1&&r.fighter===fighter&&ids.has(fighter)&&r.difficulty===difficulty&&['easy','normal','hard'].includes(difficulty)&&['road','defend','dethroned'].includes(r.phase)&&Array.isArray(r.path)&&r.path.length===5&&new Set(r.path).size===5&&r.path.every(id=>ids.has(id)&&id!==fighter)&&integer(r.stage)&&r.stage<=5&&(r.phase==='road'?r.stage<5:r.stage===5)&&integer(r.arena)&&r.arena<6&&integer(r.titles)&&integer(r.defenses)&&integer(r.best)&&r.best>=r.defenses&&ids.has(r.opponent)&&r.opponent!==fighter&&(r.phase!=='road'||r.opponent===r.path[r.stage])&&(r.ticket===null||typeof r.ticket==='string'&&r.ticket.length<150);
+  valid(r,fighter,difficulty,ids=new Set(this.roster.map(f=>f.id))){
+    return r&&r.version===1&&r.fighter===fighter&&ids.has(fighter)&&r.difficulty===difficulty&&['easy','normal','hard'].includes(difficulty)&&['road','defend','dethroned'].includes(r.phase)&&Array.isArray(r.path)&&r.path.length===5&&new Set(r.path).size===5&&r.path.every((id,i)=>(ids.has(id)||(id==='yabo'&&i<r.stage))&&id!==fighter)&&integer(r.stage)&&r.stage<=5&&(r.phase==='road'?r.stage<5:r.stage===5)&&integer(r.arena)&&r.arena<6&&integer(r.titles)&&integer(r.defenses)&&integer(r.best)&&r.best>=r.defenses&&ids.has(r.opponent)&&r.opponent!==fighter&&(r.phase!=='road'||r.opponent===r.path[r.stage])&&(r.ticket===null||typeof r.ticket==='string'&&r.ticket.length<150);
   }
   load(fighter,difficulty){
     const key=this.key(fighter,difficulty);let raw=this.memory.get(key);
     try{const stored=this.dirty.has(key)?null:this.storage?.getItem(key);if(stored!==null&&stored!==undefined)raw=stored;}catch{this.saved=false;}
-    try{const r=JSON.parse(raw||'null');return this.valid(r,fighter,difficulty)?r:null;}catch{return null;}
+    try{
+      const r=JSON.parse(raw||'null'),ids=new Set(this.roster.map(f=>f.id));
+      if(ids.has(fighter)&&!ids.has('yabo')&&r&&(r.opponent==='yabo'||r.path?.slice(r.stage).includes('yabo'))&&this.valid(r,fighter,difficulty,new Set([...ids,'yabo']))){
+        const replacement=this.roster.find(f=>f.id==='bigfoot'&&f.id!==fighter&&!r.path.includes(f.id))||this.roster.find(f=>f.id!==fighter&&!r.path.includes(f.id));
+        if(!replacement)return null;
+        r.path=r.path.map((id,i)=>id==='yabo'&&i>=r.stage?replacement.id:id);
+        if(r.opponent==='yabo'){r.opponent=replacement.id;r.ticket=null;}
+        this.save(r);
+      }
+      return this.valid(r,fighter,difficulty)?r:null;
+    }catch{return null;}
   }
   save(run){
     const key=this.key(run.fighter,run.difficulty),raw=JSON.stringify(run);this.memory.set(key,raw);

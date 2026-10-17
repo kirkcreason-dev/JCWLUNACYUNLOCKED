@@ -15,10 +15,10 @@ function step(m,n,command={}){for(let i=0;i<n;i++)m.step([{...emptyInput(),...co
 function damage(m,action){step(m,1,{[action]:true});step(m,100);return 100-m.fighters[1].hp;}
 
 test('selection data retains the website scale, names, finishers, and missing-rating exception',()=>{
- assert.equal(site.source,'https://jcwlunacy.net/');assert.equal(site.scale,10);assert.equal(Object.keys(site.ratings).length,31);
+ assert.equal(site.source,'https://jcwlunacy.net/');assert.equal(site.scale,10);assert.equal(Object.keys(site.ratings).length,32);
  const f=roster[kongo];assert.deepEqual([f.websiteStats.power,f.websiteStats.speed,f.websiteStats.technique,f.websiteStats.toughness],[10,5,7,9]);
  for(const f of roster){
-  if(['violent-j','shaggy-2-dope','dj-clay','jeff-lane','evil-dead'].includes(f.id)){assert.equal(f.websiteStats,null);assert.ok(!site.ratings[f.id]);continue;}
+  if(['violent-j','shaggy-2-dope','dj-clay','jeff-lane','evil-dead','bigfoot'].includes(f.id)){assert.equal(f.websiteStats,null);assert.ok(!site.ratings[f.id]);continue;}
   if(['josh-bishop','ring-rat','green-phantom'].includes(f.id)){assert.equal(f.websiteStats.source,'User-supplied approval table');assert.equal(site.ratings[f.id],undefined);}else assert.deepEqual(f.websiteStats,site.ratings[f.id]);
   for(const key of ['power','speed','technique','toughness'])assert.ok(Number.isInteger(f.websiteStats[key])&&f.websiteStats[key]>=1&&f.websiteStats[key]<=10);
   assert.equal(f.finisher,(f.websiteStats.finisher||'Lunacy Finisher').toUpperCase());

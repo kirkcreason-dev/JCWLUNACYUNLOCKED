@@ -1,6 +1,7 @@
-import {SampleBank} from './sample-bank.js?v=0.21.4';
-import {impactGroup,gruntGroup} from './sound-events.js?v=0.21.4';
-import {MOVES} from './engine.js?v=0.21.4';
+import {SampleBank} from './sample-bank.js?v=0.23.1';
+import {impactGroup,gruntGroup} from './sound-events.js?v=0.23.1';
+import {MOVES} from './engine.js?v=0.23.1';
+import {finisherMove} from './fighter-profile.js?v=0.23.1';
 // Supplied synthesized samples, with procedural fallbacks for missing audio.
 export class Sound {
   constructor(music=new Audio(),{bank=new SampleBank()}={}){
@@ -62,7 +63,12 @@ export class Sound {
       source.connect(gain);gain.connect(this.output());source.start(at,tail?Math.max(0,buffer.duration-span):0,span);source.stop(at+span+.01);return true;
     }catch{voice?.dispose();return false;}
   }
-  stopCharge(index){for(const voice of [...this.voices])if(voice.tag===`dj-charge-${index}`)voice.dispose();}
+  stopCharge(index){for(const voice of [...this.voices])if(voice.tag===`dj-charge-${index}`||voice.tag===`bigfoot-lift-${index}`)voice.dispose();}
+  bigfootLift(index,elapsed=0){
+    this.stopCharge(index);const startup=finisherMove({id:'bigfoot'},MOVES.special).startup;
+    const start=Math.max(elapsed,startup/4),duration=startup-start;if(duration<=0)return;
+    this.sample('bigfoot_lift',{volume:.24,delay:Math.max(0,startup/4-elapsed),duration,tail:true,tag:`bigfoot-lift-${index}`});
+  }
   djCharge(index,elapsed=0){
     this.stopCharge(index);const startup=MOVES.special.startup;if(elapsed>=startup)return;
     const tag=`dj-charge-${index}`,delay=Math.max(0,startup/3-elapsed),duration=startup-Math.max(elapsed,startup/3);
@@ -73,9 +79,9 @@ export class Sound {
     this.stopCharge(index);
     if(!this.sample('dj_blast',{volume:.52})){this.tone(95,.5,'sine',.20,35);this.noise(.24,.08,680);}
   }
-  grunt(index,match){
+  grunt(index,match,heavy=false){
     const now=this.context?.currentTime||0;if(!Number.isInteger(index)||now-(this.lastGrunt[index]??-Infinity)<.42)return;
-    if(this.sample(gruntGroup(match?.fighters?.[index]?.definition?.id),{volume:.14}))this.lastGrunt[index]=now;
+    if(this.sample(gruntGroup(match?.fighters?.[index]?.definition?.id,heavy),{volume:.14}))this.lastGrunt[index]=now;
   }
   updateMovement(match,paused=false){
     if(!this.ready()||paused||match?.phase!=='fight'){this.footsteps=[];return;}
@@ -85,21 +91,21 @@ export class Sound {
       if(!moving||!old||old.id!==f.id||old.round!==match.round)continue;
       const distance=Math.abs(f.x-old.x);if(distance<.1||distance>110)continue;
       next.distance=old.distance+distance;const stride=f.state==='run'?100:78,now=this.context.currentTime;
-      if(next.distance>=stride&&now-old.last>=.15){this.sample('ring_footstep',{volume:.11});next.distance%=stride;next.last=now;}
+      if(next.distance>=stride&&now-old.last>=.15){this.sample(f.definition?.id==='bigfoot'?'bigfoot_step':'ring_footstep',{volume:.11});next.distance%=stride;next.last=now;}
     }
   }
   bell(){if(this.sample('ring_bell',{volume:.38}))return;for(const [f,v] of [[880,.12],[1422,.045],[2100,.025]])this.tone(f,.7,'sine',v,f);}
   crowd(){const now=this.context?.currentTime||0;if(now-this.lastCrowd<1.5)return;this.lastCrowd=now;this.noise(.95,.095,1450,'bandpass');this.noise(.7,.05,650,'bandpass',.14);}
   celebrate(){if(!this.enabled||this.suspended)return;for(const [i,f] of [261.63,329.63,392,523.25,659.25].entries())this.tone(f,.65,'triangle',.08,f,i*.14);this.crowd();}
   play(events,match=null){
-    if(match)for(const [i,f] of match.fighters.entries())if(f.move!=='special'||f.definition.id!=='dj-clay')this.stopCharge(i);
+    if(match)for(const [i,f] of match.fighters.entries())if(f.move!=='special'||!['dj-clay','bigfoot'].includes(f.definition.id))this.stopCharge(i);
     for(const e of events){switch(e.type){
     case 'hit':{
       this.stopCharge(e.index);const group=impactGroup(e,match),heavy=e.move!=='light';
       if(group&&!this.sample(group,{volume:heavy?.48:.40})){this.tone(heavy?105:170,heavy?.18:.10,'sine',heavy?.19:.13,45);this.noise(heavy?.16:.075,heavy?.12:.075,heavy?720:1700);}
-      this.grunt(e.index,match);if(e.move==='special'||e.combo>=3)this.crowd();break;
+      this.grunt(e.index,match,heavy);if(e.move==='special'||e.combo>=3)this.crowd();break;
     }
-    case 'slam':this.stopCharge(e.index);if(!this.sample('body_slam_ring',{volume:.5})){this.tone(85,.32,'sine',.24,25);this.noise(.32,.19,430);}this.grunt(e.index,match);this.crowd();break;
+    case 'slam':this.stopCharge(e.index);if(!this.sample(match?.fighters?.some(f=>f.definition.id==='bigfoot')?'bigfoot_slam':'body_slam_ring',{volume:.5})){this.tone(85,.32,'sine',.24,25);this.noise(.32,.19,430);}this.grunt(e.index,match,true);this.crowd();break;
     case 'throwBreak':this.tone(410,.17,'triangle',.10,650);break;
     case 'ropeRebound':if(!this.sample('rope_bounce',{volume:.3})){this.tone(180,.24,'triangle',.08,370);this.noise(.09,.05,2100,'bandpass');}break;
     case 'ropeBreak':case 'holdBreak':case 'kickout':this.tone(500,.22,'triangle',.10,850);this.crowd();break;
@@ -108,18 +114,21 @@ export class Sound {
     case 'block':this.noise(.06,.08,2800,'bandpass');this.tone(480,.08,'triangle',.05,180);break;
     case 'poleClaim':this.tone(440,.2,'triangle',.07,880);break;
     case 'weaponBreak':this.noise(.13,.07,1600);break;
-    case 'fight':this.bell();break;
+    case 'fight':this.bell();if(match)for(const [i,f] of match.fighters.entries())if(f.definition.id==='bigfoot')this.sample('bigfoot_idle',{volume:.16,delay:i*.2});break;
+    case 'tauntStart':if(match?.fighters?.[e.index]?.definition.id==='bigfoot')this.sample('bigfoot_roar',{volume:.24});break;
     case 'count':this.noise(.09,.18,950);this.tone(180+e.count*70,.12,'triangle',.08,110);break;
     case 'special':{
       const f=match?.fighters?.[e.index],dj=(e.fighter||f?.definition?.id)==='dj-clay'&&e.kind!=='dive';
-      if(dj){if(!f||f.move==='special')this.djCharge(e.index,f?.t||0);}else this.tone(160,.36,'sawtooth',.04,880);break;
+      if(dj){if(!f||f.move==='special')this.djCharge(e.index,f?.t||0);}
+      else if((e.fighter||f?.definition?.id)==='bigfoot'&&e.kind!=='dive'){if(!f||f.move==='special')this.bigfootLift(e.index,f?.t||0);}
+      else this.tone(160,.36,'sawtooth',.04,880);break;
     }
-    case 'attackActive':if(e.move==='special'&&e.fighter==='dj-clay')this.djBlast(e.index);break;
-    case 'roundEnd':this.stopCharge(0);this.stopCharge(1);this.bell();this.crowd();break;
+    case 'attackActive':if(e.move==='special'&&e.fighter==='dj-clay')this.djBlast(e.index);else if(e.move==='special'&&e.fighter==='bigfoot'){this.stopCharge(e.index);if(!this.sample('bigfoot_impact',{volume:.48})){this.tone(85,.32,'sine',.2,25);this.noise(.24,.14,430);}}break;
+    case 'roundEnd':this.stopCharge(0);this.stopCharge(1);this.bell();this.crowd();if(match?.fighters?.[e.winner]?.definition.id==='bigfoot')this.sample('bigfoot_roar',{volume:.24});break;
     case 'round':this.stopEffects();break;
     case 'grapple':this.stopCharge(0);this.stopCharge(1);this.noise(.08,.05,600);break;
-    case 'swing':if(!(e.move==='special'&&e.fighter==='dj-clay')&&!this.sample('weapon_swing',{volume:e.move==='light'?.12:.19}))this.noise(.07,.025,1900,'bandpass');break;
-    case 'land':if(!events.some(x=>x.type==='slam'&&x.index===e.index)&&!this.sample('jump_landing',{volume:.25}))this.noise(.065,.04,350);break;
+    case 'swing':if(e.fighter==='bigfoot'&&e.move!=='special')this.sample('bigfoot_attack',{volume:.16});if(!(e.move==='special'&&['dj-clay','bigfoot'].includes(e.fighter))&&!this.sample('weapon_swing',{volume:e.move==='light'?.12:.19}))this.noise(.07,.025,1900,'bandpass');break;
+    case 'land':if(!events.some(x=>x.type==='slam'&&x.index===e.index)&&!this.sample(match?.fighters?.[e.index]?.definition.id==='bigfoot'?'bigfoot_slam':'jump_landing',{volume:.25}))this.noise(.065,.04,350);break;
     }}
   }
 }

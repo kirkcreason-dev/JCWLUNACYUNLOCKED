@@ -7,6 +7,8 @@ export function fighterProfile(f){
   return {id:'brawler',label:'BRAWLER',tip:'Balanced strikes, weapons and throws',grab:.22,heavy:.72,climb:.18,jump:.10,weapon:.22};
 }
 export function finisherMove(f,base){
+  // Four authored wind-up poses lead into Bigfoot's fifth-frame contact.
+  if(f.id==='bigfoot')return {...base,startup:.42,active:.18,recovery:.48};
   switch(fighterProfile(f).id){
     case 'flyer':return {...base,reach:174,damage:28,knock:100};
     case 'technician':return {...base,reach:157,damage:29,stun:.95,knock:65};

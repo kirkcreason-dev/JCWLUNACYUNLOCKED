@@ -1,0 +1,89 @@
+{
+  "sourceSHA256": "590e4cc3394980e17639897e924e6b3cb1831f5fac13ffdb9aafd18f078440fd",
+  "files": [
+    {
+      "file": "dist/assets/sfx/bigfoot/03_BigFoot_Attack_Grunt_A.wav",
+      "sha256": "fc6d632a4cfd7e97568696e3e3c98f32c508075a3f1f0e444b277690b053627f",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.36
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/11_BigFoot_Chokeslam_Lift.wav",
+      "sha256": "8bf4247960ee32c9987354cb74f0248fa89546869f41dcc935de8ed10ab8f7b6",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.85
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/08_BigFoot_Heavy_Footstep_B.wav",
+      "sha256": "915874928f8f76ea858b750734cd2d1752f6efb70e00d4c71d8beabddc8e9b8c",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.39
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/04_BigFoot_Attack_Grunt_B.wav",
+      "sha256": "d739f1a50e85d528f5983a8bea416f907e18bea48ad2ce3e46c0f236b29aadc9",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.46
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/10_BigFoot_Ring_Body_Slam.wav",
+      "sha256": "e8f2f56dcbbc36fde5b250de76352dd1d054f7f17000bb65f9106cd3344f46fe",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.95
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/09_BigFoot_Heavy_Hit.wav",
+      "sha256": "1274e213508167ec4bd89be58b06bf39a4b842f791a4ccb4965d3a86f988d736",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.37
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/01_BigFoot_Idle_Growl.wav",
+      "sha256": "31577c02c273b289b86df3b77f7fd6b7a8d8bca6318667cce68f5d30323c3c7d",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 1.2
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/02_BigFoot_Taunt_Roar.wav",
+      "sha256": "494751889e4e1a3ed7f45d46d62828bc43399ac546514ca1f11ab4a383180819",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 1.8
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/12_BigFoot_Chokeslam_Impact.wav",
+      "sha256": "2dbe5d583f33f07d93f965dfc98355ccd56bd96af379569d14d833bdaf931c89",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 1.2
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/07_BigFoot_Heavy_Footstep_A.wav",
+      "sha256": "987632f9cfab80b7cee9c6c114aebc52223f56a308449db1e67e03c24c7f7569",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.36
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/06_BigFoot_Hurt_Oof_B.wav",
+      "sha256": "613fba36497b9f38275fc623714dcf62a8532f59d1c6b97c69e977be152e5ee0",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.7
+    },
+    {
+      "file": "dist/assets/sfx/bigfoot/05_BigFoot_Hurt_Oof_A.wav",
+      "sha256": "b03f46861692ee812e2d60623085a7ee3984435ed1b8e71d0845f66521e491fc",
+      "channels": 1,
+      "hz": 48000,
+      "seconds": 0.43
+    }
+  ]
+}

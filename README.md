@@ -1,10 +1,35 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.21.0**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.23.1**.
 
-## Secret fighters (v0.21.1)
+## Live fixes carried forward (v0.23.1)
 
-Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope are hidden from the fighter picker until the championship belt is won once on this browser. See CHANGELOG.md and GAMEPLAY.md. Use v0.21.1 on both devices for online play.
+v0.23.0 plus every fix already live on the site: secret fighters (Evil Dead, Violent J, Jeff Lane, DJ Clay and Shaggy 2 Dope stay hidden from the picker until the championship belt is won once on this browser; a saved arcade run for a still-locked fighter is not offered), the closer action camera (1.2× zoom that pans with the pair on desktop and phones), JCW's roster corrections (JP/Tommy Grayson and Atiba/Bruce Wayans artwork swapped back, Ruffo's real sheet — the one that shipped as "Yabo" — restored, Jacksyn and Tommy Grayson spelled as on the website), match reports to jcwlunacy.net for Juggalo Locker badges, the date-of-birth gate and the Lunatics Only lock (plays only on jcwlunacy.net, in the JCW Lunacy app, or a local dev server).
+
+## Bigfoot joins the regular roster (v0.23.0)
+
+**40 playable fighters.** Yabo is removed and Bigfoot is on the usual fighter pages and opponent list (page 2 on portrait phones), with his supplied movement, weapons, taunts, rope moves, chokeslam and 12 sound effects. The other 39 fighter records/media and the v0.22.1 recovery fixes remain included. Both original Bigfoot ZIPs are retained in `source-packs`.
+
+Existing saved progress and medals remain compatible. New arcade runs face 39 opponents. Saved runs replace upcoming Yabo matches while retaining other progress. Online now uses v22 / LU230 rooms and requires this build on both devices. Bigfoot uses neutral ratings until ratings are supplied; Chokeslam is named in his artwork. See [BIGFOOT.md](BIGFOOT.md) for controls, source mappings and test results. Full ZIP only; no push or deployment.
+
+## Recovery follow-up (v0.22.1)
+
+- Fixed recovery controls being covered/disabled by an older result screen after a failed opponent load. A graphics reset on a completed match reopens its result without counting the win again.
+- Character select now offers **RESUME ARCADE** for a saved run, restoring fighter, difficulty, opponent and completed falls. Older v0.22.0 saves remain supported. The default fighter's Continue button also keeps its label after startup.
+- Pending win/loss, arcade, medal and championship saves retry when returning to character select, hiding/leaving the page or using the recovery Reload button. A persistent storage failure still means session-only progress.
+- All 40 fighters and existing artwork, sound, approvals and gameplay rules are preserved. No push or deployment.
+
+## Stability and saved arcade runs (v0.22.0)
+
+- Pole CPU uses the same climbing boundary as player controls, fixing repeated punch whiffs just outside either corner.
+- Arcade runs save all completed opponents and falls by fighter and difficulty. After a reload, pick the same fighter/difficulty and select **CONTINUE ARCADE RUN**. An interrupted round restarts with full health; finished opponents stay defeated. Losses retry the same opponent. **START OVER · NEW RUN** explicitly resets that run.
+- Match loading suspends drawing/simulation while old assets are released, with a loading screen, cancel action and retry on failed artwork downloads. The cache remains two active fighter sheets and one arena.
+- A restored canvas now resumes rendering and offers **RESUME** for an offline match, preserving its live state. Other errors offer retry or reload with the saved run intact. Hidden pages do not advance matches. Retry clears any interrupted canvas transform stack.
+- **GAME WINS** and **LOSSES** track completed solo and online matches locally from this version onward. Falls, practice and local two-player matches are excluded. A receipt prevents counting the same result twice after recovery. Existing championship records and arcade medals are preserved.
+
+The supplied v0.21.0 source had no lifetime game-win counter or external account-achievement integration. This adds a local record; it cannot repair a separate website/account counter without that integration's source. Old medals cannot reconstruct exact historical match totals, so no totals are invented. Saved progress is specific to the same browser and site address; clearing site data clears local records. Storage failure is shown as session-only progress.
+
+See [STABILITY-UPDATE.md](STABILITY-UPDATE.md) for diagnosis, verification and device-testing limits.
 
 ## Evil Dead joins the roster (v0.21.0)
 
@@ -55,10 +80,10 @@ Sounds load in the background with bounded memory and simultaneous playback. Mis
 ## Tester update and illustrated controls (v0.18.0)
 
 - All 39 fighters have bare hands, chair, bat, guitar and trash can; 2 Tuff Tony also has a bottle. The original nine now taunt, climb and dive using their own supplied poses.
-- Corrected display names: Abel and Jackson (Jackson reverted to Jacksyn in v0.21.4). Stable internal IDs preserve existing saves and source mappings.
+- Corrected display names: Abel and Jackson (Jackson reverted to Jacksyn, and Tommy shown as Tommy Grayson, in v0.21.4). Stable internal IDs preserve existing saves and source mappings.
 - Free movement faces travel. Attacks and blocks turn toward the opponent. Matt Cross/Steven Flowe locomotion and jump scales are adjusted; Vito uses full-size airborne poses. Matching fall/rest endpoints avoid size pops. Tony and Kerry use backward body rotation for face-up back bumps and pins, without the inverted fall frames.
 - Down + HEAVY commits to a guard counter. HEAVY in the air is an air strike. Both use the fighter's own strike/kick art. A confirmed HIT → HIT → HEAVY chain ends in a knockdown. Blocks and whiffs retain recovery; no infinite chain.
-- Arcade rewards per fighter: Easy bronze/Lunacy Survivor, Normal silver/Roster Wrecker, Hard gold/Lunacy Legend. Each medal adds a portrait frame; all three earn a Triple Crown frame. Achievements save locally. Arcade runs themselves remain single-session runs; championships retain their existing checkpoints.
+- Arcade rewards per fighter: Easy bronze/Lunacy Survivor, Normal silver/Roster Wrecker, Hard gold/Lunacy Legend. Each medal adds a portrait frame; all three earn a Triple Crown frame. Achievements save locally. Arcade runs now save completed opponents and falls; interruptions restart only the current round. Championships retain their existing checkpoints.
 - Taller portrait ring, shorter landscape HUD, safe-area/fullscreen handling, and a stable camera envelope during normal jumps. Browser bars and rotation recompute the layout without repeated canvas clearing.
 - Stronger, throttled vibration on supported devices; gesture activation, a TEST VIBRATION button, and explicit unsupported/declined feedback. Unsupported browsers cannot be made to vibrate by game code. See [MDN Vibration API](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate).
 - Supplied touch-control sheet used unchanged through CSS regions: D-pad, HIT/HEAVY/FINISH, contextual GRAB states and recovery. Weapon names, finisher charge and escape progress stay live. The original functional controls remain the fallback if this optional artwork fails to load.
@@ -78,7 +103,7 @@ Josh Bishop, Ring Rat and The Green Phantom are playable in all modes. Their 86 
 - Contextual first-match tips explain approach, strikes, combos, reversals, pins, escapes and finishers. Tips remember completed lessons, can be disabled, and can be reset in Controls.
 - Decoded match artwork is evicted before the next match loads; old arena requests cannot repopulate the cache. Image requests time out, failed optional art backs off, and sound nodes are capped and explicitly released. Automatic display reduces rendering cost after sustained expensive draws; combat still simulates at 60 Hz.
 
-**Online:** both players need v0.21.0. New v21 / LU210 rooms isolate clients without the 40th fighter. The host retains the corrected dive collision. Existing championship saves and arcade medals remain compatible.
+**Online:** use v0.23.0 on both devices. New v22 / LU230 rooms isolate clients without Bigfoot and his chokeslam state. The host retains the corrected dive collision. Existing championship saves and arcade medals remain compatible.
 
 Validation details and device handoff are in TESTING.md. Automated checks cover the full roster, online selection, championship saves and credits, phone pagination, and native canvas rendering. Physical-device playtesting remains necessary.
 
@@ -167,7 +192,7 @@ If an older game link has exactly nine wrestlers, it is a different build. At th
 ## Phone match optimization (v0.8.2)
 
 - The ring and thumb controls fit the visible phone screen, including browser toolbar changes, notches, and the home indicator. Portrait keeps controls below the ring; landscape uses narrower side controls and a larger HUD.
-- A steady camera, a little closer than the full ring, pans to follow both wrestlers on every layout; normal corner travel and jumps keep the same scale, with extra headroom for unusually tall aerial moves.
+- A steady full-ring camera keeps normal corner travel and jumps at the same scale, with extra headroom for unusually tall aerial moves.
 - Rotation clears held inputs and pauses offline matches. Online play keeps running and sends neutral input until you press again.
 - Automatic display mode sizes the canvas for the screen and caps rendering at 60 fps, including on 90/120 Hz displays. **CONTROLS → DISPLAY → SAVE BATTERY** reduces rendering to 30 fps. Combat simulation and input sampling stay at 60 Hz in either mode.
 - Phone rendering limits decorative particles and glow effects. Static menus and paused matches do not continuously repaint the canvas; hidden tabs do not draw it.
@@ -193,7 +218,7 @@ python -m http.server 8080 --directory dist
 
 ## Included
 
-- Thirty-nine playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Abel, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, Ruffo, Kongo Kong, Father Bronson, Hokane, Steven Flowe, EC3, Krule, Jeeves, Atiba, JP Grayson, Tommy Grayson, Shaggy 2 Dope, Jacksyn, DJ Clay, Jeff Lane, Shane Mercer, Josh Bishop, Ring Rat, The Green Phantom, Evil Dead. (Yabo was removed in v0.21.3.)
+- Thirty-nine playable wrestlers: Violent J, 2 Tuff Tony, Willie Mack, Mickie Knuckles, Kerry Morton, Mr. Happy, Moshpit Mike, Cokane, Yabo, Abel, Dani Mo, Facade, J-Rod, Matt Cross, Vincenzo, Caleb Konley, Sally Boy, Big Vito, Bruce Wayans, Alice Crowley, Ruffo, Kongo Kong, Father Bronson, Hokane, Steven Flowe, EC3, Krule, Jeeves, Atiba, JP Grayson, Tommy, Shaggy 2 Dope, Jackson, DJ Clay, Jeff Lane, Shane Mercer, Josh Bishop, Ring Rat, The Green Phantom.
 - Online multiplayer through the original JCW Firebase project: private room codes and Quick Match.
 - VS CPU with three difficulty levels; local two-player versus; a thirty-eight-opponent arcade run.
 - Six arenas: Bloodymania, Hell’s Pit, Madhouse, Rusted Warehouse, Funhouse, and Lunacy Outdoors. The last two are recovered from the legacy ZIP.
@@ -230,7 +255,7 @@ In solo modes, WASD remains a movement alias for Player 1. In local versus, WASD
 
 **Phone:** slide your left thumb across the cross-shaped D-pad; diagonals support moving and jumping. The middle rests neutral. Lift your thumb or slide outside the pad to stop. Use another finger on the action buttons while moving. Hold HIT for repeated ordinary strikes, or turn that option off in CONTROLS. Heavy, grapple, finisher, and escape actions require fresh presses. GRAB becomes PIN beside a downed opponent and BREAK during an enemy grapple. When downed or pinned, a large GET UP / KICK OUT button replaces the action cluster. Tap it repeatedly; the input adapter supplies alternating strike/heavy presses to the existing escape rules. Holding it does not escape automatically.
 
-**Phone view:** landscape places controls in side rails outside the ring. Portrait uses a fitted 4:3 stage and larger HUD, with controls below. One proportional arena shares the fighters' steady camera, which sits a little closer than the full ring and pans with the pair; moving to a corner cannot reveal a second backdrop or change the normal scale. The match layout follows the visible screen as browser bars change. Turning the phone pauses an offline match and clears held input. Portrait mode is playable without rotating the phone. Pausing and opening CONTROLS hides the touch deck, and losing focus clears input. Use CONTROLS → TOUCH CONTROLS → ALWAYS SHOW if your device does not identify itself as a touch screen. Vibration only runs on supporting devices.
+**Phone view:** landscape places controls in side rails outside the ring. Portrait uses a fitted 4:3 stage and larger HUD, with controls below. One proportional arena shares the fighters' steady camera; moving to a corner cannot reveal a second backdrop or change the normal scale. The match layout follows the visible screen as browser bars change. Turning the phone pauses an offline match and clears held input. Portrait mode is playable without rotating the phone. Pausing and opening CONTROLS hides the touch deck, and losing focus clears input. Use CONTROLS → TOUCH CONTROLS → ALWAYS SHOW if your device does not identify itself as a touch screen. Vibration only runs on supporting devices.
 
 **Run:** keep moving in one direction for about 0.38 seconds to accelerate. Shift starts the run immediately; touch players simply hold the D-pad. Releasing direction stops movement.
 
@@ -308,7 +333,7 @@ npm test
 
 The original uploads are labeled JPEG/PNG sheets rather than runtime-ready uniform grids. `tools/prepare_assets.py` extracts complete figures, removes connected paper backgrounds, preserves enclosed white costume details, normalizes size, and packs tight transparent atlases. `tools/asset-audit.json` records source filenames and crop bounds. `tools/asset-review.jpg` shows representative prepared poses.
 
-The game uses source artwork without the sheet headings, borders, or neighboring poses. Walking direction is corrected where source sheets face the other way. (The source folder named `Yahoo` shipped as Yabo until v0.21.3; per JCW it is actually Ruffo, and v0.21.4 restored it as Ruffo's artwork.) Atlas frames carry foot anchors so a swinging chair does not move the whole wrestler sideways. Lifted opponents rotate as a single intact sprite around their body center, with a smooth lift and landing. The runtime does not bake a second wrestler into the attacker sprite: it synchronizes two independently selected characters, avoiding baked-in duplicate opponents.
+The game uses source artwork without the sheet headings, borders, or neighboring poses. Walking direction is corrected where source sheets face the other way. The source folder named `Yahoo` is presented as **Yabo**. Atlas frames carry foot anchors so a swinging chair does not move the whole wrestler sideways. Lifted opponents rotate as a single intact sprite around their body center, with a smooth lift and landing. The runtime does not bake a second wrestler into the attacker sprite: it synchronizes two independently selected characters, avoiding baked-in duplicate opponents.
 
 Some poses are adapted from other supplied actions: ordinary strikes use authored elbows or selected forward-hand throw poses with recoil, and 2 Tuff Tony's pin uses a kneeling recovery pose. New dedicated lifted/thrown poses are used where supplied; otherwise the intact selected opponent rotates through the throw. All 435 image files in the fifteen fighter archives appear in `tools/new-asset-audit.json`. Duplicate viewing directions, clipped figures, scenery, and labels are excluded from runtime sequences. Matt Cross, Vincenzo, Caleb Konley, Father Bronson, Hokane, and the five v0.6 additions use their intact bodies with the prepared guitar prop where original contact artwork overlaps or clips. Rope scenery is removed with reviewed regions and narrow background repairs; tiny illustrated edge remnants may remain. See `SPRITE-MAP.md`. Ring exits, story dialogue, persistent unlocks, and unique signature choreography remain outside this build. All twenty-four wrestlers are available immediately.
 

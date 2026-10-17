@@ -1,4 +1,4 @@
-import {FIREBASE_CONFIG} from './firebase-config.js?v=0.21.4';
+import {FIREBASE_CONFIG} from './firebase-config.js?v=0.23.1';
 let loading;
 const load=src=>new Promise((resolve,reject)=>{
   const script=document.createElement('script');script.src=src;script.async=true;

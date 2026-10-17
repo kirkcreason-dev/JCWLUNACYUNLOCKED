@@ -1,4 +1,4 @@
-import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.21.4';
+import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.23.1';
 // Pure fixed-step match simulation. Rendering and input devices never change the rules.
 export const STEP = 1 / 60;
 export const FLOOR = 593;
@@ -136,7 +136,7 @@ export class Match {
     if(f.state==='equip'){if(f.t>=.24){f.state='idle';f.t=0;}else return;}
     if(f.stun>0){f.stun=Math.max(0,f.stun-dt);if(f.stun>0)return;f.state=f.z>0?'jump':'idle';f.t=0;f.exhausted=false;}
     if(f.move){
-      const m=attackTiming(f.move,f.attackStyle),action=f.buffer?.action;
+      const m=f.move==='special'?finisherMove(f.definition,MOVES.special):attackTiming(f.move,f.attackStyle),action=f.buffer?.action;
       if(!f.activeCue&&f.t>=m.startup){f.activeCue=true;this.emit('attackActive',{index,move:f.move,style:f.attackStyle,fighter:f.definition.id});}
       // Confirmed grounded jabs can link twice, then finish with a heavy.
       // Whiffs, blocks, weapon swings and finishers retain their full recovery.
@@ -203,9 +203,20 @@ export class Match {
     f.reboundTime=0;f.buffer=null;f.invincible=0;f.wakeUpProtected=false;f.runTime=0;f.runDirection=0;f.chain=chained?f.chain+1:0;
     if(key==='special'){f.meter=0;this.emit('special',{index,name:f.definition.finisher||'LUNACY FINISHER',fighter:f.definition.id,kind:'strike'});}
     f.attackStyle=key==='light'?'light':['counter','aerial'].includes(key)?(f.definition.animations?.kick?'kick':'light'):f.weapon==='none'?(f.definition.animations?.kick?'kick':'light'):f.weapon;
+    if(key==='special'&&f.definition.id==='bigfoot')f.attackStyle='light';
     f.state=['counter','aerial'].includes(key)?'heavy':key;f.move=key==='heavy'&&['bat','guitar','trashcan','bottle'].includes(f.weapon)?f.weapon:key;
     f.t=chained&&key==='heavy'?.09:0;f.hit=false;f.confirmed=false;f.activeCue=false;
     this.emit('swing',{index,move:key,style:f.attackStyle,fighter:f.definition.id});
+    if(key==='special'&&f.definition.id==='bigfoot'&&f.z===0){
+      const enemy=this.fighters[1-index];
+      // A close, unguarded target follows the supplied one-hand lift. A block,
+      // jump, protected recovery or out-of-range attempt keeps the ordinary
+      // charged-strike rules; meter is spent even on a miss or grab break.
+      if(enemy.z===0&&enemy.invincible===0&&!unavailable(enemy)&&enemy.state!=='block'&&Math.abs(enemy.x-f.x)<106){
+        this.grapple={kind:'chokeslam',attacker:index,time:0,startX:enemy.x};
+        f.vx=0;enemy.reboundTime=0;enemy.state='grabbed';enemy.move=null;enemy.vx=0;enemy.vz=0;enemy.stun=0;enemy.t=0;enemy.buffer=null;
+      }
+    }
   }
   contact(index){
     const f=this.fighters[index],e=this.fighters[1-index];if(!f.move||f.hit)return;
@@ -264,6 +275,7 @@ export class Match {
   updateGrapple(dt){
     const g=this.grapple,a=this.fighters[g.attacker],b=this.fighters[1-g.attacker];g.time+=dt;
     if(g.kind==='superplex'){this.updateSuperplex(dt);return;}
+    if(g.kind==='chokeslam'){this.updateChokeslam();return;}
     const t=g.time;a.t=t;b.t=t;
     if(t<=THROW_BREAK_WINDOW&&b.buffer?.action==='grapple'){this.breakGrapple();return;}
     if(t<.32){b.x=g.startX+(clamp(a.x+a.facing*62,LEFT,RIGHT)-g.startX)*smooth(t/.32);b.z=0;}
@@ -281,6 +293,20 @@ export class Match {
         if(b.hp<=0)this.endRound(g.attacker,'KNOCKOUT');
       }
     }
+  }
+  updateChokeslam(){
+    const g=this.grapple,a=this.fighters[g.attacker],b=this.fighters[1-g.attacker],m=finisherMove(a.definition,MOVES.special),t=g.time;
+    a.t=t;b.t=t;
+    if(t<=THROW_BREAK_WINDOW&&b.buffer?.action==='grapple'){this.breakGrapple();return;}
+    b.x=g.startX+(clamp(a.x+a.facing*72,LEFT,RIGHT)-g.startX)*smooth(t/(m.startup/2));
+    const liftStart=m.startup/4,driveStart=m.startup*.75;
+    b.z=t<driveStart?112*smooth((t-liftStart)/(driveStart-liftStart)):112*(1-smooth((t-driveStart)/(m.startup-driveStart)));
+    if(t<m.startup)return;
+    b.z=0;b.vz=0;this.grapple=null;a.activeCue=true;
+    this.emit('attackActive',{index:g.attacker,move:'special',style:a.attackStyle,fighter:a.definition.id});
+    this.resolveAttack({index:g.attacker,move:'special',facing:a.facing,blocked:false,combo:false});
+    b.vx=0;b.fallDuration=0; // The body has already landed beside the attacker.
+    if(b.hp<=0)this.endRound(g.attacker,'KNOCKOUT');
   }
   breakGrapple(){
     const g=this.grapple;
@@ -436,7 +462,9 @@ export class Match {
     if(distance>92)v[toward]=true;
     if(this.pole&&!this.pole.broken){
       if(!this.pole.claimed){
-        const atPole=Math.abs(me.x-this.pole.x)<65;
+        // Use the same corner boundary as updateFighter's climb check.
+        // Measuring 65px from the inset pole leaves an 18px band of endless grab whiffs.
+        const atPole=this.pole.x<640?me.x<LEFT+65:me.x>RIGHT-65;
         if(me.state==='perch'&&atPole){v.grapple=true;this.aiInput={...v};delete this.aiInput.pressed;return v;}
         if(distance>180){v.left=false;v.right=false;if(!atPole)v[me.x<this.pole.x?'right':'left']=true;else if(me.z===0){v.grapple=true;v.pressed={grapple:true};}this.aiInput={...v};delete this.aiInput.pressed;return v;}
       }else if(this.pole.looseX!==null&&me.z===0){const gap=Math.abs(me.x-this.pole.looseX);if(gap<80){v.weapon=true;v.pressed={weapon:true};}else if(distance>180){v.left=false;v.right=false;v[me.x<this.pole.looseX?'right':'left']=true;}if(gap<80||distance>180){this.aiInput={...v};delete this.aiInput.pressed;return v;}}

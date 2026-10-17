@@ -1,11 +1,18 @@
 const wavs=(group,count)=>Array.from({length:count},(_,i)=>`./assets/sfx/jcw/${group}_${String(i+1).padStart(2,'0')}.wav`);
+const bigfoot=(...names)=>names.map(name=>`./assets/sfx/bigfoot/${name}.wav`);
 export const SAMPLE_GROUPS=Object.freeze({
   punch_hit:wavs('punch_hit',3),kick_hit:wavs('kick_hit',3),body_slam_ring:wavs('body_slam_ring',4),
   chair_hit:wavs('chair_hit',3),trashcan_hit:wavs('trashcan_hit',3),bat_hit:wavs('bat_hit',3),guitar_smash:wavs('guitar_smash',3),
   weapon_swing:wavs('weapon_swing',4),rope_bounce:wavs('rope_bounce',3),jump_landing:wavs('jump_landing',3),ring_bell:wavs('ring_bell',2),
   ring_footstep:wavs('ring_footstep',4),male_oof_synthetic:wavs('male_oof_synthetic',3),female_oof_synthetic:wavs('female_oof_synthetic',3),
   dj_button:['./assets/sfx/dj-clay/01_chest_button_press.wav'],dj_charge:['./assets/sfx/dj-clay/02_speaker_charge.wav'],
-  dj_blast:[1,2,3].map(i=>`./assets/sfx/dj-clay/03_bass_blast_0${i}.wav`)
+  dj_blast:[1,2,3].map(i=>`./assets/sfx/dj-clay/03_bass_blast_0${i}.wav`),
+  bigfoot_idle:bigfoot('01_BigFoot_Idle_Growl'),bigfoot_roar:bigfoot('02_BigFoot_Taunt_Roar'),
+  bigfoot_attack:bigfoot('03_BigFoot_Attack_Grunt_A','04_BigFoot_Attack_Grunt_B'),
+  bigfoot_hurt:bigfoot('05_BigFoot_Hurt_Oof_A'),bigfoot_hurt_heavy:bigfoot('06_BigFoot_Hurt_Oof_B'),
+  bigfoot_step:bigfoot('07_BigFoot_Heavy_Footstep_A','08_BigFoot_Heavy_Footstep_B'),
+  bigfoot_hit:bigfoot('09_BigFoot_Heavy_Hit'),bigfoot_slam:bigfoot('10_BigFoot_Ring_Body_Slam'),
+  bigfoot_lift:bigfoot('11_BigFoot_Chokeslam_Lift'),bigfoot_impact:bigfoot('12_BigFoot_Chokeslam_Impact')
 });
 // Never decode the long preview or layer the combined DJ attack over components.
 export const SAMPLE_FILES=Object.freeze([...new Set(Object.values(SAMPLE_GROUPS).flat())]);
