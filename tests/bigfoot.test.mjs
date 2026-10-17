@@ -25,7 +25,7 @@ function audioSpy(){
 test('Bigfoot replaces Yabo in the 40-fighter regular selection, exposed by every phone/desktop page size',()=>{
  assert.equal(id,8);assert.equal(roster.length,40);assert.ok(!roster.some(f=>f.id==='yabo'));assert.equal(def.name,'Bigfoot');
  for(const size of [6,8,12]){const p=new RosterSelection(roster.length,size);p.choose(id);assert.ok(p.visible.includes(id));p.resize(6);assert.deepEqual(p.visible,[6,7,8,9,10,11]);}
- assert.equal(def.websiteStats,null);assert.equal(def.finisher,'CHOKESLAM');for(const key of ['power','speed','technique','toughness'])assert.equal(def[key],1);
+ assert.equal(def.websiteStats.source,'User-supplied approval table');assert.equal(def.finisher,'CHOKESLAM');for(const key of ['power','speed','technique','toughness']){assert.equal(def[key],1.2);assert.equal(def.websiteStats[key],10);} // Kirk: maxed out
  assert.deepEqual(def.weapons,['chair','bat','guitar','trashcan']);
  assert.deepEqual(def.animations.fallFront.at(-1),def.animations.down[0]);assert.deepEqual(def.animations.fallBack.at(-1),def.animations.down[1]);assert.deepEqual(def.animations.riseBack[0],def.animations.down[1]);assert.deepEqual(def.animations.ko[0],def.animations.down[1]);
 });

@@ -457,6 +457,22 @@
         "source": "User instruction: Yabo should be removed.",
         "previouslyApproved": true
       }
+    },
+    {
+      "id": "bigfoot",
+      "name": "Bigfoot",
+      "approved": true,
+      "ratings": {
+        "power": 10,
+        "speed": 10,
+        "technique": 10,
+        "toughness": 10
+      },
+      "finisher": "Chokeslam",
+      "override": {
+        "date": "2026-10-17",
+        "source": "User instruction: Bigfoot should be maxed out."
+      }
     }
   ]
 }

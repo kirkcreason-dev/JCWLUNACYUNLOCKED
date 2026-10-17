@@ -1,3 +1,7 @@
+# v0.23.1 update — Bigfoot maxed out
+
+- Bigfoot's ratings are set to the maximum at Kirk's request: 10/10 Power, Speed, Technique and Toughness (game multipliers 1.20 each, the roster ceiling). The pick screen shows them as USER-APPROVED RATINGS; the approval is recorded in roster-approvals.json. Chokeslam and everything else are unchanged. The roster file is always fetched fresh, so no cache-version bump is needed.
+
 # v0.23.1 — v0.23.0 plus the live-site fixes
 
 - Built on the v0.23.0 archive (Bigfoot, v0.22 arcade-recovery/saved-run stability work) with every fix already live re-applied:
