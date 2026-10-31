@@ -1,7 +1,7 @@
-import {SampleBank} from './sample-bank.js?v=0.24.0';
-import {impactGroup,gruntGroup} from './sound-events.js?v=0.24.0';
-import {MOVES} from './engine.js?v=0.24.0';
-import {finisherMove} from './fighter-profile.js?v=0.24.0';
+import {SampleBank} from './sample-bank.js?v=0.25.0';
+import {impactGroup,gruntGroup} from './sound-events.js?v=0.25.0';
+import {MOVES} from './engine.js?v=0.25.0';
+import {finisherMove} from './fighter-profile.js?v=0.25.0';
 // Supplied synthesized samples, with procedural fallbacks for missing audio.
 export class Sound {
   constructor(music=new Audio(),{bank=new SampleBank()}={}){
@@ -124,7 +124,7 @@ export class Sound {
       else this.tone(160,.36,'sawtooth',.04,880);break;
     }
     case 'attackActive':if(e.move==='special'&&e.fighter==='dj-clay')this.djBlast(e.index);else if(e.move==='special'&&e.fighter==='bigfoot'){this.stopCharge(e.index);if(!this.sample('bigfoot_impact',{volume:.48})){this.tone(85,.32,'sine',.2,25);this.noise(.24,.14,430);}}break;
-    case 'roundEnd':this.stopCharge(0);this.stopCharge(1);this.bell();this.crowd();if(match?.fighters?.[e.winner]?.definition.id==='bigfoot')this.sample('bigfoot_roar',{volume:.24});break;
+    case 'roundEnd':for(let i=0;i<Math.max(2,match?.fighters?.length||0);i++)this.stopCharge(i);this.bell();this.crowd();if(match?.fighters?.[e.winner]?.definition.id==='bigfoot')this.sample('bigfoot_roar',{volume:.24});break;
     case 'round':this.stopEffects();break;
     case 'grapple':this.stopCharge(0);this.stopCharge(1);this.noise(.08,.05,600);break;
     case 'swing':if(e.fighter==='bigfoot'&&e.move!=='special')this.sample('bigfoot_attack',{volume:.16});if(!(e.move==='special'&&['dj-clay','bigfoot'].includes(e.fighter))&&!this.sample('weapon_swing',{volume:e.move==='light'?.12:.19}))this.noise(.07,.025,1900,'bandpass');break;

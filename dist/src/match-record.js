@@ -1,5 +1,5 @@
 // Complete matches only: falls, practice and local two-player bouts are excluded.
-const modes=['cpu','pole','arcade','championship','online','elimination'];
+const modes=['cpu','pole','arcade','championship','online','elimination','tag','tornado','squad'];
 const key='lunacy-match-record-v1';
 const empty=()=>({version:1,wins:0,losses:0,receipts:[]});
 export class MatchRecord {

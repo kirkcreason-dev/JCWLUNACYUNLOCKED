@@ -8,7 +8,7 @@ export class Coach {
   learn(key){if(this.learned.has(key))return;this.learned.add(key);try{this.storage?.setItem('lunacy-lessons-v1',JSON.stringify([...this.learned]));}catch{}}
   receive(events,index=0){for(const e of events){if(e.type==='hit'&&e.attacker===index){this.learn('strike');if(e.combo>1)this.learn('combo');}if(e.type==='reversal'&&e.index===index)this.learn('reversal');if(e.type==='special'&&e.index===index)this.learn('finisher');if(e.type==='pin'&&e.index===index)this.learn('pin');if(['kickout','holdBreak'].includes(e.type))this.learn('escape');}}
   text(match,scheme='keyboard',enabled=true){
-    if(!enabled||!match||match.options.mode==='online'||['local','pole-local','elimination-local'].includes(match.options.mode)||match.phase!=='fight')return '';
+    if(!enabled||!match||match.routed||match.options.mode==='online'||['local','pole-local','elimination-local'].includes(match.options.mode)||match.phase!=='fight')return '';
     const [me,other]=match.fighters,distance=Math.abs(me.x-other.x),pad=scheme==='gamepad',touch=scheme==='touch';
     const hit=pad?'X':touch?'HIT':'Z',heavy=pad?'Y':touch?'HEAVY':'X',grab=pad?'B':touch?'PIN':'C',finish=pad?'RB':touch?'FINISH':'V',block=pad?'LB':'Down';
     if(match.pin?.attacker===1)return touch?'Tap KICK OUT repeatedly':`Alternate ${hit} and ${heavy} to escape`;

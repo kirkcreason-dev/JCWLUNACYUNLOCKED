@@ -40,7 +40,7 @@ Win the title to receive the Lunacy championship belt, then select **DEFEND YOUR
 
 Progress saves on this browser after each match, separately for each fighter and difficulty. Return to the same fighter/difficulty and choose **CONTINUE CHAMPIONSHIP** or **DEFEND YOUR TITLE**. Quitting or reloading mid-match restarts that match, not the whole run. Records are local to this browser, not synced across devices; clearing browser data removes them. When browser storage is blocked, the game displays that progress lasts only for the session.
 
-This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v22 / LU230. The full ZIP is not deployed automatically.
+This is a solo CPU mode. Local versus, the full-roster arcade run, practice and online play remain available. Current online rooms use v25 / LU250 (LU250Q- for four players). The full ZIP is not deployed automatically.
 
 ## Timed reversals
 

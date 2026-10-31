@@ -1,3 +1,17 @@
+# v0.25.0 — Real 4-player: online rooms, Tag Team and Tornado Tag
+
+- New mode **ONLINE · 4 PLAYERS**: up to four people, each on their own phone or computer, in one room. The host picks the match type and presses **CREATE 4-PLAYER ROOM**; friends enter the four-letter code and press **JOIN ROOM**. Seats alternate teams — P1 + P3 against P2 + P4. The room shows who has joined and starts by itself when all four are in; the host can press **START NOW** and the CPU fills any empty spots (with unlocked wrestlers nobody picked). Everyone in a room must pick a different wrestler.
+- Three match types, all a choice for every room:
+  - **Tag Team** — one legal wrestler per side. Get to your own corner (left for P1 + P3, right for P2 + P4) and press **TAUNT** to tag your partner in; their controls take over and your health is saved for when you're tagged back. One pin, submission or knockout wins.
+  - **Tornado Tag** — all four in the ring at once. Pinned, submitted or knocked-out wrestlers are eliminated; hit the wrestler who is pinning or throwing your partner to break it up. Last team standing wins (150-second clock; on time, more wrestlers left wins, then more health).
+  - **Elimination** — the v0.24 Survivor-style rules with two per side: one-on-one falls, the loser is out and their teammate comes in.
+- A level finish in Tag or Tornado (double knockout, or a tied clock) goes to **sudden death**: anyone knocked out returns on 30 health and the clock gets at least 30 more seconds.
+- If a friend leaves or their connection stops mid-match, the CPU takes over their wrestler and the match continues; if the host leaves, the room closes for everyone. Wins and losses count for your team toward the game record.
+- **TAG TEAM · CPU** and **TORNADO TAG · ALL 4 IN · CPU** to practise solo: you and a CPU partner against a CPU team, picked in Match Setup (two per side). CPU wrestlers tag out when hurt and run in to break up pins.
+- HUD: Tornado shows both partners per side with their own health and meter; Tag shows the partner waiting on the apron with their health, and **TAUNT TO TAG** when you're in your corner. Every rail names the player (YOU / ONLINE / CPU · P1–P4). Status line tells you when you're on the apron, waiting for your fall, or eliminated.
+- Fixed: the HEAVY / FINISH captions no longer show through the GET UP / KICK OUT button on phones.
+- Online protocol bumped to `lunacy-2d-v25` / `LU250` rooms (4-player rooms use `LU250Q-`), so every player needs v0.25.0. 18 new tests (365 total), plus a four-browser end-to-end run of all three match types.
+
 # v0.24.0 — 4 on 4 Elimination
 
 - New modes: **4 ON 4 ELIMINATION · CPU** and **4 ON 4 ELIMINATION · 2 PLAYER**. Survivor-style: one wrestler per team in the ring; a pin, submission, knockout or time-limit loss eliminates that wrestler and the next teammate comes in. The winner stays in with the damage taken plus a 15-point breather and keeps their Lunacy meter. A draw eliminates both; if both teams' last wrestlers go down together they return for a 50/50 sudden-death fall. Last team with a wrestler left wins.

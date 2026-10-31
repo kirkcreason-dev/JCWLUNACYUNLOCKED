@@ -1,4 +1,4 @@
-import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.24.0';
+import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.25.0';
 // Pure fixed-step match simulation. Rendering and input devices never change the rules.
 export const STEP = 1 / 60;
 export const FLOOR = 593;
@@ -23,6 +23,17 @@ export const TEAM_SIZE = 4;
 // eliminated and the next teammate enters. The winner stays in with the damage taken,
 // plus a short breather. Last team with a wrestler left wins.
 export const ELIMINATION_RECOVERY = 15;
+// Team formats for two-on-two play (vs CPU or four people online):
+//   elimination — one wrestler per side in the ring, loser of each fall is out.
+//   tag         — one legal wrestler per side; TAUNT in your own corner tags your partner.
+//                 One fall decides the match.
+//   tornado     — all four in the ring at once; a pinned, submitted or knocked-out
+//                 wrestler is eliminated. Last team with anyone left wins.
+export const TEAM_FORMATS = Object.freeze(['elimination','tag','tornado']);
+export const isTeamMode = mode => mode==='tag'||mode==='tornado'||mode==='squad';
+export const TAG_REACH = 78;
+export const SUDDEN_DEATH_HP = 30;
+export const defenderOf = hold => hold?(hold.defender??1-hold.attacker):null;
 // Tune travel and attack commitment without speeding the match/escape clocks.
 export const MOVEMENT_PACE = 1.12;
 export const RUN_BUILDUP = .38;
@@ -53,22 +64,46 @@ export class Match {
   constructor(roster,p1=0,p2=1,options={}) {
     this.roster=roster;this.ids=[p1,p2];this.options={difficulty:'normal',mode:'cpu',...options};
     this.random=options.random||Math.random;this.round=1;this.wins=[0,0];this.events=[];this.winner=null;
-    if(isEliminationMode(this.options.mode)){
+    const mode=this.options.mode;
+    this.routed=isTeamMode(mode);
+    this.format=isEliminationMode(mode)?'elimination':mode==='squad'?this.options.format:this.routed?mode:null;
+    if(this.routed&&!TEAM_FORMATS.includes(this.format))throw new Error('Unknown team format');
+    // Players 0 and 2 are on the left team, 1 and 3 on the right. Offline team modes
+    // give player 0 to the person and every other wrestler to the CPU.
+    this.cpuPlayers=new Set(mode==='squad'?(this.options.cpuPlayers||[]):this.routed?[1,2,3]:[]);
+    this.ai={};
+    if(this.format){
       const teams=this.options.teams||[[p1],[p2]];
-      if(teams.length!==2||teams.some(t=>!t.length||t.some(id=>!Number.isInteger(id)||!roster[id]))||new Set(teams.flat()).size!==teams.flat().length)throw new Error('Elimination teams need distinct fighters');
-      this.teams=teams.map(t=>t.slice());this.slot=[0,0];this.out=[[],[]];this.carry=[null,null];this.waiting=false;this.nextIds=null;
-      this.ids=[this.teams[0][0],this.teams[1][0]];
+      if(teams.length!==2||teams.some(t=>!t.length||t.some(id=>!Number.isInteger(id)||!roster[id]))||new Set(teams.flat()).size!==teams.flat().length)throw new Error(`${this.format==='elimination'?'Elimination':'Tag'} teams need distinct fighters`);
+      if(this.format!=='elimination'&&teams.some(t=>t.length!==2))throw new Error('Tag and tornado teams need two wrestlers each');
+      this.teams=teams.map(t=>t.slice());this.slot=[0,0];this.out=[[],[]];this.carry=[null,null];this.waiting=false;this.nextIds=null;this.stats={};
+      this.ids=this.format==='tornado'?[this.teams[0][0],this.teams[1][0],this.teams[0][1],this.teams[1][1]]:[this.teams[0][0],this.teams[1][0]];
     }
+    this.brawl=this.format==='tornado';
     this.newRound();
   }
   newRound(){
-    this.fighters=this.ids.map((id,i)=>({id,definition:this.roster[id],x:i?870:410,z:0,vz:0,vx:0,facing:i?-1:1,hp:100,meter:0,guard:100,guardDelay:0,reversalWindow:0,reversalCooldown:0,secondWindUsed:false,reboundTime:0,reboundDirection:0,state:'idle',t:0,move:null,hit:false,confirmed:false,chain:0,stun:0,invincible:0,wakeUpProtected:false,downTime:0,combo:0,comboTime:0,buffer:null,weapon:this.roster[id].weapons?'none':'chair',attackStyle:'chair',weaponUses:0,weaponWear:{},ropeTime:0,runTime:0,runDirection:0,fallFace:'back',fallDuration:0,exhausted:false,divePower:1,diveHit:false,tauntCooldown:0,last:emptyInput()}));
+    this.fighters=this.ids.map((id,i)=>this.makeFighter(id,i));
     this.pole=isPoleMode(this.options.mode)?{x:this.round%2?LEFT+18:RIGHT-18,claimed:false,holder:null,looseX:null,progress:0,claimant:null,uses:0,broken:false}:null;
     if(this.pole)for(const f of this.fighters)f.weapon='none';
-    if(this.teams)this.fighters.forEach((f,i)=>{const c=this.carry[i];if(c){f.hp=c.hp;f.meter=c.meter;f.secondWindUsed=c.secondWindUsed;}});
+    if(this.teams)this.fighters.forEach((f,i)=>{const c=this.carry[i];if(c&&!this.brawl){f.hp=c.hp;f.meter=c.meter;f.secondWindUsed=c.secondWindUsed;}});
     if(this.options.mode==='practice')this.fighters[0].meter=100;
-    this.phase='intro';this.phaseTime=0;this.remaining=99;this.grapple=null;this.pin=null;this.hitStop=0;this.shake=0;this.totalTime=0;this.aiTimer=0;this.aiInput=emptyInput();this.roundWinner=null;this.method='';
+    this.phase='intro';this.phaseTime=0;this.remaining=this.brawl?150:99;this.grapple=null;this.pin=null;this.hitStop=0;this.shake=0;this.totalTime=0;this.aiTimer=0;this.aiInput=emptyInput();this.ai={};this.roundWinner=null;this.method='';
     this.emit('round',{round:this.round});
+  }
+  // Which person (input slot) drives a wrestler. Unrouted modes keep index = player.
+  playerFor(side,slot=0){return this.routed?side+2*slot:side;}
+  makeFighter(id,i){
+    const side=this.brawl?i%2:i,slot=this.brawl?i>>1:this.slot?.[side]||0;
+    const x=this.brawl?[330,950,480,800][i]:i?870:410;
+    const f=this.newFighter(id,x,side?-1:1);
+    f.side=side;f.player=this.playerFor(side,slot);
+    const saved=this.format==='tag'&&this.stats[id];
+    if(saved)Object.assign(f,{hp:saved.hp,meter:saved.meter,guard:saved.guard,secondWindUsed:saved.secondWindUsed,weaponWear:{...saved.weaponWear}});
+    return f;
+  }
+  newFighter(id,x,facing){
+    return ({id,definition:this.roster[id],x,z:0,vz:0,vx:0,facing,hp:100,meter:0,guard:100,guardDelay:0,reversalWindow:0,reversalCooldown:0,secondWindUsed:false,reboundTime:0,reboundDirection:0,state:'idle',t:0,move:null,hit:false,confirmed:false,chain:0,stun:0,invincible:0,wakeUpProtected:false,downTime:0,combo:0,comboTime:0,buffer:null,weapon:this.roster[id].weapons?'none':'chair',attackStyle:'chair',weaponUses:0,weaponWear:{},ropeTime:0,runTime:0,runDirection:0,fallFace:'back',fallDuration:0,exhausted:false,divePower:1,diveHit:false,tauntCooldown:0,last:emptyInput()});
   }
   emit(type,detail={}){this.events.push({type,...detail});}
   drainEvents(){return this.events.splice(0);}
@@ -76,6 +111,7 @@ export class Match {
     if(this.phase==='done')return;
     dt=clamp(dt,0,.05);this.totalTime+=dt;this.shake=Math.max(0,this.shake-dt*35);
     this.phaseTime+=dt;
+    if(this.routed)inputs=this.routeInputs(inputs,dt,this.phase==='fight');
     if(this.phase==='intro'){
       if(this.phaseTime>=2.4){this.phase='fight';this.phaseTime=0;this.emit('fight');}
       this.remember(inputs);
@@ -84,19 +120,21 @@ export class Match {
     if(this.phase==='roundEnd'){
       for(const f of this.fighters)f.t+=dt;
       if(this.options.mode==='practice'&&this.phaseTime>2){this.newRound();this.phase='fight';this.emit('fight');return;}
-      if(this.teams){if(this.phaseTime>2.4&&!this.waiting)this.nextFall();return;}
+      if(this.format==='elimination'){if(this.phaseTime>2.4&&!this.waiting)this.nextFall();return;}
+      if(this.teams){if(this.phaseTime>2.4){this.phase='done';this.winner=this.roundWinner;this.emit('matchEnd',{winner:this.winner,method:this.method});}return;}
       if(this.phaseTime>2.4){
         if(this.wins.some(n=>n>=2)){this.phase='done';this.winner=this.wins[0]>=2?0:1;this.emit('matchEnd',{winner:this.winner,method:this.method});}
         else{this.round++;this.newRound();}
       }return;
     }
     if(this.options.mode==='practice'){inputs=[inputs[0],emptyInput()];this.fighters[0].meter=100;}
-    else if(!isLocalMode(this.options.mode)&&this.options.mode!=='online') inputs=[inputs[0],this.hitStop>0?this.aiInput:this.cpu(dt)];
+    else if(!this.routed&&!isLocalMode(this.options.mode)&&this.options.mode!=='online') inputs=[inputs[0],this.hitStop>0?this.aiInput:this.cpu(dt)];
     // Capture short presses even during hit-stop; consume one command only when it becomes legal.
     this.fighters.forEach((f,i)=>this.bufferInput(f,inputs[i]||emptyInput(),this.hitStop>0?0:dt));
     if(this.hitStop>0){this.hitStop-=dt;this.remember(inputs);return;}
     if(this.options.mode!=='practice')this.remaining=Math.max(0,this.remaining-dt);
     if(this.remaining<=0&&!this.grapple&&!this.pin){this.timeLimit();return;}
+    if(this.brawl){this.stepBrawl(inputs,dt);return;}
     for(const f of this.fighters){f.t+=dt;f.invincible=Math.max(0,f.invincible-dt);if(!f.invincible)f.wakeUpProtected=false;f.guardDelay=Math.max(0,f.guardDelay-dt);f.comboTime=Math.max(0,f.comboTime-dt);f.tauntCooldown=Math.max(0,f.tauntCooldown-dt);f.reversalWindow=Math.max(0,f.reversalWindow-dt);f.reversalCooldown=Math.max(0,f.reversalCooldown-dt);if(!f.comboTime)f.combo=0;}
     if(this.grapple){this.updateGrapple(dt);this.remember(inputs);if(!this.grapple&&this.remaining<=0)this.timeLimit();return;}
     if(this.pin){this.updatePin(inputs,dt);this.remember(inputs);if(!this.pin&&this.remaining<=0)this.timeLimit();return;}
@@ -130,7 +168,13 @@ export class Match {
     }
   }
   clearInputs(){for(const f of this.fighters){f.buffer=null;f.last=emptyInput();f.reversalWindow=0;}}
-  timeLimit(){const [a,b]=this.fighters;this.endRound(Math.abs(a.hp-b.hp)<.001?null:a.hp>b.hp?0:1,'TIME LIMIT');}
+  timeLimit(){
+    if(this.brawl){
+      // More wrestlers still standing wins; then more health left between them.
+      const alive=[0,1].map(s=>this.remainingOn(s)),hp=[0,1].map(s=>this.fighters.reduce((n,f)=>n+(f.side===s&&!f.out?f.hp:0),0));
+      this.endRound(alive[0]!==alive[1]?(alive[0]>alive[1]?0:1):Math.abs(hp[0]-hp[1])<.001?null:hp[0]>hp[1]?0:1,'TIME LIMIT');return;
+    }
+    const [a,b]=this.fighters;this.endRound(Math.abs(a.hp-b.hp)<.001?null:a.hp>b.hp?0:1,'TIME LIMIT');}
   remember(inputs){this.fighters.forEach((f,i)=>f.last={...(inputs[i]||emptyInput())});}
   updateFighter(f,enemy,input,dt,index){
     if(!input.block)f.reversalWindow=0;
@@ -169,14 +213,16 @@ export class Match {
       f.weapon=choices[(choices.indexOf(f.weapon)+1)%choices.length];f.weaponUses=f.weaponWear[f.weapon]||0;f.state='equip';f.t=0;
       this.emit('weapon',{index,name:f.weapon});return;
     }
+    if(this.format==='tag'&&canAct&&command==='taunt'&&f.z===0&&this.canTag(index)){f.buffer=null;this.tag(index);return;}
     if(canAct&&command==='taunt'&&f.z===0){f.buffer=null;if(f.tauntCooldown===0){f.state='taunt';f.t=0;f.tauntCooldown=4;this.emit('tauntStart',{index});return;}}
+    const target=this.fighters.indexOf(enemy),held=Boolean(this.grapple||this.pin);
     if((canAct||enemy.state==='down')&&command==='grapple'&&f.z===0){
       if(enemy.state==='down'&&Math.abs(f.x-enemy.x)<125){
-        if(canPin(f,enemy)){const kind=f.buffer.submission?'submission':'pin';f.buffer=null;this.startPin(index,kind);}return;
+        if(canPin(f,enemy)&&!held){const kind=f.buffer.submission?'submission':'pin';f.buffer=null;this.startPin(index,kind,target);}return;
       }
       f.buffer=null;
-      if(canCornerThrow(f,enemy)){this.startSuperplex(index);return;}
-      if(enemy.z===0&&enemy.stun===0&&enemy.state!=='rise'&&enemy.invincible===0&&Math.abs(f.x-enemy.x)<106){this.startGrapple(index);return;}
+      if(!held&&canCornerThrow(f,enemy)){this.startSuperplex(index,target);return;}
+      if(!held&&enemy.z===0&&enemy.stun===0&&enemy.state!=='rise'&&enemy.invincible===0&&Math.abs(f.x-enemy.x)<106){this.startGrapple(index,target);return;}
       if(f.definition.animations?.climb&&(f.x<LEFT+65||f.x>RIGHT-65)&&Math.abs(f.x-enemy.x)>135){
         this.dropPoleWeapon(index);f.state='climb';f.t=0;f.ropeTime=0;f.move=null;f.vx=0;f.weapon='none';f.x=f.x<640?LEFT+18:RIGHT-18;f.facing=f.x<640?1:-1;this.emit('climb',{index});return;
       }
@@ -221,26 +267,39 @@ export class Match {
     f.state=['counter','aerial'].includes(key)?'heavy':key;f.move=key==='heavy'&&['bat','guitar','trashcan','bottle'].includes(f.weapon)?f.weapon:key;
     f.t=chained&&key==='heavy'?.09:0;f.hit=false;f.confirmed=false;f.activeCue=false;
     this.emit('swing',{index,move:key,style:f.attackStyle,fighter:f.definition.id});
-    if(key==='special'&&f.definition.id==='bigfoot'&&f.z===0){
-      const enemy=this.fighters[1-index];
+    if(key==='special'&&f.definition.id==='bigfoot'&&f.z===0&&!this.grapple&&!this.pin){
+      const target=this.foe(index),enemy=this.fighters[target];
       // A close, unguarded target follows the supplied one-hand lift. A block,
       // jump, protected recovery or out-of-range attempt keeps the ordinary
       // charged-strike rules; meter is spent even on a miss or grab break.
       if(enemy.z===0&&enemy.invincible===0&&!unavailable(enemy)&&enemy.state!=='block'&&Math.abs(enemy.x-f.x)<106){
-        this.grapple={kind:'chokeslam',attacker:index,time:0,startX:enemy.x};
+        this.grapple={kind:'chokeslam',attacker:index,defender:target,time:0,startX:enemy.x};
         f.vx=0;enemy.reboundTime=0;enemy.state='grabbed';enemy.move=null;enemy.vx=0;enemy.vz=0;enemy.stun=0;enemy.t=0;enemy.buffer=null;
       }
     }
   }
   contact(index){
-    const f=this.fighters[index],e=this.fighters[1-index];if(!f.move||f.hit)return;
+    const f=this.fighters[index];if(!f.move||f.hit)return;
     const m=f.move==='special'?finisherMove(f.definition,MOVES.special):attackTiming(f.move,f.attackStyle);if(f.t<m.startup||f.t>m.startup+m.active)return;
-    if(e.state==='down'||e.state==='rise'||e.invincible>0)return;
-    const dx=e.x-f.x;if(Math.abs(dx)>m.reach||dx*f.facing<0||Math.abs(f.z-e.z)>(f.move==='aerial'?155:105))return;
-    return {index,move:f.move,facing:f.facing,blocked:e.state==='block'&&e.facing===-f.facing&&e.z===0,combo:e.stun>0,chain:f.chain,counter:Boolean(e.move&&e.t<attackTiming(e.move,e.attackStyle).startup),running:Boolean(f.runningAttack)};
+    // One-on-one strikes always look at the other wrestler; in a four-way the
+    // nearest opponent in front of the swing takes it (partners are never hit).
+    let target=null,gap=Infinity;
+    for(const j of this.brawl?this.opponents(index):[1-index]){
+      const e=this.fighters[j];
+      if(e.state==='down'||e.state==='rise'||e.invincible>0)continue;
+      if(this.brawl&&['grabbed','lifted','thrown','pinned'].includes(e.state))continue;
+      const dx=e.x-f.x;if(Math.abs(dx)>m.reach||dx*f.facing<0||Math.abs(f.z-e.z)>(f.move==='aerial'?155:105))continue;
+      if(Math.abs(dx)<gap){gap=Math.abs(dx);target=j;}
+    }
+    if(target===null)return;
+    const e=this.fighters[target];
+    return {index,target,move:f.move,facing:f.facing,blocked:e.state==='block'&&e.facing===-f.facing&&e.z===0,combo:e.stun>0,chain:f.chain,counter:Boolean(e.move&&e.t<attackTiming(e.move,e.attackStyle).startup),running:Boolean(f.runningAttack)};
   }
-  resolveAttack({index,move,facing,blocked,combo,chain=0,counter=false,running=false}){
-    const f=this.fighters[index],e=this.fighters[1-index],m=move==='special'?finisherMove(f.definition,MOVES.special):attackTiming(move,f.attackStyle);
+  resolveAttack({index,target=1-index,move,facing,blocked,combo,chain=0,counter=false,running=false}){
+    // A partner's strike on the wrestler holding a pin or throw breaks it up.
+    if(this.brawl&&this.grapple&&this.grapple.attacker===target)this.breakGrapple();
+    if(this.brawl&&this.pin&&this.pin.attacker===target)this.breakPin();
+    const f=this.fighters[index],e=this.fighters[target],m=move==='special'?finisherMove(f.definition,MOVES.special):attackTiming(move,f.attackStyle);
     f.hit=true;
     if(blocked){
       // A fresh, well-timed guard turns a normal strike aside. Finishers,
@@ -250,11 +309,11 @@ export class Match {
         f.move=null;f.buffer=null;f.confirmed=false;f.chain=0;f.combo=0;f.runningAttack=false;
         f.state='hurt';f.t=0;f.stun=.32;f.vx=-facing*160;
         this.hitStop=Math.max(this.hitStop,.045);
-        this.emit('reversal',{index:1-index,attacker:index,x:e.x,z:e.z});return;
+        this.emit('reversal',{index:target,attacker:index,x:e.x,z:e.z});return;
       }
       const guardCost=move==='special'?55:move==='light'?14:(m.guard||30);e.guard-=guardCost;e.guardDelay=.7;
-      if(e.guard>0){e.vx=facing*m.knock*5;e.meter=clamp(e.meter+4,0,100);f.meter=clamp(f.meter+2,0,100);f.combo=0;this.hitStop=.04;this.emit('block',{index:1-index,x:(f.x+e.x)/2,z:e.z});return;}
-      e.guard=0;e.stun=.85;this.emit('guardBreak',{index:1-index});
+      if(e.guard>0){e.vx=facing*m.knock*5;e.meter=clamp(e.meter+4,0,100);f.meter=clamp(f.meter+2,0,100);f.combo=0;this.hitStop=.04;this.emit('block',{index:target,x:(f.x+e.x)/2,z:e.z});return;}
+      e.guard=0;e.stun=.85;this.emit('guardBreak',{index:target});
     }
     const scale=chain===0?1:chain===1?.85:.70;
     const damage=m.damage*scale*f.definition.power/e.definition.toughness;
@@ -262,8 +321,8 @@ export class Match {
     e.reboundTime=0;e.move=null;e.buffer=null;e.confirmed=false;e.chain=0;e.exhausted=blocked;e.stun=Math.max(e.stun,m.stun);e.state='hurt';e.t=0;f.confirmed=true;
     e.vx=facing*m.knock*14;f.combo=combo?f.combo+1:1;f.comboTime=1.2;
     this.hitStop=Math.max(this.hitStop,move==='special'?.10:counter?.065:move==='light'?.045:.075);this.shake=Math.max(this.shake,move==='light'?3:8);
-    this.emit('hit',{index:1-index,attacker:index,move,x:e.x-facing*25,z:e.z,damage,combo:f.combo,counter,running,ender:chain===2,style:f.attackStyle,fighter:f.definition.id});
-    this.secondWind(1-index);
+    this.emit('hit',{index:target,attacker:index,move,x:e.x-facing*25,z:e.z,damage,combo:f.combo,counter,running,ender:chain===2,style:f.attackStyle,fighter:f.definition.id});
+    this.secondWind(target);
     if(WEAPON_USES[f.attackStyle]&&!['light','counter','aerial'].includes(move)){
       const name=f.attackStyle;f.weaponWear[name]=(f.weaponWear[name]||0)+1;f.weaponUses=f.weaponWear[name];
       if(this.pole)this.pole.uses=f.weaponUses;
@@ -279,15 +338,15 @@ export class Match {
     // One chance per round; no healing, invulnerability or cancelled hitstun.
     this.emit('secondWind',{index,x:f.x,z:f.z});
   }
-  startGrapple(index){
-    this.dropPoleWeapon(index);this.dropPoleWeapon(1-index);
-    const a=this.fighters[index],b=this.fighters[1-index];
+  startGrapple(index,target=this.foe(index)){
+    this.dropPoleWeapon(index);this.dropPoleWeapon(target);
+    const a=this.fighters[index],b=this.fighters[target];
     a.weapon=a.definition.weapons?'none':a.weapon;b.weapon=b.definition.weapons?'none':b.weapon;
-    this.grapple={attacker:index,time:0,released:false,startX:b.x,fromX:a.x,throwDir:a.x<LEFT+180?1:a.x>RIGHT-180?-1:a.facing};
+    this.grapple={attacker:index,defender:target,time:0,released:false,startX:b.x,fromX:a.x,throwDir:a.x<LEFT+180?1:a.x>RIGHT-180?-1:a.facing};
     a.reboundTime=0;b.reboundTime=0;a.state='grapple';a.t=0;a.move=null;a.vx=0;a.buffer=null;a.invincible=0;a.wakeUpProtected=false;a.runTime=0;a.runDirection=0;b.state='grabbed';b.move=null;b.vx=0;b.t=0;b.stun=0;this.emit('grapple',{index});
   }
   updateGrapple(dt){
-    const g=this.grapple,a=this.fighters[g.attacker],b=this.fighters[1-g.attacker];g.time+=dt;
+    const g=this.grapple,d=defenderOf(g),a=this.fighters[g.attacker],b=this.fighters[d];g.time+=dt;
     if(g.kind==='superplex'){this.updateSuperplex(dt);return;}
     if(g.kind==='chokeslam'){this.updateChokeslam();return;}
     const t=g.time;a.t=t;b.t=t;
@@ -302,14 +361,14 @@ export class Match {
       a.t=t-.84;b.t=t-.84;
       b.x=clamp(b.x+g.throwDir*330*dt,LEFT,RIGHT);b.z+=b.vz*dt;b.vz-=1450*dt;
       if(b.z<=30){
-        b.z=0;b.vz=0;b.hp=Math.max(0,b.hp-17*a.definition.power*(a.definition.technique||1)/b.definition.toughness);b.meter=clamp(b.meter+15,0,100);a.meter=clamp(a.meter+20,0,100);this.knockDown(b,'front',.16,b.hp<35?3.8:2.6);b.invincible=.1;a.state='idle';a.t=0;this.grapple=null;this.hitStop=.11;this.shake=11;this.emit('slam',{x:b.x,index:1-g.attacker});
-        this.secondWind(1-g.attacker);
-        if(b.hp<=0)this.endRound(g.attacker,'KNOCKOUT');
+        b.z=0;b.vz=0;b.hp=Math.max(0,b.hp-17*a.definition.power*(a.definition.technique||1)/b.definition.toughness);b.meter=clamp(b.meter+15,0,100);a.meter=clamp(a.meter+20,0,100);this.knockDown(b,'front',.16,b.hp<35?3.8:2.6);b.invincible=.1;a.state='idle';a.t=0;this.grapple=null;this.hitStop=.11;this.shake=11;this.emit('slam',{x:b.x,index:d});
+        this.secondWind(d);
+        if(b.hp<=0)this.decide(g.attacker,d,'KNOCKOUT');
       }
     }
   }
   updateChokeslam(){
-    const g=this.grapple,a=this.fighters[g.attacker],b=this.fighters[1-g.attacker],m=finisherMove(a.definition,MOVES.special),t=g.time;
+    const g=this.grapple,d=defenderOf(g),a=this.fighters[g.attacker],b=this.fighters[d],m=finisherMove(a.definition,MOVES.special),t=g.time;
     a.t=t;b.t=t;
     if(t<=THROW_BREAK_WINDOW&&b.buffer?.action==='grapple'){this.breakGrapple();return;}
     b.x=g.startX+(clamp(a.x+a.facing*72,LEFT,RIGHT)-g.startX)*smooth(t/(m.startup/2));
@@ -318,16 +377,16 @@ export class Match {
     if(t<m.startup)return;
     b.z=0;b.vz=0;this.grapple=null;a.activeCue=true;
     this.emit('attackActive',{index:g.attacker,move:'special',style:a.attackStyle,fighter:a.definition.id});
-    this.resolveAttack({index:g.attacker,move:'special',facing:a.facing,blocked:false,combo:false});
+    this.resolveAttack({index:g.attacker,target:d,move:'special',facing:a.facing,blocked:false,combo:false});
     b.vx=0;b.fallDuration=0; // The body has already landed beside the attacker.
-    if(b.hp<=0)this.endRound(g.attacker,'KNOCKOUT');
+    if(b.hp<=0)this.decide(g.attacker,d,'KNOCKOUT');
   }
   breakGrapple(){
     const g=this.grapple;
     if(g.kind==='superplex'){
-      for(let i=0;i<2;i++){const f=this.fighters[i],origin=g.origins[i];Object.assign(f,{x:origin.x,z:origin.z,vz:0,vx:0,state:origin.z>0?'perch':'hurt',t:0,stun:origin.z>0?0:.24,buffer:null,move:null,invincible:.3,wakeUpProtected:false});}this.grapple=null;this.emit('throwBreak');return;
+      for(const [k,i] of [g.attacker,defenderOf(g)].entries()){const f=this.fighters[i],origin=g.origins[k];Object.assign(f,{x:origin.x,z:origin.z,vz:0,vx:0,state:origin.z>0?'perch':'hurt',t:0,stun:origin.z>0?0:.24,buffer:null,move:null,invincible:.3,wakeUpProtected:false});}this.grapple=null;this.emit('throwBreak');return;
     }
-    for(let i=0;i<2;i++){const f=this.fighters[i];f.state='hurt';f.t=0;f.stun=.24;f.buffer=null;f.move=null;f.z=0;f.vz=0;f.vx=(i===g.attacker?-1:1)*this.fighters[g.attacker].facing*260;f.invincible=.3;f.wakeUpProtected=false;}
+    for(const i of [g.attacker,defenderOf(g)]){const f=this.fighters[i];f.state='hurt';f.t=0;f.stun=.24;f.buffer=null;f.move=null;f.z=0;f.vz=0;f.vx=(i===g.attacker?-1:1)*this.fighters[g.attacker].facing*260;f.invincible=.3;f.wakeUpProtected=false;}
     this.grapple=null;this.emit('throwBreak');
   }
   knockDown(f,face='back',duration=.38,downTime=2.5){
@@ -371,15 +430,15 @@ export class Match {
     // the final standing recovery frames, so the animation boundary cannot create a miss.
     const canHit=enemy.invincible===0||enemy.wakeUpProtected;
     if(!f.diveHit&&close&&vertical&&canHit&&enemy.state!=='pinned'){
-      f.diveHit=true;const blocked=enemy.state==='block';
+      f.diveHit=true;const blocked=enemy.state==='block',ei=this.fighters.indexOf(enemy);
       if(blocked){
         enemy.guard=Math.max(0,enemy.guard-35);enemy.guardDelay=.7;
-        if(enemy.guard>0){this.emit('block',{index:1-index,x:enemy.x,z:0});this.knockDown(f,'front',.18,1.1);return true;}
-        this.emit('guardBreak',{index:1-index});
+        if(enemy.guard>0){this.emit('block',{index:ei,x:enemy.x,z:0});this.knockDown(f,'front',.18,1.1);return true;}
+        this.emit('guardBreak',{index:ei});
       }
       const damage=23*f.divePower*f.definition.power/enemy.definition.toughness;enemy.hp=Math.max(0,enemy.hp-damage);enemy.meter=clamp(enemy.meter+damage*.8,0,100);f.meter=clamp(f.meter+16,0,100);
-      enemy.invincible=0;this.knockDown(enemy,'back',.20,3.1);enemy.vx=f.facing*350;this.shake=10;this.hitStop=.09;this.emit('slam',{index:1-index,x:enemy.x});
-      this.secondWind(1-index);
+      enemy.invincible=0;this.knockDown(enemy,'back',.20,3.1);enemy.vx=f.facing*350;this.shake=10;this.hitStop=.09;this.emit('slam',{index:ei,x:enemy.x});
+      this.secondWind(ei);
     }
     if(grounded){
       if(f.diveHit){f.state='rise';f.t=0;f.invincible=.25;f.wakeUpProtected=false;}
@@ -396,20 +455,20 @@ export class Match {
     if(p.looseX!==null&&Math.abs(f.x-p.looseX)<80){p.holder=index;p.looseX=null;f.weapon='chair';f.weaponWear.chair=p.uses;f.weaponUses=p.uses;f.state='equip';f.t=0;this.emit('weapon',{index,name:'chair'});}
     else this.emit('poleHint',{index});
   }
-  startSuperplex(index){
-    const a=this.fighters[index],b=this.fighters[1-index];
+  startSuperplex(index,target=this.foe(index)){
+    const a=this.fighters[index],b=this.fighters[target];
     if(!canCornerThrow(a,b))return false;
     const corner=onTopRope(a)?a.x:b.x,dir=corner<640?1:-1;
-    const origins=this.fighters.map(f=>({x:f.x,z:f.z}));
-    this.dropPoleWeapon(index);this.dropPoleWeapon(1-index);
-    this.grapple={kind:'superplex',attacker:index,time:0,released:false,corner,throwDir:dir,origins};
+    const origins=[a,b].map(f=>({x:f.x,z:f.z}));
+    this.dropPoleWeapon(index);this.dropPoleWeapon(target);
+    this.grapple={kind:'superplex',attacker:index,defender:target,time:0,released:false,corner,throwDir:dir,origins};
     for(const f of [a,b]){f.move=null;f.buffer=null;f.vx=0;f.vz=0;f.stun=0;f.reboundTime=0;f.runTime=0;f.t=0;f.invincible=0;f.wakeUpProtected=false;f.weapon='none';}
     a.facing=dir;b.facing=-dir;a.state='grapple';b.state='grabbed';this.emit('grapple',{index,kind:'superplex'});return true;
   }
   updateSuperplex(dt){
-    const g=this.grapple,a=this.fighters[g.attacker],b=this.fighters[1-g.attacker],t=g.time,dir=g.throwDir;
+    const g=this.grapple,d=defenderOf(g),a=this.fighters[g.attacker],b=this.fighters[d],t=g.time,dir=g.throwDir;
     if(t<=throwBreakWindow(g)&&b.buffer?.action==='grapple'){this.breakGrapple();return;}
-    const a0=g.origins[g.attacker],b0=g.origins[1-g.attacker];
+    const [a0,b0]=g.origins;
     a.t=t;b.t=t;
     if(t<.95){
       const rise=smooth(t/.65),lift=smooth((t-.40)/.55);
@@ -424,23 +483,23 @@ export class Match {
       const damage=28*a.definition.power*(a.definition.technique||1)/b.definition.toughness;
       b.hp=Math.max(0,b.hp-damage);b.meter=clamp(b.meter+damage*.8,0,100);a.meter=clamp(a.meter+26,0,100);
       this.knockDown(b,'back',.18,3.2);b.invincible=.1;a.z=0;a.vz=0;a.state='rise';a.t=0;a.invincible=.2;a.wakeUpProtected=false;
-      this.grapple=null;this.hitStop=.12;this.shake=10;this.emit('slam',{index:1-g.attacker,x:b.x,damage,superplex:true});this.secondWind(1-g.attacker);
-      if(b.hp<=0)this.endRound(g.attacker,'KNOCKOUT');
+      this.grapple=null;this.hitStop=.12;this.shake=10;this.emit('slam',{index:d,x:b.x,damage,superplex:true});this.secondWind(d);
+      if(b.hp<=0)this.decide(g.attacker,d,'KNOCKOUT');
     }
   }
-  startPin(index,kind='pin'){
-    this.dropPoleWeapon(index);this.dropPoleWeapon(1-index);
-    const a=this.fighters[index],b=this.fighters[1-index];a.state='pin';a.t=0;a.buffer=null;a.vx=0;a.invincible=0;a.wakeUpProtected=false;a.runTime=0;a.runDirection=0;b.vx=0;b.buffer=null;b.state='pinned';b.fallFace='back';b.fallDuration=0;b.t=0;this.pin={kind,attacker:index,time:0,count:0,escape:0,lastButton:null,startX:a.x,targetX:clamp(b.x-a.facing*23,LEFT,RIGHT)};this.emit('pin',{index,kind});
+  startPin(index,kind='pin',target=this.foe(index)){
+    this.dropPoleWeapon(index);this.dropPoleWeapon(target);
+    const a=this.fighters[index],b=this.fighters[target];a.state='pin';a.t=0;a.buffer=null;a.vx=0;a.invincible=0;a.wakeUpProtected=false;a.runTime=0;a.runDirection=0;b.vx=0;b.buffer=null;b.state='pinned';b.fallFace='back';b.fallDuration=0;b.t=0;this.pin={kind,attacker:index,defender:target,time:0,count:0,escape:0,lastButton:null,startX:a.x,targetX:clamp(b.x-a.facing*23,LEFT,RIGHT)};this.emit('pin',{index,kind});
   }
   updatePin(inputs,dt){
-    const p=this.pin,a=this.fighters[p.attacker],b=this.fighters[1-p.attacker],input=inputs[1-p.attacker]||emptyInput();p.time+=dt;
+    const p=this.pin,d=defenderOf(p),a=this.fighters[p.attacker],b=this.fighters[d],input=inputs[d]||emptyInput();p.time+=dt;
     a.x=p.startX+(p.targetX-p.startX)*smooth(p.time/.2);
     if(p.time>=.35&&nearRopes(b)){this.releasePin('ropeBreak');return;}
     if(p.time>=.3&&tap(inputs[p.attacker]||emptyInput(),a.last,'grapple')){this.releasePin('pinRelease');return;}
     const need=escapeTarget(b.hp);
     const pressed=['light','heavy'].filter(key=>tap(input,b.last,key));
     if(pressed.length===1&&pressed[0]!==p.lastButton){p.escape++;p.lastButton=pressed[0];}
-    if(!isLocalMode(this.options.mode)&&!['practice','online'].includes(this.options.mode)&&p.attacker===0){
+    if(this.routed?this.cpuPlayers.has(b.player):!isLocalMode(this.options.mode)&&!['practice','online'].includes(this.options.mode)&&p.attacker===0){
       const level=this.options.difficulty==='hard'?1.2:this.options.difficulty==='easy'?.65:1;
       p.escape+=dt*(b.hp>55?12:b.hp>30?7:3.2)*level;
     }
@@ -448,22 +507,134 @@ export class Match {
     if(b.hp>60)p.escape+=dt*6;
     const count=p.kind==='submission'?0:Math.min(3,Math.floor(p.time/.9));if(count>p.count){p.count=count;this.emit('count',{count});}
     if(p.escape>=need){this.releasePin(p.kind==='submission'?'holdBreak':'kickout');}
-    else if(p.kind==='submission'?p.time>=3.6:p.count>=3){this.pin=null;b.state='down';this.endRound(p.attacker,p.kind==='submission'?'TAP OUT':'PINFALL');}
+    else if(p.kind==='submission'?p.time>=3.6:p.count>=3){this.pin=null;b.state='down';if(this.brawl){a.state='idle';a.t=0;a.buffer=null;a.vx=-a.facing*300;}this.decide(p.attacker,d,p.kind==='submission'?'TAP OUT':'PINFALL');}
   }
   releasePin(type){
-    const p=this.pin,a=this.fighters[p.attacker],b=this.fighters[1-p.attacker];
+    const p=this.pin,a=this.fighters[p.attacker],b=this.fighters[defenderOf(p)];
     b.state='rise';b.t=0;b.buffer=null;b.invincible=.8;b.wakeUpProtected=false;a.state='idle';a.t=0;a.buffer=null;a.vx=-a.facing*900;
     this.pin=null;this.emit(type);
   }
   endRound(winner,method){
     if(this.phase!=='fight')return;
+    // Tag and tornado matches are one fall: a level finish goes to sudden-death overtime.
+    if(winner===null&&(this.format==='tag'||this.brawl)){this.overtime(method);return;}
     this.phase='roundEnd';this.phaseTime=0;this.roundWinner=winner;this.method=method;this.grapple=null;this.pin=null;
-    for(let i=0;i<2;i++){const f=this.fighters[i];f.z=0;f.vz=0;f.vx=0;f.move=null;f.buffer=null;f.stun=0;if(f.state!=='down')f.t=0;if(i!==winner)f.state=f.hp<=0||f.state==='down'||method==='PINFALL'?'down':'defeat';}
-    if(winner!==null){if(this.options.mode!=='practice')this.wins[winner]++;this.fighters[winner].state='victory';this.fighters[winner].t=0;}
-    if(this.teams)this.eliminate(winner);
+    for(const [i,f] of this.fighters.entries()){if(f.out)continue;f.z=0;f.vz=0;f.vx=0;f.move=null;f.buffer=null;f.stun=0;if(f.state!=='down')f.t=0;if(this.brawl?f.side!==winner:i!==winner)f.state=f.hp<=0||f.state==='down'||method==='PINFALL'?'down':'defeat';}
+    if(winner!==null){if(this.options.mode!=='practice')this.wins[winner]++;for(const [i,f] of this.fighters.entries())if(this.brawl?f.side===winner&&!f.out:i===winner){f.state='victory';f.t=0;}}
+    if(this.format==='elimination')this.eliminate(winner);
     this.emit('roundEnd',{winner,method});
   }
-  remainingOn(side){return this.teams?this.teams[side].length-this.slot[side]:0;}
+  remainingOn(side){
+    if(!this.teams)return 0;
+    if(this.brawl)return this.fighters.filter(f=>f.side===side&&!f.out).length;
+    return this.format==='tag'?this.teams[side].length:this.teams[side].length-this.slot[side];
+  }
+  // ---- team play helpers ----
+  opponents(index){const side=this.fighters[index].side??index;return this.fighters.map((f,j)=>j).filter(j=>(this.fighters[j].side??j)!==side&&!this.fighters[j].out);}
+  involved(index){const g=this.grapple,p=this.pin;return Boolean((g&&(g.attacker===index||defenderOf(g)===index))||(p&&(p.attacker===index||defenderOf(p)===index)));}
+  // The opponent a wrestler faces and attacks. Two in the ring: the other one.
+  // Four in the ring: the nearest free opponent, kept unless another is clearly closer.
+  foe(index){
+    if(this.fighters.length===2)return 1-index;
+    const f=this.fighters[index],all=this.opponents(index);
+    if(!all.length)return this.fighters.findIndex(e=>e.side!==f.side);
+    const free=all.filter(j=>!['pinned','grabbed','lifted','thrown'].includes(this.fighters[j].state)),pool=free.length?free:all;
+    const gap=j=>Math.abs(this.fighters[j].x-f.x);
+    let best=pool.reduce((a,b)=>gap(b)<gap(a)?b:a);
+    if(pool.includes(f.target)&&gap(f.target)<gap(best)+60)best=f.target;
+    f.target=best;return best;
+  }
+  decide(winner,loser,method){if(this.brawl)this.eliminateFighter(loser,method);else this.endRound(winner,method);}
+  breakPin(){
+    const p=this.pin;if(!p)return;const b=this.fighters[defenderOf(p)];
+    b.state='rise';b.t=0;b.buffer=null;b.invincible=.8;b.wakeUpProtected=false;this.pin=null;this.emit('pinBreak',{index:defenderOf(p),attacker:p.attacker});
+  }
+  overtime(method){
+    // Both sides would lose at once: anyone knocked out comes back on 30 health
+    // and the clock gets at least 30 more seconds.
+    this.grapple=null;this.pin=null;
+    for(const f of this.fighters)if(!f.out&&f.hp<=0){Object.assign(f,{hp:SUDDEN_DEATH_HP,state:'rise',t:0,invincible:1,wakeUpProtected:false,move:null,buffer:null,stun:0,z:0,vz:0,vx:0});}
+    for(const f of this.fighters)if(!f.out&&['pin','pinned','grapple','grabbed','lifted','thrown','throw'].includes(f.state)){f.state='idle';f.t=0;f.z=0;f.vz=0;}
+    this.remaining=Math.max(this.remaining,30);this.suddenDeath=true;
+    this.emit('suddenDeath',{method});
+  }
+  eliminateFighter(index,method){
+    const f=this.fighters[index];if(!f||f.out)return;
+    if(this.pin&&this.involved(index)){const other=this.fighters[this.pin.attacker===index?defenderOf(this.pin):this.pin.attacker];this.pin=null;if(other!==f){other.state=other.hp>0?'rise':'down';other.t=0;other.buffer=null;other.invincible=.5;}}
+    if(this.grapple&&this.involved(index)){const other=this.fighters[this.grapple.attacker===index?defenderOf(this.grapple):this.grapple.attacker];this.grapple=null;if(other!==f){Object.assign(other,{state:'idle',t:0,z:0,vz:0,vx:0,buffer:null,move:null});}}
+    if(f.state!=='down')this.knockDown(f,'back',.38,99);
+    Object.assign(f,{out:true,outTime:0,state:'down',downTime:99,move:null,buffer:null,vx:0,z:0,vz:0,invincible:0});
+    this.out[f.side].push(f.id);
+    const left=[0,1].map(s=>this.remainingOn(s));
+    this.emit('elimination',{eliminated:[{side:f.side,id:f.id,index}],left,next:null,method,live:true,index});
+    if(left[f.side]===0)this.endRound(1-f.side,method);
+  }
+  canTag(index){
+    const f=this.fighters[index];if(!this.teams||this.teams[f.side].length<2)return false;
+    return f.side===0?f.x<=LEFT+TAG_REACH:f.x>=RIGHT-TAG_REACH;
+  }
+  tag(index){
+    const f=this.fighters[index],side=f.side,team=this.teams[side];
+    this.stats[f.id]={hp:f.hp,meter:f.meter,guard:f.guard,secondWindUsed:f.secondWindUsed,weaponWear:{...f.weaponWear}};
+    this.slot[side]=(this.slot[side]+1)%team.length;
+    const id=team[this.slot[side]];this.ids[side]=id;
+    const n=this.makeFighter(id,index);
+    Object.assign(n,{x:side?RIGHT-24:LEFT+24,facing:side?-1:1,invincible:.6,state:'idle',t:0});
+    this.fighters[index]=n;
+    if(this.ai[index])this.ai[index]={aiTimer:.25,aiInput:emptyInput()};
+    this.emit('tag',{index,side,from:f.id,to:id,player:n.player});
+  }
+  partnerOf(side){
+    // Tag: the wrestler waiting on the apron, with their saved health.
+    if(this.format!=='tag'||!this.teams)return null;
+    const id=this.teams[side][(this.slot[side]+1)%this.teams[side].length];if(id===this.ids[side])return null;
+    return {id,hp:this.stats[id]?.hp??100,meter:this.stats[id]?.meter??0};
+  }
+  routeInputs(inputs,dt,think=true){
+    return this.fighters.map((f,i)=>{
+      if(f.out)return emptyInput();
+      if(this.cpuPlayers.has(f.player)){if(!think)return emptyInput();const ai=this.ai[i];return this.hitStop>0&&ai?ai.aiInput:this.cpu(dt,i);}
+      return inputs[f.player]||emptyInput();
+    });
+  }
+  stepBrawl(inputs,dt){
+    const live=this.fighters.map((f,i)=>i).filter(i=>!this.fighters[i].out);
+    for(const f of this.fighters){
+      f.t+=dt;if(f.out){f.outTime=(f.outTime||0)+dt;continue;}
+      f.invincible=Math.max(0,f.invincible-dt);if(!f.invincible)f.wakeUpProtected=false;f.guardDelay=Math.max(0,f.guardDelay-dt);f.comboTime=Math.max(0,f.comboTime-dt);f.tauntCooldown=Math.max(0,f.tauntCooldown-dt);f.reversalWindow=Math.max(0,f.reversalWindow-dt);f.reversalCooldown=Math.max(0,f.reversalCooldown-dt);if(!f.comboTime)f.combo=0;
+    }
+    if(this.grapple)this.updateGrapple(dt);
+    if(this.phase!=='fight'){this.remember(inputs);return;}
+    if(this.pin)this.updatePin(inputs,dt);
+    if(this.phase!=='fight'){this.remember(inputs);return;}
+    // Same-frame grab clashes break, pair by pair, never by index order.
+    if(!this.grapple&&!this.pin)for(const i of live)for(const j of this.opponents(i)){
+      if(j<i)continue;const a=this.fighters[i],b=this.fighters[j];
+      if([a,b].every((f,k)=>f.buffer?.action==='grapple'&&!inputs[k?j:i]?.block&&f.z===0&&f.stun===0&&!f.move&&f.invincible===0&&['idle','walk','run','block'].includes(f.state))&&Math.abs(a.x-b.x)<106){
+        a.facing=b.x>=a.x?1:-1;this.startGrapple(i,j);this.breakGrapple();
+      }
+    }
+    for(const i of live){
+      const f=this.fighters[i];if(f.out||this.involved(i))continue;
+      this.updateFighter(f,this.fighters[this.foe(i)],inputs[i]||emptyInput(),dt,i);
+    }
+    const contacts=live.filter(i=>!this.involved(i)).map(i=>this.contact(i)).filter(Boolean);
+    for(const contact of contacts)if(!this.fighters[contact.index].out&&!this.fighters[contact.target].out)this.resolveAttack(contact);
+    for(const i of live)for(const j of this.opponents(i)){
+      if(j<i)continue;const a=this.fighters[i],b=this.fighters[j];
+      if(!unavailable(a)&&!unavailable(b)&&a.z<50&&b.z<50&&Math.abs(a.x-b.x)<66){
+        const left=a.x<=b.x?a:b,right=left===a?b:a;
+        const center=clamp((left.x+right.x)/2,LEFT+33,RIGHT-33);left.x=center-33;right.x=center+33;
+      }
+    }
+    this.remember(inputs);
+    const down=live.filter(i=>!this.fighters[i].out&&this.fighters[i].hp<=0);
+    if(down.length){
+      const wiped=[0,1].filter(s=>this.fighters.every((f,i)=>f.side!==s||f.out||down.includes(i)));
+      if(wiped.length===2){this.overtime('DOUBLE KO');return;}
+      for(const i of down)this.eliminateFighter(i,'KNOCKOUT');
+    }
+  }
   eliminate(winner){
     // A draw (double KO or a level time limit) eliminates both wrestlers in the ring.
     const losers=winner===null?[0,1]:[1-winner];
@@ -483,29 +654,44 @@ export class Match {
     if(left.some(n=>n===0)){this.phase='done';this.winner=left[0]>0?0:1;this.emit('matchEnd',{winner:this.winner,method:this.method});return;}
     this.ids=this.nextIds||[0,1].map(i=>this.teams[i][this.slot[i]]);this.nextIds=null;this.suddenDeath=false;this.round++;this.newRound();
   }
-  cpu(dt){
-    const me=this.fighters[1],enemy=this.fighters[0],diff=this.options.difficulty;
+  cpu(dt,index=1){
+    // Unrouted modes keep one CPU state on the match itself; team play keeps one per wrestler.
+    const ai=this.routed?(this.ai[index]??={aiTimer:0,aiInput:emptyInput()}):this;
+    const me=this.fighters[index],diff=this.options.difficulty;
+    let target=this.foe(index);
+    // A four-way partner runs in to break up a pin or throw on a teammate.
+    for(const hold of [this.pin,this.grapple])if(this.brawl&&hold&&!this.involved(index)&&this.fighters[defenderOf(hold)]?.side===me.side&&!this.fighters[hold.attacker].out)target=hold.attacker;
+    const enemy=this.fighters[target];
     const profile=fighterProfile(me.definition);
     const rate=diff==='hard'?.13:diff==='easy'?.34:.22;
-    this.aiTimer-=dt;
-    if(this.aiTimer>0)return this.aiInput;
-    this.aiTimer=rate+this.random()*.11;
+    ai.aiTimer-=dt;
+    if(ai.aiTimer>0)return ai.aiInput;
+    ai.aiTimer=rate+this.random()*.11;
     const v=emptyInput(),distance=Math.abs(me.x-enemy.x),toward=me.x<enemy.x?'right':'left',away=me.x<enemy.x?'left':'right';
-    if(this.pin){this.aiInput={...v};delete this.aiInput.pressed;return v;}
-    if(this.grapple){if(this.grapple.attacker===0&&this.grapple.time<throwBreakWindow(this.grapple)&&this.random()<(diff==='hard'?.6:diff==='easy'?.05:.25))v.grapple=true;this.aiInput={...v};delete this.aiInput.pressed;return v;}
-    if(me.state==='down'){v[this.random()<.5?'light':'heavy']=true;this.aiInput={...v};delete this.aiInput.pressed;return v;}
+    const busy=!this.brawl||this.involved(index);
+    if(this.pin&&busy){ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+    if(this.grapple&&busy){if(defenderOf(this.grapple)===index&&this.grapple.time<throwBreakWindow(this.grapple)&&this.random()<(diff==='hard'?.6:diff==='easy'?.05:.25))v.grapple=true;ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+    if(me.state==='down'){v[this.random()<.5?'light':'heavy']=true;ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+    if(this.format==='tag'&&me.state!=='down'){
+      // Hurt and the partner is fresher: head for the corner and make the tag.
+      const partner=this.partnerOf(me.side);
+      if(partner&&me.hp<45&&partner.hp>me.hp+20){
+        if(this.canTag(index)){v.taunt=true;v.pressed={taunt:true};ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+        if(distance>110||this.random()<.6){v[me.side===0?'left':'right']=true;ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+      }
+    }
     if(distance>92)v[toward]=true;
     if(this.pole&&!this.pole.broken){
       if(!this.pole.claimed){
         // Use the same corner boundary as updateFighter's climb check.
         // Measuring 65px from the inset pole leaves an 18px band of endless grab whiffs.
         const atPole=this.pole.x<640?me.x<LEFT+65:me.x>RIGHT-65;
-        if(me.state==='perch'&&atPole){v.grapple=true;this.aiInput={...v};delete this.aiInput.pressed;return v;}
-        if(distance>180){v.left=false;v.right=false;if(!atPole)v[me.x<this.pole.x?'right':'left']=true;else if(me.z===0){v.grapple=true;v.pressed={grapple:true};}this.aiInput={...v};delete this.aiInput.pressed;return v;}
-      }else if(this.pole.looseX!==null&&me.z===0){const gap=Math.abs(me.x-this.pole.looseX);if(gap<80){v.weapon=true;v.pressed={weapon:true};}else if(distance>180){v.left=false;v.right=false;v[me.x<this.pole.looseX?'right':'left']=true;}if(gap<80||distance>180){this.aiInput={...v};delete this.aiInput.pressed;return v;}}
+        if(me.state==='perch'&&atPole){v.grapple=true;ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+        if(distance>180){v.left=false;v.right=false;if(!atPole)v[me.x<this.pole.x?'right':'left']=true;else if(me.z===0){v.grapple=true;v.pressed={grapple:true};}ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+      }else if(this.pole.looseX!==null&&me.z===0){const gap=Math.abs(me.x-this.pole.looseX);if(gap<80){v.weapon=true;v.pressed={weapon:true};}else if(distance>180){v.left=false;v.right=false;v[me.x<this.pole.looseX?'right':'left']=true;}if(gap<80||distance>180){ai.aiInput={...v};delete ai.aiInput.pressed;return v;}}
     }
-    if(canCornerThrow(me,enemy)){v.grapple=true;v.pressed={grapple:true};this.aiInput={...v};delete this.aiInput.pressed;return v;}
-    if(me.state==='perch'){if(distance>300&&me.tauntCooldown===0&&this.random()<.2)v.taunt=true;else v.jump=true;v.pressed={[v.taunt?'taunt':'jump']:true};this.aiInput={...v};delete this.aiInput.pressed;return v;}
+    if(canCornerThrow(me,enemy)){v.grapple=true;v.pressed={grapple:true};ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
+    if(me.state==='perch'){if(distance>300&&me.tauntCooldown===0&&this.random()<.2)v.taunt=true;else v.jump=true;v.pressed={[v.taunt?'taunt':'jump']:true};ai.aiInput={...v};delete ai.aiInput.pressed;return v;}
     if(!this.pole&&me.definition.weapons&&me.weapon==='none'&&distance>260&&this.random()<profile.weapon)v.weapon=true;
     if(me.definition.animations?.climb&&distance>300&&(me.x<LEFT+65||me.x>RIGHT-65)&&this.random()<profile.climb)v.grapple=true;
     if(distance>420&&me.meter<85&&me.tauntCooldown===0&&this.random()<.08)v.taunt=true;
@@ -523,7 +709,7 @@ export class Match {
     if(distance>155&&distance<320&&this.random()<profile.jump)v.jump=true;
     // A fresh decision can repeat the same attack. Store only held state so the
     // press is consumed once, including when the next step is hit-stop.
-    this.aiInput={...v};
+    ai.aiInput={...v};
     v.pressed=Object.fromEntries(['light','heavy','special','weapon','taunt','jump','grapple'].filter(k=>v[k]).map(k=>[k,true]));
     return v;
   }

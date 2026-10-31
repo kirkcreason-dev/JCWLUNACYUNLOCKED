@@ -1,9 +1,9 @@
-import {throwBreakWindow,onTopRope,canCornerThrow,weaponRemaining,POLE_RETRIEVE_TIME,LEFT,RIGHT,canPin as pinInRange,nearRopes,escapeTarget} from './engine.js?v=0.24.0';
+import {throwBreakWindow,onTopRope,canCornerThrow,weaponRemaining,POLE_RETRIEVE_TIME,LEFT,RIGHT,canPin as pinInRange,nearRopes,escapeTarget,defenderOf} from './engine.js?v=0.25.0';
 // Context is derived from match state; the UI never grants damage or escape progress itself.
 export function touchContext(match,localIndex=0){
-  const me=match.fighters[localIndex],other=match.fighters[1-localIndex],distance=Math.abs(me.x-other.x);
-  const pin=match.pin?.attacker===1-localIndex,down=me.state==='down';
-  const beingThrown=match.grapple?.attacker===1-localIndex,breaking=beingThrown&&match.grapple.time<=throwBreakWindow(match.grapple);
+  const me=match.fighters[localIndex],other=match.fighters[match.fighters.length>2&&match.foe?match.foe(localIndex):1-localIndex],distance=Math.abs(me.x-other.x);
+  const pin=Boolean(match.pin)&&defenderOf(match.pin)===localIndex,down=me.state==='down';
+  const beingThrown=Boolean(match.grapple)&&defenderOf(match.grapple)===localIndex,breaking=beingThrown&&match.grapple.time<=throwBreakWindow(match.grapple);
   const canPin=me.z===0&&pinInRange(me,other)&&!match.grapple&&!match.pin;
   const holding=match.pin?.attacker===localIndex;
   const canClimb=Boolean(me.definition?.animations?.climb)&&(me.x<LEFT+65||me.x>RIGHT-65)&&distance>135&&!match.grapple&&!match.pin;
@@ -27,6 +27,7 @@ export function touchContext(match,localIndex=0){
   else if(perched)hint='TAUNT earns 20 · Attack dives · Down climbs off';
   else if(climbing)hint='Climbing · Get ready to dive';
   else if(canClimb)hint='Tap CLIMB, then attack to dive';
+  else if(match.format==='tag'&&match.canTag?.(localIndex))hint='In your corner · Tap TAUNT to tag your partner';
   else if(me.state==='taunt')hint='Finish the taunt to earn Lunacy';
   else if(me.move==='light'&&me.confirmed&&me.chain<2)hint=me.chain===0?'Hit landed · Tap HIT or HEAVY to link':'Two hits · Tap HEAVY to finish the chain';
   else if(me.z>0)hint='Tap HEAVY for an air strike';

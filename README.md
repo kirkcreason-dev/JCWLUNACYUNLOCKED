@@ -2,6 +2,10 @@
 
 A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.24.0**.
 
+## Real 4-player (v0.25.0)
+
+Pick MODE → **ONLINE · 4 PLAYERS** to play with up to three friends, each on their own device. Choose the match type — **Tag Team**, **Tornado Tag** (all four in the ring) or **Elimination** — and press CREATE 4-PLAYER ROOM, then share the code. P1 + P3 team up against P2 + P4. It starts when all four are in, or the host presses START NOW and the CPU fills the empty spots. In Tag Team, TAUNT in your own corner to tag your partner. **TAG TEAM · CPU** and **TORNADO TAG · CPU** let you try both with a CPU partner. See [MULTIPLAYER.md](MULTIPLAYER.md).
+
 ## 4 on 4 Elimination (v0.24.0)
 
 Pick MODE → 4 ON 4 ELIMINATION (vs CPU or 2 players on one device), set both teams of four in Match Setup (or SHUFFLE TEAMS), and fight Survivor-style: one wrestler per side in the ring, losers are eliminated and the next teammate comes in, winners stay in with their damage. Last team standing wins.
@@ -107,7 +111,7 @@ Josh Bishop, Ring Rat and The Green Phantom are playable in all modes. Their 86 
 - Contextual first-match tips explain approach, strikes, combos, reversals, pins, escapes and finishers. Tips remember completed lessons, can be disabled, and can be reset in Controls.
 - Decoded match artwork is evicted before the next match loads; old arena requests cannot repopulate the cache. Image requests time out, failed optional art backs off, and sound nodes are capped and explicitly released. Automatic display reduces rendering cost after sustained expensive draws; combat still simulates at 60 Hz.
 
-**Online:** use v0.23.0 on both devices. New v22 / LU230 rooms isolate clients without Bigfoot and his chokeslam state. The host retains the corrected dive collision. Existing championship saves and arcade medals remain compatible.
+**Online:** use v0.25.0 on every device. v25 / LU250 rooms (LU250Q- for four players) isolate older clients. The host retains the corrected dive collision. Existing championship saves and arcade medals remain compatible.
 
 Validation details and device handoff are in TESTING.md. Automated checks cover the full roster, online selection, championship saves and credits, phone pagination, and native canvas rendering. Physical-device playtesting remains necessary.
 

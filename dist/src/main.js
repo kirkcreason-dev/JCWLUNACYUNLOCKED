@@ -1,29 +1,30 @@
-import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.24.0';
-import {RenderBudget} from './render-budget.js?v=0.24.0';
-import {Coach} from './coach.js?v=0.24.0';
-import {loadGameImage} from './image-loader.js?v=0.24.0';
-import {fighterProfile} from './fighter-profile.js?v=0.24.0';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.24.0';
-import {SecretFighters} from './secret-fighters.js?v=0.24.0';
-import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,TEAM_SIZE} from './engine.js?v=0.24.0';
-import {Renderer} from './render.js?v=0.24.0';
-import {Input} from './input.js?v=0.24.0';
-import {Sound} from './audio.js?v=0.24.0';
-import {ARENAS} from './arenas.js?v=0.24.0';
-import {touchContext} from './touch-ui.js?v=0.24.0';
-import {OnlineSession} from './online.js?v=0.24.0';
-import {connectFirebase} from './firebase-online.js?v=0.24.0';
-import {SnapshotBuffer} from './online-protocol.js?v=0.24.0';
-import {RosterSelection} from './roster-selection.js?v=0.24.0';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.24.0';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.24.0';
-import {FramePacer} from './frame-pacer.js?v=0.24.0';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.24.0';
-import {Haptics} from './haptics.js?v=0.24.0';
-import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.24.0';
-import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.24.0';
-import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.24.0';
-import {MatchRecord} from './match-record.js?v=0.24.0';
+import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.25.0';
+import {RenderBudget} from './render-budget.js?v=0.25.0';
+import {Coach} from './coach.js?v=0.25.0';
+import {loadGameImage} from './image-loader.js?v=0.25.0';
+import {fighterProfile} from './fighter-profile.js?v=0.25.0';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.25.0';
+import {SecretFighters} from './secret-fighters.js?v=0.25.0';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,isTeamMode,TEAM_SIZE} from './engine.js?v=0.25.0';
+import {SquadSession,seatsOf,squadTeams,cpuSeats,teamOfSeat} from './online-squad.js?v=0.25.0';
+import {Renderer,formatTitle} from './render.js?v=0.25.0';
+import {Input} from './input.js?v=0.25.0';
+import {Sound} from './audio.js?v=0.25.0';
+import {ARENAS} from './arenas.js?v=0.25.0';
+import {touchContext} from './touch-ui.js?v=0.25.0';
+import {OnlineSession} from './online.js?v=0.25.0';
+import {connectFirebase} from './firebase-online.js?v=0.25.0';
+import {SnapshotBuffer,SquadSnapshotBuffer} from './online-protocol.js?v=0.25.0';
+import {RosterSelection} from './roster-selection.js?v=0.25.0';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.25.0';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.25.0';
+import {FramePacer} from './frame-pacer.js?v=0.25.0';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.25.0';
+import {Haptics} from './haptics.js?v=0.25.0';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.25.0';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.25.0';
+import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.25.0';
+import {MatchRecord} from './match-record.js?v=0.25.0';
 const haptics=new Haptics();let arcadeRewards=null,arcadeRuns=null,matchRecord=null;
 const loadingScreen=document.getElementById('match-loading');
 const $=id=>document.getElementById(id);
@@ -32,6 +33,12 @@ let coach=null,creditsPending=false;
 let championships=null,championshipBout=null;
 let roster=[],atlases={},arenas=[],renderer,match=null,chosen=0,arena=0,paused=false,helpWasPaused=false,arcadeOpponents=[],arcadeIndex=0,session=0,loading=false,returnFocus=null;
 let onlineBusy=false,onlineStarted=false,onlineFailed=false,localIndex=0,snapshotBuffer=null;
+// Team play: the input seat this browser drives (P1 = 0 … P4 = 3) and squad room state.
+let localPlayer=0,squadBuffer=null,squadDrops=new Set();
+const netMode=mode=>mode==='online'||mode==='squad';
+const pairMode=mode=>mode==='tag'||mode==='tornado';
+const teamPanelMode=mode=>isEliminationMode(mode)||pairMode(mode);
+const teamSize=mode=>pairMode(mode)?2:TEAM_SIZE;
 let rosterSelection=null,secrets=null,playable=[];
 let artworkState=null;
 let runtimeFault=null,graphicsWaiting=false;
@@ -45,6 +52,9 @@ function siteReport(report){
 }
 const net=new OnlineSession({connect:connectFirebase,prepare:prepareOnline,start:startOnline,
   snapshot:packet=>snapshotBuffer?.receive(packet,performance.now()),status:onlineStatus,ended:onlineEnded});
+const squad=new SquadSession({connect:connectFirebase,prepare:prepareSquad,start:startSquad,lobby:squadLobby,dropped:squadDropped,
+  snapshot:packet=>squadBuffer?.receive(packet,performance.now()),status:squadStatus,ended:squadEnded,
+  fill:used=>shuffledFrom(playable,used)});
 const imagePromises=new Map();
 const sound=new Sound($('theme-audio'));
 const coarse=matchMedia('(any-pointer:coarse)');
@@ -101,7 +111,7 @@ function updatePhoneLayout(showing){
       const r=layout[key];Object.assign(node.style,{left:`${r.x}px`,top:`${r.y}px`,width:`${r.width}px`,height:`${r.height}px`});
     }
     const rotated=lastPhoneOrientation&&lastPhoneOrientation!==layout.mode;lastPhoneOrientation=layout.mode;
-    if(rotated){input.clear();match?.clearInputs();if(net.active){net.capture(emptyInput());net.sendInput(true);}else if(match&&!paused)togglePause(true);}
+    if(rotated){input.clear();match?.clearInputs();if(net.active){net.capture(emptyInput());net.sendInput(true);}else if(squad.active){squad.capture(emptyInput());squad.sendInput(true);}else if(match&&!paused)togglePause(true);}
   }else{
     delete cabinet.dataset.phoneLayout;lastPhoneOrientation=null;lastControlGeometry='';cabinet.classList.remove('phone-online','phone-short');cabinet.style.removeProperty('--phone-height');
     for(const node of [cabinet,...Object.values(phoneNodes)])for(const key of ['left','top','width','height'])node.style.removeProperty(key);
@@ -171,26 +181,35 @@ const teamSelect=(side,slot)=>$(`team-${side?'b':'a'}-${slot}`);
 function teamPool(side){return side===0||isLocalMode($('mode').value)?playable.slice():roster.map((_,i)=>i);}
 function shuffledFrom(pool,used){const free=pool.filter(i=>!used.has(i));for(let i=free.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[free[i],free[j]]=[free[j],free[i]];}return free;}
 function shuffleTeams(){
-  const used=new Set([chosen]),a=[chosen,...shuffledFrom(teamPool(0),used).slice(0,TEAM_SIZE-1)];a.forEach(i=>used.add(i));
-  teams=[a,shuffledFrom(teamPool(1),used).slice(0,TEAM_SIZE)];renderTeams();
+  const size=teamSize($('mode').value),used=new Set([chosen]),a=[chosen,...shuffledFrom(teamPool(0),used).slice(0,size-1)];a.forEach(i=>used.add(i));
+  teams=[a,shuffledFrom(teamPool(1),used).slice(0,size)];renderTeams();
 }
 function syncTeams(){
   if(!roster.length||!playable.length)return;
-  if(!teams||teams[0].length!==TEAM_SIZE||teams[1].length!==TEAM_SIZE){shuffleTeams();return;}
+  if(!teams){shuffleTeams();return;}
   // Keep every slot legal for the current mode, slot 1 on the chosen fighter, and no repeats.
-  const used=new Set([chosen]),fixed=[[chosen],[]];
-  for(const side of [0,1])for(let slot=side?0:1;slot<TEAM_SIZE;slot++){const id=teams[side][slot];if(teamPool(side).includes(id)&&!used.has(id)){used.add(id);fixed[side][slot]=id;}}
-  for(const side of [0,1])for(let slot=0;slot<TEAM_SIZE;slot++)if(fixed[side][slot]===undefined){const id=shuffledFrom(teamPool(side),used)[0];used.add(id);fixed[side][slot]=id;}
+  // Tag and tornado use the first two slots of each team; elimination uses all four.
+  const size=teamSize($('mode').value),used=new Set([chosen]),fixed=[[chosen],[]];
+  for(const side of [0,1])for(let slot=side?0:1;slot<size;slot++){const id=teams[side][slot];if(teamPool(side).includes(id)&&!used.has(id)){used.add(id);fixed[side][slot]=id;}}
+  for(const side of [0,1])for(let slot=0;slot<size;slot++)if(fixed[side][slot]===undefined){const id=shuffledFrom(teamPool(side),used)[0];used.add(id);fixed[side][slot]=id;}
   teams=fixed;renderTeams();
 }
+const TEAM_RULES={
+  elimination:'Survivor-style: one wrestler per team in the ring. Pin, submit or knock out your opponent to eliminate them, and their next teammate comes in. The winner stays in with the damage taken plus a short breather. Last team with a wrestler left wins.',
+  tag:'Tag team: one legal wrestler per side. Get to your own corner (yours is on the left) and press TAUNT to tag your partner in. Your partner is the CPU. One pin, submission or knockout wins the match.',
+  tornado:'Tornado tag: all four wrestlers in the ring at once, you and a CPU partner against two CPU wrestlers. Pinned, submitted or knocked out wrestlers are eliminated; hit a wrestler who is pinning your partner to break it up. Last team standing wins.'
+};
 function renderTeams(){
   if(!teams)return;
+  const mode=$('mode').value,size=teamSize(mode);
   for(const side of [0,1])for(let slot=0;slot<TEAM_SIZE;slot++){
     const select=teamSelect(side,slot);if(!select)continue;
+    select.hidden=slot>=size;if(slot>=size)continue;
     select.replaceChildren(...teamPool(side).map(i=>{const o=document.createElement('option');o.value=i;o.textContent=roster[i].name.toUpperCase();return o;}));
     select.value=String(teams[side][slot]);select.disabled=onlineBusy||(side===0&&slot===0);
   }
-  const local=isLocalMode($('mode').value);$('team-a-label').textContent=local?'PLAYER 1 TEAM':'YOUR TEAM';$('team-b-label').textContent=local?'PLAYER 2 TEAM':'CPU TEAM';
+  const local=isLocalMode(mode);$('team-a-label').textContent=local?'PLAYER 1 TEAM':pairMode(mode)?'YOU + CPU PARTNER':'YOUR TEAM';$('team-b-label').textContent=local?'PLAYER 2 TEAM':'CPU TEAM';
+  $('team-rules').textContent=TEAM_RULES[pairMode(mode)?mode:'elimination'];
 }
 function pickTeamSlot(side,slot,id){
   if(!teams||!teamPool(side).includes(id)||(id===chosen&&!(side===0&&slot===0))){renderTeams();return;} // your lead wrestler is set on the roster screen
@@ -244,11 +263,11 @@ function updateArcadeRewards(){
 }
 function updateOpponent(){
   if(!roster.length)return;
-  const mode=$('mode').value,opponent=isEliminationMode(mode)&&teams?roster[teams[1][0]]:roster[Number($('opponent').value)||0];
-  $('team-panel').hidden=!isEliminationMode(mode);
-  $('versus-name').textContent=mode==='online'?'ROOM CODES + QUICK MATCH':mode==='championship'?'FIVE WINS TO THE BELT':mode==='arcade'?`${roster.length-1} OPPONENTS. ONE CHAMPION.`:isEliminationMode(mode)?`4 ON 4 · ${opponent.name.toUpperCase()} LEADS OFF`:`VS ${opponent.name.toUpperCase()}`;
-  $('versus-avatar').hidden=['arcade','online','championship'].includes(mode);$('versus-avatar').src=fighterPortrait(opponent);
-  $('versus-label').textContent=mode==='online'?'ONLINE MULTIPLAYER':mode==='championship'?'CHAMPIONSHIP':mode==='arcade'?'ARCADE RUN':isEliminationMode(mode)?(isLocalMode(mode)?'PLAYER 2 TEAM':'CPU TEAM'):isLocalMode(mode)?'PLAYER 2':mode==='practice'?'PRACTICE PARTNER':'CPU OPPONENT';
+  const mode=$('mode').value,opponent=teamPanelMode(mode)&&teams?roster[teams[1][0]]:roster[Number($('opponent').value)||0];
+  $('team-panel').hidden=!teamPanelMode(mode);
+  $('versus-name').textContent=mode==='online'?'ROOM CODES + QUICK MATCH':mode==='squad'?'UP TO 4 PLAYERS · ROOM CODES':mode==='championship'?'FIVE WINS TO THE BELT':mode==='arcade'?`${roster.length-1} OPPONENTS. ONE CHAMPION.`:isEliminationMode(mode)?`4 ON 4 · ${opponent.name.toUpperCase()} LEADS OFF`:pairMode(mode)&&teams?`VS ${teams[1].map(i=>roster[i].name.toUpperCase()).join(' & ')}`:`VS ${opponent.name.toUpperCase()}`;
+  $('versus-avatar').hidden=['arcade','online','championship','squad'].includes(mode);$('versus-avatar').src=fighterPortrait(opponent);
+  $('versus-label').textContent=mode==='online'?'ONLINE MULTIPLAYER':mode==='squad'?'ONLINE 4 PLAYER':mode==='championship'?'CHAMPIONSHIP':mode==='arcade'?'ARCADE RUN':pairMode(mode)?(mode==='tag'?'TAG TEAM · CPU TEAM':'TORNADO TAG · CPU TEAM'):isEliminationMode(mode)?(isLocalMode(mode)?'PLAYER 2 TEAM':'CPU TEAM'):isLocalMode(mode)?'PLAYER 2':mode==='practice'?'PRACTICE PARTNER':'CPU OPPONENT';
   $('pole-rules').hidden=!isPoleMode(mode);
   updateChampionship();updateArcadeRewards();
 }
@@ -276,7 +295,7 @@ function buildRoster(){
   $('roster-next').onclick=()=>{rosterSelection.turn(1);renderRosterPage();};
   $('show-roster').onclick=()=>setSelectionPanel('roster');$('show-setup').onclick=()=>setSelectionPanel('setup');
   $('confirm-fighter').onclick=()=>{setSelectionPanel('setup');$('mode').focus();};
-  $('mode').onchange=()=>{const mode=$('mode').value;$('difficulty-label').hidden=isLocalMode(mode)||['practice','online'].includes(mode);$('opponent').parentElement.hidden=['arcade','online','championship'].includes(mode)||isEliminationMode(mode);if(isEliminationMode(mode))syncTeams();$('opponent-label').textContent=isLocalMode(mode)?'PLAYER 2':'OPPONENT';$('online-lobby').hidden=mode!=='online';$('fight').hidden=mode==='online';updateOpponent();};
+  $('mode').onchange=()=>{const mode=$('mode').value;$('difficulty-label').hidden=isLocalMode(mode)||['practice','online'].includes(mode);$('opponent').parentElement.hidden=['arcade','online','championship','squad'].includes(mode)||teamPanelMode(mode);if(teamPanelMode(mode))syncTeams();$('opponent-label').textContent=isLocalMode(mode)?'PLAYER 2':'OPPONENT';$('online-lobby').hidden=mode!=='online';$('squad-lobby').hidden=mode!=='squad';$('fight').hidden=netMode(mode);updateOpponent();};
   $('opponent').onchange=updateOpponent;
   for(const side of [0,1])for(let slot=0;slot<TEAM_SIZE;slot++)teamSelect(side,slot).onchange=event=>pickTeamSlot(side,slot,Number(event.target.value));
   $('team-shuffle').onclick=()=>{shuffleTeams();updateOpponent();};$('difficulty').onchange=()=>{updateChampionship();updateArcadeRewards();};
@@ -316,7 +335,7 @@ async function loadArena(index){
   await imagePromises.get(key);
 }
 async function startMatch(freshArcade=false){
-  if($('mode').value==='online'||net.active||onlineBusy)return;
+  if(netMode($('mode').value)||net.active||squad.active||onlineBusy)return;
   if(loading)return;if(runtimeFault&&!renderer.contextLost)renderer.resetSurface();runtimeFault=null;loading=true;pauseScreen.hidden=true;loadingScreen.hidden=false;$('cancel-loading').focus();input.clear();match?.clearInputs();sound.stopEffects();modalState();const thisSession=++session;$('fight').disabled=true;$('fight').textContent='ENTERING THE RING…';
   try{
     const mode=$('mode').value;arena=Number($('arena').value);
@@ -324,37 +343,39 @@ async function startMatch(freshArcade=false){
     const arcadeBout=mode==='arcade'?arcadeRuns.start(roster[chosen].id,$('difficulty').value,arena,{fresh:freshArcade}):null;
     if(arcadeBout){arcadeOpponents=arcadeBout.opponents.map(id=>roster.findIndex(f=>f.id===id));arcadeIndex=arcadeBout.index;}
     championshipBout=mode==='championship'?championships.start(roster[chosen].id,$('difficulty').value,arena):null;
-    if(isEliminationMode(mode))syncTeams();
-    const matchTeams=isEliminationMode(mode)?teams.map(t=>t.slice()):null;
+    if(teamPanelMode(mode))syncTeams();
+    const matchTeams=teamPanelMode(mode)?teams.map(t=>t.slice(0,teamSize(mode))):null;
     const opponent=championshipBout?roster.findIndex(f=>f.id===championshipBout.opponent):mode==='arcade'?arcadeOpponents[arcadeIndex]:matchTeams?matchTeams[1][0]:Number($('opponent').value);
     if(championshipBout)arena=championshipArena(championshipBout);
     if(arcadeBout)arena=(arcadeBout.arena+arcadeIndex)%ARENAS.length;
     // The previous match is covered by the menu: free it before decoding the next pair.
-    retainMatchArtwork(atlases,arenas,imagePromises,[chosen,opponent],arena);
-    const artwork=await Promise.allSettled([loadFighter(chosen),loadFighter(opponent),loadArena(arena)]);
+    // Tag partners wait on the apron and tornado puts all four in at once: load every one.
+    const needed=[...new Set(pairMode(mode)?matchTeams.flat():[chosen,opponent])];
+    retainMatchArtwork(atlases,arenas,imagePromises,needed,arena);
+    const artwork=await Promise.allSettled([...needed.map(i=>loadFighter(i)),loadArena(arena)]);
     const failed=artwork.find(r=>r.status==='rejected');if(failed)throw failed.reason;
     if(thisSession!==session)return;
     if(renderer.contextLost)throw new Error('Graphics are still recovering. Try again or reload.');
     if(runtimeFault)renderer.resetSurface();runtimeFault=null;graphicsWaiting=false;
     last=performance.now();accumulator=0;framePacer.invalidate();
-    localIndex=0;renderer.localIndex=0;onlineStarted=false;onlineFailed=false;$('network-banner').hidden=true;$('pause-button').setAttribute('aria-label','Pause match');
+    localIndex=0;localPlayer=0;renderer.localIndex=0;renderer.localPlayer=0;onlineStarted=false;onlineFailed=false;$('network-banner').hidden=true;$('pause-button').setAttribute('aria-label','Pause match');
     match=new Match(roster,chosen,opponent,{mode,difficulty:$('difficulty').value,arcadeIndex,championshipLabel:championshipBout?championshipLabel(championshipBout):null,teams:matchTeams});
     match.championshipBout=championshipBout;match.arcadeBout=arcadeBout;tally=newTally();lastPinAttacker=null;match.resultTicket=arcadeBout?.ticket||championshipBout?.ticket||resultTicket();
     if(arcadeBout)arcadeRuns.restore(arcadeBout,match);
-    retainMatchArtwork(atlases,arenas,imagePromises,match.ids,arena);
+    retainMatchArtwork(atlases,arenas,imagePromises,matchArt(match),arena);
     coach?.start();creditsPending=false;creditsScreen.hidden=true;paused=false;selection.hidden=true;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();input.active=true;input.setMode(mode);if(coarse.matches||preferences.touch==='on')input.scheme='touch';renderer.reset();touchSignature='';$('pause-button').hidden=false;updateTouch();sound.resume();
-    $('footer-status').textContent=championshipBout?championshipLabel(championshipBout):isPoleMode(mode)?'WEAPON ON A POLE · CLAIM THE CHAIR, THEN WIN TWO FALLS':isEliminationMode(mode)?`4 ON 4 ELIMINATION · LAST TEAM STANDING${isLocalMode(mode)?' · PLAYER 1 VS PLAYER 2':''}`:isLocalMode(mode)?'LOCAL VERSUS · TWO PLAYERS. ONE RING.':mode==='arcade'?`ARCADE RUN · OPPONENT ${arcadeIndex+1} OF ${roster.length-1}`:mode==='practice'?'PRACTICE · FULL METER · AUTO RESET':'VS CPU · BEST OF THREE';
-    document.activeElement?.blur();status(`Round ${match.round}. ${roster[chosen].name} versus ${roster[opponent].name}.`);
+    $('footer-status').textContent=championshipBout?championshipLabel(championshipBout):isPoleMode(mode)?'WEAPON ON A POLE · CLAIM THE CHAIR, THEN WIN TWO FALLS':mode==='tag'?'TAG TEAM · TAUNT IN YOUR CORNER TO TAG · ONE FALL':mode==='tornado'?'TORNADO TAG · ALL FOUR IN THE RING · LAST TEAM STANDING':isEliminationMode(mode)?`4 ON 4 ELIMINATION · LAST TEAM STANDING${isLocalMode(mode)?' · PLAYER 1 VS PLAYER 2':''}`:isLocalMode(mode)?'LOCAL VERSUS · TWO PLAYERS. ONE RING.':mode==='arcade'?`ARCADE RUN · OPPONENT ${arcadeIndex+1} OF ${roster.length-1}`:mode==='practice'?'PRACTICE · FULL METER · AUTO RESET':'VS CPU · BEST OF THREE';
+    document.activeElement?.blur();status(pairMode(mode)?`${formatTitle(match)}. ${matchTeams[0].map(i=>roster[i].name).join(' and ')} versus ${matchTeams[1].map(i=>roster[i].name).join(' and ')}.`:`Round ${match.round}. ${roster[chosen].name} versus ${roster[opponent].name}.`);
     if(match.phase==='done')finishMatch();
   }catch(error){if(thisSession===session)recoverRuntime(error,false,'The next match could not load. Retry when your connection is ready. Saved arcade opponents and falls are kept.');}
   finally{if(thisSession===session){loading=false;loadingScreen.hidden=true;modalState();$('fight').disabled=false;updateChampionship();updateArcadeRewards();}}
 }
 function togglePause(force){
   if(loading||runtimeFault||!match||match.phase==='done'||!selection.hidden||!helpScreen.hidden)return;
-  if(match.options.mode==='online'){
-    input.clear();net.capture(emptyInput());net.sendInput(true);
+  if(netMode(match.options.mode)){
+    input.clear();net.capture(emptyInput());net.sendInput(true);squad.capture(emptyInput());squad.sendInput(true);
     if(force===true||onlineFailed)return;
-    $('pause-art').hidden=true;$('pause-title').textContent='ONLINE MATCH CONTINUES';$('pause-detail').textContent='The other player is still in the ring. Return to the fight or leave the match.';$('pause-detail').hidden=false;
+    $('pause-art').hidden=true;$('pause-title').textContent='ONLINE MATCH CONTINUES';$('pause-detail').textContent=match.options.mode==='squad'?(squad.host?'You are hosting: leaving ends the match for everyone. Return to the fight or leave.':'The others are still in the ring. If you leave, the CPU takes over your wrestler.'):'The other player is still in the ring. Return to the fight or leave the match.';$('pause-detail').hidden=false;
     $('restart').hidden=true;$('resume').hidden=false;
     if(pauseScreen.hidden)showModal(pauseScreen,$('resume'));else hideModal(pauseScreen);
     updateTouch();return;
@@ -362,24 +383,35 @@ function togglePause(force){
   $('reload-game').hidden=true;$('restart').textContent=match.options.mode==='arcade'?'RESTART ROUND':'RESTART MATCH';$('pause-art').hidden=false;$('pause-title').textContent='MATCH PAUSED';$('pause-detail').hidden=true;$('restart').hidden=false;$('resume').hidden=false;
   paused=force===true?true:!paused;input.clear();match.clearInputs();if(paused){showModal(pauseScreen,$('resume'));sound.suspend();}else{pauseScreen.hidden=true;modalState();sound.resume();document.activeElement?.blur();}updateTouch();
 }
-function quit(){flushProgress();if(runtimeFault&&!renderer.contextLost)renderer.resetSurface();loading=false;loadingScreen.hidden=true;graphicsWaiting=false;$('fight').disabled=false;creditsPending=false;creditsScreen.hidden=true;sound.stopEffects();retainMatchArtwork(atlases,arenas,imagePromises,[],arena);session++;runtimeFault=null;net.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;localIndex=0;renderer.localIndex=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';updateChampionship();updateArcadeRewards();updateMatchRecord();refreshSavedArcade();($('mode').value==='online'?$('online-quick'):$('fight')).focus();}
+function quit(){flushProgress();if(runtimeFault&&!renderer.contextLost)renderer.resetSurface();loading=false;loadingScreen.hidden=true;graphicsWaiting=false;$('fight').disabled=false;creditsPending=false;creditsScreen.hidden=true;sound.stopEffects();retainMatchArtwork(atlases,arenas,imagePromises,[],arena);session++;runtimeFault=null;net.leave().catch(()=>{});squad.leave().catch(()=>{});onlineStarted=false;onlineFailed=false;setOnlineBusy(false);snapshotBuffer=null;squadBuffer=null;squadDrops=new Set();$('squad-room').hidden=true;$('squad-start').hidden=true;localIndex=0;localPlayer=0;renderer.localIndex=0;renderer.localPlayer=0;match=null;paused=false;input.active=false;input.clear();selection.hidden=false;pauseScreen.hidden=true;resultScreen.hidden=true;helpScreen.hidden=true;modalState();renderer.reset();sound.resume();$('pause-button').hidden=true;$('network-banner').hidden=true;$('room-share').hidden=true;$('online-status').textContent='Create a room, join a friend, or try Quick Match.';$('squad-status').textContent='Create a 4-player room or join one with a code.';updateTouch();$('footer-status').textContent='SELECT YOUR FIGHTER. SETTLE IT IN THE RING.';updateChampionship();updateArcadeRewards();updateMatchRecord();refreshSavedArcade();($('mode').value==='online'?$('online-quick'):$('mode').value==='squad'?$('squad-create'):$('fight')).focus();}
+// Which side this browser plays for. Team modes count the team, not one wrestler.
+const mySide=()=>match?.routed?teamOfSeat(localPlayer):localIndex;
+function winnerFighter(m){return m.fighters.find((f,i)=>(m.brawl?f.side:i)===m.winner&&!f.out)||m.fighters.find(f=>f.side===m.winner)||m.fighters[m.winner];}
 function finishMatch(){
   if(match.resultShown)return;
-  matchRecord.record(match,localIndex);updateMatchRecord();
+  matchRecord.record(match,mySide());updateMatchRecord();
   input.active=false;input.clear();$('pause-button').hidden=true;
-  const won=match.winner===localIndex,arcade=match.options.mode==='arcade',champion=arcade&&won&&arcadeIndex===arcadeOpponents.length-1;
+  const won=match.winner===mySide(),arcade=match.options.mode==='arcade',champion=arcade&&won&&arcadeIndex===arcadeOpponents.length-1;
   $('result-win-art').hidden=!(won||isLocalMode(match.options.mode));
   $('result-title').textContent=champion?'LUNACY CHAMPION':`${match.fighters[match.winner].definition.name.toUpperCase()} WINS`;
   $('result-method').textContent=champion?'ENTIRE ROSTER DEFEATED':match.method;
   $('result-detail').textContent=`${match.wins[0]} — ${match.wins[1]}${arcade?` · ${Math.min(arcadeOpponents.length,arcadeIndex+(won?1:0))} of ${arcadeOpponents.length} opponents defeated`:''}`;
   if(match.teams){
-    const local=isLocalMode(match.options.mode),side=match.winner,survivors=match.teams[side].slice(match.slot[side]).map(i=>roster[i].name);
-    $('result-title').textContent=local?`PLAYER ${side+1} TEAM WINS`:won?'YOUR TEAM WINS':'CPU TEAM WINS';
-    $('result-method').textContent=survivors.length===1?`4 ON 4 ELIMINATION · SOLE SURVIVOR: ${survivors[0].toUpperCase()}`:`4 ON 4 ELIMINATION · ${match.method}`;
-    $('result-detail').textContent=`Survivors: ${survivors.join(', ')} · ${match.out[1-side].length} eliminated vs ${match.out[side].length} · ${match.round} falls`;
+    const local=isLocalMode(match.options.mode),side=match.winner,online=match.options.mode==='squad',title=formatTitle(match);
+    const names=s=>match.teams[s].map(i=>roster[i].name).join(' & '),seats=s=>s?'P2 + P4':'P1 + P3';
+    $('result-title').textContent=online?(won?'YOUR TEAM WINS':`${seats(side)} WIN`):local?`PLAYER ${side+1} TEAM WINS`:won?'YOUR TEAM WINS':'CPU TEAM WINS';
+    if(match.format==='elimination'){
+      const survivors=match.teams[side].slice(match.slot[side]).map(i=>roster[i].name);
+      $('result-method').textContent=survivors.length===1?`${title} · SOLE SURVIVOR: ${survivors[0].toUpperCase()}`:`${title} · ${match.method}`;
+      $('result-detail').textContent=`Survivors: ${survivors.join(', ')} · ${match.out[1-side].length} eliminated vs ${match.out[side].length} · ${match.round} falls`;
+    }else{
+      const survivors=match.brawl?match.fighters.filter(f=>f.side===side&&!f.out).map(f=>f.definition.name):[];
+      $('result-method').textContent=`${title} · ${match.method}${survivors.length===1&&match.brawl?` · SOLE SURVIVOR: ${survivors[0].toUpperCase()}`:''}`;
+      $('result-detail').textContent=`${names(side)} defeat ${names(1-side)}${online?` · ${seats(side)}`:''}`;
+    }
   }
-  const winner=match.fighters[match.winner].definition;$('winner-portrait').src=fighterPortrait(winner);$('winner-portrait').alt=winner.name;
-  $('rematch').textContent=match.options.mode==='online'?'BACK TO ONLINE LOBBY':arcade&&won&&!champion?'NEXT OPPONENT':arcade?(won?'NEW ARCADE RUN':'RETRY OPPONENT'):'REMATCH';
+  const winner=winnerFighter(match).definition;$('winner-portrait').src=fighterPortrait(winner);$('winner-portrait').alt=winner.name;
+  $('rematch').textContent=match.options.mode==='squad'?'BACK TO 4-PLAYER LOBBY':match.options.mode==='online'?'BACK TO ONLINE LOBBY':arcade&&won&&!champion?'NEXT OPPONENT':arcade?(won?'NEW ARCADE RUN':'RETRY OPPONENT'):'REMATCH';
   $('championship-belt').hidden=true;creditsPending=false;$('show-credits').hidden=true;$('secret-unlock').hidden=true;resultScreen.classList.remove('champion-result');
   let siteOutcome=null,siteRun=null,siteReward=null;
   if(match.options.mode==='championship'){
@@ -410,7 +442,8 @@ function finishMatch(){
     $('result-detail').textContent+=saved?(arcadeRuns.saved?' · Progress saved.':' · Session only — saving unavailable.'):' · Continue from the saved run.';
   }
   showModal(resultScreen,$('rematch'));status($('result-title').textContent);match.resultShown=true;
-  try{const me=match.fighters[localIndex].definition,them=match.fighters[1-localIndex].definition,mode=match.options.mode;
+  try{const mode=match.options.mode,mine=match.teams&&match.routed?match.teams[mySide()][localPlayer>>1]??match.teams[mySide()][0]:null;
+    const me=mine!=null?roster[mine]:match.fighters[localIndex].definition,them=match.routed?roster[match.teams[1-mySide()][0]]:match.fighters[1-localIndex].definition;
     siteReport({won,local:isLocalMode(mode),mode,pole:isPoleMode(mode),difficulty:match.options.difficulty,method:match.method,wins:match.wins.slice(),
       fighter:me.id,fighterName:me.name,opponent:them.id,opponentName:them.name,rosterSize:roster.length,arena,arenaCount:ARENAS.length,
       arcadeChampion:champion,medal:siteReward,championship:siteOutcome,run:siteRun,tally:tally||newTally()});}catch(error){}
@@ -418,10 +451,10 @@ function finishMatch(){
 }
 function setOnlineBusy(busy){
   onlineBusy=busy;
-  for(const id of ['online-quick','online-create','online-join','join-code','mode','arena','roster-select','confirm-fighter','show-roster','show-setup','resume-arcade'])$(id).disabled=busy;
+  for(const id of ['online-quick','online-create','online-join','join-code','squad-create','squad-join','squad-code','squad-format','mode','arena','roster-select','confirm-fighter','show-roster','show-setup','resume-arcade'])$(id).disabled=busy;
   document.querySelectorAll('.fighter-card').forEach(button=>button.disabled=busy);
   renderRosterPage();
-  $('online-cancel').hidden=!busy;
+  const squadMode=$('mode').value==='squad';$('online-cancel').hidden=!busy||squadMode;$('squad-cancel').hidden=!busy||!squadMode;
 }
 function onlineStatus(message,code){
   $('online-status').textContent=message;
@@ -463,6 +496,80 @@ function onlineEnded(message){
   $('network-banner').textContent=message;$('pause-art').hidden=true;$('pause-title').textContent='CONNECTION ENDED';$('pause-detail').textContent=message;$('pause-detail').hidden=false;
   $('resume').hidden=true;$('restart').hidden=true;showModal(pauseScreen,$('quit'));sound.suspend();
 }
+/* ---- four-player online rooms ---- */
+const FORMAT_NAMES={tag:'TAG TEAM · TAUNT IN YOUR CORNER TO TAG',tornado:'TORNADO TAG · ALL 4 IN THE RING',elimination:'ELIMINATION · ONE-ON-ONE, NEXT IN'};
+function squadStatus(message,code){
+  $('squad-status').textContent=message;
+  if(code){$('squad-room-code').textContent=code;$('squad-room').hidden=onlineStarted;}
+  if(onlineStarted){$('network-banner').textContent=message;$('network-banner').hidden=false;}
+}
+function squadLobby(meta,seat){
+  $('squad-room').hidden=false;$('squad-room-type').textContent=FORMAT_NAMES[meta.format]||'';
+  const seats=seatsOf(meta);
+  $('squad-seats').replaceChildren(...seats.map((s,n)=>{
+    const li=document.createElement('li');li.dataset.team=String(teamOfSeat(n));li.dataset.open=String(!s);li.dataset.you=String(n===seat);
+    li.textContent=`P${n+1}${n===seat?' (YOU)':''} · ${s?roster[s.fighter]?.name.toUpperCase():'OPEN · CPU IF EMPTY'}`;return li;
+  }));
+  const people=seats.filter(Boolean).length;
+  $('squad-start').hidden=seat!==0;$('squad-start').disabled=false;
+  $('squad-status').textContent=seat===0?`${people} OF 4 IN THE ROOM · Share code ${squad.code}. The match starts when all four are in, or press START NOW.`:`${people} OF 4 IN THE ROOM · YOU ARE P${seat+1} · Waiting for the host to start.`;
+}
+async function beginSquad(kind){
+  if(onlineBusy)return;
+  const ticket=++session;onlineFailed=false;setOnlineBusy(true);$('squad-room').hidden=true;
+  try{await squad.begin(kind,chosen,{arena:Number($('arena').value),format:$('squad-format').value,code:$('squad-code').value});}
+  catch(error){if(ticket===session){$('squad-status').textContent=/permission|denied/i.test(error.message)?'Online rooms are unavailable. The game’s Firebase access needs checking.':error.message;}}
+  finally{if(ticket===session&&!squad.active)setOnlineBusy(false);}
+}
+async function prepareSquad(meta,seat){
+  const ticket=session,teamIds=squadTeams(meta),all=teamIds.flat();
+  retainMatchArtwork(atlases,arenas,imagePromises,all,meta.arena);
+  await Promise.all([...all.map(i=>loadFighter(i)),loadArena(meta.arena)]);
+  if(ticket!==session||!squad.active)throw Object.assign(new Error('Cancelled'),{cancelled:true});
+  arena=meta.arena;localPlayer=seat;renderer.localPlayer=seat;
+  match=new Match(roster,teamIds[0][0],teamIds[1][0],{mode:'squad',format:meta.format,teams:teamIds,cpuPlayers:[...cpuSeats(meta),...squadDrops],difficulty:$('difficulty').value});
+  match.resultTicket=resultTicket();localIndex=localFighter();renderer.localIndex=localIndex;
+  squadBuffer=seat===0?null:new SquadSnapshotBuffer(teamIds);
+  renderer.reset();touchSignature='';input.setMode('online');input.clear();
+}
+function startSquad(meta,seat){
+  if(!match||!squad.active)return;
+  onlineStarted=true;paused=false;onlineFailed=false;tally=newTally();lastPinAttacker=null;selection.hidden=true;pauseScreen.hidden=true;helpScreen.hidden=true;resultScreen.hidden=true;
+  input.active=true;if(coarse.matches||preferences.touch==='on')input.scheme='touch';
+  $('squad-room').hidden=true;$('squad-start').hidden=true;$('pause-button').hidden=false;$('pause-button').setAttribute('aria-label','Match menu');
+  const team=teamOfSeat(seat)?'P2 + P4':'P1 + P3';
+  $('network-banner').hidden=false;$('network-banner').textContent=`ONLINE 4 PLAYER · YOU ARE P${seat+1} (${team}) · ROOM ${squad.code}`;
+  $('footer-status').textContent=`ONLINE · ${formatTitle(match)} · ${team} IS YOUR TEAM`;modalState();updateTouch();sound.resume();document.activeElement?.blur();
+  status(`Online four-player ${formatTitle(match).toLowerCase()}. You are player ${seat+1}.`);
+}
+function squadDropped(seat){
+  // Host only: a friend left mid-match, so the CPU takes their wrestler.
+  squadDrops.add(seat);match?.cpuPlayers?.add(seat);
+  if(onlineStarted){$('network-banner').textContent=`P${seat+1} LEFT · THE CPU TAKES OVER · ROOM ${squad.code}`;status(`Player ${seat+1} left. The CPU takes over their wrestler.`);}
+}
+function squadEnded(message){
+  setOnlineBusy(false);$('squad-room').hidden=true;$('squad-start').hidden=true;$('squad-status').textContent=message;onlineStarted=false;
+  if(match?.phase==='done')return;
+  if(!match||!selection.hidden){match=null;renderer?.reset();return;}
+  onlineFailed=true;paused=true;input.active=false;input.clear();
+  $('network-banner').textContent=message;$('pause-art').hidden=true;$('pause-title').textContent='CONNECTION ENDED';$('pause-detail').textContent=message;$('pause-detail').hidden=false;
+  $('resume').hidden=true;$('restart').hidden=true;showModal(pauseScreen,$('quit'));sound.suspend();
+}
+// The wrestler this browser controls right now (team play), or the nearest stand-in
+// while it waits on the apron, between falls, or after being eliminated.
+function localFighter(){
+  if(!match?.routed)return localIndex;
+  const i=match.fighters.findIndex(f=>f.player===localPlayer);
+  return i>=0?i:Math.min(teamOfSeat(localPlayer),match.fighters.length-1);
+}
+function teamCoach(){
+  if(!match?.routed||match.phase!=='fight')return '';
+  const mine=match.fighters.find(f=>f.player===localPlayer);
+  if(match.brawl&&mine?.out)return 'ELIMINATED · CHEER ON YOUR PARTNER';
+  if(!mine)return match.format==='tag'?'ON THE APRON · YOUR PARTNER MUST TAG YOU IN':match.out?.[teamOfSeat(localPlayer)]?.includes(match.teams[teamOfSeat(localPlayer)][localPlayer>>1])?'ELIMINATED · CHEER ON YOUR TEAM':'WAITING · YOUR TEAMMATE IS IN THE RING';
+  if(match.format==='tag'&&match.canTag(match.fighters.indexOf(mine)))return 'IN YOUR CORNER · TAUNT TO TAG YOUR PARTNER';
+  return '';
+}
 function prepareNextFall(m,next){
   // The next wrestler's sheet decodes while the elimination banner plays; the fall waits for it.
   if(next.every(i=>atlases[i]))return;
@@ -476,7 +583,7 @@ function matchEvents(events){
   if(match?.arcadeBout&&events.some(e=>e.type==='roundEnd'))arcadeRuns.checkpoint(match.arcadeBout,match);
   for(const e of events){
     if(e.type==='elimination'&&e.next)prepareNextFall(match,e.next);
-    if(e.type==='round'&&match?.teams)retainMatchArtwork(atlases,arenas,imagePromises,match.ids,arena);
+    if(e.type==='round'&&match?.teams)retainMatchArtwork(atlases,arenas,imagePromises,matchArt(match),arena);
   }
   const banners=new Set(),effects=new Set();
   for(const e of events){
@@ -504,8 +611,10 @@ function matchEvents(events){
   }}
   coach?.receive(events,localIndex);renderer.receive(events,match);sound.play(events,match);
   if(input.scheme==='touch'&&events.some(e=>['hit','slam','reversal','secondWind'].includes(e.type)&&(e.index===localIndex||e.attacker===localIndex)))haptics.pulse(events.some(e=>e.type==='slam')?50:32);
-  for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='reversal')status(`Player ${e.index+1} reverses the strike. Counterattack!`);if(e.type==='secondWind')status(`Player ${e.index+1} gets a second wind: 25 Lunacy meter.`);if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);}
+  for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='reversal')status(`Player ${e.index+1} reverses the strike. Counterattack!`);if(e.type==='secondWind')status(`Player ${e.index+1} gets a second wind: 25 Lunacy meter.`);if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':match.teams&&match.format!=='elimination'?`${match.teams[e.winner].map(i=>roster[i].name).join(' and ')} win by ${e.method.toLowerCase()}`:`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);if(e.type==='tag')status(`Tag! ${roster[e.to]?.name} is the legal wrestler.`);if(e.type==='elimination'&&e.live)status(`${e.eliminated.map(x=>roster[x.id]?.name).join(', ')} eliminated.`);if(e.type==='pinBreak')status('The pin is broken up!');if(e.type==='suddenDeath')status('Sudden death. The next finish wins.');}
 }
+// Artwork a match needs on screen: tag partners stand on the apron, so keep the whole team.
+function matchArt(m){return m.teams&&m.format!=='elimination'?m.teams.flat():m.ids;}
 function recoverRuntime(error,graphics=false,detail=null){
   if(graphics)graphicsWaiting=true;
   if(runtimeFault)return;
@@ -513,10 +622,10 @@ function recoverRuntime(error,graphics=false,detail=null){
   console.error('Recoverable game runtime error',runtimeFault);
   try{localStorage.setItem('lunacy-last-error-v1',JSON.stringify({date:new Date().toISOString(),message:runtimeFault.message,stack:runtimeFault.stack?.slice(0,2500),mode:match?.options.mode,round:match?.round,arcadeIndex,fighters:match?.ids}));}catch{}
   paused=true;helpScreen.hidden=true;resultScreen.hidden=true;creditsScreen.hidden=true;helpWasPaused=true;input.active=false;input.clear();match?.clearInputs?.();sound.suspend();accumulator=0;
-  if(net.active){onlineFailed=true;net.leave().catch(()=>{});}
+  if(net.active||squad.active){onlineFailed=true;net.leave().catch(()=>{});squad.leave().catch(()=>{});}
   $('pause-art').hidden=true;$('pause-title').textContent=graphics?'RESTORING THE RING':'MATCH PAUSED';
   $('pause-detail').textContent=detail||(graphics?'Graphics were interrupted. Your match is paused while the screen recovers.':'The match stopped after an error. Retry to continue; saved arcade opponents and falls are kept.');
-  $('pause-detail').hidden=false;$('resume').hidden=true;$('restart').hidden=match?.options.mode==='online';$('restart').textContent='RETRY MATCH';$('reload-game').hidden=false;
+  $('pause-detail').hidden=false;$('resume').hidden=true;$('restart').hidden=netMode(match?.options.mode);$('restart').textContent='RETRY MATCH';$('reload-game').hidden=false;
   $('footer-status').textContent='MATCH PAUSED · YOUR SAVED RUN IS KEPT.';
   try{showModal(pauseScreen,$('restart').hidden?$('quit'):$('restart'));}catch{pauseScreen.hidden=false;}
 }
@@ -524,6 +633,7 @@ function graphicsRestored(){
   framePacer.invalidate();if(!graphicsWaiting)return;graphicsWaiting=false;runtimeFault=null;last=performance.now();accumulator=0;
   if(loading)return;
   if(match?.options.mode==='online'){onlineEnded('Graphics recovered. Return to the lobby to reconnect.');return;}
+  if(match?.options.mode==='squad'){squadEnded('Graphics recovered. Return to the lobby to reconnect.');return;}
   if(!match||!selection.hidden||match.phase==='done'){pauseScreen.hidden=true;modalState();if(match?.phase==='done'){if(match.resultShown)showModal(resultScreen,$('rematch'));else finishMatch();}return;}
   paused=true;input.active=true;$('pause-title').textContent='RING RESTORED';$('pause-detail').textContent='Your match is ready. Resume when you are.';$('pause-detail').hidden=false;$('resume').hidden=false;$('reload-game').hidden=true;
   showModal(pauseScreen,$('resume'));
@@ -531,8 +641,13 @@ function graphicsRestored(){
 $('online-quick').onclick=()=>beginOnline('quick');$('online-create').onclick=()=>beginOnline('create');$('online-join').onclick=()=>beginOnline('join');
 $('join-code').addEventListener('input',()=>{$('join-code').value=$('join-code').value.toUpperCase().replace(/[^A-Z-]/g,'');});
 $('join-code').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();beginOnline('join');}});
+$('squad-create').onclick=()=>beginSquad('create');$('squad-join').onclick=()=>beginSquad('join');
+$('squad-code').addEventListener('input',()=>{$('squad-code').value=$('squad-code').value.toUpperCase().replace(/[^A-Z0-9-]/g,'');});
+$('squad-code').addEventListener('keydown',event=>{if(event.key==='Enter'){event.preventDefault();beginSquad('join');}});
+$('squad-start').onclick=async()=>{$('squad-start').disabled=true;if(!await squad.launch())$('squad-start').disabled=false;};
+$('squad-cancel').onclick=()=>{session++;squad.leave().catch(()=>{});setOnlineBusy(false);$('squad-room').hidden=true;$('squad-start').hidden=true;$('squad-status').textContent='Room left. Create or join another 4-player room.';};
 $('online-cancel').onclick=()=>{session++;net.leave().catch(()=>{});setOnlineBusy(false);$('room-share').hidden=true;$('online-status').textContent='Room left. Create or join another match.';};
-addEventListener('pagehide',()=>{flushProgress();net.leave().catch(()=>{});});
+addEventListener('pagehide',()=>{flushProgress();net.leave().catch(()=>{});squad.leave().catch(()=>{});});
 $('fight').onclick=()=>startMatch();$('pause-button').onclick=()=>togglePause();$('resume').onclick=()=>togglePause();$('restart').onclick=()=>startMatch();$('reload-game').onclick=()=>{flushProgress();location.reload();};$('cancel-loading').onclick=quit;$('arcade-new').onclick=()=>startMatch(true);$('quit').onclick=quit;$('result-quit').onclick=quit;
 function openCredits(){$('credits-victory').textContent=`${match.fighters[match.winner].definition.name.toUpperCase()} · ${match.wins[0]} — ${match.wins[1]} · ${championships.saved?'YOUR TITLE IS SAVED':'TITLE HELD FOR THIS SESSION'}`;creditsPending=false;resultScreen.hidden=true;showModal(creditsScreen,$('credits-defend'));status('Championship credits. Your title is saved.');}
 $('show-credits').onclick=openCredits;
@@ -544,9 +659,9 @@ $('resume-arcade').onclick=()=>{
   $('mode').value='arcade';$('difficulty').value=run.difficulty;$('arena').value=String(run.arena);
   choose(roster.findIndex(f=>f.id===run.fighter));$('mode').onchange();setSelectionPanel('setup');return startMatch();
 };
-$('rematch').onclick=()=>{if(creditsPending){openCredits();return;}if(match.options.mode==='online'){quit();return;}startMatch();};
-$('arena').onchange=async()=>{arena=Number($('arena').value);const requested=arena;retainMatchArtwork(atlases,arenas,imagePromises,match?.ids||[],arena);try{await loadArena(requested);if(arena===requested)framePacer.invalidate();}catch{if(arena===requested)status('Arena could not load. Press FIGHT to retry.');}};
-$('controls').onclick=()=>{if(loading||runtimeFault||!helpScreen.hidden)return;helpWasPaused=paused;if(match){if(match.options.mode!=='online')paused=true;input.clear();match.clearInputs();net.capture(emptyInput());net.sendInput(true);}sound.suspend();showModal(helpScreen,$('close-help'));};
+$('rematch').onclick=()=>{if(creditsPending){openCredits();return;}if(netMode(match.options.mode)){quit();return;}startMatch();};
+$('arena').onchange=async()=>{arena=Number($('arena').value);const requested=arena;retainMatchArtwork(atlases,arenas,imagePromises,match?matchArt(match):[],arena);try{await loadArena(requested);if(arena===requested)framePacer.invalidate();}catch{if(arena===requested)status('Arena could not load. Press FIGHT to retry.');}};
+$('controls').onclick=()=>{if(loading||runtimeFault||!helpScreen.hidden)return;helpWasPaused=paused;if(match){if(!netMode(match.options.mode))paused=true;input.clear();match.clearInputs();net.capture(emptyInput());net.sendInput(true);squad.capture(emptyInput());squad.sendInput(true);}sound.suspend();showModal(helpScreen,$('close-help'));};
 function closeHelp(){paused=helpWasPaused;hideModal(helpScreen);input.clear();match?.clearInputs();if(!paused)sound.resume();updateTouch();}
 $('close-help').onclick=closeHelp;
 function soundLabel(){const on=sound.enabled;$('sound').textContent=on?'SOUND ON':'SOUND OFF';$('sound').setAttribute('aria-pressed',String(on));$('sound').setAttribute('aria-label',on?'Mute sound':'Enable sound');}
@@ -625,9 +740,26 @@ function loop(now){
         net.sendInput();snapshotBuffer?.apply(match,now);matchEvents(snapshotBuffer?.drainEvents()||[]);
       }else if(net.role==='host')net.sendSnapshot(match,[],match.phase==='done');
       if(match.phase==='done'&&resultScreen.hidden)finishMatch();
-    }else if(match&&match.options.mode!=='online'&&!paused&&match.phase!=='done'){
+    }else if(match?.options.mode==='squad'&&onlineStarted&&!onlineFailed){
+      if(match.phase!=='done'){
+        accumulator+=delta;
+        while(accumulator>=STEP){
+          const raw=input.read(),mine=!pauseScreen.hidden||!helpScreen.hidden?emptyInput():raw[0];
+          if(!squad.host)squad.capture(mine);
+          else{
+            match.step([mine,squad.readRemote(1)||emptyInput(),squad.readRemote(2)||emptyInput(),squad.readRemote(3)||emptyInput()],STEP);
+            localIndex=localFighter();const events=match.drainEvents();matchEvents(events);squad.sendSnapshot(match,events);
+          }
+          accumulator-=STEP;
+        }
+      }
+      if(!squad.host){squad.sendInput();squadBuffer?.apply(match,now);localIndex=localFighter();matchEvents(squadBuffer?.drainEvents()||[]);}
+      else squad.sendSnapshot(match,[],match.phase==='done');
+      renderer.localIndex=localIndex;
+      if(match.phase==='done'&&resultScreen.hidden)finishMatch();
+    }else if(match&&!netMode(match.options.mode)&&!paused&&match.phase!=='done'){
       accumulator+=delta;
-      while(accumulator>=STEP){const controls=input.read();if(paused){accumulator=0;break;}match.step(controls,STEP);accumulator-=STEP;
+      while(accumulator>=STEP){const controls=input.read();if(paused){accumulator=0;break;}match.step(controls,STEP);accumulator-=STEP;if(match.routed){localIndex=localFighter();renderer.localIndex=localIndex;}
         const events=match.drainEvents();matchEvents(events);if(match.phase==='done')finishMatch();
       }
     }else{accumulator=0;if(match)input.read();}
@@ -635,7 +767,7 @@ function loop(now){
     if(renderer){
       const menu=!selection.hidden||!$('opening').hidden;
       const drawDelta=framePacer.frame(now,{animated:Boolean(match&&!paused&&match.phase!=='done'&&!menu),hidden:document.hidden,fps:batteryDisplay()?30:60});
-      if(drawDelta!==null){updateTouchContext();renderer.scheme=input.scheme;renderer.coachText=coach?.text(match,input.scheme,preferences.hints!==false)||'';const drawStart=performance.now();renderer.draw(match,arena,drawDelta,menu);if(match&&!menu&&!paused&&drawDelta>0&&renderBudget.observe(performance.now()-drawStart)){updateTouch();$('quality-note').textContent='Automatic display reduced rendering work for smoother play. Match timing stays the same.';}}
+      if(drawDelta!==null){updateTouchContext();renderer.scheme=input.scheme;renderer.coachText=teamCoach()||coach?.text(match,input.scheme,preferences.hints!==false)||'';const drawStart=performance.now();renderer.draw(match,arena,drawDelta,menu);if(match&&!menu&&!paused&&drawDelta>0&&renderBudget.observe(performance.now()-drawStart)){updateTouch();$('quality-note').textContent='Automatic display reduced rendering work for smoother play. Match timing stays the same.';}}
     }
   }catch(error){recoverRuntime(error);}
   finally{requestAnimationFrame(loop);}

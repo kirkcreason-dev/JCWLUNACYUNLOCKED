@@ -1,6 +1,6 @@
 # Online multiplayer
 
-## Play with a friend
+## Play with a friend (two players)
 
 1. Both players open the updated game and pick their own wrestler.
 2. Select **ONLINE MULTIPLAYER**.
@@ -14,13 +14,27 @@ Both players use **arrow keys + Z / X / C / V, Q for weapons, E for taunts, and 
 
 Online matches keep running while the match menu or CONTROLS is open. Those menus release your held inputs. After a result, use **BACK TO ONLINE LOBBY** to create or join another match. A lost connection ends the session with a message; there is no mid-match rejoin or host migration.
 
+## Four players (v0.25.0)
+
+1. Everyone opens the updated game and picks a **different** wrestler.
+2. Select **ONLINE · 4 PLAYERS**.
+3. The host picks the arena and the match type — **Tag Team**, **Tornado Tag** or **Elimination** — and presses **CREATE 4-PLAYER ROOM**.
+4. Friends enter the code and press **JOIN ROOM**. Seats fill in order: P2, P3, P4. P1 + P3 are one team, P2 + P4 the other.
+5. The match starts by itself when all four are in. The host can press **START NOW** at any time; empty seats become CPU wrestlers (unlocked wrestlers nobody picked, at the host's difficulty).
+
+Everyone plays with their own keyboard, gamepad or phone controls. In **Tag Team** only the legal wrestler's player has control; walk to your own corner (left for P1 + P3, right for P2 + P4) and press **TAUNT** to tag in your partner, whose controls then take over. In **Tornado Tag** all four are in at once; pins and knockouts eliminate a wrestler, and a strike on someone pinning your partner breaks the count. In **Elimination** the falls are one-on-one and the next teammate comes in after each elimination.
+
+The host runs the match exactly as in two-player rooms and sends snapshots to all three guests; each guest sends its own input stream (`input/p1`…`input/p3`) and heartbeat. A guest who leaves or stops responding for 15 seconds is replaced by the CPU and the match continues. If the host leaves, the room is removed and everyone returns to the lobby. Unused 4-player room codes expire after ten minutes. Rooms live at `rooms/LU250Q-ABCD` with a `lunacy-squad-v25` protocol marker.
+
+Live Firebase connectivity was not retested for this release (the build environment cannot reach Firebase). Four-player rooms use the same database paths style and operations (transactions, `onDisconnect`, set/update) as the existing two-player rooms. They were tested with the in-memory Firebase-shaped transport in `npm test`, and with four real browser windows sharing an in-memory stand-in for Firebase: Tornado Tag with four people, Tag Team with three people plus a CPU and a player leaving mid-match, and Elimination with four people all reached the same result on every screen.
+
 ## What was recovered
 
 This uses the Firebase project and web configuration from `LUNACY_REBUILT_CLEAN(2).zip`: `jcw-lunacy`. It retains the original architecture: room codes, an atomic Quick Match queue, a host that runs the simulation, guest input packets, and interpolated host snapshots. The existing pinned Firebase 10.14.1 app/database compat scripts load only when online play is requested.
 
 The old code was tied to a different engine. The adapter now synchronizes this build’s wrestler IDs, arena, position, animation, health, guard, meter, grapples, pins, rounds, timer, effects, and result. Version 0.5 also synchronizes selected weapon, attack style, move timing, fall direction, exhaustion, and climb/perch/dive states; weapon and taunt taps use the ordered input stream, and run is a held input. Input and snapshot writes are capped at approximately 20 per second each while a match is running, with only one write in flight per stream. Button press groups retain their order, so delayed packets do not collapse alternating kick-out taps into one simultaneous press. Old or duplicated packets are ignored.
 
-New rooms use `rooms/LU230-ABCD`, with a `lunacy-2d-v22` protocol marker. Quick Match uses `rooms/LU230-queue`. Both players must use v0.23.0 with all 40 fighters. Incompatible older clients are isolated by the new namespace. The old `quickQueue` and old unprefixed rooms are not modified.
+New rooms use `rooms/LU250-ABCD`, with a `lunacy-2d-v25` protocol marker. Quick Match uses `rooms/LU250-queue`. Both players must use v0.25.0 with all 40 fighters. Incompatible older clients are isolated by the new namespace. The old `quickQueue` and old unprefixed rooms are not modified.
 
 Room creation and guest-seat claims use transactions. Both sides confirm artwork readiness before the host starts. The host registers removal of its room on disconnect; the guest registers an offline marker. Leaving removes listeners and clears only the caller’s own queue claim or room. Stalled connections and failed loads show a recovery message.
 
@@ -54,4 +68,4 @@ The v19 protocol forwards the attack-active cue once to synchronize DJ Clay’s 
 
 ## v0.20.0 corner combat and equipment
 
-Online matches use the new weapon values and persistent wear, top-rope taunts and superplexes. Host snapshots carry remaining equipment use and the new rope pose; the host decides retrieval-independent damage, breaks and rewards. Weapon wear is serialized with explicit zero values so Firebase does not omit an empty equipment object. The new weapon-on-pole mode is available against CPU or locally on one device, not in online rooms. Current online rooms require v0.23.0 / LU230 with Bigfoot replacing Yabo at index 8.
+Online matches use the new weapon values and persistent wear, top-rope taunts and superplexes. Host snapshots carry remaining equipment use and the new rope pose; the host decides retrieval-independent damage, breaks and rewards. Weapon wear is serialized with explicit zero values so Firebase does not omit an empty equipment object. The new weapon-on-pole mode is available against CPU or locally on one device, not in online rooms. Current online rooms require v0.25.0 / LU250 with Bigfoot replacing Yabo at index 8.

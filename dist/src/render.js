@@ -1,10 +1,16 @@
-import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.24.0';
-import {ARENAS} from './arenas.js?v=0.24.0';
-import {weaponGrip} from './weapon-grips.js?v=0.24.0';
-import {attackPose} from './attack-animation.js?v=0.24.0';
-import {arenaCamera} from './phone-layout.js?v=0.24.0';
-import {drawArenaWordmarks} from './branding.js?v=0.24.0';
+import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME,defenderOf} from './engine.js?v=0.25.0';
+import {ARENAS} from './arenas.js?v=0.25.0';
+import {weaponGrip} from './weapon-grips.js?v=0.25.0';
+import {attackPose} from './attack-animation.js?v=0.25.0';
+import {arenaCamera} from './phone-layout.js?v=0.25.0';
+import {drawArenaWordmarks} from './branding.js?v=0.25.0';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
+const SIDE_COLORS=['#b0ff20','#fa268b'];
+// Names for team play: "JEFF LANE & SHAGGY 2 DOPE".
+const teamNames=(m,side)=>(m.teams?.[side]||[]).map(id=>m.roster[id]?.name.toUpperCase()).join(' & ');
+export function formatTitle(m){
+  return m.format==='tag'?'TAG TEAM':m.format==='tornado'?'TORNADO TAG':m.teams?`${m.teams[0].length} ON ${m.teams[1].length} ELIMINATION`:'';
+}
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
     this.bannerArt=banners;this.combatFx=combatFx;this.canvas=canvas;this.onContextLost=options.onContextLost||(()=>{});this.onContextRestored=options.onContextRestored||(()=>{});
@@ -23,8 +29,12 @@ export class Renderer {
     this.canvas.width=this.canvas.width;this.ctx=this.canvas.getContext('2d');this.shade=null;this.reset();
   }
   reset(){this.camera=null;this.particles=[];this.popups=[];this.spriteFx=[];this.healthTrail=[100,100];this.healthWait=[0,0];this.lastHealth=[100,100];this.lastMeter=[0,0];this.shakeOffset=[0,0];this.clock=0;this.graphic=null;}
-  receive(events,match=null){for(const e of events){
+  receive(events,match=null){const P=i=>`P${(match?.fighters?.[i]?.player??i)+1}`;for(const e of events){
     this.combatEffect(e,match);
+    if(e.type==='elimination'&&e.live)for(const out of e.eliminated||[])this.popups.push({screen:true,text:`${(match?.roster[out.id]?.name||'WRESTLER').toUpperCase()} ELIMINATED · ${e.method||''}`.replace(/ · $/,''),life:1.6,color:SIDE_COLORS[out.side]});
+    if(e.type==='tag')this.popups.push({text:'TAG!',x:e.side?RIGHT-80:LEFT+80,y:330,life:1,color:SIDE_COLORS[e.side]});
+    if(e.type==='pinBreak')this.popups.push({text:'PIN BROKEN UP!',x:640,y:300,life:1,color:'#8ee7ff'});
+    if(e.type==='suddenDeath')this.popups.push({screen:true,text:'SUDDEN DEATH · NEXT FINISH WINS',life:1.8,color:'#ffe197'});
     if(['hit','slam','block'].includes(e.type)){
       const color=e.type==='block'?'#7bd6ff':e.type==='slam'?'#fa258c':'#c1ff32';const y=e.type==='slam'?FLOOR-10:FLOOR-135-(e.z||0);
       if(!this.reduced)for(let i=0;i<(this.lowPower?6:14);i++){const a=Math.random()*Math.PI*2,s=50+Math.random()*300;this.particles.push({x:e.x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s,life:.20+Math.random()*.24,max:.45,color,size:2+Math.random()*5});}
@@ -54,8 +64,8 @@ export class Renderer {
     if(e.type==='poleHint')this.popups.push({text:'CLIMB THE MARKED CORNER · HOLD GRAB',x:640,y:275,life:.7,color:'#ffe197'});
     if(e.type==='slam'&&e.superplex)this.popups.push({text:'SUPERPLEX!',x:e.x,y:370,life:1,color:'#ffe197'});
     if(e.type==='guardBreak')this.popups.push({text:'GUARD BREAK',x:640,y:340,life:.85,color:'#fa2484'});
-    if(e.type==='reversal')this.popups.push({screen:true,art:'reversal',label:`P${e.index+1} · +12 LUNACY`,text:`P${e.index+1} · REVERSAL! +12 LUNACY`,life:.9,color:'#8ee7ff'});
-    if(e.type==='secondWind')this.popups.push({screen:true,art:'secondWind',label:`P${e.index+1} · +25 LUNACY`,text:`P${e.index+1} · SECOND WIND! +25 LUNACY`,life:1.25,color:'#ffe197'});
+    if(e.type==='reversal')this.popups.push({screen:true,art:'reversal',label:`${P(e.index)} · +12 LUNACY`,text:`${P(e.index)} · REVERSAL! +12 LUNACY`,life:.9,color:'#8ee7ff'});
+    if(e.type==='secondWind')this.popups.push({screen:true,art:'secondWind',label:`${P(e.index)} · +25 LUNACY`,text:`${P(e.index)} · SECOND WIND! +25 LUNACY`,life:1.25,color:'#ffe197'});
     // A disconnected peer or a very long arcade session must not turn event
     // bursts into an ever-growing presentation queue.
     if(this.popups.length>48)this.popups.splice(0,this.popups.length-48);
@@ -85,14 +95,30 @@ export class Renderer {
       // Downed opponent is below the attacker during a pin; neither sheet contains an extra wrestler.
       if(match.fighters.some(f=>f.definition.animations.climb))this.corners();
       if(match.pole)this.pole(match);
-      const order=match.pin?[1-match.pin.attacker,match.pin.attacker]:match.grapple?[match.grapple.attacker,1-match.grapple.attacker]:match.fighters[0].move&&!match.fighters[1].move?[1,0]:[0,1];
-      for(const i of order)this.fighter(match.fighters[i],i,match);
+      if(match.format==='tag')this.apron(match);
+      for(const i of this.drawOrder(match))this.fighter(match.fighters[i],i,match);
       this.effects(dt);c.restore();c.save();
       // Shade is created in screen coordinates, independent of the phone camera.
       c.fillStyle=this.hudShade(height);c.fillRect(0,0,1280,210);
       this.hud(match,arena,dt);this.combatNotices(match);this.banners(match);this.announcements(dt);
     }
     c.restore();c.restore();
+  }
+  drawOrder(match){
+    if(match.fighters.length===2)return match.pin?[defenderOf(match.pin),match.pin.attacker]:match.grapple?[match.grapple.attacker,defenderOf(match.grapple)]:match.fighters[0].move&&!match.fighters[1].move?[1,0]:[0,1];
+    // Four in the ring: eliminated bodies at the back, held wrestlers above their holders.
+    const rank=(f,i)=>f.out?0:match.pin&&defenderOf(match.pin)===i?1:match.grapple&&defenderOf(match.grapple)===i?3:match.pin?.attacker===i?3:f.move?2.5:2;
+    return match.fighters.map((f,i)=>i).sort((a,b)=>rank(match.fighters[a],a)-rank(match.fighters[b],b)||a-b);
+  }
+  apron(match){
+    // The partner waits outside the ropes in their own corner, ready for the tag.
+    for(const side of [0,1]){
+      const partner=match.partnerOf?.(side);if(!partner||!this.atlases[partner.id])continue;
+      const def=match.roster[partner.id],legal=match.fighters[side];
+      const f={id:partner.id,definition:def,x:side?RIGHT+58:LEFT-58,z:0,facing:side?-1:1,state:'idle',t:this.clock+side,hp:partner.hp,weapon:'none',invincible:0,walkDirection:0,player:legal?.player,side};
+      this.fighter(f,side,match,{alpha:.9,scale:.92,apron:true});
+      if(match.phase==='fight'&&legal&&legal.player===(this.localPlayer??0)&&!match.cpuPlayers?.has(legal.player)&&match.canTag?.(side))this.text('TAUNT TO TAG',f.x,FLOOR-262,16,SIDE_COLORS[side],'center',true);
+    }
   }
   combatNotices(match){
     if(match.phase!=='fight'||match.pin||match.grapple)return;
@@ -113,9 +139,11 @@ export class Renderer {
     c.save();c.globalAlpha=fit(notice.life*3,0,1);c.fillStyle='#100a19ed';c.fillRect(200,y-34,880,49);
     this.text(notice.text,640,y,phone?36:25,notice.color,'center',true);c.restore();
   }
-  fighter(f,index,match){
+  fighter(f,index,match,look={}){
     const c=this.ctx,def=f.definition,atlas=this.atlases[f.id],animations=def.animations;
     if(!atlas)return;
+    // Eliminated four-way wrestlers stay down a moment, then roll out of the ring.
+    const fade=f.out?1-fit(((f.outTime||0)-.7)/.8,0,1):look.alpha??1;if(fade<=0)return;
     let anim='idle',progress=null,rotation=0,offsetX=0,offsetY=0,scaleX=1,scaleY=1,centered=false,attackFrame=null,propGuitar=false;
     switch(f.state){
       case 'walk':anim='walk';break;
@@ -150,6 +178,7 @@ export class Renderer {
     if(['idle','walk','run','equip'].includes(f.state)&&f.weapon&&f.weapon!=='none'){
       const carry='carry'+f.weapon[0].toUpperCase()+f.weapon.slice(1);if(animations[carry]){anim=carry;progress=['idle','equip'].includes(f.state)?0:null;}
     }
+    if(look.scale){scaleX*=look.scale;scaleY*=look.scale;}
     if(match.phase==='intro'&&animations.entry&&match.phaseTime<1.3){
       anim=match.phaseTime<.75?'entry':'walk';progress=match.phaseTime<.75?fit(match.phaseTime/.75,0,.999):null;
       offsetX=-150*(1-fit(match.phaseTime/1.3,0,1));
@@ -163,14 +192,14 @@ export class Renderer {
     if(!entry)return;
     if(f.state==='idle'&&!this.reduced){const breath=Math.sin(f.t*3.4+index)*.005;scaleY=1+breath;scaleX=1-breath*.4;}
     // Shadows anchor feet to the canvas floor, independently of animation crop bounds.
-    c.save();c.globalAlpha=.35*(1-fit(f.z/400,0,.8));c.fillStyle='#050305';c.beginPath();c.ellipse(f.x,FLOOR+3,f.state==='down'||f.state==='pinned'?88:45,10,0,0,Math.PI*2);c.fill();c.restore();
+    c.save();c.globalAlpha=.35*fade*(1-fit(f.z/400,0,.8));c.fillStyle='#050305';c.beginPath();c.ellipse(f.x,FLOOR+3,f.state==='down'||f.state==='pinned'?88:45,10,0,0,Math.PI*2);c.fill();c.restore();
     const carrying=['idle','walk','run','equip'].includes(f.state),carryArt=animations['carry'+f.weapon?.[0]?.toUpperCase()+f.weapon?.slice(1)];
     if((def.overlayWeapons?.includes(f.weapon)&&((carrying&&!carryArt?.length)||(['heavy','special'].includes(f.state)&&f.attackStyle===f.weapon)))||(def.overlayWeapons&&f.weapon==='chair'&&carrying&&!carryArt?.length))this.weaponProp(f,entry,offsetX);
-    c.save();c.translate(f.x+offsetX*f.facing,FLOOR-f.z+offsetY);c.scale(f.facing*scaleX,scaleY);c.rotate(rotation);
+    c.save();c.globalAlpha=fade;c.translate(f.x+offsetX*f.facing,FLOOR-f.z+offsetY);c.scale(f.facing*scaleX,scaleY);c.rotate(rotation);
     if(entry.flipX)c.scale(-1,1);
     if(entry.drawScale)c.scale(entry.drawScale,entry.drawScale);
     if(f.state==='special'&&!this.reduced&&!this.lowPower){c.shadowColor=def.color;c.shadowBlur=30;}
-    if(f.invincible>0&&Math.floor(f.invincible*18)%2)c.globalAlpha=.65;
+    if(f.invincible>0&&Math.floor(f.invincible*18)%2)c.globalAlpha=.65*fade;
     if(entry.groundAngle!==undefined){
       const angle=entry.groundAngle;c.translate(0,-(Math.abs(Math.cos(angle))*entry.h+Math.abs(Math.sin(angle))*entry.w)/2);c.rotate(angle);
       c.drawImage(atlas,entry.x,entry.y,entry.w,entry.h,-entry.w/2,-entry.h/2,entry.w,entry.h);
@@ -185,7 +214,7 @@ export class Renderer {
     if(f.state==='block'){
       c.save();c.strokeStyle=f.guard<25?'#ff5072':'#85dfff';c.lineWidth=3;c.globalAlpha=.6;c.beginPath();c.ellipse(f.x+f.facing*45,FLOOR-118,24,90,0,-Math.PI/2,Math.PI/2,f.facing<0);c.stroke();c.restore();
     }
-    if(match.phase==='intro'){this.text(index?'P2':'P1',f.x,FLOOR+28,18,index?'#fa6daf':'#b0ff20','center');}
+    if(match.phase==='intro'&&!look.apron){const side=f.side??index,player=f.player??index;this.text(match.routed&&match.cpuPlayers?.has(player)?'CPU':`P${player+1}`,f.x,FLOOR+28,18,side?'#fa6daf':'#b0ff20','center');}
   }
   weaponProp(f,entry,offsetX=0){
     const c=this.ctx,timing=f.move?attackTiming(f.move,f.attackStyle):null,grip=weaponGrip(f,entry,offsetX);
@@ -231,48 +260,77 @@ export class Renderer {
       for(const h of [47,94,140]){c.fillStyle='#17121c';c.fillRect(x-19,FLOOR-h,38,10);c.fillStyle='#b0ff2080';c.fillRect(x-16,FLOOR-h,32,2);}
     }c.restore();
   }
+  // Who is behind a wrestler, as shown on the health rail.
+  playerLabel(m,i){
+    const f=m.fighters[i],player=f?.player??i;
+    if(m.options.mode==='squad')return `${player===this.localPlayer?'YOU':m.cpuPlayers?.has(player)?'CPU':'ONLINE'} · P${player+1}`;
+    if(m.routed)return player===0?'PLAYER 1':(f?.side??i)===0?'CPU PARTNER':'CPU';
+    return m.options.mode==='online'?`${i===(this.localIndex||0)?'YOU':'ONLINE'} · P${i+1}`:i?(isLocalMode(m.options.mode)?'PLAYER 2':'CPU'):'PLAYER 1';
+  }
+  // Four in the ring: each side's rail lists both partners with their own bars.
+  teamRows(m,side,x,w,top,rowHeight,big=false){
+    const c=this.ctx,color=SIDE_COLORS[side];
+    const members=m.fighters.map((f,i)=>({f,i})).filter(({f})=>f.side===side).sort((a,b)=>a.f.player-b.f.player);
+    members.forEach(({f,i},row)=>{
+      const y=top+row*rowHeight,right=side===1,name=f.definition.name.toUpperCase();
+      c.globalAlpha=f.out?.45:1;
+      this.text(name,right?x+w:x,y+(big?30:19),big?(name.length>14?24:28):17,'#fff2e7',right?'right':'left',true);
+      this.text(f.out?'ELIMINATED':this.playerLabel(m,i),right?x:x+w,y+(big?28:17),big?20:11,f.out?'#ff5671':color,right?'left':'right');
+      const barY=y+(big?40:25),barH=big?20:12,hp=w*Math.max(0,f.hp)/100;
+      c.fillStyle='#3f2034';c.fillRect(x,barY,w,barH);c.fillStyle=color;c.fillRect(right?x+w-hp:x,barY,hp,barH);
+      c.fillStyle='#ffffff16';c.fillRect(x,barY+barH+3,w,big?7:4);c.fillStyle=f.meter>=100?'#fff8e3':'#d7c7e2';c.fillRect(right?x+w-w*f.meter/100:x,barY+barH+3,w*f.meter/100,big?7:4);
+      c.globalAlpha=1;
+    });
+  }
   hud(m,arena,dt=1/60){
     const c=this.ctx,[a,b]=m.fighters;
     if(this.portrait||this.compact){this.phoneHud(m,arena);return;}
     // Opaque, stationary rails prevent bright scenery flickering through them.
     c.fillStyle='#100d17';c.fillRect(0,0,1280,142);c.fillRect(0,660,1280,60);
-    for(let i=0;i<2;i++){
+    if(m.brawl)for(let i=0;i<2;i++){const x=i?738:44;c.fillStyle='#100d17ed';c.fillRect(x-10,14,518,124);this.teamRows(m,i,x,498,16,60);}
+    for(let i=0;i<2&&!m.brawl;i++){
       const f=i?b:a,x=i?738:44,w=498,color=i?'#fa268b':'#b0ff20';
       if(f.hp<this.lastHealth[i])this.healthWait[i]=.3;
       this.lastHealth[i]=f.hp;this.healthWait[i]=Math.max(0,this.healthWait[i]-dt);
       if(this.healthWait[i]===0)this.healthTrail[i]=Math.max(f.hp,this.healthTrail[i]-dt*55);
       if(f.hp>this.healthTrail[i])this.healthTrail[i]=f.hp;
-      if(f.meter>=100&&this.lastMeter[i]<100)this.popups.push({text:`P${i+1} FINISHER READY`,x:i?990:290,y:215,life:1.2,color});
+      if(f.meter>=100&&this.lastMeter[i]<100)this.popups.push({text:`P${(f.player??i)+1} FINISHER READY`,x:i?990:290,y:215,life:1.2,color});
       this.lastMeter[i]=f.meter;
       c.fillStyle='#100d17ed';c.fillRect(x-10,22,w+20,109);
       this.text(f.definition.name.toUpperCase(),i?x+w:x,47,24,'#fff2e7',i?'right':'left',true);
-      this.text(m.options.mode==='online'?`${i===(this.localIndex||0)?'YOU':'ONLINE'} · P${i+1}`:i?(isLocalMode(m.options.mode)?'PLAYER 2':'CPU'):'PLAYER 1',i?x:x+w,44,12,color,i?'left':'right');
+      this.text(this.playerLabel(m,i),i?x:x+w,44,12,color,i?'left':'right');
       c.fillStyle='#3f2034';c.fillRect(x,59,w,22);c.fillStyle='#ffe6cc';const trail=w*this.healthTrail[i]/100;c.fillRect(i?x+w-trail:x,59,trail,22);c.fillStyle=color;const hp=w*f.hp/100;c.fillRect(i?x+w-hp:x,59,hp,22);
       c.fillStyle='#fff5';c.fillRect(i?x+w-hp:x,59,hp,3);
       c.fillStyle='#fff1';c.fillRect(x,87,w,3);c.fillStyle='#bceaff';const guard=w*f.guard/100;c.fillRect(i?x+w-guard:x,87,guard,3);
       c.fillStyle='#ffffff16';c.fillRect(x,101,w-143,8);c.fillStyle=f.meter>=100?'#fff8e3':color;c.fillRect(i?x+(w-143)*(1-f.meter/100):x,101,(w-143)*f.meter/100,8);
       this.text(f.meter>=100?'FINISHER READY':'LUNACY',x+w,111,14,f.meter>=100?'#f4f4d8':'#c3b5ca','right');
-      this.text(f.weapon==='none'?'BARE HANDS':`${f.weapon.toUpperCase()} · ${weaponRemaining(f)} HITS`,x+w/2,130,12,'#ffe197','center');
+      // Tag: the partner's health sits on the outer edge, so the weapon moves to the inner edge.
+      const tagging=Boolean(m.partnerOf?.(i));
+      this.text(f.weapon==='none'?'BARE HANDS':`${f.weapon.toUpperCase()} · ${weaponRemaining(f)} HITS`,tagging?(i?x:x+w):x+w/2,130,12,'#ffe197',tagging?(i?'left':'right'):'center');
       // Best of three shows falls won; 4-on-4 elimination shows teammates still alive.
+      const partner=m.partnerOf?.(i);
+      if(partner){this.text(`PARTNER · ${m.roster[partner.id].name.toUpperCase()} · ${Math.ceil(partner.hp)}%`,i?x+w:x,130,12,color,i?'right':'left');continue;}
       const dots=m.teams?m.teams[i].length:2,lit=m.teams?m.remainingOn(i):m.wins[i];
       for(let n=0;n<dots;n++){c.fillStyle=lit>n?color:'#ffffff22';c.beginPath();c.arc(i?x+w-n*19:x+n*19,124,5,0,Math.PI*2);c.fill();}
     }
     c.fillStyle='#100a19f5';c.fillRect(558,15,164,103);c.strokeStyle='#fff3';c.strokeRect(558,15,164,103);
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)).padStart(2,'0'),640,77,57,m.remaining<15?'#ff5671':'#f6f1e3','center',true);
-    this.text(m.options.mode==='practice'?'PRACTICE':m.teams?`FALL ${m.round}`:`ROUND ${m.round}`,640,102,13,'#b0ff20','center');
+    this.text(m.options.mode==='practice'?'PRACTICE':m.format==='tag'?'TAG TEAM':m.brawl?'TORNADO':m.teams?`FALL ${m.round}`:`ROUND ${m.round}`,640,102,13,'#b0ff20','center');
     c.fillStyle='#0c0716dd';c.fillRect(38,666,1204,31);this.text(ARENAS[arena]?.name||'',54,687,12,'#d4c5dd');
     const help=(m.pole?this.poleStatus(m):this.coachText)|| (this.scheme==='gamepad'?'X STRIKE  /  Y HEAVY  /  B GRAPPLE  /  RB FINISHER':this.scheme==='touch'?'HIT  /  HEAVY  /  GRAB TO THROW OR PIN  /  FINISH':'← → MOVE  /  ↑ JUMP  /  ↓ BLOCK  /  Z HIT  /  X HEAVY  /  C GRAB  /  V FINISH');
-    this.text(m.pin?(this.scheme==='touch'&&m.pin.attacker===1-(this.localIndex||0)?'TAP KICK OUT REPEATEDLY':`P${2-m.pin.attacker}: ALTERNATE STRIKE + HEAVY TO ESCAPE`):help,640,687,12,m.pin?'#b0ff20':'#d4c5dd','center');
-    this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.pole?'POLE MATCH':m.options.mode==='practice'?'PRACTICE':m.teams?`4 ON 4 ELIMINATION · ${m.remainingOn(0)} – ${m.remainingOn(1)} LEFT`:'BEST OF 3',1224,687,12,'#d4c5dd','right');
+    const pinned=m.pin?defenderOf(m.pin):null;
+    this.text(m.pin?(this.scheme==='touch'&&pinned===(this.localIndex||0)?'TAP KICK OUT REPEATEDLY':`P${(m.fighters[pinned]?.player??pinned)+1}: ALTERNATE STRIKE + HEAVY TO ESCAPE`):help,640,687,12,m.pin?'#b0ff20':'#d4c5dd','center');
+    this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.pole?'POLE MATCH':m.options.mode==='practice'?'PRACTICE':m.format==='tag'?'TAG TEAM · ONE FALL':m.teams?`${formatTitle(m)} · ${m.remainingOn(0)} – ${m.remainingOn(1)} LEFT`:'BEST OF 3',1224,687,12,'#d4c5dd','right');
     if(m.pin){
-      const p=m.pin,b=m.fighters[1-p.attacker],need=escapeTarget(b.hp);
+      const p=m.pin,b=m.fighters[defenderOf(p)],need=escapeTarget(b.hp);
       c.fillStyle='#0e0819e8';c.fillRect(460,180,360,72);this.text(p.kind==='submission'?'SUBMISSION':`PIN COUNT  ${p.count||'—'}`,640,209,24,'#fff7e4','center',true);c.fillStyle='#39213f';c.fillRect(488,225,304,8);c.fillStyle='#b0ff20';c.fillRect(488,225,304*fit(p.escape/need,0,1),8);
     }
   }
   phoneHud(m,arena){
     const c=this.ctx;
     c.fillStyle='#100a19';c.fillRect(0,0,1280,this.compact?160:204);
-    for(let i=0;i<2;i++){
+    if(m.brawl)for(let i=0;i<2;i++)this.teamRows(m,i,i?758:30,492,this.compact?2:6,this.compact?78:98,true);
+    for(let i=0;i<2&&!m.brawl;i++){
       const f=m.fighters[i],x=i?758:30,w=492,color=i?'#fa268b':'#b0ff20';
       const name=f.definition.name.toUpperCase();
       if(this.compact){const words=name.split(' '),last=words.length>1?words.pop():'';this.text(words.join(' '),i?x+w:x,30,34,'#fff2e7',i?'right':'left',true);this.text(last,i?x+w:x,61,34,'#fff2e7',i?'right':'left',true);}
@@ -283,27 +341,30 @@ export class Renderer {
       c.fillStyle='#ffffff20';c.fillRect(x,meterY,w,15);c.fillStyle=f.meter>=100?'#fff8d7':color;c.fillRect(x,meterY,w*f.meter/100,15);
       const labelY=this.compact?159:187;
       this.text(f.meter>=100?'FINISH READY':`LUNACY ${Math.floor(f.meter)}%`,x,labelY,27,color);
-      this.text(m.teams?`${m.remainingOn(i)} LEFT`:`${m.wins[i]} FALLS`,x+w,labelY,26,'#ddd2e4','right');
+      const partner=m.partnerOf?.(i);
+      this.text(partner?`TAG ${Math.ceil(partner.hp)}%`:m.teams?`${m.remainingOn(i)} LEFT`:`${m.wins[i]} FALLS`,x+w,labelY,26,'#ddd2e4','right');
     }
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)),640,this.compact?78:93,this.compact?64:82,m.remaining<15?'#ff5671':'#fff5e7','center',true);
-    this.text(m.options.mode==='practice'?'PRACTICE':m.teams?`FALL ${m.round}`:`ROUND ${m.round}`,640,this.compact?120:140,25,'#b0ff20','center');
+    this.text(m.options.mode==='practice'?'PRACTICE':m.format==='tag'?'TAG':m.brawl?'TORNADO':m.teams?`FALL ${m.round}`:`ROUND ${m.round}`,640,this.compact?120:140,25,'#b0ff20','center');
     const footerY=(this.logicalHeight||(this.portrait?960:720))-51;c.fillStyle='#100a19';c.fillRect(0,footerY,1280,51);this.text(m.pole?this.poleStatus(m):m.options.mode==='championship'?m.options.championshipLabel:this.coachText||ARENAS[arena]?.name||'',640,footerY+35,m.pole?21:this.coachText?19:27,'#e5dce9','center');
     if(m.pin){c.fillStyle='#100a19dc';c.fillRect(420,230,440,74);this.text(m.pin.kind==='submission'?'SUBMISSION':`PIN COUNT ${m.pin.count||'—'}`,640,280,42,'#b0ff20','center',true);}
   }
   banners(m){
     const c=this.ctx;let title='',sub='',color='#f6efe5';
     if(m.phase==='fight'&&m.grapple&&m.grapple.time<=throwBreakWindow(m.grapple)){
-      const defender=1-m.grapple.attacker,key=this.scheme==='touch'?'BREAK':this.scheme==='gamepad'?'B':isLocalMode(m.options.mode)&&defender===1?'H':'C';
+      const defender=defenderOf(m.grapple),key=this.scheme==='touch'?'BREAK':this.scheme==='gamepad'?'B':isLocalMode(m.options.mode)&&defender===1?'H':'C';
       const y=this.portrait||this.compact?245:190;
       c.fillStyle='#100a19e8';c.fillRect(400,y-33,480,52);
-      this.text(`P${defender+1} · TAP ${key} TO BREAK`,640,y,this.portrait||this.compact?32:25,'#8ee7ff','center',true);
+      this.text(`P${(m.fighters[defender]?.player??defender)+1} · TAP ${key} TO BREAK`,640,y,this.portrait||this.compact?32:25,'#8ee7ff','center',true);
     }
-    if(m.phase==='intro'){title=m.phaseTime<1.55?m.options.mode==='practice'?'PRACTICE':m.teams?(m.suddenDeath?'SUDDEN DEATH':`FALL ${m.round}`):`ROUND ${m.round}`:'FIGHT!';sub=m.phaseTime<1.55?(m.options.mode==='practice'?'FULL METER · PASSIVE OPPONENT':m.teams?`${m.fighters[0].definition.name.toUpperCase()} VS ${m.fighters[1].definition.name.toUpperCase()} · ${m.remainingOn(0)} ON ${m.remainingOn(1)}`:m.pole?'CLIMB · CLAIM THE CHAIR · WIN TWO FALLS':'FIRST TO TWO FALLS'):'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
+    if(m.phase==='intro'&&(m.format==='tag'||m.brawl)){title=m.phaseTime<1.55?formatTitle(m):'FIGHT!';sub=m.phaseTime<1.55?`${teamNames(m,0)}  VS  ${teamNames(m,1)}`:'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
+    else if(m.phase==='intro'){title=m.phaseTime<1.55?m.options.mode==='practice'?'PRACTICE':m.teams?(m.suddenDeath?'SUDDEN DEATH':`FALL ${m.round}`):`ROUND ${m.round}`:'FIGHT!';sub=m.phaseTime<1.55?(m.options.mode==='practice'?'FULL METER · PASSIVE OPPONENT':m.teams?`${m.fighters[0].definition.name.toUpperCase()} VS ${m.fighters[1].definition.name.toUpperCase()} · ${m.remainingOn(0)} ON ${m.remainingOn(1)}`:m.pole?'CLIMB · CLAIM THE CHAIR · WIN TWO FALLS':'FIRST TO TWO FALLS'):'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
     if(m.phase==='roundEnd'&&m.phaseTime<1.25&&m.method==='TIME LIMIT'&&this.bannerArt.timeout){this.graphicImage('timeout',640,315,750);return;}
     if(m.phase==='roundEnd'&&m.phaseTime<1.25&&['PINFALL','TAP OUT'].includes(m.method)&&this.bannerArt[m.method==='PINFALL'?'pinfall':'tapout']){this.graphicImage(m.method==='PINFALL'?'pinfall':'tapout',640,315,750);return;}
-    if(m.phase==='roundEnd'){title=m.roundWinner===null?'DRAW':`${m.fighters[m.roundWinner].definition.name.toUpperCase()} WINS`;sub=m.options.mode==='practice'?'PRACTICE · RESETTING':m.method;
+    if(m.phase==='roundEnd'&&(m.format==='tag'||m.brawl)){title=m.roundWinner===null?'DRAW':`${teamNames(m,m.roundWinner)} WIN`;sub=`${formatTitle(m)} · ${m.method}`;}
+    else if(m.phase==='roundEnd'){title=m.roundWinner===null?'DRAW':`${m.fighters[m.roundWinner].definition.name.toUpperCase()} WINS`;sub=m.options.mode==='practice'?'PRACTICE · RESETTING':m.method;
       if(m.teams){title=m.suddenDeath?'BOTH TEAMS DOWN':m.roundWinner===null?'BOTH ELIMINATED':`${m.fighters[1-m.roundWinner].definition.name.toUpperCase()} ELIMINATED`;sub=m.suddenDeath?'SUDDEN DEATH FALL NEXT':`${m.method} · ${m.remainingOn(0)} ON ${m.remainingOn(1)}${m.waiting?' · NEXT WRESTLER ON THE WAY':''}`;}}
-    if(title){c.save();c.fillStyle='#0a071ac4';c.fillRect(0,280,1280,119);c.shadowColor='#000';c.shadowBlur=this.lowPower?0:18;this.text(title,640,343,title.length>20?48:66,color,'center',true);this.text(sub,640,377,17,'#d4c6df','center');c.restore();}
+    if(title){c.save();c.fillStyle='#0a071ac4';c.fillRect(0,280,1280,119);c.shadowColor='#000';c.shadowBlur=this.lowPower?0:18;this.text(title,640,343,title.length>34?34:title.length>20?48:66,color,'center',true);this.text(sub,640,377,17,'#d4c6df','center');c.restore();}
   }
   graphicImage(key,x,y,width){const art=this.bannerArt[key];if(!art)return false;const h=width*art.height/art.width;this.ctx.drawImage(art,x-width/2,y-h/2,width,h);return true;}
   announcements(dt){if(!this.graphic)return;this.graphic.life-=dt;if(this.graphic.life<=0){this.graphic=null;return;}const c=this.ctx;c.save();c.globalAlpha=fit(this.graphic.life*5,0,1);if(!this.graphicImage(this.graphic.key,640,230,560))this.text(this.graphic.key==='kickout'?'KICK OUT!':'LUNACY!',640,250,52,'#b0ff20','center',true);c.restore();}

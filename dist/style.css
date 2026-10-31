@@ -231,3 +231,21 @@
 #team-panel fieldset+fieldset legend{color:var(--pink)}
 #team-panel select{width:100%;min-height:40px;font-size:.8rem}
 #team-shuffle{margin-top:10px;width:100%}
+/* 4-player online rooms */
+#squad-lobby{border-top:1px solid var(--line);padding-top:10px}
+#squad-lobby>label{display:grid;gap:4px;font-size:.6875rem;font-weight:900;letter-spacing:.08em;color:#c4b9cd;margin:0 0 10px}
+#squad-lobby .online-actions{grid-template-columns:1fr}
+#squad-code{width:100%;min-height:44px;font:900 1.1rem Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;background:#09070d;color:#fff;border:1px solid var(--line);padding:6px 10px}
+#squad-code:focus-visible{outline:3px solid var(--acid);outline-offset:2px}
+#squad-status{font-size:.8125rem;line-height:1.45;color:var(--acid);min-height:36px;margin:10px 0;overflow-wrap:anywhere}
+#squad-room{border:1px dashed #b0ff2066;background:#b0ff200b;text-align:center;padding:10px;margin-bottom:10px}
+#squad-room>span{font-size:.6875rem;letter-spacing:.15em;font-weight:900;color:#cfc4d5}
+#squad-room-code{display:block;font-size:2rem;letter-spacing:.3em;color:var(--acid);margin:4px 0}
+#squad-room-type{margin:0 0 8px;font-size:.75rem;color:#cfc4d5}
+#squad-seats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:6px;text-align:left}
+#squad-seats li{font-size:.75rem;line-height:1.35;padding:6px 8px;background:#0e0b14;border-left:3px solid var(--acid);overflow-wrap:anywhere}
+#squad-seats li[data-team="1"]{border-left-color:var(--pink)}
+#squad-seats li[data-open="true"]{color:#8f8498;border-left-style:dashed}
+#squad-seats li[data-you="true"]{background:#1b1424;font-weight:900}
+#squad-start,#squad-cancel{width:100%;margin-top:8px}
+#team-panel select[hidden]{display:none}
