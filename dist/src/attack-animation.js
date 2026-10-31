@@ -1,5 +1,5 @@
-import {MOVES,attackTiming} from './engine.js?v=0.23.1';
-import {finisherMove} from './fighter-profile.js?v=0.23.1';
+import {MOVES,attackTiming} from './engine.js?v=0.24.0';
+import {finisherMove} from './fighter-profile.js?v=0.24.0';
 
 const clamp=n=>Math.max(0,Math.min(1,n));
 const smooth=n=>{n=clamp(n);return n*n*(3-2*n);};

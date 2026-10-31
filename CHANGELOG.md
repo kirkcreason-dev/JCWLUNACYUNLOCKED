@@ -1,3 +1,10 @@
+# v0.24.0 — 4 on 4 Elimination
+
+- New modes: **4 ON 4 ELIMINATION · CPU** and **4 ON 4 ELIMINATION · 2 PLAYER**. Survivor-style: one wrestler per team in the ring; a pin, submission, knockout or time-limit loss eliminates that wrestler and the next teammate comes in. The winner stays in with the damage taken plus a 15-point breather and keeps their Lunacy meter. A draw eliminates both; if both teams' last wrestlers go down together they return for a 50/50 sudden-death fall. Last team with a wrestler left wins.
+- Team picker in Match Setup: four slots per side, your first slot follows the fighter chosen on the roster screen, all eight wrestlers are always different (picking someone already used swaps them), and SHUFFLE TEAMS fills random teams. Your team and Player 2's use unlocked fighters; the CPU team can include secret fighters, as CPU opponents can elsewhere.
+- HUD shows FALL numbers, teammates left as dots and "N LEFT", and ELIMINATED banners with the remaining count. The incoming wrestler's artwork loads during the elimination banner and the next fall waits for it (only the four wrestlers in use stay in memory). Results list the survivors. CPU elimination wins count toward the game win/loss record.
+- 9 new tests (347 total).
+
 # v0.23.1 update — Bigfoot maxed out
 
 - Bigfoot's ratings are set to the maximum at Kirk's request: 10/10 Power, Speed, Technique and Toughness (game multipliers 1.20 each, the roster ceiling). The pick screen shows them as USER-APPROVED RATINGS; the approval is recorded in roster-approvals.json. Chokeslam and everything else are unchanged. The roster file is always fetched fresh, so no cache-version bump is needed.

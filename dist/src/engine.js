@@ -1,4 +1,4 @@
-import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.23.1';
+import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.24.0';
 // Pure fixed-step match simulation. Rendering and input devices never change the rules.
 export const STEP = 1 / 60;
 export const FLOOR = 593;
@@ -16,7 +16,13 @@ export const canCornerThrow = (a,b) => Math.abs(a.x-b.x)<120 && (onTopRope(a)||o
   ['idle','walk','run','block','perch','ropeTaunt'].includes(a.state) && ['idle','walk','run','block','perch','ropeTaunt'].includes(b.state);
 export const weaponRemaining = f => f.weapon==='none'?0:Math.max(0,(WEAPON_USES[f.weapon]||0)-(f.weaponWear?.[f.weapon]||0));
 export const isPoleMode = mode => mode==='pole'||mode==='pole-local';
-export const isLocalMode = mode => mode==='local'||mode==='pole-local';
+export const isLocalMode = mode => mode==='local'||mode==='pole-local'||mode==='elimination-local';
+export const isEliminationMode = mode => mode==='elimination'||mode==='elimination-local';
+export const TEAM_SIZE = 4;
+// Survivor-style 4-on-4: one wrestler per side in the ring; the loser of each fall is
+// eliminated and the next teammate enters. The winner stays in with the damage taken,
+// plus a short breather. Last team with a wrestler left wins.
+export const ELIMINATION_RECOVERY = 15;
 // Tune travel and attack commitment without speeding the match/escape clocks.
 export const MOVEMENT_PACE = 1.12;
 export const RUN_BUILDUP = .38;
@@ -47,12 +53,19 @@ export class Match {
   constructor(roster,p1=0,p2=1,options={}) {
     this.roster=roster;this.ids=[p1,p2];this.options={difficulty:'normal',mode:'cpu',...options};
     this.random=options.random||Math.random;this.round=1;this.wins=[0,0];this.events=[];this.winner=null;
+    if(isEliminationMode(this.options.mode)){
+      const teams=this.options.teams||[[p1],[p2]];
+      if(teams.length!==2||teams.some(t=>!t.length||t.some(id=>!Number.isInteger(id)||!roster[id]))||new Set(teams.flat()).size!==teams.flat().length)throw new Error('Elimination teams need distinct fighters');
+      this.teams=teams.map(t=>t.slice());this.slot=[0,0];this.out=[[],[]];this.carry=[null,null];this.waiting=false;this.nextIds=null;
+      this.ids=[this.teams[0][0],this.teams[1][0]];
+    }
     this.newRound();
   }
   newRound(){
     this.fighters=this.ids.map((id,i)=>({id,definition:this.roster[id],x:i?870:410,z:0,vz:0,vx:0,facing:i?-1:1,hp:100,meter:0,guard:100,guardDelay:0,reversalWindow:0,reversalCooldown:0,secondWindUsed:false,reboundTime:0,reboundDirection:0,state:'idle',t:0,move:null,hit:false,confirmed:false,chain:0,stun:0,invincible:0,wakeUpProtected:false,downTime:0,combo:0,comboTime:0,buffer:null,weapon:this.roster[id].weapons?'none':'chair',attackStyle:'chair',weaponUses:0,weaponWear:{},ropeTime:0,runTime:0,runDirection:0,fallFace:'back',fallDuration:0,exhausted:false,divePower:1,diveHit:false,tauntCooldown:0,last:emptyInput()}));
     this.pole=isPoleMode(this.options.mode)?{x:this.round%2?LEFT+18:RIGHT-18,claimed:false,holder:null,looseX:null,progress:0,claimant:null,uses:0,broken:false}:null;
     if(this.pole)for(const f of this.fighters)f.weapon='none';
+    if(this.teams)this.fighters.forEach((f,i)=>{const c=this.carry[i];if(c){f.hp=c.hp;f.meter=c.meter;f.secondWindUsed=c.secondWindUsed;}});
     if(this.options.mode==='practice')this.fighters[0].meter=100;
     this.phase='intro';this.phaseTime=0;this.remaining=99;this.grapple=null;this.pin=null;this.hitStop=0;this.shake=0;this.totalTime=0;this.aiTimer=0;this.aiInput=emptyInput();this.roundWinner=null;this.method='';
     this.emit('round',{round:this.round});
@@ -71,6 +84,7 @@ export class Match {
     if(this.phase==='roundEnd'){
       for(const f of this.fighters)f.t+=dt;
       if(this.options.mode==='practice'&&this.phaseTime>2){this.newRound();this.phase='fight';this.emit('fight');return;}
+      if(this.teams){if(this.phaseTime>2.4&&!this.waiting)this.nextFall();return;}
       if(this.phaseTime>2.4){
         if(this.wins.some(n=>n>=2)){this.phase='done';this.winner=this.wins[0]>=2?0:1;this.emit('matchEnd',{winner:this.winner,method:this.method});}
         else{this.round++;this.newRound();}
@@ -426,7 +440,7 @@ export class Match {
     const need=escapeTarget(b.hp);
     const pressed=['light','heavy'].filter(key=>tap(input,b.last,key));
     if(pressed.length===1&&pressed[0]!==p.lastButton){p.escape++;p.lastButton=pressed[0];}
-    if(!['local','pole-local','practice','online'].includes(this.options.mode)&&p.attacker===0){
+    if(!isLocalMode(this.options.mode)&&!['practice','online'].includes(this.options.mode)&&p.attacker===0){
       const level=this.options.difficulty==='hard'?1.2:this.options.difficulty==='easy'?.65:1;
       p.escape+=dt*(b.hp>55?12:b.hp>30?7:3.2)*level;
     }
@@ -446,7 +460,28 @@ export class Match {
     this.phase='roundEnd';this.phaseTime=0;this.roundWinner=winner;this.method=method;this.grapple=null;this.pin=null;
     for(let i=0;i<2;i++){const f=this.fighters[i];f.z=0;f.vz=0;f.vx=0;f.move=null;f.buffer=null;f.stun=0;if(f.state!=='down')f.t=0;if(i!==winner)f.state=f.hp<=0||f.state==='down'||method==='PINFALL'?'down':'defeat';}
     if(winner!==null){if(this.options.mode!=='practice')this.wins[winner]++;this.fighters[winner].state='victory';this.fighters[winner].t=0;}
+    if(this.teams)this.eliminate(winner);
     this.emit('roundEnd',{winner,method});
+  }
+  remainingOn(side){return this.teams?this.teams[side].length-this.slot[side]:0;}
+  eliminate(winner){
+    // A draw (double KO or a level time limit) eliminates both wrestlers in the ring.
+    const losers=winner===null?[0,1]:[1-winner];
+    for(const side of losers){this.out[side].push(this.ids[side]);this.slot[side]++;this.carry[side]=null;}
+    if(winner!==null){const f=this.fighters[winner];this.carry[winner]={hp:Math.min(100,Math.max(1,f.hp)+ELIMINATION_RECOVERY),meter:f.meter,secondWindUsed:f.secondWindUsed};}
+    // Both teams wiped out in the same fall: the last two come back for a sudden-death fall.
+    if(this.slot.every((n,i)=>n>=this.teams[i].length)){
+      for(const side of [0,1]){this.slot[side]--;this.out[side].pop();this.carry[side]={hp:50,meter:0,secondWindUsed:true};}
+      this.suddenDeath=true;
+    }
+    const left=[0,1].map(i=>this.remainingOn(i));
+    this.nextIds=left.every(n=>n>0)?[0,1].map(i=>this.teams[i][this.slot[i]]):null;
+    this.emit('elimination',{eliminated:losers.map(side=>({side,id:this.out[side].at(-1)})).filter(e=>e.id!==undefined&&!this.suddenDeath),left,next:this.nextIds,suddenDeath:Boolean(this.suddenDeath)});
+  }
+  nextFall(){
+    const left=[0,1].map(i=>this.remainingOn(i));
+    if(left.some(n=>n===0)){this.phase='done';this.winner=left[0]>0?0:1;this.emit('matchEnd',{winner:this.winner,method:this.method});return;}
+    this.ids=this.nextIds||[0,1].map(i=>this.teams[i][this.slot[i]]);this.nextIds=null;this.suddenDeath=false;this.round++;this.newRound();
   }
   cpu(dt){
     const me=this.fighters[1],enemy=this.fighters[0],diff=this.options.difficulty;

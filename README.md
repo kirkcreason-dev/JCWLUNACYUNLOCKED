@@ -1,6 +1,10 @@
 # JCW Lunacy: Lunacy Unlocked
 
-A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.23.1**.
+A playable 2D arcade wrestling fighter built from the supplied JCW wrestler sheets, arena artwork, and Genesis-style Fight Club track. Version **0.24.0**.
+
+## 4 on 4 Elimination (v0.24.0)
+
+Pick MODE → 4 ON 4 ELIMINATION (vs CPU or 2 players on one device), set both teams of four in Match Setup (or SHUFFLE TEAMS), and fight Survivor-style: one wrestler per side in the ring, losers are eliminated and the next teammate comes in, winners stay in with their damage. Last team standing wins.
 
 ## Live fixes carried forward (v0.23.1)
 

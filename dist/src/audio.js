@@ -1,7 +1,7 @@
-import {SampleBank} from './sample-bank.js?v=0.23.1';
-import {impactGroup,gruntGroup} from './sound-events.js?v=0.23.1';
-import {MOVES} from './engine.js?v=0.23.1';
-import {finisherMove} from './fighter-profile.js?v=0.23.1';
+import {SampleBank} from './sample-bank.js?v=0.24.0';
+import {impactGroup,gruntGroup} from './sound-events.js?v=0.24.0';
+import {MOVES} from './engine.js?v=0.24.0';
+import {finisherMove} from './fighter-profile.js?v=0.24.0';
 // Supplied synthesized samples, with procedural fallbacks for missing audio.
 export class Sound {
   constructor(music=new Audio(),{bank=new SampleBank()}={}){

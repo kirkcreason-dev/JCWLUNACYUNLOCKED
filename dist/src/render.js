@@ -1,9 +1,9 @@
-import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.23.1';
-import {ARENAS} from './arenas.js?v=0.23.1';
-import {weaponGrip} from './weapon-grips.js?v=0.23.1';
-import {attackPose} from './attack-animation.js?v=0.23.1';
-import {arenaCamera} from './phone-layout.js?v=0.23.1';
-import {drawArenaWordmarks} from './branding.js?v=0.23.1';
+import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME} from './engine.js?v=0.24.0';
+import {ARENAS} from './arenas.js?v=0.24.0';
+import {weaponGrip} from './weapon-grips.js?v=0.24.0';
+import {attackPose} from './attack-animation.js?v=0.24.0';
+import {arenaCamera} from './phone-layout.js?v=0.24.0';
+import {drawArenaWordmarks} from './branding.js?v=0.24.0';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 export class Renderer {
   constructor(canvas,roster,atlases,arenas,banners={},combatFx={},options={}){
@@ -253,15 +253,17 @@ export class Renderer {
       c.fillStyle='#ffffff16';c.fillRect(x,101,w-143,8);c.fillStyle=f.meter>=100?'#fff8e3':color;c.fillRect(i?x+(w-143)*(1-f.meter/100):x,101,(w-143)*f.meter/100,8);
       this.text(f.meter>=100?'FINISHER READY':'LUNACY',x+w,111,14,f.meter>=100?'#f4f4d8':'#c3b5ca','right');
       this.text(f.weapon==='none'?'BARE HANDS':`${f.weapon.toUpperCase()} · ${weaponRemaining(f)} HITS`,x+w/2,130,12,'#ffe197','center');
-      for(let n=0;n<2;n++){c.fillStyle=m.wins[i]>n?color:'#ffffff22';c.beginPath();c.arc(i?x+w-n*19:x+n*19,124,5,0,Math.PI*2);c.fill();}
+      // Best of three shows falls won; 4-on-4 elimination shows teammates still alive.
+      const dots=m.teams?m.teams[i].length:2,lit=m.teams?m.remainingOn(i):m.wins[i];
+      for(let n=0;n<dots;n++){c.fillStyle=lit>n?color:'#ffffff22';c.beginPath();c.arc(i?x+w-n*19:x+n*19,124,5,0,Math.PI*2);c.fill();}
     }
     c.fillStyle='#100a19f5';c.fillRect(558,15,164,103);c.strokeStyle='#fff3';c.strokeRect(558,15,164,103);
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)).padStart(2,'0'),640,77,57,m.remaining<15?'#ff5671':'#f6f1e3','center',true);
-    this.text(m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`,640,102,13,'#b0ff20','center');
+    this.text(m.options.mode==='practice'?'PRACTICE':m.teams?`FALL ${m.round}`:`ROUND ${m.round}`,640,102,13,'#b0ff20','center');
     c.fillStyle='#0c0716dd';c.fillRect(38,666,1204,31);this.text(ARENAS[arena]?.name||'',54,687,12,'#d4c5dd');
     const help=(m.pole?this.poleStatus(m):this.coachText)|| (this.scheme==='gamepad'?'X STRIKE  /  Y HEAVY  /  B GRAPPLE  /  RB FINISHER':this.scheme==='touch'?'HIT  /  HEAVY  /  GRAB TO THROW OR PIN  /  FINISH':'← → MOVE  /  ↑ JUMP  /  ↓ BLOCK  /  Z HIT  /  X HEAVY  /  C GRAB  /  V FINISH');
     this.text(m.pin?(this.scheme==='touch'&&m.pin.attacker===1-(this.localIndex||0)?'TAP KICK OUT REPEATEDLY':`P${2-m.pin.attacker}: ALTERNATE STRIKE + HEAVY TO ESCAPE`):help,640,687,12,m.pin?'#b0ff20':'#d4c5dd','center');
-    this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.pole?'POLE MATCH':m.options.mode==='practice'?'PRACTICE':'BEST OF 3',1224,687,12,'#d4c5dd','right');
+    this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.pole?'POLE MATCH':m.options.mode==='practice'?'PRACTICE':m.teams?`4 ON 4 ELIMINATION · ${m.remainingOn(0)} – ${m.remainingOn(1)} LEFT`:'BEST OF 3',1224,687,12,'#d4c5dd','right');
     if(m.pin){
       const p=m.pin,b=m.fighters[1-p.attacker],need=escapeTarget(b.hp);
       c.fillStyle='#0e0819e8';c.fillRect(460,180,360,72);this.text(p.kind==='submission'?'SUBMISSION':`PIN COUNT  ${p.count||'—'}`,640,209,24,'#fff7e4','center',true);c.fillStyle='#39213f';c.fillRect(488,225,304,8);c.fillStyle='#b0ff20';c.fillRect(488,225,304*fit(p.escape/need,0,1),8);
@@ -281,10 +283,10 @@ export class Renderer {
       c.fillStyle='#ffffff20';c.fillRect(x,meterY,w,15);c.fillStyle=f.meter>=100?'#fff8d7':color;c.fillRect(x,meterY,w*f.meter/100,15);
       const labelY=this.compact?159:187;
       this.text(f.meter>=100?'FINISH READY':`LUNACY ${Math.floor(f.meter)}%`,x,labelY,27,color);
-      this.text(`${m.wins[i]} FALLS`,x+w,labelY,26,'#ddd2e4','right');
+      this.text(m.teams?`${m.remainingOn(i)} LEFT`:`${m.wins[i]} FALLS`,x+w,labelY,26,'#ddd2e4','right');
     }
     this.text(m.options.mode==='practice'?'∞':String(Math.ceil(m.remaining)),640,this.compact?78:93,this.compact?64:82,m.remaining<15?'#ff5671':'#fff5e7','center',true);
-    this.text(m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`,640,this.compact?120:140,25,'#b0ff20','center');
+    this.text(m.options.mode==='practice'?'PRACTICE':m.teams?`FALL ${m.round}`:`ROUND ${m.round}`,640,this.compact?120:140,25,'#b0ff20','center');
     const footerY=(this.logicalHeight||(this.portrait?960:720))-51;c.fillStyle='#100a19';c.fillRect(0,footerY,1280,51);this.text(m.pole?this.poleStatus(m):m.options.mode==='championship'?m.options.championshipLabel:this.coachText||ARENAS[arena]?.name||'',640,footerY+35,m.pole?21:this.coachText?19:27,'#e5dce9','center');
     if(m.pin){c.fillStyle='#100a19dc';c.fillRect(420,230,440,74);this.text(m.pin.kind==='submission'?'SUBMISSION':`PIN COUNT ${m.pin.count||'—'}`,640,280,42,'#b0ff20','center',true);}
   }
@@ -296,10 +298,11 @@ export class Renderer {
       c.fillStyle='#100a19e8';c.fillRect(400,y-33,480,52);
       this.text(`P${defender+1} · TAP ${key} TO BREAK`,640,y,this.portrait||this.compact?32:25,'#8ee7ff','center',true);
     }
-    if(m.phase==='intro'){title=m.phaseTime<1.55?m.options.mode==='practice'?'PRACTICE':`ROUND ${m.round}`:'FIGHT!';sub=m.phaseTime<1.55?(m.options.mode==='practice'?'FULL METER · PASSIVE OPPONENT':m.pole?'CLIMB · CLAIM THE CHAIR · WIN TWO FALLS':'FIRST TO TWO FALLS'):'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
+    if(m.phase==='intro'){title=m.phaseTime<1.55?m.options.mode==='practice'?'PRACTICE':m.teams?(m.suddenDeath?'SUDDEN DEATH':`FALL ${m.round}`):`ROUND ${m.round}`:'FIGHT!';sub=m.phaseTime<1.55?(m.options.mode==='practice'?'FULL METER · PASSIVE OPPONENT':m.teams?`${m.fighters[0].definition.name.toUpperCase()} VS ${m.fighters[1].definition.name.toUpperCase()} · ${m.remainingOn(0)} ON ${m.remainingOn(1)}`:m.pole?'CLIMB · CLAIM THE CHAIR · WIN TWO FALLS':'FIRST TO TWO FALLS'):'';color=m.phaseTime<1.55?'#fff3e7':'#b0ff20';}
     if(m.phase==='roundEnd'&&m.phaseTime<1.25&&m.method==='TIME LIMIT'&&this.bannerArt.timeout){this.graphicImage('timeout',640,315,750);return;}
     if(m.phase==='roundEnd'&&m.phaseTime<1.25&&['PINFALL','TAP OUT'].includes(m.method)&&this.bannerArt[m.method==='PINFALL'?'pinfall':'tapout']){this.graphicImage(m.method==='PINFALL'?'pinfall':'tapout',640,315,750);return;}
-    if(m.phase==='roundEnd'){title=m.roundWinner===null?'DRAW':`${m.fighters[m.roundWinner].definition.name.toUpperCase()} WINS`;sub=m.options.mode==='practice'?'PRACTICE · RESETTING':m.method;}
+    if(m.phase==='roundEnd'){title=m.roundWinner===null?'DRAW':`${m.fighters[m.roundWinner].definition.name.toUpperCase()} WINS`;sub=m.options.mode==='practice'?'PRACTICE · RESETTING':m.method;
+      if(m.teams){title=m.suddenDeath?'BOTH TEAMS DOWN':m.roundWinner===null?'BOTH ELIMINATED':`${m.fighters[1-m.roundWinner].definition.name.toUpperCase()} ELIMINATED`;sub=m.suddenDeath?'SUDDEN DEATH FALL NEXT':`${m.method} · ${m.remainingOn(0)} ON ${m.remainingOn(1)}${m.waiting?' · NEXT WRESTLER ON THE WAY':''}`;}}
     if(title){c.save();c.fillStyle='#0a071ac4';c.fillRect(0,280,1280,119);c.shadowColor='#000';c.shadowBlur=this.lowPower?0:18;this.text(title,640,343,title.length>20?48:66,color,'center',true);this.text(sub,640,377,17,'#d4c6df','center');c.restore();}
   }
   graphicImage(key,x,y,width){const art=this.bannerArt[key];if(!art)return false;const h=width*art.height/art.width;this.ctx.drawImage(art,x-width/2,y-h/2,width,h);return true;}

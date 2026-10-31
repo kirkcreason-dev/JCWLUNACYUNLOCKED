@@ -4,7 +4,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
-import {Match,STEP,emptyInput,isPoleMode,isLocalMode} from '../dist/src/engine.js';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,TEAM_SIZE} from '../dist/src/engine.js';
 import {ArcadeRun,resultTicket} from '../dist/src/arcade-run.js';
 import {ArcadeRewards,ARCADE_REWARDS} from '../dist/src/arcade-rewards.js';
 import {MatchRecord} from '../dist/src/match-record.js';
@@ -39,7 +39,7 @@ async function controller(storage=store()){
  class Renderer{constructor(canvas,rs,atlases,arenas,banners,fx,options){this.canvas=canvas;this.options=options;this.contextLost=false;}reset(){}resetSurface(){resets++;}receive(){}draw(){draws++;if(drawFailure)throw new Error('Injected draw failure');}}
  const context=vm.createContext({console:{error(){}},document,localStorage:storage,performance:{now:()=>0},Date,Math,Error,Map,Set,Promise,JSON,Number,Boolean,Array,Object,String,globalThis:undefined,
   matchMedia:()=>({matches:false,addEventListener(){}}),addEventListener(){},getComputedStyle:()=>({getPropertyValue:()=>0}),innerWidth:1280,innerHeight:720,devicePixelRatio:1,requestAnimationFrame:fn=>frames.push(fn),setTimeout,clearTimeout,
-  Haptics,Input,Sound,OnlineSession,Renderer,Match,STEP,emptyInput,isPoleMode,isLocalMode,ArcadeRun,resultTicket,ArcadeRewards,ARCADE_REWARDS,MatchRecord,Championship,STAGES,championshipLabel,championshipArena,FramePacer,RenderBudget,ARENAS,RosterSelection,SecretFighters,fighterProfile,Coach,
+  Haptics,Input,Sound,OnlineSession,Renderer,Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,TEAM_SIZE,ArcadeRun,resultTicket,ArcadeRewards,ARCADE_REWARDS,MatchRecord,Championship,STAGES,championshipLabel,championshipArena,FramePacer,RenderBudget,ARENAS,RosterSelection,SecretFighters,fighterProfile,Coach,
   fetch:async()=>({ok:true,json:async()=>roster}),loadOptionalArtwork:async()=>[],
   retainMatchArtwork,fighterAtlas,fighterPortrait,phoneLayout,canvasSize,resizeCanvas,connectFirebase(){},fullscreenElement:()=>null,
   loadGameImage:url=>{loads.push(url);if(defer)return new Promise((resolve,reject)=>pending.push({resolve:()=>resolve({src:url}),reject}));return fail?Promise.reject(new Error('Image unavailable')):Promise.resolve({src:url});},

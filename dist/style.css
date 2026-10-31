@@ -222,3 +222,12 @@
 
 #resume-arcade{display:block;width:100%;margin:0 0 12px;color:var(--acid);border-color:var(--acid);white-space:normal;line-height:1.4;}
 .secret-note{margin:10px 0 0;font-size:.66rem;font-weight:800;letter-spacing:.12em;color:#a297a7;text-align:center}.secret-note:before{content:"🔒 "}.secret-unlock{font-weight:900;letter-spacing:.06em;color:var(--acid)!important;border:1px solid var(--acid);padding:10px;margin:14px 0 4px}
+
+#team-panel{margin:10px 0 0;padding:12px;border:1px solid var(--line);background:#0e0b14}
+#team-panel .team-rules{margin:0 0 10px;font-size:.75rem;line-height:1.45;color:#c9bfd0}
+#team-panel .team-columns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#team-panel fieldset{margin:0;padding:0;border:0;display:grid;gap:6px;min-width:0}
+#team-panel legend{font-size:.7rem;font-weight:900;letter-spacing:.12em;color:var(--acid);margin-bottom:4px}
+#team-panel fieldset+fieldset legend{color:var(--pink)}
+#team-panel select{width:100%;min-height:40px;font-size:.8rem}
+#team-shuffle{margin-top:10px;width:100%}
