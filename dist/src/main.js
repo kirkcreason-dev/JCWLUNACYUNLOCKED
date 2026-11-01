@@ -1,30 +1,30 @@
-import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.25.1';
-import {RenderBudget} from './render-budget.js?v=0.25.1';
-import {Coach} from './coach.js?v=0.25.1';
-import {loadGameImage} from './image-loader.js?v=0.25.1';
-import {fighterProfile} from './fighter-profile.js?v=0.25.1';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.25.1';
-import {SecretFighters} from './secret-fighters.js?v=0.25.1';
-import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,isTeamMode,TEAM_SIZE} from './engine.js?v=0.25.1';
-import {SquadSession,seatsOf,squadTeams,cpuSeats,teamOfSeat} from './online-squad.js?v=0.25.1';
-import {Renderer,formatTitle} from './render.js?v=0.25.1';
-import {Input} from './input.js?v=0.25.1';
-import {Sound} from './audio.js?v=0.25.1';
-import {ARENAS} from './arenas.js?v=0.25.1';
-import {touchContext} from './touch-ui.js?v=0.25.1';
-import {OnlineSession} from './online.js?v=0.25.1';
-import {connectFirebase} from './firebase-online.js?v=0.25.1';
-import {SnapshotBuffer,SquadSnapshotBuffer} from './online-protocol.js?v=0.25.1';
-import {RosterSelection} from './roster-selection.js?v=0.25.1';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.25.1';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.25.1';
-import {FramePacer} from './frame-pacer.js?v=0.25.1';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.25.1';
-import {Haptics} from './haptics.js?v=0.25.1';
-import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.25.1';
-import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.25.1';
-import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.25.1';
-import {MatchRecord} from './match-record.js?v=0.25.1';
+import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.25.2';
+import {RenderBudget} from './render-budget.js?v=0.25.2';
+import {Coach} from './coach.js?v=0.25.2';
+import {loadGameImage} from './image-loader.js?v=0.25.2';
+import {fighterProfile} from './fighter-profile.js?v=0.25.2';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.25.2';
+import {SecretFighters} from './secret-fighters.js?v=0.25.2';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,isTeamMode,TEAM_SIZE} from './engine.js?v=0.25.2';
+import {SquadSession,seatsOf,squadTeams,cpuSeats,teamOfSeat} from './online-squad.js?v=0.25.2';
+import {Renderer,formatTitle} from './render.js?v=0.25.2';
+import {Input} from './input.js?v=0.25.2';
+import {Sound} from './audio.js?v=0.25.2';
+import {ARENAS} from './arenas.js?v=0.25.2';
+import {touchContext} from './touch-ui.js?v=0.25.2';
+import {OnlineSession} from './online.js?v=0.25.2';
+import {connectFirebase} from './firebase-online.js?v=0.25.2';
+import {SnapshotBuffer,SquadSnapshotBuffer} from './online-protocol.js?v=0.25.2';
+import {RosterSelection} from './roster-selection.js?v=0.25.2';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.25.2';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.25.2';
+import {FramePacer} from './frame-pacer.js?v=0.25.2';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.25.2';
+import {Haptics} from './haptics.js?v=0.25.2';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.25.2';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.25.2';
+import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.25.2';
+import {MatchRecord} from './match-record.js?v=0.25.2';
 const haptics=new Haptics();let arcadeRewards=null,arcadeRuns=null,matchRecord=null;
 const loadingScreen=document.getElementById('match-loading');
 const $=id=>document.getElementById(id);
@@ -65,6 +65,18 @@ let viewportPending=false,lastPhoneOrientation=null,lastControlGeometry='';
 try{const saved=JSON.parse(localStorage.getItem('lunacy-controls-v3')||'null');if(saved&&typeof saved==='object')preferences={...preferences,...saved};}catch{}
 function savePreferences(){try{localStorage.setItem('lunacy-controls-v3',JSON.stringify(preferences));}catch{}}
 const input=new Input(force=>togglePause(force));
+// Controller play: once a gamepad is in use during a match, the on-screen buttons and
+// header go away and the ring fills the screen; SELECT or a tap on the ring goes full screen.
+let padMode=false,padTip=null;
+const padPlay=()=>Boolean(padMode&&match&&selection.hidden);
+input.onSelect=()=>{if(padPlay())goFullscreen();};
+async function goFullscreen(){const result=await toggleFullscreen($('cabinet'),document);if(result==='fitted'&&padPlay())status('This browser keeps its own bars; the ring already fills the rest of the screen.');updateTouch();scheduleViewport();pauseMenuLabels();}
+function pauseMenuLabels(){$('pause-fullscreen').textContent=fullscreenElement(document)?'EXIT FULL SCREEN':'FULL SCREEN';$('pause-touch').hidden=!(padMode&&coarse.matches);}
+function checkPadMode(){
+  if(input.padInUse===padMode)return;
+  padMode=input.padInUse;updateTouch();scheduleViewport();pauseMenuLabels();
+  if(padPlay()&&padTip!==match){padTip=match;renderer?.popups.push({screen:true,text:fullscreenElement(document)?'CONTROLLER MODE · START PAUSES':'TAP THE RING FOR FULL SCREEN',life:3.2,color:'#b0ff20'});}
+}
 const loadingImage=loadGameImage;
 function requestArtwork(bannerKeys=[],effectKeys=[]){
   if(!artworkState)return;
@@ -81,7 +93,7 @@ function showModal(element,button){returnFocus=document.activeElement;element.hi
 function hideModal(element){element.hidden=true;const active=modalState();if(active)active.querySelector('button')?.focus();else returnFocus?.focus?.();}
 let touchArtRequest=null;
 function updateTouch(){
-  const showing=Boolean(match&&selection.hidden&&(coarse.matches||preferences.touch==='on'));
+  const showing=Boolean(match&&selection.hidden&&(coarse.matches||preferences.touch==='on')&&!(padMode&&preferences.touch!=='on'));
   if(showing&&!touchArtRequest)touchArtRequest=loadingImage('./assets/ui/touch-control-sheet.png').then(()=>{$('touch-controls').classList.add('control-art');}).catch(()=>{});
   $('touch-controls').hidden=!showing;$('cabinet').classList.toggle('playing-touch',showing);
   $('cabinet').classList.toggle('in-match',Boolean(match&&selection.hidden));
@@ -96,11 +108,13 @@ function updatePhoneLayout(showing){
   const unzoomed=!viewport||Math.abs(viewport.scale-1)<.01;
   const nativeFull=Boolean(fullscreenElement(document));
   const width=!nativeFull&&unzoomed&&viewport?viewport.width:innerWidth,height=!nativeFull&&unzoomed&&viewport?viewport.height:innerHeight;
-  const enabled=showing&&width<=1024&&(width<=650||height<=600)&&height>=200;
+  const small=width<=1024&&(width<=650||height<=600)&&height>=200,pad=padPlay()&&!showing&&height>=200;
+  const enabled=(showing&&small)||pad;
+  $('cabinet').classList.toggle('pad-play',pad);
   let layout=null;
   if(enabled){
     const css=getComputedStyle(cabinet),safe=Object.fromEntries(['top','right','bottom','left'].map(k=>[k,parseFloat(css.getPropertyValue(`--safe-${k}`))||0]));
-    layout=phoneLayout({width,height,safe,online:!$('network-banner').hidden});
+    layout=phoneLayout({width,height,safe,online:!$('network-banner').hidden,controller:pad});
     cabinet.dataset.phoneLayout=layout.mode;
     cabinet.classList.toggle('phone-short',layout.short);
     cabinet.style.setProperty('--phone-height',`${height}px`);
@@ -118,10 +132,11 @@ function updatePhoneLayout(showing){
   }
   document.body.classList.toggle('phone-match',enabled);
   if(renderer){
-    renderer.portrait=layout?.mode==='portrait';renderer.compact=layout?.mode==='landscape';renderer.logicalHeight=layout?1280*layout.stage.height/layout.stage.width:720;
+    // A controller on a big screen keeps the full desktop HUD; phones keep the phone HUD.
+    renderer.portrait=layout?.mode==='portrait';renderer.compact=layout?.mode==='landscape'&&(!pad||small);renderer.logicalHeight=layout?1280*layout.stage.height/layout.stage.width:720;
     renderer.lowPower=showing||batteryDisplay();
     const cssWidth=layout?.stage.width||$('stage-wrap').getBoundingClientRect().width;
-    resizeCanvas(renderer.canvas,canvasSize({cssWidth,aspect:layout?layout.stage.width/layout.stage.height:undefined,portrait:renderer.portrait,touch:showing,dpr:devicePixelRatio||1,quality:batteryDisplay()?'battery':'auto'}));
+    resizeCanvas(renderer.canvas,canvasSize({cssWidth,aspect:layout?layout.stage.width/layout.stage.height:undefined,portrait:renderer.portrait,touch:showing||(pad&&small),dpr:devicePixelRatio||1,quality:batteryDisplay()?'battery':'auto'}));
   }
 }
 function scheduleViewport(){viewportPending=true;}
@@ -692,9 +707,17 @@ $('enter-game').onclick=async()=>{
   $('opening').hidden=true;selection.hidden=false;$('cabinet').classList.remove('at-title');modalState();
   if(!preferences.muted)await sound.start();soundLabel();$('fight').focus();
 };
+$('pause-fullscreen').onclick=()=>goFullscreen();
+$('pause-touch').onclick=()=>{input.padInUse=false;checkPadMode();};
+$('stage-wrap').addEventListener('pointerdown',e=>{
+  // Controller play: a tap on the ring goes full screen (a tap is the gesture browsers
+  // require); once full screen, a tap opens the match menu.
+  if(!padPlay()||[loadingScreen,helpScreen,creditsScreen,resultScreen,pauseScreen].some(el=>!el.hidden)||e.target.closest?.('button'))return;
+  if(!fullscreenElement(document)&&($('cabinet').requestFullscreen||$('cabinet').webkitRequestFullscreen))goFullscreen();else togglePause();
+});
 $('fullscreen').onclick=async()=>{const result=await toggleFullscreen($('cabinet'),document);if(result==='fitted')status('Game fitted to your screen. This browser does not offer native fullscreen.');updateTouch();scheduleViewport();};
 addEventListener('resize',scheduleViewport);globalThis.visualViewport?.addEventListener('resize',scheduleViewport);globalThis.visualViewport?.addEventListener('scroll',scheduleViewport);coarse.addEventListener('change',updateTouch);
-for(const event of ['fullscreenchange','webkitfullscreenchange'])document.addEventListener(event,()=>{$('fullscreen').setAttribute('aria-label',fullscreenElement(document)?'Exit fullscreen':'Enter fullscreen');input.clearTouch();updateTouch();scheduleViewport();});
+for(const event of ['fullscreenchange','webkitfullscreenchange'])document.addEventListener(event,()=>{pauseMenuLabels();if(fullscreenElement(document)&&renderer)renderer.popups=renderer.popups.filter(p=>p.text!=='TAP THE RING FOR FULL SCREEN');$('fullscreen').setAttribute('aria-label',fullscreenElement(document)?'Exit fullscreen':'Enter fullscreen');input.clearTouch();updateTouch();scheduleViewport();});
 sound.setMix(preferences.musicVolume,preferences.effectsVolume);
 for(const [id,key] of [['music-volume','musicVolume'],['effects-volume','effectsVolume']]){$(id).value=Math.round((key==='musicVolume'?sound.musicVolume:sound.effectsVolume)*100);$(id).oninput=()=>{preferences[key]=Number($(id).value)/100;sound.setMix(preferences.musicVolume,preferences.effectsVolume);savePreferences();};}
 $('music').value=preferences.music==='fight-club'?'fight-club':'theme';sound.setTrack($('music').value);
@@ -728,6 +751,7 @@ function loop(now){
     if(runtimeFault||loading||document.hidden){last=now;accumulator=0;return;}
     // Resize and repaint in this same frame. A separate resize callback can
     // otherwise clear a just-drawn canvas until the following browser frame.
+    checkPadMode();
     if(viewportPending){viewportPending=false;updateTouch();resizeRoster();}
     const delta=Math.min((now-last)/1000,.10);last=now;
     input.escaping=escapeState();

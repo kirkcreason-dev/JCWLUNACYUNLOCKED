@@ -40,3 +40,21 @@ test('a controller escapes pins by mashing one button: each new press is an alte
   // Not escaping: A is jump as before.
   const n=new InputState();assert.equal(n.read(pad([0]))[0].pressed.jump,true);
 });
+
+test('controller play: using a pad switches to controller mode; touch or keys switch back; SELECT asks for full screen',async()=>{
+  const {InputState}=await import('../dist/src/input.js');
+  const {phoneLayout}=await import('../dist/src/phone-layout.js');
+  const pad=(pressed,axes=[0,0])=>[{index:0,connected:true,axes,buttons:Array.from({length:17},(_,n)=>({pressed:pressed.includes(n)}))}];
+  const s=new InputState();let selects=0;s.onSelect=()=>selects++;
+  s.read(pad([]));assert.equal(s.padInUse,false,'a connected but idle pad changes nothing');
+  s.read(pad([],[.9,0]));assert.equal(s.padInUse,true);
+  s.pressTouch(1,'light');assert.equal(s.padInUse,false);s.releaseTouch(1);
+  s.read(pad([0]));assert.equal(s.padInUse,true);s.pressKey('ArrowLeft');assert.equal(s.padInUse,false);s.releaseKey('ArrowLeft');
+  s.read(pad([0]));s.read([]);assert.equal(s.padInUse,false,'unplugging the pad brings the touch buttons back');
+  s.read(pad([8]));s.read(pad([8]));s.read(pad([]));s.read(pad([8]));assert.equal(selects,2,'one request per SELECT press');
+  // The ring fills the screen: phone held sideways, no header or buttons.
+  const l=phoneLayout({width:844,height:390,controller:true});
+  assert.equal(l.controller,true);assert.equal(l.dpad.width,0);assert.equal(l.header.width,0);
+  assert.ok(l.stage.height>=370&&Math.abs(l.stage.width/l.stage.height-16/9)<1e-9);
+  assert.ok(l.stage.width>phoneLayout({width:844,height:390}).stage.width*1.25);
+});

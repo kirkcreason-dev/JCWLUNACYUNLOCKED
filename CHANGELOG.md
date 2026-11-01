@@ -1,3 +1,11 @@
+# v0.25.2 — Controller mode (full screen for gamepad players)
+
+- As soon as a controller is used in a match, the game switches to **controller mode**: the on-screen buttons and the top bar disappear and the ring fills the screen (on a phone held sideways the ring is about 30% bigger). This works on phones, tablets and computers.
+- **Tap the ring** (or press **SELECT/BACK** on the controller) to go true full screen and hide the browser's own bars. Once full screen, tapping the ring opens the match menu. **START** pauses and resumes as before.
+- The match menu now has **FULL SCREEN / EXIT FULL SCREEN**, and on phones **USE TOUCH BUTTONS** to bring the on-screen buttons back. Touching the buttons, pressing a keyboard key or unplugging the controller also returns to the normal layout. The Settings option "Touch controls: On" keeps the buttons on screen.
+- Controller tips say "Mash any button to get up sooner" while down.
+- 1 new test (367 total). Checked in a browser with a simulated controller: phone sideways and upright, and desktop.
+
 # v0.25.1 — Controllers can kick out
 
 - Pins and submissions on a controller: while you're pinned, held or down, every new press of a face or shoulder button counts as one kick-out tap. Mashing a single button now works, exactly like the on-screen KICK OUT button. Before, only alternating X and Y counted, so mashing A (or any one button) on a phone controller such as the BSP-D11 never escaped. Keyboard rules are unchanged.

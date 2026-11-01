@@ -46,3 +46,10 @@ body.phone-match{overflow:hidden;overscroll-behavior:none}
 
 #cabinet[data-phone-layout] #stage-wrap{aspect-ratio:auto!important;min-height:0!important}
 #cabinet[data-phone-layout]:fullscreen,#cabinet[data-phone-layout]:-webkit-full-screen{left:0!important;top:0!important;border:0}
+/* Controller play: the ring fills the screen; no header or on-screen buttons. */
+#cabinet.pad-play[data-phone-layout]{position:fixed;right:auto;bottom:auto;max-width:none;min-height:0!important;padding:0!important;margin:0;display:block!important;overflow:hidden;background:#000}
+#cabinet.pad-play .topbar,#cabinet.pad-play #touch-controls,#cabinet.pad-play footer{display:none!important}
+#cabinet.pad-play #stage-wrap{border:0;box-shadow:none;aspect-ratio:auto;cursor:pointer}
+#cabinet.pad-play #network-banner{font-size:.7rem;padding:3px;pointer-events:none;z-index:4}
+#cabinet.pad-play #pause-button{display:none}
+@media(max-height:500px){#cabinet.pad-play #pause-art{display:none}#cabinet.pad-play .modal-panel h2{margin:6px 0 12px}}

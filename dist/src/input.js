@@ -1,4 +1,4 @@
-import {emptyInput,STEP,MOVES} from './engine.js?v=0.25.1';
+import {emptyInput,STEP,MOVES} from './engine.js?v=0.25.2';
 const REPEAT_HIT_INTERVAL=MOVES.light.startup+MOVES.light.active+MOVES.light.recovery+.03;
 export const KEYMAPS=[
   {ArrowLeft:'left',ArrowRight:'right',ArrowUp:'jump',ArrowDown:'block',KeyZ:'light',KeyX:'heavy',KeyC:'grapple',KeyV:'special',KeyJ:'light',KeyK:'heavy',KeyL:'grapple',KeyU:'special',KeyQ:'weapon',KeyE:'taunt',ShiftLeft:'run'},
@@ -25,13 +25,15 @@ export class InputState {
     this.local=false;this.repeatHit=true;this.repeatClock=0;this.escapeLast='heavy';
     // Set each frame by the game: true while that player is pinned, in a submission or down.
     this.escaping=[false,false];this.padEscapeLast=['heavy','heavy'];
+    // Controller play: true once a controller is actually used, false again on touch or keys.
+    this.padInUse=false;this.padSelect=[false,false];this.onSelect=()=>{};
   }
   keymaps(){return this.local?KEYMAPS:[{...KEYMAPS[0],...soloDirections},Object.fromEntries(Object.entries(KEYMAPS[1]).filter(([key])=>!soloDirections[key]))];}
   setMode(mode){this.local=mode==='local'||mode==='pole-local'||mode==='elimination-local';this.clear();}
   pressKey(code){
     const maps=this.keymaps();
     if(!this.keys.has(code))for(let i=0;i<2;i++){const action=maps[i][code];if(actions.has(action))this.pending[i].add(action);}
-    this.keys.add(code);if(maps[0][code])this.scheme='keyboard';
+    this.keys.add(code);if(maps[0][code]){this.scheme='keyboard';this.padInUse=false;}
   }
   releaseKey(code){this.keys.delete(code);}
   pressTouch(pointer,keys){
@@ -45,7 +47,7 @@ export class InputState {
       if(keys.includes('light')&&!before.includes('light'))this.repeatClock=0;
       this.pointers.set(pointer,{keys});
     }
-    this.scheme='touch';this.syncTouch();
+    this.scheme='touch';this.padInUse=false;this.syncTouch();
   }
   releaseTouch(pointer){this.pointers.delete(pointer);this.syncTouch();}
   syncTouch(){this.touch=emptyInput();for(const p of this.pointers.values())for(const key of p.keys)this.touch[key]=true;}
@@ -56,6 +58,8 @@ export class InputState {
     const result=this.keymaps().map((map,i)=>{const input=emptyInput();for(const code of this.keys)if(map[code])input[map[code]]=true;input.pressed=Object.fromEntries([...this.pending[i]].map(key=>[key,true]));this.pending[i].clear();return input;});
     for(const k in this.touch)result[0][k] ||= this.touch[k];
     const connected=Array.from(pads).filter(p=>p&&p.connected!==false);
+    if(!connected.length)this.padInUse=false;
+    else if(connected.some(p=>p.buttons?.some(b=>b?.pressed)||p.axes?.some(a=>Math.abs(a)>.5)))this.padInUse=true;
     this.padSlots.forEach((id,i)=>{if(id!==null&&!connected.some(p=>p.index===id)){this.padSlots[i]=null;this.padPrevious[i]={};this.padPause[i]=false;if(this.active)this.onPause(true);}});
     for(const pad of connected)if(!this.padSlots.includes(pad.index)){const vacant=this.padSlots.indexOf(null);if(vacant>=0)this.padSlots[vacant]=pad.index;}
     this.padSlots.forEach((id,i)=>{
@@ -73,6 +77,7 @@ export class InputState {
       else for(const key of Object.keys(value)){result[i][key] ||= value[key];if(actions.has(key)&&value[key]&&!this.padPrevious[i][key])result[i].pressed[key]=true;}
       this.padPrevious[i]=value;if(i===0&&Object.values(value).some(Boolean))this.scheme='gamepad';
       const start=b(9);if(start&&!this.padPause[i]&&this.active)this.onPause();this.padPause[i]=start;
+      const select=b(8);if(select&&!this.padSelect[i])this.onSelect();this.padSelect[i]=select;
     });
     return result;
   }

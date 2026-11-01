@@ -1,5 +1,5 @@
-import {SQUAD_PROTOCOL,InputPackets,RemoteInput,packSquadSnapshot} from './online-protocol.js?v=0.25.1';
-import {randomId,timed,cancelled} from './online.js?v=0.25.1';
+import {SQUAD_PROTOCOL,InputPackets,RemoteInput,packSquadSnapshot} from './online-protocol.js?v=0.25.2';
+import {randomId,timed,cancelled} from './online.js?v=0.25.2';
 
 // Four-player rooms: one host (P1) runs the match; up to three friends join with the
 // room code. Seats alternate teams: P1 + P3 on the left, P2 + P4 on the right.

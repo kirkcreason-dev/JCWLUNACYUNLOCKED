@@ -3,13 +3,21 @@ const rect=(x,y,width,height)=>({x,y,width,height});
 
 // CSS pixels from the visible viewport, excluding the notch and home indicator.
 // Keep controls outside the ring; every direction remains at least 44 px square.
-export function phoneLayout({width,height,safe={},online=false}){
+export function phoneLayout({width,height,safe={},online=false,controller=false}){
   const left=(safe.left||0)+8,right=width-(safe.right||0)-8;
   const top=safe.top||0,bottom=height-(safe.bottom||0)-8;
   const innerWidth=right-left,portrait=height>=width,short=!portrait&&bottom-top<270;
   const header=rect(left,top,innerWidth,44),contentTop=top+52+(online&&portrait?24:0);
   const network=portrait?rect(left,top+46,innerWidth,20):rect(left+(short?176:0),top+12,innerWidth-188-(short?176:0),20);
   let stage,dpad,actions,weapon,taunt,hint;
+  if(controller){
+    // Controller play: no on-screen buttons and no header. The ring takes the whole
+    // screen; an online banner, if any, sits in a thin strip above it.
+    const none=rect(0,0,0,0),aspect=portrait?4/3:16/9,stageTop=top+(online?26:4),room=Math.max(1,bottom-stageTop);
+    const stageWidth=Math.min(innerWidth,room*aspect),stageHeight=stageWidth/aspect;
+    stage=rect((left+right-stageWidth)/2,stageTop+(room-stageHeight)/2,stageWidth,stageHeight);
+    return {mode:portrait?'portrait':'landscape',short,controller:true,width,height,header:none,network:rect(left,top+2,innerWidth,22),stage,dpad:none,actions:none,weapon:none,taunt:none,hint:none};
+  }
   if(portrait){
     const pad=clamp((innerWidth-16)/2,132,180);
     const controlsTop=bottom-(pad+88),stageRoom=controlsTop-contentTop-8;

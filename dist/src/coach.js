@@ -14,7 +14,7 @@ export class Coach {
     if(match.pin?.attacker===1)return touch?'Tap KICK OUT repeatedly':pad?'Mash any button (X, Y, A or B) to escape':`Alternate ${hit} and ${heavy} to escape`;
     if(match.grapple?.attacker===0||match.pin?.attacker===0)return '';
     if(match.pole&&!match.pole.claimed)return me.state==='perch'&&Math.abs(me.x-match.pole.x)<40?`Hold ${pad?'B':touch?'CLAIM':'C'} to retrieve the chair`:`Chair on the ${match.pole.x<640?'left':'right'} pole · Climb, then hold ${pad?'B':touch?'CLAIM':'C'}`;
-    if(me.state==='down')return touch?'Tap GET UP to recover sooner':`Tap ${hit} or ${heavy} to get up sooner`;
+    if(me.state==='down')return touch?'Tap GET UP to recover sooner':pad?'Mash any button to get up sooner':`Tap ${hit} or ${heavy} to get up sooner`;
     if(me.meter>=100&&!this.learned.has('finisher'))return `Move close + ${finish}: ${me.definition.finisher}`;
     if(other.state==='down'&&distance<125&&!this.learned.has('pin'))return `Tap ${grab} to pin · ${block} + ${grab} to submit`;
     let key='',text='';
