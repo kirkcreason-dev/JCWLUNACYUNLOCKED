@@ -20,3 +20,23 @@ test('movement and an attack can be held by different fingers; releasing one doe
 test('holding touch HIT repeats at a controlled rate and stops on cancellation',()=>{const input=new InputState();input.pressTouch(2,'light');let attacks=0;for(let i=0;i<60;i++)attacks+=Number(Boolean(input.read()[0].pressed.light));assert.equal(attacks,3);input.releaseTouch(2);for(let i=0;i<60;i++)assert.equal(input.read()[0].pressed.light,undefined);input.repeatHit=false;input.pressTouch(2,'light');input.read();for(let i=0;i<60;i++)assert.equal(input.read()[0].pressed.light,undefined);});
 test('escape button alternates only on fresh taps and never auto-repeats',()=>{const input=new InputState();input.pressTouch(1,'escape');assert.equal(input.read()[0].pressed.light,true);input.pressTouch(1,'escape');input.pressTouch(2,'escape');assert.deepEqual(input.read()[0].pressed,{});for(let i=0;i<60;i++)assert.deepEqual(input.read()[0].pressed,{});input.releaseTouch(1);input.pressTouch(1,'escape');assert.equal(input.read()[0].pressed.heavy,true);});
 test('clearing touch during a pin removes held HIT and preserves keyboard directions',()=>{const input=new InputState();input.pressKey('ArrowRight');input.pressTouch(1,'light');input.clearTouch();const a=input.read()[0];assert.equal(a.right,true);assert.equal(a.light,false);assert.deepEqual(a.pressed,{});});
+
+test('a controller escapes pins by mashing one button: each new press is an alternating kick-out tap',async()=>{
+  const {InputState}=await import('../dist/src/input.js');
+  const {Match,STEP,emptyInput}=await import('../dist/src/engine.js');
+  const roster=JSON.parse(await (await import('node:fs/promises')).readFile(new URL('../dist/assets/roster.json',import.meta.url),'utf8'));
+  const pad=(pressed)=>[{index:0,connected:true,axes:[0,0],buttons:Array.from({length:17},(_,n)=>({pressed:pressed.includes(n)}))}];
+  const s=new InputState();s.escaping=[true,false];
+  const taps=[];for(let i=0;i<6;i++){const down=s.read(pad([0]))[0];taps.push(Object.keys(down.pressed));s.read(pad([]));}
+  assert.deepEqual(taps,[['light'],['heavy'],['light'],['heavy'],['light'],['heavy']]);
+  // Holding the button is one tap, and A no longer jumps while escaping.
+  const held=s.read(pad([0]))[0];assert.equal(held.jump,false);assert.deepEqual(Object.keys(s.read(pad([0]))[0].pressed),[]);
+  // In a real pin, mashing A alone kicks out.
+  const m=new Match(roster,0,1,{mode:'cpu',random:()=>.99});m.phase='fight';
+  m.fighters[0].state='down';m.fighters[0].hp=80;m.fighters[1].x=m.fighters[0].x+60;m.startPin(1,'pin');
+  const p=new InputState();p.escaping=[true,false];let frame=0;
+  while(m.pin&&frame<60*2.6){const press=frame%6<3?[0]:[];m.step([p.read(pad(press))[0],emptyInput()],STEP);frame++;}
+  assert.equal(m.pin,null);assert.notEqual(m.phase,'roundEnd');
+  // Not escaping: A is jump as before.
+  const n=new InputState();assert.equal(n.read(pad([0]))[0].pressed.jump,true);
+});

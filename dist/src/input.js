@@ -1,4 +1,4 @@
-import {emptyInput,STEP,MOVES} from './engine.js?v=0.25.0';
+import {emptyInput,STEP,MOVES} from './engine.js?v=0.25.1';
 const REPEAT_HIT_INTERVAL=MOVES.light.startup+MOVES.light.active+MOVES.light.recovery+.03;
 export const KEYMAPS=[
   {ArrowLeft:'left',ArrowRight:'right',ArrowUp:'jump',ArrowDown:'block',KeyZ:'light',KeyX:'heavy',KeyC:'grapple',KeyV:'special',KeyJ:'light',KeyK:'heavy',KeyL:'grapple',KeyU:'special',KeyQ:'weapon',KeyE:'taunt',ShiftLeft:'run'},
@@ -23,6 +23,8 @@ export class InputState {
     this.active=false;this.onPause=onPause;this.pointers=new Map();this.scheme='keyboard';
     this.padSlots=[null,null];this.padPrevious=[{},{}];this.padPause=[false,false];
     this.local=false;this.repeatHit=true;this.repeatClock=0;this.escapeLast='heavy';
+    // Set each frame by the game: true while that player is pinned, in a submission or down.
+    this.escaping=[false,false];this.padEscapeLast=['heavy','heavy'];
   }
   keymaps(){return this.local?KEYMAPS:[{...KEYMAPS[0],...soloDirections},Object.fromEntries(Object.entries(KEYMAPS[1]).filter(([key])=>!soloDirections[key]))];}
   setMode(mode){this.local=mode==='local'||mode==='pole-local'||mode==='elimination-local';this.clear();}
@@ -59,7 +61,16 @@ export class InputState {
     this.padSlots.forEach((id,i)=>{
       const pad=connected.find(p=>p.index===id);if(!pad)return;
       const b=n=>Boolean(pad.buttons[n]?.pressed),value={left:pad.axes[0]<-.35||b(14),right:pad.axes[0]>.35||b(15),jump:b(0)||b(12),light:b(2),heavy:b(3),grapple:b(1),block:b(4)||b(13),special:b(5),weapon:b(6),taunt:b(7),run:b(10)};
-      for(const key of Object.keys(value)){result[i][key] ||= value[key];if(actions.has(key)&&value[key]&&!this.padPrevious[i][key])result[i].pressed[key]=true;}
+      if(this.escaping[i]){
+        // Pinned, in a hold or down: every new press of a face or shoulder button counts as
+        // one kick-out tap, alternating STRIKE/HEAVY like the on-screen KICK OUT button.
+        // Mashing one button on a controller works the same as alternating X and Y.
+        const mash=[0,1,2,3,4,5,6,7].map(n=>b(n)),before=this.padPrevious[i].mash||[];
+        if(mash.some((on,n)=>on&&!before[n])){const key=this.padEscapeLast[i]==='light'?'heavy':'light';this.padEscapeLast[i]=key;result[i].pressed[key]=true;}
+        for(const key of ['left','right'])result[i][key] ||= value[key];
+        value.mash=mash;
+      }
+      else for(const key of Object.keys(value)){result[i][key] ||= value[key];if(actions.has(key)&&value[key]&&!this.padPrevious[i][key])result[i].pressed[key]=true;}
       this.padPrevious[i]=value;if(i===0&&Object.values(value).some(Boolean))this.scheme='gamepad';
       const start=b(9);if(start&&!this.padPause[i]&&this.active)this.onPause();this.padPause[i]=start;
     });

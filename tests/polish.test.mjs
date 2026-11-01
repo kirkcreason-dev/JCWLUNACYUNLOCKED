@@ -44,7 +44,7 @@ test('CPU technicians choose a throw where flyers choose a jab; aerial preferenc
 test('first-match guidance respects input device, completion, disabled setting and urgent escapes',()=>{
   const data=new Map(),storage={getItem:k=>data.get(k),setItem:(k,v)=>data.set(k,v),removeItem:k=>data.delete(k)};const c=new Coach(storage),m=make();m.options.mode='cpu';
   assert.match(c.text(m,'touch'),/Slide/);assert.equal(c.text(m,'touch',false),'');c.receive([{type:'hit',attacker:0,combo:2}]);assert.ok(new Coach(storage).learned.has('combo'));
-  m.pin={attacker:1};assert.match(c.text(m,'gamepad'),/X and Y/);m.options.mode='online';assert.equal(c.text(m),'');c.reset();assert.equal(c.learned.size,0);
+  m.pin={attacker:1};assert.match(c.text(m,'gamepad'),/Mash any button/);m.options.mode='online';assert.equal(c.text(m),'');c.reset();assert.equal(c.learned.size,0);
 });
 test('render budget ignores short spikes and reduces sustained expensive drawing only once',()=>{
   const budget=new RenderBudget();for(let i=0;i<89;i++)assert.equal(budget.observe(i===10?70:2),false);assert.equal(budget.observe(2),false);

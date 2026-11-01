@@ -1,3 +1,9 @@
+# v0.25.1 — Controllers can kick out
+
+- Pins and submissions on a controller: while you're pinned, held or down, every new press of a face or shoulder button counts as one kick-out tap. Mashing a single button now works, exactly like the on-screen KICK OUT button. Before, only alternating X and Y counted, so mashing A (or any one button) on a phone controller such as the BSP-D11 never escaped. Keyboard rules are unchanged.
+- The pin bar and first-match tip say "MASH ANY BUTTON" when a controller is in use; the CONTROLS help explains it.
+- 1 new test (366 total). Checked in a browser with a simulated controller: mashing A after being pinned now kicks out; on v0.25.0 the same mashing lost by pinfall.
+
 # v0.25.0 — Real 4-player: online rooms, Tag Team and Tornado Tag
 
 - New mode **ONLINE · 4 PLAYERS**: up to four people, each on their own phone or computer, in one room. The host picks the match type and presses **CREATE 4-PLAYER ROOM**; friends enter the four-letter code and press **JOIN ROOM**. Seats alternate teams — P1 + P3 against P2 + P4. The room shows who has joined and starts by itself when all four are in; the host can press **START NOW** and the CPU fills any empty spots (with unlocked wrestlers nobody picked). Everyone in a room must pick a different wrestler.

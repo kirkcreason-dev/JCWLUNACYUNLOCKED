@@ -1,4 +1,4 @@
-import {emptyInput} from './engine.js?v=0.25.0';
+import {emptyInput} from './engine.js?v=0.25.1';
 export const PROTOCOL='lunacy-2d-v25';
 export const SQUAD_PROTOCOL='lunacy-squad-v25';
 export const ACTIONS=['jump','light','heavy','grapple','special','weapon','taunt','block'];

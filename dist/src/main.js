@@ -1,30 +1,30 @@
-import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.25.0';
-import {RenderBudget} from './render-budget.js?v=0.25.0';
-import {Coach} from './coach.js?v=0.25.0';
-import {loadGameImage} from './image-loader.js?v=0.25.0';
-import {fighterProfile} from './fighter-profile.js?v=0.25.0';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.25.0';
-import {SecretFighters} from './secret-fighters.js?v=0.25.0';
-import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,isTeamMode,TEAM_SIZE} from './engine.js?v=0.25.0';
-import {SquadSession,seatsOf,squadTeams,cpuSeats,teamOfSeat} from './online-squad.js?v=0.25.0';
-import {Renderer,formatTitle} from './render.js?v=0.25.0';
-import {Input} from './input.js?v=0.25.0';
-import {Sound} from './audio.js?v=0.25.0';
-import {ARENAS} from './arenas.js?v=0.25.0';
-import {touchContext} from './touch-ui.js?v=0.25.0';
-import {OnlineSession} from './online.js?v=0.25.0';
-import {connectFirebase} from './firebase-online.js?v=0.25.0';
-import {SnapshotBuffer,SquadSnapshotBuffer} from './online-protocol.js?v=0.25.0';
-import {RosterSelection} from './roster-selection.js?v=0.25.0';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.25.0';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.25.0';
-import {FramePacer} from './frame-pacer.js?v=0.25.0';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.25.0';
-import {Haptics} from './haptics.js?v=0.25.0';
-import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.25.0';
-import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.25.0';
-import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.25.0';
-import {MatchRecord} from './match-record.js?v=0.25.0';
+import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.25.1';
+import {RenderBudget} from './render-budget.js?v=0.25.1';
+import {Coach} from './coach.js?v=0.25.1';
+import {loadGameImage} from './image-loader.js?v=0.25.1';
+import {fighterProfile} from './fighter-profile.js?v=0.25.1';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.25.1';
+import {SecretFighters} from './secret-fighters.js?v=0.25.1';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,isTeamMode,TEAM_SIZE} from './engine.js?v=0.25.1';
+import {SquadSession,seatsOf,squadTeams,cpuSeats,teamOfSeat} from './online-squad.js?v=0.25.1';
+import {Renderer,formatTitle} from './render.js?v=0.25.1';
+import {Input} from './input.js?v=0.25.1';
+import {Sound} from './audio.js?v=0.25.1';
+import {ARENAS} from './arenas.js?v=0.25.1';
+import {touchContext} from './touch-ui.js?v=0.25.1';
+import {OnlineSession} from './online.js?v=0.25.1';
+import {connectFirebase} from './firebase-online.js?v=0.25.1';
+import {SnapshotBuffer,SquadSnapshotBuffer} from './online-protocol.js?v=0.25.1';
+import {RosterSelection} from './roster-selection.js?v=0.25.1';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.25.1';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.25.1';
+import {FramePacer} from './frame-pacer.js?v=0.25.1';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.25.1';
+import {Haptics} from './haptics.js?v=0.25.1';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.25.1';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.25.1';
+import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.25.1';
+import {MatchRecord} from './match-record.js?v=0.25.1';
 const haptics=new Haptics();let arcadeRewards=null,arcadeRuns=null,matchRecord=null;
 const loadingScreen=document.getElementById('match-loading');
 const $=id=>document.getElementById(id);
@@ -613,6 +613,13 @@ function matchEvents(events){
   if(input.scheme==='touch'&&events.some(e=>['hit','slam','reversal','secondWind'].includes(e.type)&&(e.index===localIndex||e.attacker===localIndex)))haptics.pulse(events.some(e=>e.type==='slam')?50:32);
   for(const e of events){if(e.type==='fight')status('Fight!');if(e.type==='reversal')status(`Player ${e.index+1} reverses the strike. Counterattack!`);if(e.type==='secondWind')status(`Player ${e.index+1} gets a second wind: 25 Lunacy meter.`);if(e.type==='ropeBreak')status('Rope break. The hold is released.');if(e.type==='pinRelease')status('Hold released.');if(e.type==='count')status(`Pin count ${e.count}`);if(e.type==='roundEnd')status(e.winner==null?'Round drawn':match.teams&&match.format!=='elimination'?`${match.teams[e.winner].map(i=>roster[i].name).join(' and ')} win by ${e.method.toLowerCase()}`:`${match.fighters[e.winner].definition.name} wins the round by ${e.method.toLowerCase()}`);if(e.type==='tag')status(`Tag! ${roster[e.to]?.name} is the legal wrestler.`);if(e.type==='elimination'&&e.live)status(`${e.eliminated.map(x=>roster[x.id]?.name).join(', ')} eliminated.`);if(e.type==='pinBreak')status('The pin is broken up!');if(e.type==='suddenDeath')status('Sudden death. The next finish wins.');}
 }
+// Which players are pinned, held or down right now (controller mashing counts as kick-out taps).
+function escapeState(){
+  if(!match||match.phase!=='fight')return [false,false];
+  const pinned=match.pin?(match.pin.defender??1-match.pin.attacker):null;
+  const esc=i=>Boolean(match.fighters[i])&&(pinned===i||match.fighters[i].state==='down');
+  return isLocalMode(match.options.mode)?[esc(0),esc(1)]:[esc(localIndex),false];
+}
 // Artwork a match needs on screen: tag partners stand on the apron, so keep the whole team.
 function matchArt(m){return m.teams&&m.format!=='elimination'?m.teams.flat():m.ids;}
 function recoverRuntime(error,graphics=false,detail=null){
@@ -723,6 +730,7 @@ function loop(now){
     // otherwise clear a just-drawn canvas until the following browser frame.
     if(viewportPending){viewportPending=false;updateTouch();resizeRoster();}
     const delta=Math.min((now-last)/1000,.10);last=now;
+    input.escaping=escapeState();
     if(match?.options.mode==='online'&&onlineStarted&&!onlineFailed){
       if(match.phase!=='done'){
         accumulator+=delta;

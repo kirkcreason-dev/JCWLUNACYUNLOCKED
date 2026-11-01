@@ -1,9 +1,9 @@
-import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME,defenderOf} from './engine.js?v=0.25.0';
-import {ARENAS} from './arenas.js?v=0.25.0';
-import {weaponGrip} from './weapon-grips.js?v=0.25.0';
-import {attackPose} from './attack-animation.js?v=0.25.0';
-import {arenaCamera} from './phone-layout.js?v=0.25.0';
-import {drawArenaWordmarks} from './branding.js?v=0.25.0';
+import {FLOOR,LEFT,RIGHT,throwBreakWindow,escapeTarget,MOVEMENT_PACE,attackTiming,weaponRemaining,isLocalMode,POLE_RETRIEVE_TIME,defenderOf} from './engine.js?v=0.25.1';
+import {ARENAS} from './arenas.js?v=0.25.1';
+import {weaponGrip} from './weapon-grips.js?v=0.25.1';
+import {attackPose} from './attack-animation.js?v=0.25.1';
+import {arenaCamera} from './phone-layout.js?v=0.25.1';
+import {drawArenaWordmarks} from './branding.js?v=0.25.1';
 const fit=(n,min,max)=>Math.max(min,Math.min(max,n));
 const SIDE_COLORS=['#b0ff20','#fa268b'];
 // Names for team play: "JEFF LANE & SHAGGY 2 DOPE".
@@ -319,7 +319,7 @@ export class Renderer {
     c.fillStyle='#0c0716dd';c.fillRect(38,666,1204,31);this.text(ARENAS[arena]?.name||'',54,687,12,'#d4c5dd');
     const help=(m.pole?this.poleStatus(m):this.coachText)|| (this.scheme==='gamepad'?'X STRIKE  /  Y HEAVY  /  B GRAPPLE  /  RB FINISHER':this.scheme==='touch'?'HIT  /  HEAVY  /  GRAB TO THROW OR PIN  /  FINISH':'← → MOVE  /  ↑ JUMP  /  ↓ BLOCK  /  Z HIT  /  X HEAVY  /  C GRAB  /  V FINISH');
     const pinned=m.pin?defenderOf(m.pin):null;
-    this.text(m.pin?(this.scheme==='touch'&&pinned===(this.localIndex||0)?'TAP KICK OUT REPEATEDLY':`P${(m.fighters[pinned]?.player??pinned)+1}: ALTERNATE STRIKE + HEAVY TO ESCAPE`):help,640,687,12,m.pin?'#b0ff20':'#d4c5dd','center');
+    this.text(m.pin?(this.scheme==='touch'&&pinned===(this.localIndex||0)?'TAP KICK OUT REPEATEDLY':this.scheme==='gamepad'?`P${(m.fighters[pinned]?.player??pinned)+1}: MASH ANY BUTTON TO ESCAPE`:`P${(m.fighters[pinned]?.player??pinned)+1}: ALTERNATE STRIKE + HEAVY TO ESCAPE`):help,640,687,12,m.pin?'#b0ff20':'#d4c5dd','center');
     this.text(m.options.mode==='championship'?m.options.championshipLabel:m.options.mode==='arcade'?`ARCADE · ${(m.options.arcadeIndex||0)+1} / ${m.roster.length-1}`:m.pole?'POLE MATCH':m.options.mode==='practice'?'PRACTICE':m.format==='tag'?'TAG TEAM · ONE FALL':m.teams?`${formatTitle(m)} · ${m.remainingOn(0)} – ${m.remainingOn(1)} LEFT`:'BEST OF 3',1224,687,12,'#d4c5dd','right');
     if(m.pin){
       const p=m.pin,b=m.fighters[defenderOf(p)],need=escapeTarget(b.hp);
