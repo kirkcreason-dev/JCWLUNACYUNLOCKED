@@ -1,4 +1,4 @@
-import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.25.2';
+import {fighterProfile,finisherMove} from './fighter-profile.js?v=0.25.3';
 // Pure fixed-step match simulation. Rendering and input devices never change the rules.
 export const STEP = 1 / 60;
 export const FLOOR = 593;
@@ -92,7 +92,15 @@ export class Match {
     this.emit('round',{round:this.round});
   }
   // Which person (input slot) drives a wrestler. Unrouted modes keep index = player.
-  playerFor(side,slot=0){return this.routed?side+2*slot:side;}
+  // Offline Tag Team: the person drives whichever wrestler is legal on their team, so
+  // tagging hands the controls to the partner instead of to the CPU.
+  // Online Tag with a CPU-filled partner seat works the same way for the person on that team.
+  playerFor(side,slot=0){
+    if(this.options.mode==='tag'&&side===0)return 0;
+    if(!this.routed)return side;
+    const seat=side+2*slot,mate=side+2*(1-slot);
+    return this.format==='tag'&&this.cpuPlayers.has(seat)&&!this.cpuPlayers.has(mate)?mate:seat;
+  }
   makeFighter(id,i){
     const side=this.brawl?i%2:i,slot=this.brawl?i>>1:this.slot?.[side]||0;
     const x=this.brawl?[330,950,480,800][i]:i?870:410;

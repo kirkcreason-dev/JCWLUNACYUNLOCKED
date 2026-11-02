@@ -90,3 +90,25 @@ test('the setup screen offers tag, tornado and four-player online rooms',async()
   for(const value of ['tag','tornado','squad'])assert.match(html,new RegExp(`<option value="${value}">`));
   for(const id of ['squad-lobby','squad-format','squad-create','squad-join','squad-code','squad-seats','squad-start','squad-cancel'])assert.match(html,new RegExp(`id="${id}"`));
 });
+test('offline Tag Team: after a tag the person controls the partner, never the CPU',()=>{
+  const m=new Match(roster,1,3,{mode:'tag',teams:[[1,2],[3,4]]});m.phase='fight';
+  assert.equal(m.fighters[0].player,0);
+  m.fighters[0].x=LEFT+15;m.step([press('taunt'),emptyInput()],STEP);
+  assert.equal(m.fighters[0].id,2);assert.equal(m.fighters[0].player,0,'the partner is driven by player 1');
+  // The CPU never moves the person's partner; the player's input does.
+  const x=m.fighters[0].x;for(let i=0;i<40;i++)m.step([emptyInput(),emptyInput()],STEP);assert.equal(m.fighters[0].x,x);
+  for(let i=0;i<20;i++)m.step([{...emptyInput(),right:true},emptyInput()],STEP);assert.ok(m.fighters[0].x>x);
+  // Tag back from the corner returns control to the first wrestler.
+  m.fighters[0].x=LEFT+10;m.fighters[0].state='idle';m.step([press('taunt'),emptyInput()],STEP);
+  assert.equal(m.fighters[0].id,1);assert.equal(m.fighters[0].player,0);
+  // The CPU team still has its own legal wrestler and partner.
+  assert.equal(m.fighters[1].player,1);assert.ok(m.cpuPlayers.has(1));
+});
+test('online Tag: when a partner seat is filled by the CPU, the person on that team plays both wrestlers',()=>{
+  const m=new Match(roster,1,3,{mode:'squad',format:'tag',teams:[[1,2],[3,4]],cpuPlayers:[2,3]});m.phase='fight';
+  m.fighters[0].x=LEFT+15;m.step([press('taunt'),emptyInput(),emptyInput(),emptyInput()],STEP);
+  assert.equal(m.fighters[0].id,2);assert.equal(m.fighters[0].player,0);
+  // With four people, each still drives only their own wrestler.
+  const f=new Match(roster,1,3,{mode:'squad',format:'tag',teams:[[1,2],[3,4]],cpuPlayers:[]});f.phase='fight';
+  f.fighters[0].x=LEFT+15;f.step([press('taunt'),emptyInput(),emptyInput(),emptyInput()],STEP);assert.equal(f.fighters[0].player,2);
+});

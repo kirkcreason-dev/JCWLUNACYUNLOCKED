@@ -1,30 +1,30 @@
-import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.25.2';
-import {RenderBudget} from './render-budget.js?v=0.25.2';
-import {Coach} from './coach.js?v=0.25.2';
-import {loadGameImage} from './image-loader.js?v=0.25.2';
-import {fighterProfile} from './fighter-profile.js?v=0.25.2';
-import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.25.2';
-import {SecretFighters} from './secret-fighters.js?v=0.25.2';
-import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,isTeamMode,TEAM_SIZE} from './engine.js?v=0.25.2';
-import {SquadSession,seatsOf,squadTeams,cpuSeats,teamOfSeat} from './online-squad.js?v=0.25.2';
-import {Renderer,formatTitle} from './render.js?v=0.25.2';
-import {Input} from './input.js?v=0.25.2';
-import {Sound} from './audio.js?v=0.25.2';
-import {ARENAS} from './arenas.js?v=0.25.2';
-import {touchContext} from './touch-ui.js?v=0.25.2';
-import {OnlineSession} from './online.js?v=0.25.2';
-import {connectFirebase} from './firebase-online.js?v=0.25.2';
-import {SnapshotBuffer,SquadSnapshotBuffer} from './online-protocol.js?v=0.25.2';
-import {RosterSelection} from './roster-selection.js?v=0.25.2';
-import {retainMatchArtwork} from './artwork-cache.js?v=0.25.2';
-import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.25.2';
-import {FramePacer} from './frame-pacer.js?v=0.25.2';
-import {loadOptionalArtwork} from './optional-artwork.js?v=0.25.2';
-import {Haptics} from './haptics.js?v=0.25.2';
-import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.25.2';
-import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.25.2';
-import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.25.2';
-import {MatchRecord} from './match-record.js?v=0.25.2';
+import {fighterPortrait,fighterAtlas} from './fighter-artwork.js?v=0.25.3';
+import {RenderBudget} from './render-budget.js?v=0.25.3';
+import {Coach} from './coach.js?v=0.25.3';
+import {loadGameImage} from './image-loader.js?v=0.25.3';
+import {fighterProfile} from './fighter-profile.js?v=0.25.3';
+import {Championship,STAGES,championshipLabel,championshipArena} from './championship.js?v=0.25.3';
+import {SecretFighters} from './secret-fighters.js?v=0.25.3';
+import {Match,STEP,emptyInput,isPoleMode,isLocalMode,isEliminationMode,isTeamMode,TEAM_SIZE} from './engine.js?v=0.25.3';
+import {SquadSession,seatsOf,squadTeams,cpuSeats,teamOfSeat} from './online-squad.js?v=0.25.3';
+import {Renderer,formatTitle} from './render.js?v=0.25.3';
+import {Input} from './input.js?v=0.25.3';
+import {Sound} from './audio.js?v=0.25.3';
+import {ARENAS} from './arenas.js?v=0.25.3';
+import {touchContext} from './touch-ui.js?v=0.25.3';
+import {OnlineSession} from './online.js?v=0.25.3';
+import {connectFirebase} from './firebase-online.js?v=0.25.3';
+import {SnapshotBuffer,SquadSnapshotBuffer} from './online-protocol.js?v=0.25.3';
+import {RosterSelection} from './roster-selection.js?v=0.25.3';
+import {retainMatchArtwork} from './artwork-cache.js?v=0.25.3';
+import {phoneLayout,canvasSize,resizeCanvas} from './phone-layout.js?v=0.25.3';
+import {FramePacer} from './frame-pacer.js?v=0.25.3';
+import {loadOptionalArtwork} from './optional-artwork.js?v=0.25.3';
+import {Haptics} from './haptics.js?v=0.25.3';
+import {ArcadeRewards,ARCADE_REWARDS} from './arcade-rewards.js?v=0.25.3';
+import {fullscreenElement,toggleFullscreen} from './fullscreen.js?v=0.25.3';
+import {ArcadeRun,resultTicket} from './arcade-run.js?v=0.25.3';
+import {MatchRecord} from './match-record.js?v=0.25.3';
 const haptics=new Haptics();let arcadeRewards=null,arcadeRuns=null,matchRecord=null;
 const loadingScreen=document.getElementById('match-loading');
 const $=id=>document.getElementById(id);
@@ -211,7 +211,7 @@ function syncTeams(){
 }
 const TEAM_RULES={
   elimination:'Survivor-style: one wrestler per team in the ring. Pin, submit or knock out your opponent to eliminate them, and their next teammate comes in. The winner stays in with the damage taken plus a short breather. Last team with a wrestler left wins.',
-  tag:'Tag team: one legal wrestler per side. Get to your own corner (yours is on the left) and press TAUNT to tag your partner in. Your partner is the CPU. One pin, submission or knockout wins the match.',
+  tag:'Tag team: one legal wrestler per side, and you control BOTH wrestlers on your team. Get to your own corner (yours is on the left) and press TAUNT to tag; you take over your partner. One pin, submission or knockout wins the match.',
   tornado:'Tornado tag: all four wrestlers in the ring at once, you and a CPU partner against two CPU wrestlers. Pinned, submitted or knocked out wrestlers are eliminated; hit a wrestler who is pinning your partner to break it up. Last team standing wins.'
 };
 function renderTeams(){
@@ -223,7 +223,7 @@ function renderTeams(){
     select.replaceChildren(...teamPool(side).map(i=>{const o=document.createElement('option');o.value=i;o.textContent=roster[i].name.toUpperCase();return o;}));
     select.value=String(teams[side][slot]);select.disabled=onlineBusy||(side===0&&slot===0);
   }
-  const local=isLocalMode(mode);$('team-a-label').textContent=local?'PLAYER 1 TEAM':pairMode(mode)?'YOU + CPU PARTNER':'YOUR TEAM';$('team-b-label').textContent=local?'PLAYER 2 TEAM':'CPU TEAM';
+  const local=isLocalMode(mode);$('team-a-label').textContent=local?'PLAYER 1 TEAM':mode==='tag'?'YOUR TEAM · YOU PLAY BOTH':pairMode(mode)?'YOU + CPU PARTNER':'YOUR TEAM';$('team-b-label').textContent=local?'PLAYER 2 TEAM':'CPU TEAM';
   $('team-rules').textContent=TEAM_RULES[pairMode(mode)?mode:'elimination'];
 }
 function pickTeamSlot(side,slot,id){

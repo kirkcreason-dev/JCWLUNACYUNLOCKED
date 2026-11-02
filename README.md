@@ -4,7 +4,7 @@ A playable 2D arcade wrestling fighter built from the supplied JCW wrestler shee
 
 ## Real 4-player (v0.25.0)
 
-Pick MODE → **ONLINE · 4 PLAYERS** to play with up to three friends, each on their own device. Choose the match type — **Tag Team**, **Tornado Tag** (all four in the ring) or **Elimination** — and press CREATE 4-PLAYER ROOM, then share the code. P1 + P3 team up against P2 + P4. It starts when all four are in, or the host presses START NOW and the CPU fills the empty spots. In Tag Team, TAUNT in your own corner to tag your partner. **TAG TEAM · CPU** and **TORNADO TAG · CPU** let you try both with a CPU partner. See [MULTIPLAYER.md](MULTIPLAYER.md).
+Pick MODE → **ONLINE · 4 PLAYERS** to play with up to three friends, each on their own device. Choose the match type — **Tag Team**, **Tornado Tag** (all four in the ring) or **Elimination** — and press CREATE 4-PLAYER ROOM, then share the code. P1 + P3 team up against P2 + P4. It starts when all four are in, or the host presses START NOW and the CPU fills the empty spots. In Tag Team, TAUNT in your own corner to tag your partner. **TAG TEAM · CPU** lets you control both wrestlers on your team (tag in your corner to switch); **TORNADO TAG · CPU** gives you a CPU partner. See [MULTIPLAYER.md](MULTIPLAYER.md).
 
 ## 4 on 4 Elimination (v0.24.0)
 

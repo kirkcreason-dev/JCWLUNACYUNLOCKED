@@ -1,3 +1,10 @@
+# v0.25.3 — You control your tag partner
+
+- **TAG TEAM · CPU**: you now control both wrestlers on your team. Tag in your corner (TAUNT) and you take over your partner; tag back and you're the first wrestler again. The CPU no longer plays your partner, so it can't stay in and lose the match for you. The CPU team still tags on its own.
+- **ONLINE · 4 PLAYERS, Tag Team**: if your partner's seat is filled by the CPU (or your partner leaves), you play both wrestlers on your team the same way. With four people, everyone still drives their own wrestler.
+- Match Setup shows "YOUR TEAM · YOU PLAY BOTH" and the updated tag rules. Tornado Tag keeps a CPU partner (all four are in the ring at once).
+- 2 new tests (369 total).
+
 # v0.25.2 — Controller mode (full screen for gamepad players)
 
 - As soon as a controller is used in a match, the game switches to **controller mode**: the on-screen buttons and the top bar disappear and the ring fills the screen (on a phone held sideways the ring is about 30% bigger). This works on phones, tablets and computers.
